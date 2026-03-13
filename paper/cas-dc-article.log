@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.3.13)  13 MAR 2026 11:17
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.3.13)  13 MAR 2026 11:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1810,7 +1810,7 @@ Package rerunfilecheck Info: File `cas-dc-article.out' has not changed.
 Here is how much of TeX's memory you used:
  18274 strings out of 467871
  284741 string characters out of 5418376
- 707080 words of memory out of 5000000
+ 707201 words of memory out of 5000000
  46789 multiletter control sequences out of 15000+600000
  747538 words of font info for 205 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1829,7 +1829,7 @@ athex.pfb><C:/Users/rapha/AppData/Local/Programs/MiKTeX/fonts/type1/public/stix
 ic/stix/stix-mathrm.pfb><C:/Users/rapha/AppData/Local/Programs/MiKTeX/fonts/typ
 e1/public/stix/stix-mathscr.pfb><C:/Users/rapha/AppData/Local/Programs/MiKTeX/f
 onts/type1/public/stix/stix-mathsf.pfb>
-Output written on cas-dc-article.pdf (8 pages, 371866 bytes).
+Output written on cas-dc-article.pdf (8 pages, 371896 bytes).
 PDF statistics:
  355 PDF objects out of 1000 (max. 8388607)
  77 named destinations out of 1000 (max. 500000)
