@@ -30,7 +30,7 @@
 \usepackage{amssymb}
 \usepackage{hyperref}
 \usepackage{amsmath}
-\setlength{\mathindent}{10pt}
+\setlength{\mathindent}{5pt}
 \usepackage{caption}
 
 %%%Author definitions
@@ -224,13 +224,14 @@ exposed and infected vectors $\left(S_M, \ E_M, \ I_M \text{ respectively}\right
 The equations that describe the transmission are initially given as:
 \begin{align}
 \hspace{-3em} \dfrac{dS_H}{dt} & = -ab_2\left(\dfrac{I_M}{N}\right)S_H \label{eq1}\\
-\dfrac{dI_H}{dt} & = ab_2\left(\dfrac{I_M}{N}\right)S_H - \gamma I_H \label{eq2}\\
+\dfrac{dI_H}{dt} & = ab_2\left(\dfrac{I_M(t-\tau_H)}{N}\right)S_H(t-\tau_H) - \gamma I_H \label{eq2}\\
 \dfrac{dR_H}{dt} & = \gamma I_H \label{eq3}\\
 \dfrac{dS_M}{dt} & = b - \left(ab_1\left(\dfrac{I_H}{N}\right)+ \mu \right)S_M \label{eq4}\\\notag\\
 \dfrac{dE_M}{dt} 
 & = ab_1\left(\dfrac{I_H}{N}\right)S_M - \mu E_M \notag\\
 &\quad - ab_1\left(\dfrac{I_H(t-\tau_M)}{N}\right)S_M(t-\tau_M)\ell(\tau_M) \label{eq5}\\
-\dfrac{dI_M}{dt} & = ab_1\left(\dfrac{I_H}{N}\right)S_Ml(\tau_M) - \mu I_M \label{eq6}
+\dfrac{dI_M}{dt} & = ab_1\left(\dfrac{I_H(t-\tau_M)}{N}\right)S_M(t-\tau_M)\ell(\tau_M)\notag\\
+&\quad - \mu I_M \label{eq6}
 \end{align}
 \\
 The parameters are given in \textbf{Table A.1}, while the variables are given in \textbf{Table A.2}, which can be found in the Appendix. 
