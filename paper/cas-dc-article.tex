@@ -1,0 +1,883 @@
+%% 
+%% Copyright 2019-2024 Elsevier Ltd
+%% 
+%% Version 2.4
+%% 
+%% This file is part of the 'CAS Bundle'.
+%% --------------------------------------
+%% 
+%% It may be distributed under the conditions of the LaTeX Project Public
+%% License, either version 1.2 of this license or (at your option) any
+%% later version.  The latest version of this license is in
+%%    http://www.latex-project.org/lppl.txt
+%% and version 1.2 or later is part of all distributions of LaTeX
+%% version 1999/12/01 or later.
+%% 
+%% The list of all files belonging to the 'CAS Bundle' is
+%% given in the file `manifest.txt'.
+%% 
+%% Template article for cas-dc documentclass for 
+%% double column output.
+
+%\documentclass[a4paper,fleqn,longmktitle]{cas-dc}
+\documentclass[a4paper,fleqn]{cas-dc}
+
+%\usepackage[authoryear,longnamesfirst]{natbib}
+%\usepackage[authoryear]{natbib}
+\usepackage[numbers]{natbib}
+
+%% The amssymb package provides various useful mathematical symbols
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{caption}
+
+%%%Author definitions
+\def\tsc#1{\csdef{#1}{\textsc{\lowercase{#1}}\xspace}}
+\tsc{WGM}
+\tsc{QE}
+\tsc{EP}
+\tsc{PMS}
+\tsc{BEC}
+\tsc{DE}
+%%%
+
+\begin{document}
+\let\WriteBookmarks\relax
+\def\floatpagepagefraction{1}
+\def\textpagefraction{.001}
+\shorttitle{Utilization of environmental and epidemiological indicators in the study of malaria dynamics}
+\shortauthors{R. F. Levy et~al.}
+
+\title [mode = title]{Utilization of environmental and epidemiological indicators in the study of malaria dynamics}                      
+
+%%%%% FOOTNOTES %%%%%
+%\tnotemark[1,2]
+
+%%%%% FOOTNOTES %%%%%
+%\tnotetext[1]{This document is the results of the research
+%   project funded by the National Science Foundation.}
+
+%\tnotetext[2]{The second title footnote which is a longer text matter
+%   to fill through the whole text width and overflow into
+%   another line in the footnotes area of the first page.}
+
+\author[1]{Raphael Felberg Levy}
+\ead{raphael.levy147@gmail.com}
+%\author[1,3]{J.K. Krishnan}[type=editor,
+%                        auid=000,bioid=1,
+%                        prefix=Sir,
+%                        role=Researcher,
+%                       orcid=0000-0001-0000-0000]
+%\cormark[1]
+%\fnmark[1]
+%\ead{jkk@example.in}
+%\ead[url]{www.jkkrishnan.in}
+
+%\credit{Conceptualization of this study, Methodology, Software}
+
+%\address[1]{, Street 129, 1043 NX Amsterdam, The Netherlands}
+\affiliation[1]{organization={School of Applied Mathematics, EMAp FGV},
+                addressline={Praia de Botafogo 190}, 
+                city={Rio de Janeiro},
+%               citysep={}, % Uncomment if no comma needed between city and postcode
+                postcode={22250-145}, 
+                state={RJ},
+                country={Brazil}}
+
+%\author[2,4]{Han Thane}[style=chinese]
+\author[1]{Flavio Codeço Coelho}
+\ead{flavio.codeco.coelho@fgv.br}
+
+
+
+%\credit{Data curation, Writing - Original draft preparation}
+
+%\affiliation[2]{organization={World Scientific University},
+%                addressline={Street 29}, 
+%                postcode={1011 NX}, 
+%                postcodesep={}, 
+%                city={Amsterdam},
+%                country={The Netherlands}}
+
+%\author[1,3]{T. Rafeeq}
+%\cormark[2]
+%\fnmark[1,3]
+%\ead{t.rafeeq@example.in}
+%\ead[URL]{www.campus.in}
+
+%\affiliation[3]{organization={University of Intelligent Studies},
+%                addressline={Street 15}, 
+%                city={Jabaldesh},
+%                postcode={825001}, 
+%                state={Orissa}, 
+%                country={India}}
+
+%\cortext[cor1]{Corresponding author}
+%\cortext[cor2]{Principal corresponding author}
+%\fntext[fn1]{This is the first author footnote, but is common to third
+%  author as well.}
+%\fntext[fn2]{Another author footnote, this is a very long footnote and
+%  it should be a really long footnote. But this footnote is not yet
+%  sufficiently long enough to make two lines of footnote text.}
+
+%%%% FOOTNOTE %%%%
+%\nonumnote{This note has no numbers. In this work we demonstrate $a_b$
+%  the formation Y\_1 of a new type of polariton on the interface
+%  between a cuprous oxide slab and a polystyrene micro-sphere placed
+%  on the slab.
+% }
+
+
+\begin{abstract}
+%This template helps you to create a properly formatted \LaTeX\ manuscript.
+This paper aims to analyze the behavior of malaria transmission in the Amazon region based on climatic and environmental changes, such as temperature, precipitation, deforestation and forest fires, through proposed modifications to the SIR and SEI models, in order to contribute to the study of applications of external effects on the evolution of the disease. 
+The Trajetórias Project, developed by the Synthesis Center 
+on Biodiversity and Ecosystem Services (SinBiose/CNPq) was used as an initial reference for the study. 
+\\\\
+This work employs a modified SIR/SEI methodology, based on work from Parham and Michael (2010) which takes into account rainfall and temperature, with further modifications. %Primary results show that the model is too sensible on some parameters, and using values indicated by other papers did not give the same results, opening up future work to compare the modified model equations with the originals. With the obtained results, it was possible to verify a strong effect caused by increased contact of host and vectors on the transmission of the disease. 
+
+\end{abstract}
+
+
+%\noindent\texttt{\textbackslash begin{abstract}} \dots 
+%\texttt{\textbackslash end{abstract}} and
+%\verb+\begin{keyword}+ \verb+...+ \verb+\end{keyword}+ 
+%which contain the abstract and keywords respectively. 
+
+%\noindent Each keyword shall be separated by a \verb+\sep+ command.
+
+
+
+%\begin{graphicalabstract}
+%\includegraphics{figs/cas-grabs.pdf}
+%\end{graphicalabstract}
+
+%\begin{highlights}
+%\item Research highlights item 1
+%\item Research highlights item 2
+%\item Research highlights item 3
+%\end{highlights}
+
+\begin{keywords}
+Biological modelling \sep Malaria transmission \sep Climate change \sep Amazon \sep SIR \sep SEI
+\end{keywords}
+
+
+\maketitle
+
+\section{Introduction}
+The Amazon is one of the largest and most biodiverse tropical forests 
+in the world, harboring numerous species of plants, animals, and 
+microorganisms, including vectors and pathogens responsible for the 
+transmission of various diseases. Among them, one of the most common 
+is malaria, caused by protozoa of the genus \textit{Plasmodium}, 
+transmitted by the bite of the infected female mosquito of the genus 
+\textit{Anopheles}. It is present in 22 American countries, but the 
+areas with the highest risk of infection are located in the Amazon 
+region, encompassing nine countries, which accounted for $68\%$ of 
+infection cases in 
+2011 \cite{pimenta_orfano_bahia_duarte_rios-velasquez_melo_pessoa_oliveira_campos_villegas_etal_2015}. 
+Although malaria is prevalent in the Americas, it is 
+not limited to this continent and is found in countries in Africa and Asia, 
+resulting in more than two million cases of infection and 445,000 deaths 
+worldwide in 2016 \cite{regulation_of_sexual_commitment}, being endemic in a total of 84 countries in 2021 \cite{WHO2022}.
+\\\\
+Notably, vector-borne disease transmission is closely related to 
+environmental changes that interfere with the ecosystem of both 
+transmitting and affected organisms. In the case of the 
+Amazon, agricultural and livestock settlements are among the factors
+that most favor disease transmission, both due to the deforestation 
+they cause for establishment and the clustering of people in environments 
+close to the vector's habitat \cite{silva-nunes_malaria_amazon_2008}, 
+especially by gathering non-immune migrants near these natural and 
+artificial breeding sites \cite{DASILVANUNES2012281}.
+\\\\
+Additionally, other factors such as rainfall, wildfires, and mining 
+also significantly influence disease transmission in the region. These 
+events result in habitat loss, ecosystem fragmentation, and climate 
+changes, affecting the distribution and abundance of vectors and hosts, 
+as well as their interaction with pathogens. Furthermore, population growth 
+and urbanization also play a crucial role in disease spread, increasing 
+human exposure to vectors and infection risks.
+\\\\
+In this context, this work aims to investigate vector-borne disease 
+transmission in the Amazon and analyze how environmental impacts 
+influence the dynamics of malaria transmission, the ecological and 
+socioeconomic factors affecting this spread. %(((((( VER DEPOIS, and possible prevention and control strategies)))))). 
+This research was adapted from the 
+Trajetórias Project, developed by the Center for Biodiversity and 
+Ecosystem Services (SinBiose/CNPq), which is a dataset including 
+environmental, epidemiological, economic, and socioeconomic indicators 
+for all municipalities in the Legal Amazon, analyzing the spatial and 
+temporal relationship between economic trajectories linked to the dynamics 
+of agrarian systems, whether they are family-based rural or of large-scale 
+agricultural and livestock production, the availability of natural resources, 
+and the risk of diseases \cite{Rorato2023}.
+
+\section{Original model formulation}
+Based on previous work developed to model the transmission of malaria based on precipitation and temperature dynamics \cite{Parham2010}, we focus 
+on two different sets of compartments of hosts and vectors: susceptible ($S_H$), infected ($I_H$) and recovered ($R_H$) hosts, and susceptible ($S_M$), 
+exposed ($E_M$) and infected ($I_M$) vectors. The equations that describe the transmission are initially given as:
+%\begin{gather}
+\begin{align}
+\dfrac{dS_H}{dt} & = -ab_2\left(\dfrac{I_M}{N}\right)S_H \label{eq1}\\
+\dfrac{dI_H}{dt} & = ab_2\left(\dfrac{I_M}{N}\right)S_H - \gamma I_H \label{eq2}\\
+\dfrac{dR_H}{dt} & = \gamma I_H \label{eq3}\\
+\dfrac{dS_M}{dt} & = b - \left(ab_1\left(\dfrac{I_H}{N}\right)+ \mu \right)S_M \label{eq4}\\
+\dfrac{dE_M}{dt} & = ab_1\left(\dfrac{I_H}{N}\right)S_M\left(1-l(\tau_M)\right) - \mu E_M \label{eq5}\\
+\dfrac{dI_M}{dt} & = ab_1\left(\dfrac{I_H}{N}\right)S_Ml(\tau_M) - \mu I_M \label{eq6}
+\end{align}
+%\end{gather}
+\\
+The parameters are given in \textbf{Table A.1}, while the variables are given in \textbf{Table A.2}, which can be found in the Appendix. 
+\\\\
+However, the use of these equations proved to be unsuccessful for the modelling of the mosquito populations through the SEI equations, 
+causing the population on susceptible individuals to oscillate with negative values. This is due to the parameter $b$, the daily birth rate of mosquitos, 
+which uses the probability of survival of pupae, larvae and eggs dependant on rainfall, all of which include $(R_L - R)$ in their calculation. Although the 
+value of $R_L$ used in the end was large enough to avoid negative results in this case, that being 968 mm of monthly precipitation, or roughly 32.26 mm of daily precipitation \cite{Ecological_Change_Malaria_Risk}, 
+the modifications were kept nonetheless in order to avoid further problems.
+\\\\
+In addition to that, it was noted that, using the parameters based on Tanzanian 
+data, the value of $\mu$, the mosquito mortality rate per capita, would be very close to 0, around $2.7 \times 10^{-3}$, while $l(\tau_M)$ would be close to 1. Because of this, $(5)$ would be very close to 0 as 
+well, causing mirrored oscillations of $S_M$ and $I_M$, and $E_M$ to be nearly constant.
+\\\\
+To overcome this effect, the SEI equations were modified in order for $b_1$ to only be used in the transference between compartments $S$ and $E$, 
+and a new parameter, $b_3$ to move mosquitos from $E$ to $I$. Being inversely related to the incubation period, the definition of this rate can be found in \textbf{Table A.2}. 
+In addition to that, the parameter $a(T)$ that was in use in the transition between exposed and infected also had to be removed, as no further bites occur at this point. 
+The parameter $l$ also had to be disassociated from the infection rate of exposed individual ($b_3$).
+\\\\
+Further modifications were done on parameters $A$, $B$ and $C$, as small enough values for these parameters, mostly for $A$, increases $\mu$ 
+and leads the population to extinction. They were modified in order for $\mu$ to be on 
+a scale of $4.02 \times 10^{-6}$, making the mosquito population relatively constant. 
+\\\\
+The SIR equations were also modified, to take into consideration population dynamics, including a $\mu_H$ parameter as a birth rate. Given the positive growth of the studied population, a death rate was neglected for this study.
+\\\\
+\\\\
+\\\\
+\\\\
+\\\\
+The updated equations used in the model are as following:  
+
+\begin{align}
+\dfrac{dS_H}{dt} & = \mu_HN-ab_2\left(\dfrac{I_M}{N}\right)S_H  \label{eq1}\\ %- \mu_HS_H \label{eq1}\\ %\dfrac{dS_H}{dt} & = -ab_2\bigg(\dfrac{I_M}{N}\bigg)S_H \label{eq1}\\
+\dfrac{dI_H}{dt} & = ab_2\left(\dfrac{I_M}{N}\right)S_H-\gamma I_H \label{eq2}\\% - \mu_HI_H \label{eq2}\\ %\dfrac{dI_H}{dt} & = ab_2\bigg(\dfrac{I_M}{N}\bigg)S_H - \gamma I_H \label{eq2}\\
+\dfrac{dR_H}{dt} & = \gamma I_H \label{eq3}\\ % - \mu_HR_H \label{eq3}\\ %\dfrac{dR_H}{dt} & = \gamma I_H \label{eq3}\\
+\dfrac{dS_M}{dt} & = b - \left(ab_1\left(\dfrac{I_H}{N}\right) + \mu\right) S_M \label{eq4}\\ %b - ab_1\bigg(\dfrac{I_H}{N}\bigg)S_M - \mu S_M \label{eq4}\\
+\dfrac{dE_M}{dt} & = ab_1\left(\dfrac{I_H}{N}\right)S_M -\left( \mu + b_3+l\right)E_M \label{eq5} \\%ab_1\bigg(\dfrac{I_H}{N}\bigg)S_M - \mu E_M - ab_1\bigg(\dfrac{I_H}{N}\bigg)S_Ml(\tau_M) \label{eq5}\\
+\dfrac{dI_M}{dt} & = b_3E_M -\mu I_M  \label{eq6} %ab_1\bigg(\dfrac{I_H}{N}\bigg)S_Ml(\tau_M) - \mu I_M \label{eq6}
+\end{align}
+\\
+It was decided to use data from cases caused by $P. \ vivax$ as this species is responsible for the highest number of malaria cases in Brazil \cite{OliveiraFerreira2010, 10.3389/fpubh.2021.647754}, being the most common human malaria parasite in the region \cite{Vector_Incrimination}.
+\\\\
+Based on higher incidence and number of cases, the municipalities chosen for analysis were Macapá (AP), Porto Velho (RO), Cruzeiro do Sul (AC) and Manaus (AM), especially the rural zones of Manaus, as  it had the highest incidence of malaria caused by $P. \ vivax$ in the Amazon region. Now, as it was not possible to identify the population in rural areas based on available census data, we used the Trajetórias Project to estimate this population based on the incidence function given \cite{Rorato2023}:
+
+%The selected human population was from the the rural area of Manaus, the capital of the state of Amazonas, initially being used between the years of 2004 to 2008, 
+%as it had the highest incidence of malaria caused by $P. \ vivax$ in the Amazon region \cite{Rorato2023}, but this was later modified due to the little ammount 
+%of available information on deforestation and forest fires during this period.
+%%%between the years of 2004 to 2008, as it had the highest incidence of malaria 
+%%%caused by $P. \ vivax$ in the Amazon region \cite{Rorato2023}. 
+%It was decided to use $P. \ vivax$ as this species is responsible for the highest number of malaria cases in Brazil \cite{OliveiraFerreira2010, 10.3389/fpubh.2021.647754}, being the most common human malaria parasite in the region \cite{Vector_Incrimination}. 
+
+%Given that the Trajetórias Project did not include data on each municipality's population, the incidence function \cite{Rorato2023} was initially used in order to look for an approximation for both total and rural populations of Manaus:
+
+\begin{align}
+\text{Inc} = %(d, m, z, t_1, t_2) = 
+\dfrac{\text{Cases}(d, m, z, t_1, t_2)}{\text{Pop}(m,z,(t_1+t_2)/2) \times 5 \ \text{years}} \times 10^5,
+\end{align}
+\\
+where $\text{Cases}(d, m, z, t_1, t_2)$ is the number of cases of disease $d$ in zone $z$ of municipality 
+$m$, and $t_1$ and $t_2$ are the initial and final years of the interval, while 
+$\text{Pop}(m,z,(t_1+t_2)/2) \times 5 \ \text{years}$ is the population in zone $z$ 
+of municipality $m$ in the middle of the period multiplied by the total number 
+of observation years. In the case of the rural population, we could indicate it as:
+
+\begin{align}
+& \footnotesize{\text{Inc}(\text{Viv.}, \text{Man.}, \text{Ru.}, 2004, 2008) } = \\
+&= \footnotesize{\dfrac{\text{Cases}(\text{Viv.}, \text{Man.}, \text{Rur.}, 2004, 2008)}{\text{Pop}(\text{Man.}, \text{Rur.}, 2006) \times 5 \ \text{years}} \times 10^5}  \\
+&  \Rightarrow 184030.8 = \dfrac{78745}{5\text{Pop}} \times 10^5 \Rightarrow Pop \approx 8558
+\end{align}
+\\
+Using data on the total population of Manaus from 2004 to 2008, 
+with an incidence of 3106.429047 and a number of cases of 262,264, the 
+total population of the municipality was estimated to be 1,688,524 
+inhabitants, which corresponds to the value found in the official census \cite{Datasus2006}. Thus, the rural population represented 
+approximately 0.5$\%$ of the municipality's population in this period, while the number of cases in rural setting is about $30\%$ of all cases of malaria caused by $P. \ vivax$ in Manaus in this 
+period, and about $9.4\%$ of the cases in the state.
+\\\\
+Using data from 2015 to 2019, the rural population is found to represent  
+approximately 0.4$\%$ of the municipality's population, the number of cases in rural settings being about $41.5\%$ of all cases in the city in this 
+period, and about $7.2\%$ of the cases in the state. With this, we will use that the rural population represents roughly $0.45\%$ of Manaus' population, 
+and the number of rural cases to be around $35.75\%$ of the total cases in the city. 
+\\\\
+In order to use the latest and complete avaliable data on registered cases and deforestation and forest fires noticed, this study was done between the years of 2017 to 2021. Additional data was gathered to take into consideration the average duration of infectiousness ($\gamma$), so in order to construct a more complete model, the complete data for the study was gathered from April 2016 to April 2022. 
+\\\\
+%In the end, it was decided to use the years of 2017 to 2021 as our period of study.
+%%
+The yearly population for all four municipalities was conctructed via interpolation using data from IBGE (Brazilian Institute of Geography and Statistics, governmental body responsible for the official Brazilian censuses), based on the censuses of 2000, 2010 and 2022 \cite{Census2000, Census2010, Census2022}, in order to use the lag months of December of 2016 and January of 2022 in later analysis.
+\\\\
+As the data on malaria cases from the Trajetorias project was not given annually, but instead as a sum of cases in each five-year period of study, 
+yearly data was obtained from SIVEP \cite{SIVEP_Malaria}, which registers notifications from every brazillian municipality from 2003 to 2023.
+
+%Given the population growth between 2017 and 2021, the annual birth rate in the rural areas of Manaus was 
+%estimated to be 98 births per year, around 0.268 per day and given an estimated mean rural population of 8992, 0.00003 births per person per year ($\mu_H$). 
+
+\section{Impacts of environmental factors}
+
+As for the theory behind environmental factors, it is known that the removal of tree canopies allowed 
+the resurgence of malaria in South America \cite{Norris2004}. In deforested areas, 
+without tree canopies covering the ground, water puddles under sunlight 
+attract mosquitoes of the species $Anopheles \ darlingi$, the main vector 
+related to human malaria in the Amazon \cite{infoAnopheles}. They are 
+usually less commonly found in still intact forests. This is 
+because light and heat favor the development of larvae and 
+pupae, in addition to a greater availability of algae for 
+larval feeding \cite{article_alteracoesambientais}. The increase 
+in ambient temperature also favors the vectorial capacity of 
+mosquitoes. 
+\\\\
+Deforestation also attracts and brings humans closer 
+to take part in logging, agriculture, and road construction 
+activities, aglomerating individuals infected with $Plasmodium$ to 
+an area where both the vector and the environment have already 
+been modified to favor transmission. Furthermore, agriculture 
+also promotes river sedimentation, providing suitable environments 
+for breeding sites. Therefore, it can be considered a relevant 
+change for the model to take into account deforestation, the 
+increase in survival probabilities of eggs, larvae, and pupae, 
+as well as increasing the proportion of bites that lead to infection, 
+due to the increased human population density in areas near mosquito 
+breeding sites.
+\\\\
+It was outside the scope of this project to collect samples of $A. \ darlingi \ in \ loco$. Because of this it was instead used 
+an estimate for the number of mosquitos based in literature. As the study was made around the rural population of the municipality,
+this would favour the clustering of adult mosquitos, given the proximity to bodies of water and recently open up areas of rainforest \cite{Biological_Variation_Anopheles}. 
+In fact, the municipality of Manaus has a great number of breeding sites in its periurban and rural areas, both natural and man-made. Many of the city's fish farming tanks 
+have been noted as breeding sites for $A. \ darlingi$ \cite{Abundancia_Larval}.
+\\\\
+As a means for the development of infrastructure, agricultural expansion or other forms of occupation of the land, deforestation impacts the 
+biodiversity in the region, changing the microclimate, water resources and the distribution of infectious 
+diseases \cite{Reconstructing_Three_Decades, Amazon_Defor_Drives_Malaria_Transmis}, those transmitted 
+by mosquitos being especially sensitive to changes in the habitat, suitability of pathogen development and contact between vector and host.
+\\\\
+It is expected that the process of forest fragmentation would favour the development of larva by increasing light 
+and temperature over settlements and habitats, leading to a shorter development time from larva to adult, a 
+greater availability of algae for larval feeding, as well as increasing the vectorial capacity of mosquitos and their survivorship \cite{Alteracoes_Ambientais, Anthropogenic_Landscape}.
+\\\\
+As a method used in particular for land-clearing, forest fires remove the vegetation \cite{Future_of_Deforestation, Relationship_between_fires_and_defor}, growing 
+the risk of future fires by increasing the availability of combustible and understory drying \cite{Conservation_Policy}. This process became more common from 2019 to 2022, 
+with simultaneous fires being set in the Amazon region, and in 2024 the state of Amazonas has reached it's highest number of recorded outbreaks since 1998, 
+with over 21,600 cases reported, and over 10,000 just in the month of August \cite{Threats_and_Opportunities, G1_Queimadas}.
+\\\\
+Monthly data of forest fires and yearly data of deforestation given in hectares of forest supression between 2017 and 2021 
+was obtained from MapBiomas \cite{MapBIOMAS_Deforestation, MapBIOMAS_Forest_Fires}. 
+Monthly data for deforestation in Manaus was approximated from notifications from the state of Amazonas during this time interval, and it was 
+estimated that $3\%$ of notices of deforested area (km$^2$) in the state were located in Manaus \cite{DETER_Deforestation, MapBIOMAS_Deforestation}.  In addition to that, daily notices of deforestation were also used, obtained from TerraBrasilis \cite{Daily_DETER}.
+
+\section{Mathematical analysis of the model}
+
+\subsection{Basic Reproduction Number ($\mathcal{R}_0$)}
+To derive the $\mathcal{R}_0$ of the model, we define $X_s$ as the set of all disease-free states, 
+$$X_s=\{x \geq 0|x_i=0, i=1,\ldots,m\},$$
+where $X=(x_1,\ldots, x_n)^T$, such that $x_i\geq 0$ represents the number 
+of individuals in each compartment, and each function is assumed to be 
+continuously differentiable at least twice in each variable ($C^2$) \cite{Rep_Number_Comp_Model}.
+\\\\
+Rearranging the equations so that the first $m$ 
+contain the infected individuals, let ${\mathcal F}_i(x)$ be the 
+rate of appearance of new infections in compartment $i$, 
+${\mathcal V}_i^+(x)$ be the rate of individuals entering 
+compartment $i$ by other means, and ${\mathcal V}_i^-(x)$ 
+be the rate of individuals leaving compartment $i$. The disease 
+transmission model consists of non-negative initial conditions 
+together with the following system of equations:
+$$\dot{x}=f_i(x)={\mathcal F}_i(x)-{\mathcal V}_i(x), i=1,\ldots, n,$$
+where ${\mathcal V}_i (x) = {\mathcal V}_i^{-}(x) - {\mathcal V}_i^+(x)$. 
+Here, 
+$F=\left[\frac{\partial {\mathcal F}_i (x_0)}{\partial x_j}\right]$ 
+and $V=\left[\frac{\partial {\mathcal V}_i (x_0) }{\partial x_j}\right]$, 
+where $x_0$ is a Disease-Free Equilibrium (DFE), and $1\leq i,j \leq m$, and $\mathcal{R}_0 = \rho(FV^{-1})$. 
+\\\\
+The formulation for $\mathcal{R}_0$ in both model, as well as the complete SIR/SEI system is given by:
+%Calculating $\mathcal{R}_0$ for both models, as well as the full system SIR/SEI:
+%%%%%%%%%%%%%%%%%
+%Temperature and precipitation data were taken from the Mosqlimate Data API datastore \cite{MosqlimateAPI}, and fitted to best approximate the equations used in \cite{Parham2010}, given by:
+%\begin{align}
+%    C(t) = M(1+A\cos(\omega t - \phi)),
+%\end{align}
+%where $M$ is the mean effect of temperature/precipitation in the absence of seasonality, $A$ is the amplitude of seasonal variability, $\omega$ 
+%is the angular frequency of seasonal oscillations and $\phi$ is the phase lag of variability, indicated in \textbf{Table A.2} as $T_1/R_1, \ T_2/R_2, \ \omega_1/\omega_2, \ \phi_1/\phi_2$ respectively, in order to estimate initial values for parameters use in the calculation of $\mathcal{R}_0$.
+\\\\
+\textbf{SIR:}
+In this case, $m=1$, and the compartments are arranged as $[I_H, S_H, R_H]$. Since $\mathcal{R}_0$ is calculated with normalized values, the necessary equations are mulyiplied by $N$ to remove the denominator. Specifically, for the SIR case, as $R_H$ is not used in any of the equations, it can be expressed solely in terms of $S$ and $I$. Therefore:
+\begin{itemize}
+\item ${\mathcal F}_i(x)$:  rate of entrance of infected 
+individuals in compartment $i$  
+\item ${\mathcal V}_i(x)^-$: rate of leaving compartment $i$
+\item ${\mathcal V}_i(x)^+$: rate of entering compartment $i$
+\end{itemize}
+So we have
+$$ {\mathcal F} =\begin{bmatrix}
+a  b_2  I_M  S_H \\
+\end{bmatrix} $$
+$$
+{\mathcal V^-} = \begin{bmatrix}
+\gamma I_H \\%+ \mu_H I_H\\
+\end{bmatrix}
+$$
+$$
+{\mathcal V^+} = \begin{bmatrix}
+0\\
+\end{bmatrix}
+$$
+$${\mathcal V}_i (x) = {\mathcal V}_i(x)^{-} - {\mathcal V}_i(x)^+$$
+
+Therefore,
+$$
+{\mathcal V} =
+\begin{bmatrix}
+I_H \gamma \\ %(\gamma + \mu_H) \\
+\end{bmatrix}
+$$
+\\\\ \\\\
+Hence
+
+$$ F = \dfrac{\partial{\mathcal F}}{\partial I_M} =\begin{bmatrix}
+a  b_2  S_H \\
+\end{bmatrix} $$
+$$ V = \dfrac{\partial{\mathcal V}}{\partial I_H} =\begin{bmatrix}
+\gamma \\ %+ \mu_H\\
+\end{bmatrix} $$
+At the equilibrium, $[S_H^*, I_H^*] = [1,0]$, so
+
+%$F=[a  b_2], \ V = [\gamma+\mu_H]$ and $\mathcal{R}_0 = \Big | \dfrac{ab_2}{\gamma+\mu_H}\Big | $.
+$F=[a  b_2], \ V = [\gamma]$ and $\mathcal{R}_0 = \left| \dfrac{ab_2}{\gamma}\right | $.
+\\\\
+\textbf{SEI:}
+In this case, $m=2$, and the compartments are arranged as $[E_M, I_M, S_M]$. Again, the necessary equations are multiplied by $N$ to remove the denominator. Therefore:
+$$ {\mathcal F} =\begin{bmatrix}
+a b_1 I_H S_M\\
+0\\
+\end{bmatrix} $$
+
+$$
+{\mathcal V^-} = \begin{bmatrix}
+E_M (\mu + b_3 + l)\\
+\mu I_M
+\end{bmatrix}
+$$
+
+$$
+{\mathcal V^+} = \begin{bmatrix}
+0\\
+b_3 E_M\\
+\end{bmatrix}
+$$
+
+$${\mathcal V}_i (x) = {\mathcal V}_i(x)^{-} - {\mathcal V}_i(x)^+$$
+
+Thus,
+$$
+{\mathcal V} =
+\begin{bmatrix}
+E_M (\mu + b_3 + l)\\
+\mu I_M - b_3 E_M\\
+\end{bmatrix}
+$$
+
+Hence
+\begin{align*}
+ F &= \dfrac{\partial{\mathcal F}}{\partial E_M, I_H} \\
+&=\begin{bmatrix}
+\dfrac{\partial ab_1 I_H S_M}{\partial E_M} & \dfrac{\partial ab_1 I_H S_M}{\partial I_H}\\
+\dfrac{\partial 0}{\partial E_M} & \dfrac{\partial 0}{\partial I_H}\\
+\end{bmatrix} \\
+&= \begin{bmatrix}
+0 & ab_1 S_M\\
+0 & 0\\
+\end{bmatrix}
+\end{align*}
+
+
+\begin{align*}
+V &= \dfrac{\partial{\mathcal V}}{\partial E_M, I_M} \\
+&=
+\begin{bmatrix}
+\dfrac{\partial E_M (\mu + b_3 + l)}{\partial E_M} & \dfrac{\partial E_M (\mu + b_3 + l)}{\partial I_M}\\
+\dfrac{\partial \mu I_M - b_3 E_M}{\partial E_M} & \dfrac{\partial \mu I_M - b_3 E_M}{\partial I_M}\\
+\end{bmatrix}  \\
+&=\begin{bmatrix}
+\mu+b_3+l & 0\\
+- b_3 & \mu\\
+\end{bmatrix}
+\end{align*}
+\\\\
+\\\\
+\\\\
+\\\\
+\\\\
+At the equilibrium, $[S_M^*, E_M^*, I_M^*] = [1,0,0]$, so 
+
+$$F=\begin{bmatrix}
+0 & ab_1\\
+0 & 0\\
+\end{bmatrix},$$
+$$V = \begin{bmatrix}
+\mu+b_3+l & 0\\
+- b_3 & \mu\\
+\end{bmatrix}$$ 
+
+and 
+
+$\mathcal{R}_0 = \left | \dfrac{ab_1b_3}{(b_3+l+\mu)\mu}\right | $.
+\\\\
+\textbf{SIR/SEI:}
+In this case, $m=3$, and the compartments are arranged as $[I_H, E_M, I_M, S_H, S_M]$. Once again, the necessary equations are multiplied by $N$ to remove the denominator. Therefore:
+
+$$ {\mathcal F} =\begin{bmatrix}
+a  b_2  I_M  S_H \\
+a b_1 I_H S_M\\
+0\\
+\end{bmatrix} $$
+
+$$
+{\mathcal V^-} = \begin{bmatrix}
+\gamma I_H \\ %+\mu_H I_H\\
+E_M (\mu + b_3 + l)\\
+\mu I_M
+\end{bmatrix}
+$$
+
+$$
+{\mathcal V^+} = \begin{bmatrix}
+0\\
+0\\
+b_3 E_M \\
+\end{bmatrix}
+$$
+
+$${\mathcal V}_i (x) = {\mathcal V}_i(x)^{-} - {\mathcal V}_i(x)^+$$
+
+Thus,
+
+$$
+{\mathcal V} =
+\begin{bmatrix}
+I_H \gamma \\ %(\gamma + \mu_H) \\
+E_M (\mu + b_3 + l)\\
+\mu I_M - b_3 E_M\\
+\end{bmatrix}
+$$
+
+Hence
+
+$$ F = \dfrac{\partial{\mathcal F}}{\partial I_H, E_M, I_M} =
+%$$=\begin{bmatrix}
+%\dfrac{\partial ab_2 I_M S_H}{\partial I_H} & \dfrac{\partial ab_2 I_M S_H}{\partial E_M} & \dfrac{\partial ab_2 I_M S_H}{\partial I_M}\\
+%\dfrac{\partial ab_1 I_H S_M}{\partial I_H} & \dfrac{\partial ab_1 I_H S_M}{\partial E_M} & \dfrac{\partial ab_1 I_H S_M}{\partial I_M}\\
+%\dfrac{\partial 0}{\partial I_H} & \dfrac{\partial 0}{\partial E_M} & \dfrac{\partial 0}{\partial I_M}\\
+%\end{bmatrix} = 
+\begin{bmatrix}
+0 & 0 & ab_2 S_H\\
+ab_1 S_M & 0 & 0\\
+0 & 0 & 0
+\end{bmatrix}$$
+
+$$ V = \dfrac{\partial{\mathcal V}}{\partial I_H, E_M, I_M} =%\begin{bmatrix}
+%\dfrac{\partial \gamma I_H}{\partial I_H} & \dfrac{\partial \gamma I_H}{\partial E_M} & \dfrac{\partial \gamma I_H}{\partial I_M}\\
+%\dfrac{\partial E_M (\mu + b_3 + l)}{\partial I_H} & \dfrac{\partial E_M (\mu + b_3 + l)}{\partial E_M} & \dfrac{\partial E_M (\mu + b_3 + l)}{\partial I_M}\\
+%\dfrac{\partial \mu I_M - b_3 E_M}{\partial I_H} & \dfrac{\partial \mu I_M - b_3 E_M}{\partial E_M} & \dfrac{\partial \mu I_M - b_3 E_M}{\partial I_M}\\
+%\end{bmatrix} = 
+\begin{bmatrix}
+%\gamma + \mu_H & 0 & 0\\
+\gamma & 0 & 0\\
+0 & b_3+l+\mu & 0\\
+0 & -b_3 & \mu
+\end{bmatrix}$$
+\\At the equilibrium, 
+$$[S_H^*, S_M^*, I_H^*, E_M^*, I_M^*] = [1,1,0,0,0],$$ 
+
+so 
+
+$$F=\begin{bmatrix}
+0 & 0 & ab_2\\
+ab_1 & 0 & 0\\
+0 & 0 & 0
+\end{bmatrix},$$
+
+$$V = \begin{bmatrix}
+%\gamma + \mu_H & 0 & 0\\
+\gamma & 0 & 0\\
+0 & b_3+l+\mu & 0\\
+0 & -b_3 & \mu
+\end{bmatrix}$$ 
+and 
+%$$\mathcal{R}_0 = \Big | \sqrt{\dfrac{a^2 b_1 b_2 b_3}{(b_3 + l + \mu)(\gamma+\mu_H) \mu}}\Big | = 
+%\sqrt{\mathcal{R}_{0 SIR} \times \mathcal{R}_{0 SEI}}$$
+$$\mathcal{R}_0 = \left | \sqrt{\dfrac{a^2 b_1 b_2 b_3}{(b_3 + l + \mu)\gamma \mu}}\right| = 
+\sqrt{\mathcal{R}_{0 SIR} \times \mathcal{R}_{0 SEI}}$$
+
+
+%Having the base equations for the modeling of this problem, it is now possible to apply modifications based on environmental effects. 
+
+\subsection{Understanding relations}
+Having the necessary epidemiological and environmental datasets ready for use, the next step 
+taken was to verify the correlation between the number of cases and forest areas impacted by deforestation 
+and fires, in addition to the correlation with temperature and precipitation as well. 
+\\\\
+Using the Pandas library on a Python environment, the correlation between monthly number of cases caused by $P. \ vivax$ in Manaus 
+and deforested area was found to be approximately -0.11, and 0.137 between cases and burnt area. In relation to climatic data, the correlation 
+with temperature was found to be around 0.404, and with precipitation to be -0.365. Both correlation tables were taken in relation to monthly data.
+\\\\
+On the other hand, taking the correlation between the incidence of cases in relation to the seasons, 
+deforested and burnt areas, that was found to be 0.722, 0.314 and 0.818, respectively. Looking for the correlation in relation to seasons, 
+temperature and precipitation, that was found to be 0.687, 0.839 and -0.883, respectively.
+
+%Linear regression tests were also taken, as to see how the 
+%number of cases is dependent not only in the environmental data used above, but on the month of year and season as well.
+
+\section{Results}
+Before including the environmental factors on the used model (7-12), its results were compared to a model based on SIVEP data, keeping use of equations (7, 10-12), but using
+\begin{align}
+I_H(t) & = \sum_{t=\max\left(0, \ k-\dfrac{1}{\gamma}+1 \right)}^{0\leq k \leq 1825} \text{\# of cases} \label{eq1}\\ 
+R_H(t) & = \max\left(0, \ N (1+\mu_H t) -S_H(t) -I_H(t)\right)\label{eq2}
+\end{align}
+\\
+$I_H(t)$ now being the moving sum of cases over a period of 120 days, as it is the average duration of infectiousness, and $R_H(t)$ being the difference between the initial population and the susceptible and infected population at each day, with the addition of the daily births.
+The result can be seen in the graph below.
+\newpage
+\begin{figure}
+	\centering
+	%\includegraphics{comparison-between-IH-data-and-model.png}
+	\includegraphics[width=1\columnwidth]{figs/comparison-between-IH-data-and-model.png}
+	\caption{Comparison between observed data of infections and model estimation of $I_H$.}
+	\label{FIG:1}
+\end{figure}
+
+It is possible to see that the model gives a close approximation to the format of the observed number of infections and recoveries, although the infections appear to increase faster and die out given the model, a behavior that is not seen on the actual data.
+%In order to better approximate the model to the data, a method of linear regression was used, with the intent of minimizing the difference by optimizing different parameters used on the model. 
+\\\\
+At this point, a linear combination was implemented as a replacement 
+to the use of simply $T$ and $R$, in order to take into consideration the effects of deforestation and fires, with the $\alpha$-function $\alpha_1D + \alpha_2F + \alpha_3T + \alpha_4R$, with $\alpha_0 = [0, 0, 1, 1]$ representing the primary version of the model. 
+
+\newpage
+\begin{thebibliography}{00}
+
+%% \bibitem must have the following form:
+%%   \bibitem{key}...
+%%
+
+%1
+\bibitem{pimenta_orfano_bahia_duarte_rios-velasquez_melo_pessoa_oliveira_campos_villegas_etal_2015} P. F. P. Pimenta et al., An overview of malaria transmission from the perspective of Amazon \emph{Anopheles vectors}, Memórias do Instituto Oswaldo Cruz, Vol. 110 (1) (2015), 23-47, \href{https://doi.org/10.1590/0074-02760140266}{https://doi.org/10.1590/0074-02760140266}.
+\\
+%2
+\bibitem{regulation_of_sexual_commitment} G. A. Josling, K. C. Williamson, M. Llinás, Regulation of Sexual Commitment and Gametocytogenesis in Malaria Parasites, Annual Review of Microbiology, Vol. 72 (1) (2018), 501-519, \href{https://doi.org/10.1146/annurev-micro-090817-062712}{https://doi.org/10.1146/annurev-micro-090817-062712}.
+\\
+%3
+\bibitem{WHO2022} World Health Organization / World Malaria Report 2022, Global Malaria Programme, accessed on 29 August 2024, \href{https://www.who.int/publications/i/item/9789240064898}{https://www.who.int/publications/i/item/9789240064898}.
+\\
+%4
+\bibitem{silva-nunes_malaria_amazon_2008} M. da Silva-Nunes et al., Malaria on the Amazonian frontier: transmission dynamics, risk factors, spatial distribution, and prospects for control, American Journal of Tropical Medicine and Hygiene, Vol. 79 (4) (2008), 624-635, \href{https://doi.org/10.4269/ajtmh.2008.79.624}{https://doi.org/10.4269/ajtmh.2008.79.624}. 
+\\
+%5
+\bibitem{DASILVANUNES2012281} M. da Silva-Nunes et al.,  Amazonian malaria: Asymptomatic human reservoirs, diagnostic challenges, environmentally driven changes in mosquito vector populations, and the mandate for sustainable control strategies, Acta Tropica, Vol. 121 (3) (2012), 281-291 , \href{https://doi.org/10.1016/j.actatropica.2011.10.001}{https://doi.org/10.1016/j.actatropica.2011.10.001}.
+\\
+%6
+\bibitem{Rorato2023} A. C. Rorato, A. P. Dal’Asta, R. M. Lana et al., Trajetorias: a dataset of environmental, epidemiological, and economic indicators for the Brazilian Amazon, Scientific Data, Vol. 10 (1) (2023), 65, \href{https://doi.org/10.1038/s41597-023-01962-1}{https://doi.org/10.1038/s41597-023-01962-1}.
+\\
+%7
+\bibitem{Parham2010} P. E. Parham, E. Michael, Modelling Climate Change and Malaria Transmission, Modelling Parasite Transmission and Control, Advances in Experimental Medicine and Biology, Vol. 673 (2010), 184-199, \href{https://doi.org/10.1007/978-1-4419-6064-1_13}{https://doi.org/10.1007/978-1-4419-6064-1\_13}.
+\\
+%8
+\bibitem{Ecological_Change_Malaria_Risk} N. J. Arisco, C. Peterka, C. Diniz, B. H. Singer, M. C. Castro, Ecological change increases malaria risk in the Brazilian Amazon, Proc. Natl. Acad. Sci., Vol. 121 (44) (2024) \href{https://doi.org/10.1073/pnas.2409583121}{https://doi.org/10.1073/pnas.2409583121}.
+\\
+%9
+\bibitem{McCord2016} G. C. McCord, Malaria ecology and climate change, The European Physical Journal Special Topics, Vol. 225 (3) (2016), 459-470, \href{https://doi.org/10.1140/epjst/e2015-50097-1}{https://doi.org/10.1140/epjst/e2015-50097-1}.
+\\
+%10
+\bibitem{Lindsay_Birley_1996} S. W. Lindsay, M. H. Birley, Climate change and malaria transmission, Annals of Tropical Medicine \& Parasitology,Vol. 90 (1996), 573-588, \href{https://doi.org/10.1080/00034983.1996.11813087}{https://doi.org/10.1080/00034983.1996.11813087}.
+\\
+%11
+\bibitem{OliveiraFerreira2010} J. Oliveira-Ferreira, M. V. Lacerda, P. Brasil et al., Malaria in Brazil: an overview., Malaria Journal, Vol. 9 (1) (2010), \href{https://doi.org/10.1186/1475-2875-9-115}{https://doi.org/10.1186/1475-2875-9-115}.
+\\
+%12
+\bibitem{10.3389/fpubh.2021.647754} C. T. Codeço, A. P. Dal'Asta, A. C. Rorato, R. M. Lana, T. C. Neves, C. S. Andreazzi, M. Barbosa, M. I. S. Escada, D. A. Fernandes, D. L. Rodrigues, I. C. Reis, M. da Silva-Nunes, A. B. Gontijo, F. C. Coelho, A. M. V. Monteiro, Epidemiology, Biodiversity, and Technological Trajectories in the Brazilian Amazon: From Malaria to COVID-19, Frontiers in Public Health, Vol. 9 (2021), \href{https://doi.org/10.3389/fpubh.2021.647754}{https://doi.org/10.3389/fpubh.2021.647754}.
+\\
+%13
+\bibitem{Vector_Incrimination} A. K. R. Galardo, M. Arruda, et al., Malaria vector incrimination in three rural riverine villages in the Brazilian Amazon, The American Journal of Tropical Medicine and Hygiene, Vol. 76 (3) (2007), 461-469, \href{https://www.ajtmh.org/view/journals/tpmd/76/3/article-p461.xml}{https://www.ajtmh.org/view/journals/tpmd/76/3/article-p461.xml}.
+\\
+%14
+\bibitem{Datasus2006} Tabnet, Ministério da Saúde, accessed on 12 August 2024, \href{http://tabnet.datasus.gov.br/cgi/tabcgi.exe?ibge/cnv/popam.def}{http://tabnet.datasus.gov.br/cgi/tabcgi.exe?ibge/cnv/popam.def}.
+%\\
+%OLD 15
+%NOT MENTIONED ANYMORE    \bibitem{Pysus} PySUS - Obtaining data from IBGE, F. C. Coelho, B. C.  Baron, G. M. C. Fonseca, P. Reck, D. Palumbo (2021), accessed on 10 October 2024 (doi \href{https://doi.org/10.5281/zenodo.4883502}{https://doi.org/10.5281/zenodo.4883502}), \href{https://pysus.readthedocs.io/en/latest/tutorials/IBGE\_data.html}{https://pysus.readthedocs.io/en/latest/tutorials/IBGE\_data.html}.
+%former bibitem 14 %\bibitem{popIBGE} Censo - Séries históricas. Brasil / Amazonas / Manaus, IBGE, accessed on 15 August 2024, \href{https://cidades.ibge.gov.br/brasil/am/manaus/pesquisa/43/0?tipo=grafico}{https://cidades.ibge.gov.br/brasil/am/manaus/pesquisa/43/0?tipo=grafico}.
+\\
+%15
+\bibitem{Census2000} Biblioteca IBGE, 2000, accessed on 11 November 2024, \href{https://biblioteca.ibge.gov.br/index.php/biblioteca-catalogo?view=detalhes\&id=7308}{https://biblioteca.ibge.gov.br/index.php/biblioteca-catalogo?view=detalhes\&id=7308}.
+\\
+%16
+\bibitem{Census2010} IBGE, Censo Demográfico, 2010, accessed on 11 November 2024, \href{https://www.ibge.gov.br/estatisticas/sociais/populacao/9662-censo-demografico-2010.html?=\&t=resultados}{https://www.ibge.gov.br/estatisticas/sociais/populacao/9662-censo-demografico-2010.html?=\&t=resultados}.
+\\
+%17
+\bibitem{Census2022} IBGE, Brasil / Amazonas / Manaus, 2022, accessed on 11 November 2024, \href{https://cidades.ibge.gov.br/brasil/am/manaus/panorama}{https://cidades.ibge.gov.br/brasil/am/manaus/panorama}.
+\\
+%18
+\bibitem{SIVEP_Malaria} SIVEP Malaria, accessed on 10 October 2024, \href{https://files.deeplearn.ltd/a/hnjvpj}{https://files.deeplearn.ltd/a/hnjvpj}.
+\\
+%19
+\bibitem{MosqlimateAPI} Mosqlimate Data API / Datastore / climate, accessed on 12 August 2024, \href{https://api.mosqlimate.org/datastore/}{https://api.mosqlimate.org/datastore/}.
+\\
+%20
+\bibitem{Norris2004} D. E. Norris, Mosquito-borne Diseases as a Consequence of Land Use Change, EcoHealth, Vol. 1 (1) (2004), 19-24, \href{https://doi.org/10.1007/s10393-004-0008-7}{https://doi.org/10.1007/s10393-004-0008-7}.
+\\
+%21
+\bibitem{infoAnopheles} Anopheles, Fiocruz Rondônia, accessed on 15 August 2024, \href{https://www.rondonia.fiocruz.br/pivem/anopheline/}{https://www.rondonia.fiocruz.br/pivem/anopheline/}.
+\\
+%22
+\bibitem{article_alteracoesambientais} M. da Silva-Nunes, Environmental changes impact in malaria transmition and prospects for the disease control in brazilian amazon rural settlements, Oecologia Australis, Vol. 14 (3) (2010), 603-622, \href{https://revistas.ufrj.br/index.php/oa/article/view/7101}{https://revistas.ufrj.br/index.php/oa/article/view/7101}.
+\\
+%23
+\bibitem{Biological_Variation_Anopheles} J. D. Charlwood, Biological variation in Anopheles darlingi Root, Memórias do Instituto Oswaldo Cruz, Vol. 91 (4) (1996), 391-398, \href{ https://doi.org/10.1590/S0074-02761996000400001}{ https://doi.org/10.1590/S0074-02761996000400001}.
+\\
+%24
+\bibitem{Abundancia_Larval} G. R. de Lima, A. N. Arcos, E.V. dos Santos, R. C. Simões, C.A.P. Lima, W. P. Tadei, Anopheles Larval Abundance in Artificial Breeding Sites in the 
+East Zone of Manaus, Amazon, South American Journal of Basic Education, Technical and Technological, Vol. 8 (1) (2021), 35–47, \href{https://periodicos.ufac.br/index.php/SAJEBTT/article/view/3399}{ https://periodicos.ufac.br/index.php/SAJEBTT/article/view/3399}.
+\\
+%25
+\bibitem{Reconstructing_Three_Decades}  C. M. Souza, Jr., J. Z. Shimbo,  M. R. Rosa,  L. L. Parente, A. A.  Alencar,  B. F. T. Rudorff, H. Hasenack, M. Matsumoto, L. G. Ferreira, P. W. M. Souza-Filho, et al, Reconstructing Three Decades of Land Use and Land Cover Changes in Brazilian Biomes with Landsat Archive and Earth Engine, Remote Sensing, Vol.12 (17) (2020), \href{https://doi.org/10.3390/rs12172735}{https://doi.org/10.3390/rs12172735}.
+\\
+%26
+\bibitem{Amazon_Defor_Drives_Malaria_Transmis} A. J. MacDonald, E. A. Mordecai, Amazon deforestation drives malaria transmission, and malaria burden reduces forest clearing, Proceedings of the National Academy of Sciences, Vol. 116 (44) (2019), \href{https://doi.org/10.1073/pnas.1905315116}{https://doi.org/10.1073/pnas.1905315116}.
+\\
+%27
+\bibitem{Alteracoes_Ambientais} M. da Silva-Nunes, Environmental changes impact in malaria transmition and prospects for the disease control in brazilian amazon rural settlements, Oecologia Australis, Vol. 14 (3) (2010), 603-622, \href{https://doi.org/10.4257/oeco.2010.1403.02}{https://doi.org/10.4257/oeco.2010.1403.02}.
+\\
+%28
+\bibitem{Anthropogenic_Landscape} L. S. M. Chaves, E. S. Bergo, J. E. Conn, G. Z. Laporta, P. R. Prist, M. A. M. Sallum, Anthropogenic landscape decreases mosquito biodiversity and drives malaria vector proliferation in the Amazon rainforest, PLOS ONE, Vol. 16 (1) (2021), \href{https://doi.org/10.1371/journal.pone.0245087}{https://doi.org/10.1371/journal.pone.0245087}.
+\\
+%29
+\bibitem{Future_of_Deforestation} K. R. Kirby, W. F. Laurance, A. K. L. M.  Albernaz, G. Schroth, P. M. Fearnside, S. Bergen, E. M. Venticinque, C. Da Costa, The future of deforestation in the Brazilian Amazon, Futures, Vol. 38 (4), 432–453 (2006), \href{https://doi.org/10.1073/pnas.1905315116}{https://doi.org/10.1073/pnas.1905315116}.
+\\
+%30
+\bibitem{Relationship_between_fires_and_defor} C. F. Lima, F. T. P. Torres, L. J. Minette, F. A. Lima, R. C. A. Lima et al, Is there a relationship between forest fires and deforestation in the Brazilian Amazon?, PLOS ONE, Vol. 19 (6),\href{https://doi.org/10.1371/journal.pone.0306238}{https://doi.org/10.1371/journal.pone.0306238}.
+\\
+%31
+\bibitem{Conservation_Policy} P. M. Fearnside, Conservation Policy in Brazilian Amazonia: Understanding the Dilemmas, World Development, Vol. 31 (5), 757-779 (2003), \href{https://doi.org/10.1016/S0305-750X(03)00011-1}{https://doi.org/10.1016/S0305-750X(03)00011-1}.
+\\
+%32
+\bibitem{Threats_and_Opportunities} L. Ziccardi, A. Yanai, P. Fearnside, S. Stark, Deforestation in the Brazilian Amazon: Threats and opportunities, Research Square, PREPRINT (Version 1) (2024), \href{https://doi.org/10.21203/rs.3.rs-4591425/v1}{https://doi.org/10.21203/rs.3.rs-4591425/v1}.
+\\
+%33
+\bibitem{G1_Queimadas} G1, M. Castro, "Amazonas registra 21,6 mil queimadas em 2024 e tem o pior índice em 26 anos, aponta Inpe", accessed on 28 September 2024, \href{https://g1.globo.com/am/amazonas/noticia/2024/09/24/amazonas-registra-216-mil-queimadas-em-2024-e-tem-o-pior-indice-em-26-anos-aponta-inpe.ghtml}{https://g1.globo.com/am/amazonas/noticia/2024/09/24/amazonas-registra-216-mil-queimadas-em-2024-e-tem-o-pior-indice-em-26-anos-aponta-inpe.ghtml}.
+\\
+%34
+\bibitem{MapBIOMAS_Deforestation} MapBiomas, Collection 9 of the Annual Land Cover and Land Use Maps of Brazil (1985-2023), V1 (2024), accessed on 24 September 2024, \href{https://doi.org/10.58053/MapBiomas/XXUKA8}{https://doi.org/10.58053/MapBiomas/XXUKA8}.
+\\
+%35
+\bibitem{MapBIOMAS_Forest_Fires} MapBiomas, Collection 3 of Annual burned area maps of Brazil (1985-2023), V1 (2024), accessed on 24 September 2024, \href{https://doi.org/10.58053/MapBiomas/XUFVIC}{https://doi.org/10.58053/MapBiomas/XUFVIC}.
+\\
+%36
+\bibitem{DETER_Deforestation} TerraBrasilis, DETER (Notices), Analyses - Amazônia Biome, Monthly variation of DETER project area, accessed on 17 October 2024, \href{https://terrabrasilis.dpi.inpe.br/app/dashboard/alerts/biomes/amazonia-nb/aggregated/\#}{https://terrabrasilis.dpi.inpe.br/app/dashboard/alerts/biomes/amazonia-nb/aggregated/\#}.
+\\
+%37
+\bibitem{Daily_DETER} TerraBrasilis, DETER (Notices), Analyses - Amazônia Biome, Daily notices of DETER project area, accessed on 17 October 2024, \href{https://terrabrasilis.dpi.inpe.br/app/dashboard/alerts/biomes/amazonia-nb/daily/}{https://terrabrasilis.dpi.inpe.br/app/dashboard/alerts/biomes/amazonia-nb/daily/}.
+\\
+%38
+\bibitem{Rep_Number_Comp_Model} P. van den Driessche, J. Watmough, Reproduction numbers and sub-threshold endemic equilibria for compartmental models of disease transmission, Mathematical Biosciences, Vol. 180 (2002), 29-48, \href{https://doi.org/10.1016/S0025-5564(02)00108-6}{ https://doi.org/10.1016/S0025-5564(02)00108-6}.
+\\
+%39
+\end{thebibliography}
+
+\clearpage
+
+\appendix
+\renewcommand{\thetable}{A.\arabic{table}}
+\setcounter{table}{0}  % Restart the table counter
+
+\section{Appendix}
+%Appendix sections are coded under \verb+\appendix+.
+
+\begin{table}[width=2.0\linewidth,cols=3,pos=h]
+\caption{List of model parameters.}\label{tbl1}
+\renewcommand{\thetable}{Appendix 1}  % Custom table name
+\begin{tabular*}{\tblwidth}{@{} LLL@{} }
+\toprule
+Parameter & Definition & Formulation\\
+\midrule
+$b(R, T)$   & Mosquito birth rate (days$^{-1}$)   & ${B_E  p_E(R)  p_L(R,T)  p_P(R)}/{(\tau_E + \tau_L(T) + \tau_P)}$   \\ 
+$a(T)$   & Biting rate (days$^{-1}$)  & ${(T - T')}/{D_1}$   \\ 
+$\mu(T)$   & Mosquito mortality rate per capita (days$^{-1}$)   & $-\log(p(T))$  \\ 
+$\tau_M(T)$   & Duration of sporozoite cycle (days)   & ${DD}/{(T - T_{min})}$   \\ 
+$\tau_L(T)$   & Duration of larval development phase (days)   & ${1}/{(c_1T + c_2)}$  \\ 
+$p(T)$   & Daily mosquito survival rate   & $e^{(-1 / (AT^2 + BT + C))}$ \\  
+$p_L(R)$   & Probability of larval survival dependent on rainfall   & $({4p_{ML}}/{R_L^2})R(R_L - R)$  \\  
+$p_L(T)$   & Probability of larval survival dependent on temperature   & $e^{-(c_1T + c_2)}$  \\ 
+$p_L(R, T)$   &Probability of larval survival   & $p_L(R)p_L(T)$   \\  
+$l({\tau_M})(T)$   &  Probability of mosquito survival during sporozoite cycle (days$^{-1}$)  & $p(T)^{\tau_M(T)}$  \\ 
+$M(t)$   &  Total population of mosquitos  & $S_M(t) + E_M(t) + I_M(t)$   \\ 
+$N(t)$   & Total population of humans   & $S_H(t) + I_H(t) + R_H(t)$   \\ 
+\bottomrule
+\end{tabular*}
+\end{table}
+
+%\clearpage
+
+\begin{table}[width=2.0\linewidth,cols=3,pos=h]
+\caption{List of model variables.}\label{tbl2}
+\renewcommand{\thetable}{Appendix 2}  % Custom table name
+\begin{tabular*}{\tblwidth}{@{} LLL@{} }
+\toprule
+Symbol & Definition & Units \\
+\midrule
+$b_1$  & Proportion of bites from susceptible mosquitoes on infected humans that result in infection & Dimensionless \\
+$b_2$   & Proportion of bites from infected mosquitoes on susceptible humans that result in infection & Dimensionless \\
+$\gamma$ &  1/Average duration of infectiousness in humans: 1/120 & days$^{-1}$  \\
+$T_1$  & Mean temperature in the absence of seasonality & $^\circ C$ \\ 
+$T_2$  & Amplitude of seasonal variability in temperature & Dimensionless \\ 
+$\omega_1$  & Angular frequency of seasonal oscillations in temperature & months$^{-1}$ \\ 
+$\phi_1$  & Phase lag of temperature variability (phase shift) & Dimensionless \\ 
+$R_1$  & Average monthly precipitation in the absence of seasonality & mm \\ 
+$R_2$  & Amplitude of seasonal variability in precipitation & Dimensionless \\ 
+$\omega_2$  & Angular frequency of seasonal oscillations in precipitation & months$^{-1}$ \\ 
+$\phi_2$  & Phase lag of precipitation variability (phase shift) & Dimensionless \\ 
+$B_E$  & Number of eggs laid per adult per oviposition & Dimensionless \\ 
+$p_{ME}$  & Maximum probability of egg survival & Dimensionless \\ 
+$p_{ML}$  & Maximum probability of larval survival & Dimensionless \\ 
+$p_{MP}$  & Maximum probability of pupal survival & Dimensionless \\ 
+$\tau_E$  & Duration of the egg development phase & days \\ 
+$b_3$  & Infection rate in exposed mosquitoes ($1/\tau_M(T)$) &  days$^{-1}$ \\ 
+$\tau_P$  & Duration of the pupal development phase & days \\ 
+$\tau_H$  & Latent period of infection within humans & days \\ 
+$R_L$  & Rainfall threshold until breeding sites are eliminated, removing immature individuals: 32.26 \cite{Ecological_Change_Malaria_Risk} & mm \\ 
+$T_{min}$  & Minimum temperature, below which there is no development of the parasite: 14.5 & $^\circ C$ \\ 
+$DD$  & Degree-days for parasite development.
+             ``Sum of heat" for maturation: 105 \cite{McCord2016, Lindsay_Birley_1996} & $^\circ C \ \text{days}$ \\ 
+$A$  & Empirical sensitivity parameter & ($^\circ C^2 \ \text{days})^{-1}$ \\ 
+$B$  & Empirical sensitivity parameter & ($^\circ C \ \text{days})^{-1}$ \\ 
+$C$  & Empirical sensitivity parameter & days$^{-1}$ \\ 
+$D_1$  & Empirical sensitivity parameter: 36.5 & $^\circ C \ \text{days}$ \\ 
+$c_1$  & Empirical sensitivity parameter & $(^\circ C \ \text{days})^{-1}$ \\ 
+$c_2$  & Empirical sensitivity parameter & days$^{-1}$ \\ 
+$T'$  & Empirical temperature parameter & $^\circ C$ \\ 
+\bottomrule
+\end{tabular*}
+\end{table}
+
+%%%%AAAA
+\printcredits
+
+%% Loading bibliography style file
+%\bibliographystyle{model1-num-names}
+\bibliographystyle{cas-model2-names}
+
+% Loading bibliography database
+\bibliography{cas-refs}
+
+
+%\vskip3pt
+
+
+
+\end{document}
+

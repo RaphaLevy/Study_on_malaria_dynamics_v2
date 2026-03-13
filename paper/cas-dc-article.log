@@ -1,0 +1,1980 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.3.13)  13 MAR 2026 10:17
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**./cas-dc-article.tex
+(cas-dc-article.tex
+LaTeX2e <2025-11-01>
+L3 programming layer <2025-12-24>
+(cas-dc.cls
+Document Class: cas-dc 2024/05/04, 2.4: Formatting class for CAS double column 
+articles
+\c@blind=\count275
+\@bls=\dimen148
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
+Document Class: article 2025/01/22 v1.4n Standard LaTeX document class
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/base\fleqn.clo
+File: fleqn.clo 2016/12/29 v1.2b Standard LaTeX option (flush left equations)
+\mathindent=\skip49
+Applying: [2015/01/01] Make \[ robust on input line 50.
+LaTeX Info: Redefining \[ on input line 51.
+Already applied: [0000/00/00] Make \[ robust on input line 62.
+Applying: [2015/01/01] Make \] robust on input line 74.
+LaTeX Info: Redefining \] on input line 75.
+Already applied: [0000/00/00] Make \] robust on input line 83.
+)
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/base\size10.clo
+File: size10.clo 2025/01/22 v1.4n Standard LaTeX file (size option)
+)
+\c@part=\count276
+\c@section=\count277
+\c@subsection=\count278
+\c@subsubsection=\count279
+\c@paragraph=\count280
+\c@subparagraph=\count281
+\c@figure=\count282
+\c@table=\count283
+\abovecaptionskip=\skip50
+\belowcaptionskip=\skip51
+\bibindent=\dimen149
+)
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
+Package: graphicx 2024/12/31 v1.2e Enhanced LaTeX Graphics (DPC,SPQR)
+
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty
+Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
+\KV@toks@=\toks17
+)
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
+Package: graphics 2024/08/06 v1.4g Standard LaTeX Graphics (DPC,SPQR)
+
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty
+Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
+)
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\graphics.c
+fg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 106.
+
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdftex.def
+File: pdftex.def 2025/09/29 v1.2d Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen150
+\Gin@req@width=\dimen151
+) (C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsmath.sty
+Package: amsmath 2025/07/09 v2.17z AMS math features
+\@mathmargin=\skip52
+For additional information on amsmath, use the `?' option.
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amstext.sty
+Package: amstext 2024/11/17 v2.01 AMS text
+
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks18
+\ex@=\dimen152
+))
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen153
+)
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsopn.sty
+Package: amsopn 2022/04/08 v2.04 operator names
+)
+\inf@bad=\count284
+LaTeX Info: Redefining \frac on input line 233.
+\uproot@=\count285
+\leftroot@=\count286
+LaTeX Info: Redefining \overline on input line 398.
+LaTeX Info: Redefining \colon on input line 409.
+\classnum@=\count287
+\DOTSCASE@=\count288
+LaTeX Info: Redefining \ldots on input line 495.
+LaTeX Info: Redefining \dots on input line 498.
+LaTeX Info: Redefining \cdots on input line 619.
+\Mathstrutbox@=\box53
+\strutbox@=\box54
+LaTeX Info: Redefining \big on input line 721.
+LaTeX Info: Redefining \Big on input line 722.
+LaTeX Info: Redefining \bigg on input line 723.
+LaTeX Info: Redefining \Bigg on input line 724.
+\big@size=\dimen154
+LaTeX Font Info:    Redeclaring font encoding OML on input line 742.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 743.
+\macc@depth=\count289
+LaTeX Info: Redefining \bmod on input line 904.
+LaTeX Info: Redefining \pmod on input line 909.
+LaTeX Info: Redefining \smash on input line 939.
+LaTeX Info: Redefining \relbar on input line 969.
+LaTeX Info: Redefining \Relbar on input line 970.
+\c@MaxMatrixCols=\count290
+\dotsspace@=\muskip17
+\c@parentequation=\count291
+\dspbrk@lvl=\count292
+\tag@help=\toks19
+\row@=\count293
+\column@=\count294
+\maxfields@=\count295
+\andhelp@=\toks20
+\eqnshift@=\dimen155
+\alignsep@=\dimen156
+\tagshift@=\dimen157
+\tagwidth@=\dimen158
+\totwidth@=\dimen159
+\lineht@=\dimen160
+\@envbody=\toks21
+\multlinegap=\skip53
+\multlinetaggap=\skip54
+\mathdisplay@stack=\toks22
+LaTeX Info: Redefining \[ on input line 2950.
+LaTeX Info: Redefining \] on input line 2951.
+)
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+)
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+)
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/l3kernel\expl3.sty
+Package: expl3 2025-12-24 L3 programming layer (loader) 
+
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdf
+tex.def
+File: l3backend-pdftex.def 2025-10-09 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count296
+))
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/l3packages/xparse\xpars
+e.sty
+Package: xparse 2025-10-09 L3 Experimental document command parser
+)
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbox.sty
+Package: etoolbox 2025/10/02 v2.5m e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count297
+)
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/preprint\balance.sty
+Package: balance 1999/02/23 4.3 (PWD)
+\oldvsize=\dimen161
+)
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/booktabs\booktabs.sty
+Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
+\heavyrulewidth=\dimen162
+\lightrulewidth=\dimen163
+\cmidrulewidth=\dimen164
+\belowrulesep=\dimen165
+\belowbottomsep=\dimen166
+\aboverulesep=\dimen167
+\abovetopsep=\dimen168
+\cmidrulesep=\dimen169
+\cmidrulekern=\dimen170
+\defaultaddspace=\dimen171
+\@cmidla=\count298
+\@cmidlb=\count299
+\@aboverulesep=\dimen172
+\@belowrulesep=\dimen173
+\@thisruleclass=\count300
+\@lastruleclass=\count301
+\@thisrulewidth=\dimen174
+)
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/makecell\makecell.sty
+Package: makecell 2009/08/03 V0.1e Managing of Tab Column Heads and Cells
+
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/tools\array.sty
+Package: array 2025/09/25 v2.6n Tabular extension package (FMi)
+\col@sep=\dimen175
+\ar@mcellbox=\box55
+\extrarowheight=\dimen176
+\NC@list=\toks23
+\extratabsurround=\skip55
+\backup@length=\skip56
+\ar@cellbox=\box56
+)
+\rotheadsize=\dimen177
+\c@nlinenum=\count302
+\TeXr@lab=\toks24
+)
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/multirow\multirow.sty
+Package: multirow 2024/11/12 v2.9 Span multiple rows of a table
+\multirow@colwidth=\skip57
+\multirow@cntb=\count303
+\multirow@dima=\skip58
+\bigstrutjot=\dimen178
+)
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/colortbl\colortbl.sty
+Package: colortbl 2024/10/29 v1.0k Color table columns (DPC)
+
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/graphics\color.sty
+Package: color 2025/01/14 v1.3e Standard LaTeX Color (DPC)
+
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package color Info: Driver file: pdftex.def on input line 149.
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/graphics\mathcolor.ltx)
+)
+\everycr=\toks25
+\minrowclearance=\skip59
+\rownum=\count304
+) (C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/tools\dcolumn.sty
+Package: dcolumn 2025/10/21 v1.06 decimal alignment package (DPC)
+)
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/sttools\stfloats.sty
+Package: stfloats 2025/06/18 v3.4 Improve float mechanism and baselineskip sett
+ings
+\@dblbotnum=\count305
+\c@dblbotnumber=\count306
+)
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/tools\xspace.sty
+Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
+)
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/xstring\xstring.sty
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/generic/xstring\xstring.tex
+\xs_counta=\count307
+\xs_countb=\count308
+)
+Package: xstring 2023/08/22 v1.86 String manipulations (CT)
+) (C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/footmisc\footmisc.sty
+Package: footmisc 2025/05/09 v7.0b a miscellany of footnote facilities
+\FN@temptoken=\toks26
+\footnotemargin=\dimen179
+Package footmisc Info: Declaring symbol style bringhurst on input line 549.
+Package footmisc Info: Declaring symbol style chicago on input line 557.
+Package footmisc Info: Declaring symbol style wiley on input line 566.
+Package footmisc Info: Declaring symbol style lamport-robust on input line 577.
+
+Package footmisc Info: Declaring symbol style lamport* on input line 597.
+Package footmisc Info: Declaring symbol style lamport*-robust on input line 618
+.
+) (C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor.sty
+Package: xcolor 2024/09/29 v3.02 LaTeX color extensions (UK)
+
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 274.
+LaTeX Info: Redefining \color on input line 762.
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/graphics\mathcolor.ltx)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1349.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1353.
+Package xcolor Info: Model `RGB' extended on input line 1365.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1367.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1370.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1371.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1372.
+) (C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\svgnam.def
+File: svgnam.def 2024/09/29 v3.02 Predefined colors according to SVG 1.1 (UK)
+)
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/graphics\dvipsnam.def
+File: dvipsnam.def 2016/06/17 v3.0m Driver-dependent file (DPC,SPQR)
+)
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref.sty
+Package: hyperref 2025-07-12 v7.01o Hypertext links for LaTeX
+
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty
+Package: iftex 2024/12/12 v1.0g TeX engine tests
+)
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/kvsetkeys\kvsetkeys.sty
+Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
+)
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/generic/kvdefinekeys\kvdefine
+keys.sty
+Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
+)
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/generic/pdfescape\pdfescape.s
+ty
+Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
+
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/generic/ltxcmds\ltxcmds.sty
+Package: ltxcmds 2023-12-04 v1.26 LaTeX kernel commands for general use (HO)
+)
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/generic/pdftexcmds\pdftexcmds
+.sty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/generic/infwarerr\infwarerr.s
+ty
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+)
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+))
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/hycolor\hycolor.sty
+Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
+)
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\nameref.sty
+Package: nameref 2025-06-21 v2.57 Cross-referencing by name of section
+
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/refcount\refcount.sty
+Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
+)
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/generic/gettitlestring\gettit
+lestring.sty
+Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
+
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/kvoptions\kvoptions.sty
+Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
+))
+\c@section@level=\count309
+)
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/generic/stringenc\stringenc.s
+ty
+Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO
+)
+)
+\@linkdim=\dimen180
+\Hy@linkcounter=\count310
+\Hy@pagecounter=\count311
+ (C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\pd1enc.def
+File: pd1enc.def 2025-07-12 v7.01o Hyperref: PDFDocEncoding definition (HO)
+Now handling font encoding PD1 ...
+... no UTF-8 mapping file for font encoding PD1
+) (C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/generic/intcalc\intcalc.sty
+Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
+)
+\Hy@SavedSpaceFactor=\count312
+ (C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\puenc.def
+File: puenc.def 2025-07-12 v7.01o Hyperref: PDF Unicode definition (HO)
+Now handling font encoding PU ...
+... no UTF-8 mapping file for font encoding PU
+)
+Package hyperref Info: Option `colorlinks' set `true' on input line 4066.
+Package hyperref Info: Hyper figures OFF on input line 4195.
+Package hyperref Info: Link nesting OFF on input line 4200.
+Package hyperref Info: Hyper index ON on input line 4203.
+Package hyperref Info: Plain pages OFF on input line 4210.
+Package hyperref Info: Backreferencing OFF on input line 4215.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4462.
+\c@Hy@tempcnt=\count313
+
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty
+\Urlmuskip=\muskip18
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 4801.
+\XeTeXLinkMargin=\dimen181
+
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/generic/bitset\bitset.sty
+Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
+
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/generic/bigintcalc\bigintcalc
+.sty
+Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
+)
+))
+\Fld@menulength=\count314
+\Field@Width=\dimen182
+\Fld@charsize=\dimen183
+Package hyperref Info: Hyper figures OFF on input line 6078.
+Package hyperref Info: Link nesting OFF on input line 6083.
+Package hyperref Info: Hyper index ON on input line 6086.
+Package hyperref Info: backreferencing OFF on input line 6093.
+Package hyperref Info: Link coloring ON on input line 6096.
+Package hyperref Info: Link coloring with OCG OFF on input line 6103.
+Package hyperref Info: PDF/A mode OFF on input line 6108.
+\Hy@abspage=\count315
+\c@Item=\count316
+\c@Hfootnote=\count317
+)
+Package hyperref Info: Driver (autodetected): hpdftex.
+
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hpdftex.def
+File: hpdftex.def 2025-07-12 v7.01o Hyperref driver for pdfTeX
+\Fld@listcount=\count318
+\c@bookmark@seq@number=\count319
+
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/rerunfilecheck\rerunfil
+echeck.sty
+Package: rerunfilecheck 2025-06-21 v1.11 Rerun checks for auxiliary files (HO)
+
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/generic/uniquecounter\uniquec
+ounter.sty
+Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
+)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+84.
+)
+\Hy@SectionHShift=\skip60
+) (cas-common.sty
+\l_stm_title_before_dim=\dimen184
+\l_stm_title_after_dim=\dimen185
+\g_ead_int=\count320
+\g_uad_int=\count321
+\@eadauthor=\toks27
+\g_stm_tnote_int=\count322
+\g_stm_fnote_int=\count323
+\g_stm_cor_int=\count324
+\g_stm_au_int=\count325
+\g_stm_aau_int=\count326
+\l_autype_int=\count327
+\l_stm_augroup_before_dim=\dimen186
+\l_stm_augroup_after_dim=\dimen187
+\l_stm_augroup_lskip_tl=\dimen188
+\l_stm_augroup_rskip_tl=\dimen189
+\g_stm_aff_int=\count328
+\g_stm_aff_ext_int=\count329
+\g_stm_aff_int_int=\count330
+\g_stm_fn_aff_ext_int=\count331
+\g_stm_fn_aff_int_int=\count332
+\l_stm_aff_before_dim=\dimen190
+\l_stm_aff_after_dim=\dimen191
+\l_stm_aff_lskip_dim=\dimen192
+\l_stm_aff_rskip_dim=\dimen193
+\g_stm_augr_int=\count333
+\g_stm_aaugr_int=\count334
+
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/moreverb\moreverb.sty
+Package: moreverb 2008/06/03 v2.3a `more' verbatim facilities
+
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/tools\verbatim.sty
+Package: verbatim 2024-01-22 v1.5x LaTeX2e package for verbatim enhancements
+\every@verbatim=\toks28
+\verbatim@line=\toks29
+\verbatim@in@stream=\read2
+)
+\tab@position=\count335
+\tab@size=\count336
+\listing@line=\count337
+)
+\g_stm_abs_box=\box57
+\casgrabsbox=\box58
+\casauhlbox=\box59
+\g_stm_key_box=\box60
+\g_stm_jtype_int=\count338
+\g_stm_blind_int=\count339
+\c@au=\count340
+\c@cnote=\count341
+\c@tnote=\count342
+\c@fnote=\count343
+\c@aff=\count344
+\g_stm_notes_box=\box61
+\g_stm_front_box=\box62
+\paraindent=\dimen194
+\subparaindent=\dimen195
+\FullWidth=\dimen196
+\l_tbl_width_dim=\dimen197
+\l_tbl_abovecap_skip=\skip61
+\l_tbl_belowcap_skip=\skip62
+\l_tbl_abovetbl_skip=\skip63
+\l_tbl_belowtbl_skip=\skip64
+\l_fig_width_dim=\dimen198
+\cascaptionbox=\box63
+\l_fig_abovecap_skip=\skip65
+\l_fig_belowcap_skip=\skip66
+\l_fig_abovefig_skip=\skip67
+\l_fig_belowfig_skip=\skip68
+
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/wrapfig\wrapfig.sty
+\wrapoverhang=\dimen199
+\WF@size=\dimen256
+\c@WF@wrappedlines=\count345
+\WF@box=\box64
+\WF@everypar=\toks30
+Package: wrapfig 2003/01/31  v 3.6
+)
+\l_wrap_figwidth_dim=\dimen257
+\l_wrap_fighspace_dim=\dimen258
+\l_wrap_figvspace_dim=\dimen259
+\l_wrap_fighcorr_dim=\dimen260
+\l_wrap_figvcorr_dim=\dimen261
+\l_above_bio_dim=\dimen262
+\l_wrap_figlcorr_int=\count346
+\l_wrap_figlines_int=\count347
+\l_bio_text_box=\box65
+\c@ca_biography_ctr=\count348
+\l_ca_temp_inta=\count349
+\leftMargin=\dimen263
+\@enLab=\toks31
+\@sep=\skip69
+\@@sep=\skip70
+)
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/base\fontenc.sty
+Package: fontenc 2025/07/18 v2.1d Standard LaTeX package
+)
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/stix\stix.sty
+Package: stix 2018/04/17 v1.1.3-latex STIX fonts support package
+
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/base\textcomp.sty
+Package: textcomp 2024/04/24 v2.1b Standard LaTeX package
+LaTeX Font Info:    Changing ? sub-encoding to TS1/0 on input line 75.
+)
+LaTeX Encoding Info:    Text command \textpertenthousand (encoding T1) is not d
+eclared on input line 51.
+LaTeX Encoding Info:    Redeclaring text command \textpertenthousand (encoding 
+?) on input line 52.
+Now handling font encoding LS1 ...
+... no UTF-8 mapping file for font encoding LS1
+Now handling font encoding LS2 ...
+... no UTF-8 mapping file for font encoding LS2
+LaTeX Font Info:    Redeclaring symbol font `letters' on input line 76.
+LaTeX Font Info:    Encoding `OML' has changed to `LS1' for symbol font
+(Font)              `letters' in the math version `normal' on input line 76.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `normal'
+(Font)                  OML/cmm/m/it --> LS1/stix/m/it on input line 76.
+LaTeX Font Info:    Encoding `OML' has changed to `LS1' for symbol font
+(Font)              `letters' in the math version `bold' on input line 76.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `bold'
+(Font)                  OML/cmm/b/it --> LS1/stix/m/it on input line 76.
+LaTeX Font Info:    Redeclaring symbol font `operators' on input line 77.
+LaTeX Font Info:    Encoding `OT1' has changed to `LS1' for symbol font
+(Font)              `operators' in the math version `normal' on input line 77.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  OT1/cmr/m/n --> LS1/stix/m/n on input line 77.
+LaTeX Font Info:    Encoding `OT1' has changed to `LS1' for symbol font
+(Font)              `operators' in the math version `bold' on input line 77.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  OT1/cmr/bx/n --> LS1/stix/m/n on input line 77.
+\symbold-operators=\mathgroup6
+LaTeX Font Info:    Redeclaring symbol font `symbols' on input line 79.
+LaTeX Font Info:    Encoding `OMS' has changed to `LS1' for symbol font
+(Font)              `symbols' in the math version `normal' on input line 79.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
+(Font)                  OMS/cmsy/m/n --> LS1/stixscr/m/n on input line 79.
+LaTeX Font Info:    Encoding `OMS' has changed to `LS1' for symbol font
+(Font)              `symbols' in the math version `bold' on input line 79.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
+(Font)                  OMS/cmsy/b/n --> LS1/stixscr/m/n on input line 79.
+\symsymbols2=\mathgroup7
+\symsymbols3=\mathgroup8
+\symsymbols4=\mathgroup9
+\symintegrals=\mathgroup10
+LaTeX Font Info:    Redeclaring symbol font `largesymbols' on input line 84.
+LaTeX Font Info:    Encoding `OMX' has changed to `LS2' for symbol font
+(Font)              `largesymbols' in the math version `normal' on input line 8
+4.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
+(Font)                  OMX/cmex/m/n --> LS2/stixex/m/n on input line 84.
+LaTeX Font Info:    Encoding `OMX' has changed to `LS2' for symbol font
+(Font)              `largesymbols' in the math version `bold' on input line 84.
+
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
+(Font)                  OMX/cmex/m/n --> LS2/stixex/m/n on input line 84.
+\symarrows1=\mathgroup11
+\symarrows2=\mathgroup12
+\symarrows3=\mathgroup13
+LaTeX Font Info:    Overwriting symbol font `letters' in version `bold'
+(Font)                  LS1/stix/m/it --> LS1/stix/b/it on input line 88.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  LS1/stix/m/n --> LS1/stix/b/n on input line 89.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
+(Font)                  LS1/stixscr/m/n --> LS1/stixscr/b/n on input line 90.
+LaTeX Font Info:    Overwriting symbol font `symbols2' in version `bold'
+(Font)                  LS1/stixfrak/m/n --> LS1/stixfrak/b/n on input line 91.
+
+LaTeX Font Info:    Overwriting symbol font `symbols3' in version `bold'
+(Font)                  LS1/stixbb/m/n --> LS1/stixbb/b/n on input line 92.
+LaTeX Font Info:    Overwriting symbol font `symbols4' in version `bold'
+(Font)                  LS1/stixbb/m/it --> LS1/stixbb/b/it on input line 93.
+LaTeX Font Info:    Overwriting symbol font `integrals' in version `bold'
+(Font)                  LS2/stixcal/m/n --> LS2/stixcal/b/n on input line 94.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
+(Font)                  LS2/stixex/m/n --> LS2/stixex/b/n on input line 95.
+LaTeX Font Info:    Overwriting symbol font `arrows1' in version `bold'
+(Font)                  LS1/stixsf/m/n --> LS1/stixsf/b/n on input line 96.
+LaTeX Font Info:    Overwriting symbol font `arrows2' in version `bold'
+(Font)                  LS1/stixsf/m/it --> LS1/stixsf/b/it on input line 97.
+LaTeX Font Info:    Overwriting symbol font `arrows3' in version `bold'
+(Font)                  LS2/stixtt/m/n --> LS2/stixtt/b/n on input line 98.
+LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 99.
+LaTeX Font Info:    Redeclaring math alphabet \mathfrak on input line 102.
+LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 106.
+LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 108.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 109.
+LaTeX Info: Redefining \yen on input line 456.
+LaTeX Info: Redefining \circledR on input line 458.
+LaTeX Info: Redefining \checkmark on input line 460.
+LaTeX Info: Redefining \maltese on input line 461.
+LaTeX Font Info:    Redeclaring math accent \grave on input line 698.
+LaTeX Font Info:    Redeclaring math accent \acute on input line 699.
+LaTeX Font Info:    Redeclaring math accent \hat on input line 700.
+LaTeX Font Info:    Redeclaring math accent \tilde on input line 701.
+LaTeX Font Info:    Redeclaring math accent \bar on input line 702.
+LaTeX Font Info:    Redeclaring math accent \breve on input line 703.
+LaTeX Font Info:    Redeclaring math accent \dot on input line 704.
+LaTeX Font Info:    Redeclaring math accent \ddot on input line 705.
+LaTeX Font Info:    Redeclaring math accent \mathring on input line 707.
+LaTeX Font Info:    Redeclaring math accent \check on input line 708.
+LaTeX Font Info:    Redeclaring math accent \vec on input line 716.
+LaTeX Font Info:    Redeclaring math accent \widehat on input line 728.
+LaTeX Font Info:    Redeclaring math accent \widetilde on input line 729.
+LaTeX Info: Redefining \vdots on input line 1518.
+LaTeX Info: Redefining \cdots on input line 1522.
+LaTeX Font Info:    Redeclaring math symbol \mathsterling on input line 1978.
+LaTeX Info: Redefining \not on input line 2144.
+)
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/inconsolata\inconsolata
+.sty
+Package: inconsolata 2019/05/17 v1.12
+ `inconsolata-zi4' v1.12, 2019/05/17 Text macros for Inconsolata (msharpe)
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/xkeyval\xkeyval.sty
+Package: xkeyval 2022/06/16 v2.9 package option processing (HA)
+
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkeyval.tex
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkvutils.tex
+\XKV@toks=\toks32
+\XKV@tempa@toks=\toks33
+)
+\XKV@depth=\count350
+File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
+))
+\zifour@ocount=\count351
+)
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.sty
+Package: geometry 2020/01/02 v5.9 Page Geometry
+
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifvtex.sty
+Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
+)
+\Gm@cnth=\count352
+\Gm@cntv=\count353
+\c@Gm@tempcnt=\count354
+\Gm@bindingoffset=\dimen264
+\Gm@wd@mp=\dimen265
+\Gm@odd@mp=\dimen266
+\Gm@even@mp=\dimen267
+\Gm@layoutwidth=\dimen268
+\Gm@layoutheight=\dimen269
+\Gm@layouthoffset=\dimen270
+\Gm@layoutvoffset=\dimen271
+\Gm@dimlist=\toks34
+
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.cfg))
+) (C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/natbib\natbib.sty
+Package: natbib 2010/09/13 8.31b (PWD, AO)
+\bibhang=\skip71
+\bibsep=\skip72
+LaTeX Info: Redefining \cite on input line 694.
+\c@NAT@ctr=\count355
+)
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption.sty
+Package: caption 2023/08/05 v3.6o Customizing captions (AR)
+
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption3.sty
+Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
+\caption@tempdima=\dimen272
+\captionmargin=\dimen273
+\caption@leftmargin=\dimen274
+\caption@rightmargin=\dimen275
+\caption@width=\dimen276
+\caption@indent=\dimen277
+\caption@parindent=\dimen278
+\caption@hangindent=\dimen279
+Package caption Info: Standard document class detected.
+)
+\c@caption@flags=\count356
+\c@continuedfloat=\count357
+Package caption Info: hyperref package is loaded.
+Package caption Info: wrapfig package is loaded.
+)
+LaTeX Font Info:    Trying to load font information for T1+stix on input line 4
+5.
+
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/stix\t1stix.fd
+File: t1stix.fd 2015/04/17 v1.1.2-latex STIX T1 font definitions
+)
+(cas-dc-article.aux)
+\openout1 = `cas-dc-article.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for LS1/stix/m/n on input line 45.
+LaTeX Font Info:    Trying to load font information for LS1+stix on input line 
+45.
+
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/stix\ls1stix.fd
+File: ls1stix.fd 2015/04/17 v1.1.2-latex STIX LS1 font definitions
+)
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for LS2/stix/m/n on input line 45.
+LaTeX Font Info:    Trying to load font information for LS2+stix on input line 
+45.
+
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/stix\ls2stix.fd
+File: ls2stix.fd 2015/04/17 v1.1.2-latex STIX LS2 font definitions
+)
+LaTeX Font Info:    ... okay on input line 45.
+
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mk
+ii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count358
+\scratchdimen=\dimen280
+\scratchbox=\box66
+\nofMPsegments=\count359
+\nofMParguments=\count360
+\everyMPshowfont=\toks35
+\MPscratchCnt=\count361
+\MPscratchDim=\dimen281
+\MPnumerator=\count362
+\makeMPintoPDFobject=\count363
+\everyMPtoPDFconversion=\toks36
+)
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-b
+ase.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+85.
+
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.c
+fg
+File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
+))
+LaTeX Info: Command `\dddot' is already robust on input line 45.
+LaTeX Info: Command `\ddddot' is already robust on input line 45.
+Package hyperref Info: Link coloring ON on input line 45.
+ (cas-dc-article.out) (cas-dc-article.out)
+\@outlinefile=\write3
+\openout3 = `cas-dc-article.out'.
+
+
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/upquote\upquote.sty
+Package: upquote 2012/04/19 v1.3 upright-quote and grave-accent glyphs in verba
+tim
+)
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: custom
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(51.4995pt, 494.50888pt, 51.4995pt)
+* v-part:(T,H,B)=(55.48286pt, 689.4103pt, 51.784pt)
+* \paperwidth=597.50787pt
+* \paperheight=796.67715pt
+* \textwidth=494.50888pt
+* \textheight=689.4103pt
+* \oddsidemargin=-20.7705pt
+* \evensidemargin=-20.7705pt
+* \topmargin=-40.78712pt
+* \headheight=12.0pt
+* \headsep=12.0pt
+* \topskip=10.0pt
+* \footskip=12.0pt
+* \marginparwidth=57.0pt
+* \marginparsep=11.0pt
+* \columnsep=18.0pt
+* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: End \AtBeginDocument code.
+\verbatim@out=\write4
+\openout4 = `cas-dc-article.abs'.
+
+LaTeX Font Info:    Trying to load font information for LS1+stixscr on input li
+ne 167.
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/stix\ls1stixscr.fd
+File: ls1stixscr.fd 2015/04/17 v1.1.2-latex STIX script LS1 font definitions
+)
+LaTeX Font Info:    Trying to load font information for LS2+stixex on input lin
+e 167.
+
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/stix\ls2stixex.fd
+File: ls2stixex.fd 2015/04/17 v1.1.2-latex STIX extentions LS2 font definitions
+
+)
+LaTeX Font Info:    Trying to load font information for U+msa on input line 167
+.
+
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 167
+.
+
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+LaTeX Font Info:    Trying to load font information for LS1+stixfrak on input l
+ine 167.
+
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/stix\ls1stixfrak.fd
+File: ls1stixfrak.fd 2015/04/17 v1.1.2-latex STIX fraktur LS1 font definitions
+)
+LaTeX Font Info:    Trying to load font information for LS1+stixbb on input lin
+e 167.
+
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/stix\ls1stixbb.fd
+File: ls1stixbb.fd 2015/04/17 v1.1.2-latex STIX blackboard LS1 font definitions
+
+)
+LaTeX Font Info:    Trying to load font information for LS2+stixcal on input li
+ne 167.
+
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/stix\ls2stixcal.fd
+File: ls2stixcal.fd 2015/04/17 v1.1.2-latex STIX calligraphic LS2 font definiti
+ons
+)
+LaTeX Font Info:    Trying to load font information for LS1+stixsf on input lin
+e 167.
+
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/stix\ls1stixsf.fd
+File: ls1stixsf.fd 2015/04/17 v1.1.2-latex STIX sans-serif LS1 font definitions
+
+)
+LaTeX Font Info:    Trying to load font information for LS2+stixtt on input lin
+e 167.
+
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/stix\ls2stixtt.fd
+File: ls2stixtt.fd 2015/04/17 v1.1.2-latex STIX typewriter LS2 font definitions
+
+)
+Overfull \hbox (123.62721pt too wide) detected at line 167
+[]
+ []
+
+(cas-dc-article.abs
+Underfull \hbox (badness 10000) in paragraph at lines 167--6
+ 
+ []
+
+)
+
+Package hyperref Warning: Ignoring empty anchor on input line 167.
+
+<thumbnails/cas-email.jpeg, id=3, 225.84375pt x 225.84375pt>
+File: thumbnails/cas-email.jpeg Graphic file (type jpg)
+<use thumbnails/cas-email.jpeg>
+Package pdftex.def Info: thumbnails/cas-email.jpeg  used on input line 167.
+(pdftex.def)             Requested size: 7.99838pt x 8.0pt.
+LaTeX Font Info:    Trying to load font information for T1+zi4 on input line 16
+7.
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/inconsolata\t1zi4.fd
+File: t1zi4.fd 2018/01/14 T1/zi4 (Inconsolata)
+)
+LaTeX Font Info:    Font shape `T1/zi4/m/n' will be
+(Font)              scaled to size 6.80005pt on input line 167.
+
+
+Package hyperref Warning: Ignoring empty anchor on input line 167.
+
+
+Package natbib Warning: Citation `pimenta_orfano_bahia_duarte_rios-velasquez_me
+lo_pessoa_oliveira_campos_villegas_etal_2015' on page 1 undefined on input line
+ 180.
+
+
+Package natbib Warning: Citation `regulation_of_sexual_commitment' on page 1 un
+defined on input line 184.
+
+
+Package natbib Warning: Citation `WHO2022' on page 1 undefined on input line 18
+4.
+
+
+Package natbib Warning: Citation `silva-nunes_malaria_amazon_2008' on page 1 un
+defined on input line 192.
+
+
+Package natbib Warning: Citation `DASILVANUNES2012281' on page 1 undefined on i
+nput line 194.
+
+
+Package natbib Warning: Citation `Rorato2023' on page 1 undefined on input line
+ 216.
+
+
+Underfull \hbox (badness 1194) in paragraph at lines 170--217
+\T1/stix/m/it/10 Anophe-les\T1/stix/m/n/10 . It is present in 22 Amer-i-can cou
+n-tries, but
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 170--217
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 170--217
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 170--217
+
+ []
+
+
+Underfull \hbox (badness 1377) in paragraph at lines 170--217
+\T1/stix/m/n/10 vi-ron-men-tal im-pacts in-flu-ence the dy-nam-ics of malaria
+ []
+
+
+Underfull \hbox (badness 1264) in paragraph at lines 170--217
+\T1/stix/m/n/10 of large-scale agri-cul-tural and live-stock pro-duc-tion, the
+ []
+
+
+Package natbib Warning: Citation `Parham2010' on page 1 undefined on input line
+ 219.
+
+[1{C:/Users/rapha/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/ra
+pha/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/stix/stix-t1.enc}
+
+
+{C:/Users/rapha/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/inconsolata/i4-t1
+-0.enc} <./thumbnails/cas-email.jpeg>]
+
+Package natbib Warning: Citation `Ecological_Change_Malaria_Risk' on page 2 und
+efined on input line 238.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 230--261
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 230--261
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 230--261
+
+ []
+
+
+Underfull \hbox (badness 1048) in paragraph at lines 230--261
+\T1/stix/m/n/10 mosquitos from $\LS1/stix/m/it/10 E$ \T1/stix/m/n/10 to $\LS1/s
+tix/m/it/10 I$\T1/stix/m/n/10 . Be-ing in-versely re-lated to the
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 230--261
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 230--261
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 230--261
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 230--261
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 230--261
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 230--261
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 230--261
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 230--261
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 230--261
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 230--261
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 230--261
+
+ []
+
+
+Package natbib Warning: Citation `OliveiraFerreira2010' on page 2 undefined on 
+input line 271.
+
+
+Package natbib Warning: Citation `10.3389/fpubh.2021.647754' on page 2 undefine
+d on input line 271.
+
+
+Package natbib Warning: Citation `Vector_Incrimination' on page 2 undefined on 
+input line 271.
+
+
+Package natbib Warning: Citation `Rorato2023' on page 2 undefined on input line
+ 273.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 269--274
+
+ []
+
+
+LaTeX Font Warning: Command \footnotesize invalid in math mode on input line 29
+9.
+
+
+LaTeX Font Warning: Command \footnotesize invalid in math mode on input line 29
+9.
+
+
+LaTeX Font Warning: Command \footnotesize invalid in math mode on input line 29
+9.
+
+
+LaTeX Font Warning: Command \footnotesize invalid in math mode on input line 29
+9.
+
+
+Package natbib Warning: Citation `Datasus2006' on page 2 undefined on input lin
+e 304.
+
+
+Package natbib Warning: Citation `Census2000' on page 2 undefined on input line
+ 317.
+
+
+Package natbib Warning: Citation `Census2010' on page 2 undefined on input line
+ 317.
+
+
+Package natbib Warning: Citation `Census2022' on page 2 undefined on input line
+ 317.
+
+
+Package natbib Warning: Citation `SIVEP_Malaria' on page 2 undefined on input l
+ine 320.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 299--321
+
+ []
+
+
+Underfull \hbox (badness 1043) in paragraph at lines 299--321
+\T1/stix/m/n/10 Using data from 2015 to 2019, the ru-ral pop-u-la-tion is
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 299--321
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 299--321
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 299--321
+
+ []
+
+[2]
+
+Package natbib Warning: Citation `Norris2004' on page 3 undefined on input line
+ 328.
+
+
+Package natbib Warning: Citation `infoAnopheles' on page 3 undefined on input l
+ine 331.
+
+
+Package natbib Warning: Citation `article_alteracoesambientais' on page 3 undef
+ined on input line 335.
+
+
+Package natbib Warning: Citation `Biological_Variation_Anopheles' on page 3 und
+efined on input line 354.
+
+
+Package natbib Warning: Citation `Abundancia_Larval' on page 3 undefined on inp
+ut line 356.
+
+
+Package natbib Warning: Citation `Reconstructing_Three_Decades' on page 3 undef
+ined on input line 360.
+
+
+Package natbib Warning: Citation `Amazon_Defor_Drives_Malaria_Transmis' on page
+ 3 undefined on input line 360.
+
+
+Package natbib Warning: Citation `Alteracoes_Ambientais' on page 3 undefined on
+ input line 365.
+
+
+Package natbib Warning: Citation `Anthropogenic_Landscape' on page 3 undefined 
+on input line 365.
+
+
+Package natbib Warning: Citation `Future_of_Deforestation' on page 3 undefined 
+on input line 367.
+
+
+Package natbib Warning: Citation `Relationship_between_fires_and_defor' on page
+ 3 undefined on input line 367.
+
+
+Package natbib Warning: Citation `Conservation_Policy' on page 3 undefined on i
+nput line 368.
+
+
+Package natbib Warning: Citation `Threats_and_Opportunities' on page 3 undefine
+d on input line 370.
+
+
+Package natbib Warning: Citation `G1_Queimadas' on page 3 undefined on input li
+ne 370.
+
+
+Package natbib Warning: Citation `MapBIOMAS_Deforestation' on page 3 undefined 
+on input line 373.
+
+
+Package natbib Warning: Citation `MapBIOMAS_Forest_Fires' on page 3 undefined o
+n input line 373.
+
+
+Package natbib Warning: Citation `DETER_Deforestation' on page 3 undefined on i
+nput line 375.
+
+
+Package natbib Warning: Citation `MapBIOMAS_Deforestation' on page 3 undefined 
+on input line 375.
+
+
+Package natbib Warning: Citation `Daily_DETER' on page 3 undefined on input lin
+e 375.
+
+
+Underfull \hbox (badness 1028) in paragraph at lines 327--376
+\T1/stix/m/n/10 gence of malaria in South Amer-ica [\T1/stix/b/n/10 ? \T1/stix/
+m/n/10 ]. In de-for-ested
+ []
+
+
+Underfull \hbox (badness 1205) in paragraph at lines 327--376
+\LS1/stix/m/it/10 Anopheles darlingi$\T1/stix/m/n/10 , the main vec-tor re-late
+d to hu-man
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 327--376
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 327--376
+
+ []
+
+
+Underfull \hbox (badness 1038) in paragraph at lines 327--376
+\T1/stix/m/n/10 of $\LS1/stix/m/it/10 A: darlingi in loco$\T1/stix/m/n/10 . Be-
+cause of this it was in-stead
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 327--376
+
+ []
+
+
+Underfull \hbox (badness 1127) in paragraph at lines 327--376
+\T1/stix/m/n/10 cul-tural ex-pan-sion or other forms of oc-cu-pa-tion of the
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 327--376
+
+ []
+
+
+Underfull \hbox (badness 1389) in paragraph at lines 327--376
+\T1/stix/m/n/10 tem-per-a-ture over set-tle-ments and habi-tats, lead-ing to a
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 327--376
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 327--376
+
+ []
+
+LaTeX Font Info:    Calculating math sizes for size <11> on input line 379.
+[3]
+
+Package natbib Warning: Citation `Rep_Number_Comp_Model' on page 4 undefined on
+ input line 384.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 381--394
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 394--414
+
+ []
+
+
+Underfull \hbox (badness 1052) in paragraph at lines 394--414
+\T1/stix/m/n/10 The for-mu-la-tion for $\LS2/stixcal/m/n/10 R[]$ \T1/stix/m/n/1
+0 in both model, as well as the
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 394--414
+
+ []
+
+LaTeX Font Info:    Trying to load font information for TS1+stix on input line 
+414.
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/stix\ts1stix.fd
+File: ts1stix.fd 2015/04/17 v1.1.2-latex STIX TS1 font definitions
+)
+Underfull \hbox (badness 10000) in paragraph at lines 441--444
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 441--444
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 441--444
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 454--458
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 513--520
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 513--520
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 513--520
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 513--520
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 513--520
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 513--520
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 513--520
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 513--520
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 513--520
+
+ []
+
+[4{C:/Users/rapha/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/stix/stix-ts1.e
+nc}]
+Underfull \hbox (badness 10000) in paragraph at lines 532--536
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 624--635
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 624--635
+
+ []
+
+
+Underfull \hbox (badness 1546) in paragraph at lines 624--635
+\T1/stix/m/n/10 On the other hand, tak-ing the cor-re-la-tion be-tween the
+ []
+
+[5]
+<figs/comparison-between-IH-data-and-model.png, id=61, 599.23875pt x 346.29375p
+t>
+File: figs/comparison-between-IH-data-and-model.png Graphic file (type png)
+<use figs/comparison-between-IH-data-and-model.png>
+Package pdftex.def Info: figs/comparison-between-IH-data-and-model.png  used on
+ input line 652.
+(pdftex.def)             Requested size: 238.25444pt x 137.68016pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 657--662
+
+ []
+
+
+Underfull \hbox (badness 2735) in paragraph at lines 671--674
+[]\T1/stix/m/n/8 P. F. P. Pi-menta et al., An overview of malaria trans-mis-sio
+n
+ []
+
+
+Underfull \hbox (badness 2285) in paragraph at lines 671--674
+\T1/stix/m/n/8 from the per-spec-tive of Ama-zon \T1/stix/m/it/8 Anophe-les vec
+-tors\T1/stix/m/n/8 , Memórias
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 671--674
+\T1/stix/m/n/8 do In-sti-tuto Os-waldo Cruz, Vol. 110 (1) (2015), 23-47,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 671--674
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 674--677
+\T1/stix/m/n/8 Com-mit-ment and Ga-me-to-cy-to-ge-n-e-sis in Malaria Par-a-site
+s,
+ []
+
+
+Underfull \hbox (badness 1917) in paragraph at lines 674--677
+\T1/stix/m/n/8 An-nual Re-view of Mi-cro-bi-ol-ogy, Vol. 72 (1) (2018), 501-519
+,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 674--677
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 677--680
+[]\T1/stix/m/n/8 World Health Or-ga-ni-za-tion / World Malaria Re-port 2022,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 677--680
+\T1/stix/m/n/8 Global Malaria Pro-gramme, ac-cessed on 29 Au-gust 2024,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 677--680
+
+ []
+
+
+Underfull \hbox (badness 2088) in paragraph at lines 680--683
+[]\T1/stix/m/n/8 M. da Silva-Nunes et al., Malaria on the Ama-zo-nian fron-tier
+:
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 680--683
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 683--686
+
+ []
+
+
+Underfull \hbox (badness 2050) in paragraph at lines 686--689
+\T1/stix/m/n/8 of en-vi-ron-men-tal, epi-demi-o-log-i-cal, and eco-nomic in-di-
+ca-tors for
+ []
+
+
+Underfull \hbox (badness 1496) in paragraph at lines 686--689
+\T1/stix/m/n/8 the Brazil-ian Ama-zon, Sci-en-tific Data, Vol. 10 (1) (2023), 6
+5,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 686--689
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 689--692
+\T1/stix/m/n/8 Trans-mis-sion, Mod-elling Par-a-site Trans-mis-sion and Con-tro
+l,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 689--692
+
+ []
+
+
+Underfull \hbox (badness 8000) in paragraph at lines 692--695
+[]\T1/stix/m/n/8 N. J. Arisco, C. Pe-terka, C. Di-niz, B. H. Singer, M. C.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 692--695
+\T1/stix/m/n/8 Cas-tro, Eco-log-i-cal change in-creases malaria risk in the
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 692--695
+
+ []
+
+
+Underfull \hbox (badness 1484) in paragraph at lines 695--698
+\T1/stix/m/n/8 Phys-i-cal Jour-nal Spe-cial Top-ics, Vol. 225 (3) (2016), 459-4
+70,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 695--698
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 698--701
+
+ []
+
+
+Underfull \hbox (badness 4328) in paragraph at lines 701--704
+[]\T1/stix/m/n/8 J. Oliveira-Ferreira, M. V. Lac-erda, P. Brasil et al., Malari
+a
+ []
+
+
+Underfull \hbox (badness 4846) in paragraph at lines 701--704
+\T1/stix/m/n/8 in Brazil: an overview., Malaria Jour-nal, Vol. 9 (1) (2010),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 701--704
+
+ []
+
+
+Underfull \hbox (badness 2073) in paragraph at lines 704--707
+\T1/stix/m/n/8 F. C. Coelho, A. M. V. Mon-teiro, Epi-demi-ol-ogy, Bio-di-ver-si
+ty,
+ []
+
+
+Underfull \hbox (badness 1997) in paragraph at lines 704--707
+\T1/stix/m/n/8 and Tech-no-log-i-cal Tra-jec-to-ries in the Brazil-ian Ama-zon:
+ From
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 704--707
+
+ []
+
+
+Underfull \hbox (badness 1102) in paragraph at lines 707--710
+\T1/stix/m/n/8 Jour-nal of Trop-i-cal Medicine and Hy-giene, Vol. 76 (3) (2007)
+,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 707--710
+\T1/stix/m/n/8 461-469, [][]https://www.ajtmh.org/view/journals/tpmd/76/3/artic
+le-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 707--710
+
+ []
+
+
+Underfull \hbox (badness 6775) in paragraph at lines 710--717
+[]\T1/stix/m/n/8 Tabnet, Min-istério da Saúde, ac-cessed on 12 Au-gust 2024,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 710--717
+
+ []
+
+[6 <./figs/comparison-between-IH-data-and-model.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 717--720
+[]\T1/stix/m/n/8 Biblioteca IBGE, 2000, ac-cessed on 11 Novem-ber
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 717--720
+\T1/stix/m/n/8 2024, [][]https://biblioteca.ibge.gov.br/index.php/biblioteca-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 717--720
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 720--723
+[][]\T1/stix/m/n/8 https://www.ibge.gov.br/estatisticas/sociais/populacao/9662-
+censo-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 720--723
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 723--726
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 726--729
+[]\T1/stix/m/n/8 SIVEP Malaria, ac-cessed on 10 Oc-to-ber 2024,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 726--729
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 729--732
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 732--735
+[]\T1/stix/m/n/8 D. E. Nor-ris, Mosquito-borne Dis-eases as a Con-se-quence
+ []
+
+
+Underfull \hbox (badness 5147) in paragraph at lines 732--735
+\T1/stix/m/n/8 of Land Use Change, Eco-Health, Vol. 1 (1) (2004), 19-24,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 732--735
+
+ []
+
+
+Underfull \hbox (badness 5908) in paragraph at lines 735--738
+[]\T1/stix/m/n/8 Anopheles, Fiocruz Rondô-nia, ac-cessed on 15 Au-gust 2024,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 735--738
+
+ []
+
+
+Underfull \hbox (badness 3612) in paragraph at lines 738--741
+[]\T1/stix/m/n/8 M. da Silva-Nunes, En-vi-ron-men-tal changes im-pact in malari
+a
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 738--741
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 741--744
+
+ []
+
+
+Underfull \hbox (badness 1460) in paragraph at lines 744--748
+[]\T1/stix/m/n/8 G. R. de Lima, A. N. Ar-cos, E.V. dos San-tos, R. C. Simões,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 744--748
+\T1/stix/m/n/8 C.A.P. Lima, W. P. Tadei, Anophe-les Lar-val Abun-dance
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 744--748
+\T1/stix/m/n/8 in Ar-ti-fi-cial Breed-ing Sites in the East Zone of Man-aus,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 744--748
+\T1/stix/m/n/8 Ama-zon, South Amer-i-can Jour-nal of Ba-sic Ed-u-ca-tion,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 744--748
+\T1/stix/m/n/8 Tech-ni-cal and Tech-no-log-i-cal, Vol. 8 (1) (2021), 35^^U47,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 744--748
+
+ []
+
+
+Underfull \hbox (badness 1231) in paragraph at lines 748--751
+\T1/stix/m/n/8 Alen-car, B. F. T. Rudorff, H. Hase-nack, M. Mat-sumoto, L. G.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 748--751
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 751--754
+
+ []
+
+
+Underfull \hbox (badness 3612) in paragraph at lines 754--757
+[]\T1/stix/m/n/8 M. da Silva-Nunes, En-vi-ron-men-tal changes im-pact in malari
+a
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 754--757
+
+ []
+
+
+Underfull \hbox (badness 1609) in paragraph at lines 757--760
+[]\T1/stix/m/n/8 L. S. M. Chaves, E. S. Bergo, J. E. Conn, G. Z. La-porta, P.
+ []
+
+
+Underfull \hbox (badness 1360) in paragraph at lines 757--760
+\T1/stix/m/n/8 R. Prist, M. A. M. Sal-lum, An-thro-pogenic land-scape de-crease
+s
+ []
+
+
+Underfull \hbox (badness 7740) in paragraph at lines 757--760
+\T1/stix/m/n/8 mosquito bio-di-ver-sity and drives malaria vec-tor pro-lif-er-a
+-tion
+ []
+
+
+Underfull \hbox (badness 5578) in paragraph at lines 757--760
+\T1/stix/m/n/8 in the Ama-zon rain-for-est, PLOS ONE, Vol. 16 (1) (2021),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 757--760
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 760--763
+
+ []
+
+
+Underfull \hbox (badness 1237) in paragraph at lines 763--766
+[]\T1/stix/m/n/8 C. F. Lima, F. T. P. Tor-res, L. J. Minette, F. A. Lima, R. C.
+
+ []
+
+
+Underfull \hbox (badness 1484) in paragraph at lines 763--766
+\T1/stix/m/n/8 A. Lima et al, Is there a re-la-tion-ship be-tween for-est fires
+ and
+ []
+
+
+Underfull \hbox (badness 3039) in paragraph at lines 763--766
+\T1/stix/m/n/8 de-for-esta-tion in the Brazil-ian Ama-zon?, PLOS ONE, Vol. 19
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 763--766
+
+ []
+
+
+Underfull \hbox (badness 4120) in paragraph at lines 766--769
+[]\T1/stix/m/n/8 P. M. Fearn-side, Con-ser-va-tion Pol-icy in Brazil-ian Ama-zo
+-nia:
+ []
+
+
+Underfull \hbox (badness 1406) in paragraph at lines 766--769
+\T1/stix/m/n/8 Un-der-stand-ing the Dilem-mas, World De-vel-op-ment, Vol. 31 (5
+),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 766--769
+
+ []
+
+
+Underfull \hbox (badness 1953) in paragraph at lines 769--772
+\T1/stix/m/n/8 Brazil-ian Ama-zon: Threats and op-por-tu-ni-ties, Re-search Squ
+are,
+ []
+
+
+Underfull \hbox (badness 5316) in paragraph at lines 769--772
+\T1/stix/m/n/8 PREPRINT (Ver-sion 1) (2024), [][]https://doi.org/10.21203/rs.3.
+rs-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 769--772
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 772--775
+[]\T1/stix/m/n/8 G1, M. Cas-tro, "Ama-zonas reg-is-tra 21,6 mil
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 772--775
+\T1/stix/m/n/8 queimadas em 2024 e tem o pior índice em 26
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 772--775
+\T1/stix/m/n/8 anos, aponta Inpe", ac-cessed on 28 Septem-ber 2024,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 772--775
+[][]\T1/stix/m/n/8 https://g1.globo.com/am/amazonas/noticia/2024/09/24/amazonas
+-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 772--775
+\T1/stix/m/n/8 registra-216-mil-queimadas-em-2024-e-tem-o-pior-indice-em-26-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 772--775
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 775--778
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 778--781
+\T1/stix/m/n/8 (1985-2023), V1 (2024), ac-cessed on 24 Septem-ber 2024,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 778--781
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 781--784
+[]\T1/stix/m/n/8 TerraBrasilis, DE-TER (No-tices), Anal-y-ses -
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 781--784
+\T1/stix/m/n/8 Amazô-nia Biome, Monthly vari-a-tion of DE-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 781--784
+\T1/stix/m/n/8 TER project area, ac-cessed on 17 Oc-to-ber 2024,
+ []
+
+
+Overfull \hbox (6.38553pt too wide) in paragraph at lines 781--784
+[][]\T1/stix/m/n/8 https://terrabrasilis.dpi.inpe.br/app/dashboard/alerts/biome
+s/amazonia-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 781--784
+
+ []
+
+
+Underfull \hbox (badness 3168) in paragraph at lines 784--787
+[]\T1/stix/m/n/8 TerraBrasilis, DE-TER (No-tices), Anal-y-ses - Amazô-nia Biome
+,
+ []
+
+
+Overfull \hbox (6.38553pt too wide) in paragraph at lines 784--787
+[][]\T1/stix/m/n/8 https://terrabrasilis.dpi.inpe.br/app/dashboard/alerts/biome
+s/amazonia-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 784--787
+
+ []
+
+
+Underfull \hbox (badness 3386) in paragraph at lines 787--790
+\T1/stix/m/n/8 sub-threshold en-demic equi-lib-ria for com-part-men-tal mod-els
+ of
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 787--790
+
+ []
+
+[7]
+Overfull \hbox (238.25444pt too wide) in paragraph at lines 802--802
+ []$[]$ 
+ []
+
+
+Overfull \hbox (238.25444pt too wide) in paragraph at lines 804--822
+ [][] 
+ []
+
+
+Overfull \hbox (238.25444pt too wide) in paragraph at lines 827--827
+ []$[]$ 
+ []
+
+
+Package natbib Warning: Citation `Ecological_Change_Malaria_Risk' on page 8 und
+efined on input line 852.
+
+
+Package natbib Warning: Citation `McCord2016' on page 8 undefined on input line
+ 855.
+
+
+Package natbib Warning: Citation `Lindsay_Birley_1996' on page 8 undefined on i
+nput line 855.
+
+
+Overfull \hbox (238.25444pt too wide) in paragraph at lines 829--865
+ [][] 
+ []
+
+No file cas-dc-article.bbl.
+
+Package natbib Warning: There were undefined citations.
+
+[8
+
+
+] (cas-dc-article.aux
+
+Package natbib Warning: Citation(s) may have changed.
+(natbib)                Rerun to get citations correct.
+
+)
+ ***********
+LaTeX2e <2025-11-01>
+L3 programming layer <2025-12-24>
+ ***********
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+Package rerunfilecheck Info: File `cas-dc-article.out' has not changed.
+(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
+ ) 
+Here is how much of TeX's memory you used:
+ 18275 strings out of 467871
+ 284907 string characters out of 5418376
+ 704489 words of memory out of 5000000
+ 46790 multiletter control sequences out of 15000+600000
+ 750267 words of font info for 206 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 90i,16n,117p,590b,603s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ <C:\Users\rapha\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecsx
+0900.pk> <C:\Users\rapha\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi60
+0\ecss0900.pk><C:/Users/rapha/AppData/Local/Programs/MiKTeX/fonts/type1/public/
+inconsolata/Inconsolata-zi4r.pfb><C:/Users/rapha/AppData/Local/Programs/MiKTeX/
+fonts/type1/public/stix/STIXGeneral-Bold.pfb><C:/Users/rapha/AppData/Local/Prog
+rams/MiKTeX/fonts/type1/public/stix/STIXGeneral-Italic.pfb><C:/Users/rapha/AppD
+ata/Local/Programs/MiKTeX/fonts/type1/public/stix/STIXGeneral-Regular.pfb><C:/U
+sers/rapha/AppData/Local/Programs/MiKTeX/fonts/type1/public/stix/stix-mathcal.p
+fb><C:/Users/rapha/AppData/Local/Programs/MiKTeX/fonts/type1/public/stix/stix-m
+athex.pfb><C:/Users/rapha/AppData/Local/Programs/MiKTeX/fonts/type1/public/stix
+/stix-mathit.pfb><C:/Users/rapha/AppData/Local/Programs/MiKTeX/fonts/type1/publ
+ic/stix/stix-mathrm.pfb><C:/Users/rapha/AppData/Local/Programs/MiKTeX/fonts/typ
+e1/public/stix/stix-mathscr.pfb><C:/Users/rapha/AppData/Local/Programs/MiKTeX/f
+onts/type1/public/stix/stix-mathsf.pfb>
+Output written on cas-dc-article.pdf (8 pages, 362742 bytes).
+PDF statistics:
+ 314 PDF objects out of 1000 (max. 8388607)
+ 77 named destinations out of 1000 (max. 500000)
+ 11 words of extra memory for PDF output out of 10000 (max. 10000000)
+
