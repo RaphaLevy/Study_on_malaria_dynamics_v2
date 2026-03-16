@@ -1,2 +1,4 @@
 .env
 .ipynb_checkpoints/
+# Ignore all malaria notification data CSV files (too large for Github)
+data_files/data/sivep_notification_data/malaria_notification_data_csv/
