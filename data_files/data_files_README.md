@@ -1,4 +1,4 @@
-All files in this folder are regard data collection and treatment.
+All files in this folder regard data collection and treatment.
 
 - data/:
     - climate_api_data_2016_2024.csv: Contains climate data obtained from the Mosqlimate datastore [https://api.mosqlimate.org/api/docs#/datastore/datastore_api_get_copernicus_brasil](https://api.mosqlimate.org/api/docs#/datastore/datastore_api_get_copernicus_brasil)
