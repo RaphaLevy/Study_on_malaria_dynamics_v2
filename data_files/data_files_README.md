@@ -10,6 +10,7 @@ All files in this folder regard data collection and treatment.
 - notebooks/:
     - DETER_Deforestation.ipynb: Collects and treats deforestation notification data from 2016 to 2024, obtained from the TerraBrasilis website
     - INPE_Fire_Counts.ipynb: Collects and treats fire counts data from 2016 to 2024, obtained from the Base dos Dados dataset
+    - Manaus_Vivax_Cases.ipynb: Gathers treated SIVEP data on malaria cases from 2003 to 2023 and filters them to Manaus 
     - Mosqlimate_API_Data.ipynb: Collects and treats climate data from 2016 to 2024, obtained from the Mosqlimate datastore 
     - Parquet_to_CSV.ipynb: Converts original .parquet files to .csv
     - SIVEP_CSV_Data_Cleaning.ipynb: Treats converted .csv files by removing unused columns and filtering to specific cases
