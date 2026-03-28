@@ -136,7 +136,7 @@ This paper aims to analyze the behavior of malaria transmission in the Amazon re
 The Trajetórias Project, developed by the Synthesis Center 
 on Biodiversity and Ecosystem Services (SinBiose/CNPq) was used as an initial reference for the study. 
 \\\\
-This work employs a modified SIR/SEI methodology, based on work from Parham and Michael (2010) which takes into account rainfall and temperature, with further modifications. %Primary results show that the model is too sensible on some parameters, and using values indicated by other papers did not give the same results, opening up future work to compare the modified model equations with the originals. With the obtained results, it was possible to verify a strong effect caused by increased contact of host and vectors on the transmission of the disease. 
+This work employs a modified SEIRS/SEI methodology, based on the SIR/SEI model developed by Parham and Michael (2010) which takes into account rainfall and temperature, with further modifications. %Primary results show that the model is too sensible on some parameters, and using values indicated by other papers did not give the same results, opening up future work to compare the modified model equations with the originals. With the obtained results, it was possible to verify a strong effect caused by increased contact of host and vectors on the transmission of the disease. 
 
 \end{abstract}
 
@@ -161,7 +161,7 @@ This work employs a modified SIR/SEI methodology, based on work from Parham and 
 %\end{highlights}
 
 \begin{keywords}
-Biological modelling \sep Malaria transmission \sep Climate change \sep Amazon \sep SIR \sep SEI
+Biological modelling \sep Malaria transmission \sep Climate change \sep Amazon \sep SIR \sep SEI \sep SEIRS
 \end{keywords}
 
 
@@ -216,7 +216,9 @@ of agrarian systems, whether they are family-based rural or of large-scale
 agricultural and livestock production, the availability of natural resources, 
 and the risk of diseases \cite{Rorato2023}.
 
-\section{Base SIR-SEI model}
+\section{Model formulation}
+
+\subsection{Base SIR-SEI model}
 Based on previous work developed to model the transmission of malaria based on precipitation and temperature dynamics \cite{Parham2010}, we focus 
 on two different sets of compartments of hosts and vectors: susceptible, infected and recovered hosts $\left(S_H, \ I_H, \ R_H \text{ respectively}\right)$, and susceptible, 
 exposed and infected vectors $\left(S_M, \ E_M, \ I_M \text{ respectively}\right)$. 
@@ -239,7 +241,7 @@ The parameters are given in \textbf{Table A.1}, while the variables are given in
 However, the use of these equations proved to be unsuccessful for the modelling of the mosquito populations through the SEI equations, 
 causing the population on susceptible individuals to oscillate with negative values. This is due to the parameter $b$, the daily birth rate of mosquitos, 
 which uses the probability of survival of pupae, larvae and eggs dependant on rainfall, all of which include $(R_L - R)$ in their calculation. Although the 
-value of $R_L$ used in the end was large enough to avoid negative results in this case, that being 968 mm of monthly precipitation, or roughly 32.26 mm of daily precipitation \cite{Ecological_Change_Malaria_Risk}, 
+value of $R_L$ used in the end was large enough to avoid negative results in this case, that being 968 mm of monthly precipitation, or roughly 32.27 mm of daily precipitation \cite{Ecological_Change_Malaria_Risk}, 
 the modifications were kept nonetheless in order to avoid further problems.
 \\\\
 In addition to that, it was noted that, using the parameters based on Tanzanian 
@@ -251,9 +253,9 @@ and a new parameter, $b_3$ to move mosquitos from $E$ to $I$. Being inversely re
 In addition to that, the parameter $a(T)$ that was in use in the transition between exposed and infected also had to be removed, as no further bites occur at this point. 
 The parameter $l$ also had to be disassociated from the infection rate of exposed individual ($b_3$).
 \\\\
-Further modifications were done on parameters $A$, $B$ and $C$, as small enough values for these parameters, mostly for $A$, increases $\mu$ 
-and leads the population to extinction. They were modified in order for $\mu$ to be on 
-a scale of $4.02 \times 10^{-6}$, making the mosquito population relatively constant. 
+%Further modifications were done on parameters $A$, $B$ and $C$, as small enough values for these parameters, mostly for $A$, increases $\mu$ 
+%and leads the population to extinction. They were modified in order for $\mu$ to be on 
+%a scale of $4.02 \times 10^{-6}$, making the mosquito population relatively constant. 
 \\\\
 The SIR equations were also modified, to take into consideration population dynamics, including a $\mu_H$ parameter as a birth rate. Given the positive growth of the studied population, a death rate was neglected for this study.
 \\\\
@@ -271,10 +273,16 @@ The updated equations used in the model are as following:
 \dfrac{dE_M}{dt} & = ab_1\left(\dfrac{I_H}{N}\right)S_M -\left( \mu + b_3+l\right)E_M \label{eq5} \\%ab_1\bigg(\dfrac{I_H}{N}\bigg)S_M - \mu E_M - ab_1\bigg(\dfrac{I_H}{N}\bigg)S_Ml(\tau_M) \label{eq5}\\
 \dfrac{dI_M}{dt} & = b_3E_M -\mu I_M  \label{eq6} %ab_1\bigg(\dfrac{I_H}{N}\bigg)S_Ml(\tau_M) - \mu I_M \label{eq6}
 \end{align}
-\\
+
+
+\subsection{Base SEIRS-SEI model}
+
+
+\section{Data description and processing}
 It was decided to use data from cases caused by $P. \ vivax$ as this species is responsible for the highest number of malaria cases in Brazil \cite{OliveiraFerreira2010, 10.3389/fpubh.2021.647754}, being the most common human malaria parasite in the region \cite{Vector_Incrimination}.
 \\\\
-Based on higher incidence and number of cases, the municipalities chosen for analysis were Macapá (AP), Porto Velho (RO), Cruzeiro do Sul (AC) and Manaus (AM), especially the rural zones of Manaus, as  it had the highest incidence of malaria caused by $P. \ vivax$ in the Amazon region. Now, as it was not possible to identify the population in rural areas based on available census data, we used the Trajetórias Project to estimate this population based on the incidence function given \cite{Rorato2023}:
+Based on higher incidence and number of cases, the municipality initially chosen for analysis was of Manaus, especially the rural zones, as  it had the highest incidence of malaria caused by $P. \ vivax$ in the Amazon region. Now, as it was not possible to identify the population in rural areas based on available census data, we used the Trajetórias Project to estimate this population based on the incidence function given \cite{Rorato2023}:
+%Based on higher incidence and number of cases, the municipalities chosen for analysis were Macapá (AP), Porto Velho (RO), Cruzeiro do Sul (AC) and Manaus (AM), especially the rural zones of Manaus, as  it had the highest incidence of malaria caused by $P. \ vivax$ in the Amazon region. Now, as it was not possible to identify the population in rural areas based on available census data, we used the Trajetórias Project to estimate this population based on the incidence function given \cite{Rorato2023}:
 
 %The selected human population was from the the rural area of Manaus, the capital of the state of Amazonas, initially being used between the years of 2004 to 2008, 
 %as it had the highest incidence of malaria caused by $P. \ vivax$ in the Amazon region \cite{Rorato2023}, but this was later modified due to the little ammount 
@@ -314,14 +322,18 @@ approximately 0.4$\%$ of the municipality's population, the number of cases in r
 period, and about $7.2\%$ of the cases in the state. With this, we will use that the rural population represents roughly $0.45\%$ of Manaus' population, 
 and the number of rural cases to be around $35.75\%$ of the total cases in the city. 
 \\\\
-In order to use the latest and complete avaliable data on registered cases and deforestation and forest fires noticed, this study was done between the years of 2017 to 2021. Additional data was gathered to take into consideration the average duration of infectiousness ($\gamma$), so in order to construct a more complete model, the complete data for the study was gathered from April 2016 to April 2022. 
-\\\\
-%In the end, it was decided to use the years of 2017 to 2021 as our period of study.
-%%
-The yearly population for all four municipalities was conctructed via interpolation using data from IBGE (Brazilian Institute of Geography and Statistics, governmental body responsible for the official Brazilian censuses), based on the censuses of 2000, 2010 and 2022 \cite{Census2000, Census2010, Census2022}, in order to use the lag months of December of 2016 and January of 2022 in later analysis.
+The yearly population was constructed via interpolation using data from IBGE (Brazilian Institute of Geography and Statistics, governmental body responsible for the official Brazilian censuses), based on the censuses of 2000, 2010 and 2022, and an estimation of the population of 2025 \cite{Census2000, Census2010, Census2022}.%
 \\\\
 As the data on malaria cases from the Trajetorias project was not given annually, but instead as a sum of cases in each five-year period of study, 
 yearly data was obtained from SIVEP \cite{SIVEP_Malaria}, which registers notifications from every brazillian municipality from 2003 to 2023.
+\\\\
+In order to use the latest and complete avaliable data on registered cases and deforestation and forest fires noticed, this study was done using data from 2016 to 2024, but limited to the years of 2017 to 2023, given that the SIVEP database didn't include registered data from 2024 at the time of development of this study. 
+%Additional data was gathered to take into consideration the average duration of infectiousness ($\gamma$), so in order to construct a more complete model, the complete data for the study was gathered from April 2016 to April 2022. 
+\\\\
+%In the end, it was decided to use the years of 2017 to 2021 as our period of study.
+%%
+\\\\
+
 
 %Given the population growth between 2017 and 2021, the annual birth rate in the rural areas of Manaus was 
 %estimated to be 98 births per year, around 0.268 per day and given an estimated mean rural population of 8992, 0.00003 births per person per year ($\mu_H$). 
