@@ -4,6 +4,10 @@ All files in this folder regard data collection and treatment.
     - deter_notification_data/: Contains original and treated .csv files of notified cases of deforestation in km² obtained from DETER [https://terrabrasilis.dpi.inpe.br/app/dashboard/alerts/biomes/amazonia-nb/daily/#](https://terrabrasilis.dpi.inpe.br/app/dashboard/alerts/biomes/amazonia-nb/daily/#)
     - sivep_notification_data/: Contains original .parquet and treated .csv files of cases of infection by malaria obtained from SIVEP
     - climate_api_data_2016_2024.csv: Contains climate data obtained from the Mosqlimate datastore [https://api.mosqlimate.org/api/docs#/datastore/datastore_api_get_copernicus_brasil](https://api.mosqlimate.org/api/docs#/datastore/datastore_api_get_copernicus_brasil)
+    - ibge_manaus_population_data_2016_2024.csv: Contains interpolated daily population data of Manaus, obtained from IBGE
+        - 2000: [https://biblioteca.ibge.gov.br/index.php/biblioteca-catalogo?view=detalhes&id=7308 (Tabelas Excel > AM > UF > Tabela 15)](https://biblioteca.ibge.gov.br/index.php/biblioteca-catalogo?view=detalhes&id=7308)
+        - 2010: [https://www.ibge.gov.br/estatisticas/sociais/populacao/9662-censo-demografico-2010.html?=&t=resultados (Amazonas > Tabela 2.1.3)](https://www.ibge.gov.br/estatisticas/sociais/populacao/9662-censo-demografico-2010.html?=&t=resultados)
+        - 2022, 2025: [https://cidades.ibge.gov.br/brasil/am/manaus/panorama](https://cidades.ibge.gov.br/brasil/am/manaus/panorama); [https://www.ibge.gov.br/cidades-e-estados/am/manaus.html](https://www.ibge.gov.br/cidades-e-estados/am/manaus.html)
     - inpe_fire_counts_data_2016_2024.csv: Contains daily fire counts data gathered by INPE, obtained from the Base dos Dados dataset
 [https://basedosdados.org/dataset/f06f3cdc-b539-409b-b311-1ff8878fb8d9?table=a3696dc2-4dd1-4f7e-9769-6aa16a1556b8](https://basedosdados.org/dataset/f06f3cdc-b539-409b-b311-1ff8878fb8d9?table=a3696dc2-4dd1-4f7e-9769-6aa16a1556b8)
 
