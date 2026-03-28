@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.3.13)  28 MAR 2026 11:12
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.3.13)  28 MAR 2026 13:42
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -680,32 +680,7 @@ LaTeX Font Info:    Trying to load font information for T1+stix on input line 4
 (C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/stix\t1stix.fd
 File: t1stix.fd 2015/04/17 v1.1.2-latex STIX T1 font definitions
 )
-(cas-dc-article.aux
-
-LaTeX Warning: Label `eq1' multiply defined.
-
-
-LaTeX Warning: Label `eq2' multiply defined.
-
-
-LaTeX Warning: Label `eq3' multiply defined.
-
-
-LaTeX Warning: Label `eq4' multiply defined.
-
-
-LaTeX Warning: Label `eq5' multiply defined.
-
-
-LaTeX Warning: Label `eq6' multiply defined.
-
-
-LaTeX Warning: Label `eq1' multiply defined.
-
-
-LaTeX Warning: Label `eq2' multiply defined.
-
-)
+No file cas-dc-article.aux.
 \openout1 = `cas-dc-article.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 46.
@@ -729,7 +704,7 @@ LaTeX Font Info:    ... okay on input line 46.
 LaTeX Font Info:    Checking defaults for LS1/stix/m/n on input line 46.
 LaTeX Font Info:    Trying to load font information for LS1+stix on input line 
 46.
- (C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/stix\ls1stix.fd
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/stix\ls1stix.fd
 File: ls1stix.fd 2015/04/17 v1.1.2-latex STIX LS1 font definitions
 )
 LaTeX Font Info:    ... okay on input line 46.
@@ -770,7 +745,6 @@ File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 LaTeX Info: Command `\dddot' is already robust on input line 46.
 LaTeX Info: Command `\ddddot' is already robust on input line 46.
 Package hyperref Info: Link coloring ON on input line 46.
- (cas-dc-article.out) (cas-dc-article.out)
 \@outlinefile=\write3
 \openout3 = `cas-dc-article.out'.
 
@@ -889,21 +863,30 @@ Underfull \hbox (badness 10000) in paragraph at lines 168--6
 
 Package hyperref Warning: Ignoring empty anchor on input line 168.
 
-<thumbnails/cas-email.jpeg, id=3, 225.84375pt x 225.84375pt>
-File: thumbnails/cas-email.jpeg Graphic file (type jpg)
-<use thumbnails/cas-email.jpeg>
-Package pdftex.def Info: thumbnails/cas-email.jpeg  used on input line 168.
-(pdftex.def)             Requested size: 7.99838pt x 8.0pt.
-LaTeX Font Info:    Trying to load font information for T1+zi4 on input line 16
-8.
-(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/inconsolata\t1zi4.fd
-File: t1zi4.fd 2018/01/14 T1/zi4 (Inconsolata)
-)
-LaTeX Font Info:    Font shape `T1/zi4/m/n' will be
-(Font)              scaled to size 6.80005pt on input line 168.
+
+Package natbib Warning: Citation `pimenta_orfano_bahia_duarte_rios-velasquez_me
+lo_pessoa_oliveira_campos_villegas_etal_2015' on page 1 undefined on input line
+ 181.
 
 
-Package hyperref Warning: Ignoring empty anchor on input line 168.
+Package natbib Warning: Citation `regulation_of_sexual_commitment' on page 1 un
+defined on input line 185.
+
+
+Package natbib Warning: Citation `WHO2022' on page 1 undefined on input line 18
+5.
+
+
+Package natbib Warning: Citation `silva-nunes_malaria_amazon_2008' on page 1 un
+defined on input line 193.
+
+
+Package natbib Warning: Citation `DASILVANUNES2012281' on page 1 undefined on i
+nput line 195.
+
+
+Package natbib Warning: Citation `Rorato2023' on page 1 undefined on input line
+ 217.
 
 
 Underfull \hbox (badness 1194) in paragraph at lines 171--218
@@ -937,6 +920,10 @@ Underfull \hbox (badness 1264) in paragraph at lines 171--218
  []
 
 
+Package natbib Warning: Citation `Parham2010' on page 1 undefined on input line
+ 222.
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 222--227
 
  []
@@ -945,8 +932,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 222--227
 pha/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/stix/stix-t1.enc}
 
 
-{C:/Users/rapha/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/inconsolata/i4-t1
--0.enc} <./thumbnails/cas-email.jpeg>]
+]
+
+Package natbib Warning: Citation `Ecological_Change_Malaria_Risk' on page 2 und
+efined on input line 244.
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 237--267
 
  []
@@ -1028,6 +1019,22 @@ Underfull \hbox (badness 10000) in paragraph at lines 237--267
  []
 
 
+Package natbib Warning: Citation `OliveiraFerreira2010' on page 2 undefined on 
+input line 282.
+
+
+Package natbib Warning: Citation `10.3389/fpubh.2021.647754' on page 2 undefine
+d on input line 282.
+
+
+Package natbib Warning: Citation `Vector_Incrimination' on page 2 undefined on 
+input line 282.
+
+
+Package natbib Warning: Citation `Rorato2023' on page 2 undefined on input line
+ 284.
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 282--286
 
  []
@@ -1047,6 +1054,26 @@ LaTeX Font Warning: Command \footnotesize invalid in math mode on input line 31
 
 LaTeX Font Warning: Command \footnotesize invalid in math mode on input line 31
 1.
+
+
+Package natbib Warning: Citation `Datasus2006' on page 2 undefined on input lin
+e 316.
+
+
+Package natbib Warning: Citation `Census2000' on page 2 undefined on input line
+ 325.
+
+
+Package natbib Warning: Citation `Census2010' on page 2 undefined on input line
+ 325.
+
+
+Package natbib Warning: Citation `Census2022' on page 2 undefined on input line
+ 325.
+
+
+Package natbib Warning: Citation `SIVEP_Malaria' on page 2 undefined on input l
+ine 328.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 311--336
@@ -1094,8 +1121,86 @@ Underfull \hbox (badness 10000) in paragraph at lines 311--336
  []
 
 [2]
-Underfull \hbox (badness 1062) in paragraph at lines 343--392
-\T1/stix/m/n/10 gence of malaria in South Amer-ica [[]]. In de-for-ested
+
+Package natbib Warning: Citation `Norris2004' on page 3 undefined on input line
+ 344.
+
+
+Package natbib Warning: Citation `infoAnopheles' on page 3 undefined on input l
+ine 347.
+
+
+Package natbib Warning: Citation `article_alteracoesambientais' on page 3 undef
+ined on input line 351.
+
+
+Package natbib Warning: Citation `Biological_Variation_Anopheles' on page 3 und
+efined on input line 370.
+
+
+Package natbib Warning: Citation `Abundancia_Larval' on page 3 undefined on inp
+ut line 372.
+
+
+Package natbib Warning: Citation `Reconstructing_Three_Decades' on page 3 undef
+ined on input line 376.
+
+
+Package natbib Warning: Citation `Amazon_Defor_Drives_Malaria_Transmis' on page
+ 3 undefined on input line 376.
+
+
+Package natbib Warning: Citation `Alteracoes_Ambientais' on page 3 undefined on
+ input line 381.
+
+
+Package natbib Warning: Citation `Anthropogenic_Landscape' on page 3 undefined 
+on input line 381.
+
+
+Package natbib Warning: Citation `Future_of_Deforestation' on page 3 undefined 
+on input line 383.
+
+
+Package natbib Warning: Citation `Relationship_between_fires_and_defor' on page
+ 3 undefined on input line 383.
+
+
+Package natbib Warning: Citation `Conservation_Policy' on page 3 undefined on i
+nput line 384.
+
+
+Package natbib Warning: Citation `Threats_and_Opportunities' on page 3 undefine
+d on input line 386.
+
+
+Package natbib Warning: Citation `G1_Queimadas' on page 3 undefined on input li
+ne 386.
+
+
+Package natbib Warning: Citation `MapBIOMAS_Deforestation' on page 3 undefined 
+on input line 389.
+
+
+Package natbib Warning: Citation `MapBIOMAS_Forest_Fires' on page 3 undefined o
+n input line 389.
+
+
+Package natbib Warning: Citation `DETER_Deforestation' on page 3 undefined on i
+nput line 391.
+
+
+Package natbib Warning: Citation `MapBIOMAS_Deforestation' on page 3 undefined 
+on input line 391.
+
+
+Package natbib Warning: Citation `Daily_DETER' on page 3 undefined on input lin
+e 391.
+
+
+Underfull \hbox (badness 1028) in paragraph at lines 343--392
+\T1/stix/m/n/10 gence of malaria in South Amer-ica [\T1/stix/b/n/10 ? \T1/stix/
+m/n/10 ]. In de-for-ested
  []
 
 
@@ -1152,6 +1257,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 343--392
 
 [3]
 LaTeX Font Info:    Calculating math sizes for size <11> on input line 395.
+
+
+Package natbib Warning: Citation `Rep_Number_Comp_Model' on page 4 undefined on
+ input line 400.
+
 
 Underfull \hbox (badness 10000) in paragraph at lines 397--410
 
@@ -1264,8 +1374,8 @@ Underfull \hbox (badness 1546) in paragraph at lines 640--651
  []
 
 [5]
-<figs/comparison-between-IH-data-and-model.png, id=137, 599.23875pt x 346.29375
-pt>
+<figs/comparison-between-IH-data-and-model.png, id=63, 599.23875pt x 346.29375p
+t>
 File: figs/comparison-between-IH-data-and-model.png Graphic file (type png)
 <use figs/comparison-between-IH-data-and-model.png>
 Package pdftex.def Info: figs/comparison-between-IH-data-and-model.png  used on
@@ -1797,66 +1907,91 @@ Underfull \hbox (badness 10000) in paragraph at lines 803--806
  []
 
 [7]
-Overfull \hbox (238.25444pt too wide) in paragraph at lines 818--818
+Overfull \hbox (238.25444pt too wide) in paragraph at lines 819--819
  []$[]$ 
  []
 
 
-Overfull \hbox (238.25444pt too wide) in paragraph at lines 820--838
+Overfull \hbox (238.25444pt too wide) in paragraph at lines 821--839
  [][] 
  []
 
 
-Overfull \hbox (238.25444pt too wide) in paragraph at lines 843--843
+Overfull \hbox (238.25444pt too wide) in paragraph at lines 844--844
  []$[]$ 
  []
 
 
-Overfull \hbox (238.25444pt too wide) in paragraph at lines 845--881
+Package natbib Warning: Citation `Ecological_Change_Malaria_Risk' on page 8 und
+efined on input line 869.
+
+
+Package natbib Warning: Citation `McCord2016' on page 8 undefined on input line
+ 872.
+
+
+Package natbib Warning: Citation `Lindsay_Birley_1996' on page 8 undefined on i
+nput line 872.
+
+
+Overfull \hbox (238.25444pt too wide) in paragraph at lines 846--882
  [][] 
  []
 
 No file cas-dc-article.bbl.
+
+Package natbib Warning: There were undefined citations.
+
 [8
 
 
-] (cas-dc-article.aux)
+] (cas-dc-article.aux
+
+Package natbib Warning: Citation(s) may have changed.
+(natbib)                Rerun to get citations correct.
+
+)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
  ***********
 
 
-LaTeX Warning: There were multiply-defined labels.
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
-Package rerunfilecheck Info: File `cas-dc-article.out' has not changed.
-(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
+
+Package rerunfilecheck Warning: File `cas-dc-article.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `cas-dc-article.out':
+(rerunfilecheck)             Before: <no file>
+(rerunfilecheck)             After:  D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 18277 strings out of 467871
- 284778 string characters out of 5418376
- 706256 words of memory out of 5000000
- 46789 multiletter control sequences out of 15000+600000
- 747538 words of font info for 205 fonts, out of 8000000 for 9000
+ 18242 strings out of 467871
+ 283738 string characters out of 5418376
+ 704500 words of memory out of 5000000
+ 46763 multiletter control sequences out of 15000+600000
+ 749959 words of font info for 205 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 90i,16n,117p,613b,633s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 90i,16n,117p,613b,603s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\rapha\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecsx
 0900.pk> <C:\Users\rapha\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi60
 0\ecss0900.pk><C:/Users/rapha/AppData/Local/Programs/MiKTeX/fonts/type1/public/
-inconsolata/Inconsolata-zi4r.pfb><C:/Users/rapha/AppData/Local/Programs/MiKTeX/
-fonts/type1/public/stix/STIXGeneral-Bold.pfb><C:/Users/rapha/AppData/Local/Prog
-rams/MiKTeX/fonts/type1/public/stix/STIXGeneral-Italic.pfb><C:/Users/rapha/AppD
-ata/Local/Programs/MiKTeX/fonts/type1/public/stix/STIXGeneral-Regular.pfb><C:/U
-sers/rapha/AppData/Local/Programs/MiKTeX/fonts/type1/public/stix/stix-mathcal.p
-fb><C:/Users/rapha/AppData/Local/Programs/MiKTeX/fonts/type1/public/stix/stix-m
-athex.pfb><C:/Users/rapha/AppData/Local/Programs/MiKTeX/fonts/type1/public/stix
-/stix-mathit.pfb><C:/Users/rapha/AppData/Local/Programs/MiKTeX/fonts/type1/publ
-ic/stix/stix-mathrm.pfb><C:/Users/rapha/AppData/Local/Programs/MiKTeX/fonts/typ
-e1/public/stix/stix-mathscr.pfb><C:/Users/rapha/AppData/Local/Programs/MiKTeX/f
-onts/type1/public/stix/stix-mathsf.pfb>
-Output written on cas-dc-article.pdf (8 pages, 372239 bytes).
+stix/STIXGeneral-Bold.pfb><C:/Users/rapha/AppData/Local/Programs/MiKTeX/fonts/t
+ype1/public/stix/STIXGeneral-Italic.pfb><C:/Users/rapha/AppData/Local/Programs/
+MiKTeX/fonts/type1/public/stix/STIXGeneral-Regular.pfb><C:/Users/rapha/AppData/
+Local/Programs/MiKTeX/fonts/type1/public/stix/stix-mathcal.pfb><C:/Users/rapha/
+AppData/Local/Programs/MiKTeX/fonts/type1/public/stix/stix-mathex.pfb><C:/Users
+/rapha/AppData/Local/Programs/MiKTeX/fonts/type1/public/stix/stix-mathit.pfb><C
+:/Users/rapha/AppData/Local/Programs/MiKTeX/fonts/type1/public/stix/stix-mathrm
+.pfb><C:/Users/rapha/AppData/Local/Programs/MiKTeX/fonts/type1/public/stix/stix
+-mathscr.pfb><C:/Users/rapha/AppData/Local/Programs/MiKTeX/fonts/type1/public/s
+tix/stix-mathsf.pfb>
+Output written on cas-dc-article.pdf (8 pages, 341738 bytes).
 PDF statistics:
- 359 PDF objects out of 1000 (max. 8388607)
- 80 named destinations out of 1000 (max. 500000)
- 11 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 313 PDF objects out of 1000 (max. 8388607)
+ 82 named destinations out of 1000 (max. 500000)
+ 6 words of extra memory for PDF output out of 10000 (max. 10000000)
 
