@@ -229,7 +229,7 @@ The equations that describe the transmission are initially given as:
 \hspace{-3em} \dfrac{dS_H}{dt} & = -ab_2\left(\dfrac{I_M}{N}\right)S_H \label{eq1}\\
 \dfrac{dI_H}{dt} & = ab_2\left(\dfrac{I_M(t-\tau_H)}{N}\right)S_H(t-\tau_H) - \gamma I_H \label{eq2}\\
 \dfrac{dR_H}{dt} & = \gamma I_H \label{eq3}\\
-\dfrac{dS_M}{dt} & = b - \left(ab_1\left(\dfrac{I_H}{N}\right)+ \mu \right)S_M \label{eq4}\\\notag\\\notag\\
+\dfrac{dS_M}{dt} & = b - \left(ab_1\left(\dfrac{I_H}{N}\right)+ \mu \right)S_M \label{eq4}\\\notag\\
 \dfrac{dE_M}{dt} 
 & = ab_1\left(\dfrac{I_H}{N}\right)S_M - \mu E_M \notag\\
 &\quad - ab_1\left(\dfrac{I_H(t-\tau_M)}{N}\right)S_M(t-\tau_M)\ell(\tau_M) \label{eq5}\\
@@ -239,15 +239,17 @@ The equations that describe the transmission are initially given as:
 \\
 The parameters are given in \textbf{Table A.1}, while the variables are given in \textbf{Table A.2}, which can be found in the Appendix. 
 \\\\
-However, the use of these equations proved to be unsuccessful for the modelling of the mosquito populations through the SEI equations, 
-causing the population on susceptible individuals to oscillate with negative values. This is due to the parameter $b$, the daily birth rate of mosquitos, 
-which uses the probability of survival of pupae, larvae and eggs dependant on rainfall, all of which include $(R_L - R)$ in their calculation. Although the 
-value of $R_L$ used in the end was large enough to avoid negative results in this case, that being 968 mm of monthly precipitation, or roughly 32.27 mm of daily precipitation \cite{Ecological_Change_Malaria_Risk}, 
-the modifications were kept nonetheless in order to avoid further problems.
+However, the use of these equations proved to be unsuccessful in the appropriate modelling of the behavior of the disease, as can be seen in Figures 1A and 2A: while it would be expected for the number of infected humans to oscilate during the period of study, given that malaria is a recurring illness in the region, the model indicates that the number of infections would rapidly fall to 0, without occurrence of new cases.  
+%for the modelling of the mosquito populations through the SEI equations, 
+%causing the population on susceptible individuals to oscillate with negative values. This is due to the parameter $b$, the daily birth rate of mosquitos, 
+%which uses the probability of survival of pupae, larvae and eggs dependant on rainfall, all of which include $(R_L - R)$ in their calculation. Although the 
+%value of $R_L$ used in the end was large enough to avoid negative results in this case, that being 968 mm of monthly precipitation, or roughly 32.27 mm of daily precipitation \cite{Ecological_Change_Malaria_Risk}, 
+%the modifications were kept nonetheless in order to avoid further problems.
 \\\\
-In addition to that, it was noted that, using the parameters based on Tanzanian 
-data, the value of $\mu$, the mosquito mortality rate per capita, would be very close to 0, around $2.7 \times 10^{-3}$, while $l(\tau_M)$ would be close to 1. Because of this, $(5)$ would be very close to 0 as 
-well, causing mirrored oscillations of $S_M$ and $I_M$, and $E_M$ to be nearly constant.
+%In addition to that, it was noted that, using the parameters based on Tanzanian 
+%data, the value of $\mu$, the mosquito mortality rate per capita, would be very close to 0, around $2.7 \times 10^{-3}$, while $l(\tau_M)$ would be close to 1. Because of this, $(5)$ would be very close to 0 as 0
+%well, causing mirrored oscillations of $S_M$ and $I_M$, and $E_M$ to be nearly constant.
+In addition to that, it could also be seen that the mosquito population would also decline to near negligible levels, which could explain the lack of infections in the human population.
 \\\\
 To overcome this effect, the SEI equations were modified in order for $b_1$ to only be used in the transference between compartments $S$ and $E$, 
 and a new parameter, $b_3$ to move mosquitos from $E$ to $I$. Being inversely related to the incubation period, the definition of this rate can be found in \textbf{Table A.2}. 
@@ -257,8 +259,7 @@ The parameter $l$ also had to be disassociated from the infection rate of expose
 %Further modifications were done on parameters $A$, $B$ and $C$, as small enough values for these parameters, mostly for $A$, increases $\mu$ 
 %and leads the population to extinction. They were modified in order for $\mu$ to be on 
 %a scale of $4.02 \times 10^{-6}$, making the mosquito population relatively constant. 
-\\\\
-The SIR equations were also modified, to take into consideration population dynamics, including a $\mu_H$ parameter as a birth rate. Given the positive growth of the studied population, a death rate was neglected for this study.
+The SIR equations were also modified, to take into consideration population dynamics, including a $r_H$ parameter as the net human increase rate per capita, which could be explained by births or immigration to the municipality. Given the positive growth of the studied population, a death rate was neglected for this study.
 \\\\
 \\\\
 \\\\
@@ -267,7 +268,7 @@ The SIR equations were also modified, to take into consideration population dyna
 The updated equations used in the model are as following:  
 
 \begin{align}
-\dfrac{dS_H}{dt} & = \mu_HN-ab_2\left(\dfrac{I_M}{N}\right)S_H  \label{eq7}\\ %- \mu_HS_H \label{eq1}\\ %\dfrac{dS_H}{dt} & = -ab_2\bigg(\dfrac{I_M}{N}\bigg)S_H \label{eq1}\\
+\dfrac{dS_H}{dt} & = r_HN-ab_2\left(\dfrac{I_M}{N}\right)S_H  \label{eq7}\\ %- \mu_HS_H \label{eq1}\\ %\dfrac{dS_H}{dt} & = -ab_2\bigg(\dfrac{I_M}{N}\bigg)S_H \label{eq1}\\
 \dfrac{dI_H}{dt} & = ab_2\left(\dfrac{I_M}{N}\right)S_H-\gamma I_H \label{eq8}\\% - \mu_HI_H \label{eq2}\\ %\dfrac{dI_H}{dt} & = ab_2\bigg(\dfrac{I_M}{N}\bigg)S_H - \gamma I_H \label{eq2}\\
 \dfrac{dR_H}{dt} & = \gamma I_H \label{eq9}\\ % - \mu_HR_H \label{eq3}\\ %\dfrac{dR_H}{dt} & = \gamma I_H \label{eq3}\\
 \dfrac{dS_M}{dt} & = b - \left(ab_1\left(\dfrac{I_H}{N}\right) + \mu\right) S_M \label{eq10}\\ %b - ab_1\bigg(\dfrac{I_H}{N}\bigg)S_M - \mu S_M \label{eq4}\\
@@ -657,7 +658,7 @@ temperature and precipitation, that was found to be 0.687, 0.839 and -0.883, res
 Before including the environmental factors on the used model (7-12), its results were compared to a model based on SIVEP data, keeping use of equations (7, 10-12), but using
 \begin{align}
 I_H(t) & = \sum_{t=\max\left(0, \ k-\dfrac{1}{\gamma}+1 \right)}^{0\leq k \leq 1825} \text{\# of cases} \label{eq13}\\ 
-R_H(t) & = \max\left(0, \ N (1+\mu_H t) -S_H(t) -I_H(t)\right)\label{eq14}
+R_H(t) & = \max\left(0, \ N (1+r_H t) -S_H(t) -I_H(t)\right)\label{eq14}
 \end{align}
 \\
 $I_H(t)$ now being the moving sum of cases over a period of 120 days, as it is the average duration of infectiousness, and $R_H(t)$ being the difference between the initial population and the susceptible and infected population at each day, with the addition of the daily births.
@@ -864,7 +865,6 @@ $p_{ME}$  & Maximum probability of egg survival & Dimensionless \\
 $p_{ML}$  & Maximum probability of larval survival & Dimensionless \\ 
 $p_{MP}$  & Maximum probability of pupal survival & Dimensionless \\ 
 $\tau_E$  & Duration of the egg development phase & days \\ 
-$b_3$  & Infection rate in exposed mosquitoes ($1/\tau_M(T)$) &  days$^{-1}$ \\ 
 $\tau_P$  & Duration of the pupal development phase & days \\ 
 $\tau_H$  & Latent period of infection within humans & days \\ 
 $R_L$  & Rainfall threshold until breeding sites are eliminated, removing immature individuals: 32.26 \cite{Ecological_Change_Malaria_Risk} & mm \\ 
@@ -878,18 +878,39 @@ $D_1$  & Empirical sensitivity parameter: 36.5 & $^\circ C \ \text{days}$ \\
 $c_1$  & Empirical sensitivity parameter & $(^\circ C \ \text{days})^{-1}$ \\ 
 $c_2$  & Empirical sensitivity parameter & days$^{-1}$ \\ 
 $T'$  & Empirical temperature parameter & $^\circ C$ \\ 
+$b_3$  & Infection rate in exposed mosquitoes ($1/\tau_M(T)$) &  days$^{-1}$ \\ 
+$r_H$ & Net daily recruitment rate per capita & days$^{-1}$\\
 \bottomrule
 \end{tabular*}
 \end{table}
 \clearpage
 
-\subsection{Figures}
-\vspace{0.5cm}
-\renewcommand{\thefigure}{1A}
-\includegraphics[width=1.0\columnwidth]{figs/comparison-between-IH-data-and-model.png}
 
-\captionof{figure}{Ex.: Comparison between observed data of infections and model estimation of $I_H$.}
+\subsection{Figures}
+
+\renewcommand{\thefigure}{1A}
+\vspace{0.5cm}
+
+%\begin{figure*}[t]
+%\centering
+%\includegraphics[width=\textwidth]{figs/SIR_Model_Parham_and_Michael_values.png}
+%\caption{Results of the initial SIR model, with equations and parameters from \cite{Parham2010}.}
+%\end{figure*}
+\noindent
+\includegraphics[width=\columnwidth]{figs/SIR_Model_Parham_and_Michael_values.png}
+\captionof{figure}{Results of the initial SIR model, with equations and parameters from \cite{Parham2010}.}
 \label{FIG:1A}
+
+\vspace{0.8cm}
+
+\renewcommand{\thefigure}{2A}
+\vspace{0.8cm}
+
+\noindent
+\includegraphics[width=\columnwidth]{figs/SEI_Model_Parham_and_Michael_values.png}
+\captionof{figure}{Results of the initial SEI model, with equations and parameters from \cite{Parham2010}.}
+\label{FIG:2A}
+
 
 %\begin{figure}[H]
 	%\centering
