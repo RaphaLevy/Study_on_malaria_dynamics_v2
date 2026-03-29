@@ -32,6 +32,7 @@
 \usepackage{amsmath}
 \setlength{\mathindent}{5pt}
 \usepackage{caption}
+\usepackage{float}
 
 %%%Author definitions
 \def\tsc#1{\csdef{#1}{\textsc{\lowercase{#1}}\xspace}}
@@ -655,8 +656,8 @@ temperature and precipitation, that was found to be 0.687, 0.839 and -0.883, res
 \section{Results}
 Before including the environmental factors on the used model (7-12), its results were compared to a model based on SIVEP data, keeping use of equations (7, 10-12), but using
 \begin{align}
-I_H(t) & = \sum_{t=\max\left(0, \ k-\dfrac{1}{\gamma}+1 \right)}^{0\leq k \leq 1825} \text{\# of cases} \label{eq1}\\ 
-R_H(t) & = \max\left(0, \ N (1+\mu_H t) -S_H(t) -I_H(t)\right)\label{eq2}
+I_H(t) & = \sum_{t=\max\left(0, \ k-\dfrac{1}{\gamma}+1 \right)}^{0\leq k \leq 1825} \text{\# of cases} \label{eq13}\\ 
+R_H(t) & = \max\left(0, \ N (1+\mu_H t) -S_H(t) -I_H(t)\right)\label{eq14}
 \end{align}
 \\
 $I_H(t)$ now being the moving sum of cases over a period of 120 days, as it is the average duration of infectiousness, and $R_H(t)$ being the difference between the initial population and the susceptible and infected population at each day, with the addition of the daily births.
@@ -880,9 +881,23 @@ $T'$  & Empirical temperature parameter & $^\circ C$ \\
 \bottomrule
 \end{tabular*}
 \end{table}
+\clearpage
 
 \subsection{Figures}
-a
+\vspace{0.5cm}
+\renewcommand{\thefigure}{1A}
+\includegraphics[width=1.0\columnwidth]{figs/comparison-between-IH-data-and-model.png}
+
+\captionof{figure}{Ex.: Comparison between observed data of infections and model estimation of $I_H$.}
+\label{FIG:1A}
+
+%\begin{figure}[H]
+	%\centering
+%	\includegraphics[width=1\columnwidth]{figs/comparison-between-IH-data-and-model.png}
+%	\caption{Comparison between observed data of infections and model estimation of $I_H$.}
+%	\label{FIG:2}
+%\end{figure}
+
 %%%%AAAA
 \printcredits
 
