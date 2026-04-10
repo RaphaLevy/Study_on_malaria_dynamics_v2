@@ -5,3 +5,5 @@ data_files/data/sivep_notification_data/malaria_notification_data_csv/
 data_files/data/sivep_notification_data/treated_malaria_notification_data/malaria_vivax_treated.csv
 # Ignore all Epigrass test files (used only for local testing and development)
 epigrass_tests/
+# Ignore specific test file that was used for local testing and development (optimization didn't work well)
+models/Test_SEIRS_SEI_Model-Copy1.ipynb 
