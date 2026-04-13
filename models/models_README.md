@@ -6,6 +6,7 @@ All files in this folder regard models in development. They are separated in SIR
   - Plot_Model_Base_Functions.ipynb: File for plotting environmental functions used in the model using DDE methods (**Under development**)
   - Test_DDE_Model.ipynb: Updated SIR/SEI model to use DDE methods and appropriate solver, with analysis of infection dynamics in relation to climate factors
 - seirs_sei:
+  - Compare_Results_With_Without_Intervention.ipynb: File for comparison of results between SEIRS-SEI model with environmental dynamics with and without intervention 
   - SEIRS_SEI_Environment_Functions.ipynb: File for plotting environmental functions used in the model (**Under development**)
   - Test_SEIRS_SEI_Model.ipynb: SEIRS/SEI model with DDE solver, comparing infection data and result of model
   - Test_SEIRS_SEI_Model_Environment.ipynb: Updated SEIRS/SEI model with DDE solver, including deforestation and forest fires dynamics to approximate model result to actual data
