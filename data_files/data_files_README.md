@@ -17,6 +17,7 @@ All files in this folder regard data collection and treatment.
     - DETER_Deforestation.ipynb: Collects and treats deforestation notification data from 2016 to 2024, obtained from the TerraBrasilis website
     - IBGE_Population_Data.ipynb: Uses and treats IBGE data to estimate yearly and daily population of Manaus from 2016 to 2024
     - INPE_Fire_Counts.ipynb: Collects and treats fire counts data from 2016 to 2024, obtained from the Base dos Dados dataset
+    - Manaus_Population_Correction.ipynb: Collects an treats populational data from Manaus in different time periods, looking for possible inconsistencies on the data
     - Manaus_Vivax_Cases.ipynb: Gathers treated SIVEP data on malaria cases from 2003 to 2023 and filters them to Manaus 
     - Mosqlimate_API_Data.ipynb: Collects and treats climate data from 2016 to 2024, obtained from the Mosqlimate datastore 
     - Parquet_to_CSV.ipynb: Converts original .parquet files to .csv
