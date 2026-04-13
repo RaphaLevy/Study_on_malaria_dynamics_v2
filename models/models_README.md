@@ -1,5 +1,9 @@
 All files in this folder regard models in development. They are separated in SIR-SEI (original formulation) and SEIRS-SEI (updated formulation)
 
+- results:
+  - comparison_results.csv: File with comparison between human and mosquito populations in SEIRS-SEI model with environmental dynamics with and without intervention
+  - model_results_no_intervention.csv: File with approximated daily population data per compartment in SEIRS-SEI model with environmental dynamics without intervention
+  - model_results_with_intervention.csv: File with approximated daily population data per compartment in SEIRS-SEI model with environmental dynamics with intervention
 - sir_sei:
   - Original_Model_PM_Parameters.ipynb: Base SIR/SEI model, based on the original parameters of Parham & Michael (2010), with minor modifications (DOI: 10.1007/978-1-4419-6064-1_13)
   - Original_Model_Dissertation_Parameters.ipynb: Base SIR/SEI model, based on the parameters used in the development of the project during the Undergraduate Dissertation [(https://github.com/RaphaLevy/Undergraduate_Dissertation)](https://github.com/RaphaLevy/Undergraduate_Dissertation)
