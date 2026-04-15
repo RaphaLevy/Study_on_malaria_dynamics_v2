@@ -279,7 +279,30 @@ The updated equations used in the model are as following:
 
 \subsection{Base SEIRS-SEI model}
 
+Preliminary analysis of the baseline SIR-SEI framework revealed structural limitations in replicating endemic malaria transmission, as the system intrinsically tended toward a single outbreak followed by rapid fade-out. To rectify this and enhance biological fidelity, we extended the model to a SEIRS-SEI structure. %This model accounts for the extrinsic incubation period in humans ($E_H$) and the loss of temporary immunity ($R_H \to S_H$), features which are indispensable for simulating the cyclical, long-term transmission patterns observed in the field.
+This extension accounts for essential features of Plasmodium dynamics, such as the extrinsic incubation period in humans, represented by the Exposed compartment ($E_H$), and the decay of temporary acquired immunity, represented by the transition from Recovered to Susceptible ($R_H \to S_H$). These modifications are necessary to sustain the multi-year recurrence and seasonal oscillations characteristic of endemic regions.
 
+The constructed model is as follows:
+\begin{align}
+\dfrac{dS_H}{dt} 
+&= r_H N - a b_2 \left(\dfrac{I_M(t)}{N}\right) S_H + \omega R_H \label{eq13}\\
+\dfrac{dE_H}{dt} 
+&= a b_2 \left(\dfrac{I_M(t)}{N}\right) S_H \notag\\
+&\quad - a b_2 \left(\dfrac{I_M(t-\tau_H)}{N}\right) S_H(t-\tau_H) \label{eq14}\\
+\dfrac{dI_H}{dt} 
+&= a b_2 \left(\dfrac{I_M(t-\tau_H)}{N}\right) S_H(t-\tau_H) \notag\\
+&\quad - \gamma I_H  \label{eq15}\\
+\dfrac{dR_H}{dt} 
+&= \gamma I_H - \omega R_H  \label{eq16}\\
+\dfrac{dS_M}{dt} 
+&= \Lambda - \left(a b_1 \left(\dfrac{I_H(t)}{N}\right) + \mu \right) S_M \label{eq17}\\
+\dfrac{dE_M}{dt} 
+&= a b_1 \left(\dfrac{I_H(t)}{N}\right) S_M - \mu E_M \notag\\
+&\quad - a b_1 \left(\dfrac{I_H(t-\tau_M)}{N}\right) S_M(t-\tau_M)\,\ell \label{eq18}\\
+\dfrac{dI_M}{dt} 
+&= a b_1 \left(\dfrac{I_H(t-\tau_M)}{N}\right) S_M(t-\tau_M)\,\ell \notag\\
+&\quad - \mu I_M \label{eq19}
+\end{align}
 \section{Data description and processing}
 It was decided to use data from cases caused by $P. \ vivax$ as this species is responsible for the highest number of malaria cases in Brazil \cite{OliveiraFerreira2010, 10.3389/fpubh.2021.647754}, being the most common human malaria parasite in the region \cite{Vector_Incrimination}.
 \\\\
