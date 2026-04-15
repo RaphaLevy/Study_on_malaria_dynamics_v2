@@ -303,6 +303,27 @@ The constructed model is as follows:
 &= a b_1 \left(\dfrac{I_H(t-\tau_M)}{N}\right) S_M(t-\tau_M)\,\ell \notag\\
 &\quad - \mu I_M \label{eq19}
 \end{align}
+Where $\Lambda$ is the mosquito recruitment rate:
+\begin{align}
+\Lambda=b(R,T)\cdot K\cdot \left(1-\dfrac{S_M+E_M+I_M}{K}\right)\label{eq20}
+\end{align}
+And $K$ is the mosquito carrying capacity:
+\begin{align}
+K 
+= M &\times \text{Temp. factor} \times \text{Rain factor} \notag\\
+&\quad \times \text{Seasonal factor}
+\end{align}
+Where:
+\begin{align}
+& \text{Temp. factor}  
+= \max\left(0.1, \min\left(1, \dfrac{T - 15}{15}\right)\right)\\
+&\text{Rain factor} 
+= \min\left(1, \max\left(0, \dfrac{R}{30}\right)\right)\\
+&\text{Seasonal factor} 
+= 2.5 + 2\sin\left(2\pi\dfrac{t - 180}{365.25}\right) \notag\\
+&\quad \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (1 \leq t \leq 366)
+\end{align}
+
 \section{Data description and processing}
 It was decided to use data from cases caused by $P. \ vivax$ as this species is responsible for the highest number of malaria cases in Brazil \cite{OliveiraFerreira2010, 10.3389/fpubh.2021.647754}, being the most common human malaria parasite in the region \cite{Vector_Incrimination}.
 \\\\
