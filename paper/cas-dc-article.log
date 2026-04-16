@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.3.13)  16 APR 2026 11:29
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.3.13)  16 APR 2026 16:33
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1828,12 +1828,13 @@ Overfull \hbox (238.25444pt too wide) in paragraph at lines 907--950
 
 
 ]
-<figs/SIR_Model_Parham_and_Michael_values.png, id=237, 737.154pt x 398.9304pt>
+<figs/SIR_Model_Parham_and_Michael_values.png, id=237, 737.75626pt x 412.54124p
+t>
 File: figs/SIR_Model_Parham_and_Michael_values.png Graphic file (type png)
 <use figs/SIR_Model_Parham_and_Michael_values.png>
 Package pdftex.def Info: figs/SIR_Model_Parham_and_Michael_values.png  used on 
 input line 966.
-(pdftex.def)             Requested size: 238.25444pt x 128.93864pt.
+(pdftex.def)             Requested size: 238.25444pt x 133.2245pt.
 
 
 Package caption Warning: \setcaptiontype
@@ -1845,13 +1846,13 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 967.
 See the caption package documentation for explanation.
 
-<figs/SEI_Model_Parham_and_Michael_values.png, id=240, 736.4313pt x 398.9304pt>
-
+<figs/SEI_Model_Parham_and_Michael_values.png, id=240, 743.77875pt x 407.72325p
+t>
 File: figs/SEI_Model_Parham_and_Michael_values.png Graphic file (type png)
 <use figs/SEI_Model_Parham_and_Michael_values.png>
 Package pdftex.def Info: figs/SEI_Model_Parham_and_Michael_values.png  used on 
 input line 976.
-(pdftex.def)             Requested size: 238.25444pt x 129.06038pt.
+(pdftex.def)             Requested size: 238.25444pt x 130.60475pt.
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 977.
@@ -1897,7 +1898,7 @@ c/stix/stix-mathit.pfb><C:/Users/rapha/AppData/Local/Programs/MiKTeX/fonts/type
 1/public/stix/stix-mathrm.pfb><C:/Users/rapha/AppData/Local/Programs/MiKTeX/fon
 ts/type1/public/stix/stix-mathscr.pfb><C:/Users/rapha/AppData/Local/Programs/Mi
 KTeX/fonts/type1/public/stix/stix-mathsf.pfb>
-Output written on cas-dc-article.pdf (11 pages, 448733 bytes).
+Output written on cas-dc-article.pdf (11 pages, 713893 bytes).
 PDF statistics:
  408 PDF objects out of 1000 (max. 8388607)
  101 named destinations out of 1000 (max. 500000)
