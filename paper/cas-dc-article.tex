@@ -32,6 +32,7 @@
 \usepackage{amsmath}
 \setlength{\mathindent}{5pt}
 \usepackage{caption}
+\usepackage{threeparttable}
 \usepackage{float}
 
 %%%Author definitions
@@ -220,7 +221,7 @@ and the risk of diseases \cite{Rorato2023}.
 \section{Model formulation}
 
 \subsection{Base SIR-SEI model}
-Based on previous work developed to model the transmission of malaria based on precipitation and temperature dynamics \cite{Parham2010}, we focus 
+Based on previous work developed to model the transmission of malaria based on precipitation and temperature dynamics \cite{Parham2010}, we initially focused 
 on two different sets of compartments of hosts and vectors: susceptible, infected and recovered hosts $\left(S_H, \ I_H, \ R_H \text{ respectively}\right)$, and susceptible, 
 exposed and infected vectors $\left(S_M, \ E_M, \ I_M \text{ respectively}\right)$. 
 \\\\
@@ -863,7 +864,7 @@ East Zone of Manaus, Amazon, South American Journal of Basic Education, Technica
 
 \begin{table}[width=2.0\linewidth,cols=3,pos=h]
 \caption{List of model parameters.}\label{tbl1}
-\renewcommand{\thetable}{Appendix 1}  % Custom table name
+\renewcommand{\thetable}{A.1}  % Custom table name
 \begin{tabular*}{\tblwidth}{@{} LLL@{} }
 \toprule
 Parameter & Definition & Formulation\\
@@ -884,18 +885,18 @@ $N(t)$   & Total population of humans   & $S_H(t) + I_H(t) + R_H(t)$   \\
 \end{tabular*}
 \end{table}
 
-%\clearpage
-
+\clearpage
 \begin{table}[width=2.0\linewidth,cols=3,pos=h]
+\begin{threeparttable}
 \caption{List of model variables.}\label{tbl2}
-\renewcommand{\thetable}{Appendix 2}  % Custom table name
+\renewcommand{\thetable}{A.2}
 \begin{tabular*}{\tblwidth}{@{} LLL@{} }
 \toprule
 Symbol & Definition & Units \\
 \midrule
 $b_1$  & Proportion of bites from susceptible mosquitoes on infected humans that result in infection & Dimensionless \\
 $b_2$   & Proportion of bites from infected mosquitoes on susceptible humans that result in infection & Dimensionless \\
-$\gamma$ &  1/Average duration of infectiousness in humans: 1/120 & days$^{-1}$  \\
+$\gamma$ &  1/Average duration of infectiousness in humans & days$^{-1}$  \\
 $T_1$  & Mean temperature in the absence of seasonality & $^\circ C$ \\ 
 $T_2$  & Amplitude of seasonal variability in temperature & Dimensionless \\ 
 $\omega_1$  & Angular frequency of seasonal oscillations in temperature & months$^{-1}$ \\ 
@@ -918,15 +919,20 @@ $DD$  & Degree-days for parasite development.
 $A$  & Empirical sensitivity parameter & ($^\circ C^2 \ \text{days})^{-1}$ \\ 
 $B$  & Empirical sensitivity parameter & ($^\circ C \ \text{days})^{-1}$ \\ 
 $C$  & Empirical sensitivity parameter & days$^{-1}$ \\ 
-$D_1$  & Empirical sensitivity parameter: 36.5 & $^\circ C \ \text{days}$ \\ 
+$D_1$  & Empirical sensitivity parameter & $^\circ C \ \text{days}$ \\ 
 $c_1$  & Empirical sensitivity parameter & $(^\circ C \ \text{days})^{-1}$ \\ 
 $c_2$  & Empirical sensitivity parameter & days$^{-1}$ \\ 
-$T'$  & Empirical temperature parameter & $^\circ C$ \\ 
+$T'$  & Biting rate temperature threshold \tnote{1}  & $^\circ C$ \\ 
 $b_3$  & Infection rate in exposed mosquitoes ($1/\tau_M(T)$) &  days$^{-1}$ \\ 
 $r_H$ & Net daily recruitment rate per capita & days$^{-1}$\\
 \bottomrule
 \end{tabular*}
+\begin{tablenotes}
+\item[1] In Parham and Michael \cite{Parham2010}, this parameter is denoted \( T_1 \). We rename it here to avoid confusion with the mean temperature in the absence of seasonality, also denoted \( T_1 \) in the original paper.
+\end{tablenotes}
+\end{threeparttable}
 \end{table}
+%\footnote{In Parham and Michael \cite{Parham2010}, this parameter is denoted \( T_1 \). We rename it here to avoid confusion with the mean temperature in the absence of seasonality, also denoted \( T_1 \) in the original paper.}
 \clearpage
 
 
