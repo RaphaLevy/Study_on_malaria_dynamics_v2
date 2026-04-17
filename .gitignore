@@ -9,3 +9,4 @@ epigrass_tests/
 models/Test_SEIRS_SEI_Model-Copy1.ipynb 
 # Ignore file for verifying imports and packages used in the development of the paper
 data_files/notebooks/Computational_Info.ipynb
+paper/figs/incorrect/
