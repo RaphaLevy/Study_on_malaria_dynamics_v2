@@ -700,7 +700,17 @@ temperature and precipitation, that was found to be 0.687, 0.839 and -0.883, res
 %number of cases is dependent not only in the environmental data used above, but on the month of year and season as well.
 
 \section{Results}
-The initial modelling, using the original equations and parameters as defined in \cite{Parham2010} did not appear to properly reproduce the expected behavior of disease transmission especially in the case of the mosquito population, as can be seen in Figure 2A.
+The initial modelling, using the original equations and parameters as defined in \cite{Parham2010} did not appear to properly 
+reproduce the expected behavior of disease transmission especially in the case of the mosquito population, 
+as can be seen in Figures 1-3A: for the SIR model, it can be seen that the infection did not settle in the population, 
+with the number of infected declining over the course of the first year of infection, whereas the SEI model presents
+the susceptible mosquito population oscilating with negative values. This is because, using the functions as given in the paper,
+they do not ensure that rates and probabilities are limited to the interval $[0,1]$. 
+\\\\
+Modifying the given functions to ensure that the proper values are in the correct ranges, the result obtained can be seen in 
+Figure 3A, with the mosquito population rapidly declining to 0, which is a behavior not expected to be seen in an environment where malaria 
+is supposed to be endemic.
+
 
 
 

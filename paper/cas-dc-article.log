@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.3.13)  17 APR 2026 17:18
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.3.13)  17 APR 2026 17:42
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1255,344 +1255,305 @@ Underfull \hbox (badness 1546) in paragraph at lines 687--698
 \T1/stix/m/n/10 On the other hand, tak-ing the cor-re-la-tion be-tween the
  []
 
-<figs/comparison-between-IH-data-and-model.png, id=144, 599.23875pt x 346.29375
+
+Underfull \hbox (badness 10000) in paragraph at lines 703--713
+
+ []
+
+[6]
+<figs/comparison-between-IH-data-and-model.png, id=152, 599.23875pt x 346.29375
 pt>
 File: figs/comparison-between-IH-data-and-model.png Graphic file (type png)
 <use figs/comparison-between-IH-data-and-model.png>
 Package pdftex.def Info: figs/comparison-between-IH-data-and-model.png  used on
- input line 720.
+ input line 730.
 (pdftex.def)             Requested size: 238.25444pt x 137.68016pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 725--730
+Underfull \hbox (badness 10000) in paragraph at lines 735--740
 
  []
 
 LaTeX Font Info:    Font shape `T1/zi4/m/n' will be
-(Font)              scaled to size 8.50006pt on input line 736.
+(Font)              scaled to size 8.50006pt on input line 746.
 
-Underfull \hbox (badness 10000) in paragraph at lines 732--741
+Underfull \hbox (badness 10000) in paragraph at lines 742--751
 
  []
 
 
-Underfull \hbox (badness 1107) in paragraph at lines 732--741
+Underfull \hbox (badness 1107) in paragraph at lines 742--751
 \T1/stix/m/n/10 from SciPy ver-sion 1.17.1. All com-pu-ta-tions were per-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 732--741
+Underfull \hbox (badness 10000) in paragraph at lines 742--751
 
  []
 
-[6 <./figs/comparison-between-IH-data-and-model.png>]
-Underfull \hbox (badness 2735) in paragraph at lines 750--753
+
+Underfull \hbox (badness 2735) in paragraph at lines 760--763
 []\T1/stix/m/n/8 P. F. P. Pi-menta et al., An overview of malaria trans-mis-sio
 n
  []
 
 
-Underfull \hbox (badness 2285) in paragraph at lines 750--753
+Underfull \hbox (badness 2285) in paragraph at lines 760--763
 \T1/stix/m/n/8 from the per-spec-tive of Ama-zon \T1/stix/m/it/8 Anophe-les vec
 -tors\T1/stix/m/n/8 , Memórias
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 750--753
+Underfull \hbox (badness 10000) in paragraph at lines 760--763
 \T1/stix/m/n/8 do In-sti-tuto Os-waldo Cruz, Vol. 110 (1) (2015), 23-47,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 750--753
+Underfull \hbox (badness 10000) in paragraph at lines 760--763
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 753--756
+Underfull \hbox (badness 10000) in paragraph at lines 763--766
 \T1/stix/m/n/8 Com-mit-ment and Ga-me-to-cy-to-ge-n-e-sis in Malaria Par-a-site
 s,
  []
 
 
-Underfull \hbox (badness 1917) in paragraph at lines 753--756
+Underfull \hbox (badness 1917) in paragraph at lines 763--766
 \T1/stix/m/n/8 An-nual Re-view of Mi-cro-bi-ol-ogy, Vol. 72 (1) (2018), 501-519
 ,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 753--756
+Underfull \hbox (badness 10000) in paragraph at lines 763--766
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 756--759
+Underfull \hbox (badness 10000) in paragraph at lines 766--769
 []\T1/stix/m/n/8 World Health Or-ga-ni-za-tion / World Malaria Re-port 2022,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 756--759
+Underfull \hbox (badness 10000) in paragraph at lines 766--769
 \T1/stix/m/n/8 Global Malaria Pro-gramme, ac-cessed on 29 Au-gust 2024,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 756--759
+Underfull \hbox (badness 10000) in paragraph at lines 766--769
 
  []
 
 
-Underfull \hbox (badness 2088) in paragraph at lines 759--762
+Underfull \hbox (badness 2088) in paragraph at lines 769--772
 []\T1/stix/m/n/8 M. da Silva-Nunes et al., Malaria on the Ama-zo-nian fron-tier
 :
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 759--762
+Underfull \hbox (badness 10000) in paragraph at lines 769--772
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 762--765
+Underfull \hbox (badness 10000) in paragraph at lines 772--775
 
  []
 
 
-Underfull \hbox (badness 2050) in paragraph at lines 765--768
+Underfull \hbox (badness 2050) in paragraph at lines 775--778
 \T1/stix/m/n/8 of en-vi-ron-men-tal, epi-demi-o-log-i-cal, and eco-nomic in-di-
 ca-tors for
  []
 
 
-Underfull \hbox (badness 1496) in paragraph at lines 765--768
+Underfull \hbox (badness 1496) in paragraph at lines 775--778
 \T1/stix/m/n/8 the Brazil-ian Ama-zon, Sci-en-tific Data, Vol. 10 (1) (2023), 6
 5,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 765--768
+Underfull \hbox (badness 10000) in paragraph at lines 775--778
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 768--771
+Underfull \hbox (badness 10000) in paragraph at lines 778--781
 \T1/stix/m/n/8 Trans-mis-sion, Mod-elling Par-a-site Trans-mis-sion and Con-tro
 l,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 768--771
+Underfull \hbox (badness 10000) in paragraph at lines 778--781
 
  []
 
 
-Underfull \hbox (badness 8000) in paragraph at lines 771--774
+Underfull \hbox (badness 8000) in paragraph at lines 781--784
 []\T1/stix/m/n/8 N. J. Arisco, C. Pe-terka, C. Di-niz, B. H. Singer, M. C.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 771--774
+Underfull \hbox (badness 10000) in paragraph at lines 781--784
 \T1/stix/m/n/8 Cas-tro, Eco-log-i-cal change in-creases malaria risk in the
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 771--774
+Underfull \hbox (badness 10000) in paragraph at lines 781--784
 
  []
 
 
-Underfull \hbox (badness 1484) in paragraph at lines 774--777
+Underfull \hbox (badness 1484) in paragraph at lines 784--787
 \T1/stix/m/n/8 Phys-i-cal Jour-nal Spe-cial Top-ics, Vol. 225 (3) (2016), 459-4
 70,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 774--777
+Underfull \hbox (badness 10000) in paragraph at lines 784--787
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 777--780
+Underfull \hbox (badness 10000) in paragraph at lines 787--790
 
  []
 
 
-Underfull \hbox (badness 4328) in paragraph at lines 780--783
+Underfull \hbox (badness 4328) in paragraph at lines 790--793
 []\T1/stix/m/n/8 J. Oliveira-Ferreira, M. V. Lac-erda, P. Brasil et al., Malari
 a
  []
 
 
-Underfull \hbox (badness 4846) in paragraph at lines 780--783
+Underfull \hbox (badness 4846) in paragraph at lines 790--793
 \T1/stix/m/n/8 in Brazil: an overview., Malaria Jour-nal, Vol. 9 (1) (2010),
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 780--783
+Underfull \hbox (badness 10000) in paragraph at lines 790--793
 
  []
 
 
-Underfull \hbox (badness 2073) in paragraph at lines 783--786
+Underfull \hbox (badness 2073) in paragraph at lines 793--796
 \T1/stix/m/n/8 F. C. Coelho, A. M. V. Mon-teiro, Epi-demi-ol-ogy, Bio-di-ver-si
 ty,
  []
 
 
-Underfull \hbox (badness 1997) in paragraph at lines 783--786
+Underfull \hbox (badness 1997) in paragraph at lines 793--796
 \T1/stix/m/n/8 and Tech-no-log-i-cal Tra-jec-to-ries in the Brazil-ian Ama-zon:
  From
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 783--786
+Underfull \hbox (badness 10000) in paragraph at lines 793--796
 
  []
 
 
-Underfull \hbox (badness 1102) in paragraph at lines 786--789
+Underfull \hbox (badness 1102) in paragraph at lines 796--799
 \T1/stix/m/n/8 Jour-nal of Trop-i-cal Medicine and Hy-giene, Vol. 76 (3) (2007)
 ,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 786--789
+Underfull \hbox (badness 10000) in paragraph at lines 796--799
 \T1/stix/m/n/8 461-469, [][]https://www.ajtmh.org/view/journals/tpmd/76/3/artic
 le-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 786--789
+Underfull \hbox (badness 10000) in paragraph at lines 796--799
 
  []
 
 
-Underfull \hbox (badness 6775) in paragraph at lines 789--796
+Underfull \hbox (badness 6775) in paragraph at lines 799--806
 []\T1/stix/m/n/8 Tabnet, Min-istério da Saúde, ac-cessed on 12 Au-gust 2024,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 789--796
+Underfull \hbox (badness 10000) in paragraph at lines 799--806
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 796--799
+[7 <./figs/comparison-between-IH-data-and-model.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 806--809
 []\T1/stix/m/n/8 Biblioteca IBGE, 2000, ac-cessed on 11 Novem-ber
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 796--799
+Underfull \hbox (badness 10000) in paragraph at lines 806--809
 \T1/stix/m/n/8 2024, [][]https://biblioteca.ibge.gov.br/index.php/biblioteca-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 796--799
+Underfull \hbox (badness 10000) in paragraph at lines 806--809
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 799--802
+Underfull \hbox (badness 10000) in paragraph at lines 809--812
 [][]\T1/stix/m/n/8 https://www.ibge.gov.br/estatisticas/sociais/populacao/9662-
 censo-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 799--802
+Underfull \hbox (badness 10000) in paragraph at lines 809--812
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 802--805
+Underfull \hbox (badness 10000) in paragraph at lines 812--815
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 805--808
+Underfull \hbox (badness 10000) in paragraph at lines 815--818
 []\T1/stix/m/n/8 SIVEP Malaria, ac-cessed on 10 Oc-to-ber 2024,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 805--808
+Underfull \hbox (badness 10000) in paragraph at lines 815--818
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 808--811
+Underfull \hbox (badness 10000) in paragraph at lines 818--821
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 811--814
+Underfull \hbox (badness 10000) in paragraph at lines 821--824
 []\T1/stix/m/n/8 D. E. Nor-ris, Mosquito-borne Dis-eases as a Con-se-quence
  []
 
 
-Underfull \hbox (badness 5147) in paragraph at lines 811--814
+Underfull \hbox (badness 5147) in paragraph at lines 821--824
 \T1/stix/m/n/8 of Land Use Change, Eco-Health, Vol. 1 (1) (2004), 19-24,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 811--814
+Underfull \hbox (badness 10000) in paragraph at lines 821--824
 
  []
 
 
-Underfull \hbox (badness 5908) in paragraph at lines 814--817
+Underfull \hbox (badness 5908) in paragraph at lines 824--827
 []\T1/stix/m/n/8 Anopheles, Fiocruz Rondô-nia, ac-cessed on 15 Au-gust 2024,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 814--817
+Underfull \hbox (badness 10000) in paragraph at lines 824--827
 
  []
 
 
-Underfull \hbox (badness 3612) in paragraph at lines 817--820
+Underfull \hbox (badness 3612) in paragraph at lines 827--830
 []\T1/stix/m/n/8 M. da Silva-Nunes, En-vi-ron-men-tal changes im-pact in malari
 a
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 817--820
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 820--823
-
- []
-
-
-Underfull \hbox (badness 1460) in paragraph at lines 823--827
-[]\T1/stix/m/n/8 G. R. de Lima, A. N. Ar-cos, E.V. dos San-tos, R. C. Simões,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 823--827
-\T1/stix/m/n/8 C.A.P. Lima, W. P. Tadei, Anophe-les Lar-val Abun-dance
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 823--827
-\T1/stix/m/n/8 in Ar-ti-fi-cial Breed-ing Sites in the East Zone of Man-aus,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 823--827
-\T1/stix/m/n/8 Ama-zon, South Amer-i-can Jour-nal of Ba-sic Ed-u-ca-tion,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 823--827
-\T1/stix/m/n/8 Tech-ni-cal and Tech-no-log-i-cal, Vol. 8 (1) (2021), 35^^U47,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 823--827
-
- []
-
-
-Underfull \hbox (badness 1231) in paragraph at lines 827--830
-\T1/stix/m/n/8 Alen-car, B. F. T. Rudorff, H. Hase-nack, M. Mat-sumoto, L. G.
  []
 
 
@@ -1606,213 +1567,256 @@ Underfull \hbox (badness 10000) in paragraph at lines 830--833
  []
 
 
-Underfull \hbox (badness 3612) in paragraph at lines 833--836
+Underfull \hbox (badness 1460) in paragraph at lines 833--837
+[]\T1/stix/m/n/8 G. R. de Lima, A. N. Ar-cos, E.V. dos San-tos, R. C. Simões,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 833--837
+\T1/stix/m/n/8 C.A.P. Lima, W. P. Tadei, Anophe-les Lar-val Abun-dance
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 833--837
+\T1/stix/m/n/8 in Ar-ti-fi-cial Breed-ing Sites in the East Zone of Man-aus,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 833--837
+\T1/stix/m/n/8 Ama-zon, South Amer-i-can Jour-nal of Ba-sic Ed-u-ca-tion,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 833--837
+\T1/stix/m/n/8 Tech-ni-cal and Tech-no-log-i-cal, Vol. 8 (1) (2021), 35^^U47,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 833--837
+
+ []
+
+
+Underfull \hbox (badness 1231) in paragraph at lines 837--840
+\T1/stix/m/n/8 Alen-car, B. F. T. Rudorff, H. Hase-nack, M. Mat-sumoto, L. G.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 837--840
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 840--843
+
+ []
+
+
+Underfull \hbox (badness 3612) in paragraph at lines 843--846
 []\T1/stix/m/n/8 M. da Silva-Nunes, En-vi-ron-men-tal changes im-pact in malari
 a
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 833--836
+Underfull \hbox (badness 10000) in paragraph at lines 843--846
 
  []
 
 
-Underfull \hbox (badness 1609) in paragraph at lines 836--839
+Underfull \hbox (badness 1609) in paragraph at lines 846--849
 []\T1/stix/m/n/8 L. S. M. Chaves, E. S. Bergo, J. E. Conn, G. Z. La-porta, P.
  []
 
 
-Underfull \hbox (badness 1360) in paragraph at lines 836--839
+Underfull \hbox (badness 1360) in paragraph at lines 846--849
 \T1/stix/m/n/8 R. Prist, M. A. M. Sal-lum, An-thro-pogenic land-scape de-crease
 s
  []
 
 
-Underfull \hbox (badness 7740) in paragraph at lines 836--839
+Underfull \hbox (badness 7740) in paragraph at lines 846--849
 \T1/stix/m/n/8 mosquito bio-di-ver-sity and drives malaria vec-tor pro-lif-er-a
 -tion
  []
 
 
-Underfull \hbox (badness 5578) in paragraph at lines 836--839
+Underfull \hbox (badness 5578) in paragraph at lines 846--849
 \T1/stix/m/n/8 in the Ama-zon rain-for-est, PLOS ONE, Vol. 16 (1) (2021),
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 836--839
+Underfull \hbox (badness 10000) in paragraph at lines 846--849
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 839--842
+Underfull \hbox (badness 10000) in paragraph at lines 849--852
 
  []
 
-[7]
-Underfull \hbox (badness 1237) in paragraph at lines 842--845
+
+Underfull \hbox (badness 1237) in paragraph at lines 852--855
 []\T1/stix/m/n/8 C. F. Lima, F. T. P. Tor-res, L. J. Minette, F. A. Lima, R. C.
 
  []
 
 
-Underfull \hbox (badness 1484) in paragraph at lines 842--845
+Underfull \hbox (badness 1484) in paragraph at lines 852--855
 \T1/stix/m/n/8 A. Lima et al, Is there a re-la-tion-ship be-tween for-est fires
  and
  []
 
 
-Underfull \hbox (badness 3039) in paragraph at lines 842--845
+Underfull \hbox (badness 3039) in paragraph at lines 852--855
 \T1/stix/m/n/8 de-for-esta-tion in the Brazil-ian Ama-zon?, PLOS ONE, Vol. 19
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 842--845
+Underfull \hbox (badness 10000) in paragraph at lines 852--855
 
  []
 
 
-Underfull \hbox (badness 4120) in paragraph at lines 845--848
+Underfull \hbox (badness 4120) in paragraph at lines 855--858
 []\T1/stix/m/n/8 P. M. Fearn-side, Con-ser-va-tion Pol-icy in Brazil-ian Ama-zo
 -nia:
  []
 
 
-Underfull \hbox (badness 1406) in paragraph at lines 845--848
+Underfull \hbox (badness 1406) in paragraph at lines 855--858
 \T1/stix/m/n/8 Un-der-stand-ing the Dilem-mas, World De-vel-op-ment, Vol. 31 (5
 ),
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 845--848
+Underfull \hbox (badness 10000) in paragraph at lines 855--858
 
  []
 
 
-Underfull \hbox (badness 1953) in paragraph at lines 848--851
+Underfull \hbox (badness 1953) in paragraph at lines 858--861
 \T1/stix/m/n/8 Brazil-ian Ama-zon: Threats and op-por-tu-ni-ties, Re-search Squ
 are,
  []
 
 
-Underfull \hbox (badness 5316) in paragraph at lines 848--851
+Underfull \hbox (badness 5316) in paragraph at lines 858--861
 \T1/stix/m/n/8 PREPRINT (Ver-sion 1) (2024), [][]https://doi.org/10.21203/rs.3.
 rs-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 848--851
+Underfull \hbox (badness 10000) in paragraph at lines 858--861
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 851--854
+Underfull \hbox (badness 10000) in paragraph at lines 861--864
 []\T1/stix/m/n/8 G1, M. Cas-tro, "Ama-zonas reg-is-tra 21,6 mil
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 851--854
+Underfull \hbox (badness 10000) in paragraph at lines 861--864
 \T1/stix/m/n/8 queimadas em 2024 e tem o pior índice em 26
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 851--854
+Underfull \hbox (badness 10000) in paragraph at lines 861--864
 \T1/stix/m/n/8 anos, aponta Inpe", ac-cessed on 28 Septem-ber 2024,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 851--854
+Underfull \hbox (badness 10000) in paragraph at lines 861--864
 [][]\T1/stix/m/n/8 https://g1.globo.com/am/amazonas/noticia/2024/09/24/amazonas
 -
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 851--854
+Underfull \hbox (badness 10000) in paragraph at lines 861--864
 \T1/stix/m/n/8 registra-216-mil-queimadas-em-2024-e-tem-o-pior-indice-em-26-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 851--854
+Underfull \hbox (badness 10000) in paragraph at lines 861--864
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 854--857
+Underfull \hbox (badness 10000) in paragraph at lines 864--867
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 857--860
+Underfull \hbox (badness 10000) in paragraph at lines 867--870
 \T1/stix/m/n/8 (1985-2023), V1 (2024), ac-cessed on 24 Septem-ber 2024,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 857--860
+Underfull \hbox (badness 10000) in paragraph at lines 867--870
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 860--863
+Underfull \hbox (badness 10000) in paragraph at lines 870--873
 []\T1/stix/m/n/8 TerraBrasilis, DE-TER (No-tices), Anal-y-ses -
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 860--863
+Underfull \hbox (badness 10000) in paragraph at lines 870--873
 \T1/stix/m/n/8 Amazô-nia Biome, Monthly vari-a-tion of DE-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 860--863
+Underfull \hbox (badness 10000) in paragraph at lines 870--873
 \T1/stix/m/n/8 TER project area, ac-cessed on 17 Oc-to-ber 2024,
  []
 
 
-Overfull \hbox (6.38553pt too wide) in paragraph at lines 860--863
+Overfull \hbox (6.38553pt too wide) in paragraph at lines 870--873
 [][]\T1/stix/m/n/8 https://terrabrasilis.dpi.inpe.br/app/dashboard/alerts/biome
 s/amazonia-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 860--863
+Underfull \hbox (badness 10000) in paragraph at lines 870--873
 
  []
 
 
-Underfull \hbox (badness 3168) in paragraph at lines 863--866
+Underfull \hbox (badness 3168) in paragraph at lines 873--876
 []\T1/stix/m/n/8 TerraBrasilis, DE-TER (No-tices), Anal-y-ses - Amazô-nia Biome
 ,
  []
 
 
-Overfull \hbox (6.38553pt too wide) in paragraph at lines 863--866
+Overfull \hbox (6.38553pt too wide) in paragraph at lines 873--876
 [][]\T1/stix/m/n/8 https://terrabrasilis.dpi.inpe.br/app/dashboard/alerts/biome
 s/amazonia-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 863--866
+Underfull \hbox (badness 10000) in paragraph at lines 873--876
 
  []
 
 
-Underfull \hbox (badness 3386) in paragraph at lines 866--869
+Underfull \hbox (badness 3386) in paragraph at lines 876--879
 \T1/stix/m/n/8 sub-threshold en-demic equi-lib-ria for com-part-men-tal mod-els
  of
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 866--869
+Underfull \hbox (badness 10000) in paragraph at lines 876--879
 
  []
 
-[8
-
-]
-Overfull \hbox (238.25444pt too wide) in paragraph at lines 882--882
+[8]
+Overfull \hbox (238.25444pt too wide) in paragraph at lines 892--892
  []$[]$ 
  []
 
 
-Overfull \hbox (238.25444pt too wide) in paragraph at lines 884--902
+Overfull \hbox (238.25444pt too wide) in paragraph at lines 894--912
  [][] 
  []
 
@@ -1820,7 +1824,7 @@ Overfull \hbox (238.25444pt too wide) in paragraph at lines 884--902
 
 
 ]
-Overfull \hbox (238.25444pt too wide) in paragraph at lines 907--950
+Overfull \hbox (238.25444pt too wide) in paragraph at lines 917--960
  [] 
  []
 
@@ -1833,17 +1837,17 @@ t>
 File: figs/SIR_Model_Parham_and_Michael_values.png Graphic file (type png)
 <use figs/SIR_Model_Parham_and_Michael_values.png>
 Package pdftex.def Info: figs/SIR_Model_Parham_and_Michael_values.png  used on 
-input line 966.
+input line 976.
 (pdftex.def)             Requested size: 238.25444pt x 133.2245pt.
 
 
 Package caption Warning: \setcaptiontype
-(caption)                outside box or environment on input line 967.
+(caption)                outside box or environment on input line 977.
 See the caption package documentation for explanation.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 967.
+(caption)                particular \caption on input line 977.
 See the caption package documentation for explanation.
 
 <figs/SEI_Model_Parham_and_Michael_values.png, id=241, 743.77875pt x 407.72325p
@@ -1851,11 +1855,11 @@ t>
 File: figs/SEI_Model_Parham_and_Michael_values.png Graphic file (type png)
 <use figs/SEI_Model_Parham_and_Michael_values.png>
 Package pdftex.def Info: figs/SEI_Model_Parham_and_Michael_values.png  used on 
-input line 976.
+input line 986.
 (pdftex.def)             Requested size: 238.25444pt x 130.60475pt.
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 977.
+(caption)                particular \caption on input line 987.
 See the caption package documentation for explanation.
 
 <figs/SEI_Model_Parham_and_Michael_values_01_probs.png, id=244, 822.6735pt x 38
@@ -1864,11 +1868,11 @@ File: figs/SEI_Model_Parham_and_Michael_values_01_probs.png Graphic file (type
 png)
 <use figs/SEI_Model_Parham_and_Michael_values_01_probs.png>
 Package pdftex.def Info: figs/SEI_Model_Parham_and_Michael_values_01_probs.png 
- used on input line 984.
+ used on input line 994.
 (pdftex.def)             Requested size: 238.25444pt x 111.27885pt.
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 985.
+(caption)                particular \caption on input line 995.
 See the caption package documentation for explanation.
 
 No file cas-dc-article.bbl.
@@ -1892,11 +1896,11 @@ Package rerunfilecheck Info: File `cas-dc-article.out' has not changed.
 Here is how much of TeX's memory you used:
  18462 strings out of 467871
  288650 string characters out of 5418376
- 712228 words of memory out of 5000000
+ 712388 words of memory out of 5000000
  46945 multiletter control sequences out of 15000+600000
  747846 words of font info for 206 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 90i,16n,117p,613b,693s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 90i,16n,117p,613b,633s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\rapha\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi450\ecss
 0800.pk> <C:\Users\rapha\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi60
 0\ecsx0900.pk> <C:\Users\rapha\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec
@@ -1912,7 +1916,7 @@ c/stix/stix-mathit.pfb><C:/Users/rapha/AppData/Local/Programs/MiKTeX/fonts/type
 1/public/stix/stix-mathrm.pfb><C:/Users/rapha/AppData/Local/Programs/MiKTeX/fon
 ts/type1/public/stix/stix-mathscr.pfb><C:/Users/rapha/AppData/Local/Programs/Mi
 KTeX/fonts/type1/public/stix/stix-mathsf.pfb>
-Output written on cas-dc-article.pdf (11 pages, 784008 bytes).
+Output written on cas-dc-article.pdf (11 pages, 784871 bytes).
 PDF statistics:
  414 PDF objects out of 1000 (max. 8388607)
  102 named destinations out of 1000 (max. 500000)
