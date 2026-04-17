@@ -700,7 +700,7 @@ temperature and precipitation, that was found to be 0.687, 0.839 and -0.883, res
 %number of cases is dependent not only in the environmental data used above, but on the month of year and season as well.
 
 \section{Results}
-The initial modelling 
+The initial modelling, using the original equations and parameters as defined in \cite{Parham2010} did not appear to properly reproduce the expected behavior of disease transmission especially in the case of the mosquito population, as can be seen in Figure 2A.
 
 
 
@@ -935,7 +935,7 @@ $DD$  & Degree-days for parasite development.
 $A$  & Empirical sensitivity parameter & ($^\circ C^2 \ \text{days})^{-1}$ \\ 
 $B$  & Empirical sensitivity parameter & ($^\circ C \ \text{days})^{-1}$ \\ 
 $C$  & Empirical sensitivity parameter & days$^{-1}$ \\ 
-$D_1$  & Empirical sensitivity parameter & $^\circ C \ \text{days}$ \\ 
+$D_1$  & Temperature scaling factor of the biting rate & $^\circ C \ \text{days}$ \\ 
 $c_1$  & Empirical sensitivity parameter & $(^\circ C \ \text{days})^{-1}$ \\ 
 $c_2$  & Empirical sensitivity parameter & days$^{-1}$ \\ 
 $T'$  & Biting rate temperature threshold \tnote{1}  & $^\circ C$ \\ 
@@ -967,16 +967,23 @@ $r_H$ & Net daily recruitment rate per capita & days$^{-1}$\\
 \captionof{figure}{Results of the initial SIR model, with equations and parameters from \cite{Parham2010}.}
 \label{FIG:1A}
 
-\vspace{0.8cm}
+
 
 \renewcommand{\thefigure}{2A}
-\vspace{0.8cm}
+\vspace{0.6cm}
 
 \noindent
 \includegraphics[width=\columnwidth]{figs/SEI_Model_Parham_and_Michael_values.png}
 \captionof{figure}{Results of the initial SEI model, with equations and parameters from \cite{Parham2010}.}
 \label{FIG:2A}
 
+\renewcommand{\thefigure}{3A}
+\vspace{0.6cm}
+
+\noindent
+\includegraphics[width=\columnwidth]{figs/SEI_Model_Parham_and_Michael_values_01_probs.png}
+\captionof{figure}{Results of the initial SEI model, with equations and parameters from \cite{Parham2010}, ensuring that probabilities and rates are in $[0,1]$.}
+\label{FIG:3A}
 
 %\begin{figure}[H]
 	%\centering

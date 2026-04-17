@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.3.13)  16 APR 2026 16:33
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.3.13)  17 APR 2026 17:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1255,7 +1255,7 @@ Underfull \hbox (badness 1546) in paragraph at lines 687--698
 \T1/stix/m/n/10 On the other hand, tak-ing the cor-re-la-tion be-tween the
  []
 
-<figs/comparison-between-IH-data-and-model.png, id=143, 599.23875pt x 346.29375
+<figs/comparison-between-IH-data-and-model.png, id=144, 599.23875pt x 346.29375
 pt>
 File: figs/comparison-between-IH-data-and-model.png Graphic file (type png)
 <use figs/comparison-between-IH-data-and-model.png>
@@ -1828,7 +1828,7 @@ Overfull \hbox (238.25444pt too wide) in paragraph at lines 907--950
 
 
 ]
-<figs/SIR_Model_Parham_and_Michael_values.png, id=237, 737.75626pt x 412.54124p
+<figs/SIR_Model_Parham_and_Michael_values.png, id=238, 737.75626pt x 412.54124p
 t>
 File: figs/SIR_Model_Parham_and_Michael_values.png Graphic file (type png)
 <use figs/SIR_Model_Parham_and_Michael_values.png>
@@ -1846,7 +1846,7 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 967.
 See the caption package documentation for explanation.
 
-<figs/SEI_Model_Parham_and_Michael_values.png, id=240, 743.77875pt x 407.72325p
+<figs/SEI_Model_Parham_and_Michael_values.png, id=241, 743.77875pt x 407.72325p
 t>
 File: figs/SEI_Model_Parham_and_Michael_values.png Graphic file (type png)
 <use figs/SEI_Model_Parham_and_Michael_values.png>
@@ -1858,12 +1858,26 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 977.
 See the caption package documentation for explanation.
 
+<figs/SEI_Model_Parham_and_Michael_values_01_probs.png, id=244, 822.6735pt x 38
+4.2355pt>
+File: figs/SEI_Model_Parham_and_Michael_values_01_probs.png Graphic file (type 
+png)
+<use figs/SEI_Model_Parham_and_Michael_values_01_probs.png>
+Package pdftex.def Info: figs/SEI_Model_Parham_and_Michael_values_01_probs.png 
+ used on input line 984.
+(pdftex.def)             Requested size: 238.25444pt x 111.27885pt.
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 985.
+See the caption package documentation for explanation.
+
 No file cas-dc-article.bbl.
 [11
 
 
  <./figs/SIR_Model_Parham_and_Michael_values.png> <./figs/SEI_Model_Parham_and_
-Michael_values.png>] (cas-dc-article.aux)
+Michael_values.png> <./figs/SEI_Model_Parham_and_Michael_values_01_probs.png>] 
+(cas-dc-article.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
@@ -1876,10 +1890,10 @@ Package rerunfilecheck Info: File `cas-dc-article.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 18453 strings out of 467871
- 288215 string characters out of 5418376
+ 18462 strings out of 467871
+ 288650 string characters out of 5418376
  712228 words of memory out of 5000000
- 46937 multiletter control sequences out of 15000+600000
+ 46945 multiletter control sequences out of 15000+600000
  747846 words of font info for 206 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  90i,16n,117p,613b,693s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1898,9 +1912,9 @@ c/stix/stix-mathit.pfb><C:/Users/rapha/AppData/Local/Programs/MiKTeX/fonts/type
 1/public/stix/stix-mathrm.pfb><C:/Users/rapha/AppData/Local/Programs/MiKTeX/fon
 ts/type1/public/stix/stix-mathscr.pfb><C:/Users/rapha/AppData/Local/Programs/Mi
 KTeX/fonts/type1/public/stix/stix-mathsf.pfb>
-Output written on cas-dc-article.pdf (11 pages, 713893 bytes).
+Output written on cas-dc-article.pdf (11 pages, 784008 bytes).
 PDF statistics:
- 408 PDF objects out of 1000 (max. 8388607)
- 101 named destinations out of 1000 (max. 500000)
- 21 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 414 PDF objects out of 1000 (max. 8388607)
+ 102 named destinations out of 1000 (max. 500000)
+ 26 words of extra memory for PDF output out of 10000 (max. 10000000)
 
