@@ -406,58 +406,37 @@ coherent representation of population dynamics across the study period.
 
 \section{Impacts of environmental factors}
 
-As for the theory behind environmental factors, it is known that the removal of tree canopies allowed 
-the resurgence of malaria in South America \cite{Norris2004}. In deforested areas, 
-without tree canopies covering the ground, water puddles under sunlight 
-attract mosquitoes of the species $Anopheles \ darlingi$, the main vector 
-related to human malaria in the Amazon \cite{infoAnopheles}. They are 
-usually less commonly found in still intact forests. This is 
-because light and heat favor the development of larvae and 
-pupae, in addition to a greater availability of algae for 
-larval feeding \cite{article_alteracoesambientais}. The increase 
-in ambient temperature also favors the vectorial capacity of 
-mosquitoes. 
+Environmental changes, particularly deforestation and forest fires, have been widely associated with the 
+resurgence and spatial redistribution of malaria transmission in the Amazon region \cite{Norris2004}. 
+The removal of forest canopy alters local microclimatic conditions, increasing sunlight exposure and ambient temperature, 
+which in turn favor the development of mosquito larvae and pupae. In particular, the primary malaria vector in the Amazon, 
+\textit{Anopheles darlingi}, is known to thrive in partially deforested environments, where sunlit 
+water bodies promote larval growth and increase the availability of food sources such as algae \cite{infoAnopheles, article_alteracoesambientais}.
 \\\\
-Deforestation also attracts and brings humans closer 
-to take part in logging, agriculture, and road construction 
-activities, aglomerating individuals infected with $Plasmodium$ to 
-an area where both the vector and the environment have already 
-been modified to favor transmission. Furthermore, agriculture 
-also promotes river sedimentation, providing suitable environments 
-for breeding sites. Therefore, it can be considered a relevant 
-change for the model to take into account deforestation, the 
-increase in survival probabilities of eggs, larvae, and pupae, 
-as well as increasing the proportion of bites that lead to infection, 
-due to the increased human population density in areas near mosquito 
-breeding sites.
+Beyond ecological effects, deforestation also influences human exposure to malaria. Activities such as logging, 
+agriculture, and infrastructure development lead to increased human presence in recently altered environments, 
+often in close proximity to mosquito breeding sites. This results in higher human–vector contact rates and facilitates 
+transmission, especially in areas where both vector density and environmental suitability are elevated. Additionally, 
+land-use changes such as agriculture may contribute to river sedimentation and the formation of artificial breeding sites, 
+further enhancing mosquito proliferation.
 \\\\
-It was outside the scope of this project to collect samples of $A. \ darlingi \ in \ loco$. Because of this it was instead used 
-an estimate for the number of mosquitos based in literature. As the study was made around the rural population of the municipality,
-this would favour the clustering of adult mosquitos, given the proximity to bodies of water and recently open up areas of rainforest \cite{Biological_Variation_Anopheles}. 
-In fact, the municipality of Manaus has a great number of breeding sites in its periurban and rural areas, both natural and man-made. Many of the city's fish farming tanks 
-have been noted as breeding sites for $A. \ darlingi$ \cite{Abundancia_Larval}.
+Forest fragmentation has been shown to accelerate mosquito development cycles by increasing temperature 
+and light availability, reducing the time from larval to adult stages and increasing vectorial capacity and 
+survivorship \cite{Alteracoes_Ambientais, Anthropogenic_Landscape}. Similarly, forest fires, often used as a 
+land-clearing mechanism, remove vegetation and modify habitat structure, contributing to long-term ecological 
+changes that can influence mosquito populations and disease transmission dynamics \cite{Future_of_Deforestation, Relationship_between_fires_and_defor}. 
+These processes may also increase the likelihood of subsequent fires by promoting understory drying and fuel accumulation \cite{Conservation_Policy}.
 \\\\
-As a means for the development of infrastructure, agricultural expansion or other forms of occupation of the land, deforestation impacts the 
-biodiversity in the region, changing the microclimate, water resources and the distribution of infectious 
-diseases \cite{Reconstructing_Three_Decades, Amazon_Defor_Drives_Malaria_Transmis}, those transmitted 
-by mosquitos being especially sensitive to changes in the habitat, suitability of pathogen development and contact between vector and host.
+In this context, deforestation and fire activity are incorporated into the model as external drivers that modify 
+transmission dynamics. Rather than directly altering mosquito physiological parameters, these factors are 
+interpreted as influencing human–vector contact rates and exposure, thereby affecting the effective transmission of the disease.
 \\\\
-It is expected that the process of forest fragmentation would favour the development of larva by increasing light 
-and temperature over settlements and habitats, leading to a shorter development time from larva to adult, a 
-greater availability of algae for larval feeding, as well as increasing the vectorial capacity of mosquitos and their survivorship \cite{Alteracoes_Ambientais, Anthropogenic_Landscape}.
-\\\\
-As a method used in particular for land-clearing, forest fires remove the vegetation \cite{Future_of_Deforestation, Relationship_between_fires_and_defor}, growing 
-the risk of future fires by increasing the availability of combustible and understory drying \cite{Conservation_Policy}. This process became more common from 2019 to 2022, 
-with simultaneous fires being set in the Amazon region, and in 2024 the state of Amazonas has reached it's highest number of recorded outbreaks since 1998, 
-with over 21,600 cases reported, and over 10,000 just in the month of August \cite{Threats_and_Opportunities, G1_Queimadas}.
-\\\\
-Deforestation data were obtained from the DETER system, which provides daily records of deforestation alerts by degradation type, reported 
-in km$^2$ \cite{Daily_DETER}. Because multiple alerts may occur on the same day, the data were aggregated to produce a 
-complete daily time series of deforested area, both disaggregated by degradation type and summed to obtain total daily deforestation.
-\\\\
-Data on forest fires were obtained from the Brazilian National Institute for Space Research (INPE), which provides daily 
-records of detected fire hotspots \cite{INPE_Forest_Fires}. Due to the absence of area-based measurements at the 
-daily resolution, the number of detected hotspots was used as a proxy for fire activity.
+Deforestation data were obtained from the DETER system, which provides daily records of deforestation alerts by degradation type, 
+reported in km$^2$ \cite{Daily_DETER}. The data were aggregated to produce a complete daily time series of deforested area. 
+Forest fire data were obtained from the Brazilian National Institute for Space Research (INPE), which provides daily records of detected 
+fire hotspots \cite{INPE_Forest_Fires}. Due to the absence of area-based measurements at this temporal resolution, the number of 
+detected hotspots was used as a proxy for fire activity.
+
 
 
 %Monthly data of forest fires and yearly data of deforestation given in hectares of forest supression between 2017 and 2021 
