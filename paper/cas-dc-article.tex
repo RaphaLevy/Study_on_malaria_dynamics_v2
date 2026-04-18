@@ -700,21 +700,16 @@ temperature and precipitation, that was found to be 0.687, 0.839 and -0.883, res
 %number of cases is dependent not only in the environmental data used above, but on the month of year and season as well.
 
 \section{Results}
-The initial modelling, using the original equations and parameters as defined in \cite{Parham2010} did not appear to properly 
-reproduce the expected behavior of disease transmission especially in the case of the mosquito population, 
-as can be seen in Figures 1-3A: for the SIR model, it can be seen that the infection did not settle in the population, 
-with the number of infected declining over the course of the first year of infection, whereas the SEI model presents
-the susceptible mosquito population oscilating with negative values. This is because, using the functions as given in the paper,
-they do not ensure that rates and probabilities are limited to the interval $[0,1]$. 
+The initial implementation of the model using the original functional forms and parameter values reported in \cite{Parham2010} did not reproduce biologically consistent transmission dynamics, particularly in the mosquito population. As illustrated in Figures 1–3A, the human SIR component exhibits a monotonic decline in the number of infected individuals, suggesting that the infection fails to persist in the population under the given parametrization. More critically, the corresponding SEI mosquito model yields nonphysical behavior, with the susceptible mosquito population attaining negative values and exhibiting oscillatory dynamics.
 \\\\
-Modifying the given functions to ensure that the proper values are in the correct ranges, the result obtained can be seen in 
-Figure 3A, with the mosquito population rapidly declining to 0, which is a behavior not expected to be seen in an environment where malaria 
-is supposed to be endemic.
-
-
-
-
-
+These inconsistencies arise from the functional forms adopted for key entomological parameters, which do not explicitly enforce biologically meaningful bounds. In particular, probabilities and rates are not constrained to lie within the interval $[0,1]$, leading to violations of positivity and instability in the numerical solutions.
+\\\\
+To address this issue, the functional forms were modified to ensure that all probabilities and rates remain within their admissible ranges. The resulting dynamics, shown in Figure 3A, exhibit qualitatively different behavior, with the mosquito population rapidly declining toward extinction. While this modification restores mathematical consistency, it also highlights a mismatch between the model structure and the expected persistence of malaria in endemic settings, motivating the need for further refinement of the transmission and demographic assumptions.
+\\\\
+\\\\
+\\\\
+\\\\
+\\\\
 Before including the environmental factors on the used model (7-12), its results were compared to a model based on SIVEP data, keeping use of equations (7, 10-12), but using
 \begin{align}
 I_H(t) & = \sum_{t=\max\left(0, \ k-\dfrac{1}{\gamma}+1 \right)}^{0\leq k \leq 1825} \text{\# of cases} \label{eq13}\\ 
