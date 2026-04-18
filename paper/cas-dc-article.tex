@@ -202,110 +202,90 @@ factors influence disease dynamics and assess their relative contributions throu
 
 \section{Model formulation}
 
-\subsection{Base SIR-SEI model}
-Based on previous work developed to model the transmission of malaria based on precipitation and temperature dynamics \cite{Parham2010}, we initially focused 
-on two different sets of compartments of hosts and vectors: susceptible, infected and recovered hosts $\left(S_H, \ I_H, \ R_H \text{ respectively}\right)$, and susceptible, 
-exposed and infected vectors $\left(S_M, \ E_M, \ I_M \text{ respectively}\right)$. 
+\subsection{Baseline delayed SIR-SEI model}
+
+We begin with the classical host-vector framework for malaria transmission, based on the model introduced by Parham and Michael (2010) \cite{Parham2010}, 
+which incorporates temperature- and rainfall-dependent mosquito dynamics. The human population is divided into susceptible, infected, 
+and recovered compartments, denoted by $S_H$, $I_H$, and $R_H$, respectively. The mosquito population is structured into susceptible, 
+exposed, and infectious compartments, denoted by $S_M$, $E_M$, and $I_M$.
 \\\\
-The equations that describe the transmission are initially given as:
+The transmission dynamics are governed by the system of delay differential equations:
 \begin{align}
-\hspace{-3em} \dfrac{dS_H}{dt} & = -ab_2\left(\dfrac{I_M}{N}\right)S_H \label{eq1}\\
-\dfrac{dI_H}{dt} & = ab_2\left(\dfrac{I_M(t-\tau_H)}{N}\right)S_H(t-\tau_H) - \gamma I_H \label{eq2}\\
-\dfrac{dR_H}{dt} & = \gamma I_H \label{eq3}\\
-\dfrac{dS_M}{dt} & = b - \left(ab_1\left(\dfrac{I_H}{N}\right)+ \mu \right)S_M \label{eq4}\\\notag\\
-\dfrac{dE_M}{dt} 
-& = ab_1\left(\dfrac{I_H}{N}\right)S_M - \mu E_M \notag\\
-&\quad - ab_1\left(\dfrac{I_H(t-\tau_M)}{N}\right)S_M(t-\tau_M)\ell(\tau_M) \label{eq5}\\
-\dfrac{dI_M}{dt} & = ab_1\left(\dfrac{I_H(t-\tau_M)}{N}\right)S_M(t-\tau_M)\ell(\tau_M)\notag\\
-&\quad - \mu I_M \label{eq6}
+\frac{dS_H}{dt} &= - a b_2 \frac{I_M(t)}{N} S_H(t) \\
+\frac{dI_H}{dt} &= a b_2 \frac{I_M(t - \tau_H)}{N} S_H(t - \tau_H) - \gamma I_H(t) \\
+\frac{dR_H}{dt} &= \gamma I_H(t) \\
+\frac{dS_M}{dt} &= b(R,T) - \left(a b_1 \frac{I_H(t)}{N} + \mu(T)\right) S_M(t) \\
+\frac{dE_M}{dt} &= a b_1 \frac{I_H(t)}{N} S_M(t) - \mu(T) E_M(t) \notag \\
+&\quad - a b_1 \frac{I_H(t - \tau_M)}{N} S_M(t - \tau_M)\ell(\tau_M) \\
+\frac{dI_M}{dt} &= a b_1 \frac{I_H(t - \tau_M)}{N} S_M(t - \tau_M)\ell(\tau_M) \notag \\
+&\quad - \mu(T) I_M(t)
 \end{align}
 \\
-The parameters are given in \textbf{Table A.1}, while the variables are given in \textbf{Table A.2}, which can be found in the Appendix. 
+Here, $a(T)$ denotes the biting rate, $b_1$ and $b_2$ are transmission probabilities from humans to 
+mosquitoes and vice versa, $\mu(T)$ is the mosquito mortality rate, and $\tau_H$, $\tau_M$ represent the intrinsic and 
+extrinsic incubation periods. The function $b(R,T)$ describes mosquito recruitment, while $\ell(\tau_M)$ represents survival during the extrinsic incubation period.
 \\\\
-However, the use of these equations proved to be unsuccessful in the appropriate modelling of the behavior of the disease, as can be seen in Figures 1A and 2A: while it would be expected for the number of infected humans to oscilate during the period of study, given that malaria is a recurring illness in the region, the model indicates that the number of infections would rapidly fall to 0, without occurrence of new cases.  
-%for the modelling of the mosquito populations through the SEI equations, 
-%causing the population on susceptible individuals to oscillate with negative values. This is due to the parameter $b$, the daily birth rate of mosquitos, 
-%which uses the probability of survival of pupae, larvae and eggs dependant on rainfall, all of which include $(R_L - R)$ in their calculation. Although the 
-%value of $R_L$ used in the end was large enough to avoid negative results in this case, that being 968 mm of monthly precipitation, or roughly 32.27 mm of daily precipitation \cite{Ecological_Change_Malaria_Risk}, 
-%the modifications were kept nonetheless in order to avoid further problems.
-\\\\
-%In addition to that, it was noted that, using the parameters based on Tanzanian 
-%data, the value of $\mu$, the mosquito mortality rate per capita, would be very close to 0, around $2.7 \times 10^{-3}$, while $l(\tau_M)$ would be close to 1. Because of this, $(5)$ would be very close to 0 as 0
-%well, causing mirrored oscillations of $S_M$ and $I_M$, and $E_M$ to be nearly constant.
-In addition to that, it could also be seen that the mosquito population would also decline to near negligible levels, which could explain the lack of infections in the human population.
-\\\\
-To overcome this effect, the SEI equations were modified in order for $b_1$ to only be used in the transference between compartments $S$ and $E$, 
-and a new parameter, $b_3$ to move mosquitos from $E$ to $I$. Being inversely related to the incubation period, the definition of this rate can be found in \textbf{Table A.2}. 
-In addition to that, the parameter $a(T)$ that was in use in the transition between exposed and infected also had to be removed, as no further bites occur at this point. 
-The parameter $l$ also had to be disassociated from the infection rate of exposed individual ($b_3$).
-\\\\
-%Further modifications were done on parameters $A$, $B$ and $C$, as small enough values for these parameters, mostly for $A$, increases $\mu$ 
-%and leads the population to extinction. They were modified in order for $\mu$ to be on 
-%a scale of $4.02 \times 10^{-6}$, making the mosquito population relatively constant. 
-The SIR equations were also modified, to take into consideration population dynamics, including a $r_H$ parameter as the net human increase rate per capita, which could be explained by births or immigration to the municipality. Given the positive growth of the studied population, a death rate was neglected for this study.
-\\\\
-\\\\
-\\\\
-\\\\
-\\\\
-The updated equations used in the model are as following:  
+Although this formulation incorporates biologically relevant delays, numerical simulations revealed that, under 
+the parameterization considered, the model fails to reproduce sustained transmission dynamics. In particular, 
+both the infected human population and the mosquito population tends to extinction, indicating that the structure does not adequately capture endemic persistence.
 
-\begin{align}
-\dfrac{dS_H}{dt} & = r_HN-ab_2\left(\dfrac{I_M}{N}\right)S_H  \label{eq7}\\ %- \mu_HS_H \label{eq1}\\ %\dfrac{dS_H}{dt} & = -ab_2\bigg(\dfrac{I_M}{N}\bigg)S_H \label{eq1}\\
-\dfrac{dI_H}{dt} & = ab_2\left(\dfrac{I_M}{N}\right)S_H-\gamma I_H \label{eq8}\\% - \mu_HI_H \label{eq2}\\ %\dfrac{dI_H}{dt} & = ab_2\bigg(\dfrac{I_M}{N}\bigg)S_H - \gamma I_H \label{eq2}\\
-\dfrac{dR_H}{dt} & = \gamma I_H \label{eq9}\\ % - \mu_HR_H \label{eq3}\\ %\dfrac{dR_H}{dt} & = \gamma I_H \label{eq3}\\
-\dfrac{dS_M}{dt} & = b - \left(ab_1\left(\dfrac{I_H}{N}\right) + \mu\right) S_M \label{eq10}\\ %b - ab_1\bigg(\dfrac{I_H}{N}\bigg)S_M - \mu S_M \label{eq4}\\
-\dfrac{dE_M}{dt} & = ab_1\left(\dfrac{I_H}{N}\right)S_M -\left( \mu + b_3+l\right)E_M \label{eq11} \\%ab_1\bigg(\dfrac{I_H}{N}\bigg)S_M - \mu E_M - ab_1\bigg(\dfrac{I_H}{N}\bigg)S_Ml(\tau_M) \label{eq5}\\
-\dfrac{dI_M}{dt} & = b_3E_M -\mu I_M  \label{eq12} %ab_1\bigg(\dfrac{I_H}{N}\bigg)S_Ml(\tau_M) - \mu I_M \label{eq6}
-\end{align}
+\subsection{ODE approximation and structural limitations}
 
+To simplify the analysis and avoid the technical complexity of delay differential equations, an ordinary differential equation (ODE) 
+approximation was initially considered. In this formulation, the extrinsic incubation period in mosquitoes is modeled via a transition 
+rate $b_3$, replacing the explicit delay $\tau_M$. Additionally, human population dynamics are incorporated through a net recruitment rate $r_H$.
+\\\\
+The resulting system is given by:
+\begin{align}
+\frac{dS_H}{dt} &= r_H N - a b_2 \frac{I_M}{N} S_H \\
+\frac{dI_H}{dt} &= a b_2 \frac{I_M}{N} S_H - \gamma I_H \\
+\frac{dR_H}{dt} &= \gamma I_H \\
+\frac{dS_M}{dt} &= b(R,T) - \left(a b_1 \frac{I_H}{N} + \mu\right) S_M \\
+\frac{dE_M}{dt} &= a b_1 \frac{I_H}{N} S_M - (\mu + b_3 + \ell) E_M \\
+\frac{dI_M}{dt} &= b_3 E_M - \mu I_M
+\end{align}
+\\
+While this formulation restores positivity and simplifies numerical implementation, it exhibits a 
+fundamental limitation: the system tends toward a disease-free equilibrium after a single outbreak, failing to 
+capture the recurrent nature of malaria transmission observed in endemic regions. This behavior highlights the 
+importance of explicitly modeling incubation periods and immunity dynamics.
 
-\subsection{Base SEIRS-SEI model}
+\subsection{SEIRS-SEI model with delay}
 
-Preliminary analysis of the baseline SIR-SEI framework revealed structural limitations in replicating endemic malaria transmission, as the system intrinsically tended toward a single outbreak followed by rapid fade-out. To rectify this and enhance biological fidelity, we extended the model to a SEIRS-SEI structure. %This model accounts for the extrinsic incubation period in humans ($E_H$) and the loss of temporary immunity ($R_H \to S_H$), features which are indispensable for simulating the cyclical, long-term transmission patterns observed in the field.
-This extension accounts for essential features of Plasmodium dynamics, such as the extrinsic incubation period in humans, represented by the Exposed compartment ($E_H$), and the decay of temporary acquired immunity, represented by the transition from Recovered to Susceptible ($R_H \to S_H$). These modifications are necessary to sustain the multi-year recurrence and seasonal oscillations characteristic of endemic regions.
+To address the limitations of the previous formulations, we introduce a SEIRS-SEI model that incorporates 
+both incubation delays and temporary immunity in the human population. The human compartments 
+are extended to include an exposed class $E_H$, and recovered individuals lose immunity at rate $\omega$, returning to the susceptible class.
+\\\\
+The model is given by:
+\begin{align}
+\frac{dS_H}{dt} &= r_H N - \lambda_H(t) S_H + \omega R_H \\
+\frac{dE_H}{dt} &= \lambda_H(t) S_H - \lambda_H(t - \tau_H) S_H(t - \tau_H) \\
+\frac{dI_H}{dt} &= \lambda_H(t - \tau_H) S_H(t - \tau_H) - \gamma I_H \\
+\frac{dR_H}{dt} &= \gamma I_H - \omega R_H \\
+\frac{dS_M}{dt} &= \Lambda(t) - \lambda_M(t) S_M - \mu(T) S_M \\
+\frac{dE_M}{dt} &= \lambda_M(t) S_M - \mu(T) E_M \notag \\
+&\quad - \lambda_M(t - \tau_M) S_M(t - \tau_M)\,\ell(\tau_M) \\
+\frac{dI_M}{dt} &= \lambda_M(t - \tau_M) S_M(t - \tau_M)\,\ell(\tau_M) - \mu(T) I_M
+\end{align}
+\\
+The forces of infection are defined as:
+\begin{align}
+\lambda_H(t) &= a\, b_2 \frac{I_M(t)}{M(t)} \\
+\lambda_M(t) &= a\, b_1 \frac{I_H(t)}{N(t)}
+\end{align}
+\\
+Mosquito recruitment is modeled using a density-dependent term:
+\begin{align}
+\Lambda(t) = b(R,T)\,K(t)\left(1 - \frac{M(t)}{K(t)}\right),
+\end{align}
+where $M(t) = S_M(t) + E_M(t) + I_M(t)$ is the total mosquito population, and $K(t)$ is the environmental carrying capacity.
+\\\\
+The carrying capacity is defined as:
+\begin{align}
+K(t) = M_0 \cdot f_T(T(t)) \cdot f_R(R(t)) \cdot f_S(t),
+\end{align}
+where $f_T$, $f_R$, and $f_S$ represent temperature, rainfall, and seasonal effects, respectively.
 
-The constructed model is as follows:
-\begin{align}
-\dfrac{dS_H}{dt} 
-&= r_H N - a b_2 \left(\dfrac{I_M(t)}{N}\right) S_H + \omega R_H \label{eq13}\\
-\dfrac{dE_H}{dt} 
-&= a b_2 \left(\dfrac{I_M(t)}{N}\right) S_H \notag\\
-&\quad - a b_2 \left(\dfrac{I_M(t-\tau_H)}{N}\right) S_H(t-\tau_H) \label{eq14}\\
-\dfrac{dI_H}{dt} 
-&= a b_2 \left(\dfrac{I_M(t-\tau_H)}{N}\right) S_H(t-\tau_H) \notag\\
-&\quad - \gamma I_H  \label{eq15}\\
-\dfrac{dR_H}{dt} 
-&= \gamma I_H - \omega R_H  \label{eq16}\\
-\dfrac{dS_M}{dt} 
-&= \Lambda - \left(a b_1 \left(\dfrac{I_H(t)}{N}\right) + \mu \right) S_M \label{eq17}\\
-\dfrac{dE_M}{dt} 
-&= a b_1 \left(\dfrac{I_H(t)}{N}\right) S_M - \mu E_M \notag\\
-&\quad - a b_1 \left(\dfrac{I_H(t-\tau_M)}{N}\right) S_M(t-\tau_M)\,\ell \label{eq18}\\
-\dfrac{dI_M}{dt} 
-&= a b_1 \left(\dfrac{I_H(t-\tau_M)}{N}\right) S_M(t-\tau_M)\,\ell \notag\\
-&\quad - \mu I_M \label{eq19}
-\end{align}
-Where $\Lambda$ is the mosquito recruitment rate:
-\begin{align}
-\Lambda=b(R,T)\cdot K\cdot \left(1-\dfrac{S_M+E_M+I_M}{K}\right)\label{eq20}
-\end{align}
-And $K$ is the mosquito carrying capacity:
-\begin{align}
-K 
-= M &\times \text{Temp. factor} \times \text{Rain factor} \notag\\
-&\quad \times \text{Seasonal factor}
-\end{align}
-Where:
-\begin{align}
-& \text{Temp. factor}  
-= \max\left(0.1, \min\left(1, \dfrac{T - 15}{15}\right)\right)\\
-&\text{Rain factor} 
-= \min\left(1, \max\left(0, \dfrac{R}{30}\right)\right)\\
-&\text{Seasonal factor} 
-= 2.5 + 2\sin\left(2\pi\dfrac{t - 180}{365.25}\right) \notag\\
-&\quad \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (1 \leq t \leq 366)
-\end{align}
 
 \section{Data description and processing}
 
