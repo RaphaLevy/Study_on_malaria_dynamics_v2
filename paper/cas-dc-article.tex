@@ -983,7 +983,7 @@ $r_H$ & Net daily recruitment rate per capita & days$^{-1}$\\
 %\end{figure*}
 \noindent
 \includegraphics[width=\columnwidth]{figs/SIR_Model_Parham_and_Michael_values.png}
-\captionof{figure}{Results of the initial SIR model, with equations and parameters from \cite{Parham2010}.}
+\captionof{figure}{Simulation of the baseline SIR model using the original parameterization from \cite{Parham2010}. The dynamics show a monotonic decline in the number of infected individuals, indicating the absence of sustained transmission.}
 \label{FIG:1A}
 
 
@@ -993,7 +993,7 @@ $r_H$ & Net daily recruitment rate per capita & days$^{-1}$\\
 
 \noindent
 \includegraphics[width=\columnwidth]{figs/SEI_Model_Parham_and_Michael_values.png}
-\captionof{figure}{Results of the initial SEI model, with equations and parameters from \cite{Parham2010}.}
+\captionof{figure}{Simulation of the baseline SEI mosquito model using the original parameterization from \cite{Parham2010}. The susceptible mosquito population exhibits oscillatory behavior and attains negative values, indicating a loss of biological and mathematical consistency.}
 \label{FIG:2A}
 
 \renewcommand{\thefigure}{3A}
@@ -1001,7 +1001,7 @@ $r_H$ & Net daily recruitment rate per capita & days$^{-1}$\\
 
 \noindent
 \includegraphics[width=\columnwidth]{figs/SEI_Model_Parham_and_Michael_values_01_probs.png}
-\captionof{figure}{Results of the initial SEI model, with equations and parameters from \cite{Parham2010}, ensuring that probabilities and rates are in $[0,1]$.}
+\captionof{figure}{Simulation of the SEI mosquito model after modifying parameter functions to enforce biologically admissible bounds on probabilities and rates. Although positivity is restored, the mosquito population rapidly declines toward extinction, suggesting that additional mechanisms are required to sustain endemic transmission.}
 \label{FIG:3A}
 
 %\begin{figure}[H]
