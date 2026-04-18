@@ -135,7 +135,7 @@
 \begin{abstract}
 %This template helps you to create a properly formatted \LaTeX\ manuscript.
 This paper aims to analyze the behavior of malaria transmission in the Amazon region based on climatic and environmental changes, such as temperature, precipitation, deforestation and forest fires, through proposed modifications to the SIR and SEI models, in order to contribute to the study of applications of external effects on the evolution of the disease. 
-The Trajetórias Project, developed by the Synthesis Center 
+The Trajetorias Project, developed by the Synthesis Center 
 on Biodiversity and Ecosystem Services (SinBiose/CNPq) was used as an initial reference for the study. 
 \\\\
 This work employs a modified SEIRS/SEI methodology, based on the SIR/SEI model developed by Parham and Michael (2010) which takes into account rainfall and temperature, with further modifications. %Primary results show that the model is too sensible on some parameters, and using values indicated by other papers did not give the same results, opening up future work to compare the modified model equations with the originals. With the obtained results, it was possible to verify a strong effect caused by increased contact of host and vectors on the transmission of the disease. 
@@ -308,79 +308,57 @@ Where:
 \end{align}
 
 \section{Data description and processing}
-It was decided to use data from cases caused by $P. \ vivax$ as this species is responsible for the highest number of malaria cases in Brazil \cite{OliveiraFerreira2010, 10.3389/fpubh.2021.647754}, being the most common human malaria parasite in the region \cite{Vector_Incrimination}.
+
+\subsection{Epidemiological data}
+
+This study focuses on malaria cases caused by \textit{Plasmodium vivax}, which accounts for the majority 
+of malaria infections in Brazil and is the predominant species in the Amazon 
+region \cite{OliveiraFerreira2010, 10.3389/fpubh.2021.647754, Vector_Incrimination}. 
 \\\\
-Based on higher incidence and number of cases, the municipality initially chosen for analysis was of Manaus, especially the rural zones, as  it had the highest incidence of malaria caused by $P. \ vivax$ in the Amazon region. Now, as it was not possible to identify the population in rural areas based on available census data, we used the Trajetórias Project to estimate this population based on the incidence function given \cite{Rorato2023}:
-%Based on higher incidence and number of cases, the municipalities chosen for analysis were Macapá (AP), Porto Velho (RO), Cruzeiro do Sul (AC) and Manaus (AM), especially the rural zones of Manaus, as  it had the highest incidence of malaria caused by $P. \ vivax$ in the Amazon region. Now, as it was not possible to identify the population in rural areas based on available census data, we used the Trajetórias Project to estimate this population based on the incidence function given \cite{Rorato2023}:
+Epidemiological data were obtained from the SIVEP-Malaria system \cite{SIVEP_Malaria}, 
+which provides daily records of notified malaria cases for all Brazilian municipalities from 
+2003 to 2023. The analysis was restricted to the period 2017–2023, for which complete epidemiological and environmental data were available.
 
-%The selected human population was from the the rural area of Manaus, the capital of the state of Amazonas, initially being used between the years of 2004 to 2008, 
-%as it had the highest incidence of malaria caused by $P. \ vivax$ in the Amazon region \cite{Rorato2023}, but this was later modified due to the little ammount 
-%of available information on deforestation and forest fires during this period.
-%%%between the years of 2004 to 2008, as it had the highest incidence of malaria 
-%%%caused by $P. \ vivax$ in the Amazon region \cite{Rorato2023}. 
-%It was decided to use $P. \ vivax$ as this species is responsible for the highest number of malaria cases in Brazil \cite{OliveiraFerreira2010, 10.3389/fpubh.2021.647754}, being the most common human malaria parasite in the region \cite{Vector_Incrimination}. 
+\subsection{Population estimates}
 
-%Given that the Trajetórias Project did not include data on each municipality's population, the incidence function \cite{Rorato2023} was initially used in order to look for an approximation for both total and rural populations of Manaus:
-
+The municipality of Manaus was selected due to its high incidence of \textit{P. vivax} malaria, 
+particularly in rural areas. However, detailed yearly estimates of rural population were not directly available 
+from census data. To address this limitation, population estimates were derived using data from the 
+Trajetorias Project \cite{Rorato2023}, which provides incidence values aggregated over five-year periods.
+\\\\
+Incidence is defined as
 \begin{align}
-\text{Inc} = %(d, m, z, t_1, t_2) = 
-\dfrac{\text{Cases}(d, m, z, t_1, t_2)}{\text{Pop}(m,z,(t_1+t_2)/2) \times 5 \ \text{years}} \times 10^5,
+\text{Inc}(d,m,z,t_1,t_2)
+=
+\frac{\text{Cases}(d,m,z,t_1,t_2)}
+{\text{Pop}(m,z,(t_1+t_2)/2)\cdot (t_2-t_1)}
+\times 10^5,
 \end{align}
-\\
-where $\text{Cases}(d, m, z, t_1, t_2)$ is the number of cases of disease $d$ in zone $z$ of municipality 
-$m$, and $t_1$ and $t_2$ are the initial and final years of the interval, while 
-$\text{Pop}(m,z,(t_1+t_2)/2) \times 5 \ \text{years}$ is the population in zone $z$ 
-of municipality $m$ in the middle of the period multiplied by the total number 
-of observation years. In the case of the rural population, we could indicate it as:
+where $\text{Cases}(d,m,z,t_1,t_2)$ denotes the number of reported cases for 
+disease $d$ in municipality $m$ and zone $z$ over the interval $[t_1,t_2]$, 
+and $\text{Pop}(m,z,\cdot)$ represents the population at the midpoint of the interval.
+\\\\
+This relationship was inverted to estimate rural population values from reported incidence and case counts. 
+Using this approach, the rural population of Manaus was estimated to represent less than $1\%$ of the total population, ranging between $0.3\%$ and $0.6\%$ 
+of the total municipal population, while accounting for a disproportionately large share of malaria cases (approximately $30\%$ to $40\%$ over the study periods).
+\\\\
+Yearly total population values for Manaus were obtained via interpolation based on official census data from 
+the Brazilian Institute of Geography and Statistics (IBGE) for the years 2000, 2010, and 
+2022 \cite{Census2000, Census2010, Census2022}. Intermediate yearly values were constructed using 
+linear interpolation, while values beyond 2022 were extrapolated based on observed trends.
 
-\begin{align}
-& \footnotesize{\text{Inc}(\text{Viv.}, \text{Man.}, \text{Ru.}, 2004, 2008) } = \\
-&= \footnotesize{\dfrac{\text{Cases}(\text{Viv.}, \text{Man.}, \text{Rur.}, 2004, 2008)}{\text{Pop}(\text{Man.}, \text{Rur.}, 2006) \times 5 \ \text{years}} \times 10^5}  \\
-&  \Rightarrow 184030.8 = \dfrac{78745}{5\text{Pop}} \times 10^5 \Rightarrow Pop \approx 8558
-\end{align}
-\\
-Using data on the total population of Manaus from 2004 to 2008, 
-with an incidence of 3106.429047 and a number of cases of 262,264, the 
-total population of the municipality was estimated to be 1,688,524 
-inhabitants, which corresponds to the value found in the official census \cite{Datasus2006}. Thus, the rural population represented 
-approximately 0.5$\%$ of the municipality's population in this period, while the number of cases in rural setting is about $30\%$ of all cases of malaria caused by $P. \ vivax$ in Manaus in this 
-period, and about $9.4\%$ of the cases in the state.
+\subsection{Data consistency adjustments}
+
+During preprocessing, inconsistencies were identified in the Trajetorias dataset. In particular, 
+incidence rates for the period 2015–2019 had been calculated using population estimates corresponding 
+to 2004–2008, resulting in a temporal mismatch. These values were recalculated using population 
+estimates consistent with the appropriate time interval.
 \\\\
-Using data from 2015 to 2019, the rural population is found to represent  
-approximately 0.4$\%$ of the municipality's population, the number of cases in rural settings being about $41.5\%$ of all cases in the city in this 
-period, and about $7.2\%$ of the cases in the state. 
-\\\\
-%With this, we will use that the rural population represents roughly $0.45\%$ of Manaus' population, 
-%and the number of rural cases to be around $35.75\%$ of the total cases in the city. 
-The yearly population was constructed via interpolation using data from IBGE (Brazilian Institute of Geography and Statistics, 
-governmental body responsible for the official Brazilian censuses), based on the censuses of 2000, 2010 and 2022, and an 
-estimation of the population of 2025 \cite{Census2000, Census2010, Census2022}.%
-\\\\
-As the data on malaria cases from the Trajetorias project was not given annually, but instead as a sum of cases in each five-year period of study, 
-yearly data was obtained from SIVEP \cite{SIVEP_Malaria}, which registers notifications from every brazillian municipality from 2003 to 2023.
-\\\\
-In order to use the latest and complete avaliable data on registered cases and deforestation and forest fires noticed, this study was 
-done using data from 2016 to 2024, but limited to the years of 2017 to 2023, given that the SIVEP database didn't include registered 
-data from 2024 at the time of development of this study. 
-\\\\
-As to properly approximate the rural population of Manaus and the number of rural cases in the municipality, the rural 
-proportion for 2020 to 2023 needed to be extrapolated from the estimated 2017 data, given that it was the midpoint of the latest estimate from Trajetorias. 
-\\\\
-During the preprocessing stage of data from the Trajetorias project, several inconsistencies were identified and corrected. First, the rural and 
-urban incidence rates for the period 2015–2019 had been originally computed using population estimates from 2004–2008, leading to a 
-temporal mismatch. These incidence values were recalculated using population data corresponding to the appropriate time period.
-\\\\
-Additionally, the rural and urban population estimates for 2006 and 2017 had initially been derived 
-using a fixed proportional split based on 2010 data. To better reflect demographic changes over time, particularly 
-those associated with urbanization, these estimates were revised. The rural population for 2006 was approximated as 
-the mean between the reported values for 2000 and 2010, while the 2017 population was obtained through extrapolation 
-based on the observed growth trend between these years. This approach provides a more consistent and temporally 
-coherent representation of population dynamics across the study period.
-%Additional data was gathered to take into consideration the average duration of infectiousness ($\gamma$), so in order to construct a more complete model, the complete data for the study was gathered from April 2016 to April 2022. 
-\\\\
-%In the end, it was decided to use the years of 2017 to 2021 as our period of study.
-%%
-\\\\
+Additionally, rural and urban population estimates for intermediate years had been derived using fixed 
+proportions based on 2010 data. To better account for demographic changes, particularly urbanization, 
+these estimates were revised. The rural population for 2006 was approximated as the mean between the 
+reported values for 2000 and 2010, while the 2017 value was obtained through extrapolation based on the 
+observed growth trend. These adjustments ensured temporal consistency in the population data used throughout the study.
 
 
 %Given the population growth between 2017 and 2021, the annual birth rate in the rural areas of Manaus was 
