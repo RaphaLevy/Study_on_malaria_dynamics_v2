@@ -170,53 +170,33 @@ Biological modelling \sep Malaria transmission \sep Climate change \sep Amazon \
 \maketitle
 
 \section{Introduction}
-The Amazon is one of the largest and most biodiverse tropical forests 
-in the world, harboring numerous species of plants, animals, and 
-microorganisms, including vectors and pathogens responsible for the 
-transmission of various diseases. Among them, one of the most common 
-is malaria, caused by protozoa of the genus \textit{Plasmodium}, 
-transmitted by the bite of the infected female mosquito of the genus 
-\textit{Anopheles}. It is present in 22 American countries, but the 
-areas with the highest risk of infection are located in the Amazon 
-region, encompassing nine countries, which accounted for $68\%$ of 
-infection cases in 
-2011 \cite{pimenta_orfano_bahia_duarte_rios-velasquez_melo_pessoa_oliveira_campos_villegas_etal_2015}. 
-Although malaria is prevalent in the Americas, it is 
-not limited to this continent and is found in countries in Africa and Asia, 
-resulting in more than two million cases of infection and 445,000 deaths 
-worldwide in 2016 \cite{regulation_of_sexual_commitment}, being endemic in a total of 84 countries in 2021 \cite{WHO2022}.
+
+Malaria remains one of the most significant vector-borne diseases worldwide, caused by 
+protozoa of the genus \textit{Plasmodium} and transmitted by female mosquitoes of the 
+genus \textit{Anopheles}. Although present in multiple regions, the burden of malaria in the Americas is 
+highly concentrated in the Amazon basin, which spans nine countries and accounts for a substantial proportion of reported 
+cases \cite{pimenta_orfano_bahia_duarte_rios-velasquez_melo_pessoa_oliveira_campos_villegas_etal_2015}. 
+The persistence of malaria in this region is closely linked to ecological, climatic, and socioeconomic factors 
+that influence both vector dynamics and human exposure.
 \\\\
-Notably, vector-borne disease transmission is closely related to 
-environmental changes that interfere with the ecosystem of both 
-transmitting and affected organisms. In the case of the 
-Amazon, agricultural and livestock settlements are among the factors
-that most favor disease transmission, both due to the deforestation 
-they cause for establishment and the clustering of people in environments 
-close to the vector's habitat \cite{silva-nunes_malaria_amazon_2008}, 
-especially by gathering non-immune migrants near these natural and 
-artificial breeding sites \cite{DASILVANUNES2012281}.
+Environmental changes play a central role in shaping malaria transmission. In the Amazon, 
+processes such as deforestation, agricultural expansion, and infrastructure development alter 
+local ecosystems, affecting vector habitats and increasing human–vector contact. These changes often 
+promote the proliferation of mosquito breeding sites and concentrate human populations in high-risk areas, 
+particularly among non-immune migrants \cite{silva-nunes_malaria_amazon_2008, DASILVANUNES2012281}. 
+In addition to land-use change, climatic variables such as temperature and rainfall, as well as disturbances such 
+as forest fires and mining activities, further influence vector abundance, pathogen development, and transmission intensity.
 \\\\
-Additionally, other factors such as rainfall, wildfires, and mining 
-also significantly influence disease transmission in the region. These 
-events result in habitat loss, ecosystem fragmentation, and climate 
-changes, affecting the distribution and abundance of vectors and hosts, 
-as well as their interaction with pathogens. Furthermore, population growth 
-and urbanization also play a crucial role in disease spread, increasing 
-human exposure to vectors and infection risks.
+Despite the recognized importance of environmental drivers, integrating these factors into mathematical models of 
+malaria transmission remains challenging. In particular, distinguishing between their effects on mosquito biology and 
+their impact on human–vector interaction is essential for developing models that are both biologically consistent and 
+identifiable from available data.
 \\\\
-In this context, this work aims to investigate vector-borne disease 
-transmission in the Amazon and analyze how environmental impacts 
-influence the dynamics of malaria transmission, the ecological and 
-socioeconomic factors affecting this spread. %(((((( VER DEPOIS, and possible prevention and control strategies)))))). 
-This research was adapted from the 
-Trajetórias Project, developed by the Center for Biodiversity and 
-Ecosystem Services (SinBiose/CNPq), which is a dataset including 
-environmental, epidemiological, economic, and socioeconomic indicators 
-for all municipalities in the Legal Amazon, analyzing the spatial and 
-temporal relationship between economic trajectories linked to the dynamics 
-of agrarian systems, whether they are family-based rural or of large-scale 
-agricultural and livestock production, the availability of natural resources, 
-and the risk of diseases \cite{Rorato2023}.
+In this work, we develop and analyze a modified SIR–SEI model for malaria transmission in the Amazon, incorporating 
+environmental variables such as temperature, rainfall, deforestation, and fire activity. Climatic factors are modeled as 
+drivers of mosquito life-history parameters, while land-use variables are introduced as modifiers of transmission intensity. 
+Using epidemiological and environmental data from the Trajetórias Project \cite{Rorato2023}, we investigate how these 
+factors influence disease dynamics and assess their relative contributions through analytical and numerical methods.
 
 \section{Model formulation}
 
