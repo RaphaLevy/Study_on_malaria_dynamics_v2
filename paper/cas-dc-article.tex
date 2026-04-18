@@ -451,9 +451,13 @@ the risk of future fires by increasing the availability of combustible and under
 with simultaneous fires being set in the Amazon region, and in 2024 the state of Amazonas has reached it's highest number of recorded outbreaks since 1998, 
 with over 21,600 cases reported, and over 10,000 just in the month of August \cite{Threats_and_Opportunities, G1_Queimadas}.
 \\\\
-Deforestation data was obtained from DETER, registered by daily notices and degradation type, given in  km$^2$ \cite{Daily_DETER}. As multiple cases may occur in the same day, we grouped these cases by day in order to have a complete daily register of deforested area, separated by type and aggregated in total. 
+Deforestation data were obtained from the DETER system, which provides daily records of deforestation alerts by degradation type, reported 
+in km$^2$ \cite{Daily_DETER}. Because multiple alerts may occur on the same day, the data were aggregated to produce a 
+complete daily time series of deforested area, both disaggregated by degradation type and summed to obtain total daily deforestation.
 \\\\
-Daily data of forest fires was obtained from INPE. In order to use data on a daily basis, it was needed to use the detected number of fire hotspots, without being possible to access area-based information on this time frame \cite{INPE_Forest_Fires}.
+Data on forest fires were obtained from the Brazilian National Institute for Space Research (INPE), which provides daily 
+records of detected fire hotspots \cite{INPE_Forest_Fires}. Due to the absence of area-based measurements at the 
+daily resolution, the number of detected hotspots was used as a proxy for fire activity.
 
 
 %Monthly data of forest fires and yearly data of deforestation given in hectares of forest supression between 2017 and 2021 
