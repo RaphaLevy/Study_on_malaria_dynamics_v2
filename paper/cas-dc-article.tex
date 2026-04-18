@@ -451,10 +451,15 @@ the risk of future fires by increasing the availability of combustible and under
 with simultaneous fires being set in the Amazon region, and in 2024 the state of Amazonas has reached it's highest number of recorded outbreaks since 1998, 
 with over 21,600 cases reported, and over 10,000 just in the month of August \cite{Threats_and_Opportunities, G1_Queimadas}.
 \\\\
-Monthly data of forest fires and yearly data of deforestation given in hectares of forest supression between 2017 and 2021 
-was obtained from MapBiomas \cite{MapBIOMAS_Deforestation, MapBIOMAS_Forest_Fires}. 
-Monthly data for deforestation in Manaus was approximated from notifications from the state of Amazonas during this time interval, and it was 
-estimated that $3\%$ of notices of deforested area (km$^2$) in the state were located in Manaus \cite{DETER_Deforestation, MapBIOMAS_Deforestation}.  In addition to that, daily notices of deforestation were also used, obtained from TerraBrasilis \cite{Daily_DETER}.
+Deforestation data was obtained from DETER, registered by daily notices and degradation type, given in  km$^2$ \cite{Daily_DETER}. As multiple cases may occur in the same day, we grouped these cases by day in order to have a complete daily register of deforested area, separated by type and aggregated in total. 
+\\\\
+Daily data of forest fires was obtained from INPE. In order to use data on a daily basis, it was needed to use the detected number of fire hotspots, without being possible to access area-based information on this time frame \cite{INPE_Forest_Fires}.
+
+
+%Monthly data of forest fires and yearly data of deforestation given in hectares of forest supression between 2017 and 2021 
+%was obtained from MapBiomas \cite{MapBIOMAS_Deforestation, MapBIOMAS_Forest_Fires}. 
+%Monthly data for deforestation in Manaus was approximated from notifications from the state of Amazonas during this time interval, and it was 
+%estimated that $3\%$ of notices of deforested area (km$^2$) in the state were located in Manaus \cite{DETER_Deforestation, MapBIOMAS_Deforestation}.  In addition to that, daily notices of deforestation were also used, obtained from TerraBrasilis \cite{Daily_DETER}.
 
 \section{Mathematical analysis of the model}
 
@@ -873,23 +878,26 @@ East Zone of Manaus, Amazon, South American Journal of Basic Education, Technica
 \\
 %33
 \bibitem{G1_Queimadas} G1, M. Castro, "Amazonas registra 21,6 mil queimadas em 2024 e tem o pior índice em 26 anos, aponta Inpe", accessed on 28 September 2024, \href{https://g1.globo.com/am/amazonas/noticia/2024/09/24/amazonas-registra-216-mil-queimadas-em-2024-e-tem-o-pior-indice-em-26-anos-aponta-inpe.ghtml}{https://g1.globo.com/am/amazonas/noticia/2024/09/24/amazonas-registra-216-mil-queimadas-em-2024-e-tem-o-pior-indice-em-26-anos-aponta-inpe.ghtml}.
+%\\
+%Unused
+%\bibitem{MapBIOMAS_Deforestation} MapBiomas, Collection 9 of the Annual Land Cover and Land Use Maps of Brazil (1985-2023), V1 (2024), accessed on 24 September 2024, \href{https://doi.org/10.58053/MapBiomas/XXUKA8}{https://doi.org/10.58053/MapBiomas/XXUKA8}.
+%\\
+%Unused
+%\bibitem{MapBIOMAS_Forest_Fires} MapBiomas, Collection 3 of Annual burned area maps of Brazil (1985-2023), V1 (2024), accessed on 24 September 2024, \href{https://doi.org/10.58053/MapBiomas/XUFVIC}{https://doi.org/10.58053/MapBiomas/XUFVIC}.
+%\\
+%Unused
+%\bibitem{DETER_Deforestation} TerraBrasilis, DETER (Notices), Analyses - Amazônia Biome, Monthly variation of DETER project area, accessed on 17 October 2024, \href{https://terrabrasilis.dpi.inpe.br/app/dashboard/alerts/biomes/amazonia-nb/aggregated/\#}{https://terrabrasilis.dpi.inpe.br/app/dashboard/alerts/biomes/amazonia-nb/aggregated/\#}.
 \\
 %34
-\bibitem{MapBIOMAS_Deforestation} MapBiomas, Collection 9 of the Annual Land Cover and Land Use Maps of Brazil (1985-2023), V1 (2024), accessed on 24 September 2024, \href{https://doi.org/10.58053/MapBiomas/XXUKA8}{https://doi.org/10.58053/MapBiomas/XXUKA8}.
+\bibitem{Daily_DETER} TerraBrasilis, DETER (Notices), Analyses - Amazônia Biome, Daily notices of DETER project area, accessed on 17 March 2026, \href{https://terrabrasilis.dpi.inpe.br/app/dashboard/alerts/biomes/amazonia-nb/daily/}{https://terrabrasilis.dpi.inpe.br/app/dashboard/alerts/biomes/amazonia-nb/daily/}.
 \\
 %35
-\bibitem{MapBIOMAS_Forest_Fires} MapBiomas, Collection 3 of Annual burned area maps of Brazil (1985-2023), V1 (2024), accessed on 24 September 2024, \href{https://doi.org/10.58053/MapBiomas/XUFVIC}{https://doi.org/10.58053/MapBiomas/XUFVIC}.
+\bibitem{INPE_Forest_Fires} Data$\_$Basis.org, Fire Database, National Institute for Space Research (INPE), acessed on 17 March 2026, \href{https://data-basis.org/dataset/f06f3cdc-b539-409b-b311-1ff8878fb8d9?table=a3696dc2-4dd1-4f7e-9769-6aa16a1556b8}{https://data-basis.org/dataset/f06f3cdc-b539-409b-b311-1ff8878fb8d9?table=a3696dc2-4dd1-4f7e-9769-6aa16a1556b8}.
 \\
 %36
-\bibitem{DETER_Deforestation} TerraBrasilis, DETER (Notices), Analyses - Amazônia Biome, Monthly variation of DETER project area, accessed on 17 October 2024, \href{https://terrabrasilis.dpi.inpe.br/app/dashboard/alerts/biomes/amazonia-nb/aggregated/\#}{https://terrabrasilis.dpi.inpe.br/app/dashboard/alerts/biomes/amazonia-nb/aggregated/\#}.
+\bibitem{Rep_Number_Comp_Model} P. van den Driessche, J. Watmough, Reproduction numbers and sub-threshold endemic equilibria for compartmental models of disease transmission, Mathematical Biosciences, Vol. 180 (2002), 29-48, \href{https://doi.org/10.1016/S0025-5564(02)00108-6}{https://doi.org/10.1016/S0025-5564(02)00108-6}.
 \\
 %37
-\bibitem{Daily_DETER} TerraBrasilis, DETER (Notices), Analyses - Amazônia Biome, Daily notices of DETER project area, accessed on 17 October 2024, \href{https://terrabrasilis.dpi.inpe.br/app/dashboard/alerts/biomes/amazonia-nb/daily/}{https://terrabrasilis.dpi.inpe.br/app/dashboard/alerts/biomes/amazonia-nb/daily/}.
-\\
-%38
-\bibitem{Rep_Number_Comp_Model} P. van den Driessche, J. Watmough, Reproduction numbers and sub-threshold endemic equilibria for compartmental models of disease transmission, Mathematical Biosciences, Vol. 180 (2002), 29-48, \href{https://doi.org/10.1016/S0025-5564(02)00108-6}{ https://doi.org/10.1016/S0025-5564(02)00108-6}.
-\\
-%39
 \end{thebibliography}
 
 \clearpage
