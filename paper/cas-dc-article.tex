@@ -284,8 +284,13 @@ The carrying capacity is defined as:
 \begin{align}
 K(t) = M_0 \cdot f_T(T(t)) \cdot f_R(R(t)) \cdot f_S(t),
 \end{align}
-where $f_T$, $f_R$, and $f_S$ represent temperature, rainfall, and seasonal effects, respectively.
-
+where the environmental response functions are given by
+\begin{align}
+f_T(T) &= \max\left(0.1, \min\left(1, \frac{T - 15}{15} \right) \right) \\
+f_R(R) &= \min\left(1, \max\left(0, \frac{R}{30} \right) \right) \\
+f_S(t) &= 2.5 + 2 \sin\left( \frac{2\pi}{365.25}(t - 180) \right)
+\end{align}
+where $t$ is measured in days, and $f_S(t)$ is a periodic function with period $365.25$ days.
 
 \section{Data description and processing}
 
