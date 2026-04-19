@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.3.13)  19 APR 2026 16:49
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.3.13)  19 APR 2026 16:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1782,7 +1782,7 @@ Overfull \hbox (238.25444pt too wide) in paragraph at lines 871--914
 
 
 ]
-<figs/SIR_Model_Parham_and_Michael_values.png, id=224, 737.75626pt x 412.54124p
+<figs/SIR_Model_Parham_and_Michael_values.png, id=225, 737.75626pt x 412.54124p
 t>
 File: figs/SIR_Model_Parham_and_Michael_values.png Graphic file (type png)
 <use figs/SIR_Model_Parham_and_Michael_values.png>
@@ -1800,7 +1800,7 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 931.
 See the caption package documentation for explanation.
 
-<figs/SEI_Model_Parham_and_Michael_values.png, id=227, 743.77875pt x 407.72325p
+<figs/SEI_Model_Parham_and_Michael_values.png, id=228, 743.77875pt x 407.72325p
 t>
 File: figs/SEI_Model_Parham_and_Michael_values.png Graphic file (type png)
 <use figs/SEI_Model_Parham_and_Michael_values.png>
@@ -1812,7 +1812,7 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 941.
 See the caption package documentation for explanation.
 
-<figs/SEI_Model_Parham_and_Michael_values_01_probs.png, id=230, 822.6735pt x 38
+<figs/SEI_Model_Parham_and_Michael_values_01_probs.png, id=231, 822.6735pt x 38
 4.2355pt>
 File: figs/SEI_Model_Parham_and_Michael_values_01_probs.png Graphic file (type 
 png)
@@ -1840,8 +1840,8 @@ Package rerunfilecheck Info: File `cas-dc-article.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 18440 strings out of 467871
- 288363 string characters out of 5418376
+ 18441 strings out of 467871
+ 288372 string characters out of 5418376
  709549 words of memory out of 5000000
  46922 multiletter control sequences out of 15000+600000
  750618 words of font info for 207 fonts, out of 8000000 for 9000
@@ -1861,9 +1861,9 @@ stix-mathex.pfb><C:/Users/rapha/AppData/Local/Programs/MiKTeX/fonts/type1/publi
 c/stix/stix-mathit.pfb><C:/Users/rapha/AppData/Local/Programs/MiKTeX/fonts/type
 1/public/stix/stix-mathrm.pfb><C:/Users/rapha/AppData/Local/Programs/MiKTeX/fon
 ts/type1/public/stix/stix-mathscr.pfb>
-Output written on cas-dc-article.pdf (11 pages, 776444 bytes).
+Output written on cas-dc-article.pdf (11 pages, 776756 bytes).
 PDF statistics:
- 395 PDF objects out of 1000 (max. 8388607)
- 103 named destinations out of 1000 (max. 500000)
+ 396 PDF objects out of 1000 (max. 8388607)
+ 104 named destinations out of 1000 (max. 500000)
  26 words of extra memory for PDF output out of 10000 (max. 10000000)
 

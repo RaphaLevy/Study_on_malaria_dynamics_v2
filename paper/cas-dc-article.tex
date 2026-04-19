@@ -200,9 +200,9 @@ drivers of mosquito life-history parameters, while land-use variables are introd
 Using epidemiological and environmental data from the Trajetorias Project \cite{Rorato2023}, we investigate how these 
 factors influence disease dynamics and assess their relative contributions through analytical and numerical methods.
 
-\section{Model formulation}
+\section{Model Formulation}
 
-\subsection{Baseline delayed SIR-SEI model}
+\subsection{Baseline Delayed SIR-SEI Model}
 
 We begin with the classical host-vector framework for malaria transmission, based on the model introduced by Parham and Michael (2010) \cite{Parham2010}, 
 which incorporates temperature- and rainfall-dependent mosquito dynamics. The human population is divided into susceptible, infected, 
@@ -292,9 +292,9 @@ f_S(t) &= 2.5 + 2 \sin\left( \frac{2\pi}{365.25}(t - 180) \right)
 \end{align}
 where $t$ is measured in days, and $f_S(t)$ is a periodic function with period $365.25$ days.
 
-\section{Data description and processing}
+\section{Data Description and Processing}
 
-\subsection{Epidemiological data}
+\subsection{Epidemiological Data}
 
 This study focuses on malaria cases caused by \textit{Plasmodium vivax}, which accounts for the majority 
 of malaria infections in Brazil and is the predominant species in the Amazon 
@@ -304,7 +304,7 @@ Epidemiological data were obtained from the SIVEP-Malaria system \cite{SIVEP_Mal
 which provides daily records of notified malaria cases for all Brazilian municipalities from 
 2003 to 2023. The analysis was restricted to the period 2017–2023, for which complete epidemiological and environmental data were available.
 
-\subsection{Population estimates}
+\subsection{Population Estimates}
 
 The municipality of Manaus was selected due to its high incidence of \textit{P. vivax} malaria, 
 particularly in rural areas. However, detailed yearly estimates of rural population were not directly available 
@@ -332,7 +332,7 @@ the Brazilian Institute of Geography and Statistics (IBGE) for the years 2000, 2
 2022 \cite{Census2000, Census2010, Census2022}. Intermediate yearly values were constructed using 
 linear interpolation, while values beyond 2022 were extrapolated based on observed trends.
 
-\subsection{Data consistency adjustments}
+\subsection{Data Consistency Adjustments}
 
 During preprocessing, inconsistencies were identified in the Trajetorias dataset. In particular, 
 incidence rates for the period 2015–2019 had been calculated using population estimates corresponding 
@@ -349,7 +349,7 @@ observed growth trend. These adjustments ensured temporal consistency in the pop
 %Given the population growth between 2017 and 2021, the annual birth rate in the rural areas of Manaus was 
 %estimated to be 98 births per year, around 0.268 per day and given an estimated mean rural population of 8992, 0.00003 births per person per year ($\mu_H$). 
 
-\section{Impacts of environmental factors}
+\section{Impacts of Environmental Factors}
 
 Environmental changes, particularly deforestation and forest fires, have been widely associated with the 
 resurgence and spatial redistribution of malaria transmission in the Amazon region \cite{Norris2004}. 
@@ -389,7 +389,7 @@ detected hotspots was used as a proxy for fire activity.
 %Monthly data for deforestation in Manaus was approximated from notifications from the state of Amazonas during this time interval, and it was 
 %estimated that $3\%$ of notices of deforested area (km$^2$) in the state were located in Manaus \cite{DETER_Deforestation, MapBIOMAS_Deforestation}.  In addition to that, daily notices of deforestation were also used, obtained from TerraBrasilis \cite{Daily_DETER}.
 
-\section{Mathematical analysis of the model}
+\section{Mathematical Analysis of the Model}
 
 \subsection{Basic Reproduction Number ($\mathcal{R}_0$)}
 To derive the $\mathcal{R}_0$ of the model, we define $X_s$ as the set of all disease-free states, 
@@ -696,7 +696,7 @@ It is possible to see that the model gives a close approximation to the format o
 At this point, a linear combination was implemented as a replacement 
 to the use of simply $T$ and $R$, in order to take into consideration the effects of deforestation and fires, with the $\alpha$-function $\alpha_1D + \alpha_2F + \alpha_3T + \alpha_4R$, with $\alpha_0 = [0, 0, 1, 1]$ representing the primary version of the model. 
 
-
+\section{Discussion}
 
 
 
