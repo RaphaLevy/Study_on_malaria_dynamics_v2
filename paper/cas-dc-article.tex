@@ -651,6 +651,17 @@ temperature and precipitation, that was found to be 0.687, 0.839 and -0.883, res
 %Linear regression tests were also taken, as to see how the 
 %number of cases is dependent not only in the environmental data used above, but on the month of year and season as well.
 
+\section{Computational Implementation}
+All model simulations were performed using Python version 3.12.7 (conda-forge distribution). Data manipulation and analysis were performed using Pandas version 3.0.2, 
+while numerical computations and array operations were carried out with 
+NumPy version 2.4.2.
+\\\\
+The systems of time-delay ordinary differential equations (1-6) were solved numerically using the explicit Runge-Kutta method as implemented in the \texttt{solve\_ivp} function from SciPy version 1.17.1. %A constant time step of 0.1 days was used for all simulations. Temperature and rainfall profiles (Equations 10-11) were generated using NumPy version 1.26.0 \citep{Harris2020}. 
+All computations were performed on a laptop running \textbf{Windows 11} (64-bit) equipped with a \textbf{12th Gen Intel Core i5-1235U} processor (10 cores, 12 threads, 1.30 GHz base frequency) and \textbf{16 GB RAM}.
+\\\\
+%Computations were executed on a workstation with an Intel Core i7-12700K processor (3.6 GHz) and 32 GB of RAM running Ubuntu 22.04 LTS. 
+The source code and data required to reproduce all figures are available at \url{https://github.com/RaphaLevy/Study_on_malaria_dynamics_v2}.
+
 \section{Results}
 The initial implementation of the model using the original functional forms and parameter values reported in \cite{Parham2010} did not reproduce biologically consistent transmission dynamics, particularly in the mosquito population. As illustrated in Figures 1–3A, the human SIR component exhibits a monotonic decline in the number of infected individuals, suggesting that the infection fails to persist in the population under the given parametrization. More critically, the corresponding SEI mosquito model yields nonphysical behavior, with the susceptible mosquito population attaining negative values and exhibiting oscillatory dynamics.
 \\\\
@@ -685,16 +696,9 @@ It is possible to see that the model gives a close approximation to the format o
 At this point, a linear combination was implemented as a replacement 
 to the use of simply $T$ and $R$, in order to take into consideration the effects of deforestation and fires, with the $\alpha$-function $\alpha_1D + \alpha_2F + \alpha_3T + \alpha_4R$, with $\alpha_0 = [0, 0, 1, 1]$ representing the primary version of the model. 
 
-\section{Computational Implementation}
-All model simulations were performed using Python version 3.12.7 (conda-forge distribution). Data manipulation and analysis were performed using Pandas version 3.0.2, 
-while numerical computations and array operations were carried out with 
-NumPy version 2.4.2.
-\\\\
-The systems of time-delay ordinary differential equations (1-6) were solved numerically using the explicit Runge-Kutta method as implemented in the \texttt{solve\_ivp} function from SciPy version 1.17.1. %A constant time step of 0.1 days was used for all simulations. Temperature and rainfall profiles (Equations 10-11) were generated using NumPy version 1.26.0 \citep{Harris2020}. 
-All computations were performed on a laptop running \textbf{Windows 11} (64-bit) equipped with a \textbf{12th Gen Intel Core i5-1235U} processor (10 cores, 12 threads, 1.30 GHz base frequency) and \textbf{16 GB RAM}.
-\\\\
-%Computations were executed on a workstation with an Intel Core i7-12700K processor (3.6 GHz) and 32 GB of RAM running Ubuntu 22.04 LTS. 
-The source code and data required to reproduce all figures are available at \url{https://github.com/RaphaLevy/Study_on_malaria_dynamics_v2}.
+
+
+
 
 \newpage
 \begin{thebibliography}{00}
