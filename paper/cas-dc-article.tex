@@ -233,11 +233,12 @@ both the infected human population and the mosquito population tends to extincti
 
 To simplify the analysis and avoid the technical complexity of delay differential equations, an ordinary differential equation (ODE) 
 approximation was initially considered. In this formulation, the extrinsic incubation period in mosquitoes is modeled via a transition 
-rate $b_3$, replacing the explicit delay $\tau_M$. Additionally, human population dynamics are incorporated through a net recruitment rate $r_H$.
+rate $b_3$, replacing the explicit delay $\tau_M$. %Additionally, human population dynamics are incorporated through a net recruitment rate $r_H$.
 \\\\
 The resulting system is given by:
 \begin{align}
-\frac{dS_H}{dt} &= r_H N - a b_2 \frac{I_M}{N} S_H \\
+\frac{dS_H}{dt} &= - a b_2 \frac{I_M}{N} S_H \\
+%\frac{dS_H}{dt} &= r_H N - a b_2 \frac{I_M}{N} S_H \\
 \frac{dI_H}{dt} &= a b_2 \frac{I_M}{N} S_H - \gamma I_H \\
 \frac{dR_H}{dt} &= \gamma I_H \\
 \frac{dS_M}{dt} &= b(R,T) - \left(a b_1 \frac{I_H}{N} + \mu\right) S_M \\
