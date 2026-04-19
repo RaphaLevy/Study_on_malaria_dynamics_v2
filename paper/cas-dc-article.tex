@@ -694,10 +694,25 @@ It is possible to see that the model gives a close approximation to the format o
 %In order to better approximate the model to the data, a method of linear regression was used, with the intent of minimizing the difference by optimizing different parameters used on the model. 
 \\\\
 At this point, a linear combination was implemented as a replacement 
-to the use of simply $T$ and $R$, in order to take into consideration the effects of deforestation and fires, with the $\alpha$-function $\alpha_1D + \alpha_2F + \alpha_3T + \alpha_4R$, with $\alpha_0 = [0, 0, 1, 1]$ representing the primary version of the model. 
+to the use of simply $T$ and $R$, in order to take into consideration the effects of 
+deforestation and fires, with the $\alpha$-function $\alpha_1D + \alpha_2F + \alpha_3T + \alpha_4R$, 
+with $\alpha_0 = [0, 0, 1, 1]$ representing the primary version of the model. 
 
 \section{Discussion}
 
+The population estimates provided by the Trajetórias Project \cite{Rorato2023} for 
+inter-census periods are derived using fixed rural–urban proportions based on the 2010 census. 
+While this approach ensures internal consistency, it does not account for the significant 
+demographic changes observed in Manaus over time, particularly those associated with rapid urbanization.
+\\\\
+To address this limitation, the population proportions used in this study were recalculated (see Section 3.3) 
+using interpolation and extrapolation based on available census data. This adjustment provides a more realistic 
+representation of temporal changes in the rural population, which is especially relevant given the 
+disproportionate contribution of rural areas to malaria incidence.
+\\\\
+These refinements improve the consistency between demographic inputs and epidemiological 
+dynamics in the model, reducing potential biases in the estimation of transmission intensity 
+and enhancing the reliability of the results.
 
 
 \newpage
