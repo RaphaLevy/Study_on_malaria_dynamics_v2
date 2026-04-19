@@ -5,12 +5,11 @@ All files in this folder regard models in development. They are separated in SIR
   - model_results_no_intervention.csv: File with approximated daily population data per compartment in SEIRS-SEI model with environmental dynamics without intervention
   - model_results_with_intervention.csv: File with approximated daily population data per compartment in SEIRS-SEI model with environmental dynamics with intervention
 - sir_sei:
-  - Original_Model_Best_Fit_Parameters.ipynb: Base SIR/SEI model, based on the parameters best fitted to the SEIRS-SEI in comparison to actual data
+  - ODE_Approximation_Dissertation_Parameters.ipynb: Updated SIR_SEI model based on an ODE approximation, based on the parameters used in the development of the project during the Undergraduate Dissertation [(https://github.com/RaphaLevy/Undergraduate_Dissertation)](https://github.com/RaphaLevy/Undergraduate_Dissertation)
   - Original_Model_PM_Parameters.ipynb: Base SIR/SEI model, based on the original parameters of Parham & Michael (2010), with minor modifications (DOI: 10.1007/978-1-4419-6064-1_13)
-  - Original_Model_Dissertation_Parameters.ipynb: Base SIR/SEI model, based on the parameters used in the development of the project during the Undergraduate Dissertation [(https://github.com/RaphaLevy/Undergraduate_Dissertation)](https://github.com/RaphaLevy/Undergraduate_Dissertation)
+  - Original_Model_Dissertation_Parameters.ipynb: Base SIR/SEI model, based on the parameters used in the development of the project during the Undergraduate Dissertation
   - Plot_Model_Base_Functions.ipynb: File for plotting environmental functions used in the model using DDE methods (**Under development**)
   - Test_DDE_Model.ipynb: Updated SIR/SEI model to use DDE methods and appropriate solver, with analysis of infection dynamics in relation to climate factors
-  - Test_DDE_Model_Best_Fit_Parameters.ipynb: Updated SIR/SEI model to use DDE methods and appropriate solver, with analysis of infection dynamics in relation to climate factors, based on the parameters best fitted to the SEIRS-SEI in comparison to actual data
 - seirs_sei:
   - Compare_Results_With_Without_Intervention.ipynb: File for comparison of results between SEIRS-SEI model with environmental dynamics with and without intervention 
   - SEIRS_SEI_Environment_Functions.ipynb: File for plotting environmental functions used in the model (**Under development**)
