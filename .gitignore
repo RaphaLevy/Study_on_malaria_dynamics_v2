@@ -5,8 +5,12 @@ data_files/data/sivep_notification_data/malaria_notification_data_csv/
 data_files/data/sivep_notification_data/treated_malaria_notification_data/malaria_vivax_treated.csv
 # Ignore all Epigrass test files (used only for local testing and development)
 epigrass_tests/
+epigrass/
 # Ignore specific test file that was used for local testing and development (optimization didn't work well)
 models/Test_SEIRS_SEI_Model-Copy1.ipynb 
 # Ignore file for verifying imports and packages used in the development of the paper
 data_files/notebooks/Computational_Info.ipynb
 paper/figs/incorrect/
+# Ignore specific SIR-SEI test files done only for observation of change in parameters (unused)
+models/sir_sei/Original_Model_Best_Fit_Parameters.ipynb
+models/sir_sei/Test_DDE_Model_Best_Fit_Parameters.ipynb
