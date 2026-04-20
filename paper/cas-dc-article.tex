@@ -219,7 +219,7 @@ The transmission dynamics are governed by the system of delay differential equat
 \frac{dE_M}{dt} &= a b_1 \frac{I_H(t)}{N} S_M(t) - \mu(T) E_M(t) \notag \\
 &\quad - a b_1 \frac{I_H(t - \tau_M)}{N} S_M(t - \tau_M)\ell(\tau_M) \label{eq:systeme} \\
 \frac{dI_M}{dt} &= a b_1 \frac{I_H(t - \tau_M)}{N} S_M(t - \tau_M)\ell(\tau_M) \notag \\
-&\quad - \mu(T) I_M(t) \label{eq:systeme} 
+&\quad - \mu(T) I_M(t) \label{eq:systemf} 
 \end{align}
 \end{subequations}
 \\
@@ -261,22 +261,26 @@ both incubation delays and temporary immunity in the human population. The human
 are extended to include an exposed class $E_H$, and recovered individuals lose immunity at rate $\omega$, returning to the susceptible class.
 \\\\
 The model is given by:
+\begin{subequations}\label{eq:system}
 \begin{align}
-\frac{dS_H}{dt} &= r_H N - \lambda_H(t) S_H + \omega R_H \\
-\frac{dE_H}{dt} &= \lambda_H(t) S_H - \lambda_H(t - \tau_H) S_H(t - \tau_H) \\
-\frac{dI_H}{dt} &= \lambda_H(t - \tau_H) S_H(t - \tau_H) - \gamma I_H \\
-\frac{dR_H}{dt} &= \gamma I_H - \omega R_H \\
-\frac{dS_M}{dt} &= \Lambda(t) - \lambda_M(t) S_M - \mu(T) S_M \\
+\frac{dS_H}{dt} &= r_H N - \lambda_H(t) S_H + \omega R_H \label{eq:systema} \\
+\frac{dE_H}{dt} &= \lambda_H(t) S_H - \lambda_H(t - \tau_H) S_H(t - \tau_H) \label{eq:systemb} \\
+\frac{dI_H}{dt} &= \lambda_H(t - \tau_H) S_H(t - \tau_H) - \gamma I_H  \label{eq:systemc} \\
+\frac{dR_H}{dt} &= \gamma I_H - \omega R_H  \label{eq:systemd} \\
+\frac{dS_M}{dt} &= \Lambda(t) - \lambda_M(t) S_M - \mu(T) S_M  \label{eq:systeme} \\
 \frac{dE_M}{dt} &= \lambda_M(t) S_M - \mu(T) E_M \notag \\
-&\quad - \lambda_M(t - \tau_M) S_M(t - \tau_M)\,\ell(\tau_M) \\
-\frac{dI_M}{dt} &= \lambda_M(t - \tau_M) S_M(t - \tau_M)\,\ell(\tau_M) - \mu(T) I_M
+&\quad - \lambda_M(t - \tau_M) S_M(t - \tau_M)\,\ell(\tau_M)  \label{eq:systemf} \\
+\frac{dI_M}{dt} &= \lambda_M(t - \tau_M) S_M(t - \tau_M)\,\ell(\tau_M) - \mu(T) I_M  \label{eq:systemg}
 \end{align}
+\end{subequations}
 \\
 The forces of infection are defined as:
+\begin{subequations}\label{eq:system}
 \begin{align}
-\lambda_H(t) &= a\, b_2 \frac{I_M(t)}{M(t)} \\
-\lambda_M(t) &= a\, b_1 \frac{I_H(t)}{N(t)}
+\lambda_H(t) &= a\, b_2 \frac{I_M(t)}{M(t)}  \label{eq:systema} \\
+\lambda_M(t) &= a\, b_1 \frac{I_H(t)}{N(t)} \label{eq:systemb}
 \end{align}
+\end{subequations}
 \\
 Mosquito recruitment is modeled using a density-dependent term:
 \begin{align}
@@ -289,11 +293,13 @@ The carrying capacity is defined as:
 K(t) = M_0 \cdot f_T(T(t)) \cdot f_R(R(t)) \cdot f_S(t),
 \end{align}
 where the environmental response functions are given by
+\begin{subequations}\label{eq:system}
 \begin{align}
-f_T(T) &= \max\left(0.1, \min\left(1, \frac{T - 15}{15} \right) \right) \\
-f_R(R) &= \min\left(1, \max\left(0, \frac{R}{30} \right) \right) \\
-f_S(t) &= 2.5 + 2 \sin\left( \frac{2\pi}{365.25}(t - 180) \right)
+f_T(T) &= \max\left(0.1, \min\left(1, \frac{T - 15}{15} \right) \right)  \label{eq:systema} \\
+f_R(R) &= \min\left(1, \max\left(0, \frac{R}{30} \right) \right) \label{eq:systemb} \\
+f_S(t) &= 2.5 + 2 \sin\left( \frac{2\pi}{365.25}(t - 180) \right) \label{eq:systemc}
 \end{align}
+\end{subequations}
 where $t$ is measured in days, and $f_S(t)$ is a periodic function with period $365.25$ days.
 
 \section{Data Description and Processing}
