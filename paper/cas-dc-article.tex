@@ -210,16 +210,18 @@ and recovered compartments, denoted by $S_H$, $I_H$, and $R_H$, respectively. Th
 exposed, and infectious compartments, denoted by $S_M$, $E_M$, and $I_M$.
 \\\\
 The transmission dynamics are governed by the system of delay differential equations:
+\begin{subequations}\label{eq:system}
 \begin{align}
-\frac{dS_H}{dt} &= - a b_2 \frac{I_M(t)}{N} S_H(t) \\
-\frac{dI_H}{dt} &= a b_2 \frac{I_M(t - \tau_H)}{N} S_H(t - \tau_H) - \gamma I_H(t) \\
-\frac{dR_H}{dt} &= \gamma I_H(t) \\
-\frac{dS_M}{dt} &= b(R,T) - \left(a b_1 \frac{I_H(t)}{N} + \mu(T)\right) S_M(t) \\
+\frac{dS_H}{dt} &= - a b_2 \frac{I_M(t)}{N} S_H(t) \label{eq:systema} \\
+\frac{dI_H}{dt} &= a b_2 \frac{I_M(t - \tau_H)}{N} S_H(t - \tau_H) - \gamma I_H(t) \label{eq:systemb} \\
+\frac{dR_H}{dt} &= \gamma I_H(t) \label{eq:systemc} \\
+\frac{dS_M}{dt} &= b(R,T) - \left(a b_1 \frac{I_H(t)}{N} + \mu(T)\right) S_M(t) \label{eq:systemd} \\
 \frac{dE_M}{dt} &= a b_1 \frac{I_H(t)}{N} S_M(t) - \mu(T) E_M(t) \notag \\
-&\quad - a b_1 \frac{I_H(t - \tau_M)}{N} S_M(t - \tau_M)\ell(\tau_M) \\
+&\quad - a b_1 \frac{I_H(t - \tau_M)}{N} S_M(t - \tau_M)\ell(\tau_M) \label{eq:systeme} \\
 \frac{dI_M}{dt} &= a b_1 \frac{I_H(t - \tau_M)}{N} S_M(t - \tau_M)\ell(\tau_M) \notag \\
-&\quad - \mu(T) I_M(t)
+&\quad - \mu(T) I_M(t) \label{eq:systeme} 
 \end{align}
+\end{subequations}
 \\
 Here, $a(T)$ denotes the biting rate, $b_1$ and $b_2$ are transmission probabilities from humans to 
 mosquitoes and vice versa, $\mu(T)$ is the mosquito mortality rate, and $\tau_H$, $\tau_M$ represent the intrinsic and 
@@ -236,15 +238,16 @@ approximation was initially considered. In this formulation, the extrinsic incub
 rate $b_3$, replacing the explicit delay $\tau_M$. %Additionally, human population dynamics are incorporated through a net recruitment rate $r_H$.
 \\\\
 The resulting system is given by:
+\begin{subequations}\label{eq:system}
 \begin{align}
-\frac{dS_H}{dt} &= - a b_2 \frac{I_M}{N} S_H \\
-%\frac{dS_H}{dt} &= r_H N - a b_2 \frac{I_M}{N} S_H \\
-\frac{dI_H}{dt} &= a b_2 \frac{I_M}{N} S_H - \gamma I_H \\
-\frac{dR_H}{dt} &= \gamma I_H \\
-\frac{dS_M}{dt} &= b(R,T) - \left(a b_1 \frac{I_H}{N} + \mu\right) S_M \\
-\frac{dE_M}{dt} &= a b_1 \frac{I_H}{N} S_M - (\mu + b_3 + \ell) E_M \\
-\frac{dI_M}{dt} &= b_3 E_M - \mu I_M
+\frac{dS_H}{dt} &= - a b_2 \frac{I_M}{N} S_H \label{eq:systema} \\
+\frac{dI_H}{dt} &= a b_2 \frac{I_M}{N} S_H - \gamma I_H \label{eq:systemb} \\
+\frac{dR_H}{dt} &= \gamma I_H \label{eq:systemc} \\
+\frac{dS_M}{dt} &= b(R,T) - \left(a b_1 \frac{I_H}{N} + \mu\right) S_M \label{eq:systemd} \\
+\frac{dE_M}{dt} &= a b_1 \frac{I_H}{N} S_M - (\mu + b_3 + \ell) E_M \label{eq:systeme} \\
+\frac{dI_M}{dt} &= b_3 E_M - \mu I_M \label{eq:systemf}
 \end{align}
+\end{subequations}
 \\
 While this formulation restores positivity and simplifies numerical implementation, it exhibits a 
 fundamental limitation: the system tends toward a disease-free equilibrium after a single outbreak, failing to 
