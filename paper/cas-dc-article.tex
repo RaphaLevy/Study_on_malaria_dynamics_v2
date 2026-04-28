@@ -922,7 +922,7 @@ $p_{MP}$  & Maximum probability of pupal survival & Dimensionless \\
 $\tau_E$  & Duration of the egg development phase & days \\ 
 $\tau_P$  & Duration of the pupal development phase & days \\ 
 $\tau_H$  & Latent period of infection within humans & days \\ 
-$R_L$  & Rainfall threshold until breeding sites are eliminated, removing immature individuals: 32.26 \cite{Ecological_Change_Malaria_Risk} & mm \\ 
+$R_L$  & Rainfall threshold until breeding sites are eliminated, removing immature individuals: 32.26 \tnote{2}  & mm \\ 
 $T_{min}$  & Minimum temperature, below which there is no development of the parasite: 14.5 & $^\circ C$ \\ 
 $DD$  & Degree-days for parasite development.
              ``Sum of heat" for maturation: 105 \cite{McCord2016, Lindsay_Birley_1996} & $^\circ C \ \text{days}$ \\ 
@@ -932,13 +932,14 @@ $C$  & Empirical sensitivity parameter & days$^{-1}$ \\
 $D_1$  & Temperature scaling factor of the biting rate & $^\circ C \ \text{days}$ \\ 
 $c_1$  & Empirical sensitivity parameter & $(^\circ C \ \text{days})^{-1}$ \\ 
 $c_2$  & Empirical sensitivity parameter & days$^{-1}$ \\ 
-$T'$  & Biting rate temperature threshold \tnote{2}  & $^\circ C$ \\ 
+$T'$  & Biting rate temperature threshold \tnote{3}  & $^\circ C$ \\ 
 $b_3$  & Infection rate in exposed mosquitoes ($1/\tau_M(T)$) &  days$^{-1}$ \\ 
 $r_H$ & Net daily recruitment rate per capita & days$^{-1}$\\
 \bottomrule
 \end{tabular*}
 \begin{tablenotes}
-\item[2] In Parham and Michael \cite{Parham2010}, this parameter is denoted \( T_1 \). We rename it here to avoid confusion with the mean temperature in the absence of seasonality, also denoted \( T_1 \) in the original paper.
+\item[2] The reference rainfall level $R_L$ for the Amazon was approximated based on reported associations between monthly precipitation and malaria incidence \cite{Ecological_Change_Malaria_Risk}. In particular, precipitation levels in the range of 917 to 1019 mm/month were associated with a decrease in malaria cases. The midpoint of this interval (968 mm/month) was used as a representative value and converted to a daily rate by dividing by 30 days, yielding $R_L \approx 32.3$ mm/day. This value is therefore interpreted as the threshold scale for high rainfall conditions in the model.
+\item[3] In Parham and Michael \cite{Parham2010}, this parameter is denoted \( T_1 \). We rename it here to avoid confusion with the mean temperature in the absence of seasonality, also denoted \( T_1 \) in the original paper.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
