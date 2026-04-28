@@ -868,6 +868,7 @@ East Zone of Manaus, Amazon, South American Journal of Basic Education, Technica
 %Appendix sections are coded under \verb+\appendix+.
 
 \begin{table}[width=2.0\linewidth,cols=3,pos=h]
+\begin{threeparttable}
 \caption{List of model parameters.}\label{tbl1}
 \renewcommand{\thetable}{A.1}  % Custom table name
 \begin{tabular*}{\tblwidth}{@{} LLL@{} }
@@ -875,7 +876,7 @@ East Zone of Manaus, Amazon, South American Journal of Basic Education, Technica
 Parameter & Definition & Formulation\\
 \midrule
 $p(T)$   & Daily mosquito survival rate   & $e^{(-1 / (AT^2 + BT + C))}$ \\  
-$p_L(R)$   & Probability of larval survival dependent on rainfall   & $({4p_{ML}}/{R_L^2})R(R_L - R)$  \\  
+$p_L(R)$   & Probability of larval survival dependent on rainfall \tnote{1} & $({4p_{ML}}/{R_L^2})R(R_L - R)$  \\  
 $p_L(T)$   & Probability of larval survival dependent on temperature   & $e^{-(c_1T + c_2)}$  \\ 
 $p_L(R, T)$   & Probability of larval survival   & $p_L(R)p_L(T)$   \\
 $\mu(T)$   & Mosquito mortality rate per capita (days$^{-1}$)   & $-\log(p(T))$  \\ 
@@ -888,6 +889,10 @@ $M(t)$   &  Total population of mosquitos  & $S_M(t) + E_M(t) + I_M(t)$   \\
 $N(t)$   & Total population of humans   & $S_H(t) +E_H(t) + I_H(t) + R_H(t)$   \\ 
 \bottomrule
 \end{tabular*}
+\begin{tablenotes}
+\item[1] $p_E(R)$ and $p_P(R)$ have an analogous expression to $p_L(R)$, substituting $p_{ML}$ for $p_{ME}$ and $p_{MP}$ respectively.
+\end{tablenotes}
+\end{threeparttable}
 \end{table}
 
 \clearpage
@@ -927,13 +932,13 @@ $C$  & Empirical sensitivity parameter & days$^{-1}$ \\
 $D_1$  & Temperature scaling factor of the biting rate & $^\circ C \ \text{days}$ \\ 
 $c_1$  & Empirical sensitivity parameter & $(^\circ C \ \text{days})^{-1}$ \\ 
 $c_2$  & Empirical sensitivity parameter & days$^{-1}$ \\ 
-$T'$  & Biting rate temperature threshold \tnote{1}  & $^\circ C$ \\ 
+$T'$  & Biting rate temperature threshold \tnote{2}  & $^\circ C$ \\ 
 $b_3$  & Infection rate in exposed mosquitoes ($1/\tau_M(T)$) &  days$^{-1}$ \\ 
 $r_H$ & Net daily recruitment rate per capita & days$^{-1}$\\
 \bottomrule
 \end{tabular*}
 \begin{tablenotes}
-\item[1] In Parham and Michael \cite{Parham2010}, this parameter is denoted \( T_1 \). We rename it here to avoid confusion with the mean temperature in the absence of seasonality, also denoted \( T_1 \) in the original paper.
+\item[2] In Parham and Michael \cite{Parham2010}, this parameter is denoted \( T_1 \). We rename it here to avoid confusion with the mean temperature in the absence of seasonality, also denoted \( T_1 \) in the original paper.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
