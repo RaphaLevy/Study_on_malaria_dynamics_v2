@@ -244,8 +244,8 @@ The resulting system is given by:
 \frac{dI_H}{dt} &= a b_2 \frac{I_M}{N} S_H - \gamma I_H \label{eq:systemb} \\
 \frac{dR_H}{dt} &= \gamma I_H \label{eq:systemc} \\
 \frac{dS_M}{dt} &= b(R,T) - \left(a b_1 \frac{I_H}{N} + \mu\right) S_M \label{eq:systemd} \\
-\frac{dE_M}{dt} &= a b_1 \frac{I_H}{N} S_M - (\mu + b_3 + \ell) E_M \label{eq:systeme} \\
-\frac{dI_M}{dt} &= b_3 E_M - \mu I_M \label{eq:systemf}
+\frac{dE_M}{dt} &= a b_1 \frac{I_H}{N} S_M - (\mu + b_3  \ell) E_M \label{eq:systeme} \\
+\frac{dI_M}{dt} &= b_3 \ell E_M - \mu I_M \label{eq:systemf}
 \end{align}
 \end{subequations}
 \\
@@ -254,30 +254,29 @@ fundamental limitation: the system tends toward a disease-free equilibrium after
 capture the recurrent nature of malaria transmission observed in endemic regions. This behavior highlights the 
 importance of explicitly modeling incubation periods and immunity dynamics.
 
-\subsection{SEIRS-SEI model with delay}
+\subsection{SEIRS-SEI model with ODE approximation}
 
-To address the limitations of the previous formulations, we introduce a SEIRS-SEI model that incorporates 
-both incubation delays and temporary immunity in the human population. The human compartments 
+To address the limitations of the previous formulations, we introduce an ODE based SEIRS-SEI model that incorporates 
+both incubation delays as done above and temporary immunity in the human population. The human compartments 
 are extended to include an exposed class $E_H$, and recovered individuals lose immunity at rate $\omega$, returning to the susceptible class.
 \\\\
 The model is given by:
 \begin{subequations}\label{eq:system}
 \begin{align}
-\frac{dS_H}{dt} &= r_H N - \lambda_H(t) S_H + \omega R_H \label{eq:systema} \\
-\frac{dE_H}{dt} &= \lambda_H(t) S_H - \lambda_H(t - \tau_H) S_H(t - \tau_H) \label{eq:systemb} \\
-\frac{dI_H}{dt} &= \lambda_H(t - \tau_H) S_H(t - \tau_H) - \gamma I_H  \label{eq:systemc} \\
+\frac{dS_H}{dt} &= - \lambda_H(t) S_H + \omega R_H \label{eq:systema} \\
+\frac{dE_H}{dt} &= \lambda_H(t) S_H - b_{3H} E_H \label{eq:systemb} \\
+\frac{dI_H}{dt} &= b_{3H} E_M - \gamma I_H  \label{eq:systemc} \\
 \frac{dR_H}{dt} &= \gamma I_H - \omega R_H  \label{eq:systemd} \\
-\frac{dS_M}{dt} &= \Lambda(t) - \lambda_M(t) S_M - \mu(T) S_M  \label{eq:systeme} \\
-\frac{dE_M}{dt} &= \lambda_M(t) S_M - \mu(T) E_M \notag \\
-&\quad - \lambda_M(t - \tau_M) S_M(t - \tau_M)\,\ell(\tau_M)  \label{eq:systemf} \\
-\frac{dI_M}{dt} &= \lambda_M(t - \tau_M) S_M(t - \tau_M)\,\ell(\tau_M) - \mu(T) I_M  \label{eq:systemg}
+\frac{dS_M}{dt} &= \Lambda(t) - \lambda_M(t) S_M - \mu S_M  \label{eq:systeme} \\
+\frac{dE_M}{dt} &= \lambda_M(t) S_M - (\mu  + b_{3M}\ell) E_M \label{eq:systemf} \\
+\frac{dI_M}{dt} &= b_{3M}\ell E_M - \mu I_M  \label{eq:systemg}
 \end{align}
 \end{subequations}
 \\
 The forces of infection are defined as:
 \begin{subequations}\label{eq:system}
 \begin{align}
-\lambda_H(t) &= a\, b_2 \frac{I_M(t)}{M(t)}  \label{eq:systema} \\
+\lambda_H(t) &= a\, b_2 \frac{I_M(t)}{N(t)}  \label{eq:systema} \\
 \lambda_M(t) &= a\, b_1 \frac{I_H(t)}{N(t)} \label{eq:systemb}
 \end{align}
 \end{subequations}
