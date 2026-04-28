@@ -874,16 +874,16 @@ East Zone of Manaus, Amazon, South American Journal of Basic Education, Technica
 \toprule
 Parameter & Definition & Formulation\\
 \midrule
-$b(R, T)$   & Mosquito birth rate (days$^{-1}$)   & ${B_E  p_E(R)  p_L(R,T)  p_P(R)}/{(\tau_E + \tau_L(T) + \tau_P)}$   \\ 
-$a(T)$   & Biting rate (days$^{-1}$)  & ${(T - T')}/{D_1}$   \\ 
-$\mu(T)$   & Mosquito mortality rate per capita (days$^{-1}$)   & $-\log(p(T))$  \\ 
-$\tau_M(T)$   & Duration of sporozoite cycle (days)   & ${DD}/{(T - T_{min})}$   \\ 
-$\tau_L(T)$   & Duration of larval development phase (days)   & ${1}/{(c_1T + c_2)}$  \\ 
 $p(T)$   & Daily mosquito survival rate   & $e^{(-1 / (AT^2 + BT + C))}$ \\  
 $p_L(R)$   & Probability of larval survival dependent on rainfall   & $({4p_{ML}}/{R_L^2})R(R_L - R)$  \\  
 $p_L(T)$   & Probability of larval survival dependent on temperature   & $e^{-(c_1T + c_2)}$  \\ 
-$p_L(R, T)$   &Probability of larval survival   & $p_L(R)p_L(T)$   \\  
-$l({\tau_M})(T)$   &  Probability of mosquito survival during sporozoite cycle (days$^{-1}$)  & $p(T)^{\tau_M(T)}$  \\ 
+$p_L(R, T)$   & Probability of larval survival   & $p_L(R)p_L(T)$   \\
+$\mu(T)$   & Mosquito mortality rate per capita (days$^{-1}$)   & $-\log(p(T))$  \\ 
+$a(T)$   & Biting rate (days$^{-1}$)  & ${(T - T')}/{D_1}$   \\ 
+$\tau_M(T)$   & Duration of sporozoite cycle (days)   & ${DD}/{(T - T_{min})}$   \\ 
+$\tau_L(T)$   & Duration of larval development phase (days)   & ${1}/{(c_1T + c_2)}$  \\   
+$\ell({\tau_M})(T)$   &  Probability of mosquito survival during sporozoite cycle (days$^{-1}$)  & $p(T)^{\tau_M(T)}$  \\ 
+$b(R, T)$   & Mosquito birth rate (days$^{-1}$)   & ${B_E  p_E(R)  p_L(R,T)  p_P(R)}/{(\tau_E + \tau_L(T) + \tau_P)}$   \\ 
 $M(t)$   &  Total population of mosquitos  & $S_M(t) + E_M(t) + I_M(t)$   \\ 
 $N(t)$   & Total population of humans   & $S_H(t) +E_H(t) + I_H(t) + R_H(t)$   \\ 
 \bottomrule
