@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.3.13)  20 APR 2026 08:04
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.3.13)  28 APR 2026 09:07
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -744,6 +744,18 @@ LaTeX Warning: Label `eq:systema' multiply defined.
 
 
 LaTeX Warning: Label `eq:systemb' multiply defined.
+
+
+LaTeX Warning: Label `eq:system' multiply defined.
+
+
+LaTeX Warning: Label `eq:systema' multiply defined.
+
+
+LaTeX Warning: Label `eq:systemb' multiply defined.
+
+
+LaTeX Warning: Label `eq:systemc' multiply defined.
 
 )
 \openout1 = `cas-dc-article.aux'.
@@ -1907,7 +1919,7 @@ Package rerunfilecheck Info: File `cas-dc-article.out' has not changed.
 Here is how much of TeX's memory you used:
  18456 strings out of 467871
  288590 string characters out of 5418376
- 710947 words of memory out of 5000000
+ 710945 words of memory out of 5000000
  46932 multiletter control sequences out of 15000+600000
  750618 words of font info for 207 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1926,7 +1938,7 @@ stix-mathex.pfb><C:/Users/rapha/AppData/Local/Programs/MiKTeX/fonts/type1/publi
 c/stix/stix-mathit.pfb><C:/Users/rapha/AppData/Local/Programs/MiKTeX/fonts/type
 1/public/stix/stix-mathrm.pfb><C:/Users/rapha/AppData/Local/Programs/MiKTeX/fon
 ts/type1/public/stix/stix-mathscr.pfb>
-Output written on cas-dc-article.pdf (11 pages, 774571 bytes).
+Output written on cas-dc-article.pdf (11 pages, 774105 bytes).
 PDF statistics:
  404 PDF objects out of 1000 (max. 8388607)
  109 named destinations out of 1000 (max. 500000)
