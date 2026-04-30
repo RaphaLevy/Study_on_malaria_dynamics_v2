@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.3.13)  28 APR 2026 15:23
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.3.13)  30 APR 2026 16:58
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -745,18 +745,6 @@ LaTeX Warning: Label `eq:systema' multiply defined.
 
 LaTeX Warning: Label `eq:systemb' multiply defined.
 
-
-LaTeX Warning: Label `eq:system' multiply defined.
-
-
-LaTeX Warning: Label `eq:systema' multiply defined.
-
-
-LaTeX Warning: Label `eq:systemb' multiply defined.
-
-
-LaTeX Warning: Label `eq:systemc' multiply defined.
-
 )
 \openout1 = `cas-dc-article.aux'.
 
@@ -1037,11 +1025,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 259--265
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 287--291
-
- []
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 308--315
 
  []
@@ -1051,7 +1034,7 @@ Overfull \hbox (2.27551pt too wide) in paragraph at lines 308--315
 \T1/stix/m/n/10 Epidemiological data were ob-tained from the SIVEP-Malaria
  []
 
-[2]
+
 Underfull \hbox (badness 10000) in paragraph at lines 318--324
 
  []
@@ -1071,7 +1054,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 330--343
 
  []
 
-
+[2]
 Underfull \hbox (badness 10000) in paragraph at lines 346--356
 
  []
@@ -1128,14 +1111,13 @@ Underfull \hbox (badness 1102) in paragraph at lines 363--393
 \T1/stix/m/n/10 Brazil-ian Na-tional In-sti-tute for Space Re-search (INPE),
  []
 
-[3]
 LaTeX Font Info:    Calculating math sizes for size <11> on input line 403.
 
 Underfull \hbox (badness 10000) in paragraph at lines 405--418
 
  []
 
-
+[3]
 Underfull \hbox (badness 10000) in paragraph at lines 418--438
 
  []
@@ -1220,13 +1202,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 537--544
 
  []
 
-[4{C:/Users/rapha/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/stix/stix-ts1.e
-nc}]
+
 Underfull \hbox (badness 10000) in paragraph at lines 556--560
 
  []
 
-
+[4{C:/Users/rapha/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/stix/stix-ts1.e
+nc}]
 Underfull \hbox (badness 10000) in paragraph at lines 648--659
 
  []
@@ -1320,7 +1302,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 675--686
  []
 
 [5]
-<figs/comparison-between-IH-data-and-model.png, id=132, 599.23875pt x 346.29375
+<figs/comparison-between-IH-data-and-model.png, id=127, 599.23875pt x 346.29375
 pt>
 File: figs/comparison-between-IH-data-and-model.png Graphic file (type png)
 <use figs/comparison-between-IH-data-and-model.png>
@@ -1857,7 +1839,7 @@ Overfull \hbox (238.25444pt too wide) in paragraph at lines 900--944
 
 
 ]
-<figs/SIR_Model_Parham_and_Michael_values.png, id=228, 823.878pt x 383.63326pt>
+<figs/SIR_Model_Parham_and_Michael_values.png, id=222, 823.878pt x 383.63326pt>
 
 File: figs/SIR_Model_Parham_and_Michael_values.png Graphic file (type png)
 <use figs/SIR_Model_Parham_and_Michael_values.png>
@@ -1875,7 +1857,7 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 961.
 See the caption package documentation for explanation.
 
-<figs/SEI_Model_Parham_and_Michael_values.png, id=231, 735.9495pt x 406.51875pt
+<figs/SEI_Model_Parham_and_Michael_values.png, id=225, 735.9495pt x 406.51875pt
 >
 File: figs/SEI_Model_Parham_and_Michael_values.png Graphic file (type png)
 <use figs/SEI_Model_Parham_and_Michael_values.png>
@@ -1887,7 +1869,7 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 971.
 See the caption package documentation for explanation.
 
-<figs/SEI_Model_Parham_and_Michael_values_01_probs.png, id=234, 826.88925pt x 3
+<figs/SEI_Model_Parham_and_Michael_values_01_probs.png, id=228, 826.88925pt x 3
 86.04225pt>
 File: figs/SEI_Model_Parham_and_Michael_values_01_probs.png Graphic file (type 
 png)
@@ -1919,9 +1901,9 @@ Package rerunfilecheck Info: File `cas-dc-article.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 18456 strings out of 467871
- 288598 string characters out of 5418376
- 711040 words of memory out of 5000000
+ 18450 strings out of 467871
+ 288534 string characters out of 5418376
+ 709693 words of memory out of 5000000
  46932 multiletter control sequences out of 15000+600000
  750618 words of font info for 207 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1940,9 +1922,9 @@ stix-mathex.pfb><C:/Users/rapha/AppData/Local/Programs/MiKTeX/fonts/type1/publi
 c/stix/stix-mathit.pfb><C:/Users/rapha/AppData/Local/Programs/MiKTeX/fonts/type
 1/public/stix/stix-mathrm.pfb><C:/Users/rapha/AppData/Local/Programs/MiKTeX/fon
 ts/type1/public/stix/stix-mathscr.pfb>
-Output written on cas-dc-article.pdf (10 pages, 775070 bytes).
+Output written on cas-dc-article.pdf (10 pages, 771880 bytes).
 PDF statistics:
- 403 PDF objects out of 1000 (max. 8388607)
- 109 named destinations out of 1000 (max. 500000)
+ 395 PDF objects out of 1000 (max. 8388607)
+ 103 named destinations out of 1000 (max. 500000)
  26 words of extra memory for PDF output out of 10000 (max. 10000000)
 
