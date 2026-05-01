@@ -267,7 +267,7 @@ The model is given by:
 \frac{dE_H}{dt} &= \lambda_H(t) S_H - b_{3H} E_H \label{eq:systemb} \\
 \frac{dI_H}{dt} &= b_{3H} E_H - \gamma I_H  \label{eq:systemc} \\
 \frac{dR_H}{dt} &= \gamma I_H - \omega R_H  \label{eq:systemd} \\
-\frac{dS_M}{dt} &= b- \lambda_M(t) S_M - \mu S_M  \label{eq:systeme} \\
+\frac{dS_M}{dt} &= \Lambda(t)- \lambda_M(t) S_M - \mu S_M  \label{eq:systeme} \\
 \frac{dE_M}{dt} &= \lambda_M(t) S_M - (\mu  + b_{3M}\ell) E_M \label{eq:systemf} \\
 \frac{dI_M}{dt} &= b_{3M}\ell E_M - \mu I_M  \label{eq:systemg}
 \end{align}
@@ -280,17 +280,17 @@ The forces of infection are defined as:
 \lambda_M(t) &= a\, b_1 \frac{I_H(t)}{N(t)} \label{eq:systemb}
 \end{align}
 \end{subequations}
-%\\
-%Mosquito recruitment is modeled using a density-dependent term:
-%\begin{align}
-%\Lambda(t) = b(R,T)\,K(t)\left(1 - \frac{M(t)}{K(t)}\right),
-%\end{align}
-%where $M(t) = S_M(t) + E_M(t) + I_M(t)$ is the total mosquito population, and $K(t)$ is the environmental carrying capacity.
-%\\\\
-%The carrying capacity is defined as:
-%\begin{align}
-%K(t) = M_0 \cdot f_T(T(t)) \cdot f_R(R(t)) \cdot f_S(t),
-%\end{align}
+\\
+Mosquito recruitment is modeled using a density-dependent term:
+\begin{align}
+\Lambda(t) = b(R,T)\, K(t)\left(1 - \frac{M(t)}{K(t)}\right),
+\end{align}
+where $M(t) = S_M(t) + E_M(t) + I_M(t)$ is the total mosquito population, and $K(t)$ is the environmental carrying capacity.
+\\\\
+The carrying capacity is defined as:
+\begin{align}
+K(t) = M_0 \cdot f_T(T(t)) \cdot f_R(R(t)) \cdot f_S(t),
+\end{align}
 %where the environmental response functions are given by
 %\begin{subequations}\label{eq:system}
 %\begin{align}
