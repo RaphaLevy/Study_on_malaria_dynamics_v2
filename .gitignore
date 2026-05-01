@@ -14,3 +14,5 @@ paper/figs/incorrect/
 # Ignore specific SIR-SEI test files done only for observation of change in parameters (unused)
 models/sir_sei/Original_Model_Best_Fit_Parameters.ipynb
 models/sir_sei/Test_DDE_Model_Best_Fit_Parameters.ipynb
+# Ignore folder of referenced papers, as to avoid issues of copyright
+references/papers/
