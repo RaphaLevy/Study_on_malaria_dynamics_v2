@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.3.13)  30 APR 2026 18:39
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.3.13)  1 MAY 2026 17:59
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1831,7 +1831,7 @@ Overfull \hbox (238.25444pt too wide) in paragraph at lines 871--895
  []
 
 
-Overfull \hbox (238.25444pt too wide) in paragraph at lines 900--944
+Overfull \hbox (238.25444pt too wide) in paragraph at lines 900--945
  [] 
  []
 
@@ -1844,17 +1844,17 @@ Overfull \hbox (238.25444pt too wide) in paragraph at lines 900--944
 File: figs/SIR_Model_Parham_and_Michael_values.png Graphic file (type png)
 <use figs/SIR_Model_Parham_and_Michael_values.png>
 Package pdftex.def Info: figs/SIR_Model_Parham_and_Michael_values.png  used on 
-input line 960.
+input line 961.
 (pdftex.def)             Requested size: 238.25444pt x 110.94054pt.
 
 
 Package caption Warning: \setcaptiontype
-(caption)                outside box or environment on input line 961.
+(caption)                outside box or environment on input line 962.
 See the caption package documentation for explanation.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 961.
+(caption)                particular \caption on input line 962.
 See the caption package documentation for explanation.
 
 <figs/SEI_Model_Parham_and_Michael_values.png, id=225, 735.9495pt x 406.51875pt
@@ -1862,11 +1862,11 @@ See the caption package documentation for explanation.
 File: figs/SEI_Model_Parham_and_Michael_values.png Graphic file (type png)
 <use figs/SEI_Model_Parham_and_Michael_values.png>
 Package pdftex.def Info: figs/SEI_Model_Parham_and_Michael_values.png  used on 
-input line 970.
+input line 971.
 (pdftex.def)             Requested size: 238.25444pt x 131.60217pt.
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 971.
+(caption)                particular \caption on input line 972.
 See the caption package documentation for explanation.
 
 <figs/SEI_Model_Parham_and_Michael_values_01_probs.png, id=228, 826.88925pt x 3
@@ -1875,11 +1875,11 @@ File: figs/SEI_Model_Parham_and_Michael_values_01_probs.png Graphic file (type
 png)
 <use figs/SEI_Model_Parham_and_Michael_values_01_probs.png>
 Package pdftex.def Info: figs/SEI_Model_Parham_and_Michael_values_01_probs.png 
- used on input line 978.
+ used on input line 979.
 (pdftex.def)             Requested size: 238.25444pt x 111.23073pt.
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 979.
+(caption)                particular \caption on input line 980.
 See the caption package documentation for explanation.
 
 No file cas-dc-article.bbl.
@@ -1922,7 +1922,7 @@ stix-mathex.pfb><C:/Users/rapha/AppData/Local/Programs/MiKTeX/fonts/type1/publi
 c/stix/stix-mathit.pfb><C:/Users/rapha/AppData/Local/Programs/MiKTeX/fonts/type
 1/public/stix/stix-mathrm.pfb><C:/Users/rapha/AppData/Local/Programs/MiKTeX/fon
 ts/type1/public/stix/stix-mathscr.pfb>
-Output written on cas-dc-article.pdf (10 pages, 771907 bytes).
+Output written on cas-dc-article.pdf (10 pages, 771898 bytes).
 PDF statistics:
  395 PDF objects out of 1000 (max. 8388607)
  103 named destinations out of 1000 (max. 500000)
