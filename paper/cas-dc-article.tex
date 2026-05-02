@@ -306,7 +306,7 @@ In the present model, this idea is adapted to mosquito recruitment by replacing 
 \end{align}
 where $b(R,T)$ is an environmentally driven birth rate and $K(t)$ is a time-dependent carrying capacity. 
 \\\\
-Unlike the classical logistic formulation, where growth is proportional to the current population size, this representation assumes that recruitment is primarily determined by environmental conditions and breeding site availability. The term $\left(1 - \frac{M(t)}{K(t)}\right)$ ensures that recruitment decreases as the population approaches the carrying capacity, providing a biologically realistic upper bound on mosquito abundance.
+Unlike the classical logistic formulation, where growth is proportional to the current population size, this representation assumes that recruitment is primarily determined by environmental conditions and breeding site availability. The term $\left(1 - \frac{M(t)}{K(t)}\right)$ ensures that recruitment decreases as the population approaches the carrying capacity, providing a biologically realistic upper bound on mosquito abundance. The mathematical implications of this formulation are analyzed in Section 5.1.
 \\\\
 %The recruitment term $\Lambda(t)$ is modeled using a logistic-type formulation. 
 %In classical population dynamics, density-dependent growth is often represented 
@@ -420,13 +420,9 @@ fire hotspots \cite{INPE_Forest_Fires}. Due to the absence of area-based measure
 detected hotspots was used as a proxy for fire activity.
 
 
-
-%Monthly data of forest fires and yearly data of deforestation given in hectares of forest supression between 2017 and 2021 
-%was obtained from MapBiomas \cite{MapBIOMAS_Deforestation, MapBIOMAS_Forest_Fires}. 
-%Monthly data for deforestation in Manaus was approximated from notifications from the state of Amazonas during this time interval, and it was 
-%estimated that $3\%$ of notices of deforested area (km$^2$) in the state were located in Manaus \cite{DETER_Deforestation, MapBIOMAS_Deforestation}.  In addition to that, daily notices of deforestation were also used, obtained from TerraBrasilis \cite{Daily_DETER}.
-
 \section{Mathematical Analysis of the Model}
+
+\subsection{Mosquito population dynamics}
 
 \subsection{Basic Reproduction Number ($\mathcal{R}_0$)}
 To derive the $\mathcal{R}_0$ of the model, we define $X_s$ as the set of all disease-free states, 
