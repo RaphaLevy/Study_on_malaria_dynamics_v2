@@ -36,6 +36,10 @@
 \usepackage{threeparttable}
 \usepackage{float}
 
+\newtheorem{theorem}{Theorem} 
+\newtheorem{proposition}{Proposition} 
+\newtheorem{lemma}{Lemma}
+
 %%%Author definitions
 \def\tsc#1{\csdef{#1}{\textsc{\lowercase{#1}}\xspace}}
 \tsc{WGM}
@@ -295,7 +299,7 @@ Mosquito population dynamics were initially modeled using a linear birth–death
 where $b$ represents a recruitment rate, the birth rate in this case, and $\mu$ is the per capita mortality rate. 
 However, this formulation does not account for environmental limitations on population growth.
 \\\\
-To incorporate the effect of limited resources, we introduce a variant of the density-dependent regulation based on the classical Verhulst (logistic) equation,
+To incorporate the effect of limited resources, we introduce a variant of the density-dependent regulation based on the classical Verhulst (logistic) equation \cite{math_assessment_of_the_role_of_temp_and_rainfall},
 \begin{align}
 \frac{dM}{dt} = bM\left(1 - \frac{M}{K}\right),
 \end{align}
@@ -424,9 +428,62 @@ detected hotspots was used as a proxy for fire activity.
 \section{Mathematical Analysis of the Model}
 
 \subsection{Mosquito population dynamics}
-In this section, we analyze the qualitative impact of the density-dependent recruitment term on mosquito population dynamics as defined in (7). 
-In particular, we show that the modified formulation prevents extinction under suitable environmental conditions.
+In this section, we analyze the qualitative impact of the density-dependent recruitment term on mosquito population dynamics. 
+We compare the proposed formulation with the classical Verhulst (logistic) model and show that the modified structure prevents extinction under suitable environmental conditions.
 
+\begin{proposition}[Environmental persistence of the mosquito population]
+Assume that $b(R(t),T(t)) \geq b_0 > 0$ and $K(t) \geq K_0 > 0$ for all $t \geq 0$. 
+Then, the mosquito population $M(t)$ governed by
+\begin{align}
+\frac{dM}{dt} = b(R,T)\,K(t)\left(1 - \frac{M(t)}{K(t)}\right) - \mu M(t)
+\end{align}
+\\
+cannot converge to zero as $t \to \infty$. In particular, $M=0$ is not an equilibrium and cannot be asymptotically stable.
+\end{proposition}
+
+\begin{proof}
+We begin by recalling the classical Verhulst (logistic) model with mortality:
+\begin{align}
+\frac{dM}{dt} = bM\left(1 - \frac{M}{K}\right) - \mu M.
+\end{align}
+\\
+In this formulation, the right-hand side vanishes at $M=0$, so that $M=0$ is always an equilibrium. 
+Depending on the parameters, this equilibrium may be stable, allowing extinction of the population.
+\\\\
+In contrast, in the present model the recruitment term is given by
+\begin{align}
+\Lambda(t) = b(R,T)\,K(t)\left(1 - \frac{M(t)}{K(t)}\right),
+\end{align}
+\\
+and the population dynamics satisfy
+\begin{align}
+\frac{dM}{dt} = b(R,T)\,K(t)\left(1 - \frac{M(t)}{K(t)}\right) - \mu M(t).
+\end{align}
+\\
+Evaluating the right-hand side at $M=0$, we obtain
+\begin{align}
+\left.\frac{dM}{dt}\right|_{M=0} = b(R,T)\,K(t).
+\end{align}
+\\
+By assumption, $b(R(t),T(t)) \geq b_0 > 0$ and $K(t) \geq K_0 > 0$, hence
+\begin{align}
+\left.\frac{dM}{dt}\right|_{M=0} \geq b_0 K_0 > 0.
+\end{align}
+\\
+Therefore, $M=0$ is not an equilibrium of the system.
+\\\\
+Moreover, for $M(t)$ sufficiently small, we have
+\begin{align}
+\frac{dM}{dt} \geq b_0 K_0 - \mu M(t).
+\end{align}
+Choosing $\varepsilon > 0$ such that $\varepsilon < \frac{b_0 K_0}{\mu}$, it follows that
+\[
+\frac{dM}{dt} > 0 \quad \text{whenever } 0 < M(t) < \varepsilon.
+\]
+Thus, any trajectory entering a neighborhood of zero is driven away from it.
+\\\\
+Consequently, $M(t)$ cannot converge to zero as $t \to \infty$, and the extinction state is not asymptotically stable.
+\end{proof}
 
 \subsection{Basic Reproduction Number ($\mathcal{R}_0$)}
 To derive the $\mathcal{R}_0$ of the model, we define $X_s$ as the set of all disease-free states, 
@@ -882,6 +939,7 @@ East Zone of Manaus, Amazon, South American Journal of Basic Education, Technica
 \bibitem{Rep_Number_Comp_Model} P. van den Driessche, J. Watmough, Reproduction numbers and sub-threshold endemic equilibria for compartmental models of disease transmission, Mathematical Biosciences, Vol. 180 (2002), 29-48, \href{https://doi.org/10.1016/S0025-5564(02)00108-6}{https://doi.org/10.1016/S0025-5564(02)00108-6}.
 \\
 %37
+\bibitem{math_assessment_of_the_role_of_temp_and_rainfall} A. Abdelrazec, A. B. Gumel, Mathematical assessment of the role of temperature and rainfall on mosquito population dynamics, Journal of Mathematical Biology, Vol. 74 (6), 1351-1395 (2017), \href{https://link.springer.com/article/10.1007/s00285-016-1054-9}{https://link.springer.com/article/10.1007/s00285-016-1054-9}
 \end{thebibliography}
 
 \clearpage
