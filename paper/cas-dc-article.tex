@@ -280,12 +280,40 @@ The forces of infection are defined as:
 \lambda_M(t) &= a\, b_1 \frac{I_H(t)}{N(t)} \label{eq:systemb}
 \end{align}
 \end{subequations}
+%\\
+%Mosquito recruitment is modeled using a density-dependent term:
+%\begin{align}
+%\Lambda(t) = b(R,T)\, K(t)\left(1 - \frac{M(t)}{K(t)}\right),
+%\end{align}
+%where $M(t) = S_M(t) + E_M(t) + I_M(t)$ is the total mosquito population, and $K(t)$ is the environmental carrying capacity.
 \\
-Mosquito recruitment is modeled using a density-dependent term:
+Mosquito population dynamics were initially modeled using a linear birth–death process of the form
 \begin{align}
-\Lambda(t) = b(R,T)\, K(t)\left(1 - \frac{M(t)}{K(t)}\right),
+\frac{dM}{dt} = b - \mu M,
 \end{align}
-where $M(t) = S_M(t) + E_M(t) + I_M(t)$ is the total mosquito population, and $K(t)$ is the environmental carrying capacity.
+where $b$ represents a recruitment rate, the birth rate in this case, and $\mu$ is the per capita mortality rate. 
+However, this formulation does not account for environmental limitations on population growth.
+\\\\
+To incorporate the effect of limited resources, we introduce a variant of the density-dependent regulation based on the classical Verhulst (logistic) equation,
+\begin{align}
+\frac{dM}{dt} = bM\left(1 - \frac{M}{K}\right),
+\end{align}
+$K$ denoting the carrying capacity of the environment. This formulation captures the reduction in population growth as the population approaches the environmental limit.
+\\\\
+In the present model, this idea is adapted to mosquito recruitment by replacing the constant birth term with a density-dependent function,
+\begin{align}
+\Lambda(t) = b(R,T)\,K(t)\left(1 - \frac{M(t)}{K(t)}\right),
+\end{align}
+where $b(R,T)$ is an environmentally driven birth rate and $K(t)$ is a time-dependent carrying capacity. 
+\\\\
+Unlike the classical logistic formulation, where growth is proportional to the current population size, this representation assumes that recruitment is primarily determined by environmental conditions and breeding site availability. The term $\left(1 - \frac{M(t)}{K(t)}\right)$ ensures that recruitment decreases as the population approaches the carrying capacity, providing a biologically realistic upper bound on mosquito abundance.
+\\\\
+%The recruitment term $\Lambda(t)$ is modeled using a logistic-type formulation. 
+%In classical population dynamics, density-dependent growth is often represented 
+%as $M(t)\left(1 - \frac{M(t)}{K(t)}\right)$, where growth is proportional to 
+%the current population size. In the present model, this formulation is adapted 
+%to $K(t)\left(1 - \frac{M(t)}{K(t)}\right)$, scaled by the environmental birth 
+%rate $b(R,T)$.
 \\\\
 The carrying capacity is defined as:
 \begin{align}
