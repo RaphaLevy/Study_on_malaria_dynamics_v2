@@ -266,10 +266,10 @@ both incubation delays as done above and temporary immunity in the human populat
 are extended to include an exposed class $E_H$, and recovered individuals lose immunity at rate $\omega$, returning to the susceptible class.
 \\\\
 At this step, we included $b_{3H}$ as the intrinsic incubation period $\left(b_{3H}=\frac{1}{\tau_H}\right)$, and substituted the original $b_3=\frac{1}{\tau_M}$
-for a Briere function $b_{3M} = \eta T (T-T_{\min})(T_{\text{opt}}-T)^{1/2}$, to take into consideration the minimum and optimal temperatures for development of 
-the parasite \cite{brierre_function_development_rate}.
-\\\\
-The model is given by:
+for a Briere function $b_{3M} = \eta T (T-T_{\min})(T_{\max}-T)^{1/2}$, to take into consideration the minimum and optimal temperatures for development of 
+the parasite \cite{brierre_function_development_rate}, where $\eta$ was estimated as
+$$\eta:=\frac{\frac{1}{\tau_M(T_{\text{opt}})}}{T_{\text{opt}}(T_{\text{opt}}-T_{\min})(T_{\max}-T_{\text{opt}})^{1/2}}$$
+The model is then given by:
 \begin{subequations}\label{eq:system}
 \begin{align}
 \frac{dS_H}{dt} &= - \lambda_H(t) S_H + \omega R_H \label{eq:systema} \\
@@ -971,7 +971,7 @@ $p_L(T)$   & Probability of larval survival dependent on temperature   & $e^{-(c
 $p_L(R, T)$   & Probability of larval survival   & $p_L(R)p_L(T)$   \\
 $\mu(T)$   & Mosquito mortality rate per capita (days$^{-1}$)   & $-\log(p(T))$  \\ 
 $a(T)$   & Biting rate (days$^{-1}$)  & ${(T - T')}/{D_1}$   \\ 
-$\tau_M(T)$   & Duration of sporozoite cycle (days)   & ${DD}/{(T - T_{min})}$   \\ 
+$\tau_M(T)$   & Duration of sporozoite cycle (days)   & ${DD}/{(T - T_{\min})}$   \\ 
 $\tau_L(T)$   & Duration of larval development phase (days)   & ${1}/{(c_1T + c_2)}$  \\   
 $\ell({\tau_M})(T)$   &  Probability of mosquito survival during sporozoite cycle (days$^{-1}$)  & $p(T)^{\tau_M(T)}$  \\ 
 $b(R, T)$   & Mosquito birth rate (days$^{-1}$)   & ${B_E  p_E(R)  p_L(R,T)  p_P(R)}/{(\tau_E + \tau_L(T) + \tau_P)}$   \\ 
@@ -985,7 +985,7 @@ $N(t)$   & Total population of humans   & $S_H(t) +E_H(t) + I_H(t) + R_H(t)$   \
 \end{threeparttable}
 \end{table}
 
-%\clearpage
+
 \begin{table}[width=2.0\linewidth,cols=3,pos=h]
 \begin{threeparttable}
 \caption{List of model variables.}\label{tbl2}
@@ -997,14 +997,6 @@ Symbol & Definition & Units \\
 $b_1$  & Proportion of bites from susceptible mosquitoes on infected humans that result in infection & Dimensionless \\
 $b_2$   & Proportion of bites from infected mosquitoes on susceptible humans that result in infection & Dimensionless \\
 $\gamma$ &  1/Average duration of infectiousness in humans & days$^{-1}$  \\
-%$T_1$  & Mean temperature in the absence of seasonality & $^\circ C$ \\ 
-%$T_2$  & Amplitude of seasonal variability in temperature & Dimensionless \\ 
-%$\omega_1$  & Angular frequency of seasonal oscillations in temperature & months$^{-1}$ \\ 
-%$\phi_1$  & Phase lag of temperature variability (phase shift) & Dimensionless \\ 
-%$R_1$  & Average monthly precipitation in the absence of seasonality & mm \\ 
-%$R_2$  & Amplitude of seasonal variability in precipitation & Dimensionless \\ 
-%$\omega_2$  & Angular frequency of seasonal oscillations in precipitation & months$^{-1}$ \\ 
-%$\phi_2$  & Phase lag of precipitation variability (phase shift) & Dimensionless \\ 
 $B_E$  & Number of eggs laid per adult per oviposition & Dimensionless \\ 
 $p_{ME}$  & Maximum probability of egg survival & Dimensionless \\ 
 $p_{ML}$  & Maximum probability of larval survival & Dimensionless \\ 
@@ -1013,7 +1005,9 @@ $\tau_E$  & Duration of the egg development phase & days \\
 $\tau_P$  & Duration of the pupal development phase & days \\ 
 $\tau_H$  & Latent period of infection within humans & days \\ 
 $R_L$  & Rainfall threshold until breeding sites are eliminated, removing immature individuals: 32.26 \tnote{2}  & mm \\ 
-$T_{min}$  & Minimum temperature, below which there is no development of the parasite: 14.5 & $^\circ C$ \\ 
+$T_{\min}$ & Minimum temperature, below which there is no development of the parasite: 14.5 & $^\circ C$ \\ 
+$T_{\max}$ & Maximum temperature, above which there is no development of the parasite: 29.8 \cite{McCord2016} &  $^\circ C$ \\
+$T_{\text{opt}}$ & Optimal temperature for development of the parasite: 23.5 \cite{McCord2016} &  $^\circ C$ \\
 $DD$  & Degree-days for parasite development.
              ``Sum of heat" for maturation: 105 \cite{McCord2016, Lindsay_Birley_1996} & $^\circ C \ \text{days}$ \\ 
 $A$  & Empirical sensitivity parameter & ($^\circ C^2 \ \text{days})^{-1}$ \\ 
@@ -1036,6 +1030,9 @@ $b_{3H}$  & Infection rate in exposed humans ($1/\tau_H$) &  days$^{-1}$ \\
 \end{table}
 %\footnote{In Parham and Michael \cite{Parham2010}, this parameter is denoted \( T_1 \). We rename it here to avoid confusion with the mean temperature in the absence of seasonality, also denoted \( T_1 \) in the original paper.}
 \clearpage
+
+%\clearpage
+
 
 
 \subsection{Figures}
