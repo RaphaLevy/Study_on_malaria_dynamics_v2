@@ -265,6 +265,10 @@ To address the limitations of the previous formulations, we introduce an ODE bas
 both incubation delays as done above and temporary immunity in the human population. The human compartments 
 are extended to include an exposed class $E_H$, and recovered individuals lose immunity at rate $\omega$, returning to the susceptible class.
 \\\\
+At this step, we included $b_{3H}$ as the intrinsic incubation period $\left(b_{3H}=\frac{1}{\tau_H}\right)$, and substituted the original $b_3=\frac{1}{\tau_M}$
+for a Briere function $b_{3M} = \eta T (T-T_{\min})(T_{\text{opt}}-T)^{1/2}$, to take into consideration the minimum and optimal temperatures for development of 
+the parasite \cite{brierre_function_development_rate}.
+\\\\
 The model is given by:
 \begin{subequations}\label{eq:system}
 \begin{align}
@@ -313,7 +317,7 @@ where $M(t) = S_M + E_M + I_M$ and $K(t)$ is the environmental carrying capacity
 \begin{align}
 K(t) = M_0 \cdot f_T(T(t)) \cdot f_R(R(t))
 \end{align}
-where the environmental response functions are given by
+where $M_0$ is the initial mosquito population size (we assumed $M_0 = 35 \times N_0$ in our simulations, $N_0$ being the initial human population), and the environmental response functions are given by
 \begin{subequations}\label{eq:system}
 \begin{align}
 f_T(T) &= \max\left(0, \frac{T - 10}{26 - 10}\right)\label{eq:systema} \\ %\text{\cite{openlearncreate} }
@@ -938,6 +942,9 @@ East Zone of Manaus, Amazon, South American Journal of Basic Education, Technica
 \\
 %38
 \bibitem{openlearncreate} OpenLearnCreate. Courses/Collections/Health Education and Training (HEAT)/Communicable Diseases/Contents/Communicable Diseases Module: 6. Factors that Affect Malaria Transmission, accessed on 02 May 2026, \href{https://www.open.edu/openlearncreate/mod/oucontent/view.php?id=89\&printable=1}{https://www.open.edu/openlearncreate/mod/oucontent/view.php?id=89\&printable=1}
+\\
+%39
+\bibitem{brierre_function_development_rate} E. A. Mordecai et al, Optimal temperature for malaria transmission is dramatically lower than previously predicted, Ecology Letters, Vol. 16 (1), 22-30 (2013), \href{https://pubmed.ncbi.nlm.nih.gov/23050931/}{https://pubmed.ncbi.nlm.nih.gov/23050931/}
 \end{thebibliography}
 
 \clearpage
