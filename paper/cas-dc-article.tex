@@ -295,6 +295,7 @@ The forces of infection are defined as:
 %\Lambda(t) = b(R,T)\, K(t)\left(1 - \frac{M(t)}{K(t)}\right),
 %\end{align}
 %where $M(t) = S_M(t) + E_M(t) + I_M(t)$ is the total mosquito population, and $K(t)$ is the environmental carrying capacity.
+\\
 Mosquito population dynamics were initially modeled using a linear birth–death process of the form
 \begin{align}
 \frac{dM}{dt} = b - \mu M,
@@ -327,23 +328,7 @@ f_R(R) &= \left(\frac{R}{R_L/2}\right)\exp\left(1-\frac{R}{R_L/2}\right) \label{
 \end{subequations}
 \\
 Unlike the classical logistic formulation, where growth is proportional to the current population size, this representation assumes that recruitment is primarily determined by environmental conditions and breeding site availability. The term $\left(1 - \frac{M(t)}{K(t)}\right)$ ensures that recruitment decreases as the population approaches the carrying capacity, providing a biologically realistic upper bound on mosquito abundance. The mathematical implications of this formulation are analyzed in Section 5.1.
-\\\\
-%The recruitment term $\Lambda(t)$ is modeled using a logistic-type formulation. 
-%In classical population dynamics, density-dependent growth is often represented 
-%as $M(t)\left(1 - \frac{M(t)}{K(t)}\right)$, where growth is proportional to 
-%the current population size. In the present model, this formulation is adapted 
-%to $K(t)\left(1 - \frac{M(t)}{K(t)}\right)$, scaled by the environmental birth 
-%rate $b(R,T)$.
 
-%where the environmental response functions are given by
-%\begin{subequations}\label{eq:system}
-%\begin{align}
-%f_T(T) &= \max\left(0.1, \min\left(1, \frac{T - 15}{15} \right) \right)  \label{eq:systema} \\
-%f_R(R) &= \min\left(1, \max\left(0, \frac{R}{30} \right) \right) \label{eq:systemb} \\
-%f_S(t) &= 2.5 + 2 \sin\left( \frac{2\pi}{365.25}(t - 180) \right) \label{eq:systemc}
-%\end{align}
-%\end{subequations}
-%where $t$ is measured in days, and $f_S(t)$ is a periodic function with period $365.25$ days.
 
 \section{Data Description and Processing}
 
@@ -396,7 +381,7 @@ Additionally, rural and urban population estimates for intermediate years had be
 proportions based on 2010 data. To better account for demographic changes, particularly urbanization, 
 these estimates were revised. The rural population for 2006 was approximated as the mean between the 
 reported values for 2000 and 2010, while the 2017 value was obtained through extrapolation based on the 
-observed growth trend. These adjustments ensured temporal consistency in the population data used throughout the study.
+observed growth trend. These adjustments ensured temporal consistency in the population data used throughout the study. 
 
 \section{Impacts of Environmental Factors}
 
@@ -515,6 +500,14 @@ and $V=\left[\frac{\partial {\mathcal V}_i (x_0) }{\partial x_j}\right]$,
 where $x_0$ is a Disease-Free Equilibrium (DFE), and $1\leq i,j \leq m$, and $\mathcal{R}_0 = \rho(FV^{-1})$. 
 \\\\
 The formulation for $\mathcal{R}_0$ in both model, as well as the complete SIR/SEI system is given by:
+%Calculating $\mathcal{R}_0$ for both models, as well as the full system SIR/SEI:
+%%%%%%%%%%%%%%%%%
+%Temperature and precipitation data were taken from the Mosqlimate Data API datastore \cite{MosqlimateAPI}, and fitted to best approximate the equations used in \cite{Parham2010}, given by:
+%\begin{align}
+%    C(t) = M(1+A\cos(\omega t - \phi)),
+%\end{align}
+%where $M$ is the mean effect of temperature/precipitation in the absence of seasonality, $A$ is the amplitude of seasonal variability, $\omega$ 
+%is the angular frequency of seasonal oscillations and $\phi$ is the phase lag of variability, indicated in \textbf{Table A.2} as $T_1/R_1, \ T_2/R_2, \ \omega_1/\omega_2, \ \phi_1/\phi_2$ respectively, in order to estimate initial values for parameters use in the calculation of $\mathcal{R}_0$.
 \\\\
 \textbf{SIR:}
 In this case, $m=1$, and the compartments are arranged as $[I_H, S_H, R_H]$. Since $\mathcal{R}_0$ is calculated with normalized values, the necessary equations are mulyiplied by $N$ to remove the denominator. Specifically, for the SIR case, as $R_H$ is not used in any of the equations, it can be expressed solely in terms of $S$ and $I$. Therefore:
@@ -918,15 +911,6 @@ East Zone of Manaus, Amazon, South American Journal of Basic Education, Technica
 \\
 %33
 \bibitem{G1_Queimadas} G1, M. Castro, "Amazonas registra 21,6 mil queimadas em 2024 e tem o pior índice em 26 anos, aponta Inpe", accessed on 28 September 2024, \href{https://g1.globo.com/am/amazonas/noticia/2024/09/24/amazonas-registra-216-mil-queimadas-em-2024-e-tem-o-pior-indice-em-26-anos-aponta-inpe.ghtml}{https://g1.globo.com/am/amazonas/noticia/2024/09/24/amazonas-registra-216-mil-queimadas-em-2024-e-tem-o-pior-indice-em-26-anos-aponta-inpe.ghtml}.
-%\\
-%Unused
-%\bibitem{MapBIOMAS_Deforestation} MapBiomas, Collection 9 of the Annual Land Cover and Land Use Maps of Brazil (1985-2023), V1 (2024), accessed on 24 September 2024, \href{https://doi.org/10.58053/MapBiomas/XXUKA8}{https://doi.org/10.58053/MapBiomas/XXUKA8}.
-%\\
-%Unused
-%\bibitem{MapBIOMAS_Forest_Fires} MapBiomas, Collection 3 of Annual burned area maps of Brazil (1985-2023), V1 (2024), accessed on 24 September 2024, \href{https://doi.org/10.58053/MapBiomas/XUFVIC}{https://doi.org/10.58053/MapBiomas/XUFVIC}.
-%\\
-%Unused
-%\bibitem{DETER_Deforestation} TerraBrasilis, DETER (Notices), Analyses - Amazônia Biome, Monthly variation of DETER project area, accessed on 17 October 2024, \href{https://terrabrasilis.dpi.inpe.br/app/dashboard/alerts/biomes/amazonia-nb/aggregated/\#}{https://terrabrasilis.dpi.inpe.br/app/dashboard/alerts/biomes/amazonia-nb/aggregated/\#}.
 \\
 %34
 \bibitem{Daily_DETER} TerraBrasilis, DETER (Notices), Analyses - Amazônia Biome, Daily notices of DETER project area, accessed on 17 March 2026, \href{https://terrabrasilis.dpi.inpe.br/app/dashboard/alerts/biomes/amazonia-nb/daily/}{https://terrabrasilis.dpi.inpe.br/app/dashboard/alerts/biomes/amazonia-nb/daily/}.
@@ -985,7 +969,7 @@ $N(t)$   & Total population of humans   & $S_H(t) +E_H(t) + I_H(t) + R_H(t)$   \
 \end{threeparttable}
 \end{table}
 
-
+%\clearpage
 \begin{table}[width=2.0\linewidth,cols=3,pos=h]
 \begin{threeparttable}
 \caption{List of model variables.}\label{tbl2}
@@ -1005,9 +989,7 @@ $\tau_E$  & Duration of the egg development phase & days \\
 $\tau_P$  & Duration of the pupal development phase & days \\ 
 $\tau_H$  & Latent period of infection within humans & days \\ 
 $R_L$  & Rainfall threshold until breeding sites are eliminated, removing immature individuals: 32.26 \tnote{2}  & mm \\ 
-$T_{\min}$ & Minimum temperature, below which there is no development of the parasite: 14.5 & $^\circ C$ \\ 
-$T_{\max}$ & Maximum temperature, above which there is no development of the parasite: 29.8 \cite{McCord2016} &  $^\circ C$ \\
-$T_{\text{opt}}$ & Optimal temperature for development of the parasite: 23.5 \cite{McCord2016} &  $^\circ C$ \\
+$T_{\min}$  & Minimum temperature, below which there is no development of the parasite: 14.5 & $^\circ C$ \\ 
 $DD$  & Degree-days for parasite development.
              ``Sum of heat" for maturation: 105 \cite{McCord2016, Lindsay_Birley_1996} & $^\circ C \ \text{days}$ \\ 
 $A$  & Empirical sensitivity parameter & ($^\circ C^2 \ \text{days})^{-1}$ \\ 
@@ -1019,7 +1001,6 @@ $c_2$  & Empirical sensitivity parameter & days$^{-1}$ \\
 $T'$  & Biting rate temperature threshold \tnote{3}  & $^\circ C$ \\ 
 $b_{3M}$  & Infection rate in exposed mosquitoes ($1/\tau_M(T)$) &  days$^{-1}$ \\
 $b_{3H}$  & Infection rate in exposed humans ($1/\tau_H$) &  days$^{-1}$ \\  
-%$r_H$ & Net daily recruitment rate per capita & days$^{-1}$\\
 \bottomrule
 \end{tabular*}
 \begin{tablenotes}
@@ -1028,11 +1009,8 @@ $b_{3H}$  & Infection rate in exposed humans ($1/\tau_H$) &  days$^{-1}$ \\
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
-%\footnote{In Parham and Michael \cite{Parham2010}, this parameter is denoted \( T_1 \). We rename it here to avoid confusion with the mean temperature in the absence of seasonality, also denoted \( T_1 \) in the original paper.}
+
 \clearpage
-
-%\clearpage
-
 
 
 \subsection{Figures}
@@ -1091,4 +1069,3 @@ $b_{3H}$  & Infection rate in exposed humans ($1/\tau_H$) &  days$^{-1}$ \\
 
 
 \end{document}
-
