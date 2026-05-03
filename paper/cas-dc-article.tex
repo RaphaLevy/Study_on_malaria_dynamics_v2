@@ -268,7 +268,9 @@ are extended to include an exposed class $E_H$, and recovered individuals lose i
 At this step, we included $b_{3H}$ as the intrinsic incubation period $\left(b_{3H}=\frac{1}{\tau_H}\right)$, and substituted the original $b_3=\frac{1}{\tau_M}$
 for a Briere function $b_{3M} = \eta T (T-T_{\min})(T_{\max}-T)^{1/2}$, to take into consideration the minimum and optimal temperatures for development of 
 the parasite \cite{brierre_function_development_rate, ab_gumel_malaria_review}, where $\eta$ was estimated as
-$$\eta:=\frac{\frac{1}{\tau_M(T_{\text{opt}})}}{T_{\text{opt}}(T_{\text{opt}}-T_{\min})(T_{\max}-T_{\text{opt}})^{1/2}}$$
+\begin{align}
+\eta:=\frac{\frac{1}{\tau_M(T_{\text{opt}})}}{T_{\text{opt}}(T_{\text{opt}}-T_{\min})(T_{\max}-T_{\text{opt}})^{1/2}}
+\end{align}
 The model is then given by:
 \begin{subequations}\label{eq:system}
 \begin{align}
