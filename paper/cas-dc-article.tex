@@ -271,7 +271,9 @@ the parasite \cite{brierre_function_development_rate, ab_gumel_malaria_review}, 
 \begin{align}
 \eta:=\frac{\frac{1}{\tau_M(T_\mathrm{opt})}}{T_\mathrm{opt}(T_\mathrm{opt}-T_{\min})(T_{\max}-T_\mathrm{opt})^{1/2}}
 \end{align}
-The model is then given by:
+Another addition was the includion of a humidity-dependent survival component $p(H)$ on to the daily survival rate of the adult mosquitoes, which is modeled as a sigmoid function of the daily minimum relative humidity U. The parameter $H_0$ (in $\%$) represents the humidity threshold at which the mosquito experiences a 50$\%$ reduction in survival relative to its maximum, and $k$ (in $\%^{-1}$) controls the steepness of the transition. The parameter $\varphi$ (dimensionless) establishes a baseline survival floor, accounting for the persistence of individuals in favorable micro-habitats even under extreme desiccation conditions.
+\\\\
+The SEIRS-SEI complete model is then given by:
 \begin{subequations}\label{eq:system}
 \begin{align}
 \frac{dS_H}{dt} &= - \lambda_H(t) S_H + \omega R_H \label{eq:systema} \\
@@ -965,8 +967,10 @@ East Zone of Manaus, Amazon, South American Journal of Basic Education, Technica
 \toprule
 Parameter & Definition & Formulation\\
 \midrule
-$p(T)$   & Daily mosquito survival rate   & $e^{(-1 / (AT^2 + BT + C))}$ \\  
-$p_L(R)$   & Probability of larval survival dependent on rainfall \tnote{1} & $({4p_{ML}}/{R_L^2})R(R_L - R)$  \\  
+$p(T)$  & Daily mosquito survival rate dependent on temperature  & $e^{(-1 / (AT^2 + BT + C))}$ \\  
+$p(H)$  & Daily mosquito survival rate dependent on humidity  \tnote{1} & $\frac{\varphi e^{-k(H-H_0)}+1}{e^{-k(H-H_0)}+1}$ \\  
+$p(T, H)$   & Daily mosquito survival rate   & $p(T)p(H)$ \\  
+$p_L(R)$   & Probability of larval survival dependent on rainfall \tnote{2} & $({4p_{ML}}/{R_L^2})R(R_L - R)$  \\  
 $p_L(T)$   & Probability of larval survival dependent on temperature   & $e^{-(c_1T + c_2)}$  \\ 
 $p_L(R, T)$   & Probability of larval survival   & $p_L(R)p_L(T)$   \\
 $\mu(T)$   & Mosquito mortality rate per capita (days$^{-1}$)   & $-\log(p(T))$  \\ 
@@ -980,7 +984,8 @@ $N(t)$   & Total population of humans   & $S_H(t) +E_H(t) + I_H(t) + R_H(t)$   \
 \bottomrule
 \end{tabular*}
 \begin{tablenotes}
-\item[1] $p_E(R)$ and $p_P(R)$ have an analogous expression to $p_L(R)$, substituting $p_{ML}$ for $p_{ME}$ and $p_{MP}$ respectively.
+\item[1] $p(H)$ was added in order to take into consideration the deleterious effects of humidity, more especially of minimal humidity 
+\item[2] $p_E(R)$ and $p_P(R)$ have an analogous expression to $p_L(R)$, substituting $p_{ML}$ for $p_{ME}$ and $p_{MP}$ respectively.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
