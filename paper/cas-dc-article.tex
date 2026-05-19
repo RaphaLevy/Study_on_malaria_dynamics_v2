@@ -984,7 +984,7 @@ $N(t)$   & Total population of humans   & $S_H(t) +E_H(t) + I_H(t) + R_H(t)$   \
 \bottomrule
 \end{tabular*}
 \begin{tablenotes}
-\item[1] $p(H)$ was added in order to take into consideration the deleterious effects of humidity, more especially of minimal humidity 
+\item[1] $p(H)$ was added in order to take into consideration the deleterious effects of humidity. Unlike for $T$ and $R$, which use the daily average value of temperature and precipitation, respectively, $H$ uses the daily minimal value of humidity.
 \item[2] $p_E(R)$ and $p_P(R)$ have an analogous expression to $p_L(R)$, substituting $p_{ML}$ for $p_{ME}$ and $p_{MP}$ respectively.
 \end{tablenotes}
 \end{threeparttable}
@@ -1009,7 +1009,7 @@ $p_{MP}$  & Maximum probability of pupal survival & Dimensionless \\
 $\tau_E$  & Duration of the egg development phase & days \\ 
 $\tau_P$  & Duration of the pupal development phase & days \\ 
 $\tau_H$  & Latent period of infection within humans & days \\ 
-$R_L$  & Rainfall threshold until breeding sites are eliminated, removing immature individuals: 32.26 \tnote{2}  & mm \\ 
+$R_L$  & Rainfall threshold until breeding sites are eliminated, removing immature individuals: 32.26 \tnote{3}  & mm \\ 
 $T_{\min}$  & Minimum temperature, below which there is no development of the parasite: 14.5 & $^\circ C$ \\ 
 $T_{\max}$  & Maximum temperature, above which there is no development of the parasite: 29.8 \cite{McCord2016} &  $^\circ C$ \\
 $T_{\mathrm{opt}}$ & Optimal temperature for development of the parasite: 23.5 \cite{McCord2016} &  $^\circ C$ \\
@@ -1024,14 +1024,18 @@ $C$  & Empirical sensitivity parameter & days$^{-1}$ \\
 $D_1$  & Temperature scaling factor of the biting rate & $^\circ C \ \text{days}$ \\ 
 $c_1$  & Empirical sensitivity parameter & $(^\circ C \ \text{days})^{-1}$ \\ 
 $c_2$  & Empirical sensitivity parameter & days$^{-1}$ \\ 
-$T'$  & Biting rate temperature threshold \tnote{3}  & $^\circ C$ \\ 
+$T'$  & Biting rate temperature threshold \tnote{4}  & $^\circ C$ \\ 
 $b_{3M}$  & Infection rate in exposed mosquitoes ($1/\tau_M(T)$) &  days$^{-1}$ \\
 $b_{3H}$  & Infection rate in exposed humans ($1/\tau_H$) &  days$^{-1}$ \\  
+$\varphi$ &  Baseline survival probability at extreme low humidity & Dimensionless \\
+$H_0$ & Critical humidity threshold for 50$\%$ survival transition & $\%$ \\
+$k$  & Steepness of the humidity-survival sigmoid response & $\%^{-1}$ \\
+
 \bottomrule
 \end{tabular*}
 \begin{tablenotes}
-\item[2] The reference rainfall level $R_L$ for the Amazon was approximated based on reported associations between monthly precipitation and malaria incidence \cite{Ecological_Change_Malaria_Risk}. In particular, precipitation levels in the range of 917 to 1019 mm/month were associated with a decrease in malaria cases. The midpoint of this interval (968 mm/month) was used as a representative value and converted to a daily rate by dividing by 30 days, yielding $R_L \approx 32.3$ mm/day. This value is therefore interpreted as the threshold scale for high rainfall conditions in the model.
-\item[3] In Parham and Michael \cite{Parham2010}, this parameter is denoted \( T_1 \). We rename it here to avoid confusion with the mean temperature in the absence of seasonality, also denoted \( T_1 \) in the original paper.
+\item[3] The reference rainfall level $R_L$ for the Amazon was approximated based on reported associations between monthly precipitation and malaria incidence \cite{Ecological_Change_Malaria_Risk}. In particular, precipitation levels in the range of 917 to 1019 mm/month were associated with a decrease in malaria cases. The midpoint of this interval (968 mm/month) was used as a representative value and converted to a daily rate by dividing by 30 days, yielding $R_L \approx 32.3$ mm/day. This value is therefore interpreted as the threshold scale for high rainfall conditions in the model.
+\item[4] In Parham and Michael \cite{Parham2010}, this parameter is denoted \( T_1 \). We rename it here to avoid confusion with the mean temperature in the absence of seasonality, also denoted \( T_1 \) in the original paper.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
