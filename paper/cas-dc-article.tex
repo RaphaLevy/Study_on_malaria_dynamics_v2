@@ -311,53 +311,65 @@ The forces of infection are defined as:
 \lambda_M(t) &= a\, b_1 \frac{I_H(t)}{N(t)} \label{eq:systemb}
 \end{align}
 \end{subequations}
-%\\
-%Mosquito recruitment is modeled using a density-dependent term:
-%\begin{align}
-%\Lambda(t) = b(R,T)\, K(t)\left(1 - \frac{M(t)}{K(t)}\right),
-%\end{align}
-%where $M(t) = S_M(t) + E_M(t) + I_M(t)$ is the total mosquito population, and $K(t)$ is the environmental carrying capacity.
-\subsection{Density-dependent mosquito recruitment and carrying capacity}
 
+\subsection{Density-dependent mosquito recruitment and carrying capacity}
 Mosquito population dynamics were initially modeled using a linear birth–death process of the form
 \begin{align}
 \frac{dM}{dt} = b - \mu M,
 \end{align}
-where $b$ represents a recruitment rate, the birth rate in this case, and $\mu$ is the per capita mortality rate. 
+where $b$ represents the birth rate and $\mu$ is the per capita mortality rate. 
 However, this formulation does not account for environmental limitations on population growth.
 \\\\
-To account for environmental resource limitation, we introduce a density-dependent recruitment mechanism inspired by the classical Verhulst logistic model.\cite{math_assessment_of_the_role_of_temp_and_rainfall},
+To incorporate the effect of limited environmental resources, we introduce a density-dependent recruitment mechanism inspired by the classical Verhulst logistic model \cite{math_assessment_of_the_role_of_temp_and_rainfall},
 \begin{align}
 \frac{dM}{dt} = bM\left(1 - \frac{M}{K}\right) - \mu M,
 \end{align}
-where $M(t)=S_M(t)+E_M(t)+I_M(t)$ denotes the total mosquito population, $b$ the per capita recruitment rate, $\mu$ the mortality rate, and $K$ the environmental carrying capacity. This formulation separates recruitment and mortality mechanisms while capturing the reduction in population growth as the population approaches the environmental limit.
+where $M(t)=S_M(t)+E_M(t)+I_M(t)$ denotes the total mosquito population, $b$ the per capita recruitment rate, $\mu$ the mortality rate, and $K$ the environmental carrying capacity. This formulation captures the reduction in population growth as the mosquito population approaches the environmental limit.
 \\\\
-In the present model, this idea is adapted to mosquito recruitment by replacing the constant birth term with a density-dependent function,
+In the present model, this idea is adapted by replacing the constant recruitment term with the density-dependent function
 \begin{align}
-\Lambda(t) = b(R,T)\,K(t)\left(1 - \frac{M(t)}{K(t)}\right)
+\Lambda(t) = b(R,T)\,K(t)\left(1 - \frac{M(t)}{K(t)}\right),
 \end{align}
-\\
-where $K(t)$, the environmental carrying capacity, is defined by
+where the environmental dependence is separated into two distinct mechanisms:
+\begin{enumerate}
+\item The climatic modulation of mosquito recruitment through $b(R,T)$, inherited from the original Parham-Michael formulation;
+\item The environmental limitation imposed by habitat availability through the carrying capacity $K(t)$.
+\end{enumerate}
+In this interpretation, $b(R,T)$ governs the rate at which mosquitoes are produced under favorable temperature and rainfall conditions, whereas $K(t)$ determines the maximum sustainable mosquito population supported by the environment. Consequently, temperature and precipitation affect mosquito dynamics both through reproductive success and through the availability of suitable breeding habitats.
+\\\\
+The environmental carrying capacity is defined by
 \begin{align}
 K(t) = M_0 \cdot f_T(T(t)) \cdot f_R(R(t)),
 \end{align}
-$M_0$ is the initial mosquito population size (we assumed $M_0 = 35 \times N_0$ in our simulations, $N_0$ being the initial human population), and the environmental response functions are given by
-\begin{subequations}\label{eq:system}
+where $M_0$ denotes the baseline mosquito population size. In the simulations, we assumed $M_0 = 35N_0$, with $N_0$ representing the initial human population. The environmental response functions are given by
+\begin{subequations}\label{eq:carryingcapacity}
 \begin{align}
-f_T(T) &= \min\biggl(1.0, \frac{T(T-T_{\min\text{A.}})\sqrt{T_{\max\text{A.}}-T}}{T_{\mathrm{op}\text{ A.}}(T_{\mathrm{op}\text{ A.}}-T_{\min\text{A.}})\sqrt{T_{\max\text{A.}}-T_{\mathrm{op}\text{ A.}}}}\biggr)\label{eq:systema}\\
-f_R(R) &= \left(\frac{R}{R_L/2}\right)\exp\left(1-\frac{R}{R_L/2}\right)
-\label{eq:systemb}
+f_T(T) &= \min\biggl(1.0, 
+\frac{
+T(T-T_{\min\text{A.}})
+\sqrt{T_{\max\text{A.}}-T}
+}{
+T_{\mathrm{op}\text{A.}}
+(T_{\mathrm{op}\text{A.}}-T_{\min\text{A.}})
+\sqrt{T_{\max\text{A.}}-T_{\mathrm{op}\text{A.}}}
+}
+\biggr), \label{eq:carryingcapacitya}
+\\
+f_R(R) &= 
+\left(\frac{R}{R_L/2}\right)
+\exp\left(1-\frac{R}{R_L/2}\right),
+\label{eq:carryingcapacityb}
 \end{align}
 \end{subequations}
-\\
-Unlike the classical logistic formulation, where growth is proportional to the current population size, this representation assumes that recruitment is primarily determined by environmental conditions and breeding site availability. 
+where $f_T(T)$ describes the temperature suitability for mosquito persistence and $f_R(R)$ represents the dual effect of rainfall on habitat availability.
 \\\\
-The function $f_R(R)$ represents the dual effect of rainfall on mosquito habitat availability. Moderate precipitation increases the formation of breeding sites, whereas excessive rainfall reduces larval survival through habitat flushing and destruction of immature stages.
+The rainfall response function increases with precipitation under moderate rainfall conditions, reflecting the formation of breeding sites, but decreases under excessive rainfall due to habitat flushing and destruction of immature stages.
 \\\\
-Both environmental response functions are normalized so that $0 \leq f_T(T), f_R(R) \leq 1$ ensuring that the carrying capacity remains bounded by the baseline population scale $M_0$.
+Both environmental response functions are normalized so that $0 \leq f_T(T), f_R(R) \leq 1$, 
+ensuring that the carrying capacity remains bounded by the baseline population scale $M_0$.
 \\\\
-The term $\left(1 - \frac{M(t)}{K(t)}\right)$ ensures that recruitment decreases as the population approaches the carrying capacity, providing a biologically realistic upper bound on mosquito abundance. The mathematical implications of this formulation are analyzed in Section 5.1.
-
+Unlike the classical logistic formulation, where population growth is directly proportional to the current mosquito abundance, the present representation assumes that recruitment is primarily determined by environmental suitability and breeding-site availability. The factor
+$\left(1-\frac{M(t)}{K(t)}\right)$ therefore imposes density-dependent regulation by reducing recruitment as the mosquito population approaches the carrying capacity, providing a biologically realistic upper bound on mosquito abundance. The mathematical implications of this formulation are analyzed in Section 5.1.
 
 \section{Data Description and Processing}
 
