@@ -267,11 +267,15 @@ are extended to include an exposed class $E_H$, and recovered individuals lose i
 \\\\
 At this step, we included $b_{3H}$ as the intrinsic incubation period $\left(b_{3H}=\frac{1}{\tau_H}\right)$, and substituted the original $b_3=\frac{1}{\tau_M}$
 for a Briere function $b_{3M} = \eta T (T-T_{\min})(T_{\max}-T)^{1/2}$, to take into consideration the minimum and optimal temperatures for development of 
-the parasite \cite{brierre_function_development_rate, ab_gumel_malaria_review}, where $\eta$ was estimated as
+the parasite \cite{brierre_function_development_rate, ab_gumel_malaria_review}.
+\\\\
+The scaling parameter $\eta$ was estimated from the observed optimal sporogonic development rate through
 \begin{align}
 \eta:=\frac{\frac{1}{\tau_M(T_\mathrm{opt})}}{T_\mathrm{opt}(T_\mathrm{opt}-T_{\min})(T_{\max}-T_\mathrm{opt})^{1/2}}
 \end{align}
 Another addition was the includion of a humidity-dependent survival component $p(H)$ on to the daily survival rate of the adult mosquitoes, which is modeled as a sigmoid function of the daily minimum relative humidity U. The parameter $H_0$ (in $\%$) represents the humidity threshold at which the mosquito experiences a 50$\%$ reduction in survival relative to its maximum, and $k$ (in $\%^{-1}$) controls the steepness of the transition. The parameter $\varphi$ (dimensionless) establishes a baseline survival floor, accounting for the persistence of individuals in favorable micro-habitats even under extreme desiccation conditions.
+%\\\\
+%Now, in order to properly estimate the parameters $T'$ and $D_1$ for the biting rate in regard to data from the Amazon
 \\\\
 The SEIRS-SEI complete model is then given by:
 \begin{subequations}\label{eq:system}
