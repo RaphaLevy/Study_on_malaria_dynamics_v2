@@ -315,7 +315,7 @@ To incorporate the effect of limited resources, we introduce a variant of densit
 \begin{align}
 \frac{dM}{dt} = bM\left(1 - \frac{M}{K}\right) - \mu M,
 \end{align}
-where $b$ denotes the per capita birth rate, $\mu$ the mortality rate, and $K$ the environmental carrying capacity. This formulation separates recruitment and mortality mechanisms while capturing the reduction in population growth as the population approaches the environmental limit.
+where $M(t)=S_M(t)+E_M(t)+I_M(t)$ denotes the total mosquito population, $b$ the per capita recruitment rate, $\mu$ the mortality rate, and $K$ the environmental carrying capacity. This formulation separates recruitment and mortality mechanisms while capturing the reduction in population growth as the population approaches the environmental limit.
 \\\\
 In the present model, this idea is adapted to mosquito recruitment by replacing the constant birth term with a density-dependent function,
 \begin{align}
@@ -338,6 +338,8 @@ f_R(R) &= \left(\frac{R}{R_L/2}\right)\exp\left(1-\frac{R}{R_L/2}\right)
 Unlike the classical logistic formulation, where growth is proportional to the current population size, this representation assumes that recruitment is primarily determined by environmental conditions and breeding site availability. 
 \\\\
 The function $f_R(R)$ represents the dual effect of rainfall on mosquito habitat availability. Moderate precipitation increases the formation of breeding sites, whereas excessive rainfall reduces larval survival through habitat flushing and destruction of immature stages.
+\\\\
+Both environmental response functions are normalized so that $0 \leq f_T(T), f_R(R) \leq 1$ ensuring that the carrying capacity remains bounded by the baseline population scale $M_0$.
 \\\\
 The term $\left(1 - \frac{M(t)}{K(t)}\right)$ ensures that recruitment decreases as the population approaches the carrying capacity, providing a biologically realistic upper bound on mosquito abundance. The mathematical implications of this formulation are analyzed in Section 5.1.
 
