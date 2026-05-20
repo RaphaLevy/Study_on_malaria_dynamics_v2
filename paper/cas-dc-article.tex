@@ -317,7 +317,8 @@ The forces of infection are defined as:
 %\Lambda(t) = b(R,T)\, K(t)\left(1 - \frac{M(t)}{K(t)}\right),
 %\end{align}
 %where $M(t) = S_M(t) + E_M(t) + I_M(t)$ is the total mosquito population, and $K(t)$ is the environmental carrying capacity.
-\\
+\subsection{Density-dependent mosquito recruitment and carrying capacity}
+
 Mosquito population dynamics were initially modeled using a linear birth–death process of the form
 \begin{align}
 \frac{dM}{dt} = b - \mu M,
@@ -338,9 +339,9 @@ In the present model, this idea is adapted to mosquito recruitment by replacing 
 \\
 where $K(t)$, the environmental carrying capacity, is defined by
 \begin{align}
-K(t) = M_0 \cdot f_T(T(t)) \cdot f_R(R(t))
+K(t) = M_0 \cdot f_T(T(t)) \cdot f_R(R(t)),
 \end{align}
-where $M_0$ is the initial mosquito population size (we assumed $M_0 = 35 \times N_0$ in our simulations, $N_0$ being the initial human population), and the environmental response functions are given by
+$M_0$ is the initial mosquito population size (we assumed $M_0 = 35 \times N_0$ in our simulations, $N_0$ being the initial human population), and the environmental response functions are given by
 \begin{subequations}\label{eq:system}
 \begin{align}
 f_T(T) &= \min\biggl(1.0, \frac{T(T-T_{\min\text{A.}})\sqrt{T_{\max\text{A.}}-T}}{T_{\mathrm{op}\text{ A.}}(T_{\mathrm{op}\text{ A.}}-T_{\min\text{A.}})\sqrt{T_{\max\text{A.}}-T_{\mathrm{op}\text{ A.}}}}\biggr)\label{eq:systema}\\
