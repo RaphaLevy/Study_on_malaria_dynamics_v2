@@ -783,7 +783,7 @@ All model simulations were performed using Python version 3.12.7 (conda-forge di
 while numerical computations and array operations were carried out with 
 NumPy version 2.4.2.
 \\\\
-The systems of time-delay ordinary differential equations (1-6) were solved numerically using the explicit Runge-Kutta method as implemented in the \texttt{solve\_ivp} function from SciPy version 1.17.1. %A constant time step of 0.1 days was used for all simulations. Temperature and rainfall profiles (Equations 10-11) were generated using NumPy version 1.26.0 \citep{Harris2020}. 
+The systems of ODEs (5a-f) were solved numerically using the LSODA solver as implemented in the \texttt{solve\_ivp} function from SciPy version 1.17.1. %A constant time step of 0.1 days was used for all simulations. 
 All computations were performed on a laptop running \textbf{Windows 11} (64-bit) equipped with a \textbf{12th Gen Intel Core i5-1235U} processor (10 cores, 12 threads, 1.30 GHz base frequency) and \textbf{16 GB RAM}.
 \\\\
 %Computations were executed on a workstation with an Intel Core i7-12700K processor (3.6 GHz) and 32 GB of RAM running Ubuntu 22.04 LTS. 
