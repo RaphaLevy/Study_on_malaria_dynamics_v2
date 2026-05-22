@@ -18,6 +18,7 @@ All files in this folder regard data collection and treatment.
 - notebooks/:
     - Biting_Rate_Estimation.ipynb: Gathers and treats data related to gonotrophic cycle and biting rate, used to estimate D1, obtained from the works of de Barros, Honório and Arruda (2011)
     - DETER_Deforestation.ipynb: Collects and treats deforestation notification data from 2016 to 2024, obtained from the TerraBrasilis website
+    - Environmental_Factor_Plots.ipynb: Plots temperature, precipitation and humidity histograms based on Mosqlimate data, in addition to humidity seasonality, comparison between survival functions (p(H)) and seasonal impacts on p(H)  
     - IBGE_Population_Data.ipynb: Uses and treats IBGE data to estimate yearly and daily population of Manaus from 2016 to 2024
     - INPE_Fire_Counts.ipynb: Collects and treats fire counts data from 2016 to 2024, obtained from the Base dos Dados dataset
     - Manaus_Population_Correction.ipynb: Collects an treats populational data from Manaus in different time periods, looking for possible inconsistencies on the data
