@@ -6,6 +6,7 @@ All files in this folder regard data collection and treatment.
     - TRAJETORIAS_DATASET_Epidemiological_dimension_indicators.csv: Contains epidemiological data regarding type of disease, time period, location, residential zone, number of cases and inidence from the Trajetorias project
     - TRAJETORIAS_DATASET_Population_indicators.csv: Contains populational data regarding location, population in different time periods and estimated population
     - climate_api_data_2016_2024.csv: Contains climate data obtained from the Mosqlimate datastore ([https://api.mosqlimate.org/api/docs#/datastore/datastore_api_get_copernicus_brasil](https://api.mosqlimate.org/api/docs#/datastore/datastore_api_get_copernicus_brasil))
+    - climate_api_data_aug_2003_jul_2004.csv: Contains climate data obtained from the Mosqlimate datastore, gathering data from August 2003 to July 2004, used in the estimation of proper parameters of the birth rate, based on the work by de Barros, Honório and Arruda (2011) ([https://api.mosqlimate.org/api/docs#/datastore/datastore_api_get_copernicus_brasil](https://api.mosqlimate.org/api/docs#/datastore/datastore_api_get_copernicus_brasil))
     - ibge_manaus_fixed_rural_population_data_2016_2024.csv: Contains estimated daily rural and total population of Manaus, calculated in [../notebooks/Manaus_Population_Correction.ipynb](https://github.com/RaphaLevy/Study_on_malaria_dynamics_v2/blob/main/data_files/notebooks/Manaus_Population_Correction.ipynb)
     - ibge_manaus_population_data_2016_2024.csv: Contains interpolated daily population data of Manaus, obtained from IBGE
         - 2000: [https://biblioteca.ibge.gov.br/index.php/biblioteca-catalogo?view=detalhes&id=7308 (Tabelas Excel > AM > UF > Tabela 15)](https://biblioteca.ibge.gov.br/index.php/biblioteca-catalogo?view=detalhes&id=7308)
@@ -15,6 +16,7 @@ All files in this folder regard data collection and treatment.
 ([https://basedosdados.org/dataset/f06f3cdc-b539-409b-b311-1ff8878fb8d9?table=a3696dc2-4dd1-4f7e-9769-6aa16a1556b8](https://basedosdados.org/dataset/f06f3cdc-b539-409b-b311-1ff8878fb8d9?table=a3696dc2-4dd1-4f7e-9769-6aa16a1556b8))
 
 - notebooks/:
+    - Biting_Rate_Estimation.ipynb: Gathers and treats data related to gonotrophic cycle and biting rate, used to estimate D1, obtained from the works of de Barros, Honório and Arruda (2011)
     - DETER_Deforestation.ipynb: Collects and treats deforestation notification data from 2016 to 2024, obtained from the TerraBrasilis website
     - IBGE_Population_Data.ipynb: Uses and treats IBGE data to estimate yearly and daily population of Manaus from 2016 to 2024
     - INPE_Fire_Counts.ipynb: Collects and treats fire counts data from 2016 to 2024, obtained from the Base dos Dados dataset
