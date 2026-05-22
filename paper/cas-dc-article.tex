@@ -1046,7 +1046,7 @@ $R_L$  & Rainfall threshold until breeding sites are eliminated, removing immatu
 $T_{\min}$  & Minimum temperature, below which there is no development of the parasite: 14.5 & $^\circ C$ \\ 
 $T_{\max}$  & Maximum temperature, above which there is no development of the parasite: 29.8 \cite{McCord2016} &  $^\circ C$ \\
 $T_{\mathrm{opt}}$ & Optimal temperature for development of the parasite: 23.5 \cite{McCord2016} &  $^\circ C$ \\
-$T_{\min\text{A.}}$ & Minimum temperature, below which there is no development of the vector: 16  \cite{brierre_function_development_rate, climate_based_distribution_sub_sahara} & $^\circ C$ \\
+$T_{\min\text{A.}}/T'$ & Minimum temperature, below which there is no development of the vector: 16 \tnote{4}  \cite{brierre_function_development_rate, climate_based_distribution_sub_sahara} & $^\circ C$ \\
 $T_{\max\text{A.}}$ & Maximum temperature, above which there is no development of the vector: 34  \cite{brierre_function_development_rate, climate_based_distribution_sub_sahara, minmax_temp_anoph} & $^\circ C$ \\
 $T_{\mathrm{op}\text{ A.}}$ & Optimal temperature for transmission: 34  \cite{brierre_function_development_rate} & $^\circ C$ \\
 $DD$  & Degree-days for parasite development.
@@ -1057,7 +1057,7 @@ $C$  & Empirical sensitivity parameter & days$^{-1}$ \\
 $D_1$  & Temperature scaling factor of the biting rate & $^\circ C \ \text{days}$ \\ 
 $c_1$  & Empirical sensitivity parameter & $(^\circ C \ \text{days})^{-1}$ \\ 
 $c_2$  & Empirical sensitivity parameter & days$^{-1}$ \\ 
-$T'$  & Biting rate temperature threshold \tnote{4}  & $^\circ C$ \\ 
+%$T'$  & Biting rate temperature threshold \tnote{4}  & $^\circ C$ \\ 
 $b_{3M}$  & Infection rate in exposed mosquitoes ($1/\tau_M(T)$) &  days$^{-1}$ \\
 $b_{3H}$  & Infection rate in exposed humans ($1/\tau_H$) &  days$^{-1}$ \\  
 $\varphi$ &  Baseline survival probability at extreme low humidity & Dimensionless \\
@@ -1068,7 +1068,7 @@ $k$  & Steepness of the humidity-survival sigmoid response & $\%^{-1}$ \\
 \end{tabular*}
 \begin{tablenotes}
 \item[3] The reference rainfall level $R_L$ for the Amazon was approximated based on reported associations between monthly precipitation and malaria incidence \cite{Ecological_Change_Malaria_Risk}. In particular, precipitation levels in the range of 917 to 1019 mm/month were associated with a decrease in malaria cases. The midpoint of this interval (968 mm/month) was used as a representative value and converted to a daily rate by dividing by 30 days, yielding $R_L \approx 32.3$ mm/day. This value is therefore interpreted as the threshold scale for high rainfall conditions in the model.
-\item[4] In Parham and Michael \cite{Parham2010}, this parameter is denoted \( T_1 \). We rename it here to avoid confusion with the mean temperature in the absence of seasonality, also denoted \( T_1 \) in the original paper.
+\item[4] In Parham and Michael \cite{Parham2010}, this parameter is denoted by \(T_1\). Here, we adopt a different notation to avoid confusion with the mean temperature in the absence of seasonality, also denoted by \(T_1\) in the original model. Additionally, instead of defining an independent lower thermal threshold for the biting rate, we assume that biting activity becomes negligible below the minimum temperature required for vector development.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
