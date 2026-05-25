@@ -540,7 +540,10 @@ $F=\left[\frac{\partial {\mathcal F}_i (x_0)}{\partial x_j}\right]$
 and $V=\left[\frac{\partial {\mathcal V}_i (x_0) }{\partial x_j}\right]$, 
 where $x_0$ is a Disease-Free Equilibrium (DFE), and $1\leq i,j \leq m$, and $\mathcal{R}_0 = \rho(FV^{-1})$. 
 \\\\
-The formulation for $\mathcal{R}_0$ in both model, as well as the complete SIR/SEI system is given by:
+The formulation for $\mathcal{R}_0$ in the complete SEIRS/SEI system is given by:
+\begin{align}
+\sqrt{\frac{a^2b_1b_2\Lambda b_{3M}\ell}{N\gamma (b_{3M}\ell+\mu)\mu^2}}
+\end{align}
 %Calculating $\mathcal{R}_0$ for both models, as well as the full system SIR/SEI:
 %%%%%%%%%%%%%%%%%
 %Temperature and precipitation data were taken from the Mosqlimate Data API datastore \cite{MosqlimateAPI}, and fitted to best approximate the equations used in \cite{Parham2010}, given by:
@@ -549,7 +552,6 @@ The formulation for $\mathcal{R}_0$ in both model, as well as the complete SIR/S
 %\end{align}
 %where $M$ is the mean effect of temperature/precipitation in the absence of seasonality, $A$ is the amplitude of seasonal variability, $\omega$ 
 %is the angular frequency of seasonal oscillations and $\phi$ is the phase lag of variability, indicated in \textbf{Table A.2} as $T_1/R_1, \ T_2/R_2, \ \omega_1/\omega_2, \ \phi_1/\phi_2$ respectively, in order to estimate initial values for parameters use in the calculation of $\mathcal{R}_0$.
-\\\\
 \textbf{SIR:}
 In this case, $m=1$, and the compartments are arranged as $[I_H, S_H, R_H]$. Since $\mathcal{R}_0$ is calculated with normalized values, the necessary equations are mulyiplied by $N$ to remove the denominator. Specifically, for the SIR case, as $R_H$ is not used in any of the equations, it can be expressed solely in terms of $S$ and $I$. Therefore:
 \begin{itemize}
@@ -581,9 +583,8 @@ $$
 I_H \gamma \\ %(\gamma + \mu_H) \\
 \end{bmatrix}
 $$
-\\\\ \\\\
+\\\\
 Hence
-
 $$ F = \dfrac{\partial{\mathcal F}}{\partial I_M} =\begin{bmatrix}
 a  b_2  S_H \\
 \end{bmatrix} $$
