@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.3.13)  25 MAY 2026 15:52
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.3.13)  25 MAY 2026 15:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1362,7 +1362,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 591--602
  []
 
 [6]
-<figs/comparison-between-IH-data-and-model.png, id=171, 599.23875pt x 346.29375
+<figs/comparison-between-IH-data-and-model.png, id=169, 599.23875pt x 346.29375
 pt>
 File: figs/comparison-between-IH-data-and-model.png Graphic file (type png)
 <use figs/comparison-between-IH-data-and-model.png>
@@ -2098,7 +2098,7 @@ Here is how much of TeX's memory you used:
  47041 multiletter control sequences out of 15000+600000
  750287 words of font info for 206 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 90i,16n,117p,723b,693s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 90i,16n,117p,834b,693s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\rapha\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi450\ecss
 0800.pk> <C:\Users\rapha\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi60
 0\ecsx0900.pk> <C:\Users\rapha\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec
@@ -2115,7 +2115,7 @@ c/stix/stix-mathit.pfb><C:/Users/rapha/AppData/Local/Programs/MiKTeX/fonts/type
 ts/type1/public/stix/stix-mathscr.pfb><C:/Users/rapha/AppData/Local/Programs/Mi
 KTeX/fonts/type1/public/stix/stix-mathsf.pfb><C:/Users/rapha/AppData/Local/Prog
 rams/MiKTeX/fonts/type1/public/stix/stix-mathtt.pfb>
-Output written on cas-dc-article.pdf (12 pages, 801164 bytes).
+Output written on cas-dc-article.pdf (12 pages, 801360 bytes).
 PDF statistics:
  478 PDF objects out of 1000 (max. 8388607)
  138 named destinations out of 1000 (max. 500000)
