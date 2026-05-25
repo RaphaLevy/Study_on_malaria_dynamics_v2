@@ -382,6 +382,12 @@ where $P$ is the daily survival rate of mosquitoes, $Q$ is the proportion of par
 \\\\
 Given the lack of more recent data, it was decided to use the obtained estimates of the time period specified above with average temperatures from the period of analysis between 2017 and 2023, given that the biting rate is given as a function of temperature. At this point, it was decided to consider $T'=16^\circ C$, given that below this temperature there is no development of the vector, as the threshold temperature for the biting rate, and we estimated values of $g$ for the missing months of the analysis via interpolation. With this, given the closed formula for the biting rate, and knowing that it is the inverse of the gonotrophic cycle, we calculated $D_1= g(T-T')$ for each of the months with available data \footnote{$a(T)$ is defined in Table A.1}.
 \\\\
+Having monthly values of $D_1$, we took their average in order to estimate the biting rate and the proportion of female mosquitoes to humans, which is given by
+\begin{align}  
+m = \frac{HBR}{a(T)},
+\end{align}
+where $HBR$ is the mean biting density of \textit{An. darlingi}, given in bites/person/night, while $a(T)$ is the biting rate, given in bites/mosquito/night.
+\\\\
 This adjustment preserves the functional structure proposed by Parham and Michael while adapting the parameter values to better reflect the feeding behavior of the primary malaria vector in the Amazon region.
 
 \section{Data Description and Processing}
