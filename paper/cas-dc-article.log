@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.3.13)  25 MAY 2026 15:36
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.3.13)  25 MAY 2026 15:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -709,7 +709,59 @@ LaTeX Font Info:    Trying to load font information for T1+stix on input line 5
 (C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/stix\t1stix.fd
 File: t1stix.fd 2015/04/17 v1.1.2-latex STIX T1 font definitions
 )
-(cas-dc-article.aux)
+(cas-dc-article.aux
+
+LaTeX Warning: Label `eq:system' multiply defined.
+
+
+LaTeX Warning: Label `eq:systema' multiply defined.
+
+
+LaTeX Warning: Label `eq:systemb' multiply defined.
+
+
+LaTeX Warning: Label `eq:systemc' multiply defined.
+
+
+LaTeX Warning: Label `eq:systemd' multiply defined.
+
+
+LaTeX Warning: Label `eq:systeme' multiply defined.
+
+
+LaTeX Warning: Label `eq:systemf' multiply defined.
+
+
+LaTeX Warning: Label `eq:system' multiply defined.
+
+
+LaTeX Warning: Label `eq:systema' multiply defined.
+
+
+LaTeX Warning: Label `eq:systemb' multiply defined.
+
+
+LaTeX Warning: Label `eq:systemc' multiply defined.
+
+
+LaTeX Warning: Label `eq:systemd' multiply defined.
+
+
+LaTeX Warning: Label `eq:systeme' multiply defined.
+
+
+LaTeX Warning: Label `eq:systemf' multiply defined.
+
+
+LaTeX Warning: Label `eq:system' multiply defined.
+
+
+LaTeX Warning: Label `eq:systema' multiply defined.
+
+
+LaTeX Warning: Label `eq:systemb' multiply defined.
+
+)
 \openout1 = `cas-dc-article.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 53.
@@ -733,8 +785,7 @@ LaTeX Font Info:    ... okay on input line 53.
 LaTeX Font Info:    Checking defaults for LS1/stix/m/n on input line 53.
 LaTeX Font Info:    Trying to load font information for LS1+stix on input line 
 53.
-
-(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/stix\ls1stix.fd
+ (C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/stix\ls1stix.fd
 File: ls1stix.fd 2015/04/17 v1.1.2-latex STIX LS1 font definitions
 )
 LaTeX Font Info:    ... okay on input line 53.
@@ -896,26 +947,30 @@ Underfull \hbox (badness 10000) in paragraph at lines 177--6
 
 Package hyperref Warning: Ignoring empty anchor on input line 177.
 
+<thumbnails/cas-email.jpeg, id=3, 225.84375pt x 225.84375pt>
+File: thumbnails/cas-email.jpeg Graphic file (type jpg)
+<use thumbnails/cas-email.jpeg>
+Package pdftex.def Info: thumbnails/cas-email.jpeg  used on input line 177.
+(pdftex.def)             Requested size: 7.99838pt x 8.0pt.
+LaTeX Font Info:    Trying to load font information for T1+zi4 on input line 17
+7.
+(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/inconsolata\t1zi4.fd
+File: t1zi4.fd 2018/01/14 T1/zi4 (Inconsolata)
+)
+LaTeX Font Info:    Font shape `T1/zi4/m/n' will be
+(Font)              scaled to size 6.80005pt on input line 177.
 
-Package natbib Warning: Citation `pimenta_orfano_bahia_duarte_rios-velasquez_me
-lo_pessoa_oliveira_campos_villegas_etal_2015' on page 1 undefined on input line
- 185.
 
-
-Package natbib Warning: Citation `silva-nunes_malaria_amazon_2008' on page 1 un
-defined on input line 193.
-
-
-Package natbib Warning: Citation `DASILVANUNES2012281' on page 1 undefined on i
-nput line 193.
-
-
-Package natbib Warning: Citation `Rorato2023' on page 1 undefined on input line
- 205.
+Package hyperref Warning: Ignoring empty anchor on input line 177.
 
 
 Underfull \hbox (badness 1009) in paragraph at lines 181--207
 []\T1/stix/m/n/10 Malaria re-mains one of the most sig-nif-i-cant vector-
+ []
+
+
+Underfull \hbox (badness 1303) in paragraph at lines 181--207
+\T1/stix/m/n/10 cli-matic, and so-cioe-co-nomic fac-tors that in-flu-ence both
  []
 
 
@@ -940,13 +995,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 181--207
  []
 
 
-Package natbib Warning: Citation `Parham2010' on page 1 undefined on input line
- 212.
-
-
-Overfull \hbox (18.3805pt too wide) in paragraph at lines 212--219
-\T1/stix/m/n/10 Parham and Michael (2010) [\T1/stix/b/n/10 ? \T1/stix/m/n/10 ],
- which in-cor-po-rates temperature-
+Overfull \hbox (16.70636pt too wide) in paragraph at lines 212--219
+\T1/stix/m/n/10 Parham and Michael (2010) [[]], which in-cor-po-rates temperatu
+re-
  []
 
 
@@ -963,7 +1014,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 212--219
 pha/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/stix/stix-t1.enc}
 
 
-]
+{C:/Users/rapha/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/inconsolata/i4-t1
+-0.enc} <./thumbnails/cas-email.jpeg>]
 Underfull \hbox (badness 10000) in paragraph at lines 228--238
 
  []
@@ -999,14 +1051,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 264--275
  []
 
 
-Package natbib Warning: Citation `brierre_function_development_rate' on page 2 
-undefined on input line 278.
-
-
-Package natbib Warning: Citation `ab_gumel_malaria_review' on page 2 undefined 
-on input line 278.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 277--282
 
  []
@@ -1024,11 +1068,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 289--296
  []
 
 [2]
-
-Package natbib Warning: Citation `math_assessment_of_the_role_of_temp_and_rainf
-all' on page 3 undefined on input line 323.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 319--324
 
  []
@@ -1087,26 +1126,19 @@ Underfull \hbox (badness 10000) in paragraph at lines 362--373
  []
 
 
-Package natbib Warning: Citation `Parham2010' on page 3 undefined on input line
- 375.
-
-
-Package natbib Warning: Citation `debarros2011' on page 3 undefined on input li
-ne 375.
-
-
 Underfull \hbox (badness 1917) in paragraph at lines 375--378
 \T1/stix/m/n/10 specif-i-cally for Ama-zo-nian mosquito pop-u-la-tions. With
+ []
+
+
+Underfull \hbox (badness 1389) in paragraph at lines 375--378
+\T1/stix/m/n/10 col-lected be-tween Au-gust 2003 and July 2004 through
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 375--378
 
  []
-
-
-Package natbib Warning: Citation `duration_of_gonotrophic_cycle' on page 3 unde
-fined on input line 381.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 380--386
@@ -1119,23 +1151,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 380--386
  []
 
 [3]
-
-Package natbib Warning: Citation `OliveiraFerreira2010' on page 4 undefined on 
-input line 393.
-
-
-Package natbib Warning: Citation `10.3389/fpubh.2021.647754' on page 4 undefine
-d on input line 393.
-
-
-Package natbib Warning: Citation `Vector_Incrimination' on page 4 undefined on 
-input line 393.
-
-
-Package natbib Warning: Citation `SIVEP_Malaria' on page 4 undefined on input l
-ine 395.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 391--398
 
  []
@@ -1146,10 +1161,6 @@ Overfull \hbox (2.27551pt too wide) in paragraph at lines 391--398
  []
 
 
-Package natbib Warning: Citation `Rorato2023' on page 4 undefined on input line
- 404.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 401--407
 
  []
@@ -1158,18 +1169,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 401--407
 Overfull \hbox (3.46793pt too wide) detected at line 413
 []
  []
-
-
-Package natbib Warning: Citation `Census2000' on page 4 undefined on input line
- 424.
-
-
-Package natbib Warning: Citation `Census2010' on page 4 undefined on input line
- 424.
-
-
-Package natbib Warning: Citation `Census2022' on page 4 undefined on input line
- 424.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 413--426
@@ -1191,46 +1190,6 @@ Underfull \hbox (badness 1616) in paragraph at lines 429--439
 \T1/stix/m/n/10 changes, par-tic-u-larly ur-ban-iza-tion, these es-ti-mates wer
 e
  []
-
-
-Package natbib Warning: Citation `Norris2004' on page 4 undefined on input line
- 443.
-
-
-Package natbib Warning: Citation `infoAnopheles' on page 4 undefined on input l
-ine 447.
-
-
-Package natbib Warning: Citation `article_alteracoesambientais' on page 4 undef
-ined on input line 447.
-
-
-Package natbib Warning: Citation `Alteracoes_Ambientais' on page 4 undefined on
- input line 458.
-
-
-Package natbib Warning: Citation `Anthropogenic_Landscape' on page 4 undefined 
-on input line 458.
-
-
-Package natbib Warning: Citation `Future_of_Deforestation' on page 4 undefined 
-on input line 460.
-
-
-Package natbib Warning: Citation `Relationship_between_fires_and_defor' on page
- 4 undefined on input line 460.
-
-
-Package natbib Warning: Citation `Conservation_Policy' on page 4 undefined on i
-nput line 461.
-
-
-Package natbib Warning: Citation `Daily_DETER' on page 4 undefined on input lin
-e 468.
-
-
-Package natbib Warning: Citation `INPE_Forest_Fires' on page 4 undefined on inp
-ut line 470.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 442--472
@@ -1264,9 +1223,8 @@ Underfull \hbox (badness 1424) in paragraph at lines 442--472
  []
 
 
-Underfull \hbox (badness 1052) in paragraph at lines 442--472
-\T1/stix/m/n/10 degra-da-tion type, re-ported in km$[]$ [\T1/stix/b/n/10 ? \T1/
-stix/m/n/10 ]. The data were
+Underfull \hbox (badness 1087) in paragraph at lines 442--472
+\T1/stix/m/n/10 degra-da-tion type, re-ported in km$[]$ [[]]. The data were
  []
 
 
@@ -1296,15 +1254,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 528--532
 
 LaTeX Font Info:    Calculating math sizes for size <11> on input line 534.
 
-Package natbib Warning: Citation `Rep_Number_Comp_Model' on page 5 undefined on
- input line 539.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 536--549
 
  []
 
-
+[5]
 Underfull \hbox (badness 10000) in paragraph at lines 549--557
 
  []
@@ -1324,13 +1278,6 @@ Underfull \hbox (badness 1546) in paragraph at lines 564--575
 \T1/stix/m/n/10 On the other hand, tak-ing the cor-re-la-tion be-tween the
  []
 
-[5]
-LaTeX Font Info:    Trying to load font information for T1+zi4 on input line 58
-4.
-
-(C:\Users\rapha\AppData\Local\Programs\MiKTeX\tex/latex/inconsolata\t1zi4.fd
-File: t1zi4.fd 2018/01/14 T1/zi4 (Inconsolata)
-)
 LaTeX Font Info:    Font shape `T1/zi4/m/n' will be
 (Font)              scaled to size 8.50006pt on input line 584.
 
@@ -1346,16 +1293,6 @@ Underfull \hbox (badness 1107) in paragraph at lines 580--589
 
 Underfull \hbox (badness 10000) in paragraph at lines 580--589
 
- []
-
-
-Package natbib Warning: Citation `Parham2010' on page 6 undefined on input line
- 591.
-
-
-Underfull \hbox (badness 1062) in paragraph at lines 591--602
-\T1/stix/m/n/10 ] did not re-pro-duce bi-o-log-i-cally con-sis-tent trans-mis-s
-ion
  []
 
 
@@ -1424,9 +1361,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 591--602
 
  []
 
-[6{C:/Users/rapha/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/inconsolata/i4-
-t1-0.enc}]
-<figs/comparison-between-IH-data-and-model.png, id=109, 599.23875pt x 346.29375
+[6]
+<figs/comparison-between-IH-data-and-model.png, id=171, 599.23875pt x 346.29375
 pt>
 File: figs/comparison-between-IH-data-and-model.png Graphic file (type png)
 <use figs/comparison-between-IH-data-and-model.png>
@@ -1439,16 +1375,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 618--625
  []
 
 
-Package natbib Warning: Citation `Rorato2023' on page 7 undefined on input line
- 628.
-
-
-Underfull \hbox (badness 1648) in paragraph at lines 628--641
-\T1/stix/m/n/10 Project [\T1/stix/b/n/10 ? \T1/stix/m/n/10 ] for inter-census p
-e-ri-ods are de-rived us-ing
- []
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 628--641
 
  []
@@ -1458,7 +1384,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 628--641
 
  []
 
-
+[7 <./figs/comparison-between-IH-data-and-model.png>]
 Underfull \hbox (badness 2735) in paragraph at lines 651--654
 []\T1/stix/m/n/8 P. F. P. Pi-menta et al., An overview of malaria trans-mis-sio
 n
@@ -1647,7 +1573,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 690--697
 
  []
 
-[7 <./figs/comparison-between-IH-data-and-model.png>]
+
 Underfull \hbox (badness 10000) in paragraph at lines 697--700
 []\T1/stix/m/n/8 Biblioteca IBGE, 2000, ac-cessed on 11 Novem-ber
  []
@@ -1822,7 +1748,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 740--743
 
  []
 
-
+[8]
 Underfull \hbox (badness 1237) in paragraph at lines 743--746
 []\T1/stix/m/n/8 C. F. Lima, F. T. P. Tor-res, L. J. Minette, F. A. Lima, R. C.
 
@@ -2071,7 +1997,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 779--782
 
  []
 
-[8]
+
 Overfull \hbox (21.49754pt too wide) in paragraph at lines 782--785
 [][]\T1/stix/m/n/8 https://journals.plos.org/plosone/article?id=10.1371/journal
 .pone.0022388[][]. 
@@ -2087,9 +2013,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 785--787
 
  []
 
-[9
-
-]
+[9]
 Overfull \hbox (238.25444pt too wide) in paragraph at lines 801--828
  [] 
  []
@@ -2098,55 +2022,6 @@ Overfull \hbox (238.25444pt too wide) in paragraph at lines 801--828
 
 
 ]
-
-Package natbib Warning: Citation `McCord2016' on page 11 undefined on input lin
-e 851.
-
-
-Package natbib Warning: Citation `McCord2016' on page 11 undefined on input lin
-e 852.
-
-
-Package natbib Warning: Citation `brierre_function_development_rate' on page 11
- undefined on input line 853.
-
-
-Package natbib Warning: Citation `climate_based_distribution_sub_sahara' on pag
-e 11 undefined on input line 853.
-
-
-Package natbib Warning: Citation `brierre_function_development_rate' on page 11
- undefined on input line 854.
-
-
-Package natbib Warning: Citation `climate_based_distribution_sub_sahara' on pag
-e 11 undefined on input line 854.
-
-
-Package natbib Warning: Citation `minmax_temp_anoph' on page 11 undefined on in
-put line 854.
-
-
-Package natbib Warning: Citation `brierre_function_development_rate' on page 11
- undefined on input line 855.
-
-
-Package natbib Warning: Citation `McCord2016' on page 11 undefined on input lin
-e 857.
-
-
-Package natbib Warning: Citation `Lindsay_Birley_1996' on page 11 undefined on 
-input line 857.
-
-
-Package natbib Warning: Citation `Ecological_Change_Malaria_Risk' on page 11 un
-defined on input line 874.
-
-
-Package natbib Warning: Citation `Parham2010' on page 11 undefined on input lin
-e 875.
-
-
 Overfull \hbox (238.25444pt too wide) in paragraph at lines 833--878
  [] 
  []
@@ -2155,7 +2030,7 @@ Overfull \hbox (238.25444pt too wide) in paragraph at lines 833--878
 
 
 ]
-<figs/SIR_Model_Parham_and_Michael_values.png, id=241, 823.878pt x 383.63326pt>
+<figs/SIR_Model_Parham_and_Michael_values.png, id=288, 823.878pt x 383.63326pt>
 
 File: figs/SIR_Model_Parham_and_Michael_values.png Graphic file (type png)
 <use figs/SIR_Model_Parham_and_Michael_values.png>
@@ -2173,15 +2048,7 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 895.
 See the caption package documentation for explanation.
 
-
-Package natbib Warning: Citation `Parham2010' on page 12 undefined on input lin
-e 895.
-
-
-Package natbib Warning: Citation `Parham2010' on page 12 undefined on input lin
-e 895.
-
-<figs/SEI_Model_Parham_and_Michael_values.png, id=242, 735.9495pt x 406.51875pt
+<figs/SEI_Model_Parham_and_Michael_values.png, id=291, 735.9495pt x 406.51875pt
 >
 File: figs/SEI_Model_Parham_and_Michael_values.png Graphic file (type png)
 <use figs/SEI_Model_Parham_and_Michael_values.png>
@@ -2193,15 +2060,7 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 905.
 See the caption package documentation for explanation.
 
-
-Package natbib Warning: Citation `Parham2010' on page 12 undefined on input lin
-e 905.
-
-
-Package natbib Warning: Citation `Parham2010' on page 12 undefined on input lin
-e 905.
-
-<figs/SEI_Model_Parham_and_Michael_values_01_probs.png, id=243, 826.88925pt x 3
+<figs/SEI_Model_Parham_and_Michael_values_01_probs.png, id=294, 826.88925pt x 3
 86.04225pt>
 File: figs/SEI_Model_Parham_and_Michael_values_01_probs.png Graphic file (type 
 png)
@@ -2215,39 +2074,31 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 See the caption package documentation for explanation.
 
 No file cas-dc-article.bbl.
-
-Package natbib Warning: There were undefined citations.
-
 [12
 
 
  <./figs/SIR_Model_Parham_and_Michael_values.png> <./figs/SEI_Model_Parham_and_
 Michael_values.png> <./figs/SEI_Model_Parham_and_Michael_values_01_probs.png>] 
-(cas-dc-article.aux
-
-Package natbib Warning: Citation(s) may have changed.
-(natbib)                Rerun to get citations correct.
-
-)
+(cas-dc-article.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
  ***********
 
 
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `cas-dc-article.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 18580 strings out of 467871
- 290883 string characters out of 5418376
- 706958 words of memory out of 5000000
- 47029 multiletter control sequences out of 15000+600000
- 752708 words of font info for 206 fonts, out of 8000000 for 9000
+ 18593 strings out of 467871
+ 291242 string characters out of 5418376
+ 710732 words of memory out of 5000000
+ 47041 multiletter control sequences out of 15000+600000
+ 750287 words of font info for 206 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 90i,16n,117p,694b,659s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 90i,16n,117p,723b,693s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\rapha\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi450\ecss
 0800.pk> <C:\Users\rapha\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi60
 0\ecsx0900.pk> <C:\Users\rapha\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec
@@ -2264,9 +2115,9 @@ c/stix/stix-mathit.pfb><C:/Users/rapha/AppData/Local/Programs/MiKTeX/fonts/type
 ts/type1/public/stix/stix-mathscr.pfb><C:/Users/rapha/AppData/Local/Programs/Mi
 KTeX/fonts/type1/public/stix/stix-mathsf.pfb><C:/Users/rapha/AppData/Local/Prog
 rams/MiKTeX/fonts/type1/public/stix/stix-mathtt.pfb>
-Output written on cas-dc-article.pdf (12 pages, 781061 bytes).
+Output written on cas-dc-article.pdf (12 pages, 801164 bytes).
 PDF statistics:
- 427 PDF objects out of 1000 (max. 8388607)
- 137 named destinations out of 1000 (max. 500000)
- 21 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 478 PDF objects out of 1000 (max. 8388607)
+ 138 named destinations out of 1000 (max. 500000)
+ 26 words of extra memory for PDF output out of 10000 (max. 10000000)
 

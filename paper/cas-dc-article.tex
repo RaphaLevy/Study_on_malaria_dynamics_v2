@@ -372,7 +372,7 @@ Unlike the classical logistic formulation, where population growth is directly p
 $\left(1-\frac{M(t)}{K(t)}\right)$ therefore imposes density-dependent regulation by reducing recruitment as the mosquito population approaches the carrying capacity, providing a biologically realistic upper bound on mosquito abundance. The mathematical implications of this formulation are analyzed in Section 5.1.
 
 \subsection{Recalibration of the temperature-dependent biting rate}
-In the original formulation \cite{Parham2010}, the biting rate is expressed as a temperature-dependent function derived from the duration of the gonotrophic cycle. Although this formulation captures the general thermal dependence of mosquito feeding behavior, its parameterization was not developed specifically for Amazonian mosquito populations. With this in mind, we recalibrated the biting-rate function using entomological observations reported by de Barros, Honório and Arruda \cite{debarros2011}, regarding females of \textit{Anopheles darlingi} collected between August 2003 and July 2004.
+In the original formulation \cite{Parham2010}, the biting rate is expressed as a temperature-dependent function derived from the duration of the gonotrophic cycle. Although this formulation captures the general thermal dependence of mosquito feeding behavior, its parameterization was not developed specifically for Amazonian mosquito populations. With this in mind, we recalibrated the biting-rate function using entomological observations reported by de Barros, Honório and Arruda \cite{debarros2011}, regarding females of \textit{Anopheles darlingi} collected between August 2003 and July 2004 through intermittent sampling carried out in selected months over the study period.
 \\\\
 Their results allowed for estimation of the duration of the gonotrophic cycle through the following formula:
 \begin{align}
@@ -380,7 +380,7 @@ P=Q^{1/g} \Longrightarrow g = \frac{\ln(Q)}{\ln(P)},
 \end{align}
 where $P$ is the daily survival rate of mosquitoes, $Q$ is the proportion of parous mosquitoes females in the population and $g$ is the duration of the gonotrophic cycle, given in days  \cite{duration_of_gonotrophic_cycle}.
 \\\\
-Given the lack of more recent data, it was decided to use the obtained estimates of the time period specified above with average temperatures from the period of analysis between 2017 and 2023, given that the biting rate is given as a function of temperature.
+Given the lack of more recent data, it was decided to use the obtained estimates of the time period specified above with average temperatures from the period of analysis between 2017 and 2023, given that the biting rate is given as a function of temperature. At this point, it was decided to consider $T'=16^\circ C$, given that below this temperature there is no development of the vector, as the threshold temperature for the biting rate. Given the closed formula for the biting rate, and knowing that it is the inverse of the gonotrophic cycle, we used $D_1= g\times(T-T')$ \footnote{$a(T)$ is defined in Table A.1}.
 \\\\
 This adjustment preserves the functional structure proposed by Parham and Michael while adapting the parameter values to better reflect the feeding behavior of the primary malaria vector in the Amazon region.
 
@@ -805,9 +805,9 @@ East Zone of Manaus, Amazon, South American Journal of Basic Education, Technica
 Parameter & Definition & Formulation\\
 \midrule
 $p(T)$  & Daily mosquito survival rate dependent on temperature  & $e^{(-1 / (AT^2 + BT + C))}$ \\  
-$p(H)$  & Daily mosquito survival rate dependent on humidity  \tnote{1} & $\frac{\varphi e^{-k(H-H_0)}+1}{e^{-k(H-H_0)}+1}$ \\  
+$p(H)$  & Daily mosquito survival rate dependent on humidity \tnote{2} & $\frac{\varphi e^{-k(H-H_0)}+1}{e^{-k(H-H_0)}+1}$ \\  
 $p(T, H)$   & Daily mosquito survival rate   & $p(T)p(H)$ \\  
-$p_L(R)$   & Probability of larval survival dependent on rainfall \tnote{2} & $({4p_{ML}}/{R_L^2})R(R_L - R)$  \\  
+$p_L(R)$   & Probability of larval survival dependent on rainfall \tnote{3} & $({4p_{ML}}/{R_L^2})R(R_L - R)$  \\  
 $p_L(T)$   & Probability of larval survival dependent on temperature   & $e^{-(c_1T + c_2)}$  \\ 
 $p_L(R, T)$   & Probability of larval survival   & $p_L(R)p_L(T)$   \\
 $\mu(T, H)$   & Mosquito mortality rate per capita (days$^{-1}$)   & $-\log(p(T, H))$  \\ 
@@ -821,8 +821,8 @@ $N(t)$   & Total population of humans   & $S_H(t) +E_H(t) + I_H(t) + R_H(t)$   \
 \bottomrule
 \end{tabular*}
 \begin{tablenotes}
-\item[1] $p(H)$ was added in order to take into consideration the deleterious effects of humidity. Unlike for $T$ and $R$, which use the daily average value of temperature and precipitation, respectively, $H$ uses the daily minimal value of humidity.
-\item[2] $p_E(R)$ and $p_P(R)$ have an analogous expression to $p_L(R)$, substituting $p_{ML}$ for $p_{ME}$ and $p_{MP}$ respectively.
+\item[2] $p(H)$ was added in order to take into consideration the deleterious effects of humidity. Unlike for $T$ and $R$, which use the daily average value of temperature and precipitation, respectively, $H$ uses the daily minimal value of humidity.
+\item[3] $p_E(R)$ and $p_P(R)$ have an analogous expression to $p_L(R)$, substituting $p_{ML}$ for $p_{ME}$ and $p_{MP}$ respectively.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
@@ -846,11 +846,11 @@ $p_{MP}$  & Maximum probability of pupal survival & Dimensionless \\
 $\tau_E$  & Duration of the egg development phase & days \\ 
 $\tau_P$  & Duration of the pupal development phase & days \\ 
 $\tau_H$  & Latent period of infection within humans & days \\ 
-$R_L$  & Rainfall threshold until breeding sites are eliminated, removing immature individuals: 32.26 \tnote{3}  & mm \\ 
+$R_L$  & Rainfall threshold until breeding sites are eliminated, removing immature individuals: 32.26 \tnote{4}  & mm \\ 
 $T_{\min}$  & Minimum temperature, below which there is no development of the parasite: 14.5 & $^\circ C$ \\ 
 $T_{\max}$  & Maximum temperature, above which there is no development of the parasite: 29.8 \cite{McCord2016} &  $^\circ C$ \\
 $T_{\mathrm{opt}}$ & Optimal temperature for development of the parasite: 23.5 \cite{McCord2016} &  $^\circ C$ \\
-$T_{\min\text{A.}}/T'$ & Minimum temperature, below which there is no development of the vector: 16 \tnote{4}  \cite{brierre_function_development_rate, climate_based_distribution_sub_sahara} & $^\circ C$ \\
+$T_{\min\text{A.}}/T'$ & Minimum temperature, below which there is no development of the vector: 16 \tnote{5}  \cite{brierre_function_development_rate, climate_based_distribution_sub_sahara} & $^\circ C$ \\
 $T_{\max\text{A.}}$ & Maximum temperature, above which there is no development of the vector: 34  \cite{brierre_function_development_rate, climate_based_distribution_sub_sahara, minmax_temp_anoph} & $^\circ C$ \\
 $T_{\mathrm{op}\text{ A.}}$ & Optimal temperature for transmission: 34  \cite{brierre_function_development_rate} & $^\circ C$ \\
 $DD$  & Degree-days for parasite development.
@@ -871,8 +871,8 @@ $k$  & Steepness of the humidity-survival sigmoid response & $\%^{-1}$ \\
 \bottomrule
 \end{tabular*}
 \begin{tablenotes}
-\item[3] The reference rainfall level $R_L$ for the Amazon was approximated based on reported associations between monthly precipitation and malaria incidence \cite{Ecological_Change_Malaria_Risk}. In particular, precipitation levels in the range of 917 to 1019 mm/month were associated with a decrease in malaria cases. The midpoint of this interval (968 mm/month) was used as a representative value and converted to a daily rate by dividing by 30 days, yielding $R_L \approx 32.3$ mm/day. This value is therefore interpreted as the threshold scale for high rainfall conditions in the model.
-\item[4] In Parham and Michael \cite{Parham2010}, this parameter is denoted by \(T_1\). Here, we adopt a different notation to avoid confusion with the mean temperature in the absence of seasonality, also denoted by \(T_1\) in the original model. Additionally, instead of defining an independent lower thermal threshold for the biting rate, we assume that biting activity becomes negligible below the minimum temperature required for vector development.
+\item[4] The reference rainfall level $R_L$ for the Amazon was approximated based on reported associations between monthly precipitation and malaria incidence \cite{Ecological_Change_Malaria_Risk}. In particular, precipitation levels in the range of 917 to 1019 mm/month were associated with a decrease in malaria cases. The midpoint of this interval (968 mm/month) was used as a representative value and converted to a daily rate by dividing by 30 days, yielding $R_L \approx 32.3$ mm/day. This value is therefore interpreted as the threshold scale for high rainfall conditions in the model.
+\item[5] In Parham and Michael \cite{Parham2010}, this parameter is denoted by \(T_1\). Here, we adopt a different notation to avoid confusion with the mean temperature in the absence of seasonality, also denoted by \(T_1\) in the original model. Additionally, instead of defining an independent lower thermal threshold for the biting rate, we assume that biting activity becomes negligible below the minimum temperature required for vector development.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
