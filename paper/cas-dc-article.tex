@@ -371,6 +371,19 @@ ensuring that the carrying capacity remains bounded by the baseline population s
 Unlike the classical logistic formulation, where population growth is directly proportional to the current mosquito abundance, the present representation assumes that recruitment is primarily determined by environmental suitability and breeding-site availability. The factor
 $\left(1-\frac{M(t)}{K(t)}\right)$ therefore imposes density-dependent regulation by reducing recruitment as the mosquito population approaches the carrying capacity, providing a biologically realistic upper bound on mosquito abundance. The mathematical implications of this formulation are analyzed in Section 5.1.
 
+\subsection{Recalibration of the temperature-dependent biting rate}
+In the original formulation \cite{Parham2010}, the biting rate is expressed as a temperature-dependent function derived from the duration of the gonotrophic cycle. Although this formulation captures the general thermal dependence of mosquito feeding behavior, its parameterization was not developed specifically for Amazonian mosquito populations. With this in mind, we recalibrated the biting-rate function using entomological observations reported by de Barros, Honório and Arruda \cite{debarros2011}, regarding females of \textit{Anopheles darlingi} collected between August 2003 and July 2004.
+\\\\
+Their results allowed for estimation of the duration of the gonotrophic cycle through the following formula:
+\begin{align}
+P=Q^{1/g} \Longrightarrow g = \frac{\ln(Q)}{\ln(P)},
+\end{align}
+where $P$ is the daily survival rate of mosquitoes, $Q$ is the proportion of parous mosquitoes females in the population and $g$ is the duration of the gonotrophic cycle, given in days  \cite{duration_of_gonotrophic_cycle}.
+\\\\
+Given the lack of more recent data, it was decided to use the obtained estimates of the time period specified above with average temperatures from the period of analysis between 2017 and 2023, given that the biting rate is given as a function of temperature.
+\\\\
+This adjustment preserves the functional structure proposed by Parham and Michael while adapting the parameter values to better reflect the feeding behavior of the primary malaria vector in the Amazon region.
+
 \section{Data Description and Processing}
 
 \subsection{Epidemiological Data}
@@ -764,6 +777,12 @@ East Zone of Manaus, Amazon, South American Journal of Basic Education, Technica
 \\
 %42
 \bibitem{minmax_temp_anoph} T. P. Agyekum et al, A Systematic Review of the Effects of Temperature on Anopheles Mosquito Development and Survival: Implications for Malaria Control in a Future Warmer Climate, International Journal of Environmental Research and Public Health, Vol. 18 (14),  (2021), \href{https://pmc.ncbi.nlm.nih.gov/articles/PMC8306597/}{https://pmc.ncbi.nlm.nih.gov/articles/PMC8306597/}.
+\\
+%43
+\bibitem{debarros2011}  F. S. M.de Barros, N. A. Honório, M. E. Arruda, Survivorship of Anopheles darlingi (Diptera: Culicidae) in Relation with Malaria Incidence in the Brazilian Amazon, PLoS ONE, Vol. 6 (8), e22388 (2011), \href{https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0022388}{https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0022388}.
+\\
+%44
+\bibitem{duration_of_gonotrophic_cycle} F. J. Lardeaux et al, A physiological time analysis of the duration of the gonotrophic cycle of Anopheles pseudopunctipennis and its implications for malaria transmission in Bolivia, Malaria Journal, Vol. 7, 141 (2008), \href{https://link.springer.com/article/10.1186/1475-2875-7-141}{https://link.springer.com/article/10.1186/1475-2875-7-141}.
 \\
 \end{thebibliography}
 
