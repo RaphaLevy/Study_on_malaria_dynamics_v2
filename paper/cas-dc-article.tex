@@ -312,6 +312,27 @@ The forces of infection are defined as:
 \end{align}
 \end{subequations}
 
+\subsection{Recalibration of the temperature-dependent biting rate}
+In the original formulation \cite{Parham2010}, the biting rate is expressed as a temperature-dependent function derived from the duration of the gonotrophic cycle. Although this formulation captures the general thermal dependence of mosquito feeding behavior, its parameterization was not developed specifically for Amazonian mosquito populations. With this in mind, we recalibrated the biting-rate function using entomological observations reported by de Barros, Honório and Arruda \cite{debarros2011}, regarding females of \textit{Anopheles darlingi} collected between August 2003 and July 2004 through intermittent sampling carried out in selected months over the study period.
+\\\\
+Their results allowed for estimation of the duration of the gonotrophic cycle through the following formula:
+\begin{align}
+P=Q^{1/g} \Longrightarrow g = \frac{\ln(Q)}{\ln(P)},
+\end{align}
+where $P$ is the daily survival rate of mosquitoes, $Q$ is the proportion of parous mosquitoes females in the population and $g$ is the duration of the gonotrophic cycle, given in days  \cite{duration_of_gonotrophic_cycle}.
+\\\\
+Given the lack of more recent data, it was decided to use the obtained estimates of the time period specified above with average temperatures from the period of analysis between 2017 and 2023, given that the biting rate is given as a function of temperature. It was decided to consider $T'=16^\circ C$, given that below this temperature there is no development of the vector, as the threshold temperature for the biting rate, and we estimated values of $g$ for the missing months of the analysis via interpolation. With this, given the closed formula for the biting rate, and knowing that it is the inverse of the gonotrophic cycle, we calculated $D_1= g(T-T')$ for each of the months with available data \footnote{$a(T)$ is defined in Table A.1}.
+\\\\
+Having monthly values of $D_1$, we took their average in order to estimate the biting rate and the proportion of female mosquitoes to humans, which is given by
+\begin{align}  
+m = \frac{HBR}{a(T)},
+\end{align}
+where $HBR$ is the mean biting density of \textit{An. darlingi}, given in bites/person/night, while $a(T)$ is the biting rate, given in bites/mosquito/night.
+\\\\
+At this point, we also approximated the ratio of initially exposed to infectious mosquitoes to be their values at the steady state: $$\frac{dI_M}{dt}=b_{3M}\ell E_M - \mu I_M=0\Longrightarrow \frac{E(0)}{I(0)}=\frac{\mu(0,0)}{b_{3M}(0)\ell(0,0)}\approx3$$
+\\\\
+This adjustment preserves the functional structure proposed by Parham and Michael while adapting the parameter values to better reflect the feeding behavior of the primary malaria vector in the Amazon region.
+
 \subsection{Density-dependent mosquito recruitment and carrying capacity}
 Mosquito population dynamics were initially modeled using a linear birth–death process of the form
 \begin{align}
@@ -370,27 +391,6 @@ ensuring that the carrying capacity remains bounded by the baseline population s
 \\\\
 Unlike the classical logistic formulation, where population growth is directly proportional to the current mosquito abundance, the present representation assumes that recruitment is primarily determined by environmental suitability and breeding-site availability. The factor
 $\left(1-\frac{M(t)}{K(t)}\right)$ therefore imposes density-dependent regulation by reducing recruitment as the mosquito population approaches the carrying capacity, providing a biologically realistic upper bound on mosquito abundance. The mathematical implications of this formulation are analyzed in Section 5.1.
-
-\subsection{Recalibration of the temperature-dependent biting rate}
-In the original formulation \cite{Parham2010}, the biting rate is expressed as a temperature-dependent function derived from the duration of the gonotrophic cycle. Although this formulation captures the general thermal dependence of mosquito feeding behavior, its parameterization was not developed specifically for Amazonian mosquito populations. With this in mind, we recalibrated the biting-rate function using entomological observations reported by de Barros, Honório and Arruda \cite{debarros2011}, regarding females of \textit{Anopheles darlingi} collected between August 2003 and July 2004 through intermittent sampling carried out in selected months over the study period.
-\\\\
-Their results allowed for estimation of the duration of the gonotrophic cycle through the following formula:
-\begin{align}
-P=Q^{1/g} \Longrightarrow g = \frac{\ln(Q)}{\ln(P)},
-\end{align}
-where $P$ is the daily survival rate of mosquitoes, $Q$ is the proportion of parous mosquitoes females in the population and $g$ is the duration of the gonotrophic cycle, given in days  \cite{duration_of_gonotrophic_cycle}.
-\\\\
-Given the lack of more recent data, it was decided to use the obtained estimates of the time period specified above with average temperatures from the period of analysis between 2017 and 2023, given that the biting rate is given as a function of temperature. It was decided to consider $T'=16^\circ C$, given that below this temperature there is no development of the vector, as the threshold temperature for the biting rate, and we estimated values of $g$ for the missing months of the analysis via interpolation. With this, given the closed formula for the biting rate, and knowing that it is the inverse of the gonotrophic cycle, we calculated $D_1= g(T-T')$ for each of the months with available data \footnote{$a(T)$ is defined in Table A.1}.
-\\\\
-Having monthly values of $D_1$, we took their average in order to estimate the biting rate and the proportion of female mosquitoes to humans, which is given by
-\begin{align}  
-m = \frac{HBR}{a(T)},
-\end{align}
-where $HBR$ is the mean biting density of \textit{An. darlingi}, given in bites/person/night, while $a(T)$ is the biting rate, given in bites/mosquito/night.
-\\\\
-At this point, we also approximated the ratio of initially exposed to infectious mosquitoes to be their values at the steady state: $$\frac{dI_M}{dt}=b_{3M}\ell E_M - \mu I_M=0\Longrightarrow \frac{E(0)}{I(0)}=\frac{\mu(0,0)}{b_{3M}(0)\ell(0,0)}\approx3$$
-\\\\
-This adjustment preserves the functional structure proposed by Parham and Michael while adapting the parameter values to better reflect the feeding behavior of the primary malaria vector in the Amazon region.
 
 \section{Data Description and Processing}
 

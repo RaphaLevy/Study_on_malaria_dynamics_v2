@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.3.13)  25 MAY 2026 17:34
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.3.13)  26 MAY 2026 11:22
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1068,102 +1068,102 @@ Underfull \hbox (badness 10000) in paragraph at lines 289--296
  []
 
 [2]
-Underfull \hbox (badness 10000) in paragraph at lines 319--324
-
- []
-
-
-Underfull \hbox (badness 1348) in paragraph at lines 326--330
-\T1/stix/m/n/10 mosquito pop-u-la-tion, $\LS1/stix/m/it/10 b$ \T1/stix/m/n/10 t
-he per capita re-cruit-ment rate,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 326--330
-
- []
-
-
-Underfull \hbox (badness 1577) in paragraph at lines 335--336
-[]\T1/stix/m/n/10 The cli-matic mod-u-la-tion of mosquito re-cruit-ment
- []
-
-
-Underfull \hbox (badness 2277) in paragraph at lines 336--337
-[]\T1/stix/m/n/10 The en-vi-ron-men-tal lim-i-ta-tion im-posed by habi-tat
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 338--341
-
- []
-
-
-Overfull \hbox (11.31358pt too wide) detected at line 362
-[]
- []
-
-
-Overfull \hbox (8.9005pt too wide) in paragraph at lines 362--373
-\T1/stix/m/n/10 where $\LS1/stix/m/it/10 f[]\LS1/stix/m/n/10 .\LS1/stix/m/it/10
- T\LS1/stix/m/n/10 /$ \T1/stix/m/n/10 de-scribes the tem-per-a-ture suit-abil-i
-ty for mosquito
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 362--373
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 362--373
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 362--373
-
- []
-
-
-Underfull \hbox (badness 1917) in paragraph at lines 375--378
+Underfull \hbox (badness 1917) in paragraph at lines 316--319
 \T1/stix/m/n/10 specif-i-cally for Ama-zo-nian mosquito pop-u-la-tions. With
  []
 
 
-Underfull \hbox (badness 1389) in paragraph at lines 375--378
+Underfull \hbox (badness 1389) in paragraph at lines 316--319
 \T1/stix/m/n/10 col-lected be-tween Au-gust 2003 and July 2004 through
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 375--378
+Underfull \hbox (badness 10000) in paragraph at lines 316--319
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 380--386
+Underfull \hbox (badness 10000) in paragraph at lines 321--327
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 380--386
-
- []
-
-[3]
-Underfull \hbox (badness 10000) in paragraph at lines 388--391
+Underfull \hbox (badness 10000) in paragraph at lines 321--327
 
  []
 
 
-Overfull \hbox (10.19148pt too wide) detected at line 391
+Underfull \hbox (badness 10000) in paragraph at lines 329--332
+
+ []
+
+
+Overfull \hbox (10.19148pt too wide) detected at line 332
 [] \LS1/stix/m/n/10 = \LS1/stix/m/it/10 b[]\LS1/stixscr/m/n/10 l\LS1/stix/m/it/
 10 E[] \LS1/stix/m/n/10 * \LS1/stix/m/it/10 ^^VI[] \LS1/stix/m/n/10 = 0 \LS2/st
 ixtt/m/n/10 ^^F [] \LS1/stix/m/n/10 = [] ù 3
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 391--394
+Underfull \hbox (badness 10000) in paragraph at lines 332--335
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 340--345
+
+ []
+
+
+Underfull \hbox (badness 1348) in paragraph at lines 347--351
+\T1/stix/m/n/10 mosquito pop-u-la-tion, $\LS1/stix/m/it/10 b$ \T1/stix/m/n/10 t
+he per capita re-cruit-ment rate,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 347--351
+
+ []
+
+
+Underfull \hbox (badness 1577) in paragraph at lines 356--357
+[]\T1/stix/m/n/10 The cli-matic mod-u-la-tion of mosquito re-cruit-ment
+ []
+
+
+Underfull \hbox (badness 2277) in paragraph at lines 357--358
+[]\T1/stix/m/n/10 The en-vi-ron-men-tal lim-i-ta-tion im-posed by habi-tat
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 359--362
+
+ []
+
+[3]
+Overfull \hbox (11.31358pt too wide) detected at line 383
+[]
+ []
+
+
+Overfull \hbox (8.9005pt too wide) in paragraph at lines 383--394
+\T1/stix/m/n/10 where $\LS1/stix/m/it/10 f[]\LS1/stix/m/n/10 .\LS1/stix/m/it/10
+ T\LS1/stix/m/n/10 /$ \T1/stix/m/n/10 de-scribes the tem-per-a-ture suit-abil-i
+ty for mosquito
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 383--394
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 383--394
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 383--394
 
  []
 
@@ -2133,7 +2133,7 @@ c/stix/stix-mathit.pfb><C:/Users/rapha/AppData/Local/Programs/MiKTeX/fonts/type
 ts/type1/public/stix/stix-mathscr.pfb><C:/Users/rapha/AppData/Local/Programs/Mi
 KTeX/fonts/type1/public/stix/stix-mathsf.pfb><C:/Users/rapha/AppData/Local/Prog
 rams/MiKTeX/fonts/type1/public/stix/stix-mathtt.pfb>
-Output written on cas-dc-article.pdf (12 pages, 802285 bytes).
+Output written on cas-dc-article.pdf (12 pages, 802383 bytes).
 PDF statistics:
  480 PDF objects out of 1000 (max. 8388607)
  139 named destinations out of 1000 (max. 500000)
