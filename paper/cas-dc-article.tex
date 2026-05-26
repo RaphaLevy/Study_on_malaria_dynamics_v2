@@ -361,9 +361,11 @@ In this interpretation, $b(R,T)$ governs the rate at which mosquitoes are produc
 \\\\
 The environmental carrying capacity is defined by
 \begin{align}
-K(t) = M_0 \cdot f_T(T(t)) \cdot f_R(R(t)),
+K(t) = M' \cdot f_T(T(t)) \cdot f_R(R(t)),
 \end{align}
-where $M_0$ denotes the baseline mosquito population size. In the simulations, we assumed $M_0 = 35N_0$, with $N_0$ representing the initial human population. The environmental response functions are given by
+where $M'$ denotes the baseline mosquito population size. Given that we require $0\leq 1-\frac{M(t)}{K(t)}\leq 1$, we would require $M'$ such that $M'\geq \frac{M}{f_T(T)f_R(R)}$.%In the simulations, we assumed $M_0 = 35N_0$, with $N_0$ representing the initial human population. 
+\\\\
+The environmental response functions are given by
 \begin{subequations}\label{eq:carryingcapacity}
 \begin{align}
 f_T(T) &= \min\biggl(1.0, 
