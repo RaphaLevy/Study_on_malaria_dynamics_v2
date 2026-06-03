@@ -225,7 +225,7 @@ print(
 
 M_prime = M_0
 M_min = 50000
-
+permanent_factor = 0
 
 #### ODE system
 def seirs_sei_ode(
@@ -303,11 +303,10 @@ def seirs_sei_ode(
     habitat_flushing_factor = np.exp(1 - (2 * R_curr / R_L))
     rain_factor = habitat_creating_factor * habitat_flushing_factor
 
-    permanent_factor = 0.3
-    K_permanent = M_prime * permanent_factor
+    K_permanent = M_prime * permanent_factor 
     K_dynamic = M_prime * temp_factor * rain_factor
     K = max(K_permanent + K_dynamic, M_min)
-
+    
     total_mosq = S_M + E_M + I_M
     density_factor = max(0, 1 - total_mosq / K) if K > 0 else 0.0
     mosquito_birth = b_curr * density_factor * K
