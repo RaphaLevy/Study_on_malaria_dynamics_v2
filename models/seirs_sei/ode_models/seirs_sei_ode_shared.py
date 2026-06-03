@@ -185,9 +185,9 @@ def exposed_to_infected_ratio(Temp, Humid, H0=58.0, k=0.25, phi=0.05):
 
 
 temp_med_0 = climate_data["temp_med"][0]
-umid_med_0 = climate_data["umid_med"][0]
+umid_min_0 = climate_data["umid_min"][0]
 #umid_min_0 = climate_data["umid_min"][0]
-initial_exposed_to_infected_ratio = exposed_to_infected_ratio(temp_med_0, umid_med_0)
+initial_exposed_to_infected_ratio = exposed_to_infected_ratio(temp_med_0, umid_min_0)
 print(
     f"The initial ratio of exposed to infected mosquitos was estimated to be ~{round(initial_exposed_to_infected_ratio)}"
 )
@@ -227,6 +227,9 @@ M_prime = M_0
 M_min = 50000
 permanent_factor = 0
 
+# Smoothing window for climate data (days, matching larval development time)
+SMOOTH_WINDOW = 14
+
 #### ODE system
 def seirs_sei_ode(
     t,
@@ -262,13 +265,16 @@ def seirs_sei_ode(
     omega,
     b3_h=None,
     b3_m=None,
+    M_prime,
+    M_min,
+    permanent_factor,
 ):
 
     day_idx = int(t)
     day_idx = np.clip(day_idx, 0, len(year_climate) - 1)
     T_curr = year_climate.iloc[day_idx]["temp_med"]
     R_curr = year_climate.iloc[day_idx]["precip_med"]
-    H_curr = year_climate.iloc[day_idx]["umid_med"]
+    H_curr = year_climate.iloc[day_idx]["umid_min"]
 
     mu_curr = mu(T_curr, H_curr)
     a_curr = a(T_curr)
