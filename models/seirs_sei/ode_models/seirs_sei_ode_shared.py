@@ -186,7 +186,7 @@ def exposed_to_infected_ratio(Temp, Humid, H0=58.0, k=0.25, phi=0.05):
 
 temp_med_0 = climate_data["temp_med"][0]
 umid_min_0 = climate_data["umid_min"][0]
-#umid_min_0 = climate_data["umid_min"][0]
+# umid_min_0 = climate_data["umid_min"][0]
 initial_exposed_to_infected_ratio = exposed_to_infected_ratio(temp_med_0, umid_min_0)
 print(
     f"The initial ratio of exposed to infected mosquitos was estimated to be ~{round(initial_exposed_to_infected_ratio)}"
@@ -230,6 +230,24 @@ permanent_factor = 0
 # Smoothing window for climate data (days, matching larval development time)
 SMOOTH_WINDOW = 14
 
+# Toggle: use smoothed climate data for mosquito demographic rates (mu, tau_M, b_rate)
+# to dampen daily oscillations. When False, all rates use current daily values.
+USE_SMOOTH_CLIMATE = True
+
+# Add smoothed climate columns for mosquito demographic rates
+climate_data["temp_med_smooth"] = (
+    climate_data["temp_med"].rolling(SMOOTH_WINDOW, min_periods=1, center=False).mean()
+)
+climate_data["precip_med_smooth"] = (
+    climate_data["precip_med"]
+    .rolling(SMOOTH_WINDOW, min_periods=1, center=False)
+    .mean()
+)
+climate_data["umid_min_smooth"] = (
+    climate_data["umid_min"].rolling(SMOOTH_WINDOW, min_periods=1, center=False).mean()
+)
+
+
 #### ODE system
 def seirs_sei_ode(
     t,
@@ -263,11 +281,10 @@ def seirs_sei_ode(
     M_prime,
     tau_H,
     omega,
-    b3_h=None,
-    b3_m=None,
-    M_prime,
     M_min,
     permanent_factor,
+    b3_h=None,
+    b3_m=None,
 ):
 
     day_idx = int(t)
@@ -276,9 +293,21 @@ def seirs_sei_ode(
     R_curr = year_climate.iloc[day_idx]["precip_med"]
     H_curr = year_climate.iloc[day_idx]["umid_min"]
 
-    mu_curr = mu(T_curr, H_curr)
+    if USE_SMOOTH_CLIMATE:
+        T_smooth = year_climate.iloc[day_idx]["temp_med_smooth"]
+        R_smooth = year_climate.iloc[day_idx]["precip_med_smooth"]
+        H_smooth = year_climate.iloc[day_idx]["umid_min_smooth"]
+        T_value = T_smooth
+        R_value = R_smooth
+        H_value = H_smooth
+    else:
+        T_value = T_curr
+        R_value = R_curr
+        H_value = H_curr
+
+    mu_curr = mu(T_value, H_value)
     a_curr = a(T_curr)
-    tau_M_curr = tau_M(T_curr)
+    tau_M_curr = tau_M(T_value)
 
     if b3_m is None:
         b3_m_curr = 1.0 / tau_M_curr if tau_M_curr > 0 else 0.0
@@ -291,7 +320,7 @@ def seirs_sei_ode(
         b3_h_curr = b3_h
 
     l_curr = np.exp(-mu_curr * tau_M_curr)
-    b_curr = b_rate(R_curr, T_curr)
+    b_curr = b_rate(R_value, T_value)
     b3_briere_curr = b3_briere_scaled_plasm(T_curr)
 
     S_H, E_H, I_H, R_H, S_M, E_M, I_M = z
@@ -309,10 +338,10 @@ def seirs_sei_ode(
     habitat_flushing_factor = np.exp(1 - (2 * R_curr / R_L))
     rain_factor = habitat_creating_factor * habitat_flushing_factor
 
-    K_permanent = M_prime * permanent_factor 
+    K_permanent = M_prime * permanent_factor
     K_dynamic = M_prime * temp_factor * rain_factor
     K = max(K_permanent + K_dynamic, M_min)
-    
+
     total_mosq = S_M + E_M + I_M
     density_factor = max(0, 1 - total_mosq / K) if K > 0 else 0.0
     mosquito_birth = b_curr * density_factor * K
