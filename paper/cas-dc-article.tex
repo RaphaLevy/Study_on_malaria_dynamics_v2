@@ -599,40 +599,40 @@ All computations were performed on a laptop running \textbf{Windows 11} (64-bit)
 The source code and data required to reproduce all figures are available at \url{https://github.com/RaphaLevy/Study_on_malaria_dynamics_v2}.
 
 \section{Results}
-The initial implementation of the model using the original functional forms and parameter values reported in \cite{Parham2010} did not reproduce biologically consistent transmission dynamics, particularly in the mosquito population. As illustrated in Figures 1–3A, the human SIR component exhibits a monotonic decline in the number of infected individuals, suggesting that the infection fails to persist in the population under the given parametrization. More critically, the corresponding SEI mosquito model yields nonphysical behavior, with the susceptible mosquito population attaining negative values and exhibiting oscillatory dynamics.
-\\\\
-These inconsistencies arise from the functional forms adopted for key entomological parameters, which do not explicitly enforce biologically meaningful bounds. In particular, probability and rate functions did not explicitly present necessary constraints, such as not ensuring that probabilities lie between $[0,1]$ , leading to violations of positivity and instability in the numerical solutions.
-\\\\
-To address this issue, the functional forms were modified to ensure that all probabilities and rates remain within their admissible ranges. The resulting dynamics, shown in Figure 3A, exhibit a different behavior, with the mosquito population rapidly declining toward extinction. While this modification restores mathematical consistency, it also highlights a mismatch between the model structure and the expected persistence of malaria in endemic settings, motivating the need for further refinement of the transmission and demographic assumptions.
-\\\\
-\\\\
-\\\\
-\\\\
-\\\\
-Before including the environmental factors on the used model (7-12), its results were compared to a model based on SIVEP data, keeping use of equations (7, 10-12), but using
-\begin{align}
-I_H(t) & = \sum_{t=\max\left(0, \ k-\dfrac{1}{\gamma}+1 \right)}^{0\leq k \leq 1825} \text{\# of cases} \label{eq13}\\ 
-R_H(t) & = \max\left(0, \ N (1+r_H t) -S_H(t) -I_H(t)\right)\label{eq14}
-\end{align}
-\\
-$I_H(t)$ now being the moving sum of cases over a period of 120 days, as it is the average duration of infectiousness, and $R_H(t)$ being the difference between the initial population and the susceptible and infected population at each day, with the addition of the daily births.
-The result can be seen in the graph below.
-\newpage
-\begin{figure}
-	\centering
-	%\includegraphics{comparison-between-IH-data-and-model.png}
-	\includegraphics[width=1\columnwidth]{figs/comparison-between-IH-data-and-model.png}
-	\caption{Comparison between observed data of infections and model estimation of $I_H$.}
-	\label{FIG:1}
-\end{figure}
 
-It is possible to see that the model gives a close approximation to the format of the observed number of infections and recoveries, although the infections appear to increase faster and die out given the model, a behavior that is not seen on the actual data.
-%In order to better approximate the model to the data, a method of linear regression was used, with the intent of minimizing the difference by optimizing different parameters used on the model. 
+\subsection{Reproduction of the Original Parham $\&$ Michael Model}
+As a baseline for the development of the model, the original SIR–SEI proposed by Parham and Michael (2010) was implemented using all parameter values reported in the original study. Since population sizes and initial epidemiological conditions were not explicitly provided by the authors, these quantities were estimated from the available rural Manaus data and used as initial conditions.
 \\\\
-At this point, a linear combination was implemented as a replacement 
-to the use of simply $T$ and $R$, in order to take into consideration the effects of 
-deforestation and fires, with the $\alpha$-function $\alpha_1D + \alpha_2F + \alpha_3T + \alpha_4R$, 
-with $\alpha_0 = [0, 0, 1, 1]$ representing the primary version of the model. 
+Figures 1A and 2A show the resulting dynamics of the human and mosquito populations, respectively. While the epidemiological compartments for the human population initially exhibited plausible behavior, although not what would be expected for a recurring disease such as malaria, with the infected population gradually decreased, the mosquito population rapidly declined to extinction. This behavior indicates that mosquito recruitment was insufficient to replace mortality.
+\\\\
+Since transmission depends on the persistence of infectious mosquitoes, the collapse of the vector population resulted in the elimination of infection in both host and vector populations. Therefore, although the delay formulation preserved positivity, it failed to reproduce the endemic behavior expected for malaria transmission in the Amazon region.
+%The initial implementation of the model using the original functional forms and parameter values reported in \cite{Parham2010} did not reproduce biologically consistent transmission dynamics, particularly in the mosquito population. As illustrated in Figures 1–3A, the human SIR component exhibits a monotonic decline in the number of infected individuals, suggesting that the infection fails to persist in the population under the given parametrization. More critically, the corresponding SEI mosquito model yields nonphysical behavior, with the susceptible mosquito population attaining negative values and exhibiting oscillatory dynamics.
+%\\\\
+%These inconsistencies arise from the functional forms adopted for key entomological parameters, which do not explicitly enforce biologically meaningful bounds. In particular, probability and rate functions did not explicitly present necessary constraints, such as not ensuring that probabilities lie between $[0,1]$ , leading to violations of positivity and instability in the numerical solutions.
+%\\\\
+%To address this issue, the functional forms were modified to ensure that all probabilities and rates remain within their admissible ranges. The resulting dynamics, shown in Figure 3A, exhibit a different behavior, with the mosquito population rapidly declining toward extinction. While this modification restores mathematical consistency, it also highlights a mismatch between the model structure and the expected persistence of malaria in endemic settings, motivating the need for further refinement of the transmission and demographic assumptions.
+%\\\\
+%Before including the environmental factors on the used model (7-12), its results were compared to a model based on SIVEP data, keeping use of equations (7, 10-12), but using
+%\begin{align}
+%I_H(t) & = \sum_{t=\max\left(0, \ k-\dfrac{1}{\gamma}+1 \right)}^{0\leq k \leq 1825} \text{\# of cases} \label{eq13}\\ 
+%R_H(t) & = \max\left(0, \ N (1+r_H t) -S_H(t) -I_H(t)\right)\label{eq14}
+%\end{align}
+%\\
+%$I_H(t)$ now being the moving sum of cases over a period of 120 days, as it is the average duration of infectiousness, and $R_H(t)$ being the difference between the initial population and the susceptible and infected population at each day, with the addition of the daily births.
+%The result can be seen in the graph below.
+%\newpage
+%\begin{figure}
+%	\centering
+	%\includegraphics{comparison-between-IH-data-and-model.png}
+%	\includegraphics[width=1\columnwidth]{figs/comparison-between-IH-data-and-model.png}
+%	\caption{Comparison between observed data of infections and model estimation of $I_H$.}
+%	\label{FIG:1}
+%\end{figure}
+
+%It is possible to see that the model gives a close approximation to the format of the observed number of infections and recoveries, although the infections appear to increase faster and die out given the model, a behavior that is not seen on the actual data.
+%In order to better approximate the model to the data, a method of linear regression was used, with the intent of minimizing the difference by optimizing different parameters used on the model. 
+%\\\\
+%At this point, a linear combination was implemented as a replacement  to the use of simply $T$ and $R$, in order to take into consideration the effects of  deforestation and fires, with the $\alpha$-function $\alpha_1D + \alpha_2F + \alpha_3T + \alpha_4R$,  with $\alpha_0 = [0, 0, 1, 1]$ representing the primary version of the model. 
 
 \section{Discussion}
 
@@ -902,8 +902,8 @@ $k$  & Steepness of the humidity-survival sigmoid response & $\%^{-1}$ \\
 %\caption{Results of the initial SIR model, with equations and parameters from \cite{Parham2010}.}
 %\end{figure*}
 \noindent
-\includegraphics[width=\columnwidth]{figs/SIR_Model_Parham_and_Michael_values.png}
-\captionof{figure}{Simulation of the baseline SIR model using the original parameterization from \cite{Parham2010}. The dynamics show a monotonic decline in the number of infected individuals, indicating the absence of sustained transmission.}
+\includegraphics[width=\columnwidth]{figs/SIR_Model_Parham_and_Michael_DDE_Solution.png}
+\captionof{figure}{DDE simulation of the baseline SIR model using the original parameterization from \cite{Parham2010}. The dynamics show a monotonic decline in the number of infected individuals, indicating the absence of sustained transmission.}
 \label{FIG:1A}
 
 
@@ -912,17 +912,11 @@ $k$  & Steepness of the humidity-survival sigmoid response & $\%^{-1}$ \\
 \vspace{0.6cm}
 
 \noindent
-\includegraphics[width=\columnwidth]{figs/SEI_Model_Parham_and_Michael_values.png}
-\captionof{figure}{Simulation of the baseline SEI mosquito model using the original parameterization from \cite{Parham2010}. The susceptible mosquito population exhibits oscillatory behavior and attains negative values, indicating a loss of biological and mathematical consistency.}
+\includegraphics[width=\columnwidth]{figs/SEI_Model_Parham_and_Michael_DDE_Solution.png}
+\captionof{figure}{DDE simulation of the baseline SEI mosquito model using the original parameterization from \cite{Parham2010}. The dynamics show that the entire population tended to extinction, an unexpected behavior for a region where malaria is highly endemic.}
 \label{FIG:2A}
 
-\renewcommand{\thefigure}{3A}
-\vspace{0.6cm}
 
-\noindent
-\includegraphics[width=\columnwidth]{figs/SEI_Model_Parham_and_Michael_values_01_probs.png}
-\captionof{figure}{Simulation of the SEI mosquito model after modifying parameter functions to enforce biologically admissible bounds on probabilities and rates. Although positivity is restored, the mosquito population rapidly declines toward extinction, suggesting that additional mechanisms are required to sustain endemic transmission.}
-\label{FIG:3A}
 
 %\begin{figure}[H]
 	%\centering

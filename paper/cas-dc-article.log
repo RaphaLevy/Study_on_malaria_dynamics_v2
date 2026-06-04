@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.3.13)  26 MAY 2026 12:03
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.3.13)  4 JUN 2026 18:26
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1318,85 +1318,21 @@ Underfull \hbox (badness 10000) in paragraph at lines 591--600
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 602--613
+Underfull \hbox (badness 10000) in paragraph at lines 604--631
 
  []
 
 
-Overfull \hbox (3.94553pt too wide) in paragraph at lines 602--613
-\T1/stix/m/n/10 These in-con-sis-ten-cies arise from the func-tional forms adop
-ted
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 602--613
+Underfull \hbox (badness 10000) in paragraph at lines 604--631
 
  []
 
 
-Underfull \hbox (badness 1168) in paragraph at lines 602--613
-\T1/stix/m/n/10 to en-sure that all prob-a-bil-i-ties and rates re-main within
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 602--613
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 602--613
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 602--613
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 602--613
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 602--613
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 602--613
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 602--613
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 602--613
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 602--613
-
+Underfull \hbox (badness 1127) in paragraph at lines 604--631
+\T1/stix/m/n/10 in the elim-i-na-tion of in-fec-tion in both host and vec-tor
  []
 
 [6]
-<figs/comparison-between-IH-data-and-model.png, id=170, 599.23875pt x 346.29375
-pt>
-File: figs/comparison-between-IH-data-and-model.png Graphic file (type png)
-<use figs/comparison-between-IH-data-and-model.png>
-Package pdftex.def Info: figs/comparison-between-IH-data-and-model.png  used on
- input line 624.
-(pdftex.def)             Requested size: 238.25444pt x 137.68016pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 629--636
-
- []
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 639--652
 
  []
@@ -1406,7 +1342,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 639--652
 
  []
 
-[7 <./figs/comparison-between-IH-data-and-model.png>]
+
 Underfull \hbox (badness 2735) in paragraph at lines 662--665
 []\T1/stix/m/n/8 P. F. P. Pi-menta et al., An overview of malaria trans-mis-sio
 n
@@ -1595,7 +1531,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 701--708
 
  []
 
-
+[7]
 Underfull \hbox (badness 10000) in paragraph at lines 708--711
 []\T1/stix/m/n/8 Biblioteca IBGE, 2000, ac-cessed on 11 Novem-ber
  []
@@ -1770,7 +1706,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 751--754
 
  []
 
-[8]
+
 Underfull \hbox (badness 1237) in paragraph at lines 754--757
 []\T1/stix/m/n/8 C. F. Lima, F. T. P. Tor-res, L. J. Minette, F. A. Lima, R. C.
 
@@ -2019,7 +1955,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 790--793
 
  []
 
-
+[8]
 Overfull \hbox (21.49754pt too wide) in paragraph at lines 793--796
 [][]\T1/stix/m/n/8 https://journals.plos.org/plosone/article?id=10.1371/journal
 .pone.0022388[][]. 
@@ -2035,7 +1971,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 796--798
 
  []
 
-[9]
+[9
+
+]
 Overfull \hbox (238.25444pt too wide) in paragraph at lines 812--839
  [] 
  []
@@ -2052,13 +1990,14 @@ Overfull \hbox (238.25444pt too wide) in paragraph at lines 844--889
 
 
 ]
-<figs/SIR_Model_Parham_and_Michael_values.png, id=289, 823.878pt x 383.63326pt>
-
-File: figs/SIR_Model_Parham_and_Michael_values.png Graphic file (type png)
-<use figs/SIR_Model_Parham_and_Michael_values.png>
-Package pdftex.def Info: figs/SIR_Model_Parham_and_Michael_values.png  used on 
-input line 905.
-(pdftex.def)             Requested size: 238.25444pt x 110.94054pt.
+<figs/SIR_Model_Parham_and_Michael_DDE_Solution.png, id=283, 413.74574pt x 253.
+54726pt>
+File: figs/SIR_Model_Parham_and_Michael_DDE_Solution.png Graphic file (type png
+)
+<use figs/SIR_Model_Parham_and_Michael_DDE_Solution.png>
+Package pdftex.def Info: figs/SIR_Model_Parham_and_Michael_DDE_Solution.png  us
+ed on input line 905.
+(pdftex.def)             Requested size: 238.25444pt x 146.00517pt.
 
 
 Package caption Warning: \setcaptiontype
@@ -2070,38 +2009,25 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 906.
 See the caption package documentation for explanation.
 
-<figs/SEI_Model_Parham_and_Michael_values.png, id=292, 735.9495pt x 406.51875pt
->
-File: figs/SEI_Model_Parham_and_Michael_values.png Graphic file (type png)
-<use figs/SEI_Model_Parham_and_Michael_values.png>
-Package pdftex.def Info: figs/SEI_Model_Parham_and_Michael_values.png  used on 
-input line 915.
-(pdftex.def)             Requested size: 238.25444pt x 131.60217pt.
+<figs/SEI_Model_Parham_and_Michael_DDE_Solution.png, id=287, 419.166pt x 250.53
+6pt>
+File: figs/SEI_Model_Parham_and_Michael_DDE_Solution.png Graphic file (type png
+)
+<use figs/SEI_Model_Parham_and_Michael_DDE_Solution.png>
+Package pdftex.def Info: figs/SEI_Model_Parham_and_Michael_DDE_Solution.png  us
+ed on input line 915.
+(pdftex.def)             Requested size: 238.25444pt x 142.4056pt.
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 916.
-See the caption package documentation for explanation.
-
-<figs/SEI_Model_Parham_and_Michael_values_01_probs.png, id=295, 826.88925pt x 3
-86.04225pt>
-File: figs/SEI_Model_Parham_and_Michael_values_01_probs.png Graphic file (type 
-png)
-<use figs/SEI_Model_Parham_and_Michael_values_01_probs.png>
-Package pdftex.def Info: figs/SEI_Model_Parham_and_Michael_values_01_probs.png 
- used on input line 923.
-(pdftex.def)             Requested size: 238.25444pt x 111.23073pt.
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 924.
 See the caption package documentation for explanation.
 
 No file cas-dc-article.bbl.
 [12
 
 
- <./figs/SIR_Model_Parham_and_Michael_values.png> <./figs/SEI_Model_Parham_and_
-Michael_values.png> <./figs/SEI_Model_Parham_and_Michael_values_01_probs.png>] 
-(cas-dc-article.aux)
+ <./figs/SIR_Model_Parham_and_Michael_DDE_Solution.png> <./figs/SEI_Model_Parha
+m_and_Michael_DDE_Solution.png>] (cas-dc-article.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
@@ -2114,13 +2040,13 @@ Package rerunfilecheck Info: File `cas-dc-article.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 18594 strings out of 467871
- 291253 string characters out of 5418376
- 710732 words of memory out of 5000000
- 47041 multiletter control sequences out of 15000+600000
+ 18571 strings out of 467871
+ 290440 string characters out of 5418376
+ 710547 words of memory out of 5000000
+ 47021 multiletter control sequences out of 15000+600000
  750287 words of font info for 206 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 90i,16n,117p,819b,693s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 90i,16n,117p,819b,745s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\rapha\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi450\ecss
 0800.pk> <C:\Users\rapha\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi60
 0\ecsx0900.pk> <C:\Users\rapha\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec
@@ -2137,9 +2063,9 @@ c/stix/stix-mathit.pfb><C:/Users/rapha/AppData/Local/Programs/MiKTeX/fonts/type
 ts/type1/public/stix/stix-mathscr.pfb><C:/Users/rapha/AppData/Local/Programs/Mi
 KTeX/fonts/type1/public/stix/stix-mathsf.pfb><C:/Users/rapha/AppData/Local/Prog
 rams/MiKTeX/fonts/type1/public/stix/stix-mathtt.pfb>
-Output written on cas-dc-article.pdf (12 pages, 802954 bytes).
+Output written on cas-dc-article.pdf (12 pages, 397693 bytes).
 PDF statistics:
- 480 PDF objects out of 1000 (max. 8388607)
- 139 named destinations out of 1000 (max. 500000)
- 26 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 465 PDF objects out of 1000 (max. 8388607)
+ 136 named destinations out of 1000 (max. 500000)
+ 16 words of extra memory for PDF output out of 10000 (max. 10000000)
 
