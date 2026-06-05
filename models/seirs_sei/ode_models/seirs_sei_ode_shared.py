@@ -284,6 +284,7 @@ def seirs_sei_ode(
     omega,
     M_min,
     permanent_factor,
+    use_smooth_climate=USE_SMOOTH_CLIMATE,
     b3_h=None,
     b3_m=None,
 ):
@@ -294,7 +295,7 @@ def seirs_sei_ode(
     R_curr = year_climate.iloc[day_idx]["precip_med"]
     H_curr = year_climate.iloc[day_idx]["umid_min"]
 
-    if USE_SMOOTH_CLIMATE:
+    if use_smooth_climate:
         T_smooth = year_climate.iloc[day_idx]["temp_med_smooth"]
         R_smooth = year_climate.iloc[day_idx]["precip_med_smooth"]
         H_smooth = year_climate.iloc[day_idx]["umid_min_smooth"]
