@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 from scipy.integrate import solve_ivp
 from scipy.interpolate import interp1d
 from scipy.optimize import minimize_scalar
+from scipy.interpolate import griddata
 import warnings
 
 warnings.filterwarnings("ignore")
@@ -210,7 +211,7 @@ E_H0 = round(N_2017 * 0.05)
 R_H0 = round(N_2017 * 0.15)
 S_H0 = N_2017 - E_H0 - I_H0 - R_H0
 
-M_0 = 9.9 * N_2017
+M_0 = 10 * N_2017
 I_M0 = round(M_0 * 0.01)
 E_M0 = round(I_M0 * 3)
 S_M0 = M_0 - E_M0 - I_M0
