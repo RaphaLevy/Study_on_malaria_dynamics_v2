@@ -23,10 +23,6 @@ cases_data = pd.read_csv(
         "sivep_notification_data/treated_malaria_notification_data/cumulative_manaus_cases_2016_2023.csv",
     )
 )
-pop_data = pd.read_csv(
-    os.path.join(DATA_DIR, "ibge_manaus_population_data_2016_2024.csv")
-)
-pop_data.rename(columns={"index": "date"}, inplace=True)
 
 pop_ibge = pd.read_csv(
     os.path.join(DATA_DIR, "ibge_manaus_rural_population_data_2000_2025.csv")
@@ -43,7 +39,6 @@ fires_data = pd.read_csv(os.path.join(DATA_DIR, "inpe_fire_counts_data_2016_2024
 
 climate_data["date"] = pd.to_datetime(climate_data["date"])
 cases_data["date"] = pd.to_datetime(cases_data["date"])
-pop_data["date"] = pd.to_datetime(pop_data["date"])
 defor_data["date"] = pd.to_datetime(defor_data["date"])
 fires_data["date"] = pd.to_datetime(fires_data["date"])
 
@@ -55,14 +50,10 @@ climate_data = climate_data[
 cases_data = cases_data[
     (cases_data["date"] >= start_date) & (cases_data["date"] <= end_date)
 ].reset_index(drop=True)
-pop_data = pop_data[
-    (pop_data["date"] >= start_date) & (pop_data["date"] <= end_date)
-].reset_index(drop=True)
 
 print("Data loaded and filtered successfully!")
 print("Climate data:", len(climate_data), "days")
 print("Cases data:", len(cases_data), "days")
-print("Pop data:", len(pop_data), "days")
 print("Deforestation data:", len(defor_data), "days")
 print("Forest fires data:", len(fires_data), "days")
 
