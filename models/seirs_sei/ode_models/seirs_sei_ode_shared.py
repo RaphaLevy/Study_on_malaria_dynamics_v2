@@ -16,6 +16,14 @@ import os
 _SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.join(_SCRIPT_DIR, "../../../data_files/data")
 
+warmup_climate_data = pd.read_csv(os.path.join(DATA_DIR, "climate_api_data_2012_2015.csv"))
+warmup_cases_data = pd.read_csv(
+    os.path.join(
+        DATA_DIR,
+        "sivep_notification_data/treated_malaria_notification_data/cumulative_manaus_cases_2012_2015.csv",
+    )
+)
+
 climate_data = pd.read_csv(os.path.join(DATA_DIR, "climate_api_data_2016_2024.csv"))
 cases_data = pd.read_csv(
     os.path.join(
@@ -37,10 +45,22 @@ defor_data = pd.read_csv(
 )
 fires_data = pd.read_csv(os.path.join(DATA_DIR, "inpe_fire_counts_data_2016_2024.csv"))
 
+warmup_climate_data["date"] = pd.to_datetime(warmup_climate_data["date"])
+warmup_cases_data["date"] = pd.to_datetime(warmup_cases_data["date"])
+
 climate_data["date"] = pd.to_datetime(climate_data["date"])
 cases_data["date"] = pd.to_datetime(cases_data["date"])
 defor_data["date"] = pd.to_datetime(defor_data["date"])
 fires_data["date"] = pd.to_datetime(fires_data["date"])
+
+warmup_start_date = pd.to_datetime("2012-01-01")
+warmup_end_date = pd.to_datetime("2015-12-31")
+warmup_climate_data = warmup_climate_data[
+    (warmup_climate_data["date"] >= warmup_start_date) & (warmup_climate_data["date"] <= warmup_end_date)
+].reset_index(drop=True)
+warmup_cases_data = warmup_cases_data[
+    (warmup_cases_data["date"] >= warmup_start_date) & (warmup_cases_data["date"] <= warmup_end_date)
+].reset_index(drop=True)
 
 start_date = pd.to_datetime("2017-01-01")
 end_date = pd.to_datetime("2023-12-31")
@@ -176,6 +196,14 @@ def exposed_to_infected_ratio(Temp, Humid, H0=58.0, k=0.25, phi=0.05):
     )
 
 
+warmup_temp_med_0 = warmup_climate_data["temp_med"][0]
+warmup_umid_min_0 = warmup_climate_data["umid_min"][0]
+# umid_min_0 = climate_data["umid_min"][0]
+warmup_initial_exposed_to_infected_ratio = exposed_to_infected_ratio(warmup_temp_med_0, warmup_umid_min_0)
+print(
+    f"The initial ratio of exposed to infected mosquitos in 2012 was estimated to be ~{round(warmup_initial_exposed_to_infected_ratio)}"
+)
+
 temp_med_0 = climate_data["temp_med"][0]
 umid_min_0 = climate_data["umid_min"][0]
 # umid_min_0 = climate_data["umid_min"][0]
@@ -185,6 +213,28 @@ print(
 )
 
 #### Initial conditions
+warmup_rural_cases_df = warmup_cases_data.copy()
+cols = [
+    "active_total",
+    "active_symptomatic",
+    "active_asymptomatic",
+    "new_cases",
+    "cumulative_cases",
+    "active_per_new_case",
+]
+warmup_rural_cases_df[cols] = warmup_rural_cases_df[cols] * (41.54 / 100)
+warmup_I_H0 = round(warmup_rural_cases_df["active_total"].iloc[0])
+N_2012 = round(pop_by_year[2012])
+warmup_E_H0 = round(N_2012 * 0.05)
+warmup_R_H0 = round(N_2012 * 0.15)
+warmup_S_H0 = N_2012 - warmup_E_H0 - warmup_I_H0 - warmup_R_H0
+
+warmup_M_0 = 10 * N_2012
+warmup_I_M0 = round(warmup_M_0 * 0.01)
+warmup_E_M0 = round(warmup_I_M0 * 3)
+warmup_S_M0 = warmup_M_0 - warmup_E_M0 - warmup_I_M0
+initial_state_2012 = np.array([warmup_S_H0, warmup_E_H0, warmup_I_H0, warmup_R_H0, warmup_S_M0, warmup_E_M0, warmup_I_M0])
+
 rural_cases_df = cases_data.copy()
 cols = [
     "active_total",
