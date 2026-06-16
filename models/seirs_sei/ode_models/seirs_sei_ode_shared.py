@@ -73,13 +73,6 @@ pre_analysis_cases_data = pre_analysis_cases_data[
     (pre_analysis_cases_data["date"] >= pre_analysis_start) & (pre_analysis_cases_data["date"] <= pre_analysis_end)
 ].reset_index(drop=True)
 
-climate_data = climate_data[
-    (climate_data["date"] >= start_date) & (climate_data["date"] <= end_date)
-].reset_index(drop=True)
-cases_data = cases_data[
-    (cases_data["date"] >= start_date) & (cases_data["date"] <= end_date)
-].reset_index(drop=True)
-
 start_date = pd.to_datetime("2017-01-01")
 end_date = pd.to_datetime("2023-12-31")
 climate_data = climate_data[
