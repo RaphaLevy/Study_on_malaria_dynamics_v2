@@ -62,6 +62,24 @@ warmup_cases_data = warmup_cases_data[
     (warmup_cases_data["date"] >= warmup_start_date) & (warmup_cases_data["date"] <= warmup_end_date)
 ].reset_index(drop=True)
 
+pre_analysis_start = pd.to_datetime("2012-01-01")
+pre_analysis_end = pd.to_datetime("2016-12-31")
+pre_analysis_climate_data = pd.concat([warmup_climate_data, climate_data], ignore_index=True)
+pre_analysis_cases_data = pd.concat([warmup_cases_data, cases_data], ignore_index=True)
+pre_analysis_climate_data = pre_analysis_climate_data[
+    (pre_analysis_climate_data["date"] >= pre_analysis_start) & (pre_analysis_climate_data["date"] <= pre_analysis_end)
+].reset_index(drop=True)
+pre_analysis_cases_data = pre_analysis_cases_data[
+    (pre_analysis_cases_data["date"] >= pre_analysis_start) & (pre_analysis_cases_data["date"] <= pre_analysis_end)
+].reset_index(drop=True)
+
+climate_data = climate_data[
+    (climate_data["date"] >= start_date) & (climate_data["date"] <= end_date)
+].reset_index(drop=True)
+cases_data = cases_data[
+    (cases_data["date"] >= start_date) & (cases_data["date"] <= end_date)
+].reset_index(drop=True)
+
 start_date = pd.to_datetime("2017-01-01")
 end_date = pd.to_datetime("2023-12-31")
 climate_data = climate_data[
