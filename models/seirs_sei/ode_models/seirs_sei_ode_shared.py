@@ -240,6 +240,7 @@ cols = [
     "cumulative_cases",
     "active_per_new_case",
 ]
+
 warmup_rural_cases_df[cols] = warmup_rural_cases_df[cols] * (41.54 / 100)
 warmup_I_H0 = round(warmup_rural_cases_df["active_total"].iloc[0])
 N_2012 = round(pop_by_year[2012])
@@ -252,6 +253,18 @@ warmup_I_M0 = round(warmup_M_0 * 0.01)
 warmup_E_M0 = round(warmup_I_M0 * 3)
 warmup_S_M0 = warmup_M_0 - warmup_E_M0 - warmup_I_M0
 initial_state_2012 = np.array([warmup_S_H0, warmup_E_H0, warmup_I_H0, warmup_R_H0, warmup_S_M0, warmup_E_M0, warmup_I_M0])
+
+pre_analysis_rural_cases_df = pre_analysis_cases_data.copy()
+cols = [
+    "active_total",
+    "active_symptomatic",
+    "active_asymptomatic",
+    "new_cases",
+    "cumulative_cases",
+    "active_per_new_case",
+]
+
+pre_analysis_rural_cases_df[cols] = pre_analysis_rural_cases_df[cols] * (41.54 / 100)
 
 rural_cases_df = cases_data.copy()
 cols = [
