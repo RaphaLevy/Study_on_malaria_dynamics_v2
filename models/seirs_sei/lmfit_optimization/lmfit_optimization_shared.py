@@ -230,6 +230,14 @@ def observed_for_year(year):
     return rural_cases_df[rural_cases_df["date"].dt.year == year].reset_index(drop=True)
 
 
+def observed_IH_start(year):
+    """First observed active_total (rural, rounded) for a year.
+
+    Used as the I_H initial condition of that year instead of the previous
+    year's simulated end-state."""
+    return round(observed_for_year(year)["active_total"].iloc[0])
+
+
 def build_initial_state_2017(
     S_H0_frac=S_H0_FRAC_DEF,
     E_H0_frac=E_H0_FRAC_DEF,
@@ -238,7 +246,7 @@ def build_initial_state_2017(
     """Build the 2017 initial state from fitted fractions.
 
     I_H is fixed from the first observed data point; R_H is the residual of N
-    (S + E + I). Returns None if the residual R_H is negative."""
+    (S + E + I). Returns None if any of S_H, E_H, R_H is negative."""
     N = N_2017
     I_H0v = round(rural_cases_df["active_total"].iloc[0])
     S_H0v = round(N * S_H0_frac)
@@ -548,6 +556,11 @@ def run_yearly_fit(
     is then simulated with the fully fitted parameters and its end-state is
     carried into the next year.
 
+    The I_H component of each year's initial condition is always reset to the
+    first observed `active_total` of that year (data), instead of the previous
+    year's simulated end-state I_H. The remaining compartments (S_H, E_H, R_H,
+    and the mosquito compartments) are carried forward from the previous year.
+
     Returns (results, trajectories) and saves results to `lmfit_results.json`."""
     years = list(range(2017, 2024)) if years is None else list(years)
     de_settings = DEFAULT_DE_SETTINGS if de_settings is None else de_settings
@@ -584,6 +597,11 @@ def run_yearly_fit(
                     + ", ".join(f"{k}={v:.4f}" for k, v in fitted.items())
                     + f"  (chisqr={result.chisqr:.4g}, nfev={result.nfev})"
                 )
+        # I_H of the year starts from the first observed active_total (data),
+        # not from the previous year's simulated end-state. Other compartments
+        # keep the carried state.
+        state0 = state0.copy()
+        state0[2] = observed_IH_start(year)
         for topic in ["humidity", "human", "foi", "m_prime"]:
             result, fitted = fit_topic(
                 topic, year, state0, obs, carried, de_settings, wkw
