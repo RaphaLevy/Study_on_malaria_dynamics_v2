@@ -264,16 +264,29 @@ def build_initial_state_2017(
 # ---------------------------------------------------------------------------
 # Single-year simulation
 # ---------------------------------------------------------------------------
-def simulate_year(year, state0, p):
+def simulate_year(year, state0, p, beta_h_weekly=None, beta_m_weekly=None):
     """Simulate one year (2017-2023) with parameter dict `p`.
 
     p keys: H0, k, phi, tau_H, gamma, omega, b1, b2, M_prime.
-    Returns (dates, IH, end_state) or None if integration fails."""
+    Returns (dates, IH, end_state) or None if integration fails.
+
+    If `beta_h_weekly`/`beta_m_weekly` are given (arrays of per-week effective
+    transmission coefficients), they replace the climate-driven FoI terms
+    `a(T)*b2` and `a(T)*b1` with a piecewise-constant week profile:
+        foi_h = beta_h_weekly[w] * I_M / N
+        foi_m = beta_m_weekly[w] * I_H / N
+    Both must have the same length (one value per 7-day bucket, last bucket
+    short). When they are None (default), the original climate-driven FoI is
+    used and the fitted b1/b2 scalars apply."""
     N = round(pop_by_year[year])
     H0v, kv, phiv = p["H0"], p["k"], p["phi"]
     tau_Hv, gammav, omegav = p["tau_H"], p["gamma"], p["omega"]
-    b1v, b2v = p["b1"], p["b2"]
     M_prime_v = p["M_prime"]
+    use_weekly_beta = beta_h_weekly is not None and beta_m_weekly is not None
+    if use_weekly_beta:
+        b1v = b2v = None
+    else:
+        b1v, b2v = p["b1"], p["b2"]
 
     start = f"{year}-01-01"
     end = f"{year}-12-31"
@@ -326,8 +339,13 @@ def simulate_year(year, state0, p):
         b3_briere_curr = b3_briere_scaled_plasm(T_curr)
 
         S_H, E_H, I_H, R_H, S_M, E_M, I_M = z
-        foi_h = a_curr * b2v * (I_M / N)
-        foi_m = a_curr * b1v * (I_H / N)
+        if use_weekly_beta:
+            week_idx = min(int(day_idx // 7), len(beta_h_weekly) - 1)
+            foi_h = beta_h_weekly[week_idx] * (I_M / N)
+            foi_m = beta_m_weekly[week_idx] * (I_H / N)
+        else:
+            foi_h = a_curr * b2v * (I_M / N)
+            foi_m = a_curr * b1v * (I_H / N)
 
         dShdt = -foi_h * S_H + omegav * R_H
         dEhdt = foi_h * S_H - b3_h_curr * E_H
