@@ -374,7 +374,7 @@ def simulate_year(year, state0, p):
 # ---------------------------------------------------------------------------
 DEFAULT_WEIGHT_KW = dict(
     weight_decay="exponential",
-    decay_rate=0.005,
+    decay_rate=0.0015,
     initial_weight=5.0,
     step_threshold=365,
     step_later_weight=1.0,
@@ -433,16 +433,16 @@ def compute_weighted_mse(
 # ---------------------------------------------------------------------------
 TOPIC_BOUNDS = {
     "humidity": {"H0": (20, 90), "k": (0.01, 1.0), "phi": (0.001, 0.5)},
-    "human": {"tau_H": (1, 60), "gamma": (1e-4, 1.0), "omega": (1e-5, 0.1)},
+    "human": {"tau_H": (1, 200), "gamma": (1e-4, 1.0), "omega": (1e-5, 0.1)},
     "foi": {"b1": (0.001, 0.5), "b2": (0.01, 0.5)},
 }
 IC_BOUNDS = {
-    "S_H0_frac": (0.4, 0.9),
-    "E_H0_frac": (0.01, 0.20),
-    "I_M0_ratio": (0.005, 0.10),
+    "S_H0_frac": (0.3, 0.9),
+    "E_H0_frac": (0.001, 0.30),
+    "I_M0_ratio": (0.0005, 0.15),
 }
 
-DEFAULT_DE_SETTINGS = dict(seed=42, popsize=6, max_nfev=300, tol=0.01, polish=False)
+DEFAULT_DE_SETTINGS = dict(seed=42, popsize=6, max_nfev=800, tol=0.01, polish=False)
 
 
 def m_prime_bounds(year):
@@ -466,6 +466,21 @@ def _make_objective(year, state0, obs, topic_keys, carried, weight_kw):
     return objective
 
 
+def _ic_penalty(params, base_penalty=1e15):
+    """Graded penalty for infeasible 2017 IC fractions (R_H < 0).
+
+    R_H0 = N - S - E - I must stay >= 0, so S_frac + E_frac must not exceed
+    1 - I_H0/N. A flat 1e15 lets DE "converge" onto the infeasible plateau;
+    a graded penalty steers it back toward the feasible region."""
+    n = N_2017
+    i_h = round(rural_cases_df["active_total"].iloc[0])
+    s = params["S_H0_frac"].value
+    e = params["E_H0_frac"].value
+    rem = (n - i_h) / n
+    viol = max(0.0, (s + e) - rem) + max(0.0, -s) + max(0.0, -e)
+    return base_penalty + viol * 1e14
+
+
 def _make_objective_ic2017(obs, carried, weight_kw):
     def objective(params):
         state0 = build_initial_state_2017(
@@ -474,7 +489,7 @@ def _make_objective_ic2017(obs, carried, weight_kw):
             params["I_M0_ratio"].value,
         )
         if state0 is None:
-            return 1e15
+            return _ic_penalty(params)
         res = simulate_year(2017, state0, carried)
         if res is None:
             return 1e15
@@ -493,11 +508,14 @@ def _lmfit_params(bounds, start):
     return params
 
 
-def _fit(bounds, start, objective, de_settings):
+def _fit(bounds, start, objective, de_settings, method="differential_evolution"):
     params = _lmfit_params(bounds, start)
-    result = lmfit.minimize(
-        objective, params, method="differential_evolution", **de_settings
-    )
+    kwargs = dict(de_settings)
+    if method == "nelder":
+        for k in ("seed", "popsize", "tol", "polish"):
+            kwargs.pop(k, None)
+        kwargs.setdefault("max_nfev", 2000)
+    result = lmfit.minimize(objective, params, method=method, **kwargs)
     fitted = {name: float(result.params[name].value) for name in bounds}
     return result, fitted
 
@@ -512,7 +530,7 @@ def _summarize(result, fitted):
     return s
 
 
-def fit_ic_2017(obs, carried, de_settings=None, weight_kw=None):
+def fit_ic_2017(obs, carried, de_settings=None, weight_kw=None, method="nelder"):
     de_settings = DEFAULT_DE_SETTINGS if de_settings is None else de_settings
     start = dict(
         S_H0_frac=carried.get("S_H0_frac", S_H0_FRAC_DEF),
@@ -520,7 +538,7 @@ def fit_ic_2017(obs, carried, de_settings=None, weight_kw=None):
         I_M0_ratio=carried.get("I_M0_ratio", I_M0_RATIO_DEF),
     )
     objective = _make_objective_ic2017(obs, carried, weight_kw)
-    result, fitted = _fit(IC_BOUNDS, start, objective, de_settings)
+    result, fitted = _fit(IC_BOUNDS, start, objective, de_settings, method=method)
     return result, fitted
 
 
@@ -536,6 +554,60 @@ def fit_topic(topic, year, state0, obs, carried, de_settings=None, weight_kw=Non
     return result, fitted
 
 
+def fit_year_joint(
+    year,
+    state0,
+    obs,
+    carried,
+    include_ic,
+    de_settings=None,
+    weight_kw=None,
+    method="nelder",
+):
+    """Joint refinement: fit all free parameters of a year at once.
+
+    For 2017 this includes the IC fractions (IC was skipped for 2018+), plus all
+    topic parameters (H0,k,phi,tau_H,gamma,omega,b1,b2,M_prime). Seeded from the
+    sequential solution `carried`; `method` defaults to a local Nelder-Mead
+    polish, which is stable from a good seed (differential_evolution on 12
+    parameters is prone to landing in worse basins at modest budgets).
+    Returns (result, fitted, bounds)."""
+    de_settings = DEFAULT_DE_SETTINGS if de_settings is None else de_settings
+    bounds = {}
+    if include_ic:
+        bounds.update(IC_BOUNDS)
+    bounds.update(TOPIC_BOUNDS["humidity"])
+    bounds.update(TOPIC_BOUNDS["human"])
+    bounds.update(TOPIC_BOUNDS["foi"])
+    bounds.update(m_prime_bounds(year))
+    start = {name: carried[name] for name in bounds}
+
+    def objective(params):
+        p = carried.copy()
+        for key in bounds:
+            p[key] = params[key].value
+        if include_ic:
+            st = build_initial_state_2017(
+                params["S_H0_frac"].value,
+                params["E_H0_frac"].value,
+                params["I_M0_ratio"].value,
+            )
+            if st is None:
+                return _ic_penalty(params)
+        else:
+            st = state0
+        res = simulate_year(year, st, p)
+        if res is None:
+            return 1e15
+        dates, IH, _ = res
+        if len(IH) == 0 or not np.all(np.isfinite(IH)):
+            return 1e15
+        return weighted_mse_for_year(dates, IH, obs, weight_kw)
+
+    result, fitted = _fit(bounds, start, objective, de_settings, method=method)
+    return result, fitted, bounds
+
+
 # ---------------------------------------------------------------------------
 # Yearly sequential fitting orchestration
 # ---------------------------------------------------------------------------
@@ -546,6 +618,9 @@ def run_yearly_fit(
     save_json=True,
     results_file=None,
     resume=False,
+    refine=True,
+    refine_method="nelder",
+    refine_de_settings=None,
     verbose=True,
 ):
     """Fit topics sequentially for each year (2017-2023) and carry state forward.
@@ -561,9 +636,20 @@ def run_yearly_fit(
     year's simulated end-state I_H. The remaining compartments (S_H, E_H, R_H,
     and the mosquito compartments) are carried forward from the previous year.
 
+    If `refine=True` (default), each year is followed by a joint fit over all of
+    that year's free parameters (IC fractions included for 2017), seeded from
+    the sequential solution, to undo sub-optimality caused by the sequential
+    order. `refine_method` defaults to a local Nelder-Mead polish (stable from a
+    good seed; differential_evolution is available via `refine_method="differential_evolution"`).
+    The refined parameters replace the sequential ones in the reported per-year
+    params/trajectory (also stored under `refine`).
+
     Returns (results, trajectories) and saves results to `lmfit_results.json`."""
     years = list(range(2017, 2024)) if years is None else list(years)
     de_settings = DEFAULT_DE_SETTINGS if de_settings is None else de_settings
+    refine_de_settings = (
+        de_settings if refine_de_settings is None else refine_de_settings
+    )
     if results_file is None:
         results_file = RESULTS_FILE
     wkw = DEFAULT_WEIGHT_KW if weight_kw is None else weight_kw
@@ -585,11 +671,22 @@ def run_yearly_fit(
         if verbose:
             print(f"\n=== Fitting year {year} ===")
         if year == 2017:
-            result, fitted = fit_ic_2017(obs, carried, de_settings, wkw)
-            carried.update(fitted)
+            ic_settings = dict(de_settings)
+            ic_settings["max_nfev"] = 300
+            result, fitted = fit_ic_2017(obs, carried, ic_settings, wkw)
             state0 = build_initial_state_2017(
-                carried["S_H0_frac"], carried["E_H0_frac"], carried["I_M0_ratio"]
+                fitted["S_H0_frac"], fitted["E_H0_frac"], fitted["I_M0_ratio"]
             )
+            if state0 is None:
+                fitted = dict(
+                    S_H0_frac=S_H0_FRAC_DEF,
+                    E_H0_frac=E_H0_FRAC_DEF,
+                    I_M0_ratio=I_M0_RATIO_DEF,
+                )
+                state0 = initial_state_2017.copy()
+                if verbose:
+                    print("  IC: fitted IC infeasible -> using default 2017 IC")
+            carried.update(fitted)
             results.setdefault(str(year), {})["IC"] = _summarize(result, fitted)
             if verbose:
                 print(
@@ -621,6 +718,46 @@ def run_yearly_fit(
         )
         results[str(year)]["params"] = {k: float(v) for k, v in carried.items()}
         results[str(year)]["end_state"] = end_state.tolist()
+        if refine:
+            result, fitted, bounds = fit_year_joint(
+                year,
+                state0,
+                obs,
+                carried,
+                include_ic=(year == 2017),
+                de_settings=refine_de_settings,
+                weight_kw=wkw,
+                method=refine_method,
+            )
+            st_refine = state0
+            if year == 2017:
+                st_refine = build_initial_state_2017(
+                    fitted["S_H0_frac"],
+                    fitted["E_H0_frac"],
+                    fitted["I_M0_ratio"],
+                )
+                if st_refine is None:
+                    st_refine = state0
+                    for k in ("S_H0_frac", "E_H0_frac", "I_M0_ratio"):
+                        fitted.pop(k, None)
+                    if verbose:
+                        print("  refine: refined IC infeasible -> kept sequential IC")
+            carried.update(fitted)
+            s = _summarize(result, fitted)
+            results[str(year)]["refine"] = s
+            dates, IH, end_state = simulate_year(year, st_refine, carried)
+            trajectories[year] = (dates, IH)
+            results[str(year)]["weighted_mse"] = float(
+                weighted_mse_for_year(dates, IH, obs, wkw)
+            )
+            results[str(year)]["params"] = {k: float(v) for k, v in carried.items()}
+            results[str(year)]["end_state"] = end_state.tolist()
+            if verbose:
+                print(
+                    f"  refine ({len(bounds)} params): "
+                    + ", ".join(f"{k}={v:.4g}" for k, v in fitted.items())
+                    + f"  (chisqr={result.chisqr:.4g}, nfev={result.nfev})"
+                )
         state0 = end_state.copy()
         if verbose:
             print(
@@ -646,8 +783,9 @@ def run_yearly_fit(
 # ---------------------------------------------------------------------------
 # Baseline (default params, fixed ode_models ICs)
 # ---------------------------------------------------------------------------
-def run_baseline(years=None):
+def run_baseline(years=None, weight_kw=None):
     """Simulate the full period with default params and fixed 2017 ICs."""
+    wkw = DEFAULT_WEIGHT_KW if weight_kw is None else weight_kw
     years = list(range(2017, 2024)) if years is None else list(years)
     state0 = initial_state_2017.copy()
     p = dict(DEFAULT_PARAMS)
@@ -661,7 +799,7 @@ def run_baseline(years=None):
             continue
         dates, IH, end_state = res
         traj[year] = (dates, IH)
-        mse[year] = weighted_mse_for_year(dates, IH, observed_for_year(year))
+        mse[year] = weighted_mse_for_year(dates, IH, observed_for_year(year), wkw)
         state0 = end_state
     return traj, mse
 
