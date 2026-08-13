@@ -172,56 +172,6 @@ def temp_factor_briere_normalized_anop(Temp):
     )
     return min(1.0, raw / opt_raw)
 
-
-# ---------------------------------------------------------------------------
-# Population, fixed carrying capacity and default parameter set
-# ---------------------------------------------------------------------------
-N_2017 = round(pop_by_year[2017])
-M_PRIME_FIXED = 40 * N_2017
-
-# Fixed 2017 initial conditions (ode_models proportions): E_H = 5% N, R_H = 15%
-# N, I_H from notification data, I_M = 2% M_0, E_M = 3 x I_M0.
-I_H0_DEF = round(rural_cases_df["active_total"].iloc[0])
-E_H0_DEF = round(N_2017 * 0.05)
-R_H0_DEF = round(N_2017 * 0.15)
-S_H0_DEF = N_2017 - E_H0_DEF - I_H0_DEF - R_H0_DEF
-
-M_0 = 10 * N_2017
-I_M0_DEF = round(M_0 * 0.02)
-E_M0_DEF = round(I_M0_DEF * 3)
-S_M0_DEF = M_0 - E_M0_DEF - I_M0_DEF
-initial_state_2017 = np.array(
-    [S_H0_DEF, E_H0_DEF, I_H0_DEF, R_H0_DEF, S_M0_DEF, E_M0_DEF, I_M0_DEF]
-)
-
-# Default IC fractions (used as starting guesses for the 2017 IC fit)
-S_H0_FRAC_DEF = S_H0_DEF / N_2017
-E_H0_FRAC_DEF = E_H0_DEF / N_2017
-I_M0_RATIO_DEF = I_M0_DEF / M_0
-
-DEFAULT_PARAMS = dict(
-    H0=58.0,
-    k=0.25,
-    phi=0.05,
-    tau_H=10.0,
-    gamma=1 / 120,
-    omega=1 / 270,
-    b1=0.04,
-    b2=0.09,
-    M_prime=M_PRIME_FIXED,
-)
-
-print(
-    f"\n2017 direct start (no warm-up): N={N_2017}, M'={M_PRIME_FIXED} ({M_PRIME_FIXED / N_2017:.2f} x N)"
-)
-print(
-    f"Initial human compartments in 2017: N={N_2017}, S_H={S_H0_DEF}, E_H={E_H0_DEF}, I_H={I_H0_DEF}, R_H={R_H0_DEF}"
-)
-print(
-    f"Initial mosquito compartments in 2017: M={M_0}, S_M={S_M0_DEF}, E_M={E_M0_DEF}, I_M={I_M0_DEF}"
-)
-
-
 # ---------------------------------------------------------------------------
 # Per-year helpers
 # ---------------------------------------------------------------------------
@@ -237,29 +187,204 @@ def observed_IH_start(year):
     year's simulated end-state."""
     return round(observed_for_year(year)["active_total"].iloc[0])
 
+# ---------------------------------------------------------------------------
+# Population, fixed carrying capacity and default parameter set
+# ---------------------------------------------------------------------------
+# N_2017 = round(pop_by_year[2017])
+# M_PRIME_FIXED = 40 * N_2017
 
-def build_initial_state_2017(
-    S_H0_frac=S_H0_FRAC_DEF,
-    E_H0_frac=E_H0_FRAC_DEF,
-    I_M0_ratio=I_M0_RATIO_DEF,
+def get_year_population(year):
+    """Get population for any year."""
+    return round(pop_by_year[year])
+
+def get_initial_M_prime(year):
+    """Get carrying capacity multiplier for any year."""
+    return 40 * get_year_population(year)
+
+# # Fixed 2017 initial conditions (ode_models proportions): E_H = 5% N, R_H = 15%
+# # N, I_H from notification data, I_M = 2% M_0, E_M = 3 x I_M0.
+# I_H0_DEF = round(rural_cases_df["active_total"].iloc[0])
+# E_H0_DEF = round(N_2017 * 0.05)
+# R_H0_DEF = round(N_2017 * 0.15)
+# S_H0_DEF = N_2017 - E_H0_DEF - I_H0_DEF - R_H0_DEF
+
+# M_0 = 10 * N_2017
+# I_M0_DEF = round(M_0 * 0.02)
+# E_M0_DEF = round(I_M0_DEF * 3)
+# S_M0_DEF = M_0 - E_M0_DEF - I_M0_DEF
+# initial_state_2017 = np.array(
+#     [S_H0_DEF, E_H0_DEF, I_H0_DEF, R_H0_DEF, S_M0_DEF, E_M0_DEF, I_M0_DEF]
+# )
+
+def get_default_initial_state(
+    year,
+    e_h_fraction=0.05,  # E_H as fraction of N
+    r_h_fraction=0.15,  # R_H as fraction of N
+    m_scale=10,         # M_0 = m_scale * N
+    i_m_fraction=0.02,  # I_M0 as fraction of M_0
+    e_m_multiplier=3    # E_M0 = e_m_multiplier * I_M0
 ):
-    """Build the 2017 initial state from fitted fractions.
+    """
+    Build default initial conditions for any year.
+    
+    Returns:
+        np.array: [S_H, E_H, I_H, R_H, S_M, E_M, I_M]
+    """
+    N = round(pop_by_year[year])
+    
+    # Get first observed case for this year
+    year_data = observed_for_year(year)
+    if len(year_data) == 0:
+        raise ValueError(f"No case data available for year {year}")
+    I_H0 = round(year_data["active_total"].iloc[0])
+    
+    # Human compartments
+    E_H0 = round(N * e_h_fraction)
+    R_H0 = round(N * r_h_fraction)
+    S_H0 = N - E_H0 - I_H0 - R_H0
+    
+    # Ensure non-negative compartments
+    if S_H0 < 0 or E_H0 < 0 or R_H0 < 0:
+        raise ValueError(f"Negative compartments for year {year}: S={S_H0}, E={E_H0}, R={R_H0}")
+    
+    # Mosquito compartments
+    M0 = m_scale * N
+    I_M0 = round(M0 * i_m_fraction)
+    E_M0 = round(I_M0 * e_m_multiplier)
+    S_M0 = M0 - E_M0 - I_M0
+    
+    return np.array([S_H0, E_H0, I_H0, R_H0, S_M0, E_M0, I_M0])
 
-    I_H is fixed from the first observed data point; R_H is the residual of N
-    (S + E + I). Returns None if any of S_H, E_H, R_H is negative."""
-    N = N_2017
-    I_H0v = round(rural_cases_df["active_total"].iloc[0])
-    S_H0v = round(N * S_H0_frac)
-    E_H0v = round(N * E_H0_frac)
-    R_H0v = N - S_H0v - E_H0v - I_H0v
-    if S_H0v < 0 or E_H0v < 0 or R_H0v < 0:
+initial_state_2017 = get_default_initial_state(2017)
+
+
+# # Default IC fractions (used as starting guesses for the 2017 IC fit)
+# S_H0_FRAC_DEF = S_H0_DEF / N_2017
+# E_H0_FRAC_DEF = E_H0_DEF / N_2017
+# I_M0_RATIO_DEF = I_M0_DEF / M_0
+
+# Default IC fractions (for fitting starting guesses)
+def get_default_ic_fractions(year):
+    """Get default IC fractions for any year."""
+    state = get_default_initial_state(year)
+    N = round(pop_by_year[year])
+    M0 = 10 * N  # Must match m_scale in get_default_initial_state
+    
+    return {
+        'S_H0_frac': state[0] / N,
+        'E_H0_frac': state[1] / N,
+        'I_M0_ratio': state[5] / M0  # I_M0 / M0
+    }
+
+# # For backward compatibility, set 2017 defaults
+# N_2017 = get_year_population(2017)
+# M_PRIME_FIXED = get_initial_M_prime(2017)
+# initial_state_2017 = get_default_initial_state(2017)
+
+# # Extract fractions for 2017 (for backward compatibility)
+# S_H0_FRAC_DEF = initial_state_2017[0] / N_2017
+# E_H0_FRAC_DEF = initial_state_2017[1] / N_2017
+# I_M0_RATIO_DEF = initial_state_2017[5] / (10 * N_2017)  # I_M0 / M_0
+
+# DEFAULT_PARAMS = dict(
+#     H0=58.0,
+#     k=0.25,
+#     phi=0.05,
+#     tau_H=10.0,
+#     gamma=1 / 120,
+#     omega=1 / 270,
+#     b1=0.04,
+#     b2=0.09,
+#     M_prime=M_PRIME_FIXED,
+# )
+
+def get_default_params(year):
+    """Get default parameters for any year."""
+    return dict(
+        H0=58.0,
+        k=0.25,
+        phi=0.05,
+        tau_H=10.0,
+        gamma=1 / 120,
+        omega=1 / 270,
+        b1=0.04,
+        b2=0.09,
+        M_prime=get_initial_M_prime(year),  # Year-specific!
+    )
+
+# For backward compatibility:
+DEFAULT_PARAMS = get_default_params(2017)
+
+N_2017 = get_year_population(2017)
+M_PRIME_FIXED = get_initial_M_prime(2017)
+state_2017 = get_default_initial_state(2017)
+M_0 = 10 * N_2017  # Or compute from state
+
+print(
+    f"\n2017 direct start (no warm-up): N={N_2017}, M'={M_PRIME_FIXED} ({M_PRIME_FIXED / N_2017:.2f} x N)"
+)
+print(
+    f"Initial human compartments in 2017: N={N_2017}, S_H={state_2017[0]}, "
+    f"E_H={state_2017[1]}, I_H={state_2017[2]}, R_H={state_2017[3]}"
+)
+print(
+    f"Initial mosquito compartments in 2017: M={M_0}, "
+    f"S_M={state_2017[4]}, E_M={state_2017[5]}, I_M={state_2017[6]}"
+)
+
+
+# def build_initial_state_2017(
+#     S_H0_frac=S_H0_FRAC_DEF,
+#     E_H0_frac=E_H0_FRAC_DEF,
+#     I_M0_ratio=I_M0_RATIO_DEF,
+# ):
+#     """Build the 2017 initial state from fitted fractions.
+
+#     I_H is fixed from the first observed data point; R_H is the residual of N
+#     (S + E + I). Returns None if any of S_H, E_H, R_H is negative."""
+#     N = N_2017
+#     I_H0v = round(rural_cases_df["active_total"].iloc[0])
+#     S_H0v = round(N * S_H0_frac)
+#     E_H0v = round(N * E_H0_frac)
+#     R_H0v = N - S_H0v - E_H0v - I_H0v
+#     if S_H0v < 0 or E_H0v < 0 or R_H0v < 0:
+#         return None
+#     M0 = 10 * N
+#     I_M0v = round(M0 * I_M0_ratio)
+#     E_M0v = round(I_M0v * 3)
+#     S_M0v = M0 - E_M0v - I_M0v
+#     return np.array([S_H0v, E_H0v, I_H0v, R_H0v, S_M0v, E_M0v, I_M0v])
+
+def build_initial_state(
+    year, 
+    S_H0_frac, 
+    E_H0_frac, 
+    I_M0_ratio,
+    M_scale=10,  # Allow different mosquito scaling
+    E_M_multiplier=3
+):
+    """Build initial state for any year."""
+    N = round(pop_by_year[year])
+    
+    # Get first observed case for that year
+    year_data = observed_for_year(year)
+    if len(year_data) == 0:
+        raise ValueError(f"No data for year {year}")
+    
+    I_H0 = round(year_data["active_total"].iloc[0])
+    S_H0 = round(N * S_H0_frac)
+    E_H0 = round(N * E_H0_frac)
+    R_H0 = N - S_H0 - E_H0 - I_H0
+    
+    if S_H0 < 0 or E_H0 < 0 or R_H0 < 0:
         return None
-    M0 = 10 * N
-    I_M0v = round(M0 * I_M0_ratio)
-    E_M0v = round(I_M0v * 3)
-    S_M0v = M0 - E_M0v - I_M0v
-    return np.array([S_H0v, E_H0v, I_H0v, R_H0v, S_M0v, E_M0v, I_M0v])
-
+    
+    M0 = M_scale * N
+    I_M0 = round(M0 * I_M0_ratio)
+    E_M0 = round(I_M0 * E_M_multiplier)
+    S_M0 = M0 - E_M0 - I_M0
+    
+    return np.array([S_H0, E_H0, I_H0, R_H0, S_M0, E_M0, I_M0])
 
 # ---------------------------------------------------------------------------
 # Single-year simulation
@@ -484,40 +609,49 @@ def _make_objective(year, state0, obs, topic_keys, carried, weight_kw):
     return objective
 
 
-def _ic_penalty(params, base_penalty=1e15):
-    """Graded penalty for infeasible 2017 IC fractions (R_H < 0).
+# def _ic_penalty(params, base_penalty=1e15):
+#     """Graded penalty for infeasible 2017 IC fractions (R_H < 0).
 
-    R_H0 = N - S - E - I must stay >= 0, so S_frac + E_frac must not exceed
-    1 - I_H0/N. A flat 1e15 lets DE "converge" onto the infeasible plateau;
-    a graded penalty steers it back toward the feasible region."""
-    n = N_2017
-    i_h = round(rural_cases_df["active_total"].iloc[0])
+#     R_H0 = N - S - E - I must stay >= 0, so S_frac + E_frac must not exceed
+#     1 - I_H0/N. A flat 1e15 lets DE "converge" onto the infeasible plateau;
+#     a graded penalty steers it back toward the feasible region."""
+#     n = N_2017
+#     i_h = round(rural_cases_df["active_total"].iloc[0])
+#     s = params["S_H0_frac"].value
+#     e = params["E_H0_frac"].value
+#     rem = (n - i_h) / n
+#     viol = max(0.0, (s + e) - rem) + max(0.0, -s) + max(0.0, -e)
+#     return base_penalty + viol * 1e14
+
+def _ic_penalty(params, year, base_penalty=1e15):
+    """Graded penalty for infeasible IC fractions."""
+    n = round(pop_by_year[year])
+    year_data = observed_for_year(year)
+    i_h = round(year_data["active_total"].iloc[0])
     s = params["S_H0_frac"].value
     e = params["E_H0_frac"].value
     rem = (n - i_h) / n
     viol = max(0.0, (s + e) - rem) + max(0.0, -s) + max(0.0, -e)
     return base_penalty + viol * 1e14
 
+# def _make_objective_ic2017(obs, carried, weight_kw):
+#     def objective(params):
+#         state0 = build_initial_state_2017(
+#             params["S_H0_frac"].value,
+#             params["E_H0_frac"].value,
+#             params["I_M0_ratio"].value,
+#         )
+#         if state0 is None:
+#             return _ic_penalty(params)
+#         res = simulate_year(2017, state0, carried)
+#         if res is None:
+#             return 1e15
+#         dates, IH, _ = res
+#         if len(IH) == 0 or not np.all(np.isfinite(IH)):
+#             return 1e15
+#         return weighted_mse_for_year(dates, IH, obs, weight_kw)
 
-def _make_objective_ic2017(obs, carried, weight_kw):
-    def objective(params):
-        state0 = build_initial_state_2017(
-            params["S_H0_frac"].value,
-            params["E_H0_frac"].value,
-            params["I_M0_ratio"].value,
-        )
-        if state0 is None:
-            return _ic_penalty(params)
-        res = simulate_year(2017, state0, carried)
-        if res is None:
-            return 1e15
-        dates, IH, _ = res
-        if len(IH) == 0 or not np.all(np.isfinite(IH)):
-            return 1e15
-        return weighted_mse_for_year(dates, IH, obs, weight_kw)
-
-    return objective
-
+#     return objective
 
 def _lmfit_params(bounds, start):
     params = lmfit.Parameters()
@@ -548,16 +682,61 @@ def _summarize(result, fitted):
     return s
 
 
-def fit_ic_2017(obs, carried, de_settings=None, weight_kw=None, method="nelder"):
+# def fit_ic_2017(obs, carried, de_settings=None, weight_kw=None, method="nelder"):
+#     de_settings = DEFAULT_DE_SETTINGS if de_settings is None else de_settings
+#     start = dict(
+#         S_H0_frac=carried.get("S_H0_frac", S_H0_FRAC_DEF),
+#         E_H0_frac=carried.get("E_H0_frac", E_H0_FRAC_DEF),
+#         I_M0_ratio=carried.get("I_M0_ratio", I_M0_RATIO_DEF),
+#     )
+#     objective = _make_objective_ic2017(obs, carried, weight_kw)
+#     result, fitted = _fit(IC_BOUNDS, start, objective, de_settings, method=method)
+#     return result, fitted
+
+def fit_initial_conditions(
+    year, 
+    obs, 
+    carried, 
+    de_settings=None, 
+    weight_kw=None, 
+    method="nelder"
+):
+    """Fit initial conditions for any year."""
     de_settings = DEFAULT_DE_SETTINGS if de_settings is None else de_settings
+    
+    # Use year-specific defaults
+    default_ic = get_default_ic_fractions(year)
+    S_H0_frac = carried.get("S_H0_frac", default_ic['S_H0_frac'])
+    E_H0_frac = carried.get("E_H0_frac", default_ic['E_H0_frac'])
+    I_M0_ratio = carried.get("I_M0_ratio", default_ic['I_M0_ratio'])
+    
     start = dict(
-        S_H0_frac=carried.get("S_H0_frac", S_H0_FRAC_DEF),
-        E_H0_frac=carried.get("E_H0_frac", E_H0_FRAC_DEF),
-        I_M0_ratio=carried.get("I_M0_ratio", I_M0_RATIO_DEF),
+        S_H0_frac=S_H0_frac,
+        E_H0_frac=E_H0_frac,
+        I_M0_ratio=I_M0_ratio,
     )
-    objective = _make_objective_ic2017(obs, carried, weight_kw)
+    objective = _make_objective_ic(year, obs, carried, weight_kw)
     result, fitted = _fit(IC_BOUNDS, start, objective, de_settings, method=method)
     return result, fitted
+
+def _make_objective_ic(year, obs, carried, weight_kw):
+    def objective(params):
+        state0 = build_initial_state(
+            year,
+            params["S_H0_frac"].value,
+            params["E_H0_frac"].value,
+            params["I_M0_ratio"].value,
+        )
+        if state0 is None:
+            return _ic_penalty(params, year)
+        res = simulate_year(year, state0, carried)
+        if res is None:
+            return 1e15
+        dates, IH, _ = res
+        if len(IH) == 0 or not np.all(np.isfinite(IH)):
+            return 1e15
+        return weighted_mse_for_year(dates, IH, obs, weight_kw)
+    return objective
 
 
 def fit_topic(topic, year, state0, obs, carried, de_settings=None, weight_kw=None):
@@ -605,13 +784,14 @@ def fit_year_joint(
         for key in bounds:
             p[key] = params[key].value
         if include_ic:
-            st = build_initial_state_2017(
+            st = build_initial_state(
+                year,
                 params["S_H0_frac"].value,
                 params["E_H0_frac"].value,
                 params["I_M0_ratio"].value,
             )
             if st is None:
-                return _ic_penalty(params)
+                return _ic_penalty(params, year)
         else:
             st = state0
         res = simulate_year(year, st, p)
@@ -629,7 +809,7 @@ def fit_year_joint(
 # ---------------------------------------------------------------------------
 # Yearly sequential fitting orchestration
 # ---------------------------------------------------------------------------
-def run_yearly_fit(
+def run_yearly_fit(start_year=2017, end_year=2023, 
     years=None,
     de_settings=None,
     weight_kw=None,
@@ -663,7 +843,8 @@ def run_yearly_fit(
     params/trajectory (also stored under `refine`).
 
     Returns (results, trajectories) and saves results to `lmfit_results.json`."""
-    years = list(range(2017, 2024)) if years is None else list(years)
+    if years is None:
+        years = list(range(start_year, end_year + 1))
     de_settings = DEFAULT_DE_SETTINGS if de_settings is None else de_settings
     refine_de_settings = (
         de_settings if refine_de_settings is None else refine_de_settings
@@ -679,31 +860,45 @@ def run_yearly_fit(
             print(f"Resumed: loaded existing results from {results_file}")
         return saved.get("per_year", {}), {}
 
+    # Determine if this is the first year (needs IC fitting)
+    first_year = years[0]
+    
+    # Initialize with defaults for the first year
     carried = dict(DEFAULT_PARAMS)
-    state0 = initial_state_2017.copy()
+    # Update M_prime for first year
+    carried["M_prime"] = 40 * round(pop_by_year[first_year])
+    
+    # Get default state for first year
+    state0 = get_default_initial_state(first_year)
     results = {}
     trajectories = {}
-
-    for year in years:
+    
+    for i, year in enumerate(years):
         obs = observed_for_year(year)
         if verbose:
             print(f"\n=== Fitting year {year} ===")
-        if year == 2017:
+        
+        # Fit ICs only for first year
+        if i == 0:
             ic_settings = dict(de_settings)
             ic_settings["max_nfev"] = 300
-            result, fitted = fit_ic_2017(obs, carried, ic_settings, wkw)
-            state0 = build_initial_state_2017(
-                fitted["S_H0_frac"], fitted["E_H0_frac"], fitted["I_M0_ratio"]
+            result, fitted = fit_initial_conditions(
+                year, obs, carried, ic_settings, wkw
+            )
+            state0 = build_initial_state(
+                year,
+                fitted["S_H0_frac"],
+                fitted["E_H0_frac"],
+                fitted["I_M0_ratio"],
             )
             if state0 is None:
-                fitted = dict(
-                    S_H0_frac=S_H0_FRAC_DEF,
-                    E_H0_frac=E_H0_FRAC_DEF,
-                    I_M0_ratio=I_M0_RATIO_DEF,
-                )
-                state0 = initial_state_2017.copy()
-                if verbose:
-                    print("  IC: fitted IC infeasible -> using default 2017 IC")
+                default_ic = get_default_ic_fractions(year)
+                fitted = {
+                    "S_H0_frac": default_ic['S_H0_frac'],
+                    "E_H0_frac": default_ic['E_H0_frac'],
+                    "I_M0_ratio": default_ic['I_M0_ratio'],
+                }
+                state0 = get_default_initial_state(year)
             carried.update(fitted)
             results.setdefault(str(year), {})["IC"] = _summarize(result, fitted)
             if verbose:
@@ -712,11 +907,12 @@ def run_yearly_fit(
                     + ", ".join(f"{k}={v:.4f}" for k, v in fitted.items())
                     + f"  (chisqr={result.chisqr:.4g}, nfev={result.nfev})"
                 )
-        # I_H of the year starts from the first observed active_total (data),
-        # not from the previous year's simulated end-state. Other compartments
-        # keep the carried state.
+        
+        # Reset I_H to observed first case (ONCE!)
         state0 = state0.copy()
         state0[2] = observed_IH_start(year)
+        
+        # Fit topics (ONCE!)
         for topic in ["humidity", "human", "foi", "m_prime"]:
             result, fitted = fit_topic(
                 topic, year, state0, obs, carried, de_settings, wkw
@@ -737,19 +933,21 @@ def run_yearly_fit(
         results[str(year)]["params"] = {k: float(v) for k, v in carried.items()}
         results[str(year)]["end_state"] = end_state.tolist()
         if refine:
+            include_ic_flag = (i == 0)  # Define it here
             result, fitted, bounds = fit_year_joint(
                 year,
                 state0,
                 obs,
                 carried,
-                include_ic=(year == 2017),
+                include_ic=include_ic_flag,  # Use the variable
                 de_settings=refine_de_settings,
                 weight_kw=wkw,
                 method=refine_method,
             )
             st_refine = state0
-            if year == 2017:
-                st_refine = build_initial_state_2017(
+            if include_ic_flag:  # Use the variable
+                st_refine = build_initial_state(
+                    year,
                     fitted["S_H0_frac"],
                     fitted["E_H0_frac"],
                     fitted["I_M0_ratio"],
@@ -801,12 +999,17 @@ def run_yearly_fit(
 # ---------------------------------------------------------------------------
 # Baseline (default params, fixed ode_models ICs)
 # ---------------------------------------------------------------------------
-def run_baseline(years=None, weight_kw=None):
-    """Simulate the full period with default params and fixed 2017 ICs."""
+def run_baseline(years=None, start_year=2017, end_year=2023, weight_kw=None):
+    """Simulate the full period with default params and default ICs."""
     wkw = DEFAULT_WEIGHT_KW if weight_kw is None else weight_kw
-    years = list(range(2017, 2024)) if years is None else list(years)
-    state0 = initial_state_2017.copy()
-    p = dict(DEFAULT_PARAMS)
+    if years is None:
+        years = list(range(start_year, end_year + 1))
+    
+    # Initialize with first year
+    first_year = years[0]
+    state0 = get_default_initial_state(first_year)
+    p = get_default_params(first_year)
+    
     traj = {}
     mse = {}
     for year in years:
