@@ -1,12 +1,12 @@
-"""Weekly free-force-of-infection (beta) calibration for 2017.
+"""Weekly free-force-of-infection (beta) calibration for any year.
 
 Diagnostic version of the lmfit calibration: instead of assuming the FoI is
 climate-driven (`foi_h = a(T)*b2`, `foi_m = a(T)*b1`), the effective
 transmission coefficients for human infection (beta_h) and mosquito infection
 (beta_m) are free parameters estimated per week from the case data with lmfit.
 
-All other parameters are fixed at the refined 2017 values saved in
-`lmfit_results.json` (see `load_refined_2017`). The fitted per-week beta curves
+All other parameters are fixed at the refined values saved in
+`lmfit_results.json` (see `load_refined_params`). The fitted per-week beta curves
 can then be compared against the climate-driven beta of the current method
 (`a(T)*b1`, `a(T)*b2`) to locate where the climate formulation deviates.
 
@@ -30,15 +30,18 @@ from lmfit_optimization_shared import (
     simulate_year,
     weighted_mse_for_year,
     observed_for_year,
-    build_initial_state_2017,
-    initial_state_2017,
+    build_initial_state,
+    get_default_initial_state,
+    get_year_population,
+    get_default_params,
+    pop_by_year,
     a,
     DATA_DIR,
     RESULTS_FILE as SHARED_RESULTS_FILE,
 )
 
 _SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-WEEKLY_RESULTS_FILE = os.path.join(_SCRIPT_DIR, "weekly_beta_results.json")
+#WEEKLY_RESULTS_FILE = os.path.join(_SCRIPT_DIR, "weekly_beta_results.json")
 
 # Upper bound for a free per-week transmission coefficient. The climate-driven
 # effective beta peaks around a(T)*b ~ 0.5*0.09 ~ 0.05, so 3.0 gives ample
@@ -126,43 +129,44 @@ def weights_for_obs(obs, weight_kw=None):
 # ---------------------------------------------------------------------------
 # Fixed 2017 parameters (from the committed refined lmfit results)
 # ---------------------------------------------------------------------------
-def load_refined_2017(results_file=None):
-    """Load the refined 2017 parameters from lmfit_results.json.
+# def load_refined_2017(results_file=None):
+#     """Load the refined 2017 parameters from lmfit_results.json.
 
-    Returns (fixed_params, state0, refined_ic, b1, b2). `fixed_params` holds
-    H0,k,phi,tau_H,gamma,omega,M_prime (b1/b2 are replaced by the weekly beta);
-    `state0` is built from the refined IC fractions."""
-    results_file = SHARED_RESULTS_FILE if results_file is None else results_file
-    if os.path.exists(results_file):
-        with open(results_file, "r") as f:
-            data = json.load(f)
-        per_year = data.get("per_year", {}).get("2017", {})
-        p = per_year.get("params")
-        if p:
-            fixed = {
-                k: float(p[k])
-                for k in ("H0", "k", "phi", "tau_H", "gamma", "omega", "M_prime")
-            }
-            b1, b2 = float(p["b1"]), float(p["b2"])
-            fracs = {k: float(p[k]) for k in ("S_H0_frac", "E_H0_frac", "I_M0_ratio")}
-            state0 = build_initial_state_2017(
-                fracs["S_H0_frac"], fracs["E_H0_frac"], fracs["I_M0_ratio"]
-            )
-            if state0 is None:
-                state0 = initial_state_2017.copy()
-            return fixed, state0, fracs, b1, b2
-    fixed = {
-        k: float(DEFAULT_PARAMS[k])
-        for k in ("H0", "k", "phi", "tau_H", "gamma", "omega")
-    }
-    fixed["M_prime"] = float(DEFAULT_PARAMS["M_prime"])
-    return (
-        fixed,
-        initial_state_2017.copy(),
-        None,
-        float(DEFAULT_PARAMS["b1"]),
-        float(DEFAULT_PARAMS["b2"]),
-    )
+#     Returns (fixed_params, state0, refined_ic, b1, b2). `fixed_params` holds
+#     H0,k,phi,tau_H,gamma,omega,M_prime (b1/b2 are replaced by the weekly beta);
+#     `state0` is built from the refined IC fractions."""
+#     results_file = SHARED_RESULTS_FILE if results_file is None else results_file
+#     if os.path.exists(results_file):
+#         with open(results_file, "r") as f:
+#             data = json.load(f)
+#         per_year = data.get("per_year", {}).get("2017", {})
+#         p = per_year.get("params")
+#         if p:
+#             fixed = {
+#                 k: float(p[k])
+#                 for k in ("H0", "k", "phi", "tau_H", "gamma", "omega", "M_prime")
+#             }
+#             b1, b2 = float(p["b1"]), float(p["b2"])
+#             fracs = {k: float(p[k]) for k in ("S_H0_frac", "E_H0_frac", "I_M0_ratio")}
+#             state0 = build_initial_state_2017(
+#                 fracs["S_H0_frac"], fracs["E_H0_frac"], fracs["I_M0_ratio"]
+#             )
+#             if state0 is None:
+#                 state0 = initial_state_2017.copy()
+#             return fixed, state0, fracs, b1, b2
+#     fixed = {
+#         k: float(DEFAULT_PARAMS[k])
+#         for k in ("H0", "k", "phi", "tau_H", "gamma", "omega")
+#     }
+#     fixed["M_prime"] = float(DEFAULT_PARAMS["M_prime"])
+#     return (
+#         fixed,
+#         initial_state_2017.copy(),
+#         None,
+#         float(DEFAULT_PARAMS["b1"]),
+#         float(DEFAULT_PARAMS["b2"]),
+#     )
+
 
 
 # ---------------------------------------------------------------------------
@@ -250,7 +254,7 @@ def fit_weekly_betas(
 
 
 def weekly_beta_table(year, beta_h_fit, beta_m_fit, b1, b2, n_weeks=None):
-    """DataFrame comparing fitted vs climate-driven weekly beta."""
+    """DataFrame comparing fitted vs climate-driven weekly beta for any year."""
     if n_weeks is None:
         n_weeks = n_weeks_in_year(year)
     bh_c, bm_c = climate_beta_weekly(year, b1, b2, n_weeks)
@@ -273,8 +277,51 @@ def weekly_beta_table(year, beta_h_fit, beta_m_fit, b1, b2, n_weeks=None):
 # ---------------------------------------------------------------------------
 # Orchestration
 # ---------------------------------------------------------------------------
+
+def load_refined_params(year, results_file=None):
+    """Load the refined parameters for any year from lmfit_results.json."""
+    results_file = SHARED_RESULTS_FILE if results_file is None else results_file
+    if os.path.exists(results_file):
+        with open(results_file, "r") as f:
+            data = json.load(f)
+        per_year = data.get("per_year", {}).get(str(year), {})
+        p = per_year.get("params")
+        if p:
+            fixed = {
+                k: float(p[k])
+                for k in ("H0", "k", "phi", "tau_H", "gamma", "omega", "M_prime")
+            }
+            b1, b2 = float(p["b1"]), float(p["b2"])
+            fracs = {k: float(p[k]) for k in ("S_H0_frac", "E_H0_frac", "I_M0_ratio")}
+            state0 = build_initial_state(
+                year,
+                fracs["S_H0_frac"], 
+                fracs["E_H0_frac"], 
+                fracs["I_M0_ratio"]
+            )
+            if state0 is None:
+                print(f"Warning: Failed to build state for {year} from refined params. Using defaults.")
+                state0 = get_default_initial_state(year)
+            return fixed, state0, fracs, b1, b2
+    
+    # Fallback for any year
+    print(f"Warning: No refined params found for {year}. Using defaults.")
+    fixed = {
+        k: float(DEFAULT_PARAMS[k])
+        for k in ("H0", "k", "phi", "tau_H", "gamma", "omega")
+    }
+    fixed["M_prime"] = float(get_default_params(year)["M_prime"])
+    state0 = get_default_initial_state(year)
+    return (
+        fixed,
+        state0,
+        None,
+        float(DEFAULT_PARAMS["b1"]),
+        float(DEFAULT_PARAMS["b2"]),
+    )
+
 def run_weekly_beta_fit(
-    year=2017,
+    year=2017,  # Keep default but document it's configurable
     weight_kw=None,
     max_nfev=1200,
     ftol=1e-8,
@@ -282,15 +329,11 @@ def run_weekly_beta_fit(
     results_file=None,
     verbose=True,
 ):
-    """Fit free per-week betas for one year and save `weekly_beta_results.json`.
-
-    Reports the baseline wMSE (climate-driven beta with the refined 2017
-    parameters) and the wMSE after freeing the weekly betas, plus the fitted
-    and climate weekly beta curves."""
-    results_file = WEEKLY_RESULTS_FILE if results_file is None else results_file
+    """Fit free per-week betas for any year."""
+    results_file = f"weekly_beta_results_{year}.json" if results_file is None else results_file
     wkw = DEFAULT_WEIGHT_KW if weight_kw is None else weight_kw
 
-    fixed, state0, fracs, b1, b2 = load_refined_2017()
+    fixed, state0, fracs, b1, b2 = load_refined_params(year)  # Now year-aware!
     n_weeks = n_weeks_in_year(year)
     seed_h, seed_m = climate_beta_weekly(year, b1, b2, n_weeks)
 
@@ -299,15 +342,13 @@ def run_weekly_beta_fit(
     full["b1"], full["b2"] = b1, b2
     res0 = simulate_year(year, state0, full)
     if res0 is None:
-        raise RuntimeError("Baseline (climate-driven) simulation failed")
+        raise RuntimeError(f"Baseline (climate-driven) simulation failed for year {year}")
     dates0, IH0, _ = res0
     wmse0 = weighted_mse_for_year(dates0, IH0, obs, wkw)
 
     if verbose:
-        print(f"Baseline wMSE (climate-driven beta, refined 2017 params): {wmse0:,.1f}")
-        print(
-            f"Fitting {2 * n_weeks} free weekly betas (beta_h, beta_m) seeded from climate..."
-        )
+        print(f"Year {year}: Baseline wMSE (climate-driven beta): {wmse0:,.1f}")
+        print(f"Fitting {2 * n_weeks} free weekly betas (beta_h, beta_m)...")
 
     result, beta_h_fit, beta_m_fit, wmse1, end_state = fit_weekly_betas(
         year,
@@ -356,8 +397,10 @@ def run_weekly_beta_fit(
     return payload
 
 
-def load_weekly_results(results_file=None):
-    results_file = WEEKLY_RESULTS_FILE if results_file is None else results_file
+def load_weekly_results(year, results_file=None):
+    """Load weekly beta results for a specific year."""
+    if results_file is None:
+        results_file = f"weekly_beta_results_{year}.json"
     if not os.path.exists(results_file):
         return None
     with open(results_file, "r") as f:
