@@ -853,15 +853,90 @@ def run_yearly_fit(start_year=2017, end_year=2023,
         results_file = RESULTS_FILE
     wkw = DEFAULT_WEIGHT_KW if weight_kw is None else weight_kw
 
-    if resume and os.path.exists(results_file):
+    # Load existing results if file exists
+    existing_results = {}
+    existing_per_year = {}
+    if os.path.exists(results_file):
         with open(results_file, "r") as f:
-            saved = json.load(f)
+            existing_results = json.load(f)
+        existing_per_year = existing_results.get("per_year", {})
+        if verbose:
+            print(f"Loaded existing results from {results_file}")
+            print(f"Existing years: {list(existing_per_year.keys())}")
+
+    if resume and os.path.exists(results_file):
         if verbose:
             print(f"Resumed: loaded existing results from {results_file}")
-        return saved.get("per_year", {}), {}
+        return existing_results.get("per_year", {}), {}
+
+    # Determine which years need to be fitted (skip already fitted years)
+    years_to_fit = []
+    for year in years:
+        str_year = str(year)
+        if str_year in existing_per_year:
+            if verbose:
+                print(f"Year {year} already exists in results. Skipping.")
+        else:
+            years_to_fit.append(year)
+    
+    if not years_to_fit:
+        if verbose:
+            print("All years already fitted. Nothing to do.")
+        
+        # Rebuild trajectories from existing results
+        trajectories = {}
+        for year in years:
+            str_year = str(year)
+            if str_year in existing_per_year:
+                try:
+                    params = existing_per_year[str_year].get("params", {})
+                    if params:
+                        # Build state0 from fractions
+                        fracs = {
+                            k: float(params[k]) 
+                            for k in ("S_H0_frac", "E_H0_frac", "I_M0_ratio")
+                            if k in params
+                        }
+                        if fracs:
+                            state0 = build_initial_state(
+                                year,
+                                fracs["S_H0_frac"],
+                                fracs["E_H0_frac"],
+                                fracs["I_M0_ratio"]
+                            )
+                        else:
+                            state0 = get_default_initial_state(year)
+                        
+                        # Build fixed params
+                        fixed = {
+                            k: float(params[k])
+                            for k in ("H0", "k", "phi", "tau_H", "gamma", "omega", "M_prime")
+                        }
+                        full_params = dict(fixed)
+                        full_params["b1"] = float(params["b1"])
+                        full_params["b2"] = float(params["b2"])
+                        
+                        # Simulate
+                        res = simulate_year(year, state0, full_params)
+                        if res:
+                            dates, IH, _ = res
+                            trajectories[year] = (dates, IH)
+                        else:
+                            trajectories[year] = (None, None)
+                    else:
+                        trajectories[year] = (None, None)
+                except Exception as e:
+                    if verbose:
+                        print(f"Warning: Could not rebuild trajectory for {year}: {e}")
+                    trajectories[year] = (None, None)
+        
+        return existing_per_year, trajectories
+
+    if verbose:
+        print(f"Years to fit: {years_to_fit}")
 
     # Determine if this is the first year (needs IC fitting)
-    first_year = years[0]
+    first_year = years_to_fit[0]
     
     # Initialize with defaults for the first year
     carried = dict(DEFAULT_PARAMS)
@@ -873,7 +948,7 @@ def run_yearly_fit(start_year=2017, end_year=2023,
     results = {}
     trajectories = {}
     
-    for i, year in enumerate(years):
+    for i, year in enumerate(years_to_fit):
         obs = observed_for_year(year)
         if verbose:
             print(f"\n=== Fitting year {year} ===")
@@ -981,19 +1056,38 @@ def run_yearly_fit(start_year=2017, end_year=2023,
             )
 
     if save_json:
+        # Merge with existing results
+        merged_per_year = existing_per_year.copy()
+        merged_per_year.update(results)
+        
+        # Preserve existing metadata if available
         payload = {
             "years": years,
             "method": "lmfit differential_evolution",
             "de_settings": {k: v for k, v in de_settings.items()},
             "weight_kw": {k: v for k, v in wkw.items()},
-            "per_year": results,
+            "per_year": merged_per_year,
         }
+        
+        # If there were existing results with different settings, keep them
+        if existing_results:
+            # Keep the union of years
+            existing_years = existing_results.get("years", [])
+            payload["years"] = list(set(existing_years + years))
+            # Keep the original method/description
+            if "method" in existing_results:
+                payload["method"] = existing_results["method"]
+        
         with open(results_file, "w") as f:
             json.dump(payload, f, indent=2, default=str)
         if verbose:
             print(f"\nSaved results to {results_file}")
+            print(f"Results now contain years: {list(merged_per_year.keys())}")
 
-    return results, trajectories
+    # Return all results (existing + new)
+    all_results = existing_per_year.copy()
+    all_results.update(results)
+    return all_results, trajectories
 
 
 # ---------------------------------------------------------------------------
