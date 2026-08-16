@@ -321,7 +321,7 @@ def load_refined_params(year, results_file=None):
     )
 
 def run_weekly_beta_fit(
-    year=year,  # Keep default but document it's configurable
+    year,  # Keep default but document it's configurable
     weight_kw=None,
     max_nfev=1200,
     ftol=1e-8,
