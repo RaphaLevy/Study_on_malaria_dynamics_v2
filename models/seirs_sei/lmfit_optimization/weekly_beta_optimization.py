@@ -127,46 +127,157 @@ def weights_for_obs(obs, weight_kw=None):
 
 
 # ---------------------------------------------------------------------------
-# Fixed 2017 parameters (from the committed refined lmfit results)
+# Fixed parameters (from the committed refined lmfit results)
 # ---------------------------------------------------------------------------
-# def load_refined_2017(results_file=None):
-#     """Load the refined 2017 parameters from lmfit_results.json.
+def load_refined_params(year, results_file=None):
+    """Load the refined parameters for any year from lmfit_results.json.
+    
+    Handles both years with IC fractions (typically 2017) and years without.
+    For years without IC fractions, it extracts the state from end_state or
+    builds it from default fractions.
+    """
+    results_file = SHARED_RESULTS_FILE if results_file is None else results_file
+    
+    if not os.path.exists(results_file):
+        print(f"Warning: Results file {results_file} not found. Using defaults for {year}.")
+        return _get_default_params_for_year(year)
+    
+    try:
+        with open(results_file, "r") as f:
+            data = json.load(f)
+        
+        per_year = data.get("per_year", {}).get(str(year), {})
+        p = per_year.get("params")
+        
+        if not p:
+            print(f"Warning: No params found for {year}. Using defaults.")
+            return _get_default_params_for_year(year)
+        
+        # Extract fixed parameters (always available)
+        fixed = {
+            k: float(p[k])
+            for k in ("H0", "k", "phi", "tau_H", "gamma", "omega", "M_prime")
+            if k in p
+        }
+        
+        # Check if all required fixed params are present
+        required_params = {"H0", "k", "phi", "tau_H", "gamma", "omega", "M_prime"}
+        if not required_params.issubset(set(fixed.keys())):
+            print(f"Warning: Missing required parameters for {year}. Using defaults.")
+            return _get_default_params_for_year(year)
+        
+        # Extract b1, b2
+        if "b1" not in p or "b2" not in p:
+            print(f"Warning: Missing b1/b2 for {year}. Using defaults.")
+            b1, b2 = float(DEFAULT_PARAMS["b1"]), float(DEFAULT_PARAMS["b2"])
+        else:
+            b1, b2 = float(p["b1"]), float(p["b2"])
+        
+        # Try to get IC fractions - they may not exist for years after 2017
+        fracs = None
+        state0 = None
+        
+        # First try: use end_state from results if available
+        end_state = per_year.get("end_state")
+        if end_state is not None and len(end_state) == 6:
+            state0 = np.array(end_state)
+            # Extract fractions from state for reporting
+            total_H = state0[0] + state0[1] + state0[2]
+            if total_H > 0:
+                fracs = {
+                    "S_H0_frac": state0[0] / total_H,
+                    "E_H0_frac": state0[1] / total_H,
+                    "I_M0_ratio": state0[5] / state0[2] if state0[2] > 0 else 1.0
+                }
+            else:
+                # Fallback: use default fractions
+                default_ic = get_default_ic_fractions(year)
+                fracs = {
+                    "S_H0_frac": default_ic["S_H0_frac"],
+                    "E_H0_frac": default_ic["E_H0_frac"],
+                    "I_M0_ratio": default_ic["I_M0_ratio"]
+                }
+                state0 = build_initial_state(
+                    year, fracs["S_H0_frac"], fracs["E_H0_frac"], fracs["I_M0_ratio"]
+                )
+        
+        # Second try: build state from IC fractions if available
+        elif "S_H0_frac" in p and "E_H0_frac" in p and "I_M0_ratio" in p:
+            fracs = {
+                "S_H0_frac": float(p["S_H0_frac"]),
+                "E_H0_frac": float(p["E_H0_frac"]),
+                "I_M0_ratio": float(p["I_M0_ratio"])
+            }
+            state0 = build_initial_state(
+                year, fracs["S_H0_frac"], fracs["E_H0_frac"], fracs["I_M0_ratio"]
+            )
+        
+        # Third try: use default IC fractions
+        if state0 is None:
+            print(f"Warning: No state info for {year}. Using default IC fractions.")
+            default_ic = get_default_ic_fractions(year)
+            fracs = {
+                "S_H0_frac": default_ic["S_H0_frac"],
+                "E_H0_frac": default_ic["E_H0_frac"],
+                "I_M0_ratio": default_ic["I_M0_ratio"]
+            }
+            state0 = build_initial_state(
+                year, fracs["S_H0_frac"], fracs["E_H0_frac"], fracs["I_M0_ratio"]
+            )
+        
+        # Final fallback
+        if state0 is None:
+            print(f"Warning: Failed to build state for {year}. Using get_default_initial_state.")
+            state0 = get_default_initial_state(year)
+            default_ic = get_default_ic_fractions(year)
+            fracs = {
+                "S_H0_frac": default_ic["S_H0_frac"],
+                "E_H0_frac": default_ic["E_H0_frac"],
+                "I_M0_ratio": default_ic["I_M0_ratio"]
+            }
+        
+        return fixed, state0, fracs, b1, b2
+        
+    except Exception as e:
+        print(f"Warning: Error loading params for {year}: {e}. Using defaults.")
+        return _get_default_params_for_year(year)
 
-#     Returns (fixed_params, state0, refined_ic, b1, b2). `fixed_params` holds
-#     H0,k,phi,tau_H,gamma,omega,M_prime (b1/b2 are replaced by the weekly beta);
-#     `state0` is built from the refined IC fractions."""
-#     results_file = SHARED_RESULTS_FILE if results_file is None else results_file
-#     if os.path.exists(results_file):
-#         with open(results_file, "r") as f:
-#             data = json.load(f)
-#         per_year = data.get("per_year", {}).get("2017", {})
-#         p = per_year.get("params")
-#         if p:
-#             fixed = {
-#                 k: float(p[k])
-#                 for k in ("H0", "k", "phi", "tau_H", "gamma", "omega", "M_prime")
-#             }
-#             b1, b2 = float(p["b1"]), float(p["b2"])
-#             fracs = {k: float(p[k]) for k in ("S_H0_frac", "E_H0_frac", "I_M0_ratio")}
-#             state0 = build_initial_state_2017(
-#                 fracs["S_H0_frac"], fracs["E_H0_frac"], fracs["I_M0_ratio"]
-#             )
-#             if state0 is None:
-#                 state0 = initial_state_2017.copy()
-#             return fixed, state0, fracs, b1, b2
-#     fixed = {
-#         k: float(DEFAULT_PARAMS[k])
-#         for k in ("H0", "k", "phi", "tau_H", "gamma", "omega")
-#     }
-#     fixed["M_prime"] = float(DEFAULT_PARAMS["M_prime"])
-#     return (
-#         fixed,
-#         initial_state_2017.copy(),
-#         None,
-#         float(DEFAULT_PARAMS["b1"]),
-#         float(DEFAULT_PARAMS["b2"]),
-#     )
 
+def _get_default_params_for_year(year):
+    """Get default parameters for a year (fallback)."""
+    fixed = {
+        k: float(DEFAULT_PARAMS[k])
+        for k in ("H0", "k", "phi", "tau_H", "gamma", "omega")
+    }
+    fixed["M_prime"] = float(get_default_params(year)["M_prime"])
+    state0 = get_default_initial_state(year)
+    default_ic = get_default_ic_fractions(year)
+    fracs = {
+        "S_H0_frac": default_ic["S_H0_frac"],
+        "E_H0_frac": default_ic["E_H0_frac"],
+        "I_M0_ratio": default_ic["I_M0_ratio"]
+    }
+    return (
+        fixed,
+        state0,
+        fracs,
+        float(DEFAULT_PARAMS["b1"]),
+        float(DEFAULT_PARAMS["b2"]),
+    )
+
+
+def get_default_ic_fractions(year):
+    """Get default initial condition fractions for a year."""
+    N = get_year_population(year)
+    # Default fractions (matching get_default_initial_state)
+    S_H0_frac = 0.687  # ~5752/8369 for 2017
+    E_H0_frac = 0.05   # ~418/8369
+    I_M0_ratio = 1.0   # I_M / I_H
+    return {
+        "S_H0_frac": S_H0_frac,
+        "E_H0_frac": E_H0_frac,
+        "I_M0_ratio": I_M0_ratio
+    }
 
 
 # ---------------------------------------------------------------------------
@@ -277,51 +388,8 @@ def weekly_beta_table(year, beta_h_fit, beta_m_fit, b1, b2, n_weeks=None):
 # ---------------------------------------------------------------------------
 # Orchestration
 # ---------------------------------------------------------------------------
-
-def load_refined_params(year, results_file=None):
-    """Load the refined parameters for any year from lmfit_results.json."""
-    results_file = SHARED_RESULTS_FILE if results_file is None else results_file
-    if os.path.exists(results_file):
-        with open(results_file, "r") as f:
-            data = json.load(f)
-        per_year = data.get("per_year", {}).get(str(year), {})
-        p = per_year.get("params")
-        if p:
-            fixed = {
-                k: float(p[k])
-                for k in ("H0", "k", "phi", "tau_H", "gamma", "omega", "M_prime")
-            }
-            b1, b2 = float(p["b1"]), float(p["b2"])
-            fracs = {k: float(p[k]) for k in ("S_H0_frac", "E_H0_frac", "I_M0_ratio")}
-            state0 = build_initial_state(
-                year,
-                fracs["S_H0_frac"], 
-                fracs["E_H0_frac"], 
-                fracs["I_M0_ratio"]
-            )
-            if state0 is None:
-                print(f"Warning: Failed to build state for {year} from refined params. Using defaults.")
-                state0 = get_default_initial_state(year)
-            return fixed, state0, fracs, b1, b2
-    
-    # Fallback for any year
-    print(f"Warning: No refined params found for {year}. Using defaults.")
-    fixed = {
-        k: float(DEFAULT_PARAMS[k])
-        for k in ("H0", "k", "phi", "tau_H", "gamma", "omega")
-    }
-    fixed["M_prime"] = float(get_default_params(year)["M_prime"])
-    state0 = get_default_initial_state(year)
-    return (
-        fixed,
-        state0,
-        None,
-        float(DEFAULT_PARAMS["b1"]),
-        float(DEFAULT_PARAMS["b2"]),
-    )
-
 def run_weekly_beta_fit(
-    year,  # Keep default but document it's configurable
+    year,
     weight_kw=None,
     max_nfev=1200,
     ftol=1e-8,
@@ -333,7 +401,7 @@ def run_weekly_beta_fit(
     results_file = f"weekly_beta_results_{year}.json" if results_file is None else results_file
     wkw = DEFAULT_WEIGHT_KW if weight_kw is None else weight_kw
 
-    fixed, state0, fracs, b1, b2 = load_refined_params(year)  # Now year-aware!
+    fixed, state0, fracs, b1, b2 = load_refined_params(year)
     n_weeks = n_weeks_in_year(year)
     seed_h, seed_m = climate_beta_weekly(year, b1, b2, n_weeks)
 

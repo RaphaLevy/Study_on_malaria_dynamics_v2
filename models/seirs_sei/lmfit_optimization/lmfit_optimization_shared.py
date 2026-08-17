@@ -809,6 +809,9 @@ def fit_year_joint(
 # ---------------------------------------------------------------------------
 # Yearly sequential fitting orchestration
 # ---------------------------------------------------------------------------
+# ---------------------------------------------------------------------------
+# Yearly sequential fitting orchestration
+# ---------------------------------------------------------------------------
 def run_yearly_fit(start_year=2017, end_year=2023, 
     years=None,
     de_settings=None,
@@ -823,7 +826,7 @@ def run_yearly_fit(start_year=2017, end_year=2023,
 ):
     """Fit topics sequentially for each year (2017-2023) and carry state forward.
 
-    Per year: [2017 only: IC] -> humidity (H0,k,phi) -> human (tau_H,gamma,omega)
+    Per year: [first year only: IC] -> humidity (H0,k,phi) -> human (tau_H,gamma,omega)
     -> FoI (b1,b2) -> M_prime. Each topic fixes the others at the best values
     found so far (carried from the previous year as starting guesses). The year
     is then simulated with the fully fitted parameters and its end-state is
@@ -835,7 +838,7 @@ def run_yearly_fit(start_year=2017, end_year=2023,
     and the mosquito compartments) are carried forward from the previous year.
 
     If `refine=True` (default), each year is followed by a joint fit over all of
-    that year's free parameters (IC fractions included for 2017), seeded from
+    that year's free parameters (IC fractions included for first year only), seeded from
     the sequential solution, to undo sub-optimality caused by the sequential
     order. `refine_method` defaults to a local Nelder-Mead polish (stable from a
     good seed; differential_evolution is available via `refine_method="differential_evolution"`).
@@ -863,11 +866,6 @@ def run_yearly_fit(start_year=2017, end_year=2023,
         if verbose:
             print(f"Loaded existing results from {results_file}")
             print(f"Existing years: {list(existing_per_year.keys())}")
-
-    if resume and os.path.exists(results_file):
-        if verbose:
-            print(f"Resumed: loaded existing results from {results_file}")
-        return existing_results.get("per_year", {}), {}
 
     # Determine which years need to be fitted (skip already fitted years)
     years_to_fit = []
@@ -935,26 +933,70 @@ def run_yearly_fit(start_year=2017, end_year=2023,
     if verbose:
         print(f"Years to fit: {years_to_fit}")
 
-    # Determine if this is the first year (needs IC fitting)
-    first_year = years_to_fit[0]
+    # Determine the actual first year of the entire sequence (not just years_to_fit)
+    # This is needed to know if we should fit ICs or carry from previous year
+    actual_first_year = years[0] if years else start_year
     
-    # Initialize with defaults for the first year
+    # Check if we have a previous year's parameters to carry from
+    # Look for the immediate previous year in existing results
+    prev_year = actual_first_year - 1
+    carry_from_prev = False
     carried = dict(DEFAULT_PARAMS)
-    # Update M_prime for first year
-    carried["M_prime"] = 40 * round(pop_by_year[first_year])
+    state0 = None
     
-    # Get default state for first year
-    state0 = get_default_initial_state(first_year)
+    # Try to load state from previous year if it exists
+    if str(prev_year) in existing_per_year:
+        try:
+            prev_params = existing_per_year[str(prev_year)].get("params", {})
+            if prev_params:
+                # Build state from previous year's end_state or params
+                prev_end_state = existing_per_year[str(prev_year)].get("end_state")
+                if prev_end_state:
+                    state0 = np.array(prev_end_state)
+                    # Reset I_H to observed first case for current year
+                    state0[2] = observed_IH_start(actual_first_year)
+                    carry_from_prev = True
+                    
+                    # Update carried params from previous year
+                    for k in DEFAULT_PARAMS.keys():
+                        if k in prev_params:
+                            carried[k] = float(prev_params[k])
+                    
+                    if verbose:
+                        print(f"Carrying state and parameters from year {prev_year}")
+        except Exception as e:
+            if verbose:
+                print(f"Warning: Could not load previous year's state: {e}")
+    
+    # If no previous year, use defaults for the first year
+    if not carry_from_prev:
+        # Use the actual first year for IC fitting
+        if verbose:
+            print(f"No previous year found. Will fit ICs for {actual_first_year}")
+        
+        # Initialize with defaults for the first year
+        carried["M_prime"] = 40 * round(pop_by_year[actual_first_year])
+        state0 = get_default_initial_state(actual_first_year)
+    
     results = {}
     trajectories = {}
+    
+    # Track which year we're starting from in the fitting sequence
+    # This determines if we need to fit ICs for the first year being fitted
+    is_first_year_being_fitted = True
     
     for i, year in enumerate(years_to_fit):
         obs = observed_for_year(year)
         if verbose:
             print(f"\n=== Fitting year {year} ===")
+            if i == 0 and not carry_from_prev:
+                print(f"  (This is the first year in the sequence - fitting ICs)")
+            else:
+                print(f"  (Carrying state from previous year)")
         
-        # Fit ICs only for first year
-        if i == 0:
+        # Fit ICs ONLY if this is the actual first year of the whole sequence
+        # AND we don't have a previous year to carry from
+        if i == 0 and not carry_from_prev:
             ic_settings = dict(de_settings)
             ic_settings["max_nfev"] = 300
             result, fitted = fit_initial_conditions(
@@ -982,12 +1024,64 @@ def run_yearly_fit(start_year=2017, end_year=2023,
                     + ", ".join(f"{k}={v:.4f}" for k, v in fitted.items())
                     + f"  (chisqr={result.chisqr:.4g}, nfev={result.nfev})"
                 )
+        elif i == 0 and carry_from_prev:
+            # We already have state0 from previous year, but need to ensure
+            # IC fractions are in the results for the current year
+            if state0 is not None:
+                # Extract fractions from state0 for reporting
+                total_H = state0[0] + state0[1] + state0[2]  # S_H + E_H + I_H
+                if total_H > 0:
+                    s_frac = state0[0] / total_H
+                    e_frac = state0[1] / total_H
+                else:
+                    s_frac, e_frac = 0.5, 0.3
+                
+                # I_M0_ratio is I_M / I_H at start
+                i_m_ratio = state0[5] / state0[2] if state0[2] > 0 else 1.0
+                
+                fitted_ic = {
+                    "S_H0_frac": s_frac,
+                    "E_H0_frac": e_frac,
+                    "I_M0_ratio": i_m_ratio,
+                }
+                results.setdefault(str(year), {})["IC"] = {
+                    "params": fitted_ic,
+                    "source": "carried_from_previous_year"
+                }
+                if verbose:
+                    print(
+                        "IC (carried): "
+                        + ", ".join(f"{k}={v:.4f}" for k, v in fitted_ic.items())
+                    )
+        else:
+            # Not the first year - we should have state0 from previous year
+            if state0 is None:
+                # Fallback: try to get from previous year's end_state in results
+                prev_year_str = str(year - 1)
+                if prev_year_str in existing_per_year:
+                    prev_end = existing_per_year[prev_year_str].get("end_state")
+                    if prev_end:
+                        state0 = np.array(prev_end)
+                        state0[2] = observed_IH_start(year)
+                        if verbose:
+                            print(f"  Recovered state from year {year-1}")
+                    else:
+                        # Emergency fallback
+                        state0 = get_default_initial_state(year)
+                        if verbose:
+                            print(f"  WARNING: Using default state for year {year}")
+                else:
+                    state0 = get_default_initial_state(year)
+                    if verbose:
+                        print(f"  WARNING: Using default state for year {year}")
         
-        # Reset I_H to observed first case (ONCE!)
-        state0 = state0.copy()
-        state0[2] = observed_IH_start(year)
+        # Reset I_H to observed first case (ALWAYS do this for every year)
+        # This ensures we use actual data for each year's initial I_H
+        if state0 is not None:
+            state0 = state0.copy()
+            state0[2] = observed_IH_start(year)
         
-        # Fit topics (ONCE!)
+        # Fit topics for this year
         for topic in ["humidity", "human", "foi", "m_prime"]:
             result, fitted = fit_topic(
                 topic, year, state0, obs, carried, de_settings, wkw
@@ -1000,6 +1094,8 @@ def run_yearly_fit(start_year=2017, end_year=2023,
                     + ", ".join(f"{k}={v:.4g}" for k, v in fitted.items())
                     + f"  (chisqr={result.chisqr:.4g}, nfev={result.nfev})"
                 )
+        
+        # Simulate year with fitted parameters
         dates, IH, end_state = simulate_year(year, state0, carried)
         trajectories[year] = (dates, IH)
         results[str(year)]["weighted_mse"] = float(
@@ -1007,20 +1103,25 @@ def run_yearly_fit(start_year=2017, end_year=2023,
         )
         results[str(year)]["params"] = {k: float(v) for k, v in carried.items()}
         results[str(year)]["end_state"] = end_state.tolist()
+        
+        # Refine if requested
         if refine:
-            include_ic_flag = (i == 0)  # Define it here
+            # Only include IC fitting if this is the ACTUAL first year
+            # AND we didn't carry from previous year
+            include_ic_flag = (i == 0 and not carry_from_prev)
+            
             result, fitted, bounds = fit_year_joint(
                 year,
                 state0,
                 obs,
                 carried,
-                include_ic=include_ic_flag,  # Use the variable
+                include_ic=include_ic_flag,
                 de_settings=refine_de_settings,
                 weight_kw=wkw,
                 method=refine_method,
             )
             st_refine = state0
-            if include_ic_flag:  # Use the variable
+            if include_ic_flag:
                 st_refine = build_initial_state(
                     year,
                     fitted["S_H0_frac"],
@@ -1049,6 +1150,8 @@ def run_yearly_fit(start_year=2017, end_year=2023,
                     + ", ".join(f"{k}={v:.4g}" for k, v in fitted.items())
                     + f"  (chisqr={result.chisqr:.4g}, nfev={result.nfev})"
                 )
+        
+        # Carry state forward to next year
         state0 = end_state.copy()
         if verbose:
             print(
