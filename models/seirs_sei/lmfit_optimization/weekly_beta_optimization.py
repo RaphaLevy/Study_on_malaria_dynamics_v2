@@ -154,17 +154,18 @@ def load_refined_params(year, results_file=None):
             return _get_default_params_for_year(year)
         
         # Extract fixed parameters (always available)
-        fixed = {
-            k: float(p[k])
-            for k in ("H0", "k", "phi", "tau_H", "gamma", "omega", "M_prime")
-            if k in p
-        }
-        
-        # Check if all required fixed params are present
-        required_params = {"H0", "k", "phi", "tau_H", "gamma", "omega", "M_prime"}
-        if not required_params.issubset(set(fixed.keys())):
-            print(f"Warning: Missing required parameters for {year}. Using defaults.")
-            return _get_default_params_for_year(year)
+        fixed = {}
+        for k in ("H0", "k", "phi", "tau_H", "gamma", "omega", "M_prime"):
+            if k in p:
+                fixed[k] = float(p[k])
+            else:
+                print(f"Warning: Missing parameter {k} for year {year}. Using default.")
+                if k in DEFAULT_PARAMS:
+                    fixed[k] = float(DEFAULT_PARAMS[k])
+                else:
+                    # Use year-specific default for M_prime
+                    if k == "M_prime":
+                        fixed[k] = float(get_default_params(year)["M_prime"])
         
         # Extract b1, b2
         if "b1" not in p or "b2" not in p:
@@ -177,32 +178,8 @@ def load_refined_params(year, results_file=None):
         fracs = None
         state0 = None
         
-        # First try: use end_state from results if available
-        end_state = per_year.get("end_state")
-        if end_state is not None and len(end_state) == 6:
-            state0 = np.array(end_state)
-            # Extract fractions from state for reporting
-            total_H = state0[0] + state0[1] + state0[2]
-            if total_H > 0:
-                fracs = {
-                    "S_H0_frac": state0[0] / total_H,
-                    "E_H0_frac": state0[1] / total_H,
-                    "I_M0_ratio": state0[5] / state0[2] if state0[2] > 0 else 1.0
-                }
-            else:
-                # Fallback: use default fractions
-                default_ic = get_default_ic_fractions(year)
-                fracs = {
-                    "S_H0_frac": default_ic["S_H0_frac"],
-                    "E_H0_frac": default_ic["E_H0_frac"],
-                    "I_M0_ratio": default_ic["I_M0_ratio"]
-                }
-                state0 = build_initial_state(
-                    year, fracs["S_H0_frac"], fracs["E_H0_frac"], fracs["I_M0_ratio"]
-                )
-        
-        # Second try: build state from IC fractions if available
-        elif "S_H0_frac" in p and "E_H0_frac" in p and "I_M0_ratio" in p:
+        # First try: extract from params if available (only for 2017 and maybe 2018+ if IC was fitted)
+        if "S_H0_frac" in p and "E_H0_frac" in p and "I_M0_ratio" in p:
             fracs = {
                 "S_H0_frac": float(p["S_H0_frac"]),
                 "E_H0_frac": float(p["E_H0_frac"]),
@@ -211,30 +188,56 @@ def load_refined_params(year, results_file=None):
             state0 = build_initial_state(
                 year, fracs["S_H0_frac"], fracs["E_H0_frac"], fracs["I_M0_ratio"]
             )
+            if state0 is not None:
+                return fixed, state0, fracs, b1, b2
         
-        # Third try: use default IC fractions
-        if state0 is None:
-            print(f"Warning: No state info for {year}. Using default IC fractions.")
-            default_ic = get_default_ic_fractions(year)
+        # Second try: use end_state from results if available
+        end_state = per_year.get("end_state")
+        if end_state is not None and len(end_state) == 6:
+            state0 = np.array(end_state)
+            # Extract fractions from state for reporting
+            total_H = state0[0] + state0[1] + state0[2]
+            if total_H > 0:
+                fracs = {
+                    "S_H0_frac": float(state0[0] / total_H),
+                    "E_H0_frac": float(state0[1] / total_H),
+                    "I_M0_ratio": float(state0[5] / state0[2]) if state0[2] > 0 else 1.0
+                }
+            else:
+                # Fallback: use default fractions
+                default_ic = get_default_ic_fractions(year)
+                fracs = default_ic
+            return fixed, state0, fracs, b1, b2
+        
+        # Third try: use refine params if available
+        refine = per_year.get("refine", {})
+        refine_params = refine.get("params", {})
+        if "S_H0_frac" in refine_params and "E_H0_frac" in refine_params and "I_M0_ratio" in refine_params:
             fracs = {
-                "S_H0_frac": default_ic["S_H0_frac"],
-                "E_H0_frac": default_ic["E_H0_frac"],
-                "I_M0_ratio": default_ic["I_M0_ratio"]
+                "S_H0_frac": float(refine_params["S_H0_frac"]),
+                "E_H0_frac": float(refine_params["E_H0_frac"]),
+                "I_M0_ratio": float(refine_params["I_M0_ratio"])
             }
             state0 = build_initial_state(
                 year, fracs["S_H0_frac"], fracs["E_H0_frac"], fracs["I_M0_ratio"]
             )
+            if state0 is not None:
+                return fixed, state0, fracs, b1, b2
+        
+        # Fourth try: use default IC fractions
+        print(f"Warning: No state info for {year}. Using default IC fractions.")
+        default_ic = get_default_ic_fractions(year)
+        fracs = default_ic
+        state0 = build_initial_state(
+            year, fracs["S_H0_frac"], fracs["E_H0_frac"], fracs["I_M0_ratio"]
+        )
         
         # Final fallback
         if state0 is None:
             print(f"Warning: Failed to build state for {year}. Using get_default_initial_state.")
             state0 = get_default_initial_state(year)
             default_ic = get_default_ic_fractions(year)
-            fracs = {
-                "S_H0_frac": default_ic["S_H0_frac"],
-                "E_H0_frac": default_ic["E_H0_frac"],
-                "I_M0_ratio": default_ic["I_M0_ratio"]
-            }
+            fracs = default_ic
         
         return fixed, state0, fracs, b1, b2
         
@@ -252,11 +255,7 @@ def _get_default_params_for_year(year):
     fixed["M_prime"] = float(get_default_params(year)["M_prime"])
     state0 = get_default_initial_state(year)
     default_ic = get_default_ic_fractions(year)
-    fracs = {
-        "S_H0_frac": default_ic["S_H0_frac"],
-        "E_H0_frac": default_ic["E_H0_frac"],
-        "I_M0_ratio": default_ic["I_M0_ratio"]
-    }
+    fracs = default_ic
     return (
         fixed,
         state0,
@@ -269,14 +268,13 @@ def _get_default_params_for_year(year):
 def get_default_ic_fractions(year):
     """Get default initial condition fractions for a year."""
     N = get_year_population(year)
-    # Default fractions (matching get_default_initial_state)
-    S_H0_frac = 0.687  # ~5752/8369 for 2017
-    E_H0_frac = 0.05   # ~418/8369
-    I_M0_ratio = 1.0   # I_M / I_H
+    state = get_default_initial_state(year)
+    # M0 is 10 * N in get_default_initial_state
+    M0 = 10 * N
     return {
-        "S_H0_frac": S_H0_frac,
-        "E_H0_frac": E_H0_frac,
-        "I_M0_ratio": I_M0_ratio
+        "S_H0_frac": float(state[0] / N) if N > 0 else 0.687,
+        "E_H0_frac": float(state[1] / N) if N > 0 else 0.05,
+        "I_M0_ratio": float(state[5] / M0) if M0 > 0 else 0.02
     }
 
 

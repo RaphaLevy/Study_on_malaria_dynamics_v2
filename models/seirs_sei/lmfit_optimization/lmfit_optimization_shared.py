@@ -809,9 +809,6 @@ def fit_year_joint(
 # ---------------------------------------------------------------------------
 # Yearly sequential fitting orchestration
 # ---------------------------------------------------------------------------
-# ---------------------------------------------------------------------------
-# Yearly sequential fitting orchestration
-# ---------------------------------------------------------------------------
 def run_yearly_fit(start_year=2017, end_year=2023, 
     years=None,
     de_settings=None,
@@ -1044,6 +1041,8 @@ def run_yearly_fit(start_year=2017, end_year=2023,
                     "E_H0_frac": e_frac,
                     "I_M0_ratio": i_m_ratio,
                 }
+                # IMPORTANT: Add IC fractions to carried so they get stored in params
+                carried.update(fitted_ic)
                 results.setdefault(str(year), {})["IC"] = {
                     "params": fitted_ic,
                     "source": "carried_from_previous_year"
