@@ -27,9 +27,12 @@ from lmfit_optimization_shared import (
     rural_cases_df,
     DEFAULT_PARAMS,
     DEFAULT_WEIGHT_KW,
+    IM_MIN_VIABLE,
+    im_extinction_penalty,
     simulate_year,
     weighted_mse_for_year,
     observed_for_year,
+    observed_IH_start,
     build_initial_state,
     get_default_initial_state,
     get_year_population,
@@ -131,10 +134,14 @@ def weights_for_obs(obs, weight_kw=None):
 # ---------------------------------------------------------------------------
 def load_refined_params(year, results_file=None):
     """Load the refined parameters for any year from lmfit_results.json.
-    
-    Handles both years with IC fractions (typically 2017) and years without.
-    For years without IC fractions, it extracts the state from end_state or
-    builds it from default fractions.
+
+    State reconstruction order:
+      1. previous year's `end_state` with I_H reset to the first observed case
+         (identical to what `run_yearly_fit` uses as this year's start state);
+      2. IC fractions stored in `params` (genuinely fitted for the first year
+         of a chain, e.g. 2017);
+      3. IC fractions under `refine`;
+      4. default IC fractions.
     """
     results_file = SHARED_RESULTS_FILE if results_file is None else results_file
     
@@ -177,8 +184,29 @@ def load_refined_params(year, results_file=None):
         # Try to get IC fractions - they may not exist for years after 2017
         fracs = None
         state0 = None
-        
-        # First try: extract from params if available (only for 2017 and maybe 2018+ if IC was fitted)
+
+        # First try: carry the previous year's simulated end-state. This is
+        # exactly the start-of-year state the yearly pipeline used for this
+        # year (`run_yearly_fit` carries end_state forward and resets I_H to
+        # the first observed case), so it reproduces that trajectory. Stored
+        # IC fractions are deliberately NOT preferred over this: for carried
+        # years they follow different scale conventions (fractions of S+E+I,
+        # E_M/I_H ratios) than `build_initial_state` expects.
+        prev_per_year = data.get("per_year", {}).get(str(year - 1), {})
+        prev_end = prev_per_year.get("end_state")
+        if prev_end is not None and len(prev_end) == 7:
+            state0 = np.array(prev_end, dtype=float)
+            state0[2] = float(observed_IH_start(year))
+            n_year = int(round(pop_by_year[year]))
+            fracs = {
+                "S_H0_frac": float(state0[0] / n_year),
+                "E_H0_frac": float(state0[1] / n_year),
+                "I_M0_ratio": float(state0[6] / (10 * n_year)),
+            }
+            return fixed, state0, fracs, b1, b2
+
+        # Second try: extract from params if available (typically the first
+        # year of a chain, e.g. 2017, whose IC fractions were genuinely fitted)
         if "S_H0_frac" in p and "E_H0_frac" in p and "I_M0_ratio" in p:
             fracs = {
                 "S_H0_frac": float(p["S_H0_frac"]),
@@ -190,24 +218,6 @@ def load_refined_params(year, results_file=None):
             )
             if state0 is not None:
                 return fixed, state0, fracs, b1, b2
-        
-        # Second try: use end_state from results if available
-        end_state = per_year.get("end_state")
-        if end_state is not None and len(end_state) == 6:
-            state0 = np.array(end_state)
-            # Extract fractions from state for reporting
-            total_H = state0[0] + state0[1] + state0[2]
-            if total_H > 0:
-                fracs = {
-                    "S_H0_frac": float(state0[0] / total_H),
-                    "E_H0_frac": float(state0[1] / total_H),
-                    "I_M0_ratio": float(state0[5] / state0[2]) if state0[2] > 0 else 1.0
-                }
-            else:
-                # Fallback: use default fractions
-                default_ic = get_default_ic_fractions(year)
-                fracs = default_ic
-            return fixed, state0, fracs, b1, b2
         
         # Third try: use refine params if available
         refine = per_year.get("refine", {})
@@ -286,17 +296,23 @@ def _weekly_objective(
 ):
     beta_h = np.array([params[f"beta_h_{i}"].value for i in range(n_weeks)])
     beta_m = np.array([params[f"beta_m_{i}"].value for i in range(n_weeks)])
-    res = simulate_year(year, state0, fixed, beta_h, beta_m)
+    res = simulate_year(year, state0, fixed, beta_h, beta_m, return_diagnostics=True)
     if res is None:
         return 1e9 * np.ones(len(obs_vals))
-    dates, IH, _ = res
+    dates, IH, _, diag = res
     if len(IH) == 0 or not np.all(np.isfinite(IH)):
         return 1e9 * np.ones(len(obs_vals))
     model_dates_int = pd.to_datetime(dates).astype(np.int64).values
     model_at_obs = interp1d(
         model_dates_int, IH, kind="linear", fill_value="extrapolate"
     )(obs_dates_int)
-    return np.sqrt(weights) * (model_at_obs - obs_vals)
+    resid = np.sqrt(weights) * (model_at_obs - obs_vals)
+    penalty = im_extinction_penalty(diag["im_min"])
+    if penalty > 0:
+        # Offset the residual vector (constant offset keeps the same length
+        # while giving least_squares a gradient that pushes I_M back up).
+        resid = resid + np.sqrt(penalty)
+    return resid
 
 
 # ---------------------------------------------------------------------------
@@ -406,14 +422,21 @@ def run_weekly_beta_fit(
     obs = observed_for_year(year)
     full = dict(fixed)
     full["b1"], full["b2"] = b1, b2
-    res0 = simulate_year(year, state0, full)
+    res0 = simulate_year(year, state0, full, return_diagnostics=True)
     if res0 is None:
         raise RuntimeError(f"Baseline (climate-driven) simulation failed for year {year}")
-    dates0, IH0, _ = res0
+    dates0, IH0, _, diag0 = res0
     wmse0 = weighted_mse_for_year(dates0, IH0, obs, wkw)
 
     if verbose:
         print(f"Year {year}: Baseline wMSE (climate-driven beta): {wmse0:,.1f}")
+        if diag0["im_min"] < IM_MIN_VIABLE:
+            print(
+                f"WARNING: the fixed {year} parameters drive I_M down to "
+                f"{diag0['im_min']:.4g} (< {IM_MIN_VIABLE}); with no infected "
+                "mosquitoes the weekly betas are weakly identified. Recalibrate "
+                "the yearly params first."
+            )
         print(f"Fitting {2 * n_weeks} free weekly betas (beta_h, beta_m)...")
 
     result, beta_h_fit, beta_m_fit, wmse1, end_state = fit_weekly_betas(
@@ -443,6 +466,7 @@ def run_weekly_beta_fit(
         "refined_ic": fracs,
         "climate_params": {"b1": float(b1), "b2": float(b2)},
         "baseline_wmse": float(wmse0),
+        "baseline_im_min": float(diag0["im_min"]),
         "weekly_fit_wmse": float(wmse1) if wmse1 is not None else None,
         "chisqr": float(result.chisqr) if result.chisqr is not None else None,
         "nfev": int(getattr(result, "nfev", -1)),

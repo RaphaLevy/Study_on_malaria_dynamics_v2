@@ -389,7 +389,8 @@ def build_initial_state(
 # ---------------------------------------------------------------------------
 # Single-year simulation
 # ---------------------------------------------------------------------------
-def simulate_year(year, state0, p, beta_h_weekly=None, beta_m_weekly=None):
+def simulate_year(year, state0, p, beta_h_weekly=None, beta_m_weekly=None,
+                  return_diagnostics=False):
     """Simulate one year (2017-2023) with parameter dict `p`.
 
     p keys: H0, k, phi, tau_H, gamma, omega, b1, b2, M_prime.
@@ -509,7 +510,41 @@ def simulate_year(year, state0, p, beta_h_weekly=None, beta_m_weekly=None):
     t_interp = np.linspace(0, sol.t[-1], len(clim))
     IH_interp = interp1d(sol.t, sol.y[2])(t_interp)
     end_state = np.maximum(sol.y[:, -1].copy(), 0)
+    if return_diagnostics:
+        diagnostics = {"im_min": float(np.min(sol.y[6]))}
+        return clim["date"].values, IH_interp, end_state, diagnostics
     return clim["date"].values, IH_interp, end_state
+
+
+# ---------------------------------------------------------------------------
+# Mosquito-infection viability guard
+# ---------------------------------------------------------------------------
+# Lower bound for the infected-mosquito compartment. When I_M goes extinct,
+# foi_h = beta_h * I_M / N vanishes identically and beta becomes structurally
+# unidentifiable (the fit cannot move off its seed), so objectives penalize
+# trajectories whose I_M dips below this floor.
+IM_MIN_VIABLE = 10.0
+
+# Penalty scale for extinction violations. Large enough to dominate any data
+# misfit (weighted MSE stays below ~1e6 here) while still ranking partially
+# extinct candidates: with a far larger base the landscape becomes a binary
+# cliff and differential evolution wastes its whole budget against the wall.
+IM_PENALTY_BASE = 1e8
+
+
+def im_extinction_penalty(im_min, threshold=None, base=None):
+    """Graded penalty when the simulated I_M trajectory dips below `threshold`.
+
+    Returns 0.0 while I_M stays viable; otherwise base*(1 + violation/threshold),
+    so deeper extinctions cost more and the gradient points back toward sustained
+    transmission."""
+    thr = IM_MIN_VIABLE if threshold is None else float(threshold)
+    base = IM_PENALTY_BASE if base is None else float(base)
+    if im_min is None or not np.isfinite(im_min):
+        im_min = -np.inf
+    if im_min >= thr:
+        return 0.0
+    return base * (1.0 + (thr - im_min) / thr)
 
 
 # ---------------------------------------------------------------------------
@@ -575,7 +610,10 @@ def compute_weighted_mse(
 # lmfit differential-evolution fitting
 # ---------------------------------------------------------------------------
 TOPIC_BOUNDS = {
-    "humidity": {"H0": (20, 90), "k": (0.01, 1.0), "phi": (0.001, 0.5)},
+    # H0 capped at 75 and phi floored at 0.01: beyond these the humidity
+    # response collapses (p_H ~ phi -> mu > ~4.5/day), which extinguishes the
+    # infected-mosquito chain and makes transmission unidentifiable.
+    "humidity": {"H0": (20, 75), "k": (0.01, 1.0), "phi": (0.01, 0.5)},
     "human": {"tau_H": (10, 20), "gamma": (1/150, 1.0), "omega": (1/300, 0.1)},
     "foi": {"b1": (0.001, 0.5), "b2": (0.01, 0.5)},
 }
@@ -598,13 +636,15 @@ def _make_objective(year, state0, obs, topic_keys, carried, weight_kw):
         p = carried.copy()
         for key in topic_keys:
             p[key] = params[key].value
-        res = simulate_year(year, state0, p)
+        res = simulate_year(year, state0, p, return_diagnostics=True)
         if res is None:
             return 1e15
-        dates, IH, _ = res
+        dates, IH, _, diag = res
         if len(IH) == 0 or not np.all(np.isfinite(IH)):
             return 1e15
-        return weighted_mse_for_year(dates, IH, obs, weight_kw)
+        return weighted_mse_for_year(dates, IH, obs, weight_kw) + im_extinction_penalty(
+            diag["im_min"]
+        )
 
     return objective
 
@@ -668,6 +708,26 @@ def _fit(bounds, start, objective, de_settings, method="differential_evolution")
             kwargs.pop(k, None)
         kwargs.setdefault("max_nfev", 2000)
     result = lmfit.minimize(objective, params, method=method, **kwargs)
+
+    # Global optimizers draw their initial population randomly across the bounds
+    # and may never evaluate the starting point. Score the seed explicitly and
+    # keep whichever is better, so a fit can never return something worse than
+    # the parameters it started from (e.g. viable values carried from the
+    # previous year). Without this, an unlucky random population can discard a
+    # healthy seed entirely.
+    try:
+        f_fit = float(objective(result.params))
+        f_seed = float(objective(_lmfit_params(bounds, start)))
+        if np.isfinite(f_seed) and (not np.isfinite(f_fit) or f_seed < f_fit):
+            for name in bounds:
+                result.params[name].set(value=float(start[name]))
+            # Keep the chisqr convention used by scalar methods (chisqr = obj^2,
+            # reported wMSE = sqrt(chisqr)) consistent with the reverted params.
+            if result.chisqr is not None:
+                result.chisqr = float(f_seed * f_seed)
+    except Exception:
+        pass
+
     fitted = {name: float(result.params[name].value) for name in bounds}
     return result, fitted
 
@@ -729,13 +789,15 @@ def _make_objective_ic(year, obs, carried, weight_kw):
         )
         if state0 is None:
             return _ic_penalty(params, year)
-        res = simulate_year(year, state0, carried)
+        res = simulate_year(year, state0, carried, return_diagnostics=True)
         if res is None:
             return 1e15
-        dates, IH, _ = res
+        dates, IH, _, diag = res
         if len(IH) == 0 or not np.all(np.isfinite(IH)):
             return 1e15
-        return weighted_mse_for_year(dates, IH, obs, weight_kw)
+        return weighted_mse_for_year(dates, IH, obs, weight_kw) + im_extinction_penalty(
+            diag["im_min"]
+        )
     return objective
 
 
@@ -794,13 +856,15 @@ def fit_year_joint(
                 return _ic_penalty(params, year)
         else:
             st = state0
-        res = simulate_year(year, st, p)
+        res = simulate_year(year, st, p, return_diagnostics=True)
         if res is None:
             return 1e15
-        dates, IH, _ = res
+        dates, IH, _, diag = res
         if len(IH) == 0 or not np.all(np.isfinite(IH)):
             return 1e15
-        return weighted_mse_for_year(dates, IH, obs, weight_kw)
+        return weighted_mse_for_year(dates, IH, obs, weight_kw) + im_extinction_penalty(
+            diag["im_min"]
+        )
 
     result, fitted = _fit(bounds, start, objective, de_settings, method=method)
     return result, fitted, bounds
@@ -842,6 +906,11 @@ def run_yearly_fit(start_year=2017, end_year=2023,
     The refined parameters replace the sequential ones in the reported per-year
     params/trajectory (also stored under `refine`).
 
+    With `resume=True`, years already present in the results file are skipped and their
+    stored entries are reused; with `resume=False` (default), listed years are fitted again
+    from scratch, overwriting their stored entries (carrying still uses the previous year's
+    stored end-state when available).
+
     Returns (results, trajectories) and saves results to `lmfit_results.json`."""
     if years is None:
         years = list(range(start_year, end_year + 1))
@@ -864,13 +933,22 @@ def run_yearly_fit(start_year=2017, end_year=2023,
             print(f"Loaded existing results from {results_file}")
             print(f"Existing years: {list(existing_per_year.keys())}")
 
-    # Determine which years need to be fitted (skip already fitted years)
+    # Determine which years need to be fitted. With resume=True, already-fitted
+    # years are skipped (their stored entries are reloaded); with resume=False
+    # they are fitted again from scratch and overwrite their stored entries.
     years_to_fit = []
     for year in years:
         str_year = str(year)
         if str_year in existing_per_year:
-            if verbose:
-                print(f"Year {year} already exists in results. Skipping.")
+            if resume:
+                if verbose:
+                    print(f"Year {year} already exists in results. Skipping.")
+            else:
+                if verbose:
+                    print(
+                        f"Year {year} already exists in results but resume=False. Refitting."
+                    )
+                years_to_fit.append(year)
         else:
             years_to_fit.append(year)
     
@@ -886,21 +964,35 @@ def run_yearly_fit(start_year=2017, end_year=2023,
                 try:
                     params = existing_per_year[str_year].get("params", {})
                     if params:
-                        # Build state0 from fractions
-                        fracs = {
-                            k: float(params[k]) 
-                            for k in ("S_H0_frac", "E_H0_frac", "I_M0_ratio")
-                            if k in params
-                        }
-                        if fracs:
-                            state0 = build_initial_state(
-                                year,
-                                fracs["S_H0_frac"],
-                                fracs["E_H0_frac"],
-                                fracs["I_M0_ratio"]
-                            )
-                        else:
-                            state0 = get_default_initial_state(year)
+                        # Reconstruct the year's start state exactly as its fit
+                        # did: prefer the previous year's simulated end-state with
+                        # I_H reset to observed data. Fall back to stored IC
+                        # fractions only when no previous end-state exists (the
+                        # fractions stored for carried years use reporting
+                        # conventions and must not be reinterpreted here).
+                        prev_entry = existing_per_year.get(str(int(year) - 1), {})
+                        prev_end = prev_entry.get("end_state")
+                        state0 = None
+                        if prev_end is not None and len(prev_end) == 7:
+                            state0 = np.array(prev_end, dtype=float)
+                            obs_ih = observed_IH_start(int(year))
+                            if obs_ih is not None:
+                                state0[2] = float(obs_ih)
+                        if state0 is None:
+                            fracs = {
+                                k: float(params[k])
+                                for k in ("S_H0_frac", "E_H0_frac", "I_M0_ratio")
+                                if k in params
+                            }
+                            if len(fracs) == 3:
+                                state0 = build_initial_state(
+                                    year,
+                                    fracs["S_H0_frac"],
+                                    fracs["E_H0_frac"],
+                                    fracs["I_M0_ratio"]
+                                )
+                            else:
+                                state0 = get_default_initial_state(year)
                         
                         # Build fixed params
                         fixed = {
