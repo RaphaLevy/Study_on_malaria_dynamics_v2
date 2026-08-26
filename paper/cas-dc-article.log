@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.3.13)  26 AUG 2026 14:55
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.3.13)  26 AUG 2026 15:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1367,10 +1367,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 677--680
  []
 
 
-Package natbib Warning: Citation `nelder_mead_1965' on page 7 undefined on inpu
-t line 686.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 683--687
 
  []
@@ -1788,9 +1784,9 @@ Underfull \hbox (badness 4120) in paragraph at lines 845--848
  []
 
 
-Underfull \hbox (badness 1406) in paragraph at lines 845--848
+Underfull \hbox (badness 1968) in paragraph at lines 845--848
 \T1/stix/m/n/8 Un-der-stand-ing the Dilem-mas, World De-vel-op-ment, Vol. 31 (5
-),
+)
  []
 
 
@@ -1923,9 +1919,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 866--869
  []
 
 
-Underfull \hbox (badness 2351) in paragraph at lines 869--872
-[]\T1/stix/m/n/8 A. Ab-del-razec, A. B. Gumel, Math-e-mat-i-cal as-sess-ment of
- the
+Underfull \hbox (badness 10000) in paragraph at lines 869--872
+[]\T1/stix/m/n/8 J. A. Nelder, R. Mead, A Sim-plex Method for Func-tion
  []
 
 
@@ -1934,29 +1929,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 869--872
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 872--875
-[]\T1/stix/m/n/8 OpenLearnCreate. Courses/Collections/Health Ed-u-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 872--875
-\T1/stix/m/n/8 ca-tion and Train-ing (HEAT)/Communicable Dis-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 872--875
-\T1/stix/m/n/8 eases/Contents/Communicable Dis-eases Mod-ule: 6. Fac-tors
- []
-
-
-Underfull \hbox (badness 3250) in paragraph at lines 872--875
-\T1/stix/m/n/8 that Af-fect Malaria Trans-mis-sion, ac-cessed on 02 May 2026,
- []
-
-
-Overfull \hbox (54.14554pt too wide) in paragraph at lines 872--875
-[][]\T1/stix/m/n/8 https://www.open.edu/openlearncreate/mod/oucontent/view.php?
-id=89&printable=1[][]. 
+Underfull \hbox (badness 2351) in paragraph at lines 872--875
+[]\T1/stix/m/n/8 A. Ab-del-razec, A. B. Gumel, Math-e-mat-i-cal as-sess-ment of
+ the
  []
 
 
@@ -1966,19 +1941,33 @@ Underfull \hbox (badness 10000) in paragraph at lines 872--875
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 875--878
-
+[]\T1/stix/m/n/8 OpenLearnCreate. Courses/Collections/Health Ed-u-
  []
 
 
-Underfull \hbox (badness 1708) in paragraph at lines 878--881
-\T1/stix/m/n/8 change and malaria trans-mis-sion dy-nam-ics: a his-tor-i-cal re
--view,
+Underfull \hbox (badness 10000) in paragraph at lines 875--878
+\T1/stix/m/n/8 ca-tion and Train-ing (HEAT)/Communicable Dis-
  []
 
 
-Underfull \hbox (badness 1454) in paragraph at lines 878--881
-\T1/stix/m/n/8 Jour-nal of Math-e-mat-i-cal Bi-ol-ogy, Vol. 77 (4), 857-933 (20
-18),
+Underfull \hbox (badness 10000) in paragraph at lines 875--878
+\T1/stix/m/n/8 eases/Contents/Communicable Dis-eases Mod-ule: 6. Fac-tors
+ []
+
+
+Underfull \hbox (badness 3250) in paragraph at lines 875--878
+\T1/stix/m/n/8 that Af-fect Malaria Trans-mis-sion, ac-cessed on 02 May 2026,
+ []
+
+
+Overfull \hbox (54.14554pt too wide) in paragraph at lines 875--878
+[][]\T1/stix/m/n/8 https://www.open.edu/openlearncreate/mod/oucontent/view.php?
+id=89&printable=1[][]. 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 875--878
+
  []
 
 
@@ -1987,59 +1976,65 @@ Underfull \hbox (badness 10000) in paragraph at lines 878--881
  []
 
 [9]
-Underfull \hbox (badness 7116) in paragraph at lines 881--884
+Underfull \hbox (badness 1708) in paragraph at lines 881--884
+\T1/stix/m/n/8 change and malaria trans-mis-sion dy-nam-ics: a his-tor-i-cal re
+-view,
+ []
+
+
+Underfull \hbox (badness 1454) in paragraph at lines 881--884
+\T1/stix/m/n/8 Jour-nal of Math-e-mat-i-cal Bi-ol-ogy, Vol. 77 (4), 857-933 (20
+18),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 881--884
+
+ []
+
+
+Underfull \hbox (badness 7116) in paragraph at lines 884--887
 []\T1/stix/m/n/8 M. H. Craig, R. W. Snow, D. le Sueur, A Climate-based
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 881--884
+Underfull \hbox (badness 10000) in paragraph at lines 884--887
 \T1/stix/m/n/8 Dis-tri-bu-tion Model of Malaria Trans-mis-sion in Sub-Saharan
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 881--884
+Underfull \hbox (badness 10000) in paragraph at lines 884--887
 \T1/stix/m/n/8 Africa, Par-a-sitol-ogy To-day, Vol. 15 (3), 105-111 (1999),
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 881--884
+Underfull \hbox (badness 10000) in paragraph at lines 884--887
 
  []
 
 
-Underfull \hbox (badness 6094) in paragraph at lines 884--887
+Underfull \hbox (badness 6094) in paragraph at lines 887--890
 []\T1/stix/m/n/8 T. P. Agyekum et al, A Sys-tem-atic Re-view of the Ef-fects
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 884--887
+Underfull \hbox (badness 10000) in paragraph at lines 887--890
 \T1/stix/m/n/8 of Tem-per-a-ture on Anophe-les Mosquito De-vel-op-ment and
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 884--887
+Underfull \hbox (badness 10000) in paragraph at lines 887--890
 \T1/stix/m/n/8 Sur-vival: Im-pli-ca-tions for Malaria Con-trol in a Fu-ture
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 884--887
+Underfull \hbox (badness 10000) in paragraph at lines 887--890
 \T1/stix/m/n/8 Warmer Cli-mate, In-ter-na-tional Jour-nal of En-vi-ron-men-tal
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 884--887
+Underfull \hbox (badness 10000) in paragraph at lines 887--890
 \T1/stix/m/n/8 Re-search and Pub-lic Health, Vol. 18 (14), (2021),
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 884--887
-
- []
-
-
-Overfull \hbox (21.49754pt too wide) in paragraph at lines 887--890
-[][]\T1/stix/m/n/8 https://journals.plos.org/plosone/article?id=10.1371/journal
-.pone.0022388[][]. 
  []
 
 
@@ -2048,14 +2043,25 @@ Underfull \hbox (badness 10000) in paragraph at lines 887--890
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 890--892
+Overfull \hbox (21.49754pt too wide) in paragraph at lines 890--893
+[][]\T1/stix/m/n/8 https://journals.plos.org/plosone/article?id=10.1371/journal
+.pone.0022388[][]. 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 890--893
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 893--895
 
  []
 
 [10
 
 ]
-Overfull \hbox (238.25444pt too wide) in paragraph at lines 906--933
+Overfull \hbox (238.25444pt too wide) in paragraph at lines 909--936
  [] 
  []
 
@@ -2063,7 +2069,7 @@ Overfull \hbox (238.25444pt too wide) in paragraph at lines 906--933
 
 
 ]
-Overfull \hbox (238.25444pt too wide) in paragraph at lines 938--984
+Overfull \hbox (238.25444pt too wide) in paragraph at lines 941--987
  [] 
  []
 
@@ -2071,73 +2077,70 @@ Overfull \hbox (238.25444pt too wide) in paragraph at lines 938--984
 
 
 ]
-<figs/SIR_Model_Parham_and_Michael_DDE_Solution.png, id=312, 413.74574pt x 253.
+<figs/SIR_Model_Parham_and_Michael_DDE_Solution.png, id=315, 413.74574pt x 253.
 54726pt>
 File: figs/SIR_Model_Parham_and_Michael_DDE_Solution.png Graphic file (type png
 )
 <use figs/SIR_Model_Parham_and_Michael_DDE_Solution.png>
 Package pdftex.def Info: figs/SIR_Model_Parham_and_Michael_DDE_Solution.png  us
-ed on input line 1000.
+ed on input line 1003.
 (pdftex.def)             Requested size: 238.25444pt x 146.00517pt.
 
 
 Package caption Warning: \setcaptiontype
-(caption)                outside box or environment on input line 1001.
+(caption)                outside box or environment on input line 1004.
 See the caption package documentation for explanation.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 1001.
+(caption)                particular \caption on input line 1004.
 See the caption package documentation for explanation.
 
-<figs/SEI_Model_Parham_and_Michael_DDE_Solution.png, id=316, 419.166pt x 250.53
+<figs/SEI_Model_Parham_and_Michael_DDE_Solution.png, id=319, 419.166pt x 250.53
 6pt>
 File: figs/SEI_Model_Parham_and_Michael_DDE_Solution.png Graphic file (type png
 )
 <use figs/SEI_Model_Parham_and_Michael_DDE_Solution.png>
 Package pdftex.def Info: figs/SEI_Model_Parham_and_Michael_DDE_Solution.png  us
-ed on input line 1010.
+ed on input line 1013.
 (pdftex.def)             Requested size: 238.25444pt x 142.4056pt.
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 1011.
+(caption)                particular \caption on input line 1014.
 See the caption package documentation for explanation.
 
-<figs/SIR_Model_Parham_and_Michael_ODE_Solution.png, id=319, 645.00975pt x 405.
+<figs/SIR_Model_Parham_and_Michael_ODE_Solution.png, id=322, 645.00975pt x 405.
 31425pt>
 File: figs/SIR_Model_Parham_and_Michael_ODE_Solution.png Graphic file (type png
 )
 <use figs/SIR_Model_Parham_and_Michael_ODE_Solution.png>
 Package pdftex.def Info: figs/SIR_Model_Parham_and_Michael_ODE_Solution.png  us
-ed on input line 1019.
+ed on input line 1022.
 (pdftex.def)             Requested size: 238.25444pt x 149.71654pt.
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 1020.
+(caption)                particular \caption on input line 1023.
 See the caption package documentation for explanation.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1027--1028
+Underfull \hbox (badness 10000) in paragraph at lines 1030--1031
 
  []
 
-<figs/SEI_Model_Parham_and_Michael_ODE_Solution.png, id=322, 654.64575pt x 401.
+<figs/SEI_Model_Parham_and_Michael_ODE_Solution.png, id=325, 654.64575pt x 401.
 70074pt>
 File: figs/SEI_Model_Parham_and_Michael_ODE_Solution.png Graphic file (type png
 )
 <use figs/SEI_Model_Parham_and_Michael_ODE_Solution.png>
 Package pdftex.def Info: figs/SEI_Model_Parham_and_Michael_ODE_Solution.png  us
-ed on input line 1031.
+ed on input line 1034.
 (pdftex.def)             Requested size: 238.25444pt x 146.19354pt.
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 1032.
+(caption)                particular \caption on input line 1035.
 See the caption package documentation for explanation.
 
 No file cas-dc-article.bbl.
-
-Package natbib Warning: There were undefined citations.
-
 [13
 
  <./figs/SIR_Model_Parham_and_Michael_DDE_Solution.png> <./figs/SEI_Model_Parha
@@ -2156,13 +2159,13 @@ Package rerunfilecheck Info: File `cas-dc-article.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 18625 strings out of 467871
- 292070 string characters out of 5418376
- 711068 words of memory out of 5000000
- 47053 multiletter control sequences out of 15000+600000
+ 18629 strings out of 467871
+ 292163 string characters out of 5418376
+ 711084 words of memory out of 5000000
+ 47056 multiletter control sequences out of 15000+600000
  753662 words of font info for 209 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 90i,19n,117p,819b,745s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 90i,19n,117p,819b,743s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\rapha\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi450\ecss
 0800.pk> <C:\Users\rapha\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi60
 0\ecsx0900.pk> <C:\Users\rapha\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec
@@ -2180,9 +2183,9 @@ type1/public/stix/stix-mathex.pfb><C:/Users/rapha/AppData/Local/Programs/MiKTeX
 rograms/MiKTeX/fonts/type1/public/stix/stix-mathscr.pfb><C:/Users/rapha/AppData
 /Local/Programs/MiKTeX/fonts/type1/public/stix/stix-mathsf.pfb><C:/Users/rapha/
 AppData/Local/Programs/MiKTeX/fonts/type1/public/stix/stix-mathtt.pfb>
-Output written on cas-dc-article.pdf (13 pages, 589443 bytes).
+Output written on cas-dc-article.pdf (13 pages, 589959 bytes).
 PDF statistics:
- 515 PDF objects out of 1000 (max. 8388607)
- 157 named destinations out of 1000 (max. 500000)
+ 518 PDF objects out of 1000 (max. 8388607)
+ 158 named destinations out of 1000 (max. 500000)
  26 words of extra memory for PDF output out of 10000 (max. 10000000)
 
