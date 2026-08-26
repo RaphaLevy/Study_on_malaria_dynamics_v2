@@ -706,6 +706,25 @@ S_{H,0} = \alpha_S \cdot N, \quad E_{H,0} = \alpha_E \cdot N, \quad I_{M,0} = \a
 \end{align}
 where $\alpha_S \in [0.3,\, 0.9]$, $\alpha_E \in [0.001,\, 0.30]$, and $\alpha_I \in [0.0005,\, 0.15]$, with the remaining compartments determined by conservation: $R_{H,0} = N - S_{H,0} - E_{H,0} - I_{H,0}$, $M_0 = 10N$, and $S_{M,0} = M_0 - E_{M,0} - I_{M,0}$.
 
+\subsubsection{Weekly diagnostic}
+
+To evaluate where the climate-driven formulation deviates from what the data demands, a diagnostic calibration was performed in which the effective transmission coefficients were freed as per-week parameters instead of being derived from the biting rate and fixed $b_1$, $b_2$:
+\begin{align}
+\lambda_H(t) = \beta_{h,w} \, \frac{I_M(t)}{N}, \qquad \lambda_M(t) = \beta_{m,w} \, \frac{I_H(t)}{N},
+\label{eq:weekly_beta}
+\end{align}
+where $w = \lfloor d / 7 \rfloor$ is the week index and $d$ is the day number within the year. This yields $2 \times n_{\text{weeks}}$ free parameters per year (typically 106 for a 365-day year), with bounds $\beta_{h,w},\, \beta_{m,w} \in [10^{-9},\, 3.0]$.
+\\\\
+All other model parameters were fixed at the values obtained from the yearly topic calibration. The initial state was reconstructed from the previous year's end-state, with $I_H$ reset to observed data. The optimizer used was \texttt{lmfit.minimize} with the trust-region reflective method (\texttt{least\_squares}), with $\texttt{max\_nfev} = 1200$ and $\texttt{ftol} = 10^{-8}$.
+\\\\
+The residual vector for the trust-region solver was constructed as:
+\begin{align}
+r_i = \sqrt{w_i}\left(I_H(t_i) - y_i\right) + \sqrt{\mathcal{P}\!\left(I_M^{\min}\right)},
+\label{eq:weekly_residual}
+\end{align}
+where $\sqrt{\mathcal{P}}$ is injected as a constant offset to preserve the residual vector length while providing a gradient that pushes $I_M$ upward when the mosquito population approaches the viability threshold.
+\\\\
+The weekly beta fit serves as a diagnostic baseline: it reveals the best achievable fit when the transmission coefficients are unconstrained by the climate formulation. Persistent deviations between the weekly-optimal $\beta_{h,w}$ and the climate-driven $a(T) \cdot b_2$ indicate periods where the environmental model fails to capture the true transmission dynamics.
 %\newpage
 \section{Results}
 
