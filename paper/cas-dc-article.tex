@@ -670,7 +670,22 @@ $M'$ & 50{,}000 & $500 \times N_y$ \\
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
+
 \newpage
+\subsubsection{Year-by-year sequential calibration}
+
+Parameters were calibrated sequentially for each year from 2017 to 2023 using the \texttt{lmfit} implementation of differential evolution (DE) \cite{storn_price_1997}. The DE settings were: population multiplier $\texttt{popsize} = 6$, maximum function evaluations $\texttt{max\_nfev} = 800$, convergence tolerance $\texttt{tol} = 0.01$, and random seed fixed at 42 for reproducibility.
+\\\\
+Within each year, the four topics were fitted in the fixed order:
+\begin{align}
+\underbrace{(H_0,\, k,\, \varphi)}_{\text{humidity}} \;\to\; \underbrace{(\tau_H,\, \gamma,\, \omega)}_{\text{human}} \;\to\; \underbrace{(b_1,\, b_2)}_{\text{FoI}} \;\to\; \underbrace{M'}_{\text{capacity}}.
+\label{eq:topic_order}
+\end{align}
+At each step, only the current topic's parameters were free; all previously fitted parameters were held fixed at their most recent estimates. This sequential strategy reduces the dimensionality of each optimization sub-problem while respecting the biological ordering: the humidity response determines mosquito mortality, which constrains the infection cycle, which in turn determines the force of infection and carrying capacity.
+\\\\
+After the sequential pass, a joint refinement was performed using the Nelder-Mead simplex method \cite{nelder_mead_1965}, with all nine parameters free simultaneously, seeded from the sequential solution. A seed-evaluation guard was applied: after each DE run and after each refinement stage, the starting point was explicitly evaluated, and the optimizer's output was accepted only if it improved upon the seed. This prevents the stochastic DE from returning a solution worse than its initialization.
+
+%\newpage
 \section{Results}
 
 \subsection{Reproduction of the Original Parham $\&$ Michael Model}
@@ -842,10 +857,13 @@ East Zone of Manaus, Amazon, South American Journal of Basic Education, Technica
 \bibitem{INPE_Forest_Fires} Data$\_$Basis.org, Fire Database, National Institute for Space Research (INPE), acessed on 17 March 2026, \href{https://data-basis.org/dataset/f06f3cdc-b539-409b-b311-1ff8878fb8d9?table=a3696dc2-4dd1-4f7e-9769-6aa16a1556b8}{https://data-basis.org/dataset/f06f3cdc-b539-409b-b311-1ff8878fb8d9?table=a3696dc2-4dd1-4f7e-9769-6aa16a1556b8}.
 \\
 %36
-\bibitem{Rep_Number_Comp_Model} P. van den Driessche, J. Watmough, Reproduction numbers and sub-threshold endemic equilibria for compartmental models of disease transmission, Mathematical Biosciences, Vol. 180 (2002), 29-48, \href{https://doi.org/10.1016/S0025-5564(02)00108-6}{https://doi.org/10.1016/S0025-5564(02)00108-6}.
+\bibitem{Rep_Number_Comp_Model} P. van den Driessche, J. Watmough, Reproduction numbers and sub-threshold endemic equilibria for compartmental models of disease transmission, Mathematical Biosciences, Vol. 180, 29-48 (2002), \href{https://doi.org/10.1016/S0025-5564(02)00108-6}{https://doi.org/10.1016/S0025-5564(02)00108-6}.
 \\
 %37
-\bibitem{brasil_et_al_2011_unexpectedly_long_incubation_period_of_plasmodium_vivax} P. Brasil et al, Unexpectedly long incubation period of Plasmodium vivax malaria, in the absence of chemoprophylaxis, in patients diagnosed outside the transmission area in Brazil, Vol 10 (122) (2011), \href{https://link.springer.com/article/10.1186/1475-2875-10-122}{https://link.springer.com/article/10.1186/1475-2875-10-122}
+\bibitem{brasil_et_al_2011_unexpectedly_long_incubation_period_of_plasmodium_vivax} P. Brasil et al, Unexpectedly long incubation period of Plasmodium vivax malaria, in the absence of chemoprophylaxis, in patients diagnosed outside the transmission area in Brazil, Malaria Journal, Vol. 10 (122) (2011), \href{https://link.springer.com/article/10.1186/1475-2875-10-122}{https://link.springer.com/article/10.1186/1475-2875-10-122}
+\\
+%38
+\bibitem{storn_price_1997} R. Storn, K. Price, Differential Evolution - A Simple and Efficient Heuristic for Global Optimization over Continuous Spaces, Journal of Global Optimization, Vol. 11, 341–359 (1997), \href{https://link.springer.com/article/10.1023/A:1008202821328}{https://link.springer.com/article/10.1023/A:1008202821328}
 \\
 %37
 \bibitem{math_assessment_of_the_role_of_temp_and_rainfall} A. Abdelrazec, A. B. Gumel, Mathematical assessment of the role of temperature and rainfall on mosquito population dynamics, Journal of Mathematical Biology, Vol. 74 (6), 1351-1395 (2017), \href{https://link.springer.com/article/10.1007/s00285-016-1054-9}{https://link.springer.com/article/10.1007/s00285-016-1054-9}.
