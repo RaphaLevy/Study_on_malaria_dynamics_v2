@@ -685,6 +685,27 @@ At each step, only the current topic's parameters were free; all previously fitt
 \\\\
 After the sequential pass, a joint refinement was performed using the Nelder-Mead simplex method \cite{nelder_mead_1965}, with all nine parameters free simultaneously, seeded from the sequential solution. A seed-evaluation guard was applied: after each DE run and after each refinement stage, the starting point was explicitly evaluated, and the optimizer's output was accepted only if it improved upon the seed. This prevents the stochastic DE from returning a solution worse than its initialization.
 
+\subsubsection{Year chaining and initial conditions}
+
+The model was calibrated sequentially across years, with the end-state vector of each year serving as the initial state for the next:
+\begin{align}
+\mathbf{z}_0^{(y+1)} = \mathbf{z}_{\mathrm{end}}^{(y)},
+\label{eq:chain}
+\end{align}
+where $\mathbf{z} = (S_H,\, E_H,\, I_H,\, R_H,\, S_M,\, E_M,\, I_M)$ is the full state vector. The human infected compartment was always reset to the first observed active-case count for the new year:
+\begin{align}
+{I_H}_0^{(y+1)} = \mathrm{round}\!\left(y^{\mathrm{obs}}_{\text{first}}\right),
+\label{eq:ih_reset}
+\end{align}
+while all other compartments were carried forward without modification. Negative end-state values were clamped to zero before carrying.
+\\\\
+For the first year (2017), initial-condition fractions were explicitly fitted using Nelder-Mead with 300 function evaluations:
+\begin{align}
+S_{H,0} = \alpha_S \cdot N, \quad E_{H,0} = \alpha_E \cdot N, \quad I_{M,0} = \alpha_I \cdot M_0,
+\label{eq:ic_fitted}
+\end{align}
+where $\alpha_S \in [0.3,\, 0.9]$, $\alpha_E \in [0.001,\, 0.30]$, and $\alpha_I \in [0.0005,\, 0.15]$, with the remaining compartments determined by conservation: $R_{H,0} = N - S_{H,0} - E_{H,0} - I_{H,0}$, $M_0 = 10N$, and $S_{M,0} = M_0 - E_{M,0} - I_{M,0}$.
+
 %\newpage
 \section{Results}
 
