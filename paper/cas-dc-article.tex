@@ -632,9 +632,45 @@ where $I_M^{\min}(\theta) = \min_{t} I_M(t;\theta)$ is the annual minimum of the
 \end{cases}
 \label{eq:penalty}
 \end{align}
-with $I_M^* = 10$ (viability threshold) and $\mathcal{B} = 10^8$ (the base magnitude of the $I_M$ extinction penalty). The penalty scales linearly with the depth of extinction, ensuring that partially-extinct trajectories are ranked proportionally rather than receiving a uniform penalty that would flatten the objective landscape.
+with $I_M^* = 10$ (viability threshold) and $\mathcal{B} = 10^8$ (penalty base scale). The penalty scales linearly with the depth of extinction, ensuring that partially-extinct trajectories are ranked proportionally rather than receiving a uniform penalty that would flatten the objective landscape.
 
+\subsubsection{Parameter grouping and bounds}
 
+The nine calibrated parameters were grouped into four biological ``topics'' for sequential fitting:
+
+\begin{enumerate}
+\item \textbf{Humidity response} $(H_0,\, k,\, \varphi)$: the half-saturation threshold, sigmoid steepness, and baseline survival floor of the humidity-dependent survival function $p(H)$;
+\item \textbf{Human transmission} $(\tau_H,\, \gamma,\, \omega)$: the intrinsic incubation period, recovery rate, and immunity waning rate;
+\item \textbf{Force of infection} $(b_1,\, b_2)$: the human-to-mosquito and mosquito-to-human transmission probabilities;
+\item \textbf{Carrying capacity} $(M')$: the baseline mosquito population scale that determines the environmental carrying capacity $K(t)$.
+\end{enumerate}
+
+The parameter bounds are given in Table~\ref{tbl:bounds}. The lower bound on $H_0 = 20\%$ prevents the humidity response from collapsing (which would drive $\mu \to \infty$ and extinguish the vector population). The bound on $b_2 \geq 0.01$ ensures a minimum level of mosquito-to-human transmission, while $\tau_H \in [10, 20]$ days constrains the human incubation period to the biologically plausible range for \textit{P. vivax} \cite{brasil_et_al_2011_unexpectedly_long_incubation_period_of_plasmodium_vivax}.
+
+\begin{table}[h]
+\begin{threeparttable}
+\caption{Parameter bounds for sequential topic calibration.}\label{tbl:bounds}
+\begin{tabular*}{\tblwidth}{@{} LLL@{} }
+\toprule
+Parameter & Lower bound & Upper bound \\
+\midrule
+$H_0$ (\%) & 20 & 75 \\
+$k$ (\%$^{-1}$) & 0.01 & 1.0 \\
+$\varphi$ & 0.01 & 0.5 \\
+$\tau_H$ (days) & 10 & 20 \\
+$\gamma$ (days$^{-1}$) & $1/150$ & 1.0 \\
+$\omega$ (days$^{-1}$) & $1/300$ & 0.1 \\
+$b_1$ & 0.001 & 0.5 \\
+$b_2$ & 0.01 & 0.5 \\
+$M'$ & 50{,}000 & $500 \times N_y$ \\
+\bottomrule
+\end{tabular*}
+\begin{tablenotes}
+\item $N_y$ denotes the estimated rural population of Manaus for year $y$.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+\newpage
 \section{Results}
 
 \subsection{Reproduction of the Original Parham $\&$ Michael Model}
@@ -788,7 +824,7 @@ East Zone of Manaus, Amazon, South American Journal of Basic Education, Technica
 \bibitem{Future_of_Deforestation} K. R. Kirby, W. F. Laurance, A. K. L. M.  Albernaz, G. Schroth, P. M. Fearnside, S. Bergen, E. M. Venticinque, C. Da Costa, The future of deforestation in the Brazilian Amazon, Futures, Vol. 38 (4), 432–453 (2006), \href{https://doi.org/10.1073/pnas.1905315116}{https://doi.org/10.1073/pnas.1905315116}.
 \\
 %30
-\bibitem{Relationship_between_fires_and_defor} C. F. Lima, F. T. P. Torres, L. J. Minette, F. A. Lima, R. C. A. Lima et al, Is there a relationship between forest fires and deforestation in the Brazilian Amazon?, PLOS ONE, Vol. 19 (6),\href{https://doi.org/10.1371/journal.pone.0306238}{https://doi.org/10.1371/journal.pone.0306238}.
+\bibitem{Relationship_between_fires_and_defor} C. F. Lima, F. T. P. Torres, L. J. Minette, F. A. Lima, R. C. A. Lima et al, Is there a relationship between forest fires and deforestation in the Brazilian Amazon?, PLOS ONE, Vol. 19 (6) (2024), \href{https://doi.org/10.1371/journal.pone.0306238}{https://doi.org/10.1371/journal.pone.0306238}.
 \\
 %31
 \bibitem{Conservation_Policy} P. M. Fearnside, Conservation Policy in Brazilian Amazonia: Understanding the Dilemmas, World Development, Vol. 31 (5), 757-779 (2003), \href{https://doi.org/10.1016/S0305-750X(03)00011-1}{https://doi.org/10.1016/S0305-750X(03)00011-1}.
@@ -807,6 +843,9 @@ East Zone of Manaus, Amazon, South American Journal of Basic Education, Technica
 \\
 %36
 \bibitem{Rep_Number_Comp_Model} P. van den Driessche, J. Watmough, Reproduction numbers and sub-threshold endemic equilibria for compartmental models of disease transmission, Mathematical Biosciences, Vol. 180 (2002), 29-48, \href{https://doi.org/10.1016/S0025-5564(02)00108-6}{https://doi.org/10.1016/S0025-5564(02)00108-6}.
+\\
+%37
+\bibitem{brasil_et_al_2011_unexpectedly_long_incubation_period_of_plasmodium_vivax} P. Brasil et al, Unexpectedly long incubation period of Plasmodium vivax malaria, in the absence of chemoprophylaxis, in patients diagnosed outside the transmission area in Brazil, Vol 10 (122) (2011), \href{https://link.springer.com/article/10.1186/1475-2875-10-122}{https://link.springer.com/article/10.1186/1475-2875-10-122}
 \\
 %37
 \bibitem{math_assessment_of_the_role_of_temp_and_rainfall} A. Abdelrazec, A. B. Gumel, Mathematical assessment of the role of temperature and rainfall on mosquito population dynamics, Journal of Mathematical Biology, Vol. 74 (6), 1351-1395 (2017), \href{https://link.springer.com/article/10.1007/s00285-016-1054-9}{https://link.springer.com/article/10.1007/s00285-016-1054-9}.
