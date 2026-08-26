@@ -21,3 +21,13 @@ All files in this folder regard models in development. They are separated in SIR
     - Test_SEIRS_SEI_Model_Environment_with_Intervention.ipynb: Updated SEIRS/SEI model with DDE solver, including deforestation, forest fires and intervention dynamics to approximate model result to actual data
     - Test_SEIRS_SEI_Model_Intervention.ipynb: Updated SEIRS/SEI model with DDE solver, including intervention dynamics to approximate model result to actual data
     - Test_SEIRS_SEI_Model_Original_PM_Parameters.ipynb: SEIRS/SEI model with DDE solver, comparing infection data and result of model, using original parameters from Parham & Michael (2010)
+  - lmfit_optimization:
+    - a
+  - ode_models:
+    - b
+  - warm_up:
+    - c
+  - weighted_optimization:
+    - d
+  - year_one:
+    - e
