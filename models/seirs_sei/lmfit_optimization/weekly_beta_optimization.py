@@ -52,6 +52,14 @@ _SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 BETA_MAX = 3.0
 BETA_MIN = 1e-9
 
+# Viability floor for the weekly fit. By default this matches IM_MIN_VIABLE (10)
+# so that the weekly fit inherits the same guard as the yearly chain. For years
+# where the baseline params cause I_M to graze this floor, the poor weekly fit
+# reflects a structural limitation (foi_h → 0 when I_M is small) rather than a
+# solver failure. The health-reporting fields (fitted_im_min,
+# fitted_days_below_viable) in the payload flag this situation explicitly.
+WEEKLY_IM_MIN_VIABLE = IM_MIN_VIABLE
+
 
 # ---------------------------------------------------------------------------
 # Per-year grid helpers
@@ -307,7 +315,7 @@ def _weekly_objective(
         model_dates_int, IH, kind="linear", fill_value="extrapolate"
     )(obs_dates_int)
     resid = np.sqrt(weights) * (model_at_obs - obs_vals)
-    penalty = im_extinction_penalty(diag["im_min"])
+    penalty = im_extinction_penalty(diag["im_min"], threshold=WEEKLY_IM_MIN_VIABLE)
     if penalty > 0:
         # Offset the residual vector (constant offset keeps the same length
         # while giving least_squares a gradient that pushes I_M back up).
@@ -430,12 +438,12 @@ def run_weekly_beta_fit(
 
     if verbose:
         print(f"Year {year}: Baseline wMSE (climate-driven beta): {wmse0:,.1f}")
-        if diag0["im_min"] < IM_MIN_VIABLE:
+        if diag0["im_min"] < WEEKLY_IM_MIN_VIABLE:
             print(
-                f"WARNING: the fixed {year} parameters drive I_M down to "
-                f"{diag0['im_min']:.4g} (< {IM_MIN_VIABLE}); with no infected "
-                "mosquitoes the weekly betas are weakly identified. Recalibrate "
-                "the yearly params first."
+                f"WARNING: the fixed {year} parameters let I_M dip to "
+                f"{diag0['im_min']:.4g} (< {WEEKLY_IM_MIN_VIABLE:.0f}); transmission "
+                "is weakly identified around that trough. Recalibrate the yearly "
+                "params first if the weekly fit struggles."
             )
         print(f"Fitting {2 * n_weeks} free weekly betas (beta_h, beta_m)...")
 
@@ -450,11 +458,30 @@ def run_weekly_beta_fit(
         ftol=ftol,
     )
 
+    # Health check of the fitted trajectory: report how close to extinction the
+    # fit actually is, since a low I_M floor makes beta_h unidentifiable even
+    # when least_squares reports success.
+    fitted_im_min = None
+    fitted_days_below = None
+    resf = simulate_year(year, state0, fixed, beta_h_fit, beta_m_fit, return_diagnostics=True)
+    if resf is not None:
+        _, _, _, diagf = resf
+        im_series = diagf["im_series"]
+        fitted_im_min = float(np.min(im_series))
+        fitted_days_below = int((im_series < WEEKLY_IM_MIN_VIABLE).sum())
+
     if verbose:
         print(
             f"Fit done: wMSE = {wmse1:,.1f} "
             f"(nfev={result.nfev}, success={result.success})"
         )
+        if fitted_im_min is not None and fitted_im_min < WEEKLY_IM_MIN_VIABLE:
+            print(
+                f"WARNING: fitted trajectory dips to I_M={fitted_im_min:.4g} "
+                f"(< {WEEKLY_IM_MIN_VIABLE:.0f}) for {fitted_days_below} days; "
+                "beta_h is unidentifiable in that window and the fit there is "
+                "unreliable."
+            )
 
     payload = {
         "year": year,
@@ -468,6 +495,8 @@ def run_weekly_beta_fit(
         "baseline_wmse": float(wmse0),
         "baseline_im_min": float(diag0["im_min"]),
         "weekly_fit_wmse": float(wmse1) if wmse1 is not None else None,
+        "fitted_im_min": fitted_im_min,
+        "fitted_days_below_viable": fitted_days_below,
         "chisqr": float(result.chisqr) if result.chisqr is not None else None,
         "nfev": int(getattr(result, "nfev", -1)),
         "success": bool(getattr(result, "success", False)),

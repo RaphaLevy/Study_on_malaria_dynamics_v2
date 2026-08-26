@@ -511,7 +511,12 @@ def simulate_year(year, state0, p, beta_h_weekly=None, beta_m_weekly=None,
     IH_interp = interp1d(sol.t, sol.y[2])(t_interp)
     end_state = np.maximum(sol.y[:, -1].copy(), 0)
     if return_diagnostics:
-        diagnostics = {"im_min": float(np.min(sol.y[6]))}
+        diagnostics = {
+            "im_min": float(np.min(sol.y[6])),
+            # I_M on the same daily grid as IH_interp, for reporting/inspection
+            # without re-integrating.
+            "im_series": np.interp(t_interp, sol.t, sol.y[6]),
+        }
         return clim["date"].values, IH_interp, end_state, diagnostics
     return clim["date"].values, IH_interp, end_state
 
