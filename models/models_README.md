@@ -21,13 +21,35 @@ All files in this folder regard models in development. They are separated in SIR
     - Test_SEIRS_SEI_Model_Environment_with_Intervention.ipynb: Updated SEIRS/SEI model with DDE solver, including deforestation, forest fires and intervention dynamics to approximate model result to actual data
     - Test_SEIRS_SEI_Model_Intervention.ipynb: Updated SEIRS/SEI model with DDE solver, including intervention dynamics to approximate model result to actual data
     - Test_SEIRS_SEI_Model_Original_PM_Parameters.ipynb: SEIRS/SEI model with DDE solver, comparing infection data and result of model, using original parameters from Parham & Michael (2010)
-  - lmfit_optimization:
-    - a
-  - ode_models:
-    - b
-  - warm_up:
-    - c
-  - weighted_optimization:
-    - d
-  - year_one:
-    - e
+  - lmfit_optimization: Year-by-year sequential topic calibration using `lmfit` differential evolution, with end-state carry-forward between years and an `I_M` extinction penalty. Includes a weekly beta calibration diagnostic where `beta_h`(`a*b2`) and `beta_m`(`a*b1`) are freed per-week to evaluate where the climate-driven formulation deviates from observed dynamics.
+    - Yearly_Topic_Calibration.ipynb: Year-by-year sequential topic calibration (ICs for 2017, then humidity, human transmission, FoI, M' per year with joint refinement)
+    - Weekly_Beta_Calibration-Year_by_Year.ipynb: Per-year weekly beta diagnostic fitting freed `beta_h` and `beta_m` against observed cases
+    - Weekly_Beta_Calibration.ipynb: Full-period version of the weekly beta diagnostic
+    - lmfit_optimization_shared.py: Shared ODE system, simulation, fitting utilities, topic bounds and penalty functions
+    - weekly_beta_optimization.py: Weekly beta calibration utilities and objective functions
+  - ode_models: Per-topic sequential calibration using scipy.optimize, establishing the foundational 7-compartment SEIRS-SEI ODE system with Briere thermal performance curves and humidity-dependent mosquito mortality for the 2017-2023 analysis period.
+    - SEIRS_SEI_ODE_Baseline.ipynb: Baseline model run with default/estimated parameters
+    - SEIRS_SEI_ODE_Humidity_Calibration.ipynb: Calibration of humidity response parameters (H0, k, phi)
+    - SEIRS_SEI_ODE_Human_Transmission_Calibration.ipynb: Calibration of human transmission parameters (tau_H, gamma, omega)
+    - SEIRS_SEI_ODE_FoI_Calibration.ipynb: Calibration of force of infection parameters (b1, b2)
+    - SEIRS_SEI_ODE_Mprime_Calibration.ipynb: Calibration of mosquito carrying capacity (M')
+    - SEIRS_SEI_ODE_IC_Calibration.ipynb: Calibration of initial conditions (S_H0_frac, E_H0_frac, I_M0_ratio)
+    - seirs_sei_ode_shared.py: Shared ODE system, helper functions (biting rate, mosquito survival, emergence), data loading and plotting utilities
+  - warm_up: Same sequential ODE calibration approach as `ode_models`, but with a 2012-2016 warm-up period before the analysis window, allowing the system to converge to its natural attractor rather than depending on arbitrary initial conditions.
+    - SEIRS_SEI_ODE_Baseline.ipynb: Baseline model run with warm-up from 2012 through 2023
+    - SEIRS_SEI_ODE_Humidity_Calibration.ipynb: Humidity calibration with warm-up integration
+    - SEIRS_SEI_ODE_Human_Transmission_Calibration.ipynb: Human transmission calibration with warm-up integration
+    - SEIRS_SEI_ODE_FoI_Calibration.ipynb: Force of infection calibration with warm-up integration
+    - SEIRS_SEI_ODE_Mprime_Calibration.ipynb: Carrying capacity calibration with warm-up integration
+    - SEIRS_SEI_ODE_IC_Calibration.ipynb: Initial conditions calibration with warm-up integration
+  - weighted_optimization: Full-period calibration with an exponential time-decay weighted MSE objective that prioritizes fitting early-time dynamics. Contains two configurations: `2012_2023/` (with warm-up) and `2017_2023/` (direct start).
+    - 2012_2023/: Per-topic calibration across 2012-2023 with warm-up, using weighted objective and resumable JSON results
+    - 2017_2023/: Per-topic calibration across 2017-2023 without warm-up, using weighted objective with fixed M'
+    - weighted_optimization_shared.py: Shared ODE system, weighted MSE objective functions (exponential, step, inverse, linear decay), data loading and calibration utilities
+  - year_one: Exploratory diagnostics and calibration focused on 2017 alone, including first-week micro-scale fitting, grid search + L-BFGS-B optimization of gamma and tau_H, and phase alignment analysis using cross-correlation to diagnose lag between climate forcing and epidemic response.
+    - SEIRS_SEI_ODE_Baseline.ipynb: Baseline model run for 2017
+    - SEIRS_SEI_ODE_IC_Calibration.ipynb: Initial condition calibration for 2017
+    - Full_Year_Gamma_TauH_Calibration.ipynb: Grid search + L-BFGS-B calibration of gamma and tau_H for 2017
+    - First_Week_Fitting.ipynb: Fits b1, b2, H0, k, phi to match I_H for only the first week of 2017
+    - First_Week_Diagnostics.ipynb: Day-by-day ODE term trace for the first week to understand what drives I_H up vs. down
+    - Phase_Alignment_Diagnostics.ipynb: Cross-correlation of climate variables vs. observed I_H to diagnose phase lag
