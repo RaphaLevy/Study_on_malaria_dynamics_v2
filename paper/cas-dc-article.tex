@@ -588,15 +588,52 @@ temperature and precipitation, that was found to be 0.687, 0.839 and -0.883, res
 %number of cases is dependent not only in the environmental data used above, but on the month of year and season as well.
 
 \section{Computational Implementation}
+
+\subsection{Numerical Solver}
 All model simulations were performed using Python version 3.12.7 (conda-forge distribution). Data manipulation and analysis were performed using Pandas version 3.0.2, 
 while numerical computations and array operations were carried out with 
 NumPy version 2.4.2.
 \\\\
-The systems of ODEs (5a-f) were solved numerically using the LSODA solver as implemented in the \texttt{solve\_ivp} function from SciPy version 1.17.1. %A constant time step of 0.1 days was used for all simulations. 
+The systems of ODEs (5a-g) were solved numerically using the LSODA solver as implemented in the \texttt{solve\_ivp} function from SciPy version 1.17.1. %A constant time step of 0.1 days was used for all simulations. 
 All computations were performed on a laptop running \textbf{Windows 11} (64-bit) equipped with a \textbf{12th Gen Intel Core i5-1235U} processor (10 cores, 12 threads, 1.30 GHz base frequency) and \textbf{16 GB RAM}.
 \\\\
 %Computations were executed on a workstation with an Intel Core i7-12700K processor (3.6 GHz) and 32 GB of RAM running Ubuntu 22.04 LTS. 
 The source code and data required to reproduce all figures are available at \url{https://github.com/RaphaLevy/Study_on_malaria_dynamics_v2}.
+
+\subsection{Calibration and Parameter Estimation}
+%\label{sec:calibration}
+
+\subsubsection{Objective function}
+
+Model parameters were estimated by minimizing the discrepancy between the simulated infected-human trajectory $I_H(t)$ and the observed active-case counts reported through SIVEP-Malaria, restricted to rural Manaus (scaled by the 41.54\% rural proportion). The objective function is a weighted mean squared error (wMSE):
+\begin{align}
+\text{wMSE}(\theta) = \frac{\sum_{i=1}^{n} w_i \left( I_H(t_i;\theta) - y_i \right)^2}{\sum_{i=1}^{n} w_i},
+\label{eq:wmse}
+\end{align}
+where $y_i$ denotes the observed active-case count at date $t_i$, $I_H(t_i;\theta)$ is the model prediction obtained by linear interpolation of the simulated trajectory onto the observation dates, and $\theta$ is the vector of calibrated parameters.
+\\\\
+The weights $w_i$ follow an exponential decay that prioritizes early-time dynamics within each year:
+\begin{align}
+w_i = w_0 \, \exp\!\left(-\lambda \, d_i\right),
+\label{eq:weight}
+\end{align}
+where $d_i$ is the number of days from the start of the year for observation $i$, $w_0 = 5.0$ is the initial weight, and $\lambda = 0.0015$ \textrm{day}$^{-1}$ is the decay rate. This weighting scheme reflects the greater sensitivity of the early-season trajectory to initial conditions and parameter values, guiding the optimizer toward solutions that correctly capture the onset of the rainy-season transmission peak.
+\\\\
+To prevent the optimizer from collapsing the infected-mosquito population to near-zero levels---which would sever the force-of-infection coupling and render the human transmission parameters structurally unidentifiable---an extinction penalty was added to the objective:
+\begin{align}
+J(\theta) = \text{wMSE}(\theta) + \mathcal{P}\!\left(I_M^{\min}(\theta)\right),
+\label{eq:combined}
+\end{align}
+where $I_M^{\min}(\theta) = \min_{t} I_M(t;\theta)$ is the annual minimum of the infected-mosquito compartment, and
+\begin{align}
+\mathcal{P}\!\left(I_M^{\min}\right) = \begin{cases}
+0 & \text{if } I_M^{\min} \geq I_M^*, \\[4pt]
+\mathcal{B} \left(1 + \dfrac{I_M^* - I_M^{\min}}{I_M^*}\right) & \text{if } I_M^{\min} < I_M^*,
+\end{cases}
+\label{eq:penalty}
+\end{align}
+with $I_M^* = 10$ (viability threshold) and $\mathcal{B} = 10^8$ (the base magnitude of the $I_M$ extinction penalty). The penalty scales linearly with the depth of extinction, ensuring that partially-extinct trajectories are ranked proportionally rather than receiving a uniform penalty that would flatten the objective landscape.
+
 
 \section{Results}
 
