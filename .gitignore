@@ -16,3 +16,5 @@ models/sir_sei/Original_Model_Best_Fit_Parameters.ipynb
 models/sir_sei/Test_DDE_Model_Best_Fit_Parameters.ipynb
 # Ignore folder of referenced papers, as to avoid issues of copyright
 references/papers/
+# Ignore notebook backups
+models/seirs_sei/regression/notebook_backups/
