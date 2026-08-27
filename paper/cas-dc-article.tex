@@ -205,6 +205,39 @@ drivers of mosquito life-history parameters, while land-use variables are introd
 Using epidemiological and environmental data from the Trajetorias Project \cite{Rorato2023}, we investigate how these 
 factors influence disease dynamics and assess their relative contributions through analytical and numerical methods.
 
+\section{Environmental Drivers of Malaria Transmission in the Amazon}
+
+Environmental changes, particularly deforestation and forest fires, have been widely associated with the 
+resurgence and spatial redistribution of malaria transmission in the Amazon region \cite{Norris2004}. 
+The removal of forest canopy alters local microclimatic conditions, increasing sunlight exposure and ambient temperature, 
+which in turn favor the development of mosquito larvae and pupae. In particular, the primary malaria vector in the Amazon, 
+\textit{Anopheles darlingi}, is known to thrive in partially deforested environments, where sunlit 
+water bodies promote larval growth and increase the availability of food sources such as algae \cite{infoAnopheles, article_alteracoesambientais}.
+\\\\
+Beyond ecological effects, deforestation also influences human exposure to malaria. Activities such as logging, 
+agriculture, and infrastructure development lead to increased human presence in recently altered environments, 
+often in close proximity to mosquito breeding sites. This results in higher human–vector contact rates and facilitates 
+transmission, especially in areas where both vector density and environmental suitability are elevated. Additionally, 
+land-use changes such as agriculture may contribute to river sedimentation and the formation of artificial breeding sites, 
+further enhancing mosquito proliferation.
+\\\\
+Forest fragmentation has been shown to accelerate mosquito development cycles by increasing temperature 
+and light availability, reducing the time from larval to adult stages and increasing vectorial capacity and 
+survivorship \cite{Alteracoes_Ambientais, Anthropogenic_Landscape}. Similarly, forest fires, often used as a 
+land-clearing mechanism, remove vegetation and modify habitat structure, contributing to long-term ecological 
+changes that can influence mosquito populations and disease transmission dynamics \cite{Future_of_Deforestation, Relationship_between_fires_and_defor}. 
+These processes may also increase the likelihood of subsequent fires by promoting understory drying and fuel accumulation \cite{Conservation_Policy}.
+\\\\
+In this context, deforestation and fire activity are incorporated into the model as external drivers that modify 
+transmission dynamics. Rather than directly altering mosquito physiological parameters, these factors are 
+interpreted as influencing human–vector contact rates and exposure, thereby affecting the effective transmission of the disease.
+\\\\
+Deforestation data were obtained from the DETER system, which provides daily records of deforestation alerts by degradation type, 
+reported in km$^2$ \cite{Daily_DETER}. The data were aggregated to produce a complete daily time series of deforested area. 
+Forest fire data were obtained from the Brazilian National Institute for Space Research (INPE), which provides daily records of detected 
+fire hotspots \cite{INPE_Forest_Fires}. Due to the absence of area-based measurements at this temporal resolution, the number of 
+detected hotspots was used as a proxy for fire activity.
+
 \section{Model Formulation}
 
 \subsection{Baseline Delayed SIR-SEI Model}
@@ -448,40 +481,6 @@ these estimates were revised. The rural population for 2006 was approximated as 
 reported values for 2000 and 2010, while the 2017 value was obtained through extrapolation based on the 
 observed growth trend. These adjustments ensured temporal consistency in the population data used throughout the study. 
 
-\section{Impacts of Environmental Factors}
-
-Environmental changes, particularly deforestation and forest fires, have been widely associated with the 
-resurgence and spatial redistribution of malaria transmission in the Amazon region \cite{Norris2004}. 
-The removal of forest canopy alters local microclimatic conditions, increasing sunlight exposure and ambient temperature, 
-which in turn favor the development of mosquito larvae and pupae. In particular, the primary malaria vector in the Amazon, 
-\textit{Anopheles darlingi}, is known to thrive in partially deforested environments, where sunlit 
-water bodies promote larval growth and increase the availability of food sources such as algae \cite{infoAnopheles, article_alteracoesambientais}.
-\\\\
-Beyond ecological effects, deforestation also influences human exposure to malaria. Activities such as logging, 
-agriculture, and infrastructure development lead to increased human presence in recently altered environments, 
-often in close proximity to mosquito breeding sites. This results in higher human–vector contact rates and facilitates 
-transmission, especially in areas where both vector density and environmental suitability are elevated. Additionally, 
-land-use changes such as agriculture may contribute to river sedimentation and the formation of artificial breeding sites, 
-further enhancing mosquito proliferation.
-\\\\
-Forest fragmentation has been shown to accelerate mosquito development cycles by increasing temperature 
-and light availability, reducing the time from larval to adult stages and increasing vectorial capacity and 
-survivorship \cite{Alteracoes_Ambientais, Anthropogenic_Landscape}. Similarly, forest fires, often used as a 
-land-clearing mechanism, remove vegetation and modify habitat structure, contributing to long-term ecological 
-changes that can influence mosquito populations and disease transmission dynamics \cite{Future_of_Deforestation, Relationship_between_fires_and_defor}. 
-These processes may also increase the likelihood of subsequent fires by promoting understory drying and fuel accumulation \cite{Conservation_Policy}.
-\\\\
-In this context, deforestation and fire activity are incorporated into the model as external drivers that modify 
-transmission dynamics. Rather than directly altering mosquito physiological parameters, these factors are 
-interpreted as influencing human–vector contact rates and exposure, thereby affecting the effective transmission of the disease.
-\\\\
-Deforestation data were obtained from the DETER system, which provides daily records of deforestation alerts by degradation type, 
-reported in km$^2$ \cite{Daily_DETER}. The data were aggregated to produce a complete daily time series of deforested area. 
-Forest fire data were obtained from the Brazilian National Institute for Space Research (INPE), which provides daily records of detected 
-fire hotspots \cite{INPE_Forest_Fires}. Due to the absence of area-based measurements at this temporal resolution, the number of 
-detected hotspots was used as a proxy for fire activity.
-
-
 \section{Mathematical Analysis of the Model}
 
 \subsection{Mosquito population dynamics}
@@ -589,21 +588,7 @@ temperature and precipitation, that was found to be 0.687, 0.839 and -0.883, res
 
 \section{Computational Implementation}
 
-\subsection{Numerical Solver}
-All model simulations were performed using Python version 3.12.7 (conda-forge distribution). Data manipulation and analysis were performed using Pandas version 3.0.2, 
-while numerical computations and array operations were carried out with 
-NumPy version 2.4.2.
-\\\\
-The systems of ODEs (5a-g) were solved numerically using the LSODA solver as implemented in the \texttt{solve\_ivp} function from SciPy version 1.17.1. %A constant time step of 0.1 days was used for all simulations. 
-All computations were performed on a laptop running \textbf{Windows 11} (64-bit) equipped with a \textbf{12th Gen Intel Core i5-1235U} processor (10 cores, 12 threads, 1.30 GHz base frequency) and \textbf{16 GB RAM}.
-\\\\
-%Computations were executed on a workstation with an Intel Core i7-12700K processor (3.6 GHz) and 32 GB of RAM running Ubuntu 22.04 LTS. 
-The source code and data required to reproduce all figures are available at \url{https://github.com/RaphaLevy/Study_on_malaria_dynamics_v2}.
-
-\subsection{Calibration and Parameter Estimation}
-%\label{sec:calibration}
-
-\subsubsection{Objective function}
+\subsection{Objective function and parameter bounds}
 
 Model parameters were estimated by minimizing the discrepancy between the simulated infected-human trajectory $I_H(t)$ and the observed active-case counts reported through SIVEP-Malaria, restricted to rural Manaus (scaled by the 41.54\% rural proportion). The objective function is a weighted mean squared error (wMSE):
 \begin{align}
@@ -633,8 +618,6 @@ where $I_M^{\min}(\theta) = \min_{t} I_M(t;\theta)$ is the annual minimum of the
 \label{eq:penalty}
 \end{align}
 with $I_M^* = 10$ (viability threshold) and $\mathcal{B} = 10^8$ (penalty base scale). The penalty scales linearly with the depth of extinction, ensuring that partially-extinct trajectories are ranked proportionally rather than receiving a uniform penalty that would flatten the objective landscape.
-
-\subsubsection{Parameter grouping and bounds}
 
 The nine calibrated parameters were grouped into four biological ``topics'' for sequential fitting:
 
@@ -671,8 +654,7 @@ $M'$ & 50{,}000 & $500 \times N_y$ \\
 \end{threeparttable}
 \end{table}
 
-\newpage
-\subsubsection{Year-by-year sequential calibration}
+\subsection{Year-by-year sequential calibration}
 
 Parameters were calibrated sequentially for each year from 2017 to 2023 using the \texttt{lmfit} implementation of differential evolution (DE) \cite{storn_price_1997}. The DE settings were: population multiplier $\texttt{popsize} = 6$, maximum function evaluations $\texttt{max\_nfev} = 800$, convergence tolerance $\texttt{tol} = 0.01$, and random seed fixed at 42 for reproducibility.
 \\\\
@@ -685,8 +667,6 @@ At each step, only the current topic's parameters were free; all previously fitt
 \\\\
 After the sequential pass, a joint refinement was performed using the Nelder-Mead simplex method \cite{nelder_mead_1965}, with all nine parameters free simultaneously, seeded from the sequential solution. A seed-evaluation guard was applied: after each DE run and after each refinement stage, the starting point was explicitly evaluated, and the optimizer's output was accepted only if it improved upon the seed. This prevents the stochastic DE from returning a solution worse than its initialization.
 
-\subsubsection{Year chaining and initial conditions}
-
 The model was calibrated sequentially across years, with the end-state vector of each year serving as the initial state for the next:
 \begin{align}
 \mathbf{z}_0^{(y+1)} = \mathbf{z}_{\mathrm{end}}^{(y)},
@@ -694,7 +674,7 @@ The model was calibrated sequentially across years, with the end-state vector of
 \end{align}
 where $\mathbf{z} = (S_H,\, E_H,\, I_H,\, R_H,\, S_M,\, E_M,\, I_M)$ is the full state vector. The human infected compartment was always reset to the first observed active-case count for the new year:
 \begin{align}
-{I_H}_0^{(y+1)} = \mathrm{round}\!\left(y^{\mathrm{obs}}_{\text{first}}\right),
+{I_H}^{(y+1)}_0 = \mathrm{round}\!\left(y^{\mathrm{obs}}_{\text{first}}\right),
 \label{eq:ih_reset}
 \end{align}
 while all other compartments were carried forward without modification. Negative end-state values were clamped to zero before carrying.
@@ -706,7 +686,7 @@ S_{H,0} = \alpha_S \cdot N, \quad E_{H,0} = \alpha_E \cdot N, \quad I_{M,0} = \a
 \end{align}
 where $\alpha_S \in [0.3,\, 0.9]$, $\alpha_E \in [0.001,\, 0.30]$, and $\alpha_I \in [0.0005,\, 0.15]$, with the remaining compartments determined by conservation: $R_{H,0} = N - S_{H,0} - E_{H,0} - I_{H,0}$, $M_0 = 10N$, and $S_{M,0} = M_0 - E_{M,0} - I_{M,0}$.
 
-\subsubsection{Weekly diagnostic}
+\subsection{Weekly beta diagnostic}
 
 To evaluate where the climate-driven formulation deviates from what the data demands, a diagnostic calibration was performed in which the effective transmission coefficients were freed as per-week parameters instead of being derived from the biting rate and fixed $b_1$, $b_2$:
 \begin{align}
@@ -725,6 +705,17 @@ r_i = \sqrt{w_i}\left(I_H(t_i) - y_i\right) + \sqrt{\mathcal{P}\!\left(I_M^{\min
 where $\sqrt{\mathcal{P}}$ is injected as a constant offset to preserve the residual vector length while providing a gradient that pushes $I_M$ upward when the mosquito population approaches the viability threshold.
 \\\\
 The weekly beta fit serves as a diagnostic baseline: it reveals the best achievable fit when the transmission coefficients are unconstrained by the climate formulation. Persistent deviations between the weekly-optimal $\beta_{h,w}$ and the climate-driven $a(T) \cdot b_2$ indicate periods where the environmental model fails to capture the true transmission dynamics.
+
+\subsection{Numerical solver and implementation}
+
+All ODE simulations were performed using Python version 3.12.7 (conda-forge distribution), using the LSODA solver as implemented in \texttt{scipy.integrate.solve\_ivp} (SciPy version 1.17.1), with automatic stiffness detection and order switching. The integration was evaluated on a fine grid of 10 points per day ($\Delta t = 0.1$ day), with the solution interpolated back to daily resolution via linear interpolation. End-state vectors were clamped to zero to prevent negative compartment values from propagating through the year chain.
+\\\\
+Climate inputs (temperature, precipitation, minimum humidity) were smoothed using a 14-day rolling mean for mosquito demographic rates (mortality $\mu$, sporogonic development $b_{3M}$, birth rate $\Lambda$), while the biting rate $a(T)$ used raw daily temperature to preserve high-frequency transmission variability.
+\\\\
+Data manipulation and analysis were performed using Pandas version 3.0.2,  while numerical computations and array operations were carried out with  NumPy version 2.4.2.
+\\\\
+All computations were performed on a laptop running Windows 11 (64-bit) equipped with a 12th Gen Intel Core i5-1235U processor (10 cores, 12 threads) and 16\,GB RAM. The source code and calibration results are available at \url{https://github.com/RaphaLevy/Study_on_malaria_dynamics_v2}.
+
 %\newpage
 \section{Results}
 
