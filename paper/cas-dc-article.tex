@@ -785,33 +785,14 @@ As a baseline for the development of the model, the original SIR–SEI proposed 
 Figures 1A and 2A show the resulting dynamics of the human and mosquito populations, respectively. While the epidemiological compartments for the human population initially exhibited plausible behavior, although not what would be expected for a recurring disease such as malaria, with the infected population gradually decreased, the mosquito population rapidly declined to extinction. This behavior indicates that mosquito recruitment was insufficient to replace mortality.
 \\\\
 Since transmission depends on the persistence of infectious mosquitoes, the collapse of the vector population resulted in the elimination of infection in both host and vector populations. Therefore, although the delay formulation preserved positivity, it failed to reproduce the endemic behavior expected for malaria transmission in the Amazon region.
-%The initial implementation of the model using the original functional forms and parameter values reported in \cite{Parham2010} did not reproduce biologically consistent transmission dynamics, particularly in the mosquito population. As illustrated in Figures 1–3A, the human SIR component exhibits a monotonic decline in the number of infected individuals, suggesting that the infection fails to persist in the population under the given parametrization. More critically, the corresponding SEI mosquito model yields nonphysical behavior, with the susceptible mosquito population attaining negative values and exhibiting oscillatory dynamics.
-%\\\\
-%These inconsistencies arise from the functional forms adopted for key entomological parameters, which do not explicitly enforce biologically meaningful bounds. In particular, probability and rate functions did not explicitly present necessary constraints, such as not ensuring that probabilities lie between $[0,1]$ , leading to violations of positivity and instability in the numerical solutions.
-%\\\\
-%To address this issue, the functional forms were modified to ensure that all probabilities and rates remain within their admissible ranges. The resulting dynamics, shown in Figure 3A, exhibit a different behavior, with the mosquito population rapidly declining toward extinction. While this modification restores mathematical consistency, it also highlights a mismatch between the model structure and the expected persistence of malaria in endemic settings, motivating the need for further refinement of the transmission and demographic assumptions.
-%\\\\
-%Before including the environmental factors on the used model (7-12), its results were compared to a model based on SIVEP data, keeping use of equations (7, 10-12), but using
-%\begin{align}
-%I_H(t) & = \sum_{t=\max\left(0, \ k-\dfrac{1}{\gamma}+1 \right)}^{0\leq k \leq 1825} \text{\# of cases} \label{eq13}\\ 
-%R_H(t) & = \max\left(0, \ N (1+r_H t) -S_H(t) -I_H(t)\right)\label{eq14}
-%\end{align}
-%\\
-%$I_H(t)$ now being the moving sum of cases over a period of 120 days, as it is the average duration of infectiousness, and $R_H(t)$ being the difference between the initial population and the susceptible and infected population at each day, with the addition of the daily births.
-%The result can be seen in the graph below.
-%\newpage
-%\begin{figure}
-%	\centering
-	%\includegraphics{comparison-between-IH-data-and-model.png}
-%	\includegraphics[width=1\columnwidth]{figs/comparison-between-IH-data-and-model.png}
-%	\caption{Comparison between observed data of infections and model estimation of $I_H$.}
-%	\label{FIG:1}
-%\end{figure}
 
-%It is possible to see that the model gives a close approximation to the format of the observed number of infections and recoveries, although the infections appear to increase faster and die out given the model, a behavior that is not seen on the actual data.
-%In order to better approximate the model to the data, a method of linear regression was used, with the intent of minimizing the difference by optimizing different parameters used on the model. 
-%\\\\
-%At this point, a linear combination was implemented as a replacement  to the use of simply $T$ and $R$, in order to take into consideration the effects of  deforestation and fires, with the $\alpha$-function $\alpha_1D + \alpha_2F + \alpha_3T + \alpha_4R$,  with $\alpha_0 = [0, 0, 1, 1]$ representing the primary version of the model. 
+\subsection{Base SEIRS-SEI simulation without calibration}
+\label{sec:base_seirs_sei_no_calibration}
+
+The initial SEIRS-SEI model of Section~\ref{sec:seirs_sei_model_ode_approximation} was integrated over the 2017-2023 period, with all transmission and demographic coefficients being fixed at their literature values reported on Table A.2. The model was integrated with the LSODA solver on a grid of 10 points per day and chained across years by carrying the end state of one year into the next, with the human infectious compartment reset to the first observed active-case count of each year. Two climate treatments were considered: the \emph{raw} daily drivers and the \emph{smoothed} drivers in which temperature, precipitation, and minimum humidity entering the mosquito demographic rates were averaged over a 14-day window, as prescribed in Section~\ref{sec:numerical_solver_implementation}.
+
+%As a reference against which all subsequent calibrated results are measured, the complete environment-driven SEIRS--SEI model of Section~\ref{sec:model} was integrated over the 2017--2023 period \emph{without any parameter fitting}. All transmission and demographic coefficients were fixed at their literature values reported above ($b_1 = 0.04$, $b_2 = 0.09$, $\tau_H = 10$~days, $H_0 = 58\%$, $k = 0.25$, $\varphi = 0.05$), and the only inputs varied from year to year were the observed environmental drivers (temperature, precipitation, humidity, deforestation, and forest fires) and the yearly rural population. The model was integrated with the LSODA solver on a grid of 10 points per day and chained across years by carrying the end state of one year into the next, with the human infectious compartment reset to the first observed active-case count of each year. Two climate treatments were considered: the \emph{raw} daily drivers and the \emph{smoothed} drivers in which temperature, precipitation, and minimum humidity entering the mosquito demographic rates were averaged over a 14-day window, as prescribed in Section~\ref{sec:numerical_solver_implementation}.
+
 
 \section{Discussion}
 
