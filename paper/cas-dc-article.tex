@@ -708,6 +708,40 @@ where $\sqrt{\mathcal{P}}$ is injected as a constant offset to preserve the resi
 \\\\
 The weekly beta fit serves as a diagnostic baseline: it reveals the best achievable fit when the transmission coefficients are unconstrained by the climate formulation. Persistent deviations between the weekly-optimal $\beta_{h,w}$ and the climate-driven $a(T) \cdot b_2$ indicate periods where the environmental model fails to capture the true transmission dynamics.
 
+\subsection{Freeing the transmission coefficients}
+
+There are three main observations that allow us to use the effective transmission coefficients $\beta_{h,w}$ and $\beta_{m,w}$ as per-week free parameters:
+\\\\
+\textbf{(i) The transmission coefficients are intrinsically time-varying:} In the mechanistic formulation, the forces of infection are given by $\lambda_H = a(T)\,b_2\, I_M/N$ and $\lambda_M = a(T)\,b_1\, I_H/N$, where the biting rate $a(T)$ is the only environmental factor and the per-bite probabilities $b_1$ and $b_2$ are assumed to be constants. This assumption is biologically restrictive because these coefficients summarize several processes that may vary over the transmission season, including parasite development within the vector, vector susceptibility to infection, vector to host contact, and host infectiousness. These processes can be affected by temperature, rainfall, humidity, and changes in vector and host demography \cite{brierre_function_development_rate, human_to_mosquito_transmission_efficiency}. We therefore relax the assumption that $b_1$ and $b_2$ remain constant throughout the study period and allow the data to determine how transmission changes over time.
+\\\\
+\textbf{(ii) The weekly fit provides a nonparametric estimate of the latent transmission process:} We represent the effective transmission coefficients as latent time-varying functions, $\beta_h(t)$ and $\beta_m(t)$. These functions are approximated as piecewise constant over weekly intervals: $$\beta_h(t)=\beta_{h,w},\ \beta_m(t)=\beta_{m,w},\ t\in[7w,7(w+1))$$
+This provides a flexible finite-dimensional representation of possible transmission profiles. The weekly coefficients are estimated by minimizing the weighted residual between the model predictions and the observed malaria cases. Thus, rather than imposing a specific relationship between transmission and environmental covariates, the weekly model provides a flexible, data-driven estimate of the temporal variation in transmission.
+\\\\
+The resulting $2\times n_{\mathrm{weeks}}$ coefficients don't represent independent biological parameters to be estimated, but rather provide a flexible empirical representation of the transmission process. The additional degrees of freedom allow the model to capture temporal changes in transmission that a more constrained model may miss, providing a reference for evaluating the proposed mechanistic model.
+\\\\
+\textbf{(iii) The climate-driven model is nested within the weekly model:} The climate-driven model is obtained by imposing the restriction
+\begin{align}
+\beta_{h,w} = a(T_w) b_2, \qquad \beta_{m,w} = a(T_w)\, b_1,
+\label{eq:nested_beta}
+\end{align}
+where $b_1$ and $b_2$ are constant over the entire study period. Consequently, the climate-driven formulation is a restricted case of the more flexible weekly model. Because all other model parameters and initial conditions are held fixed, the difference in fit between the two formulations directly measures the extent to which the constant-coefficient assumption limits the model's ability to reproduce the observed cases.
+\\\\
+In our results, the wMSE decreases from approximately $10^6$ for the climate-driven model to approximately $10^2$ for the weekly model. This substantial improvement indicates that the data contain temporal variation in transmission that cannot be adequately represented by constant $b_1$ and $b_2$.
+\\\\
+The weekly estimates are therefore used as a diagnostic benchmark rather than as the final parameterization of the model. They identify the temporal transmission pattern that a parsimonious mechanistic formulation should seek to explain. This approach preserves the distinction between estimating a flexible empirical transmission process and identifying the underlying biological parameters, as the weekly coefficients characterize the observed transmission signal, while the subsequent structural model determines how that signal can be explained by environmental drivers.
+\\\\
+Finally, the weekly estimates provide the link between the empirical transmission signal and the environmental model. Since the biting rate $a(T_w)$ is explicitly modeled as a function of temperature, the corresponding weekly per-bite transmission probabilities can be recovered as
+\begin{align}
+b_{1,w}=\frac{\beta_{m,w}}{a(T_w)},
+\qquad
+b_{2,w}=\frac{\beta_{h,w}}{a(T_w)}.
+\label{eq}
+\end{align}
+These time-varying estimates represent the per-bite transmission probabilities implied by the observed case dynamics after accounting for the temperature-dependent biting rate. They are subsequently used as empirical targets for regression models relating $b_1$ and $b_2$ to environmental drivers. In this way, the weekly fit serves as an intermediate step in the modeling chain 
+$$ \text{environment} \longrightarrow (b_1,b_2) \longrightarrow \text{transmission} \longrightarrow \text{cases}, $$
+allowing a flexible, data-driven estimate of transmission to be translated into a simplified and mechanistically interpretable environmental model.
+
+
 \subsection{Numerical solver and implementation}
 
 All ODE simulations were performed using Python version 3.12.7 (conda-forge distribution), using the LSODA solver as implemented in \texttt{scipy.integrate.solve\_ivp} (SciPy version 1.17.1), with automatic stiffness detection and order switching. The integration was evaluated on a fine grid of 10 points per day ($\Delta t = 0.1$ day), with the solution interpolated back to daily resolution via linear interpolation. End-state vectors were clamped to zero to prevent negative compartment values from propagating through the year chain.
@@ -891,7 +925,10 @@ and enhancing the reliability of the results.
 \bibitem{Lindsay_Birley_1996} S. W. Lindsay, M. H. Birley, Climate change and malaria transmission, Annals of Tropical Medicine \& Parasitology,Vol. 90 (1996), 573-588, \href{https://doi.org/10.1080/00034983.1996.11813087}{https://doi.org/10.1080/00034983.1996.11813087}.
 \\
 %38
-\bibitem{Ecological_Change_Malaria_Risk} N. J. Arisco, C. Peterka, C. Diniz, B. H. Singer, M. C. Castro, Ecological change increases malaria risk in the Brazilian Amazon, Proc. Natl. Acad. Sci., Vol. 121 (44) (2024) \href{https://doi.org/10.1073/pnas.2409583121}{https://doi.org/10.1073/pnas.2409583121}.
+\bibitem{Ecological_Change_Malaria_Risk} N. J. Arisco, C. Peterka, C. Diniz, B. H. Singer, M. C. Castro, Ecological change increases malaria risk in the Brazilian Amazon, Proc. Natl. Acad. Sci., Vol. 121 (44) (2024), \href{https://doi.org/10.1073/pnas.2409583121}{https://doi.org/10.1073/pnas.2409583121}.
+\\
+%39
+\bibitem{human_to_mosquito_transmission_efficiency} T.  S. Churcher, J. F. Trape, A. Cohuet, Human-to-mosquito transmission efficiency increases as malaria is controlled, Nat Commun 6, 6054 (2015), \href{https://doi.org/10.1038/ncomms7054}{https://doi.org/10.1038/ncomms7054}
 \\
 %------------------------------FIX
 \bibitem{Datasus2006} Tabnet, Ministério da Saúde, accessed on 12 August 2024, \href{http://tabnet.datasus.gov.br/cgi/tabcgi.exe?ibge/cnv/popam.def}{http://tabnet.datasus.gov.br/cgi/tabcgi.exe?ibge/cnv/popam.def}.
