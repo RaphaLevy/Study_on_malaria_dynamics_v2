@@ -177,6 +177,7 @@ Malaria transmission \sep SIR–SEI model \sep SEIRS-SEI model \sep Mathematical
 \maketitle
 
 \section{Introduction}
+\label{sec:intro}
 
 Malaria remains one of the most significant vector-borne diseases worldwide, caused by 
 protozoa of the genus \textit{Plasmodium} and transmitted by female mosquitoes of the 
@@ -206,6 +207,7 @@ Using epidemiological and environmental data from the Trajetorias Project \cite{
 factors influence disease dynamics and assess their relative contributions through analytical and numerical methods.
 
 \section{Environmental Drivers of Malaria Transmission in the Amazon}
+\label{sec:environmental_drivers}
 
 Environmental changes, particularly deforestation and forest fires, have been widely associated with the 
 resurgence and spatial redistribution of malaria transmission in the Amazon region \cite{Norris2004}. 
@@ -241,8 +243,10 @@ detected hotspots was used as a proxy for fire activity.
 Daily climatic data, including temperature, precipitation and humidity were obtained from the Mosqlimate API \cite{MosqlimateAPI}.
 
 \section{Model Formulation}
+\label{sec:model}
 
 \subsection{Baseline Delayed SIR-SEI Model}
+\label{sec:baseline_delayed_sir_sei}
 
 We begin with the classical host-vector framework for malaria transmission, based on the model introduced by Parham and Michael (2010) \cite{Parham2010}, 
 which incorporates temperature- and rainfall-dependent mosquito dynamics. The human population is divided into susceptible, infected, 
@@ -272,6 +276,7 @@ the parameterization considered, the model fails to reproduce sustained transmis
 both the infected human population and the mosquito population tends to extinction, indicating that the structure does not adequately capture endemic persistence.
 
 \subsection{ODE approximation and structural limitations}
+\label{sec:ode_approximation_limitations}
 
 To simplify the analysis and avoid the technical complexity of delay differential equations, an ordinary differential equation (ODE) 
 approximation was initially considered. In this formulation, the extrinsic incubation period in mosquitoes is modeled via a transition 
@@ -295,6 +300,7 @@ capture the recurrent nature of malaria transmission observed in endemic regions
 importance of explicitly modeling incubation periods and immunity dynamics.
 
 \subsection{SEIRS-SEI model with ODE approximation}
+\label{sec:seirs_sei_model_ode_approximation}
 
 To address the limitations of the previous formulations, we introduce an ODE based SEIRS-SEI model that incorporates 
 both incubation delays as done above and temporary immunity in the human population. The human compartments 
@@ -348,6 +354,7 @@ The forces of infection are defined as:
 \end{subequations}
 
 \subsection{Recalibration of the temperature-dependent biting rate}
+\label{sec:recalibration_temp_dependent_biting_rate}
 In the original formulation by Parham \& Michael \cite{Parham2010}, the biting rate is expressed as a temperature-dependent function derived from the duration of the gonotrophic cycle. Although this formulation captures the general thermal dependence of mosquito feeding behavior, its parameterization was not developed specifically for Amazonian mosquito populations. With this in mind, we recalibrated the biting-rate function using entomological observations reported by de Barros, Honório and Arruda \cite{debarros2011}, regarding females of \textit{Anopheles darlingi} collected between August 2003 and July 2004 through intermittent sampling carried out in selected months over the study period.
 \\\\
 Their results allowed for estimation of the duration of the gonotrophic cycle through the following formula:
@@ -370,6 +377,7 @@ At this point, we also approximated the ratio of initially exposed to infectious
 This adjustment preserves the functional structure proposed by Parham and Michael while adapting the parameter values to better reflect the feeding behavior of the primary malaria vector in the Amazon region.
 
 \subsection{Density-dependent mosquito recruitment and carrying capacity}
+\label{sec:density_dependent_recruitment_carrying_capacity}
 Mosquito population dynamics were initially modeled using a linear birth–death process of the form
 \begin{align}
 \frac{dM}{dt} = b - \mu M,
@@ -428,11 +436,13 @@ Both environmental response functions are normalized so that $0 \leq f_T(T), f_R
 ensuring that the carrying capacity remains bounded by the baseline population scale $M_0$.
 \\\\
 Unlike the classical logistic formulation, where population growth is directly proportional to the current mosquito abundance, the present representation assumes that recruitment is primarily determined by environmental suitability and breeding-site availability. The factor
-$\left(1-\frac{M(t)}{K(t)}\right)$ therefore imposes density-dependent regulation by reducing recruitment as the mosquito population approaches the carrying capacity, providing a biologically realistic upper bound on mosquito abundance. The mathematical implications of this formulation are analyzed in Section 5.1.
+$\left(1-\frac{M(t)}{K(t)}\right)$ therefore imposes density-dependent regulation by reducing recruitment as the mosquito population approaches the carrying capacity, providing a biologically realistic upper bound on mosquito abundance. The mathematical implications of this formulation are analyzed in Section~\ref{sec:mosquito_pop_dynamics}.
 
 \section{Data Description and Processing}
+\label{sec:data_description_processing}
 
 \subsection{Epidemiological Data}
+\label{sec:epidemiological_data}
 
 This study focuses on malaria cases caused by \textit{Plasmodium vivax}, which accounts for the majority 
 of malaria infections in Brazil and is the predominant species in the Amazon 
@@ -443,6 +453,7 @@ which provides daily records of notified malaria cases for all Brazilian municip
 2003 to 2023. The analysis was restricted to the period 2017–2023, for which complete epidemiological and environmental data were available.
 
 \subsection{Population Estimates}
+\label{sec:population_estimates}
 
 The municipality of Manaus was selected due to its high incidence of \textit{P. vivax} malaria, 
 particularly in rural areas. However, detailed yearly estimates of rural population were not directly available 
@@ -471,6 +482,7 @@ the Brazilian Institute of Geography and Statistics (IBGE) for the years 2000, 2
 linear interpolation, while values beyond 2022 were extrapolated based on observed trends.
 
 \subsection{Data Consistency Adjustments}
+\label{sec:data_consistency_adjustments}
 
 During preprocessing, inconsistencies were identified in the Trajetorias dataset. In particular, 
 incidence rates for the period 2015–2019 had been calculated using population estimates corresponding 
@@ -484,8 +496,10 @@ reported values for 2000 and 2010, while the 2017 value was obtained through ext
 observed growth trend. These adjustments ensured temporal consistency in the population data used throughout the study. 
 
 \section{Mathematical Analysis of the Model}
+\label{sec:mathematical_analysis_of_model}
 
 \subsection{Mosquito population dynamics}
+\label{sec:mosquito_pop_dynamics}
 In this section, we analyze the qualitative impact of the density-dependent recruitment term on mosquito population dynamics. 
 We compare the proposed formulation with the classical Verhulst model and show that the modified structure prevents extinction under suitable environmental conditions.
 
@@ -544,6 +558,7 @@ Consequently, $M(t)$ cannot converge to zero as $t \to \infty$, and the extincti
 \end{proof}
 
 \subsection{Basic Reproduction Number ($\mathcal{R}_0$)}
+\label{sec:basic_reproduction_number}
 To derive the $\mathcal{R}_0$ of the model, we define $X_s$ as the set of all disease-free states, 
 $$X_s=\{x \geq 0|x_i=0, i=1,\ldots,m\},$$
 where $X=(x_1,\ldots, x_n)^T$, such that $x_i\geq 0$ represents the number 
@@ -573,6 +588,7 @@ where $R_{0}^H=\frac{ab_2}{\gamma}$ and $R_{0}^M=\frac{ab_1 \Lambda}{N\mu}\cdot\
 
 
 \subsection{Understanding relations}
+\label{sec:understanding_relations}
 Having the necessary epidemiological and environmental datasets ready for use, the next step 
 taken was to verify the correlation between the number of cases and forest areas impacted by deforestation 
 and fires, in addition to the correlation with temperature and precipitation as well. 
@@ -589,8 +605,10 @@ temperature and precipitation, that was found to be 0.687, 0.839 and -0.883, res
 %number of cases is dependent not only in the environmental data used above, but on the month of year and season as well.
 
 \section{Computational Implementation}
+\label{sec:computational_implemetation}
 
 \subsection{Objective function and parameter bounds}
+\label{sec:objective_function}
 
 Model parameters were estimated by minimizing the discrepancy between the simulated infected-human trajectory $I_H(t)$ and the observed active-case counts reported through SIVEP-Malaria, restricted to rural Manaus (scaled by the 41.54\% rural proportion). The objective function is a weighted mean squared error (wMSE):
 \begin{align}
@@ -657,6 +675,7 @@ $M'$ & 50{,}000 & $500 \times N_y$ \\
 \end{table}
 
 \subsection{Year-by-year sequential calibration}
+\label{sec:year_by_year_calibration}
 
 Parameters were calibrated sequentially for each year from 2017 to 2023 using the \texttt{lmfit} implementation of differential evolution (DE) \cite{storn_price_1997}. The DE settings were: population multiplier $\texttt{popsize} = 6$, maximum function evaluations $\texttt{max\_nfev} = 800$, convergence tolerance $\texttt{tol} = 0.01$, and random seed fixed at 42 for reproducibility.
 \\\\
@@ -689,6 +708,7 @@ S_{H,0} = \alpha_S \cdot N, \quad E_{H,0} = \alpha_E \cdot N, \quad I_{M,0} = \a
 where $\alpha_S \in [0.3,\, 0.9]$, $\alpha_E \in [0.001,\, 0.30]$, and $\alpha_I \in [0.0005,\, 0.15]$, with the remaining compartments determined by conservation: $R_{H,0} = N - S_{H,0} - E_{H,0} - I_{H,0}$, $M_0 = 10N$, and $S_{M,0} = M_0 - E_{M,0} - I_{M,0}$.
 
 \subsection{Weekly beta diagnostic}
+\label{sec:weekly_beta_diagnostic}
 
 To evaluate where the climate-driven formulation deviates from what the data demands, a diagnostic calibration was performed in which the effective transmission coefficients were freed as per-week parameters instead of being derived from the biting rate and fixed $b_1$, $b_2$:
 \begin{align}
@@ -709,6 +729,7 @@ where $\sqrt{\mathcal{P}}$ is injected as a constant offset to preserve the resi
 The weekly beta fit serves as a diagnostic baseline: it reveals the best achievable fit when the transmission coefficients are unconstrained by the climate formulation. Persistent deviations between the weekly-optimal $\beta_{h,w}$ and the climate-driven $a(T) \cdot b_2$ indicate periods where the environmental model fails to capture the true transmission dynamics.
 
 \subsection{Freeing the transmission coefficients}
+\label{sec:freeing_transmission_coefficients}
 
 There are three main observations that allow us to use the effective transmission coefficients $\beta_{h,w}$ and $\beta_{m,w}$ as per-week free parameters:
 \\\\
@@ -743,6 +764,7 @@ allowing a flexible, data-driven estimate of transmission to be translated into 
 
 
 \subsection{Numerical solver and implementation}
+\label{sec:numerical_solver_implementation}
 
 All ODE simulations were performed using Python version 3.12.7 (conda-forge distribution), using the LSODA solver as implemented in \texttt{scipy.integrate.solve\_ivp} (SciPy version 1.17.1), with automatic stiffness detection and order switching. The integration was evaluated on a fine grid of 10 points per day ($\Delta t = 0.1$ day), with the solution interpolated back to daily resolution via linear interpolation. End-state vectors were clamped to zero to prevent negative compartment values from propagating through the year chain.
 \\\\
@@ -754,9 +776,11 @@ All computations were performed on a laptop running Windows 11 (64-bit) equipped
 
 %\newpage
 \section{Results}
+\label{sec:results}
 
 \subsection{Reproduction of the Original Parham $\&$ Michael Model}
-As a baseline for the development of the model, the original SIR–SEI proposed by Parham and Michael (2010) was implemented using all parameter values reported in the original study. Since population sizes and initial epidemiological conditions were not explicitly provided by the authors, these quantities were estimated from the available rural Manaus data and used as initial conditions.
+\label{sec:results_parham_michael}
+As a baseline for the development of the model, the original SIR–SEI proposed by Parham and Michael (2010) \cite{Parham2010} was implemented using all parameter values reported in the original study. Since population sizes and initial epidemiological conditions were not explicitly provided by the authors, these quantities were estimated from the available rural Manaus data and used as initial conditions.
 \\\\
 Figures 1A and 2A show the resulting dynamics of the human and mosquito populations, respectively. While the epidemiological compartments for the human population initially exhibited plausible behavior, although not what would be expected for a recurring disease such as malaria, with the infected population gradually decreased, the mosquito population rapidly declined to extinction. This behavior indicates that mosquito recruitment was insufficient to replace mortality.
 \\\\
@@ -796,7 +820,7 @@ inter-census periods are derived using fixed rural–urban proportions based on 
 While this approach ensures internal consistency, it does not account for the significant 
 demographic changes observed in Manaus over time, particularly those associated with rapid urbanization.
 \\\\
-To address this limitation, the population proportions used in this study were recalculated (see Section 3.3) 
+To address this limitation, the population proportions used in this study were recalculated (see Section~\ref{sec:data_consistency_adjustments}) 
 using interpolation and extrapolation based on available census data. This adjustment provides a more realistic 
 representation of temporal changes in the rural population, which is especially relevant given the 
 disproportionate contribution of rural areas to malaria incidence.
@@ -1090,7 +1114,7 @@ $k$  & Steepness of the humidity-survival sigmoid response & $\%^{-1}$ \\
 
 \noindent
 \includegraphics[width=\columnwidth]{figs/SIR_Model_Parham_and_Michael_ODE_Solution.png}
-\captionof{figure}{ODE simulation of the baseline SIR model using the formulation from 2.2 and parameters from \cite{Parham2010}. A slight increase in the infectious population can be noticed, although it still tends to extinction over the course of the first year of transmission.}
+\captionof{figure}{ODE simulation of the baseline SIR model using the formulation from Section~\ref{sec:ode_approximation_limitations} and parameters from \cite{Parham2010}. A slight increase in the infectious population can be noticed, although it still tends to extinction over the course of the first year of transmission.}
 \label{FIG:3A}
 
 
@@ -1102,7 +1126,7 @@ $k$  & Steepness of the humidity-survival sigmoid response & $\%^{-1}$ \\
 
 \noindent
 \includegraphics[width=\columnwidth]{figs/SEI_Model_Parham_and_Michael_ODE_Solution.png}
-\captionof{figure}{ODE simulation of the baseline SEI mosquito model using the formulation from 2.2 and parameters from \cite{Parham2010}. It can be seen that the mosquito population still tends to extinction.}
+\captionof{figure}{ODE simulation of the baseline SEI mosquito model using the formulation from Section~\ref{sec:ode_approximation_limitations} and parameters from \cite{Parham2010}. It can be seen that the mosquito population still tends to extinction.}
 \label{FIG:4A}
 %\begin{figure}[H]
 	%\centering
