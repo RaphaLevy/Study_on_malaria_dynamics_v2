@@ -18,3 +18,5 @@ models/sir_sei/Test_DDE_Model_Best_Fit_Parameters.ipynb
 references/papers/
 # Ignore notebook backups
 models/seirs_sei/regression/notebook_backups/
+# Ignore outdated file
+models/seirs_sei/regression/2_rf_regression.ipynb
