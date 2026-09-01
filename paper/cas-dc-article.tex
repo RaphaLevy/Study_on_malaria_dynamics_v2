@@ -605,11 +605,56 @@ M^* = \frac{b_0 K_0}{b_0 + \mu}, \qquad \Lambda^* := \Lambda\big|_{M=M^*}
 = \mu M^* = \frac{\mu b_0 K_0}{b_0 + \mu},
 \label{eq:lambda_star}
 \end{equation}
-where $b_0=b(R,T)$ and $K_0=K(t)$ are evaluated at the DFE. Note that
+where $b_0=b(R,T)$ and $K_0=K(t)$ are the environmental drivers evaluated at their fixed reference state (here, the study-period means), so that 
+$\mathcal{R}_0$ is a function of that reference climate–habitat state. Note that
 $\Lambda^*$ is the %refore \emph{not} an arbitrary value: it is the
 recruitment rate that sustains the equilibrium vector population $M^*$,
 and it inherits the environmental dependence of $b(R,T)$ and $K(t)$.
 
+
+\paragraph{Next-generation matrices.}
+The new-infection and transfer matrices, evaluated at the DFE, are
+\begin{equation}
+\begin{aligned}
+F &= \begin{pmatrix}
+0 & 0 & 0 & \dfrac{ab_2 S_H^*}{N} \\
+0 & 0 & 0 & 0 \\
+0 & \dfrac{ab_1 S_M^*}{N} & 0 & 0 \\
+0 & 0 & 0 & 0
+\end{pmatrix}
+\\\\
+V &= \begin{pmatrix}
+b_{3H} & 0 & 0 & 0 \\
+-b_{3H} & \gamma & 0 & 0 \\
+0 & 0 & b_{3M}\ell + \mu & 0 \\
+0 & 0 & -b_{3M}\ell & \mu
+\end{pmatrix},
+\end{aligned}
+\label{eq:ngm}
+\end{equation}
+where we used $S_H^* = N$ and $S_M^* = M^*$ at the DFE. The spectral
+radius of $FV^{-1}$ gives
+\begin{equation}
+\mathcal{R}_0 = \rho(FV^{-1}) = \sqrt{\frac{a^2 b_1 b_2 \Lambda^* b_{3M}\ell}{N\gamma(b_{3M}\ell+\mu)\mu^2}},
+\label{eq:R0}
+\end{equation}
+which can be written in the classical two-factor form
+\begin{equation}
+\begin{aligned}
+\mathcal{R}_0^H &= \frac{ab_2}{\gamma}; \ \ \ \mathcal{R}_0^M = \frac{ab_1 \Lambda^*}{N\mu}\cdot\frac{b_{3M}\ell}{(b_{3M}\ell+\mu)\mu}
+\\
+\Longrightarrow \mathcal{R}_0 &= \sqrt{\mathcal{R}_0^H \cdot \mathcal{R}_0^M},
+\end{aligned}
+\label{eq:R0_factors}
+\end{equation}
+where $\mathcal{R}_0^H$ is the expected number of humans infected by a
+single infectious mosquito and
+$\mathcal{R}_0^M$ is the expected number of mosquitoes infected by a
+single infectious human. The geometric mean arises from
+the two-host two-vector structure of the model: the transmission cycle
+must complete a full human-to-mosquito-to-human loop, and the block
+structure of the next-generation matrix decouples into these two
+factors.
 
 %\subsection{Understanding relations}
 %\label{sec:understanding_relations}
