@@ -772,7 +772,7 @@ Climate inputs (temperature, precipitation, minimum humidity) were smoothed usin
 \\\\
 Data manipulation and analysis were performed using Pandas version 3.0.2,  while numerical computations and array operations were carried out with  NumPy version 2.4.2.
 \\\\
-All computations were performed on a laptop running Windows 11 (64-bit) equipped with a 12th Gen Intel Core i5-1235U processor (10 cores, 12 threads) and 16\,GB RAM. The source code and calibration results are available at \url{https://github.com/RaphaLevy/Study_on_malaria_dynamics_v2}.
+All computations were performed on a laptop running Windows 11 (64-bit) equipped with a 12th Gen Intel Core i5-1235U processor (10 cores, 12 threads) and 16\,GB RAM. %The source code and calibration results are available at \url{https://github.com/RaphaLevy/Study_on_malaria_dynamics_v2}.
 
 %\newpage
 \section{Results}
@@ -782,17 +782,34 @@ All computations were performed on a laptop running Windows 11 (64-bit) equipped
 \label{sec:results_parham_michael}
 As a baseline for the development of the model, the original SIR–SEI proposed by Parham and Michael (2010) \cite{Parham2010} was implemented using all parameter values reported in the original study. Since population sizes and initial epidemiological conditions were not explicitly provided by the authors, these quantities were estimated from the available rural Manaus data and used as initial conditions.
 \\\\
-Figures 1A and 2A show the resulting dynamics of the human and mosquito populations, respectively. While the epidemiological compartments for the human population initially exhibited plausible behavior, although not what would be expected for a recurring disease such as malaria, with the infected population gradually decreased, the mosquito population rapidly declined to extinction. This behavior indicates that mosquito recruitment was insufficient to replace mortality.
+Figure 1 below shows the resulting dynamics of the human and mosquito populations, respectively. While the epidemiological compartments for the human population initially exhibited plausible behavior, although not what would be expected for a recurring disease such as malaria, with the infected population gradually decreased, the mosquito population rapidly declined to extinction. This behavior indicates that mosquito recruitment was insufficient to replace mortality.
 \\\\
 Since transmission depends on the persistence of infectious mosquitoes, the collapse of the vector population resulted in the elimination of infection in both host and vector populations. Therefore, although the delay formulation preserved positivity, it failed to reproduce the endemic behavior expected for malaria transmission in the Amazon region.
+
+\renewcommand{\thefigure}{1test}
+\vspace{0.5cm}
+\noindent
+\includegraphics[width=\columnwidth]{figs/SIR_Model_Parham_and_Michael_DDE_Solution.png}
+%\captionof{figure}{DDE simulation of the baseline SIR model using the original parameterization from Parham $\&$ Michael (2010) \cite{Parham2010}. The dynamics show a monotonic decline in the number of infected individuals, indicating the absence of sustained transmission.}
+\label{FIG:1test}
+
+\renewcommand{\thefigure}{1}
+%\vspace{0.6cm}
+
+\noindent
+\includegraphics[width=\columnwidth]{figs/SEI_Model_Parham_and_Michael_DDE_Solution.png}
+\captionof{figure}{DDE simulation of the baseline SIR-SEI  model using the original parameterization from \cite{Parham2010}. The dynamics of the SIR model show a monotonic decline in the number of infected individuals within the human population, indicating the absence of sustained transmission, while the dynamics of the SEI model show that the entire mosquito population tends to extinction, an unexpected behavior for a region where malaria is highly endemic.}
+\label{FIG:1}
 
 \subsection{Base SEIRS-SEI simulation without calibration}
 \label{sec:base_seirs_sei_no_calibration}
 
 The initial SEIRS-SEI model of Section~\ref{sec:seirs_sei_model_ode_approximation} was integrated over the 2017-2023 period, with all transmission and demographic coefficients being fixed at their literature values reported on Table A.2. The model was integrated with the LSODA solver on a grid of 10 points per day and chained across years by carrying the end state of one year into the next, with the human infectious compartment reset to the first observed active-case count of each year. Two climate treatments were considered: the \emph{raw} daily drivers and the \emph{smoothed} drivers in which temperature, precipitation, and minimum humidity entering the mosquito demographic rates were averaged over a 14-day window, as prescribed in Section~\ref{sec:numerical_solver_implementation}.
+\\\\
+% FINAL REPOSITORY STILL TO BE CREATED!
+All files of data collection and treatment, as well as resulting plots created during throughout the development of this work are available at \url{https://github.com/RaphaLevy/--------}.
 
-%As a reference against which all subsequent calibrated results are measured, the complete environment-driven SEIRS--SEI model of Section~\ref{sec:model} was integrated over the 2017--2023 period \emph{without any parameter fitting}. All transmission and demographic coefficients were fixed at their literature values reported above ($b_1 = 0.04$, $b_2 = 0.09$, $\tau_H = 10$~days, $H_0 = 58\%$, $k = 0.25$, $\varphi = 0.05$), and the only inputs varied from year to year were the observed environmental drivers (temperature, precipitation, humidity, deforestation, and forest fires) and the yearly rural population. The model was integrated with the LSODA solver on a grid of 10 points per day and chained across years by carrying the end state of one year into the next, with the human infectious compartment reset to the first observed active-case count of each year. Two climate treatments were considered: the \emph{raw} daily drivers and the \emph{smoothed} drivers in which temperature, precipitation, and minimum humidity entering the mosquito demographic rates were averaged over a 14-day window, as prescribed in Section~\ref{sec:numerical_solver_implementation}.
-
+%\newpage
 
 \section{Discussion}
 
@@ -1066,49 +1083,49 @@ $k$  & Steepness of the humidity-survival sigmoid response & $\%^{-1}$ \\
 
 \subsection{Figures}
 
-\renewcommand{\thefigure}{1A}
-\vspace{0.5cm}
+%\renewcommand{\thefigure}{1A}
+%\vspace{0.5cm}
 
 %\begin{figure*}[t]
 %\centering
 %\includegraphics[width=\textwidth]{figs/SIR_Model_Parham_and_Michael_values.png}
 %\caption{Results of the initial SIR model, with equations and parameters from \cite{Parham2010}.}
 %\end{figure*}
+%\noindent
+%\includegraphics[width=\columnwidth]{figs/SIR_Model_Parham_and_Michael_DDE_Solution.png}
+%\captionof{figure}{DDE simulation of the baseline SIR model using the original parameterization from Parham $\&$ Michael (2010) \cite{Parham2010}. The dynamics show a monotonic decline in the number of infected individuals, indicating the absence of sustained transmission.}
+%\label{FIG:1A}
+
+
+
+%\renewcommand{\thefigure}{2A}
+%\vspace{0.6cm}
+
+%\noindent
+%\includegraphics[width=\columnwidth]{figs/SEI_Model_Parham_and_Michael_DDE_Solution.png}
+%\captionof{figure}{DDE simulation of the baseline SEI mosquito model using the original parameterization from \cite{Parham2010}. The dynamics show that the entire population tended to extinction, an unexpected behavior for a region where malaria is highly endemic.}
+%\label{FIG:2A}
+
+
+\renewcommand{\thefigure}{1A}
+\vspace{0.6cm}
+
 \noindent
-\includegraphics[width=\columnwidth]{figs/SIR_Model_Parham_and_Michael_DDE_Solution.png}
-\captionof{figure}{DDE simulation of the baseline SIR model using the original parameterization from Parham $\&$ Michael (2010) \cite{Parham2010}. The dynamics show a monotonic decline in the number of infected individuals, indicating the absence of sustained transmission.}
+\includegraphics[width=\columnwidth]{figs/SIR_Model_Parham_and_Michael_ODE_Solution.png}
+\captionof{figure}{ODE simulation of the baseline SIR model using the formulation from Section~\ref{sec:ode_approximation_limitations} and parameters from \cite{Parham2010}. A slight increase in the infectious population can be noticed, although it still tends to extinction over the course of the first year of transmission.}
 \label{FIG:1A}
 
 
 
 \renewcommand{\thefigure}{2A}
 \vspace{0.6cm}
-
-\noindent
-\includegraphics[width=\columnwidth]{figs/SEI_Model_Parham_and_Michael_DDE_Solution.png}
-\captionof{figure}{DDE simulation of the baseline SEI mosquito model using the original parameterization from \cite{Parham2010}. The dynamics show that the entire population tended to extinction, an unexpected behavior for a region where malaria is highly endemic.}
-\label{FIG:2A}
-
-
-\renewcommand{\thefigure}{3A}
-\vspace{0.6cm}
-
-\noindent
-\includegraphics[width=\columnwidth]{figs/SIR_Model_Parham_and_Michael_ODE_Solution.png}
-\captionof{figure}{ODE simulation of the baseline SIR model using the formulation from Section~\ref{sec:ode_approximation_limitations} and parameters from \cite{Parham2010}. A slight increase in the infectious population can be noticed, although it still tends to extinction over the course of the first year of transmission.}
-\label{FIG:3A}
-
-
-
-\renewcommand{\thefigure}{4A}
-\vspace{0.6cm}
-~\\[0.15cm]  % Forces a line break 
+%~\\[0.15cm]  % Forces a line break 
 
 
 \noindent
 \includegraphics[width=\columnwidth]{figs/SEI_Model_Parham_and_Michael_ODE_Solution.png}
 \captionof{figure}{ODE simulation of the baseline SEI mosquito model using the formulation from Section~\ref{sec:ode_approximation_limitations} and parameters from \cite{Parham2010}. It can be seen that the mosquito population still tends to extinction.}
-\label{FIG:4A}
+\label{FIG:2A}
 %\begin{figure}[H]
 	%\centering
 %	\includegraphics[width=1\columnwidth]{figs/comparison-between-IH-data-and-model.png}
