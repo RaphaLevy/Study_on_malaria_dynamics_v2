@@ -600,7 +600,7 @@ together with the system
 $\dot{x} = f(x) = \mathcal{F}(x) - \mathcal{V}(x)$,
 where each component is assumed twice continuously differentiable.
 
-\paragraph{Disease-free equilibrium.}
+\paragraph{Disease-free equilibrium:}
 The disease-free equilibrium (DFE) is
 
 \begin{equation}\label{eq:dfe}
@@ -628,7 +628,7 @@ recruitment rate that sustains the equilibrium vector population $M^*$,
 and it inherits the environmental dependence of $b(R,T)$ and $K(t)$.
 
 
-\paragraph{Next-generation matrices.}
+\paragraph{Next-generation matrices:}
 The new-infection and transfer matrices, evaluated at the DFE, are
 \begin{equation}
 \begin{aligned}
@@ -951,7 +951,7 @@ and enhancing the reliability of the results.
 \bibitem{INPE_Forest_Fires} Data$\_$Basis.org, Fire Database, National Institute for Space Research (INPE), acessed on 17 March 2026, \href{https://data-basis.org/dataset/f06f3cdc-b539-409b-b311-1ff8878fb8d9?table=a3696dc2-4dd1-4f7e-9769-6aa16a1556b8}{https://data-basis.org/dataset/f06f3cdc-b539-409b-b311-1ff8878fb8d9?table=a3696dc2-4dd1-4f7e-9769-6aa16a1556b8}.
 \\
 %16
-\bibitem{Mapbiomas} MapBiomas Brasil, Home/Iniciativas e Produtos/Fogo/Mapeamento anual/Mensal, acessed on 30 August 2026, \href{https://plataforma.brasil.mapbiomas.org/}{https://plataforma.brasil.mapbiomas.org/}
+\bibitem{Mapbiomas} MapBiomas Brasil, Home/Iniciativas e Produtos/Fogo/Mapeamento anual/Mensal, acessed on 30 August 2026, \href{https://plataforma.brasil.mapbiomas.org/}{https://plataforma.brasil.mapbiomas.org/}.
 \\
 %17
 \bibitem{MosqlimateAPI} Mosqlimate Data API / Datastore / climate, accessed on 12 August 2024, \href{https://api.mosqlimate.org/datastore/}{https://api.mosqlimate.org/datastore/}.
@@ -1150,6 +1150,40 @@ $k$  & Steepness of the humidity-survival sigmoid response & $\%^{-1}$ \\
 
 \clearpage
 
+\subsection{Derivation of the basic reproduction number}
+\label{app:r0_derivation}
+
+This appendix details the next-generation matrix (NGM) computation
+summarised in Section~\ref{sec:basic_reproduction_number}. The infected
+compartments are ordered as $(E_H, I_H, E_M, I_M)$, so $m = 4$. All
+parameters are as defined in Section~3.
+
+\paragraph{Disease-free states and the NGM formalism:}
+\label{app:ngm_formalism}
+Following van den Driessche and Watmough \cite{Rep_Number_Comp_Model},
+let $X_s$ be the set of all disease-free states:
+$$X_s = \{x \geq 0 \mid x_i = 0,\ i = 1, \ldots, m\},$$
+where $X = (x_1, \ldots, x_n)^\top$, $x_i \geq 0$ is the number of
+individuals in compartment $i$, and every function is assumed to be
+continuously differentiable at least twice in each variable ($C^2$).
+\\\\
+Rearranging the model equations so that the first $m$ components are the
+infected compartments, let $\mathcal{F}_i(x)$ be the rate of appearance
+of new infections in compartment $i$, $\mathcal{V}_i^+(x)$ the rate of
+transfer into compartment $i$ by all other means, and
+$\mathcal{V}_i^-(x)$ the rate of transfer out of compartment $i$. The
+model can then be written as
+$$\dot{x}_i = f_i(x) = \mathcal{F}_i(x) - \mathcal{V}_i(x),
+\ \ \ i = 1, \ldots, n,$$
+with $\mathcal{V}_i(x) = \mathcal{V}_i^-(x) - \mathcal{V}_i^+(x)$. The
+next-generation matrices are the Jacobians of these terms evaluated at
+the disease-free equilibrium $x_0$:
+$$F = \left[\frac{\partial \mathcal{F}_i(x_0)}{\partial x_j}\right],
+\ \ \ V = \left[\frac{\partial \mathcal{V}_i(x_0)}{\partial x_j}\right],
+\ \ \ 1 \leq i, j \leq m,$$
+so that $\mathcal{R}_0 = \rho(FV^{-1})$.
+
+\clearpage
 
 \subsection{Figures}
 
