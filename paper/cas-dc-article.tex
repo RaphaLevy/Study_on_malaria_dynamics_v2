@@ -558,32 +558,57 @@ Consequently, $M(t)$ cannot converge to zero as $t \to \infty$, and the extincti
 
 \subsection{Basic Reproduction Number ($\mathcal{R}_0$)}
 \label{sec:basic_reproduction_number}
-To derive the $\mathcal{R}_0$ of the model, we define $X_s$ as the set of all disease-free states, 
-$$X_s=\{x \geq 0|x_i=0, i=1,\ldots,m\},$$
-where $X=(x_1,\ldots, x_n)^T$, such that $x_i\geq 0$ represents the number 
-of individuals in each compartment, and each function is assumed to be 
-continuously differentiable at least twice in each variable ($C^2$) \cite{Rep_Number_Comp_Model}.
-\\\\
-Rearranging the equations so that the first $m$ 
-contain the infected individuals, let ${\mathcal F}_i(x)$ be the 
-rate of appearance of new infections in compartment $i$, 
-${\mathcal V}_i^+(x)$ be the rate of individuals entering 
-compartment $i$ by other means, and ${\mathcal V}_i^-(x)$ 
-be the rate of individuals leaving compartment $i$. The disease 
-transmission model consists of non-negative initial conditions 
-together with the following system of equations:
-$$\dot{x}=f_i(x)={\mathcal F}_i(x)-{\mathcal V}_i(x), i=1,\ldots, n,$$
-where ${\mathcal V}_i (x) = {\mathcal V}_i^{-}(x) - {\mathcal V}_i^+(x)$. 
-Here, 
-$F=\left[\frac{\partial {\mathcal F}_i (x_0)}{\partial x_j}\right]$ 
-and $V=\left[\frac{\partial {\mathcal V}_i (x_0) }{\partial x_j}\right]$, 
-where $x_0$ is a Disease-Free Equilibrium (DFE), and $1\leq i,j \leq m$, and $\mathcal{R}_0 = \rho(FV^{-1})$. 
-\\\\
-The formulation for $\mathcal{R}_0$ in the complete SEIRS/SEI system is given by:
-\begin{align}
-R_0=\sqrt{\frac{a^2b_1b_2\Lambda b_{3M}\ell}{N\gamma (b_{3M}\ell+\mu)\mu^2}},
-\end{align}
-where $R_{0}^H=\frac{ab_2}{\gamma}$ and $R_{0}^M=\frac{ab_1 \Lambda}{N\mu}\cdot\frac{b_{3M}\ell}{(b_{3M}\ell+\mu)\mu}$.
+%To derive the $\mathcal{R}_0$ of the model, we define $X_s$ as the set of all disease-free states, $$X_s=\{x \geq 0|x_i=0, i=1,\ldots,m\},$$ where $X=(x_1,\ldots, x_n)^T$, such that $x_i\geq 0$ represents the number 
+%of individuals in each compartment, and each function is assumed to be continuously differentiable at least twice in each variable ($C^2$) \cite{Rep_Number_Comp_Model}.
+%\\\\
+%Rearranging the equations so that the first $m$ contain the infected individuals, let ${\mathcal F}_i(x)$ be the rate of appearance of new infections in compartment $i$, 
+%${\mathcal V}_i^+(x)$ be the rate of individuals entering compartment $i$ by other means, and ${\mathcal V}_i^-(x)$ be the rate of individuals leaving compartment $i$. The disease 
+%transmission model consists of non-negative initial conditions together with the following system of equations: $$\dot{x}=f_i(x)={\mathcal F}_i(x)-{\mathcal V}_i(x), i=1,\ldots, n,$$
+%where ${\mathcal V}_i (x) = {\mathcal V}_i^{-}(x) - {\mathcal V}_i^+(x)$. Here, $F=\left[\frac{\partial {\mathcal F}_i (x_0)}{\partial x_j}\right]$ 
+%and $V=\left[\frac{\partial {\mathcal V}_i (x_0) }{\partial x_j}\right]$, where $x_0$ is a Disease-Free Equilibrium (DFE), and $1\leq i,j \leq m$, and $\mathcal{R}_0 = \rho(FV^{-1})$. 
+%\\\\
+%The formulation for $\mathcal{R}_0$ in the complete SEIRS-SEI system is given by:
+%\begin{align}
+%R_0=\sqrt{\frac{a^2b_1b_2\Lambda^* b_{3M}\ell}{N\gamma (b_{3M}\ell+\mu)\mu^2}},
+%\end{align}
+%where $R_{0}^H=\frac{ab_2}{\gamma}$ and $R_{0}^M=\frac{ab_1 \Lambda^*}{N\mu}\cdot\frac{b_{3M}\ell}{(b_{3M}\ell+\mu)\mu}$.
+
+Following the next-generation matrix method of van den Driessche and Watmough \cite{Rep_Number_Comp_Model}, 
+we order the infected compartments as
+$X_I = (E_H, I_H, E_M, I_M)^T$
+and denote by $\mathcal{F}_i(x)$ the rate of appearance of new infections
+in compartment $i$ and by $\mathcal{V}_i(x) = \mathcal{V}_i^-(x) - \mathcal{V}_i^+(x)$
+the net rate of transfer of individuals into and out of compartment $i$.
+The disease transmission model consists of non-negative initial conditions
+together with the system
+$\dot{x} = f(x) = \mathcal{F}(x) - \mathcal{V}(x)$,
+where each component is assumed twice continuously differentiable.
+
+\paragraph{Disease-free equilibrium.}
+The disease-free equilibrium (DFE) is
+
+\begin{equation}\label{eq:dfe}
+\begin{aligned}
+x_0 &= (S_H^*, E_H^*, I_H^*, R_H^*, S_M^*, E_M^*, I_M^*)^\top \\
+    &= (N, 0, 0, 0, M^*, 0, 0)^\top .
+\end{aligned}
+\end{equation}
+\\
+where the equilibrium mosquito abundance $M^*$ is obtained from the
+mosquito subsystem
+\begin{equation}
+\frac{dM}{dt} = \Lambda(t) - \mu M = b(R,T)K(t)\left(1 - \frac{M}{K(t)}\right) - \mu M = 0,
+\end{equation}
+which yields
+\begin{equation}
+M^* = \frac{b_0 K_0}{b_0 + \mu}, \qquad \Lambda^* := \Lambda\big|_{M=M^*}
+= \mu M^* = \frac{\mu b_0 K_0}{b_0 + \mu},
+\label{eq:lambda_star}
+\end{equation}
+where $b_0=b(R,T)$ and $K_0=K(t)$ are evaluated at the DFE. Note that
+$\Lambda^*$ is the %refore \emph{not} an arbitrary value: it is the
+recruitment rate that sustains the equilibrium vector population $M^*$,
+and it inherits the environmental dependence of $b(R,T)$ and $K(t)$.
 
 
 %\subsection{Understanding relations}
