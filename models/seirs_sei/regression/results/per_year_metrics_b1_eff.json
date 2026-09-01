@@ -1,0 +1,136 @@
+{
+  "per_year": [
+    {
+      "year": 2017,
+      "n_weeks": 50,
+      "r2": 0.5628033436780395,
+      "mae": 0.05943225108754907,
+      "rmse": 0.10113352799499925,
+      "bias": 0.0020544562726912017,
+      "top_driver": "Temperature T",
+      "feature_importances": {
+        "temp_mean": 0.2594191980625351,
+        "precip_mean": 0.25064993200978264,
+        "umid_min_mean": 0.23228488555246032,
+        "defor_total_4wk": 0.011684941862690706,
+        "fire_counts_4wk": 0.11632576777866607,
+        "fire_trends_ha": 0.12963527473386535
+      }
+    },
+    {
+      "year": 2018,
+      "n_weeks": 51,
+      "r2": 0.5803388399118836,
+      "mae": 0.06512179151360345,
+      "rmse": 0.1002203863754921,
+      "bias": -0.0005317196175127427,
+      "top_driver": "Temperature T",
+      "feature_importances": {
+        "temp_mean": 0.24128141928396557,
+        "precip_mean": 0.18116510218578605,
+        "umid_min_mean": 0.19372809450836853,
+        "defor_total_4wk": 0.1358617736031051,
+        "fire_counts_4wk": 0.10257320138428525,
+        "fire_trends_ha": 0.14539040903448944
+      }
+    },
+    {
+      "year": 2019,
+      "n_weeks": 51,
+      "r2": 0.7392774713120601,
+      "mae": 0.047476787532850936,
+      "rmse": 0.0731108071906531,
+      "bias": 0.0010947067985845839,
+      "top_driver": "Fire counts Fc",
+      "feature_importances": {
+        "temp_mean": 0.14430835313506726,
+        "precip_mean": 0.1920919492203593,
+        "umid_min_mean": 0.2080039230693641,
+        "defor_total_4wk": 0.0652781178514026,
+        "fire_counts_4wk": 0.26656017326599224,
+        "fire_trends_ha": 0.12375748345781455
+      }
+    },
+    {
+      "year": 2020,
+      "n_weeks": 51,
+      "r2": 0.6709680744769154,
+      "mae": 0.06260757254958478,
+      "rmse": 0.0848410020789479,
+      "bias": 0.0021166592686054464,
+      "top_driver": "Precipitation R",
+      "feature_importances": {
+        "temp_mean": 0.1534795975296778,
+        "precip_mean": 0.24678293340563592,
+        "umid_min_mean": 0.1598067983453484,
+        "defor_total_4wk": 0.11259783117906115,
+        "fire_counts_4wk": 0.20555508642240583,
+        "fire_trends_ha": 0.12177775311787087
+      }
+    },
+    {
+      "year": 2021,
+      "n_weeks": 50,
+      "r2": 0.7051588954573229,
+      "mae": 0.060287185637430706,
+      "rmse": 0.09692234384100339,
+      "bias": -0.0009432688735635875,
+      "top_driver": "Fire trends Ft",
+      "feature_importances": {
+        "temp_mean": 0.15892928384259916,
+        "precip_mean": 0.2421254022156555,
+        "umid_min_mean": 0.1722364020447379,
+        "defor_total_4wk": 0.0898916433482308,
+        "fire_counts_4wk": 0.062331453791567897,
+        "fire_trends_ha": 0.2744858147572089
+      }
+    },
+    {
+      "year": 2022,
+      "n_weeks": 52,
+      "r2": 0.8098902258655046,
+      "mae": 0.05033562205646376,
+      "rmse": 0.08351245149258855,
+      "bias": 0.0009687918243487451,
+      "top_driver": "Temperature T",
+      "feature_importances": {
+        "temp_mean": 0.30021365298714,
+        "precip_mean": 0.17026148196905874,
+        "umid_min_mean": 0.23636504405623518,
+        "defor_total_4wk": 0.009702276801982846,
+        "fire_counts_4wk": 0.1099460254090432,
+        "fire_trends_ha": 0.17351151877654006
+      }
+    },
+    {
+      "year": 2023,
+      "n_weeks": 52,
+      "r2": 0.7244543106374298,
+      "mae": 0.010698165365587776,
+      "rmse": 0.020090676995338737,
+      "bias": 0.0005958771301666798,
+      "top_driver": "Fire trends Ft",
+      "feature_importances": {
+        "temp_mean": 0.1468536190992236,
+        "precip_mean": 0.1368943541310569,
+        "umid_min_mean": 0.155613519331983,
+        "defor_total_4wk": 0.09553795001715776,
+        "fire_counts_4wk": 0.18251261593016627,
+        "fire_trends_ha": 0.28258794149041244
+      }
+    }
+  ],
+  "aggregate": {
+    "r2_mean": 0.6846987373341652,
+    "r2_sd": 0.0815815779007987,
+    "mae_mean": 0.0508513393918672,
+    "mean_importance": {
+      "temp_mean": 0.20064073199145835,
+      "precip_mean": 0.20285302216247644,
+      "umid_min_mean": 0.19400552384407105,
+      "defor_total_4wk": 0.07436493352337584,
+      "fire_counts_4wk": 0.1494006177117324,
+      "fire_trends_ha": 0.17873517076688591
+    }
+  }
+}
