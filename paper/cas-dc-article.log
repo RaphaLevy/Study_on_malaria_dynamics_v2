@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.3.13)  1 SEP 2026 17:29
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.3.13)  1 SEP 2026 17:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2211,62 +2211,64 @@ m/n/10 ,
 
 [15
 
+] [16
+
 ]
-<figs/SIR_Model_Parham_and_Michael_DDE_Solution.png, id=366, 413.74574pt x 253.
+<figs/SIR_Model_Parham_and_Michael_DDE_Solution.png, id=373, 413.74574pt x 253.
 54726pt>
 File: figs/SIR_Model_Parham_and_Michael_DDE_Solution.png Graphic file (type png
 )
 <use figs/SIR_Model_Parham_and_Michael_DDE_Solution.png>
 Package pdftex.def Info: figs/SIR_Model_Parham_and_Michael_DDE_Solution.png  us
-ed on input line 1281.
+ed on input line 1333.
 (pdftex.def)             Requested size: 238.25444pt x 146.00517pt.
-<figs/SEI_Model_Parham_and_Michael_DDE_Solution.png, id=368, 419.166pt x 250.53
+<figs/SEI_Model_Parham_and_Michael_DDE_Solution.png, id=375, 419.166pt x 250.53
 6pt>
 File: figs/SEI_Model_Parham_and_Michael_DDE_Solution.png Graphic file (type png
 )
 <use figs/SEI_Model_Parham_and_Michael_DDE_Solution.png>
 Package pdftex.def Info: figs/SEI_Model_Parham_and_Michael_DDE_Solution.png  us
-ed on input line 1289.
+ed on input line 1341.
 (pdftex.def)             Requested size: 238.25444pt x 142.4056pt.
 
 
 Package caption Warning: \setcaptiontype
-(caption)                outside box or environment on input line 1290.
+(caption)                outside box or environment on input line 1342.
 See the caption package documentation for explanation.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 1290.
+(caption)                particular \caption on input line 1342.
 See the caption package documentation for explanation.
 
-<figs/SIR_Model_Parham_and_Michael_ODE_Solution.png, id=371, 645.00975pt x 405.
+<figs/SIR_Model_Parham_and_Michael_ODE_Solution.png, id=378, 645.00975pt x 405.
 31425pt>
 File: figs/SIR_Model_Parham_and_Michael_ODE_Solution.png Graphic file (type png
 )
 <use figs/SIR_Model_Parham_and_Michael_ODE_Solution.png>
 Package pdftex.def Info: figs/SIR_Model_Parham_and_Michael_ODE_Solution.png  us
-ed on input line 1297.
+ed on input line 1349.
 (pdftex.def)             Requested size: 238.25444pt x 149.71654pt.
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 1298.
+(caption)                particular \caption on input line 1350.
 See the caption package documentation for explanation.
 
-<figs/SEI_Model_Parham_and_Michael_ODE_Solution.png, id=376, 654.64575pt x 401.
+<figs/SEI_Model_Parham_and_Michael_ODE_Solution.png, id=383, 654.64575pt x 401.
 70074pt>
 File: figs/SEI_Model_Parham_and_Michael_ODE_Solution.png Graphic file (type png
 )
 <use figs/SEI_Model_Parham_and_Michael_ODE_Solution.png>
 Package pdftex.def Info: figs/SEI_Model_Parham_and_Michael_ODE_Solution.png  us
-ed on input line 1309.
+ed on input line 1361.
 (pdftex.def)             Requested size: 238.25444pt x 146.19354pt.
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 1310.
+(caption)                particular \caption on input line 1362.
 See the caption package documentation for explanation.
 
 No file cas-dc-article.bbl.
-[16
+[17
 
  <./figs/SIR_Model_Parham_and_Michael_DDE_Solution.png> <./figs/SEI_Model_Parha
 m_and_Michael_DDE_Solution.png> <./figs/SIR_Model_Parham_and_Michael_ODE_Soluti
@@ -2284,10 +2286,10 @@ Package rerunfilecheck Info: File `cas-dc-article.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 18700 strings out of 467871
- 293629 string characters out of 5418376
- 717450 words of memory out of 5000000
- 47106 multiletter control sequences out of 15000+600000
+ 18705 strings out of 467871
+ 293685 string characters out of 5418376
+ 718279 words of memory out of 5000000
+ 47108 multiletter control sequences out of 15000+600000
  753668 words of font info for 209 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  90i,19n,117p,1057b,751s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -2308,9 +2310,9 @@ X/fonts/type1/public/stix/stix-mathrm.pfb><C:/Users/rapha/AppData/Local/Program
 s/MiKTeX/fonts/type1/public/stix/stix-mathscr.pfb><C:/Users/rapha/AppData/Local
 /Programs/MiKTeX/fonts/type1/public/stix/stix-mathsf.pfb><C:/Users/rapha/AppDat
 a/Local/Programs/MiKTeX/fonts/type1/public/stix/stix-mathtt.pfb>
-Output written on cas-dc-article.pdf (16 pages, 595631 bytes).
+Output written on cas-dc-article.pdf (17 pages, 600004 bytes).
 PDF statistics:
- 573 PDF objects out of 1000 (max. 8388607)
- 180 named destinations out of 1000 (max. 500000)
+ 582 PDF objects out of 1000 (max. 8388607)
+ 183 named destinations out of 1000 (max. 500000)
  26 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1247,6 +1247,58 @@ $$
 Substituting $S_H^*=N$ and $S_M^*=M^*=\Lambda^*/\mu$ into $\lambda$ and taking
 the square root reproduces \eqref{eq:R0}.
 
+\paragraph{Spectral computation of $\rho(FV^{-1})$:}
+\label{app:eigen}
+
+The matrix $V$ is block-diagonal in the human-mosquito partition, with blocks $V_H$ and $V_M$, so
+$$
+V^{-1} = \begin{pmatrix}
+\dfrac{1}{b_{3H}} & 0 & 0 & 0 \\[2mm]
+\dfrac{1}{\gamma} & \dfrac{1}{\gamma} & 0 & 0 \\[2mm]
+0 & 0 & \dfrac{1}{\mu + b_{3M}\ell} & 0 \\[2mm]
+0 & 0 & \dfrac{b_{3M}\ell}{(\mu + b_{3M}\ell)\,\mu} & \dfrac{1}{\mu}
+\end{pmatrix}
+$$
+Multiplying $F$ by $V^{-1}$ we obtain
+$$
+FV^{-1} = \begin{pmatrix}
+0 & 0 & \dfrac{a b_2 b_{3M}\ell}{(\mu+b_{3M}\ell)\mu} & \dfrac{a b_2}{\mu} \\[2mm]
+0 & 0 & 0 & 0 \\[2mm]
+\dfrac{a b_1 M^*}{N\gamma} & \dfrac{a b_1 M^*}{N\gamma} & 0 & 0 \\[2mm]
+0 & 0 & 0 & 0
+\end{pmatrix}
+$$
+The second and fourth rows are zero, so the spectral problem reduces to
+the $2\times2$ block coupling the human and mosquito exposed classes,
+$$
+\big[FV^{-1}\big]_{\{1,3\}} =
+\begin{pmatrix}
+0 & \dfrac{a b_2 b_{3M}\ell}{(\mu + b_{3M}\ell)\mu} \\[2mm]
+\dfrac{a b_1 M^*}{N\gamma} & 0
+\end{pmatrix},
+$$
+whose characteristic equation is
+$$
+\lambda^2 =
+\frac{a^2 b_1 b_2 b_{3M}\ell\, M^*}{N\gamma\,(\mu + b_{3M}\ell)\,\mu}
+$$
+The eigenvalues of $FV^{-1}$ are
+$
+\lambda \in \left\{\, 0,\ 0,\ \pm\sqrt{\mathcal{R}_H \mathcal{R}_M}\,\right\}$, where
+$$\mathcal{R}_H = \frac{a b_2}{\gamma},
+\ \ \ 
+\mathcal{R}_M = \frac{a b_1 \Lambda^*}{N\mu}
+\frac{b_{3M}\ell}{(b_{3M}\ell + \mu)\,\mu},
+$$
+so that $\mathcal{R}_0 = \rho(FV^{-1}) = \sqrt{\mathcal{R}_H \mathcal{R}_M}$.
+Finally, substituting $\Lambda^* = \mu M^*$ recovers the expression in
+Section~\ref{sec:basic_reproduction_number}:
+\begin{equation}\label{eq:R0_appendix}
+\mathcal{R}_0 =
+\sqrt{\frac{a^2 b_1 b_2\, \Lambda^*\, b_{3M}\ell}
+{N\gamma\,(b_{3M}\ell + \mu)\,\mu^2}} 
+\end{equation}
+
 
 \clearpage
 
