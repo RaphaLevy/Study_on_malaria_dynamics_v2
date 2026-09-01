@@ -9,7 +9,7 @@
 \citation{Rorato2023}
 \citation{Norris2004}
 \citation{infoAnopheles,article_alteracoesambientais}
-\citation{Alteracoes_Ambientais,Anthropogenic_Landscape}
+\citation{article_alteracoesambientais,Anthropogenic_Landscape}
 \citation{Future_of_Deforestation,Relationship_between_fires_and_defor}
 \citation{Conservation_Policy}
 \citation{Daily_DETER}
@@ -82,10 +82,9 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Mosquito population dynamics}{5}{subsection.5.1}\protected@file@percent }
 \newlabel{sec:mosquito_pop_dynamics}{{5.1}{5}{Mosquito population dynamics}{subsection.5.1}{}}
 \citation{Rep_Number_Comp_Model}
+\citation{brasil_et_al_2011_unexpectedly_long_incubation_period_of_plasmodium_vivax}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Basic Reproduction Number ($\mathcal  {R}_0$)}{6}{subsection.5.2}\protected@file@percent }
 \newlabel{sec:basic_reproduction_number}{{5.2}{6}{Basic Reproduction Number ($\mathcal {R}_0$)}{subsection.5.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Understanding relations}{6}{subsection.5.3}\protected@file@percent }
-\newlabel{sec:understanding_relations}{{5.3}{6}{Understanding relations}{subsection.5.3}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {6}Computational Implementation}{6}{section.6}\protected@file@percent }
 \newlabel{sec:computational_implemetation}{{6}{6}{Computational Implementation}{section.6}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Objective function and parameter bounds}{6}{subsection.6.1}\protected@file@percent }
@@ -93,12 +92,11 @@
 \newlabel{eq:wmse}{{23}{6}{Objective function and parameter bounds}{equation.23}{}}
 \newlabel{eq:weight}{{24}{6}{Objective function and parameter bounds}{equation.24}{}}
 \newlabel{eq:combined}{{25}{6}{Objective function and parameter bounds}{equation.25}{}}
-\citation{brasil_et_al_2011_unexpectedly_long_incubation_period_of_plasmodium_vivax}
+\newlabel{eq:penalty}{{26}{6}{Objective function and parameter bounds}{equation.26}{}}
 \citation{storn_price_1997}
 \citation{nelder_mead_1965}
 \@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Parameter bounds for sequential topic calibration.}}{7}{table.caption.2}\protected@file@percent }
 \newlabel{tbl:bounds}{{1}{7}{Parameter bounds for sequential topic calibration}{table.caption.2}{}}
-\newlabel{eq:penalty}{{26}{7}{Objective function and parameter bounds}{equation.26}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Year-by-year sequential calibration}{7}{subsection.6.2}\protected@file@percent }
 \newlabel{sec:year_by_year_calibration}{{6.2}{7}{Year-by-year sequential calibration}{subsection.6.2}{}}
 \newlabel{eq:topic_order}{{27}{7}{Year-by-year sequential calibration}{equation.27}{}}
@@ -107,28 +105,24 @@
 \newlabel{eq:ic_fitted}{{30}{7}{Year-by-year sequential calibration}{equation.30}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {6.3}Weekly beta diagnostic}{7}{subsection.6.3}\protected@file@percent }
 \newlabel{sec:weekly_beta_diagnostic}{{6.3}{7}{Weekly beta diagnostic}{subsection.6.3}{}}
+\newlabel{eq:weekly_beta}{{31}{7}{Weekly beta diagnostic}{equation.31}{}}
+\newlabel{eq:weekly_residual}{{32}{7}{Weekly beta diagnostic}{equation.32}{}}
 \citation{brierre_function_development_rate,human_to_mosquito_transmission_efficiency}
-\newlabel{eq:weekly_beta}{{31}{8}{Weekly beta diagnostic}{equation.31}{}}
-\newlabel{eq:weekly_residual}{{32}{8}{Weekly beta diagnostic}{equation.32}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {6.4}Freeing the transmission coefficients}{8}{subsection.6.4}\protected@file@percent }
 \newlabel{sec:freeing_transmission_coefficients}{{6.4}{8}{Freeing the transmission coefficients}{subsection.6.4}{}}
 \newlabel{eq:nested_beta}{{33}{8}{Freeing the transmission coefficients}{equation.33}{}}
+\newlabel{eq}{{34}{8}{Freeing the transmission coefficients}{equation.34}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.5}Numerical solver and implementation}{8}{subsection.6.5}\protected@file@percent }
+\newlabel{sec:numerical_solver_implementation}{{6.5}{8}{Numerical solver and implementation}{subsection.6.5}{}}
 \citation{Parham2010}
-\citation{Parham2010}
-\citation{Parham2010}
-\newlabel{eq}{{34}{9}{Freeing the transmission coefficients}{equation.34}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.5}Numerical solver and implementation}{9}{subsection.6.5}\protected@file@percent }
-\newlabel{sec:numerical_solver_implementation}{{6.5}{9}{Numerical solver and implementation}{subsection.6.5}{}}
+\citation{Rorato2023}
 \@writefile{toc}{\contentsline {section}{\numberline {7}Results}{9}{section.7}\protected@file@percent }
 \newlabel{sec:results}{{7}{9}{Results}{section.7}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Reproduction of the Original Parham $\&$ Michael Model}{9}{subsection.7.1}\protected@file@percent }
 \newlabel{sec:results_parham_michael}{{7.1}{9}{Reproduction of the Original Parham $\&$ Michael Model}{subsection.7.1}{}}
-\newlabel{FIG:1test}{{7.1}{9}{Reproduction of the Original Parham $\&$ Michael Model}{subsection.7.1}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces DDE simulation of the baseline SIR-SEI model using the original parameterization from \cite  {Parham2010}. The dynamics of the SIR model show a monotonic decline in the number of infected individuals within the human population, indicating the absence of sustained transmission, while the dynamics of the SEI model show that the entire mosquito population tends to extinction, an unexpected behavior for a region where malaria is highly endemic.}}{9}{figure.1}\protected@file@percent }
-\newlabel{FIG:1}{{1}{9}{DDE simulation of the baseline SIR-SEI model using the original parameterization from \cite {Parham2010}. The dynamics of the SIR model show a monotonic decline in the number of infected individuals within the human population, indicating the absence of sustained transmission, while the dynamics of the SEI model show that the entire mosquito population tends to extinction, an unexpected behavior for a region where malaria is highly endemic}{figure.1}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {7.2}Base SEIRS-SEI simulation without calibration}{9}{subsection.7.2}\protected@file@percent }
 \newlabel{sec:base_seirs_sei_no_calibration}{{7.2}{9}{Base SEIRS-SEI simulation without calibration}{subsection.7.2}{}}
-\citation{Rorato2023}
+\@writefile{toc}{\contentsline {section}{\numberline {8}Discussion}{9}{section.8}\protected@file@percent }
 \bibcite{pimenta_orfano_bahia_duarte_rios-velasquez_melo_pessoa_oliveira_campos_villegas_etal_2015}{{1}{}{{}}{{}}}
 \bibcite{regulation_of_sexual_commitment}{{2}{}{{}}{{}}}
 \bibcite{WHO2022}{{3}{}{{}}{{}}}
@@ -138,50 +132,48 @@
 \bibcite{Norris2004}{{7}{}{{}}{{}}}
 \bibcite{infoAnopheles}{{8}{}{{}}{{}}}
 \bibcite{article_alteracoesambientais}{{9}{}{{}}{{}}}
-\bibcite{Alteracoes_Ambientais}{{10}{}{{}}{{}}}
-\bibcite{Anthropogenic_Landscape}{{11}{}{{}}{{}}}
-\bibcite{Future_of_Deforestation}{{12}{}{{}}{{}}}
-\bibcite{Relationship_between_fires_and_defor}{{13}{}{{}}{{}}}
-\bibcite{Conservation_Policy}{{14}{}{{}}{{}}}
-\bibcite{Daily_DETER}{{15}{}{{}}{{}}}
-\@writefile{toc}{\contentsline {section}{\numberline {8}Discussion}{10}{section.8}\protected@file@percent }
-\bibcite{INPE_Forest_Fires}{{16}{}{{}}{{}}}
-\bibcite{MosqlimateAPI}{{17}{}{{}}{{}}}
-\bibcite{Parham2010}{{18}{}{{}}{{}}}
-\bibcite{brierre_function_development_rate}{{19}{}{{}}{{}}}
-\bibcite{ab_gumel_malaria_review}{{20}{}{{}}{{}}}
-\bibcite{debarros2011}{{21}{}{{}}{{}}}
-\bibcite{duration_of_gonotrophic_cycle}{{22}{}{{}}{{}}}
-\bibcite{OliveiraFerreira2010}{{23}{}{{}}{{}}}
-\bibcite{10.3389/fpubh.2021.647754}{{24}{}{{}}{{}}}
-\bibcite{Vector_Incrimination}{{25}{}{{}}{{}}}
-\bibcite{SIVEP_Malaria}{{26}{}{{}}{{}}}
-\bibcite{Census2000}{{27}{}{{}}{{}}}
-\bibcite{Census2010}{{28}{}{{}}{{}}}
-\bibcite{Census2022}{{29}{}{{}}{{}}}
-\bibcite{Rep_Number_Comp_Model}{{30}{}{{}}{{}}}
-\bibcite{brasil_et_al_2011_unexpectedly_long_incubation_period_of_plasmodium_vivax}{{31}{}{{}}{{}}}
-\bibcite{storn_price_1997}{{32}{}{{}}{{}}}
-\bibcite{nelder_mead_1965}{{33}{}{{}}{{}}}
-\bibcite{McCord2016}{{34}{}{{}}{{}}}
-\bibcite{climate_based_distribution_sub_sahara}{{35}{}{{}}{{}}}
-\bibcite{minmax_temp_anoph}{{36}{}{{}}{{}}}
-\bibcite{Lindsay_Birley_1996}{{37}{}{{}}{{}}}
-\bibcite{Ecological_Change_Malaria_Risk}{{38}{}{{}}{{}}}
-\bibcite{human_to_mosquito_transmission_efficiency}{{39}{}{{}}{{}}}
-\bibcite{Datasus2006}{{40}{}{{}}{{}}}
-\bibcite{Biological_Variation_Anopheles}{{41}{}{{}}{{}}}
-\bibcite{Abundancia_Larval}{{42}{}{{}}{{}}}
-\bibcite{Reconstructing_Three_Decades}{{43}{}{{}}{{}}}
-\bibcite{Amazon_Defor_Drives_Malaria_Transmis}{{44}{}{{}}{{}}}
-\bibcite{Threats_and_Opportunities}{{45}{}{{}}{{}}}
-\bibcite{G1_Queimadas}{{46}{}{{}}{{}}}
-\bibcite{math_assessment_of_the_role_of_temp_and_rainfall}{{47}{}{{}}{{}}}
-\bibcite{openlearncreate}{{48}{}{{}}{{}}}
-\@writefile{toc}{\contentsline {section}{\numberline {A}Appendix}{13}{appendix.A}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {A.1}Tables}{13}{subsection.A.1}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {A.1}{\ignorespaces List of model parameters.}}{13}{table.caption.5}\protected@file@percent }
-\newlabel{tbl1}{{A.1}{13}{List of model parameters}{table.caption.5}{}}
+\bibcite{Anthropogenic_Landscape}{{10}{}{{}}{{}}}
+\bibcite{Future_of_Deforestation}{{11}{}{{}}{{}}}
+\bibcite{Relationship_between_fires_and_defor}{{12}{}{{}}{{}}}
+\bibcite{Conservation_Policy}{{13}{}{{}}{{}}}
+\bibcite{Daily_DETER}{{14}{}{{}}{{}}}
+\bibcite{INPE_Forest_Fires}{{15}{}{{}}{{}}}
+\bibcite{MosqlimateAPI}{{16}{}{{}}{{}}}
+\bibcite{Parham2010}{{17}{}{{}}{{}}}
+\bibcite{brierre_function_development_rate}{{18}{}{{}}{{}}}
+\bibcite{ab_gumel_malaria_review}{{19}{}{{}}{{}}}
+\bibcite{debarros2011}{{20}{}{{}}{{}}}
+\bibcite{duration_of_gonotrophic_cycle}{{21}{}{{}}{{}}}
+\bibcite{OliveiraFerreira2010}{{22}{}{{}}{{}}}
+\bibcite{10.3389/fpubh.2021.647754}{{23}{}{{}}{{}}}
+\bibcite{Vector_Incrimination}{{24}{}{{}}{{}}}
+\bibcite{SIVEP_Malaria}{{25}{}{{}}{{}}}
+\bibcite{Census2000}{{26}{}{{}}{{}}}
+\bibcite{Census2010}{{27}{}{{}}{{}}}
+\bibcite{Census2022}{{28}{}{{}}{{}}}
+\bibcite{Rep_Number_Comp_Model}{{29}{}{{}}{{}}}
+\bibcite{brasil_et_al_2011_unexpectedly_long_incubation_period_of_plasmodium_vivax}{{30}{}{{}}{{}}}
+\bibcite{storn_price_1997}{{31}{}{{}}{{}}}
+\bibcite{nelder_mead_1965}{{32}{}{{}}{{}}}
+\bibcite{McCord2016}{{33}{}{{}}{{}}}
+\bibcite{climate_based_distribution_sub_sahara}{{34}{}{{}}{{}}}
+\bibcite{minmax_temp_anoph}{{35}{}{{}}{{}}}
+\bibcite{Lindsay_Birley_1996}{{36}{}{{}}{{}}}
+\bibcite{Ecological_Change_Malaria_Risk}{{37}{}{{}}{{}}}
+\bibcite{human_to_mosquito_transmission_efficiency}{{38}{}{{}}{{}}}
+\bibcite{Datasus2006}{{39}{}{{}}{{}}}
+\bibcite{Biological_Variation_Anopheles}{{40}{}{{}}{{}}}
+\bibcite{Abundancia_Larval}{{41}{}{{}}{{}}}
+\bibcite{Reconstructing_Three_Decades}{{42}{}{{}}{{}}}
+\bibcite{Amazon_Defor_Drives_Malaria_Transmis}{{43}{}{{}}{{}}}
+\bibcite{Threats_and_Opportunities}{{44}{}{{}}{{}}}
+\bibcite{G1_Queimadas}{{45}{}{{}}{{}}}
+\bibcite{math_assessment_of_the_role_of_temp_and_rainfall}{{46}{}{{}}{{}}}
+\bibcite{openlearncreate}{{47}{}{{}}{{}}}
+\@writefile{toc}{\contentsline {section}{\numberline {A}Appendix}{12}{appendix.A}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.1}Tables}{12}{subsection.A.1}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {A.1}{\ignorespaces List of model parameters.}}{12}{table.caption.5}\protected@file@percent }
+\newlabel{tbl1}{{A.1}{12}{List of model parameters}{table.caption.5}{}}
 \citation{McCord2016}
 \citation{McCord2016}
 \citation{brierre_function_development_rate,climate_based_distribution_sub_sahara}
@@ -190,19 +182,24 @@
 \citation{McCord2016,Lindsay_Birley_1996}
 \citation{Ecological_Change_Malaria_Risk}
 \citation{Parham2010}
-\@writefile{lot}{\contentsline {table}{\numberline {A.2}{\ignorespaces List of model variables.}}{14}{table.caption.7}\protected@file@percent }
-\newlabel{tbl2}{{A.2}{14}{List of model variables}{table.caption.7}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {A.2}{\ignorespaces List of model variables.}}{13}{table.caption.7}\protected@file@percent }
+\newlabel{tbl2}{{A.2}{13}{List of model variables}{table.caption.7}{}}
+\citation{Parham2010}
+\citation{Parham2010}
 \citation{Parham2010}
 \citation{Parham2010}
 \citation{Parham2010}
 \citation{Parham2010}
 \bibstyle{cas-model2-names}
 \bibdata{cas-refs}
-\csxdef{lastpage}{15}
+\csxdef{lastpage}{14}
 \providecommand\NAT@force@numbers{}\NAT@force@numbers
-\@writefile{toc}{\contentsline {subsection}{\numberline {A.2}Figures}{15}{subsection.A.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {1A}{\ignorespaces ODE simulation of the baseline SIR model using the formulation from Section~\ref {sec:ode_approximation_limitations} and parameters from \cite  {Parham2010}. A slight increase in the infectious population can be noticed, although it still tends to extinction over the course of the first year of transmission.}}{15}{figure.2}\protected@file@percent }
-\newlabel{FIG:1A}{{1A}{15}{ODE simulation of the baseline SIR model using the formulation from Section~\ref {sec:ode_approximation_limitations} and parameters from \cite {Parham2010}. A slight increase in the infectious population can be noticed, although it still tends to extinction over the course of the first year of transmission}{figure.2}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2A}{\ignorespaces ODE simulation of the baseline SEI mosquito model using the formulation from Section~\ref {sec:ode_approximation_limitations} and parameters from \cite  {Parham2010}. It can be seen that the mosquito population still tends to extinction.}}{15}{figure.3}\protected@file@percent }
-\newlabel{FIG:2A}{{2A}{15}{ODE simulation of the baseline SEI mosquito model using the formulation from Section~\ref {sec:ode_approximation_limitations} and parameters from \cite {Parham2010}. It can be seen that the mosquito population still tends to extinction}{figure.3}{}}
-\gdef \@abspage@last{15}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.2}Figures}{14}{subsection.A.2}\protected@file@percent }
+\newlabel{FIG:PM_SIR}{{A.2}{14}{Figures}{subsection.A.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1A}{\ignorespaces DDE simulation of the baseline SIR-SEI model using the original parameterization from \cite  {Parham2010}. The dynamics of the SIR model show a monotonic decline in the number of infected individuals within the human population, indicating the absence of sustained transmission, while the dynamics of the SEI model show that the entire mosquito population tends to extinction, an unexpected behavior for a region where malaria is highly endemic.}}{14}{figure.1}\protected@file@percent }
+\newlabel{FIG:1A}{{1A}{14}{DDE simulation of the baseline SIR-SEI model using the original parameterization from \cite {Parham2010}. The dynamics of the SIR model show a monotonic decline in the number of infected individuals within the human population, indicating the absence of sustained transmission, while the dynamics of the SEI model show that the entire mosquito population tends to extinction, an unexpected behavior for a region where malaria is highly endemic}{figure.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2A}{\ignorespaces ODE simulation of the baseline SIR model using the formulation from Section~\ref {sec:ode_approximation_limitations} and parameters from \cite  {Parham2010}. A slight increase in the infectious population can be noticed, although it still tends to extinction over the course of the first year of transmission.}}{14}{figure.2}\protected@file@percent }
+\newlabel{FIG:2A}{{2A}{14}{ODE simulation of the baseline SIR model using the formulation from Section~\ref {sec:ode_approximation_limitations} and parameters from \cite {Parham2010}. A slight increase in the infectious population can be noticed, although it still tends to extinction over the course of the first year of transmission}{figure.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3A}{\ignorespaces ODE simulation of the baseline SEI mosquito model using the formulation from Section~\ref {sec:ode_approximation_limitations} and parameters from \cite  {Parham2010}. It can be seen that the mosquito population still tends to extinction.}}{14}{figure.3}\protected@file@percent }
+\newlabel{FIG:3A}{{3A}{14}{ODE simulation of the baseline SEI mosquito model using the formulation from Section~\ref {sec:ode_approximation_limitations} and parameters from \cite {Parham2010}. It can be seen that the mosquito population still tends to extinction}{figure.3}{}}
+\gdef \@abspage@last{14}
