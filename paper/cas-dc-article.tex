@@ -930,6 +930,45 @@ Year & Climate-driven & Weekly free & Reduction factor \\
 \bottomrule
 \end{tabular}
 \end{table}
+
+\subsection{Environmental regression of the transmission probabilities $b_1$ and $b_2$}
+\label{sec:results_regression}
+Following the framework of Section~\ref{sec:environmental_drivers}, the freed weekly per-bite transmission probabilities were regressed against the environmental predictors $T,\,R,\,H,\,D_f,\,F_c,\,F_t$ (temperature, precipitation, humidity, deforestation, fire counts and fire trends)fitting an independent random forest for each year.
+\\\\
+Within each year the model explains a substantial share of the variance of both transmission probabilities, with mean $R^2 = 0.685 \pm 0.082$ for $b_1$ and mean $R^2 = 0.784 \pm 0.130$ for $b_2$, with near-zero prediction bias (Table~\ref{tbl:regression}).
+\\\\
+The importance of the predictors, however, differs between the two probabilities. For $b_1$ the contribution is distributed fairly evenly among precipitation (0.203), temperature (0.201), humidity (0.194), fire trends (0.179) and fire counts (0.149); while for $b_2$ 
+the leading contributors are fire counts (0.213), humidity (0.171), temperature (0.169), fire trends (0.166) and precipitation (0.163). Deforestation $D_f$ is consistently the weakest predictor for both $b_1$ (0.074) and $b_2$ (0.119), indicating that its effect is not captured at the intra-annual timescale resolved here.
+\\\\
+\begin{table}[H]
+\centering
+\caption{Year-by-year within-year random forest performance for $b_1$ and $b_2$.}
+\label{tbl:regression}
+\begin{tabular}{lllcc}
+\toprule
+& Year & $R^2$ & MAE & Bias\\
+\midrule
+\multirow{7}{*}{$b_1$}
+ & 2017 & 0.563 & 0.0594 & +0.0021\\
+ & 2018 & 0.580 & 0.0651 & $-$0.0005\\
+ & 2019 & 0.739 & 0.0475 & +0.0011\\
+ & 2020 & 0.671 & 0.0626 & +0.0021\\
+ & 2021 & 0.705 & 0.0603 & $-$0.0009\\
+ & 2022 & 0.810 & 0.0503 & +0.0010\\
+ & 2023 & 0.724 & 0.0107 & +0.0006\\
+\midrule
+\multirow{7}{*}{$b_2$}
+ & 2017 & 0.531 & 0.0182 & +0.0011\\
+ & 2018 & 0.825 & 0.0103 & +0.0005\\
+ & 2019 & 0.712 & 0.0120 & $-$0.0002\\
+ & 2020 & 0.915 & 0.0105 & $-$0.0006\\
+ & 2021 & 0.712 & 0.0122 & +0.0001\\
+ & 2022 & 0.905 & 0.0103 & $-$0.0002\\
+ & 2023 & 0.889 & 0.0021 & +0.0001\\
+\bottomrule
+\end{tabular}
+\end{table}
+
 %\subsection{Base SEIRS-SEI simulation without calibration}
 %\label{sec:base_seirs_sei_no_calibration}
 
