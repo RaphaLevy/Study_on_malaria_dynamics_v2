@@ -868,6 +868,42 @@ As a diagnostic for the methodological choices adopted below, the original SIR-S
 The temperature-dependent biting rate was recalibrated against field estimates of \textit{Anopheles darlingi} feeding behavior following Section~\ref{sec:recalibration_temp_dependent_biting_rate}. The recalibrated function yielded a minimum biting threshold of $T' = 16\,^{\circ}\mathrm{C}$ and a thermal scaling factor $D_1 = 24.8\,^{\circ}\mathrm{C}\,\mathrm{days}$. Compared with the original Parham \& Michael parameterization, the refit shifts the biting response toward the thermal range observed in the Amazon and modifies its sensitivity near the transmission window. All subsequent simulations and the weekly transmission regressions of Section~\ref{sec:results_regression} make use of this recalibrated biting rate.
 % TODO: add biting-rate comparison figure (recalibrated a(T) vs original Parham & Michael curve).
 
+\subsection{Model calibration reproduces the observed transmission dynamics}
+\label{sec:results_calibration}
+The SEIRS-SEI model was calibrated year by year over 2017-2023 following the sequential topic scheme of Section~\ref{sec:year_by_year_calibration}, and the recovered parameters are summarized in Table~\ref{tbl:calibration}. Figure~\ref{FIG:model_vs_data} shows the fitted infectious compartment $I_H$ against the observed active-case count alongside the weekly free-beta fit for 2017, which exhibited the largest relative improvement of the weekly model over the constant-coefficient formulation (Section~\ref{sec:results_weekly_beta}). The calibrated parameters remain within their physiologically prescribed bounds found in Table~\ref{tbl:bounds}, with the humidity response ($H_0,\,k,\,\varphi$) and the human recovery parameters ($\tau_H,\,\gamma,\,\omega$) showing limited cross-year variation, while the force-of-infection coefficients $b_1$ and $b_2$ consistently approach their upper and lower bounds, respectively (Table~\ref{tbl:calibration}).
+\\\\
+%\begin{figure}[H]
+%\centering
+%\includegraphics[width=\columnwidth]{figs/weekly_beta_calibration_2017.png}
+%\caption{Comparison between the observed active cases and the model estimation of the infectious human compartment $I_H$ for 2017.}
+%\label{FIG:model_vs_data}
+%\end{figure}
+\renewcommand{\thefigure}{1}
+\vspace{0.6cm}
+
+\noindent
+\includegraphics[width=\columnwidth]{figs/weekly_beta_calibration_2017.png}
+\captionof{figure}{Comparison between the observed active cases and the model estimation of the infectious human compartment $I_H$ for 2017.}
+\label{FIG:model_vs_data}
+
+\begin{table*}[H]
+\centering
+\caption{Year-by-year calibrated parameters and weighted mean squared error (wMSE) of the SEIRS-SEI model, 2017--2023.}
+\label{tbl:calibration}
+\begin{tabular}{lcccccccccc}
+\toprule
+Year & $H_0$ & $k$ & $\varphi$ & $\tau_H$ & $\gamma$ & $\omega$ & $b_1$ & $b_2$ & $M'$ & wMSE\\
+\midrule
+2017 & 37.58 & 0.705 & 0.215 & 19.81 & 0.0071 & 0.0855 & 0.259 & 0.035 & 50,723 & 85,036\\
+2018 & 20.36 & 0.046 & 0.490 & 20.00 & 0.0073 & 0.0961 & 0.487 & 0.022 & 51,245 & 64,959\\
+2019 & 22.13 & 0.053 & 0.493 & 19.96 & 0.0072 & 0.0744 & 0.488 & 0.022 & 50,474 & 41,436\\
+2020 & 20.13 & 0.039 & 0.500 & 19.98 & 0.0067 & 0.0422 & 0.500 & 0.019 & 50,024 & 23,541\\
+2021 & 20.02 & 0.043 & 0.493 & 19.99 & 0.0067 & 0.0773 & 0.500 & 0.019 & 50,015 & 39,449\\
+2022 & 20.02 & 0.043 & 0.493 & 19.77 & 0.0099 & 0.0312 & 0.500 & 0.019 & 50,832 & 25,046\\
+2023 & 20.14 & 0.207 & 0.431 & 19.86 & 0.0081 & 0.0310 & 0.485 & 0.010 & 53,616 & 18,360\\
+\bottomrule
+\end{tabular}
+\end{table*}
 %\subsection{Base SEIRS-SEI simulation without calibration}
 %\label{sec:base_seirs_sei_no_calibration}
 
