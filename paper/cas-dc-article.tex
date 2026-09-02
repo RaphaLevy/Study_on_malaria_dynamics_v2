@@ -343,7 +343,7 @@ T_{\mathrm{opt}}
 (T_{\max}-T_{\mathrm{opt}})^{1/2}
 }
 \end{align}
-Another addition was the includion of a humidity-dependent survival component $p(H)$ on to the daily survival rate of the adult mosquitoes, which is modeled as a sigmoid function of the daily minimum relative humidity U. The parameter $H_0$ (in $\%$) represents the humidity threshold at which the mosquito experiences a 50$\%$ reduction in survival relative to its maximum, and $k$ (in $\%^{-1}$) controls the steepness of the transition. The parameter $\varphi$ (dimensionless) establishes a baseline survival floor, accounting for the persistence of individuals in favorable micro-habitats even under extreme desiccation conditions.
+Another addition was the inclusion of a humidity-dependent survival component $p(H)$ on to the daily survival rate of the adult mosquitoes, which is modeled as a sigmoid function of the daily minimum relative humidity U. The parameter $H_0$ (in $\%$) represents the humidity threshold at which the mosquito experiences a 50$\%$ reduction in survival relative to its maximum, and $k$ (in $\%^{-1}$) controls the steepness of the transition. The parameter $\varphi$ (dimensionless) establishes a baseline survival floor, accounting for the persistence of individuals in favorable micro-habitats even under extreme desiccation conditions.
 %\\\\
 %Now, in order to properly estimate the parameters $T'$ and $D_1$ for the biting rate in regard to data from the Amazon
 \\\\
@@ -828,7 +828,8 @@ The resulting $2\times n_{\mathrm{weeks}}$ coefficients don't represent independ
 \end{align}
 where $b_1$ and $b_2$ are constant over the entire study period. Consequently, the climate-driven formulation is a restricted case of the more flexible weekly model. Because all other model parameters and initial conditions are held fixed, the difference in fit between the two formulations directly measures the extent to which the constant-coefficient assumption limits the model's ability to reproduce the observed cases.
 \\\\
-In our results, the wMSE decreases from approximately $10^6$ for the climate-driven model to approximately $10^2$ for the weekly model. This substantial improvement indicates that the data contain temporal variation in transmission that cannot be adequately represented by constant $b_1$ and $b_2$.
+Releasing the coefficients reduces the wMSE by one to two orders of magnitude relative to the climate-driven model. This substantial improvement indicates that the data contain temporal variation in transmission that cannot be adequately represented by constant 
+$b_1$ and $b_2$.
 \\\\
 The weekly estimates are therefore used as a diagnostic benchmark rather than as the final parameterization of the model. They identify the temporal transmission pattern that a parsimonious mechanistic formulation should seek to explain. This approach preserves the distinction between estimating a flexible empirical transmission process and identifying the underlying biological parameters, as the weekly coefficients characterize the observed transmission signal, while the subsequent structural model determines how that signal can be explained by environmental drivers.
 \\\\
