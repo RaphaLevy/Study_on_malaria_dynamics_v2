@@ -859,13 +859,9 @@ All computations were performed on a laptop running Windows 11 (64-bit) equipped
 \section{Results}
 \label{sec:results}
 
-\subsection{Reproduction of the Original Parham $\&$ Michael Model}
+\subsection{Reproduction of the original Parham \& Michael model as a negative baseline}
 \label{sec:results_parham_michael}
-As a baseline for the development of the model, the original SIR–SEI proposed by Parham and Michael (2010) \cite{Parham2010} was implemented using all parameter values reported in the original study. Since population sizes and initial epidemiological conditions were not explicitly provided by the authors, these quantities were estimated from the available rural Manaus data and used as initial conditions; see Appendix Fig. 1A.
-\\\\
-While the epidemiological compartments for the human population initially exhibited plausible behavior, although not what would be expected for a recurring disease such as malaria, with the infected population gradually decreased, the mosquito population rapidly declined to extinction. This behavior indicates that mosquito recruitment was insufficient to replace mortality.
-\\\\
-Since transmission depends on the persistence of infectious mosquitoes, the collapse of the vector population resulted in the elimination of infection in both host and vector populations. Therefore, although the delay formulation preserved positivity, it failed to reproduce the endemic behavior expected for malaria transmission in the Amazon region.
+As a diagnostic for the methodological choices adopted below, the original SIR-SEI formulation of Parham and Michael (2010) \cite{Parham2010} was implemented with all parameter values reported in the original study, while population sizes and initial epidemiological conditions were estimated from the available rural Manaus data (Appendix Fig.~\ref{FIG:1A}). Under this parameterization the infected human population declines monotonically and the mosquito population rapidly collapses to extinction, indicating that mosquito recruitment is insufficient to replace mortality. Because transmission depends on the persistence of infectious vectors, the collapse of the vector population eliminates infection in both host and vector populations. Although the delay formulation preserved positivity, it fails to reproduce the endemic behavior expected for malaria in the Amazon, confirming the need to recalibrate the environmental and transmission parameters as described in Section~\ref{sec:recalibration_temp_dependent_biting_rate} and Section~\ref{sec:year_by_year_calibration}.
 
 \subsection{Base SEIRS-SEI simulation without calibration}
 \label{sec:base_seirs_sei_no_calibration}
