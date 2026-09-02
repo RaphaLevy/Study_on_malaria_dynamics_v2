@@ -904,6 +904,31 @@ Year & $H_0$ & $k$ & $\varphi$ & $\tau_H$ & $\gamma$ & $\omega$ & $b_1$ & $b_2$ 
 \bottomrule
 \end{tabular}
 \end{table*}
+
+\subsection{The constant-coefficient climate model underfits the observed dynamics}
+\label{sec:results_weekly_beta}
+To assess how much of the seasonal variation in transmission is captured by the mechanistic, climate-driven formulation, we freed the effective transmission coefficients, allowing them to vary on a weekly basis (Section~\ref{sec:freeing_transmission_coefficients}), and compared the resulting weekly model with the constant-coefficient climate-driven model. Releasing the coefficients reduced the weighted mean squared error in every year (Table~\ref{tbl:weekly_beta}), most notably in 2017, where the wMSE fell from  $8.5\times10^4$ to $6.2\times10^2$ (a $\sim$137-fold reduction).
+\\\\
+The residual between the free weekly $\beta_{h,w},\beta_{m,w}$ and the climate-driven $a(T)b_1,\,a(T)b_2$ indicates periods in which the temperature-driven formulation fails to capture the observed transmission structure. This motivates extending the per-bite transmission probabilities to the wider set of environmental drivers introduced in Section~\ref{sec:environmental_drivers}.
+\\\\
+\begin{table}[H]
+\centering
+\caption{Weighted mean squared error (wMSE) of the climate-driven constant-coefficient model versus the free weekly model, per year.}
+\label{tbl:weekly_beta}
+\begin{tabular}{lccc}
+\toprule
+Year & Climate-driven & Weekly free & Reduction factor \\
+\midrule
+2017 & 85,036 & 618 & 137.6$\times$\\
+2018 & 64,959 & 2,553 & 25.4$\times$\\
+2019 & 41,436 & 561 & 73.9$\times$\\
+2020 & 23,541 & 359 & 65.6$\times$\\
+2021 & 39,449 & 1,552 & 25.4$\times$\\
+2022 & 25,046 & 1,711 & 14.6$\times$\\
+2023 & 18,360 & 7,598 & 2.4$\times$\\
+\bottomrule
+\end{tabular}
+\end{table}
 %\subsection{Base SEIRS-SEI simulation without calibration}
 %\label{sec:base_seirs_sei_no_calibration}
 
