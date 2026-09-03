@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.3.13)  3 SEP 2026 15:49
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.3.13)  3 SEP 2026 16:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1548,7 +1548,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 959--967
 
 
 Underfull \hbox (badness 2005) in paragraph at lines 959--967
-\T1/stix/m/n/10 The shape of these re-sponses is il-lus-trated in Figs. [][]4[]
+\T1/stix/m/n/10 The shape of these re-sponses is il-lus-trated in Figs. [][]3[]
 []
  []
 
@@ -2457,7 +2457,7 @@ Package rerunfilecheck Info: File `cas-dc-article.out' has not changed.
 Here is how much of TeX's memory you used:
  18800 strings out of 467871
  297011 string characters out of 5418376
- 720765 words of memory out of 5000000
+ 720768 words of memory out of 5000000
  47191 multiletter control sequences out of 15000+600000
  753668 words of font info for 209 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
