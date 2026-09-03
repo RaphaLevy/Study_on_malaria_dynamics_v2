@@ -939,20 +939,20 @@ Within each year the model explains a substantial share of the variance of both 
 %Figure~\ref{FIG:imp_b1} shows the best-fitting year for $b_1$, that being 2022, while Figure~\ref{FIG:imp_b2} shows the best-fitting year for $b_2$, 2020.
 
 
-\renewcommand{\thefigure}{2}
+\renewcommand{\thefigure}{b1_regression}
 \vspace{0.6cm}
 
 \noindent
 \includegraphics[width=\columnwidth]{figs/b1_2022_regression.png}
-\captionof{figure}{Best within-year random-forest fit of the freed weekly per-bite transmission from infected humans to susceptible mosquitos ($b_1$).}
+%\captionof{figure}{Best within-year random-forest fit of the freed weekly per-bite transmission from infected humans to susceptible mosquitos ($b_1$).}
 \label{FIG:imp_b1}
 
-\renewcommand{\thefigure}{3}
-\vspace{0.6cm}
+\renewcommand{\thefigure}{2}
+%\vspace{0.6cm}
 
 \noindent
 \includegraphics[width=\columnwidth]{figs/b2_2020_regression.png}
-\captionof{figure}{Best within-year random-forest fit of the freed weekly per-bite transmission from infected mosquitos to susceptible humans ($b_2$).}
+\captionof{figure}{Best within-year random-forest fit of the freed weekly per-bite transmission $b_1$ and $b_2$, in 2022 and 2020 respectively.}
 \label{FIG:imp_b2}
 \vspace{0.6cm}
 
@@ -982,7 +982,7 @@ The shape of these responses is illustrated in Figs.~\ref{FIG:response_b1},\ref{
 \label{FIG:response_b2}
 \vspace{0.6cm}
 
- Columns correspond to temperature $T$, precipitation $R$, humidity $H$, deforestation $D_f$, fire counts $F_c$ and fire trends $F_t$. Curves give the mean predicted probability as each predictor is varied over its observed range while the remaining variables are held at their marginal mean.
+Columns correspond to temperature $T$, precipitation $R$, humidity $H$, deforestation $D_f$, fire counts $F_c$ and fire trends $F_t$. Curves give the mean predicted probability as each predictor is varied over its observed range while the remaining variables are held at their marginal mean.
 \\\\
 \begin{table}[H]
 \centering
