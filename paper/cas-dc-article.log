@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.3.13)  3 SEP 2026 16:57
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.3.13)  3 SEP 2026 17:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1495,12 +1495,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 935--940
 
  []
 
-<figs/b1_2022_regression.png, id=249, 663.6795pt x 255.95625pt>
+<figs/b1_2022_regression.png, id=248, 663.6795pt x 255.95625pt>
 File: figs/b1_2022_regression.png Graphic file (type png)
 <use figs/b1_2022_regression.png>
 Package pdftex.def Info: figs/b1_2022_regression.png  used on input line 946.
 (pdftex.def)             Requested size: 238.25444pt x 91.8864pt.
-<figs/b2_2020_regression.png, id=250, 663.6795pt x 254.1495pt>
+<figs/b2_2020_regression.png, id=249, 663.6795pt x 254.1495pt>
 File: figs/b2_2020_regression.png Graphic file (type png)
 <use figs/b2_2020_regression.png>
 Package pdftex.def Info: figs/b2_2020_regression.png  used on input line 954.
@@ -1552,19 +1552,19 @@ Underfull \hbox (badness 2005) in paragraph at lines 959--967
 []
  []
 
-<figs/b1_2022_environmental_response_A.png, id=272, 663.6795pt x 286.06876pt>
+<figs/b1_2022_environmental_response_A.png, id=271, 663.6795pt x 286.06876pt>
 File: figs/b1_2022_environmental_response_A.png Graphic file (type png)
 <use figs/b1_2022_environmental_response_A.png>
 Package pdftex.def Info: figs/b1_2022_environmental_response_A.png  used on inp
 ut line 972.
 (pdftex.def)             Requested size: 238.25444pt x 102.69658pt.
-<figs/b1_2022_environmental_response_B.png, id=273, 678.1335pt x 295.1025pt>
+<figs/b1_2022_environmental_response_B.png, id=272, 678.1335pt x 295.1025pt>
 File: figs/b1_2022_environmental_response_B.png Graphic file (type png)
 <use figs/b1_2022_environmental_response_B.png>
 Package pdftex.def Info: figs/b1_2022_environmental_response_B.png  used on inp
 ut line 980.
 (pdftex.def)             Requested size: 238.25444pt x 103.67917pt.
-<figs/b1_2022_environmental_response_C.png, id=274, 720.291pt x 314.3745pt>
+<figs/b1_2022_environmental_response_C.png, id=273, 720.291pt x 314.3745pt>
 File: figs/b1_2022_environmental_response_C.png Graphic file (type png)
 <use figs/b1_2022_environmental_response_C.png>
 Package pdftex.def Info: figs/b1_2022_environmental_response_C.png  used on inp
@@ -1578,19 +1578,19 @@ See the caption package documentation for explanation.
 [11 <./figs/b2_2020_regression.png> <./figs/b1_2022_environmental_response_A.pn
 g> <./figs/b1_2022_environmental_response_B.png> <./figs/b1_2022_environmental_
 response_C.png>]
-<figs/b2_2020_environmental_response_A.png, id=285, 714.87074pt x 305.34074pt>
+<figs/b2_2020_environmental_response_A.png, id=284, 714.87074pt x 305.34074pt>
 File: figs/b2_2020_environmental_response_A.png Graphic file (type png)
 <use figs/b2_2020_environmental_response_A.png>
 Package pdftex.def Info: figs/b2_2020_environmental_response_A.png  used on inp
 ut line 1005.
 (pdftex.def)             Requested size: 238.25444pt x 101.76447pt.
-<figs/b2_2020_environmental_response_B.png, id=286, 726.91576pt x 308.352pt>
+<figs/b2_2020_environmental_response_B.png, id=285, 726.91576pt x 308.352pt>
 File: figs/b2_2020_environmental_response_B.png Graphic file (type png)
 <use figs/b2_2020_environmental_response_B.png>
 Package pdftex.def Info: figs/b2_2020_environmental_response_B.png  used on inp
 ut line 1013.
 (pdftex.def)             Requested size: 238.25444pt x 101.06482pt.
-<figs/b2_2020_environmental_response_C.png, id=287, 783.52725pt x 337.26pt>
+<figs/b2_2020_environmental_response_C.png, id=286, 783.52725pt x 337.26pt>
 File: figs/b2_2020_environmental_response_C.png Graphic file (type png)
 <use figs/b2_2020_environmental_response_C.png>
 Package pdftex.def Info: figs/b2_2020_environmental_response_C.png  used on inp
@@ -2388,7 +2388,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1405--1407
 ] [18
 
 ]
-<figs/SIR_Model_Parham_and_Michael_DDE_Solution.png, id=430, 413.74574pt x 253.
+<figs/SIR_Model_Parham_and_Michael_DDE_Solution.png, id=429, 413.74574pt x 253.
 54726pt>
 File: figs/SIR_Model_Parham_and_Michael_DDE_Solution.png Graphic file (type png
 )
@@ -2396,7 +2396,7 @@ File: figs/SIR_Model_Parham_and_Michael_DDE_Solution.png Graphic file (type png
 Package pdftex.def Info: figs/SIR_Model_Parham_and_Michael_DDE_Solution.png  us
 ed on input line 1519.
 (pdftex.def)             Requested size: 238.25444pt x 146.00517pt.
-<figs/SEI_Model_Parham_and_Michael_DDE_Solution.png, id=431, 419.166pt x 250.53
+<figs/SEI_Model_Parham_and_Michael_DDE_Solution.png, id=430, 419.166pt x 250.53
 6pt>
 File: figs/SEI_Model_Parham_and_Michael_DDE_Solution.png Graphic file (type png
 )
@@ -2410,7 +2410,7 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 1528.
 See the caption package documentation for explanation.
 
-<figs/SIR_Model_Parham_and_Michael_ODE_Solution.png, id=434, 645.00975pt x 405.
+<figs/SIR_Model_Parham_and_Michael_ODE_Solution.png, id=433, 645.00975pt x 405.
 31425pt>
 File: figs/SIR_Model_Parham_and_Michael_ODE_Solution.png Graphic file (type png
 )
@@ -2423,7 +2423,7 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 1536.
 See the caption package documentation for explanation.
 
-<figs/SEI_Model_Parham_and_Michael_ODE_Solution.png, id=439, 654.64575pt x 401.
+<figs/SEI_Model_Parham_and_Michael_ODE_Solution.png, id=438, 654.64575pt x 401.
 70074pt>
 File: figs/SEI_Model_Parham_and_Michael_ODE_Solution.png Graphic file (type png
 )
@@ -2479,9 +2479,9 @@ X/fonts/type1/public/stix/stix-mathrm.pfb><C:/Users/rapha/AppData/Local/Program
 s/MiKTeX/fonts/type1/public/stix/stix-mathscr.pfb><C:/Users/rapha/AppData/Local
 /Programs/MiKTeX/fonts/type1/public/stix/stix-mathsf.pfb><C:/Users/rapha/AppDat
 a/Local/Programs/MiKTeX/fonts/type1/public/stix/stix-mathtt.pfb>
-Output written on cas-dc-article.pdf (19 pages, 1512472 bytes).
+Output written on cas-dc-article.pdf (19 pages, 1512273 bytes).
 PDF statistics:
- 647 PDF objects out of 1000 (max. 8388607)
+ 646 PDF objects out of 1000 (max. 8388607)
  195 named destinations out of 1000 (max. 500000)
  71 words of extra memory for PDF output out of 10000 (max. 10000000)
 
