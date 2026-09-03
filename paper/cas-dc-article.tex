@@ -872,7 +872,6 @@ The temperature-dependent biting rate was recalibrated against field estimates o
 \subsection{Model calibration reproduces the observed transmission dynamics}
 \label{sec:results_calibration}
 The SEIRS-SEI model was calibrated year by year over 2017-2023 following the sequential topic scheme of Section~\ref{sec:year_by_year_calibration}, and the recovered parameters are summarized in Table~\ref{tbl:calibration}. Figure~\ref{FIG:model_vs_data} shows the fitted infectious compartment $I_H$ against the observed active-case count alongside the weekly free-beta fit for 2017, which exhibited the largest relative improvement of the weekly model over the constant-coefficient formulation (Section~\ref{sec:results_weekly_beta}). The calibrated parameters remain within their physiologically prescribed bounds found in Table~\ref{tbl:bounds}, with the humidity response ($H_0,\,k,\,\varphi$) and the human recovery parameters ($\tau_H,\,\gamma,\,\omega$) showing limited cross-year variation, while the force-of-infection coefficients $b_1$ and $b_2$ consistently approach their upper and lower bounds, respectively (Table~\ref{tbl:calibration}).
-\\\\
 %\begin{figure}[H]
 %\centering
 %\includegraphics[width=\columnwidth]{figs/weekly_beta_calibration_2017.png}
@@ -911,7 +910,7 @@ Year & $H_0$ & $k$ & $\varphi$ & $\tau_H$ & $\gamma$ & $\omega$ & $b_1$ & $b_2$ 
 To assess how much of the seasonal variation in transmission is captured by the mechanistic, climate-driven formulation, we freed the effective transmission coefficients, allowing them to vary on a weekly basis (Section~\ref{sec:freeing_transmission_coefficients}), and compared the resulting weekly model with the constant-coefficient climate-driven model. Releasing the coefficients reduced the weighted mean squared error in every year (Table~\ref{tbl:weekly_beta}), most notably in 2017, where the wMSE fell from  $8.5\times10^4$ to $6.2\times10^2$ (a $\sim$137-fold reduction).
 \\\\
 The residual between the free weekly $\beta_{h,w},\beta_{m,w}$ and the climate-driven $a(T)b_1,\,a(T)b_2$ indicates periods in which the temperature-driven formulation fails to capture the observed transmission structure. This motivates extending the per-bite transmission probabilities to the wider set of environmental drivers introduced in Section~\ref{sec:environmental_drivers}.
-\\\\
+%\\\\
 \begin{table}[H]
 \centering
 \caption{Weighted mean squared error (wMSE) of the climate-driven constant-coefficient model versus the free weekly model, per year.}
@@ -933,14 +932,57 @@ Year & Climate-driven & Weekly free & Reduction factor \\
 
 \subsection{Environmental regression of the transmission probabilities $b_1$ and $b_2$}
 \label{sec:results_regression}
-Following the framework of Section~\ref{sec:environmental_drivers}, the freed weekly per-bite transmission probabilities were regressed against the environmental predictors $T,\,R,\,H,\,D_f,\,F_c,\,F_t$ (temperature, precipitation, humidity, deforestation, fire counts and fire trends)fitting an independent random forest for each year.
+Following the framework of Section~\ref{sec:environmental_drivers}, the freed weekly per-bite transmission probabilities were regressed against the environmental predictors $T,\,R,\,H,\,D_f,\,F_c,\,F_t$ (temperature, precipitation, humidity, deforestation, fire counts and fire trends) fitting an independent random forest for each year.
 \\\\
-Within each year the model explains a substantial share of the variance of both transmission probabilities, with mean $R^2 = 0.685 \pm 0.082$ for $b_1$ and mean $R^2 = 0.784 \pm 0.130$ for $b_2$, with near-zero prediction bias, with |bias| $\lesssim$ 0.003 in every year (Table~\ref{tbl:regression}).
+Within each year the model explains a substantial share of the variance of both transmission probabilities, with mean $R^2 = 0.685 \pm 0.082$ for $b_1$ and mean $R^2 = 0.784 \pm 0.130$ for $b_2$, with near-zero prediction bias, with |bias| $\lesssim$ 0.003 in every year (Table~\ref{tbl:regression}, Figs.~\ref{FIG:imp_b1},\ref{FIG:imp_b2}).
+%\\\\
+%Figure~\ref{FIG:imp_b1} shows the best-fitting year for $b_1$, that being 2022, while Figure~\ref{FIG:imp_b2} shows the best-fitting year for $b_2$, 2020.
+
+
+\renewcommand{\thefigure}{2}
+\vspace{0.6cm}
+
+\noindent
+\includegraphics[width=\columnwidth]{figs/b1_2022_regression.png}
+\captionof{figure}{Best within-year random-forest fit of the freed weekly per-bite transmission from infected humans to susceptible mosquitos ($b_1$).}
+\label{FIG:imp_b1}
+
+\renewcommand{\thefigure}{3}
+\vspace{0.6cm}
+
+\noindent
+\includegraphics[width=\columnwidth]{figs/b2_2020_regression.png}
+\captionof{figure}{Best within-year random-forest fit of the freed weekly per-bite transmission from infected mosquitos to susceptible humans ($b_2$).}
+\label{FIG:imp_b2}
+\vspace{0.6cm}
+
+The red-dotted line denotes the weekly coefficients recovered from the observed case dynamics (Section~\ref{sec:freeing_transmission_coefficients}); while the blue-dashed line is the mean random-forest prediction. The model reproduces the seasonal envelope while retaining the week-to-week structure in the data.
 \\\\
 The importance of the predictors, however, differs between the two probabilities. For $b_1$ the contribution is distributed fairly evenly among precipitation (0.203), temperature (0.201), humidity (0.194), fire trends (0.179) and fire counts (0.149); while for $b_2$ 
 the leading contributors are fire counts (0.213), humidity (0.171), temperature (0.169), fire trends (0.166) and precipitation (0.163). Deforestation $D_f$ is consistently the weakest predictor for both $b_1$ (0.074) and $b_2$ (0.119), indicating that its effect is not captured at the intra-annual timescale resolved here.
 \\\\
 A leave-one-year-out cross-validation of the same forests qualifies this result. Out-of-sample performance is markedly lower, with overall $R^2 \approx 0.17$ for $b_1$ and $\approx 0.19$ for $b_2$, in contrast to the strong within-year fits. This contrast confirms that the environmental drivers are strongly year-specific: the within-year seasonal trajectory of $T,R,H,D_f,F_c,F_t$ shapes each year's transmission signal, whereas a fixed, year-independent link between the environment and $b_1,b_2$ is not supported by the data.
+\\\\
+The shape of these responses is illustrated in Figs.~\ref{FIG:response_b1},\ref{FIG:response_b2}, which shows the partial dependence of $b_1$ and $b_2$ on each predictor for the best fitted year for each transmission probability.
+
+\renewcommand{\thefigure}{4}
+\vspace{0.6cm}
+
+\noindent
+\includegraphics[width=\columnwidth]{figs/b1_2022_environmental_response.png}
+\captionof{figure}{Partial dependence of the weekly per-bite transmission probability $b_1$ on each environmental predictor.}
+\label{FIG:response_b1}
+
+\renewcommand{\thefigure}{5}
+\vspace{0.6cm}
+
+\noindent
+\includegraphics[width=\columnwidth]{figs/b2_2020_environmental_response.png}
+\captionof{figure}{Partial dependence of the weekly per-bite transmission probability $b_2$ on each environmental predictor.}
+\label{FIG:response_b2}
+\vspace{0.6cm}
+
+ Columns correspond to temperature $T$, precipitation $R$, humidity $H$, deforestation $D_f$, fire counts $F_c$ and fire trends $F_t$. Curves give the mean predicted probability as each predictor is varied over its observed range while the remaining variables are held at their marginal mean.
 \\\\
 \begin{table}[H]
 \centering
