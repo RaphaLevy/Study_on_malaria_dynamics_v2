@@ -730,7 +730,7 @@ The nine calibrated parameters were grouped into four biological ``topics'' for 
 \end{enumerate}
 
 The parameter bounds are given in Table~\ref{tbl:bounds}. The lower bound on $H_0 = 20\%$ prevents the humidity response from collapsing (which would drive $\mu \to \infty$ and extinguish the vector population). The bound on $b_2 \geq 0.01$ ensures a minimum level of mosquito-to-human transmission, while $\tau_H \in [10, 20]$ days constrains the human incubation period to the biologically plausible range for \textit{P. vivax} \cite{brasil_et_al_2011_unexpectedly_long_incubation_period_of_plasmodium_vivax}.
-
+\\\\
 \begin{table}[h]
 \begin{threeparttable}
 \caption{Parameter bounds for sequential topic calibration.}\label{tbl:bounds}
@@ -963,25 +963,65 @@ the leading contributors are fire counts (0.213), humidity (0.171), temperature 
 \\\\
 A leave-one-year-out cross-validation of the same forests qualifies this result. Out-of-sample performance is markedly lower, with overall $R^2 \approx 0.17$ for $b_1$ and $\approx 0.19$ for $b_2$, in contrast to the strong within-year fits. This contrast confirms that the environmental drivers are strongly year-specific: the within-year seasonal trajectory of $T,R,H,D_f,F_c,F_t$ shapes each year's transmission signal, whereas a fixed, year-independent link between the environment and $b_1,b_2$ is not supported by the data.
 \\\\
-The shape of these responses is illustrated in Figs.~\ref{FIG:response_b1},\ref{FIG:response_b2}, which shows the partial dependence of $b_1$ and $b_2$ on each predictor for the best fitted year for each transmission probability.
+The shape of these responses is illustrated in Figs.~\ref{FIG:response_b1} and \ref{FIG:response_b2}, which shows the partial dependence of $b_1$ and $b_2$ on each predictor for the best fitted year for each transmission probability.
+
+\renewcommand{\thefigure}{4A}
+\vspace{0.6cm}
+
+\noindent
+\includegraphics[width=\columnwidth]{figs/b1_2022_environmental_response_A.png}
+%\captionof{figure}{Partial dependence of the weekly per-bite transmission probability $b_1$ on each environmental predictor.}
+\label{FIG:response_b1_A}
+
+\renewcommand{\thefigure}{4B}
+%\vspace{0.6cm}
+
+\noindent
+\includegraphics[width=\columnwidth]{figs/b1_2022_environmental_response_B.png}
+%\captionof{figure}{Partial dependence of the weekly per-bite transmission probability $b_1$ on each environmental predictor.}
+\label{FIG:response_b1_B}
 
 \renewcommand{\thefigure}{4}
-\vspace{0.6cm}
+%\vspace{0.6cm}
 
 \noindent
-\includegraphics[width=\columnwidth]{figs/b1_2022_environmental_response.png}
-\captionof{figure}{Partial dependence of the weekly per-bite transmission probability $b_1$ on each environmental predictor.}
+\includegraphics[width=\columnwidth]{figs/b1_2022_environmental_response_C.png}
+\captionof{figure}{Partial dependence of the weekly per-bite transmission probability $b_1$ on each environmental predictor in 2022.}
 \label{FIG:response_b1}
 
-\renewcommand{\thefigure}{5}
+%\renewcommand{\thefigure}{5}
+%\vspace{0.6cm}
+
+%\noindent
+%\includegraphics[width=\columnwidth]{figs/b2_2020_environmental_response.png}
+%\captionof{figure}{Partial dependence of the weekly per-bite transmission probability $b_2$ on each environmental predictor.}
+%\label{FIG:response_b2}
+%\vspace{0.6cm}
+
+\renewcommand{\thefigure}{5A}
 \vspace{0.6cm}
 
 \noindent
-\includegraphics[width=\columnwidth]{figs/b2_2020_environmental_response.png}
-\captionof{figure}{Partial dependence of the weekly per-bite transmission probability $b_2$ on each environmental predictor.}
+\includegraphics[width=\columnwidth]{figs/b2_2020_environmental_response_A.png}
+%\captionof{figure}{Partial dependence of the weekly per-bite transmission probability $b_1$ on each environmental predictor.}
+\label{FIG:response_b2_A}
+
+\renewcommand{\thefigure}{5B}
+%\vspace{0.6cm}
+
+\noindent
+\includegraphics[width=\columnwidth]{figs/b2_2020_environmental_response_B.png}
+%\captionof{figure}{Partial dependence of the weekly per-bite transmission probability $b_1$ on each environmental predictor.}
+\label{FIG:response_b2_B}
+
+\renewcommand{\thefigure}{5}
+%\vspace{0.6cm}
+
+\noindent
+\includegraphics[width=\columnwidth]{figs/b2_2020_environmental_response_C.png}
+\captionof{figure}{Partial dependence of the weekly per-bite transmission probability $b_2$ on each environmental predictor in 2020.}
 \label{FIG:response_b2}
 \vspace{0.6cm}
-
 Columns correspond to temperature $T$, precipitation $R$, humidity $H$, deforestation $D_f$, fire counts $F_c$ and fire trends $F_t$. Curves give the mean predicted probability as each predictor is varied over its observed range while the remaining variables are held at their marginal mean.
 \\\\
 \begin{table}[H]
