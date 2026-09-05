@@ -1,0 +1,5 @@
+group,sum_ST,mean_S1,n_params
+calibrated_epi,0.9419,0.0394,7.0
+climate_rate,0.1031,0.0038,7.0
+climate_mortality,0.5854,0.0364,6.0
+anop_suitability,0.001,0.0001,3.0

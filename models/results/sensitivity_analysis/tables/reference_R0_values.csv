@@ -1,0 +1,4 @@
+quantity,value,value_desc
+R0_H,4.16758064516129,human-side factor
+R0_M,1.1609457271382007,mosquito-side factor
+R0,2.1996215452899768,combined sqrt product
