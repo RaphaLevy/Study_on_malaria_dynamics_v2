@@ -651,7 +651,7 @@ where we used $S_H^* = N$ and $S_M^* = M^*$ at the DFE. The spectral radius of $
 \mathcal{R}_0 = \rho(FV^{-1}) = \sqrt{\frac{a^2 b_1 b_2 \Lambda^* b_{3M}\ell}{N\gamma(b_{3M}\ell+\mu)\mu^2}},
 \label{eq:R0}
 \end{equation}
-which can be written in the classical two-factor host--vector form
+which can be written in the classical two-factor host-vector form
 \begin{equation}
 \begin{aligned}
 \mathcal{R}_0^H &= \frac{ab_2}{\mu}; \ \ \mathcal{R}_0^M = \frac{ab_1\Lambda^*}{N\mu\gamma}\cdot\frac{b_{3M}\ell}{b_{3M}\ell+\mu} \\
@@ -667,7 +667,15 @@ The geometric mean arises from the two-generation host-vector transmission cycle
 the infection must complete a full human$\rightarrow$mosquito$\rightarrow$human loop,
 and the block structure of the next-generation matrix decouples into these two factors (see Appendix~\ref{app:ngm_verify} for the explicit
 multiplication).
-
+\\\\
+We note that $\mathcal R_0$ is independent of both the intrinsic
+incubation period $\tau_H$ and the immunity waning rate $\omega$:
+the former because the model has no human disease-induced mortality
+(every exposed individual eventually becomes infectious, so the
+latent period affects only the timing of secondary infections), and
+the latter because no individuals are immune at the disease-free
+equilibrium, so waning is irrelevant to the linearized invasion
+dynamics. 
 %\subsection{Understanding relations}
 %\label{sec:understanding_relations}
 %Having the necessary epidemiological and environmental datasets ready for use, the next step 
@@ -691,7 +699,7 @@ multiplication).
 \subsection{Objective function and parameter bounds}
 \label{sec:objective_function}
 
-Model parameters were estimated by minimizing the discrepancy between the simulated infected-human trajectory $I_H(t)$ and the observed active-case counts reported through SIVEP-Malaria, restricted to rural Manaus (scaled by the 41.54\% rural proportion). The objective function is a weighted mean squared error (wMSE):
+Model parameters were estimated by minimizing the discrepancy between the simulated infected-human trajectory $I_H(t)$ and the observed active-case counts reported through SIVEP-Malaria, restricted to rural Manaus (scaled by the rural share of reported cases, 41.54$\%$). The objective function is a weighted mean squared error (wMSE):
 \begin{align}
 \text{wMSE}(\theta) = \frac{\sum_{i=1}^{n} w_i \left( I_H(t_i;\theta) - y_i \right)^2}{\sum_{i=1}^{n} w_i},
 \label{eq:wmse}
@@ -905,6 +913,27 @@ Year & $H_0$ & $k$ & $\varphi$ & $\tau_H$ & $\gamma$ & $\omega$ & $b_1$ & $b_2$ 
 \end{tabular}
 \end{table*}
 
+
+\renewcommand{\thefigure}{2}
+\vspace{0.6cm}
+\noindent
+\includegraphics[width=\columnwidth]{figs/R0_variation_in_2017.png}
+\captionof{figure}{Seasonal variation of the basic reproduction number
+$\mathcal{R}_0$ for the calibrated model in 2017.}
+\label{FIG:R0_seasonal}
+\vspace{0.6cm}
+Figure~\ref{FIG:R0_seasonal} shows the seasonal variation of
+$\mathcal{R}_0$ in 2017, obtained by substituting the calibrated parameters and
+the observed drivers into Eq.~(\ref{eq:R0_factors}). The reproduction
+number follows the annual transmission cycle, exceeding unity during
+the wet season and dropping below the epidemic threshold in the months
+of lowest precipitation. Because $\Lambda^* = \mu M^*$ inherits the
+biting rate and carrying capacity as functions of the environmental
+drivers, this curve makes explicit the dependence of the invasion
+threshold on the climate-habitat state highlighted in
+Section~\ref{sec:basic_reproduction_number}, and motivates the week-specific regression of the
+transmission probabilities pursued in Section~\ref{sec:results_regression}.
+
 \subsection{The constant-coefficient climate model underfits the observed dynamics}
 \label{sec:results_weekly_beta}
 To assess how much of the seasonal variation in transmission is captured by the mechanistic, climate-driven formulation, we freed the effective transmission coefficients, allowing them to vary on a weekly basis (Section~\ref{sec:freeing_transmission_coefficients}), and compared the resulting weekly model with the constant-coefficient climate-driven model. Releasing the coefficients reduced the weighted mean squared error in every year (Table~\ref{tbl:weekly_beta}), most notably in 2017, where the wMSE fell from  $8.5\times10^4$ to $6.2\times10^2$ (a $\sim$137-fold reduction).
@@ -947,7 +976,7 @@ Within each year the model explains a substantial share of the variance of both 
 %\captionof{figure}{Best within-year random-forest fit of the freed weekly per-bite transmission from infected humans to susceptible mosquitos ($b_1$).}
 \label{FIG:imp_b1}
 
-\renewcommand{\thefigure}{2}
+\renewcommand{\thefigure}{3}
 %\vspace{0.6cm}
 
 \noindent
@@ -965,7 +994,7 @@ A leave-one-year-out cross-validation of the same forests qualifies this result.
 \\\\
 The shape of these responses is illustrated in Figs.~\ref{FIG:response_b1} and \ref{FIG:response_b2}, which shows the partial dependence of $b_1$ and $b_2$ on each predictor for the best fitted year for each transmission probability.
 
-\renewcommand{\thefigure}{3A}
+\renewcommand{\thefigure}{4A}
 \vspace{0.6cm}
 
 \noindent
@@ -973,7 +1002,7 @@ The shape of these responses is illustrated in Figs.~\ref{FIG:response_b1} and \
 %\captionof{figure}{Partial dependence of the weekly per-bite transmission probability $b_1$ on each environmental predictor.}
 \label{FIG:response_b1_A}
 
-\renewcommand{\thefigure}{3B}
+\renewcommand{\thefigure}{4B}
 %\vspace{0.6cm}
 
 \noindent
@@ -981,7 +1010,7 @@ The shape of these responses is illustrated in Figs.~\ref{FIG:response_b1} and \
 %\captionof{figure}{Partial dependence of the weekly per-bite transmission probability $b_1$ on each environmental predictor.}
 \label{FIG:response_b1_B}
 
-\renewcommand{\thefigure}{3}
+\renewcommand{\thefigure}{4}
 %\vspace{0.6cm}
 
 \noindent
@@ -998,7 +1027,7 @@ The shape of these responses is illustrated in Figs.~\ref{FIG:response_b1} and \
 %\label{FIG:response_b2}
 %\vspace{0.6cm}
 
-\renewcommand{\thefigure}{4A}
+\renewcommand{\thefigure}{5A}
 \vspace{0.6cm}
 
 \noindent
@@ -1006,7 +1035,7 @@ The shape of these responses is illustrated in Figs.~\ref{FIG:response_b1} and \
 %\captionof{figure}{Partial dependence of the weekly per-bite transmission probability $b_1$ on each environmental predictor.}
 \label{FIG:response_b2_A}
 
-\renewcommand{\thefigure}{4B}
+\renewcommand{\thefigure}{5B}
 %\vspace{0.6cm}
 
 \noindent
@@ -1014,7 +1043,7 @@ The shape of these responses is illustrated in Figs.~\ref{FIG:response_b1} and \
 %\captionof{figure}{Partial dependence of the weekly per-bite transmission probability $b_1$ on each environmental predictor.}
 \label{FIG:response_b2_B}
 
-\renewcommand{\thefigure}{4}
+\renewcommand{\thefigure}{5}
 %\vspace{0.6cm}
 
 \noindent
