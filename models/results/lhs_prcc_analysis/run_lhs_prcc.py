@@ -63,12 +63,12 @@ def eval_r0_rows(X, names):
     return mw.evaluate_r0_rows(np.asarray(X, dtype=float), names=list(names))
 
 
-def eval_ih_peak_rows(X, names, years=None):
+def eval_ih_peak_rows(X, names, years=None, verbose=False, progress_every=10):
     if years is None:
         years = list(range(2017, 2024))
     out = []
     X = np.asarray(X, dtype=float)
-    for row in X:
+    for i, row in enumerate(X, 1):
         active = dict(zip(names, row))
         # split into p-dict params and global overrides
         p = {}
@@ -84,6 +84,8 @@ def eval_ih_peak_rows(X, names, years=None):
             fixed0 = mw.ode_fixed_params(years[0])
             p["M_prime"] = fixed0["M_prime"]
         out.append(mw.seasonal_ih_peak(years, p, globals_))
+        if verbose and i % progress_every == 0:
+            print(f"  IH ODE rows: {i}/{len(X)}")
     return np.array(out, dtype=float)
 
 

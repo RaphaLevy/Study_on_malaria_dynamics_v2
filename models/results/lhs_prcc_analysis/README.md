@@ -13,7 +13,7 @@ Four complementary analyses are provided:
 | label | Analysis | Output metric | Cost |
 |-------|----------|---------------|------|
 | **A** | LHS + PRCC of the closed-form $\mathcal{R}_0$ | $\mathcal{R}_0$ (analytical) | ~instant |
-| **B** | LHS + PRCC of the **seasonal $I_H$ peak** via ODE simulation | mean seasonal peak of human infectious prevalence, averaged over 2017–2023 | ~6 min (n=400) |
+| **B** | LHS + PRCC of the **seasonal $I_H$ peak** via ODE simulation | mean seasonal peak of human infectious prevalence, averaged over 2017–2023 | ~15 min (n=400); ~5–6 min (n=150); notebook reuses cached results by default |
 | **C** | **Across-year calibration uncertainty** of $b_1,b_2$ propagated to $\mathcal{R}_0$ | $\mathcal{R}_0$ per year, drift of $b_1,b_2$, joint $(b_1,b_2)\to\mathcal{R}_0$ contour | ~seconds |
 | **D** | **Cross-validation robustness** of the week-level regression: role of the year-to-year level | within-year vs leave-one-year-out $R^2$, raw vs within-year-standardized | ~seconds |
 
@@ -159,5 +159,8 @@ python run_lhs_prcc.py      # recompute + regenerate all figures/tables (full: n
 jupyter notebook LHS_PRCC_Analysis.ipynb
 ```
 
-The ODE-based part (B) takes a few minutes (n=400); the closed-form $\mathcal{R}_0$
+The ODE-based part (B) is the slowest block: measured ~5–6 min (n=150) and ~15 min
+(n=400) in this project's environment. The notebook **reuses the shipped n=400
+results by default** (`IH_N = None`) so a full notebook run is ~1–2 min; set
+`IH_N` to an integer to recompute a subsample. The closed-form $\mathcal{R}_0$
 part is near-instant. Everything is deterministic (`seed=42`).

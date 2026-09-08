@@ -9,15 +9,15 @@ is driven entirely by the environment and the year-to-year differences by the
 calibration.
 
 Following ``lmfit_optimization_shared.simulate_year`` the R0 curve is evaluated
-on the 14-day trailing mean of the daily climate (SMOOTH_WINDOW = 14), so that
-the R0 = 1 crossings identify the transmission-season onset/offset rather than
-day-to-day rainfall noise. The raw daily series is overlaid for context.
+on the 14-day trailing mean of the daily climate (SMOOTH_WINDOW = 14), so the
+R0 = 1 crossings (recorded in the summary table) identify the transmission-season
+onset/offset rather than day-to-day rainfall noise. The raw daily series is
+overlaid for context.
 
 Outputs
 -------
 - figures/r0_yearly.png : one panel per year, smoothed R0(t) curve with the
-  R0 = 1 threshold, shaded above-1 episodes and markers (with dates) at each
-  threshold crossing of the smoothed curve.
+  R0 = 1 threshold and shaded above-1 episodes (no crossing markers).
 - tables/r0_yearly_summary.csv : per-year R0 statistics (raw and smoothed) and
   crossing dates.
 - tables/r0_daily.csv : the full daily series (date, R0 raw, R0 smoothed).
@@ -175,16 +175,6 @@ def run():
         ax.fill_between(dates, 1.0, yv, where=(yv >= 1.0),
                         color=GREEN, alpha=0.22, interpolate=True, zorder=1)
 
-        crossings = find_crossings(dates.to_numpy(), yv)
-        for ts, is_up in crossings:
-            ax.scatter([ts], [1.0], s=48, marker="^" if is_up else "v",
-                       color=ORANGE, edgecolor="k", lw=0.4, zorder=6)
-            ax.annotate(ts.floor("D").strftime("%b %d"), (ts, 1.0),
-                        textcoords="offset points",
-                        xytext=(0, 9) if is_up else (0, -11),
-                        ha="center", va="bottom" if is_up else "top",
-                        fontsize=7.5, color=ORANGE, rotation=90, zorder=6)
-
         above = int(np.sum(yv >= 1.0))
         lo = float(np.nanmin(np.concatenate([d_raw["R0"].to_numpy(), yv])))
         hi = float(np.nanmax(np.concatenate([d_raw["R0"].to_numpy(), yv])))
@@ -212,10 +202,6 @@ def run():
                    label="Daily $R_0$ (raw climate)"),
         plt.Line2D([], [], color="#555555", lw=1.0, ls="--",
                    label="$R_0 = 1$ epidemic threshold"),
-        plt.Line2D([], [], marker="^", color="w", mec="#333333",
-                   mfc=ORANGE, lw=0, label="Crosses 1 (up)"),
-        plt.Line2D([], [], marker="v", color="w", mec="#333333",
-                   mfc=ORANGE, lw=0, label="Crosses 1 (down)"),
     ]
     fig.legend(handles=handles, loc="upper center", ncol=3, frameon=False,
                fontsize=9.5, bbox_to_anchor=(0.5, 1.0))

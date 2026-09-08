@@ -126,42 +126,62 @@ show_and_save(fig, "r0_tornado.png")""")
 md(r"""## B. LHS + PRCC of the seasonal $I_H$ peak (ODE)
 
 Each LHS row drives **seven ODE year-simulations** (2017–2023) and we record the mean of
-the daily human-infectious peak. Because the peak is near-instant to reach in each year, a
-modest sample is used.
+the daily human-infectious peak.
 
-> **Heavy cell, runtime warning**: the default below uses $n=150$ (~2–3 min). The paper
-> figures use $n=400$ (shipped in `figures/` and `tables/`). Set `IH_N = 400` and re-run if
-> you want the full sample.""")
+> **Runtime (measured).** The ODE part is the expensive block of the notebook:
+> ~5–6 min at $n=150$ and ~15 min at $n=400$ in this project's environment. The
+> paper figures were produced at $n=400$ and are already shipped in `tables/` and
+> `figures/`. **By default this notebook reuses those shipped results**
+> (`IH_N = None`), which completes in ~1 s. To live-recompute a small subsample set
+> `IH_N` to an integer (e.g. 30).""")
 
-code(r"""IH_N = 150
-Xih = lhs_sample(ODE_NAMES, n_samples=IH_N, seed=SEED)
-Yih = eval_ih_peak_rows(Xih, ODE_NAMES)
-print("Evaluated mean seasonal I_H peak for", len(Yih), "parameter rows. "
-      f"(n_valid={int(np.isfinite(Yih).sum())})")""")
+code(r"""IH_N = None          # None -> reuse shipped n=400 artifacts; int -> recompute
+TAB = os.path.join(os.getcwd(), "tables")
+if IH_N is not None:
+    Xih = lhs_sample(ODE_NAMES, n_samples=IH_N, seed=SEED)
+    Yih = eval_ih_peak_rows(Xih, ODE_NAMES, verbose=True)
+    Ylog = np.log10(np.maximum(Yih, 1e-6))
+    df_ih = _prcc_table(Xih, Ylog, ODE_NAMES, None)
+    print(f"Recomputed: {len(Yih)} rows "
+          f"(n_valid={int(np.isfinite(Yih).sum())}).")
+else:
+    Xih = Yih = None
+    df_ih = pd.read_csv(os.path.join(TAB, "prcc_ih_peak.csv"))
+    samp = pd.read_csv(os.path.join(TAB, "ih_peak_sampling.csv"))
+    print(f"Reusing shipped n=400 results "
+          f"(n_used={int(df_ih['n_used'].max())}):")
+    print("  PRCC table :", os.path.join(TAB, "prcc_ih_peak.csv"))
+    print("  I_H peak distribution (raw): "
+          f"mean {samp['mean'][0]:.0f}, median {samp['median'][0]:.0f}, "
+          f"max {samp['max'][0]:.0f}")
+    print("  Set IH_N to a small value above to recompute interactively.")""")
 
 md(r"""The $I_H$ peak is heavily right-skewed (a plateau near the calibrated value ~917 with
 extreme excursions when $\gamma$ is tiny). PRCC is therefore computed on
-$\log_{10}(\text{peak } I_H)$; the raw distribution is shown alongside.""")
+$\log_{10}(\text{peak } I_H)$; the raw distribution is shown alongside. In the
+cached mode below the figure shown is the shipped $n=400$ version
+(`figures/prcc_ih_peak_combined.png`).""")
 
-code(r"""Ylog = np.log10(np.maximum(Yih, 1e-6))
-df_ih = _prcc_table(Xih, Ylog, ODE_NAMES, None)
-df_ih.head(15).round(3)""")
+code(r"""df_ih.head(15).round(3)""")
 
-code(r"""fig, (a1, a2) = plt.subplots(2, 1, figsize=(8.5, 10),
-                                   gridspec_kw={"height_ratios": [1, 1.6]})
-hit = np.isfinite(Yih)
-a1.hist(Yih[hit], bins=40, color="#0072B2", edgecolor="black", linewidth=0.3)
-a1.set_xscale("log")
-a1.axvline(np.median(Yih[hit]), color="#D55E00", ls="--",
-           label=f"median = {np.median(Yih[hit]):.0f}")
-a1.set_xlabel("Mean seasonal peak $I_H$ across 2017-2023 (log scale)")
-a1.set_ylabel("Frequency")
-a1.set_title("Distribution of the seasonal $I_H$ peak over the LHS")
-a1.legend(frameon=False, fontsize=9)
-prcc_barh(df_ih, "PRCC of $\\log_{10}$(seasonal $I_H$ peak)",
-          "LHS + PRCC of the seasonal $I_H$ peak (ODE, n=%d)" % IH_N,
-          ax=a2, legend=False)
-plt.tight_layout(); show_and_save(fig, "prcc_ih_peak_combined.png")""")
+code(r"""if IH_N is None:
+    display(Image(filename=os.path.join(FIG, "prcc_ih_peak_combined.png")))
+else:
+    fig, (a1, a2) = plt.subplots(2, 1, figsize=(8.5, 10),
+                                 gridspec_kw={"height_ratios": [1, 1.6]})
+    hit = np.isfinite(Yih)
+    a1.hist(Yih[hit], bins=40, color="#0072B2", edgecolor="black", linewidth=0.3)
+    a1.set_xscale("log")
+    a1.axvline(np.median(Yih[hit]), color="#D55E00", ls="--",
+               label=f"median = {np.median(Yih[hit]):.0f}")
+    a1.set_xlabel("Mean seasonal peak $I_H$ across 2017-2023 (log scale)")
+    a1.set_ylabel("Frequency")
+    a1.set_title("Distribution of the seasonal $I_H$ peak over the LHS")
+    a1.legend(frameon=False, fontsize=9)
+    prcc_barh(df_ih, "PRCC of $\\log_{10}$(seasonal $I_H$ peak)",
+              "LHS + PRCC of the seasonal $I_H$ peak (ODE, n=%d)" % IH_N,
+              ax=a2, legend=False)
+    plt.tight_layout(); show_and_save(fig, "prcc_ih_peak_combined.png")""")
 
 md(r"""## C. Across-year calibration uncertainty of $b_1,b_2$ → $\mathcal{R}_0$
 
@@ -292,7 +312,8 @@ md(r"""## Discussion for the paper
 nb = {
     "cells": cells,
     "metadata": {
-        "kernelspec": {"display_name": "Python 3", "language": "python", "name": "python3"},
+        "kernelspec": {"display_name": "Python 3 (project venv)",
+                       "language": "python", "name": "python3"},
         "language_info": {"name": "python", "version": "3.12"},
     },
     "nbformat": 4,
