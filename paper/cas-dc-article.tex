@@ -1112,6 +1112,32 @@ All files of data collection and treatment, as well as resulting plots created d
 \label{sec:baseline_doesnt_sustain_transmission}
 The transition from the delayed SIR-SEI model of Parham and Michael to the ODE-based SEIRS-SEI model was not simply a numerical convenience. As shown in Section~\ref{sec:baseline_delayed_sir_sei}, the original parameterization leads to the extinction of both infected humans and mosquitoes, since the linear mosquito recruitment term is not sufficient to compensate for mosquito mortality under the environmental conditions of Manaus. In the modified model, the explicit extrinsic incubation delay is replaced by the transition rate $b_{3M}\ell$, while mosquito recruitment is made density-dependent. These changes allow the model to sustain the mosquito population and reproduce endemic transmission, as established in Proposition~\ref{prop:persistence}. Thus, the modifications change the qualitative behavior of the system and are important for obtaining a model that is consistent with the observed persistence of malaria transmission in Manaus.
 
+\subsection{Limitations}
+\label{sec:limitations}
+Several limitations should be acknowledged. First, the population at
+risk $N_y$ was taken as the rural population of Manaus. The
+inter-census estimates for this quantity were provided by the
+Trajetórias Project \cite{Rorato2023}, which derives them from fixed
+rural-urban proportions based on the 2010 census. While this approach
+ensures internal consistency, it does not account for the marked
+demographic changes in Manaus over time, particularly the rapid
+urbanization observed in the region. To mitigate this limitation, the
+rural proportions used in this study were recalculated (see
+Section~\ref{sec:data_consistency_adjustments}) by interpolating and
+extrapolating the available census data, providing a more realistic
+representation of the temporal evolution of the rural population. This
+adjustment is relevant because rural areas contribute
+disproportionately to malaria incidence. Nevertheless, the resulting
+decrease in $N_y$ during 2017-2023 reflects a demographic trend that
+may still not correspond to the actual exposure of the human population
+to mosquitoes. Second, the environmental drivers are treated as
+deterministic and observed; unobserved covariates, such as vector
+control interventions or local mobility, are not represented and may
+contribute to the between-season degradation of the random forest.
+Third, the model is fitted to reported case counts, which may be
+subject to reporting bias and under-reporting, particularly in the
+lowest-transmission months. 
+%Fourth, the sensitivity analysis uses uniform priors over the parameter ranges and does not account for correlations among the calibrated parameters. --- NEEDS TO BE REVIEWED
 \newpage
 \begin{thebibliography}{00}
 
