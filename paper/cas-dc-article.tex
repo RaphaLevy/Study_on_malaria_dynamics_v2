@@ -378,7 +378,7 @@ P=Q^{1/g} \Longrightarrow g = \frac{\ln(Q)}{\ln(P)},
 \end{align}
 where $P$ is the daily survival rate of mosquitoes, $Q$ is the proportion of parous mosquitoes females in the population and $g$ is the duration of the gonotrophic cycle, given in days  \cite{duration_of_gonotrophic_cycle}.
 \\\\
-Given the lack of more recent data, it was decided to use the obtained estimates of the time period specified above with average temperatures from the period of analysis between 2017 and 2023, given that the biting rate is given as a function of temperature. It was decided to consider $T'=16^\circ C$, given that below this temperature there is no development of the vector, as the threshold temperature for the biting rate, and we estimated values of $g$ for the missing months of the analysis via interpolation. With this, given the closed formula for the biting rate, and knowing that it is the inverse of the gonotrophic cycle, we calculated $D_1= g(T-T')$ for each of the months with available data \footnote{$a(T)$ is defined in Table A.1}.
+Given the lack of more recent data, it was decided to use the obtained estimates of the time period specified above with average temperatures from the period of analysis between 2017 and 2023, given that the biting rate is given as a function of temperature. It was decided to consider $T'=16^\circ C$, given that below this temperature there is no development of the vector, as the threshold temperature for the biting rate, and we estimated values of $g$ for the missing months of the analysis via interpolation. With this, given the closed formula for the biting rate, and knowing that it is the inverse of the gonotrophic cycle, we calculated $D_1= g(T-T')$ for each of the months with available data \footnote{$a(T)$ is defined in Table~\ref{tbl1}}.
 \\\\
 Having monthly values of $D_1$, we took their average in order to estimate the biting rate and the proportion of female mosquitoes to humans, which is given by
 \begin{align}  
@@ -874,8 +874,15 @@ As a diagnostic for the methodological choices adopted below, the original SIR-S
 
 \subsection{Recalibration of the temperature-dependent biting rate}
 \label{sec:results_biting_rate}
-The temperature-dependent biting rate was recalibrated against field estimates of \textit{Anopheles darlingi} feeding behavior following Section~\ref{sec:recalibration_temp_dependent_biting_rate}. The recalibrated function yielded a minimum biting threshold of $T' = 16\,^{\circ}\mathrm{C}$ and a thermal scaling factor $D_1 = 24.8\,^{\circ}\mathrm{C}\,\mathrm{days}$. Compared with the original Parham \& Michael parameterization, the refit shifts the biting response toward the thermal range observed in the Amazon and modifies its sensitivity near the transmission window. All subsequent simulations and the weekly transmission regressions of Section~\ref{sec:results_regression} make use of this recalibrated biting rate.
-% TODO: add biting-rate comparison figure (recalibrated a(T) vs original Parham & Michael curve).
+The temperature-dependent biting rate was recalibrated using field estimates of \textit{Anopheles darlingi} feeding behavior, as described in Section~\ref{sec:recalibration_temp_dependent_biting_rate}. The recalibrated function has a minimum biting temperature threshold of $T' = 16\,^{\circ}\mathrm{C}$ and a thermal scaling factor $D_1 = 24.8\,^{\circ}\mathrm{C}\,\mathrm{days}$. Compared with the original Parham \& Michael parameterization, the recalibration shifts the biting response toward the temperature range observed in the Amazon and modifies its sensitivity within the transmission window. Figure~\ref{FIG:biting_rate} compares the recalibrated curve with the original Parham \& Michael curve; in the temperature range observed in Manaus during the transmission season, the recalibrated function yields considerably higher biting rates. This recalibrated biting rate is used in all subsequent simulations and in the weekly transmission regressions presented in Section~\ref{sec:results_regression}.
+
+\renewcommand{\thefigure}{1}
+\vspace{0.6cm}
+
+\noindent
+\includegraphics[width=\columnwidth]{figs/biting_rate_comparison.png}
+\captionof{figure}{Comparison between the recalibrated temperature-dependent biting rate $a(T)$ used in this work ($T'=16\,^{\circ}\mathrm{C}$, $D_1 = 24.8\,^{\circ}\mathrm{C}\,\mathrm{days}$) and the original Parham \& Michael (2010) parameterization \cite{Parham2010} ($T'=19.9\,^{\circ}\mathrm{C}$, $D_1 = 36.5\,^{\circ}\mathrm{C}\,\mathrm{days}$). The shaded band indicates the range of daily mean temperatures observed in Manaus between 2017 and 2023 (5th--95th percentiles), and the dashed vertical line marks the recalibrated biting threshold $T'=16\,^{\circ}\mathrm{C}$.}
+\label{FIG:biting_rate}
 
 \subsection{Model calibration reproduces the observed transmission dynamics}
 \label{sec:results_calibration}
@@ -886,7 +893,7 @@ The SEIRS-SEI model was calibrated year by year over 2017-2023 following the seq
 %\caption{Comparison between the observed active cases and the model estimation of the infectious human compartment $I_H$ for 2017.}
 %\label{FIG:model_vs_data}
 %\end{figure}
-\renewcommand{\thefigure}{1}
+\renewcommand{\thefigure}{2}
 \vspace{0.6cm}
 
 \noindent
@@ -914,8 +921,8 @@ Year & $H_0$ & $k$ & $\varphi$ & $\tau_H$ & $\gamma$ & $\omega$ & $b_1$ & $b_2$ 
 \end{table*}
 
 
-\renewcommand{\thefigure}{2}
-\vspace{0.6cm}
+\renewcommand{\thefigure}{3}
+
 \noindent
 \includegraphics[width=\columnwidth]{figs/R0_variation_in_2017.png}
 \captionof{figure}{Seasonal variation of the basic reproduction number
@@ -923,7 +930,7 @@ $\mathcal{R}_0$ for the calibrated model in 2017.}
 \label{FIG:R0_seasonal}
 \vspace{0.6cm}
 Figure~\ref{FIG:R0_seasonal} shows the seasonal variation of
-$\mathcal{R}_0$ in 2017, obtained by substituting the calibrated parameters and
+$\mathcal{R}_0$ during 2017, obtained by substituting the calibrated parameters and
 the observed drivers into Eq.~(\ref{eq:R0_factors}). The reproduction
 number follows the annual transmission cycle, exceeding unity during
 the wet season and dropping below the epidemic threshold in the months
@@ -961,9 +968,9 @@ Year & Climate-driven & Weekly free & Reduction factor \\
 
 \subsection{Environmental regression of the transmission probabilities $b_1$ and $b_2$}
 \label{sec:results_regression}
-Following the framework of Section~\ref{sec:environmental_drivers}, the freed weekly per-bite transmission probabilities were regressed against the environmental predictors $T,\,R,\,H,\,D_f,\,F_c,\,F_t$ (temperature, precipitation, humidity, deforestation, fire counts and fire trends) fitting an independent random forest for each year.
+Following the framework described in Section~\ref{sec:environmental_drivers}, the freed weekly per-bite transmission probabilities were regressed against the environmental predictors $T,\,R,\,H,\,D_f,\,F_c,\,F_t$, representing temperature, precipitation, humidity, deforestation, fire counts and fire trends. A separate random forest model was fitted for each year.
 \\\\
-Within each year the model explains a substantial share of the variance of both transmission probabilities, with mean $R^2 = 0.685 \pm 0.082$ for $b_1$ and mean $R^2 = 0.784 \pm 0.130$ for $b_2$, with near-zero prediction bias (|bias| $\lesssim$ 0.003 in every year; Table~\ref{tbl:regression}, Fig.~\ref{FIG:imp_b2}).
+Within each year the model explains a a large part of the variance of both transmission probabilities, with mean $R^2 = 0.685 \pm 0.082$ for $b_1$ and mean $R^2 = 0.784 \pm 0.130$ for $b_2$. Prediction bias was close to zero in all years (|bias| $\lesssim$ 0.003 in every year; Table~\ref{tbl:regression}, Fig.~\ref{FIG:imp_b2}).
 %\\\\
 %Figure~\ref{FIG:imp_b1} shows the best-fitting year for $b_1$, that being 2022, while Figure~\ref{FIG:imp_b2} shows the best-fitting year for $b_2$, 2020.
 
@@ -976,7 +983,7 @@ Within each year the model explains a substantial share of the variance of both 
 %\captionof{figure}{Best within-year random-forest fit of the freed weekly per-bite transmission from infected humans to susceptible mosquitos ($b_1$).}
 \label{FIG:imp_b1}
 
-\renewcommand{\thefigure}{3}
+\renewcommand{\thefigure}{4}
 %\vspace{0.6cm}
 
 \noindent
@@ -994,7 +1001,7 @@ A leave-one-year-out cross-validation of the same forests qualifies this result.
 \\\\
 The shape of these responses is illustrated in Figs.~\ref{FIG:response_b1} and \ref{FIG:response_b2}, which shows the partial dependence of $b_1$ and $b_2$ on each predictor for the best fitted year for each transmission probability.
 
-\renewcommand{\thefigure}{4A}
+\renewcommand{\thefigure}{5A}
 \vspace{0.6cm}
 
 \noindent
@@ -1002,7 +1009,7 @@ The shape of these responses is illustrated in Figs.~\ref{FIG:response_b1} and \
 %\captionof{figure}{Partial dependence of the weekly per-bite transmission probability $b_1$ on each environmental predictor.}
 \label{FIG:response_b1_A}
 
-\renewcommand{\thefigure}{4B}
+\renewcommand{\thefigure}{5B}
 %\vspace{0.6cm}
 
 \noindent
@@ -1010,7 +1017,7 @@ The shape of these responses is illustrated in Figs.~\ref{FIG:response_b1} and \
 %\captionof{figure}{Partial dependence of the weekly per-bite transmission probability $b_1$ on each environmental predictor.}
 \label{FIG:response_b1_B}
 
-\renewcommand{\thefigure}{4}
+\renewcommand{\thefigure}{5}
 %\vspace{0.6cm}
 
 \noindent
@@ -1027,7 +1034,7 @@ The shape of these responses is illustrated in Figs.~\ref{FIG:response_b1} and \
 %\label{FIG:response_b2}
 %\vspace{0.6cm}
 
-\renewcommand{\thefigure}{5A}
+\renewcommand{\thefigure}{6A}
 \vspace{0.6cm}
 
 \noindent
@@ -1035,7 +1042,7 @@ The shape of these responses is illustrated in Figs.~\ref{FIG:response_b1} and \
 %\captionof{figure}{Partial dependence of the weekly per-bite transmission probability $b_1$ on each environmental predictor.}
 \label{FIG:response_b2_A}
 
-\renewcommand{\thefigure}{5B}
+\renewcommand{\thefigure}{6B}
 %\vspace{0.6cm}
 
 \noindent
@@ -1043,7 +1050,7 @@ The shape of these responses is illustrated in Figs.~\ref{FIG:response_b1} and \
 %\captionof{figure}{Partial dependence of the weekly per-bite transmission probability $b_1$ on each environmental predictor.}
 \label{FIG:response_b2_B}
 
-\renewcommand{\thefigure}{5}
+\renewcommand{\thefigure}{6}
 %\vspace{0.6cm}
 
 \noindent
