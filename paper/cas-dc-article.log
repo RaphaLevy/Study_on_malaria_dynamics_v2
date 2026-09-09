@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.3.13)  9 SEP 2026 15:51
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.3.13)  9 SEP 2026 17:04
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1533,12 +1533,12 @@ Underfull \hbox (badness 1038) in paragraph at lines 971--976
 \T1/stix/m/n/10 Within each year the model ex-plains a a large part of
  []
 
-<figs/b1_2022_regression.png, id=276, 663.6795pt x 255.95625pt>
+<figs/b1_2022_regression.png, id=277, 663.6795pt x 255.95625pt>
 File: figs/b1_2022_regression.png Graphic file (type png)
 <use figs/b1_2022_regression.png>
 Package pdftex.def Info: figs/b1_2022_regression.png  used on input line 982.
 (pdftex.def)             Requested size: 238.25444pt x 91.8864pt.
-<figs/b2_2020_regression.png, id=277, 663.6795pt x 254.1495pt>
+<figs/b2_2020_regression.png, id=278, 663.6795pt x 254.1495pt>
 File: figs/b2_2020_regression.png Graphic file (type png)
 <use figs/b2_2020_regression.png>
 Package pdftex.def Info: figs/b2_2020_regression.png  used on input line 990.
@@ -2470,7 +2470,7 @@ X/fonts/type1/public/stix/stix-mathrm.pfb><C:/Users/rapha/AppData/Local/Program
 s/MiKTeX/fonts/type1/public/stix/stix-mathscr.pfb><C:/Users/rapha/AppData/Local
 /Programs/MiKTeX/fonts/type1/public/stix/stix-mathsf.pfb><C:/Users/rapha/AppDat
 a/Local/Programs/MiKTeX/fonts/type1/public/stix/stix-mathtt.pfb>
-Output written on cas-dc-article.pdf (20 pages, 1836790 bytes).
+Output written on cas-dc-article.pdf (20 pages, 1836601 bytes).
 PDF statistics:
  673 PDF objects out of 1000 (max. 8388607)
  202 named destinations out of 1000 (max. 500000)
