@@ -693,8 +693,43 @@ dynamics.
 %Linear regression tests were also taken, as to see how the 
 %number of cases is dependent not only in the environmental data used above, but on the month of year and season as well.
 
+\subsection{Sensitivity analysis methodology}
+\label{sec:sensitivity}
+
+The reproduction number in Eq.~(\ref{eq:R0_factors}) depends on the
+reference habitat state through the mosquito recruitment
+$\Lambda^* = \mu M^*$, which inherits the environmental dependence of
+the recruitment function $b(\bar{R},\bar{T})$ and of the carrying
+capacity $\bar{K}$ (Eq.~\ref{eq:lambda_star}). Consequently,
+$\mathcal{R}_0$ is a function of the calibrated parameters and of the
+environmental drivers. Because these quantities enter nonlinearly and
+are mutually coupled, the relative contribution of each to the
+invasion threshold is not apparent from the analytical expression
+alone, and must be quantified numerically.
+\\\\
+To this end, we adopt a global sensitivity analysis based on Latin
+hypercube sampling (LHS) combined with partial rank correlation
+coefficients (PRCC)~\cite{marino2008}, the standard framework for
+uncertainty and sensitivity analysis in compartmental models of
+vector-borne disease. Each parameter is drawn independently from a
+uniform distribution over its range in Table~\ref{tbl:bounds}. For
+$n = 10{,}000$ sampled combinations we evaluate three output
+quantities: the reproduction number $\mathcal{R}_0$ from
+Eq.~(\ref{eq:R0_factors}), the seasonal peak of the human infectious
+compartment, and the cumulative number of human cases, the latter two
+obtained by numerical integration of the model
+(Section~\ref{sec:computational_implementation}). PRCC measures the
+monotonic association between each input and each output after removing
+the effect of the remaining parameters, yielding a robust ranking of
+influential parameters that is insensitive to the nonlinear couplings
+of the system. Because $\mathcal{R}_0$ factorises (Eq.~\ref{eq:R0_factors}),
+the analysis also provides a numerical check of the analytical
+structure: parameters that cancel in the closed form should return a
+PRCC indistinguishable from zero. The results are reported in
+Section~\ref{sec:results_sensitivity}.
+
 \section{Computational Implementation}
-\label{sec:computational_implemetation}
+\label{sec:computational_implementation}
 
 \subsection{Objective function and parameter bounds}
 \label{sec:objective_function}
@@ -1296,30 +1331,33 @@ lowest-transmission months.
 \bibitem{Rep_Number_Comp_Model} P. van den Driessche, J. Watmough, Reproduction numbers and sub-threshold endemic equilibria for compartmental models of disease transmission, Mathematical Biosciences, Vol. 180 (2002), 29-48, \href{https://doi.org/10.1016/S0025-5564(02)00108-6}{https://doi.org/10.1016/S0025-5564(02)00108-6}.
 \\
 %31
-\bibitem{brasil_et_al_2011_unexpectedly_long_incubation_period_of_plasmodium_vivax} P. Brasil et al, Unexpectedly long incubation period of Plasmodium vivax malaria, in the absence of chemoprophylaxis, in patients diagnosed outside the transmission area in Brazil, Malaria Journal, Vol. 10 (122) (2011), \href{https://link.springer.com/article/10.1186/1475-2875-10-122}{https://link.springer.com/article/10.1186/1475-2875-10-122}
+\bibitem{marino2008} S. Marino, I. B. Hogue, C. J. Ray, D. E. Kirschner, A methodology for performing global uncertainty and sensitivity analysis in systems biology, Journal of Theoretical Biology, Vol. 254 (1) (2008), 178-196, \href{https://pubmed.ncbi.nlm.nih.gov/18572196/}{https://pubmed.ncbi.nlm.nih.gov/18572196/}
 \\
 %32
-\bibitem{storn_price_1997} R. Storn, K. Price, Differential Evolution - A Simple and Efficient Heuristic for Global Optimization over Continuous Spaces, Journal of Global Optimization, Vol. 11 (1997), 341–359, \href{https://link.springer.com/article/10.1023/A:1008202821328}{https://link.springer.com/article/10.1023/A:1008202821328}
+\bibitem{brasil_et_al_2011_unexpectedly_long_incubation_period_of_plasmodium_vivax} P. Brasil et al, Unexpectedly long incubation period of Plasmodium vivax malaria, in the absence of chemoprophylaxis, in patients diagnosed outside the transmission area in Brazil, Malaria Journal, Vol. 10 (122) (2011), \href{https://link.springer.com/article/10.1186/1475-2875-10-122}{https://link.springer.com/article/10.1186/1475-2875-10-122}
 \\
 %33
-\bibitem{nelder_mead_1965} J. A. Nelder, R. Mead, A Simplex Method for Function Minimization, The Computer Journal, Vol. 7 (4) (1965), 308–313, \href{https://academic.oup.com/comjnl/article-abstract/7/4/308/354237}{https://academic.oup.com/comjnl/article-abstract/7/4/308/354237}
+\bibitem{storn_price_1997} R. Storn, K. Price, Differential Evolution - A Simple and Efficient Heuristic for Global Optimization over Continuous Spaces, Journal of Global Optimization, Vol. 11 (1997), 341–359, \href{https://link.springer.com/article/10.1023/A:1008202821328}{https://link.springer.com/article/10.1023/A:1008202821328}
 \\
 %34
-\bibitem{McCord2016} G. C. McCord, Malaria ecology and climate change, The European Physical Journal Special Topics, Vol. 225 (3) (2016), 459-470, \href{https://doi.org/10.1140/epjst/e2015-50097-1}{https://doi.org/10.1140/epjst/e2015-50097-1}.
+\bibitem{nelder_mead_1965} J. A. Nelder, R. Mead, A Simplex Method for Function Minimization, The Computer Journal, Vol. 7 (4) (1965), 308–313, \href{https://academic.oup.com/comjnl/article-abstract/7/4/308/354237}{https://academic.oup.com/comjnl/article-abstract/7/4/308/354237}
 \\
 %35
-\bibitem{climate_based_distribution_sub_sahara} M. H. Craig, R. W. Snow, D. le Sueur, A Climate-based Distribution Model of Malaria Transmission in Sub-Saharan Africa, Parasitology Today, Vol. 15 (3), 105-111 (1999), \href{https://pubmed.ncbi.nlm.nih.gov/10322323/}{https://pubmed.ncbi.nlm.nih.gov/10322323/}.
+\bibitem{McCord2016} G. C. McCord, Malaria ecology and climate change, The European Physical Journal Special Topics, Vol. 225 (3) (2016), 459-470, \href{https://doi.org/10.1140/epjst/e2015-50097-1}{https://doi.org/10.1140/epjst/e2015-50097-1}.
 \\
 %36
-\bibitem{minmax_temp_anoph} T. P. Agyekum et al, A Systematic Review of the Effects of Temperature on Anopheles Mosquito Development and Survival: Implications for Malaria Control in a Future Warmer Climate, International Journal of Environmental Research and Public Health, Vol. 18 (14),  (2021), \href{https://pmc.ncbi.nlm.nih.gov/articles/PMC8306597/}{https://pmc.ncbi.nlm.nih.gov/articles/PMC8306597/}.
+\bibitem{climate_based_distribution_sub_sahara} M. H. Craig, R. W. Snow, D. le Sueur, A Climate-based Distribution Model of Malaria Transmission in Sub-Saharan Africa, Parasitology Today, Vol. 15 (3), 105-111 (1999), \href{https://pubmed.ncbi.nlm.nih.gov/10322323/}{https://pubmed.ncbi.nlm.nih.gov/10322323/}.
 \\
 %37
-\bibitem{Lindsay_Birley_1996} S. W. Lindsay, M. H. Birley, Climate change and malaria transmission, Annals of Tropical Medicine \& Parasitology,Vol. 90 (1996), 573-588, \href{https://doi.org/10.1080/00034983.1996.11813087}{https://doi.org/10.1080/00034983.1996.11813087}.
+\bibitem{minmax_temp_anoph} T. P. Agyekum et al, A Systematic Review of the Effects of Temperature on Anopheles Mosquito Development and Survival: Implications for Malaria Control in a Future Warmer Climate, International Journal of Environmental Research and Public Health, Vol. 18 (14),  (2021), \href{https://pmc.ncbi.nlm.nih.gov/articles/PMC8306597/}{https://pmc.ncbi.nlm.nih.gov/articles/PMC8306597/}.
 \\
 %38
-\bibitem{Ecological_Change_Malaria_Risk} N. J. Arisco, C. Peterka, C. Diniz, B. H. Singer, M. C. Castro, Ecological change increases malaria risk in the Brazilian Amazon, Proc. Natl. Acad. Sci., Vol. 121 (44) (2024), \href{https://doi.org/10.1073/pnas.2409583121}{https://doi.org/10.1073/pnas.2409583121}.
+\bibitem{Lindsay_Birley_1996} S. W. Lindsay, M. H. Birley, Climate change and malaria transmission, Annals of Tropical Medicine \& Parasitology,Vol. 90 (1996), 573-588, \href{https://doi.org/10.1080/00034983.1996.11813087}{https://doi.org/10.1080/00034983.1996.11813087}.
 \\
 %39
+\bibitem{Ecological_Change_Malaria_Risk} N. J. Arisco, C. Peterka, C. Diniz, B. H. Singer, M. C. Castro, Ecological change increases malaria risk in the Brazilian Amazon, Proc. Natl. Acad. Sci., Vol. 121 (44) (2024), \href{https://doi.org/10.1073/pnas.2409583121}{https://doi.org/10.1073/pnas.2409583121}.
+\\
+%40
 \bibitem{human_to_mosquito_transmission_efficiency} T.  S. Churcher, J. F. Trape, A. Cohuet, Human-to-mosquito transmission efficiency increases as malaria is controlled, Nat Commun 6, 6054 (2015), \href{https://doi.org/10.1038/ncomms7054}{https://doi.org/10.1038/ncomms7054}
 \\
 %------------------------------FIX
