@@ -1148,6 +1148,23 @@ dependence of transmission, and it motivates the week-specific
 regression of $b_{1,w}$ and $b_{2,w}$ in
 Section~\ref{sec:results_regression}.
 
+\subsection{Random forest: strong within years, weak in-between}
+
+The random forest regression achieves a good within-season fit
+($R^2 \approx 0.6$-$0.9$) but a markedly poorer between-season fit
+($R^2 \approx 0.17$-$0.19$). This asymmetry is informative rather
+than a failure of the model. Within a single year, the
+drivers that vary on the weekly scale (precipitation, temperature,
+humidity, and fire) largely determine the week-to-week fluctuations of
+the transmission probabilities. Across years, however, the
+differences are not captured by these same variables, suggesting that
+inter-annual variation is governed either by factors that are
+constant within a year in our dataset or by an underlying year-specific
+environmental state that is not fully represented by the contemporaneous
+drivers. The poor performance points to a
+structural limitation of the driver set rather than to an
+insufficiency of the statistical method.
+
 \subsection{Limitations}
 \label{sec:limitations}
 Several limitations should be acknowledged. First, the population at
