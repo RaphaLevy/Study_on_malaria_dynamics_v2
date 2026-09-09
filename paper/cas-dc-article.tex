@@ -1093,21 +1093,24 @@ All files of data collection and treatment, as well as resulting plots created d
 %\newpage
 
 \section{Discussion}
+\label{sec:discussion}
+%The population estimates provided by the Trajetórias Project \cite{Rorato2023} for 
+%inter-census periods are derived using fixed rural–urban proportions based on the 2010 census. 
+%While this approach ensures internal consistency, it does not account for the significant 
+%demographic changes observed in Manaus over time, particularly those associated with rapid urbanization.
+%\\\\
+%To address this limitation, the population proportions used in this study were recalculated (see Section~\ref{sec:data_consistency_adjustments}) 
+%using interpolation and extrapolation based on available census data. This adjustment provides a more realistic 
+%representation of temporal changes in the rural population, which is especially relevant given the 
+%disproportionate contribution of rural areas to malaria incidence.
+%\\\\
+%These refinements improve the consistency between demographic inputs and epidemiological 
+%dynamics in the model, reducing potential biases in the estimation of transmission intensity 
+%and enhancing the reliability of the results.
 
-The population estimates provided by the Trajetórias Project \cite{Rorato2023} for 
-inter-census periods are derived using fixed rural–urban proportions based on the 2010 census. 
-While this approach ensures internal consistency, it does not account for the significant 
-demographic changes observed in Manaus over time, particularly those associated with rapid urbanization.
-\\\\
-To address this limitation, the population proportions used in this study were recalculated (see Section~\ref{sec:data_consistency_adjustments}) 
-using interpolation and extrapolation based on available census data. This adjustment provides a more realistic 
-representation of temporal changes in the rural population, which is especially relevant given the 
-disproportionate contribution of rural areas to malaria incidence.
-\\\\
-These refinements improve the consistency between demographic inputs and epidemiological 
-dynamics in the model, reducing potential biases in the estimation of transmission intensity 
-and enhancing the reliability of the results.
-
+\subsection{The model sustains endemic transmission where the baseline does not}
+\label{sec:baseline_doesnt_sustain_transmission}
+The transition from the delayed SIR-SEI model of Parham and Michael to the ODE-based SEIRS-SEI model was not simply a numerical convenience. As shown in Section~\ref{sec:baseline_delayed_sir_sei}, the original parameterization leads to the extinction of both infected humans and mosquitoes, since the linear mosquito recruitment term is not sufficient to compensate for mosquito mortality under the environmental conditions of Manaus. In the modified model, the explicit extrinsic incubation delay is replaced by the transition rate $b_{3M}\ell$, while mosquito recruitment is made density-dependent. These changes allow the model to sustain the mosquito population and reproduce endemic transmission, as established in Proposition~\ref{prop:persistence}. Thus, the modifications change the qualitative behavior of the system and are important for obtaining a model that is consistent with the observed persistence of malaria transmission in Manaus.
 
 \newpage
 \begin{thebibliography}{00}
