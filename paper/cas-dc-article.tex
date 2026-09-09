@@ -1112,6 +1112,42 @@ All files of data collection and treatment, as well as resulting plots created d
 \label{sec:baseline_doesnt_sustain_transmission}
 The transition from the delayed SIR-SEI model of Parham and Michael to the ODE-based SEIRS-SEI model was not simply a numerical convenience. As shown in Section~\ref{sec:baseline_delayed_sir_sei}, the original parameterization leads to the extinction of both infected humans and mosquitoes, since the linear mosquito recruitment term is not sufficient to compensate for mosquito mortality under the environmental conditions of Manaus. In the modified model, the explicit extrinsic incubation delay is replaced by the transition rate $b_{3M}\ell$, while mosquito recruitment is made density-dependent. These changes allow the model to sustain the mosquito population and reproduce endemic transmission, as established in Proposition~\ref{prop:persistence}. Thus, the modifications change the qualitative behavior of the system and are important for obtaining a model that is consistent with the observed persistence of malaria transmission in Manaus.
 
+%\subsection{Two-factor $\mathcal{R}_0$: the transmission probabilities drive the invasion threshold}
+%\label{sec:R0_drive_invasion_threshold}
+
+%The next-generation analysis (Section~\ref{sec:R0}) yields a
+%reproduction number that factorises into a human-to-mosquito and a
+%mosquito-to-human component,
+%$$\mathcal{R}_0 = \sqrt{\mathcal{R}_0^H\,\mathcal{R}_0^M},$$
+%a form that makes the two-step transmission cycle explicit and facilitates interpretation. The global sensitivity analysis
+%(Section~\ref{sec:sensitivity}) confirms that the transmission probabilities $b_1$ and $b_2$ dominate the variation of the invasion
+%threshold, and that the intrinsic incubation period $\tau_H$ and the immunity waning rate $\omega$ are effectively irrelevant to it. This
+%corroborates the analytical result: in the absence of disease-induced mortality, every exposed individual eventually becomes infectious, so
+%the latent period only shifts the timing of secondary infections, while no individual is immune at the disease-free equilibrium, so
+%waning does not enter the linearised invasion dynamics.
+%\\\\
+%Because $\Lambda^*$ and $M^*$ inherit the biting rate and carrying capacity as functions of precipitation, temperature and habitat, the
+%reproduction number is itself a function of the environmental state. The seasonal $\mathcal{R}_0$ curve of
+%Figure~\ref{fig:R0_seasonal} makes this dependence explicit for 2017: it exceeds unity during the wet season and falls below the epidemic
+%threshold in the driest months, confirming that the invasion risk is not constant throughout the year.
+
+\subsection{Constant coefficients underfit: the transmission
+probabilities are seasonally heterogeneous}
+\label{sec:constant_coeff_underfit}
+
+The constant-coefficient model consistently underestimates the
+observed dynamics, as the reduction in the weighted mean squared error
+between the free-weekly and constant formulations demonstrates
+(Table~\ref{tbl:weekly_beta}). The improvement ranges from a
+$\sim$137-fold reduction in 2017 to a $\sim$2.4-fold reduction in
+2023, indicating that the constant-coefficient formulation already
+captures most of the signal in the latter year, while the transmission
+probabilities vary more strongly across weeks in the former. This
+heterogeneity is the empirical signature of the environmental
+dependence of transmission, and it motivates the week-specific
+regression of $b_{1,w}$ and $b_{2,w}$ in
+Section~\ref{sec:results_regression}.
+
 \subsection{Limitations}
 \label{sec:limitations}
 Several limitations should be acknowledged. First, the population at
