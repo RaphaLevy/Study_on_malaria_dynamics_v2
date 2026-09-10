@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.3.13)  10 SEP 2026 08:49
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.3.13)  10 SEP 2026 10:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1507,19 +1507,19 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 936.
 See the caption package documentation for explanation.
 
-<figs/R0_variation_in_2017.png, id=259, 879.285pt x 225.84375pt>
-File: figs/R0_variation_in_2017.png Graphic file (type png)
-<use figs/R0_variation_in_2017.png>
-Package pdftex.def Info: figs/R0_variation_in_2017.png  used on input line 962.
-
-(pdftex.def)             Requested size: 238.25444pt x 61.19228pt.
+<figs/R0_variation_in_2017_with_months.png, id=259, 823.27576pt x 310.15875pt>
+File: figs/R0_variation_in_2017_with_months.png Graphic file (type png)
+<use figs/R0_variation_in_2017_with_months.png>
+Package pdftex.def Info: figs/R0_variation_in_2017_with_months.png  used on inp
+ut line 962.
+(pdftex.def)             Requested size: 238.25444pt x 89.75916pt.
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 964.
 See the caption package documentation for explanation.
 
 [10 <./figs/biting_rate_comparison.png> <./figs/weekly_beta_calibration_2017.pn
-g> <./figs/R0_variation_in_2017.png>]
+g> <./figs/R0_variation_in_2017_with_months.png>]
 <figs/prcc_plot.png, id=285, 491.436pt x 758.835pt>
 File: figs/prcc_plot.png Graphic file (type png)
 <use figs/prcc_plot.png>
@@ -1698,14 +1698,46 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 See the caption package documentation for explanation.
 
 
-Underfull \hbox (badness 2080) in paragraph at lines 1234--1246
-\T1/stix/m/n/10 for-mu-la-tions demon-strates (Ta-ble [][]3[][]). The im-prove-
-ment
+LaTeX Warning: Reference `fig:R0_seasonal' on page 13 undefined on input line 1
+227.
+
+
+Underfull \hbox (badness 4899) in paragraph at lines 1217--1229
+\T1/stix/m/n/10 and that the in-trin-sic in-cu-ba-tion pe-riod $\LS1/stix/m/it/
+10 ^^\[]$ \T1/stix/m/n/10 and the
+ []
+
+
+Underfull \hbox (badness 2359) in paragraph at lines 1217--1229
+\T1/stix/m/n/10 This cor-rob-o-rates the an-a-lyt-i-cal re-sult: in the ab-senc
+e
+ []
+
+
+Underfull \hbox (badness 3019) in paragraph at lines 1217--1229
+\T1/stix/m/n/10 of disease-induced mor-tal-ity, ev-ery ex-posed in-di-vid-ual
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1217--1229
+
+ []
+
+
+Underfull \hbox (badness 2126) in paragraph at lines 1217--1229
+\T1/stix/m/n/10 ca-pac-ity as func-tions of pre-cip-i-ta-tion, tem-per-a-ture a
+nd
  []
 
 [13 <./figs/b1_2022_environmental_response_C.png> <./figs/b2_2020_environmental
 _response_A.png> <./figs/b2_2020_environmental_response_B.png> <./figs/b2_2020_
 environmental_response_C.png>]
+Underfull \hbox (badness 2080) in paragraph at lines 1234--1246
+\T1/stix/m/n/10 for-mu-la-tions demon-strates (Ta-ble [][]3[][]). The im-prove-
+ment
+ []
+
+[14]
 Underfull \hbox (badness 2735) in paragraph at lines 1298--1301
 []\T1/stix/m/n/8 P. F. P. Pi-menta et al., An overview of malaria trans-mis-sio
 n
@@ -1937,7 +1969,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1340--1343
 
  []
 
-[14]
+
 Underfull \hbox (badness 10000) in paragraph at lines 1343--1346
 []\T1/stix/m/n/8 MapBiomas Brasil, Home/Iniciativas e Pro-du-
  []
@@ -2092,7 +2124,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1382--1385
 
  []
 
-
+[15]
 Underfull \hbox (badness 3386) in paragraph at lines 1385--1388
 \T1/stix/m/n/8 sub-threshold en-demic equi-lib-ria for com-part-men-tal mod-els
  of
@@ -2288,7 +2320,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1428--1432
 
  []
 
-[15]
+
 Underfull \hbox (badness 1231) in paragraph at lines 1432--1435
 \T1/stix/m/n/8 Alen-car, B. F. T. Rudorff, H. Hase-nack, M. Mat-sumoto, L. G.
  []
@@ -2393,9 +2425,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1447--1449
 
  []
 
-[16
-
-]
+[16]
 Overfull \hbox (238.25444pt too wide) in paragraph at lines 1463--1490
  [] 
  []
@@ -2444,7 +2474,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1615--1617
 ] [20
 
 ]
-<figs/SIR_Model_Parham_and_Michael_DDE_Solution.png, id=483, 413.74574pt x 253.
+<figs/SIR_Model_Parham_and_Michael_DDE_Solution.png, id=486, 413.74574pt x 253.
 54726pt>
 File: figs/SIR_Model_Parham_and_Michael_DDE_Solution.png Graphic file (type png
 )
@@ -2452,7 +2482,7 @@ File: figs/SIR_Model_Parham_and_Michael_DDE_Solution.png Graphic file (type png
 Package pdftex.def Info: figs/SIR_Model_Parham_and_Michael_DDE_Solution.png  us
 ed on input line 1729.
 (pdftex.def)             Requested size: 238.25444pt x 146.00517pt.
-<figs/SEI_Model_Parham_and_Michael_DDE_Solution.png, id=484, 419.166pt x 250.53
+<figs/SEI_Model_Parham_and_Michael_DDE_Solution.png, id=487, 419.166pt x 250.53
 6pt>
 File: figs/SEI_Model_Parham_and_Michael_DDE_Solution.png Graphic file (type png
 )
@@ -2466,7 +2496,7 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 1738.
 See the caption package documentation for explanation.
 
-<figs/SIR_Model_Parham_and_Michael_ODE_Solution.png, id=487, 645.00975pt x 405.
+<figs/SIR_Model_Parham_and_Michael_ODE_Solution.png, id=490, 645.00975pt x 405.
 31425pt>
 File: figs/SIR_Model_Parham_and_Michael_ODE_Solution.png Graphic file (type png
 )
@@ -2479,7 +2509,7 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 1746.
 See the caption package documentation for explanation.
 
-<figs/SEI_Model_Parham_and_Michael_ODE_Solution.png, id=492, 654.64575pt x 401.
+<figs/SEI_Model_Parham_and_Michael_ODE_Solution.png, id=495, 654.64575pt x 401.
 70074pt>
 File: figs/SEI_Model_Parham_and_Michael_ODE_Solution.png Graphic file (type png
 )
@@ -2505,19 +2535,22 @@ L3 programming layer <2025-12-24>
  ***********
 
 
+LaTeX Warning: There were undefined references.
+
+
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `cas-dc-article.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 18845 strings out of 467871
- 298084 string characters out of 5418376
- 722406 words of memory out of 5000000
- 47224 multiletter control sequences out of 15000+600000
+ 18848 strings out of 467871
+ 298232 string characters out of 5418376
+ 722530 words of memory out of 5000000
+ 47226 multiletter control sequences out of 15000+600000
  753668 words of font info for 209 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 90i,19n,117p,1149b,737s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 90i,19n,117p,1149b,681s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\rapha\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi450\ecss
 0800.pk> <C:\Users\rapha\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi60
 0\ecsx0900.pk> <C:\Users\rapha\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec
@@ -2535,9 +2568,9 @@ X/fonts/type1/public/stix/stix-mathrm.pfb><C:/Users/rapha/AppData/Local/Program
 s/MiKTeX/fonts/type1/public/stix/stix-mathscr.pfb><C:/Users/rapha/AppData/Local
 /Programs/MiKTeX/fonts/type1/public/stix/stix-mathsf.pfb><C:/Users/rapha/AppDat
 a/Local/Programs/MiKTeX/fonts/type1/public/stix/stix-mathtt.pfb>
-Output written on cas-dc-article.pdf (21 pages, 2018622 bytes).
+Output written on cas-dc-article.pdf (21 pages, 2111366 bytes).
 PDF statistics:
- 701 PDF objects out of 1000 (max. 8388607)
- 207 named destinations out of 1000 (max. 500000)
+ 704 PDF objects out of 1000 (max. 8388607)
+ 208 named destinations out of 1000 (max. 500000)
  86 words of extra memory for PDF output out of 10000 (max. 10000000)
 
