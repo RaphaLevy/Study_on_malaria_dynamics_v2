@@ -55,7 +55,7 @@
 \def\floatpagepagefraction{1}
 \def\textpagefraction{.001}
 \shorttitle{Environmental drivers of Plasmodium vivax malaria in Manaus: a climate- and land-use-driven SEIRS-SEI model}
-\shortauthors{R. F. Levy et~al.}
+\shortauthors{R. F. Levy, F. C. Coelho}
 
 \title [mode = title]{Environmental drivers of Plasmodium vivax malaria in Manaus: a climate- and land-use-driven SEIRS-SEI model}                      
 
@@ -140,7 +140,7 @@
 \begin{abstract}
 %This template helps you to create a properly formatted \LaTeX\ manuscript.
 This paper aims to analyze the behavior of malaria transmission in the Amazon region based on climatic and environmental changes, such as temperature, precipitation, humidity, deforestation and forest fires, through proposed modifications to the SIR and SEI models, in order to contribute to the study of applications of external effects on the evolution of the disease. 
-The Trajetorias Project, developed by the Synthesis Center 
+The Trajetórias Project, developed by the Synthesis Center 
 on Biodiversity and Ecosystem Services (SinBiose/CNPq) was used as an initial reference for the study. 
 \\\\
 This work employs a modified SEIRS/SEI methodology, based on the SIR/SEI model developed by Parham and Michael (2010) which takes into account rainfall and temperature, with further modifications. %Primary results show that the model is too sensible on some parameters, and using values indicated by other papers did not give the same results, opening up future work to compare the modified model equations with the originals. With the obtained results, it was possible to verify a strong effect caused by increased contact of host and vectors on the transmission of the disease. 
@@ -167,7 +167,8 @@ This work employs a modified SEIRS/SEI methodology, based on the SIR/SEI model d
 %\end{highlights}
 
 \begin{keywords}
-Malaria transmission \sep Plasmodium vivax \sep Anopheles darlingi \sep SEIRS-SEI model \sep Mathematical epidemiology \sep Brazilian Amazon \sep Environmental drivers \sep Climate-dependent transmission \sep Model calibration %\sep Density-dependent recruitment  % \sep Deforestation \sep Forest fires  \sep Sensitivity analysis \sep SIR–SEI model
+Malaria transmission \sep Plasmodium vivax \sep Anopheles darlingi \sep SEIRS-SEI model \sep Mathematical epidemiology \sep Brazilian Amazon \sep Environmental drivers \sep Climate-dependent transmission \sep Model calibration  %\sep Deforestation \sep Forest fires   %\sep Density-dependent recruitment  
+%\sep Sensitivity analysis \sep SIR–SEI model
 
 %Biological modelling \sep Malaria transmission \sep Climate change \sep Amazon \sep SIR \sep SEI \sep SEIRS
 \end{keywords}
@@ -188,7 +189,7 @@ that influence both vector dynamics and human exposure.
 \\\\
 Environmental changes play a central role in shaping malaria transmission. In the Amazon, 
 processes such as deforestation, agricultural expansion, and infrastructure development alter 
-local ecosystems, affecting vector habitats and increasing human–vector contact. These changes often 
+local ecosystems, affecting vector habitats and increasing human-vector contact. These changes often 
 promote the proliferation of mosquito breeding sites and concentrate human populations in high-risk areas, 
 particularly among non-immune migrants \cite{silva-nunes_malaria_amazon_2008, DASILVANUNES2012281}. 
 In addition to land-use change, climatic variables such as temperature and rainfall, as well as disturbances such 
@@ -196,7 +197,7 @@ as forest fires and mining activities, further influence vector abundance, patho
 \\\\
 Despite the recognized importance of environmental drivers, integrating these factors into mathematical models of 
 malaria transmission remains challenging. In particular, distinguishing between their effects on mosquito biology and 
-their impact on human–vector interaction is essential for developing models that are both biologically consistent and 
+their impact on human-vector interaction is essential for developing models that are both biologically consistent and 
 identifiable from available data.
 \\\\
 In this work, we develop and analyze a modified SIR–SEI model for malaria transmission in the Amazon, incorporating 
@@ -282,9 +283,12 @@ The transmission dynamics are governed by the system of delay differential equat
 \end{align}
 \end{subequations}
 \\
-Here, $a(T)$ denotes the biting rate, $b_1$ and $b_2$ are transmission probabilities from humans to 
-mosquitoes and vice versa, $\mu(T)$ is the mosquito mortality rate, and $\tau_H$, $\tau_M$ represent the intrinsic and 
-extrinsic incubation periods. The function $b(R,T)$ describes mosquito recruitment, while $\ell(\tau_M)$ represents survival during the extrinsic incubation period.
+%Here, $a(T)$ denotes the biting rate, $b_1$ and $b_2$ are transmission probabilities from humans to 
+%mosquitoes and vice versa, $\mu(T)$ is the mosquito mortality rate, and $\tau_H$, $\tau_M$ represent the intrinsic and 
+%extrinsic incubation periods. The function $b(R,T)$ describes mosquito recruitment, while $\ell(\tau_M)$ represents survival during the extrinsic incubation period.
+All parameters are defined in
+Table~\ref{tbl1}, which gives their functional forms and definitions, while state variables are defined  in
+Table~\ref{tbl2}, which gives their definitions, units and sources.
 \\\\
 Although this formulation incorporates biologically relevant delays, numerical simulations revealed that, under 
 the parameterization considered, the model fails to reproduce sustained transmission dynamics. In particular, 
@@ -378,7 +382,7 @@ P=Q^{1/g} \Longrightarrow g = \frac{\ln(Q)}{\ln(P)},
 \end{align}
 where $P$ is the daily survival rate of mosquitoes, $Q$ is the proportion of parous mosquitoes females in the population and $g$ is the duration of the gonotrophic cycle, given in days  \cite{duration_of_gonotrophic_cycle}.
 \\\\
-Given the lack of more recent data, it was decided to use the obtained estimates of the time period specified above with average temperatures from the period of analysis between 2017 and 2023, given that the biting rate is given as a function of temperature. It was decided to consider $T'=16^\circ C$, given that below this temperature there is no development of the vector, as the threshold temperature for the biting rate, and we estimated values of $g$ for the missing months of the analysis via interpolation. With this, given the closed formula for the biting rate, and knowing that it is the inverse of the gonotrophic cycle, we calculated $D_1= g(T-T')$ for each of the months with available data \footnote{$a(T)$ is defined in Table~\ref{tbl1}}.
+Given the lack of more recent data, it was decided to use the obtained estimates of the time period specified above with average temperatures from the period of analysis between 2017 and 2023, given that the biting rate is given as a function of temperature. It was decided to consider $T'=16^\circ C$, given that below this temperature there is no development of the vector, as the threshold temperature for the biting rate, and we estimated values of $g$ for the missing months of the analysis via interpolation. With this, given the closed formula for the biting rate, and knowing that it is the inverse of the gonotrophic cycle, we calculated $D_1= g(T-T')$ for each of the months with available data. %\footnote{$a(T)$ is defined in Table~\ref{tbl1}}.
 \\\\
 Having monthly values of $D_1$, we took their average in order to estimate the biting rate and the proportion of female mosquitoes to humans, which is given by
 \begin{align}  
@@ -1331,124 +1335,124 @@ lowest-transmission months.
 \bibitem{pimenta_orfano_bahia_duarte_rios-velasquez_melo_pessoa_oliveira_campos_villegas_etal_2015} P. F. P. Pimenta et al., An overview of malaria transmission from the perspective of Amazon \emph{Anopheles vectors}, Memórias do Instituto Oswaldo Cruz, Vol. 110 (1) (2015), 23-47, \href{https://doi.org/10.1590/0074-02760140266}{https://doi.org/10.1590/0074-02760140266}.
 \\
 %2
-\bibitem{regulation_of_sexual_commitment} G. A. Josling, K. C. Williamson, M. Llinás, Regulation of Sexual Commitment and Gametocytogenesis in Malaria Parasites, Annual Review of Microbiology, Vol. 72 (1) (2018), 501-519, \href{https://doi.org/10.1146/annurev-micro-090817-062712}{https://doi.org/10.1146/annurev-micro-090817-062712}.
-\\
+%\bibitem{regulation_of_sexual_commitment} G. A. Josling, K. C. Williamson, M. Llinás, Regulation of Sexual Commitment and Gametocytogenesis in Malaria Parasites, Annual Review of Microbiology, Vol. 72 (1) (2018), 501-519, \href{https://doi.org/10.1146/annurev-micro-090817-062712}{https://doi.org/10.1146/annurev-micro-090817-062712}.
+%\\
 %3
-\bibitem{WHO2022} World Health Organization / World Malaria Report 2022, Global Malaria Programme, accessed on 29 August 2024, \href{https://www.who.int/publications/i/item/9789240064898}{https://www.who.int/publications/i/item/9789240064898}.
-\\
-%4
+%\bibitem{WHO2022} World Health Organization / World Malaria Report 2022, Global Malaria Programme, accessed on 29 August 2024, \href{https://www.who.int/publications/i/item/9789240064898}{https://www.who.int/publications/i/item/9789240064898}.
+%\\
+%2
 \bibitem{silva-nunes_malaria_amazon_2008} M. da Silva-Nunes et al., Malaria on the Amazonian frontier: transmission dynamics, risk factors, spatial distribution, and prospects for control, American Journal of Tropical Medicine and Hygiene, Vol. 79 (4) (2008), 624-635, \href{https://doi.org/10.4269/ajtmh.2008.79.624}{https://doi.org/10.4269/ajtmh.2008.79.624}. 
 \\
-%5
+%3
 \bibitem{DASILVANUNES2012281} M. da Silva-Nunes et al.,  Amazonian malaria: Asymptomatic human reservoirs, diagnostic challenges, environmentally driven changes in mosquito vector populations, and the mandate for sustainable control strategies, Acta Tropica, Vol. 121 (3) (2012), 281-291, \href{https://doi.org/10.1016/j.actatropica.2011.10.001}{https://doi.org/10.1016/j.actatropica.2011.10.001}.
 \\
-%6
+%4
 \bibitem{Rorato2023} A. C. Rorato, A. P. Dal’Asta, R. M. Lana et al., Trajetorias: a dataset of environmental, epidemiological, and economic indicators for the Brazilian Amazon, Scientific Data, Vol. 10 (1) (2023), 65, \href{https://doi.org/10.1038/s41597-023-01962-1}{https://doi.org/10.1038/s41597-023-01962-1}.
 \\
-%7
+%5
 \bibitem{Norris2004} D. E. Norris, Mosquito-borne Diseases as a Consequence of Land Use Change, EcoHealth, Vol. 1 (1) (2004), 19-24, \href{https://doi.org/10.1007/s10393-004-0008-7}{https://doi.org/10.1007/s10393-004-0008-7}.
 \\
-%8
+%6
 \bibitem{infoAnopheles} Anopheles, Fiocruz Rondônia, accessed on 15 August 2024, \href{https://www.rondonia.fiocruz.br/pivem/anopheline/}{https://www.rondonia.fiocruz.br/pivem/anopheline/}.
 \\
-%9
+%7
 \bibitem{article_alteracoesambientais} M. da Silva-Nunes, Environmental changes impact in malaria transmition and prospects for the disease control in brazilian amazon rural settlements, Oecologia Australis, Vol. 14 (3) (2010), 603-622, \href{https://revistas.ufrj.br/index.php/oa/article/view/7101}{https://revistas.ufrj.br/index.php/oa/article/view/7101}.
 \\
-%10
+%8
 \bibitem{Anthropogenic_Landscape} L. S. M. Chaves, E. S. Bergo, J. E. Conn, G. Z. Laporta, P. R. Prist, M. A. M. Sallum, Anthropogenic landscape decreases mosquito biodiversity and drives malaria vector proliferation in the Amazon rainforest, PLOS ONE, Vol. 16 (1) (2021), \href{https://doi.org/10.1371/journal.pone.0245087}{https://doi.org/10.1371/journal.pone.0245087}.
 \\
-%11
+%9
 \bibitem{Future_of_Deforestation} K. R. Kirby, W. F. Laurance, A. K. L. M.  Albernaz, G. Schroth, P. M. Fearnside, S. Bergen, E. M. Venticinque, C. Da Costa, The future of deforestation in the Brazilian Amazon, Futures, Vol. 38 (4) (2006), 432–453, \href{https://doi.org/10.1016/j.futures.2005.07.011}{https://doi.org/10.1016/j.futures.2005.07.011}.
 \\
-%12
+%10
 \bibitem{Relationship_between_fires_and_defor} C. F. Lima, F. T. P. Torres, L. J. Minette, F. A. Lima, R. C. A. Lima et al, Is there a relationship between forest fires and deforestation in the Brazilian Amazon?, PLOS ONE, Vol. 19 (6) (2024), \href{https://doi.org/10.1371/journal.pone.0306238}{https://doi.org/10.1371/journal.pone.0306238}.
 \\
-%13
+%11
 \bibitem{Conservation_Policy} P. M. Fearnside, Conservation Policy in Brazilian Amazonia: Understanding the Dilemmas, World Development, Vol. 31 (5) (2003), 757-779, \href{https://doi.org/10.1016/S0305-750X(03)00011-1}{https://doi.org/10.1016/S0305-750X(03)00011-1}.
 \\
-%14
+%12
 \bibitem{Daily_DETER} TerraBrasilis, DETER (Notices), Analyses - Amazônia Biome, Daily notices of DETER project area, accessed on 17 March 2026, \href{https://terrabrasilis.dpi.inpe.br/app/dashboard/alerts/biomes/amazonia-nb/daily/}{https://terrabrasilis.dpi.inpe.br/app/dashboard/alerts/biomes/amazonia-nb/daily/}.
 \\
-%15
+%13
 \bibitem{INPE_Forest_Fires} Data$\_$Basis.org, Fire Database, National Institute for Space Research (INPE), acessed on 17 March 2026, \href{https://data-basis.org/dataset/f06f3cdc-b539-409b-b311-1ff8878fb8d9?table=a3696dc2-4dd1-4f7e-9769-6aa16a1556b8}{https://data-basis.org/dataset/f06f3cdc-b539-409b-b311-1ff8878fb8d9?table=a3696dc2-4dd1-4f7e-9769-6aa16a1556b8}.
 \\
-%16
+%14
 \bibitem{Mapbiomas} MapBiomas Brasil, Home/Iniciativas e Produtos/Fogo/Mapeamento anual/Mensal, acessed on 30 August 2026, \href{https://plataforma.brasil.mapbiomas.org/}{https://plataforma.brasil.mapbiomas.org/}.
 \\
-%17
+%15
 \bibitem{MosqlimateAPI} Mosqlimate Data API / Datastore / climate, accessed on 12 August 2024, \href{https://api.mosqlimate.org/datastore/}{https://api.mosqlimate.org/datastore/}.
 \\
-%18
+%16
 \bibitem{Parham2010} P. E. Parham, E. Michael, Modelling Climate Change and Malaria Transmission, Modelling Parasite Transmission and Control, Advances in Experimental Medicine and Biology, Vol. 673 (2010), 184-199, \href{https://doi.org/10.1007/978-1-4419-6064-1_13}{https://doi.org/10.1007/978-1-4419-6064-1\_13}.
 \\
-%19
+%17
 \bibitem{brierre_function_development_rate} E. A. Mordecai et al, Optimal temperature for malaria transmission is dramatically lower than previously predicted, Ecology Letters, Vol. 16 (1), 22-30 (2013), \href{https://pubmed.ncbi.nlm.nih.gov/23050931/}{https://pubmed.ncbi.nlm.nih.gov/23050931/}.
 \\
-%20
+%18
 \bibitem{ab_gumel_malaria_review} S.E. Einkenberry, A. B. Gumel, Mathematical modeling of climate change and malaria transmission dynamics: a historical review, Journal of Mathematical Biology, Vol. 77 (4), 857-933 (2018), \href{https://pubmed.ncbi.nlm.nih.gov/29691632/}{https://pubmed.ncbi.nlm.nih.gov/29691632/}.
 \\
-%21
+%19
 \bibitem{debarros2011}  F. S. M.de Barros, N. A. Honório, M. E. Arruda, Survivorship of Anopheles darlingi (Diptera: Culicidae) in Relation with Malaria Incidence in the Brazilian Amazon, PLoS ONE, Vol. 6 (8), e22388 (2011), \href{https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0022388}{https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0022388}.
 \\
-%22
+%20
 \bibitem{duration_of_gonotrophic_cycle} F. J. Lardeaux et al, A physiological time analysis of the duration of the gonotrophic cycle of Anopheles pseudopunctipennis and its implications for malaria transmission in Bolivia, Malaria Journal, Vol. 7, 141 (2008), \href{https://link.springer.com/article/10.1186/1475-2875-7-141}{https://link.springer.com/article/10.1186/1475-2875-7-141}.
 \\
-%23
+%21
 \bibitem{math_assessment_of_the_role_of_temp_and_rainfall} A. Abdelrazec, A. B. Gumel, Mathematical assessment of the role of temperature and rainfall on mosquito population dynamics, Journal of Mathematical Biology, Vol. 74 (6), 1351-1395 (2017), \href{https://link.springer.com/article/10.1007/s00285-016-1054-9}{https://link.springer.com/article/10.1007/s00285-016-1054-9}.
 \\
-%24
+%22
 \bibitem{OliveiraFerreira2010} J. Oliveira-Ferreira, M. V. Lacerda, P. Brasil et al., Malaria in Brazil: an overview., Malaria Journal, Vol. 9 (1) (2010), \href{https://doi.org/10.1186/1475-2875-9-115}{https://doi.org/10.1186/1475-2875-9-115}.
 \\
-%25
+%23
 \bibitem{10.3389/fpubh.2021.647754} C. T. Codeço, A. P. Dal'Asta, A. C. Rorato, R. M. Lana, T. C. Neves, C. S. Andreazzi, M. Barbosa, M. I. S. Escada, D. A. Fernandes, D. L. Rodrigues, I. C. Reis, M. da Silva-Nunes, A. B. Gontijo, F. C. Coelho, A. M. V. Monteiro, Epidemiology, Biodiversity, and Technological Trajectories in the Brazilian Amazon: From Malaria to COVID-19, Frontiers in Public Health, Vol. 9 (2021), \href{https://doi.org/10.3389/fpubh.2021.647754}{https://doi.org/10.3389/fpubh.2021.647754}.
 \\
-%26
+%24
 \bibitem{Vector_Incrimination} A. K. R. Galardo, M. Arruda, et al., Malaria vector incrimination in three rural riverine villages in the Brazilian Amazon, The American Journal of Tropical Medicine and Hygiene, Vol. 76 (3) (2007), 461-469, \href{https://www.ajtmh.org/view/journals/tpmd/76/3/article-p461.xml}{https://www.ajtmh.org/view/journals/tpmd/76/3/article-p461.xml}.
 \\
-%27
+%25
 \bibitem{SIVEP_Malaria} SIVEP Malaria, accessed on 10 October 2024, \href{https://files.deeplearn.ltd/a/hnjvpj}{https://files.deeplearn.ltd/a/hnjvpj}.
 \\
-%28
+%26
 \bibitem{Census2000} Biblioteca IBGE, 2000, accessed on 11 November 2024, \href{https://biblioteca.ibge.gov.br/index.php/biblioteca-catalogo?view=detalhes\&id=7308}{https://biblioteca.ibge.gov.br/index.php/biblioteca-catalogo?view=detalhes\&id=7308}.
 \\
-%29
+%27
 \bibitem{Census2010} IBGE, Censo Demográfico, 2010, accessed on 11 November 2024, \href{https://www.ibge.gov.br/estatisticas/sociais/populacao/9662-censo-demografico-2010.html?=\&t=resultados}{https://www.ibge.gov.br/estatisticas/sociais/populacao/9662-censo-demografico-2010.html?=\&t=resultados}.
 \\
-%30
+%28
 \bibitem{Census2022} IBGE, Brasil / Amazonas / Manaus, 2022, accessed on 11 November 2024, \href{https://cidades.ibge.gov.br/brasil/am/manaus/panorama}{https://cidades.ibge.gov.br/brasil/am/manaus/panorama}.
 \\
-%31
+%29
 \bibitem{Rep_Number_Comp_Model} P. van den Driessche, J. Watmough, Reproduction numbers and sub-threshold endemic equilibria for compartmental models of disease transmission, Mathematical Biosciences, Vol. 180 (2002), 29-48, \href{https://doi.org/10.1016/S0025-5564(02)00108-6}{https://doi.org/10.1016/S0025-5564(02)00108-6}.
 \\
-%32
+%30
 \bibitem{marino2008} S. Marino, I. B. Hogue, C. J. Ray, D. E. Kirschner, A methodology for performing global uncertainty and sensitivity analysis in systems biology, Journal of Theoretical Biology, Vol. 254 (1) (2008), 178-196, \href{https://pubmed.ncbi.nlm.nih.gov/18572196/}{https://pubmed.ncbi.nlm.nih.gov/18572196/}
 \\
-%33
+%31
 \bibitem{brasil_et_al_2011_unexpectedly_long_incubation_period_of_plasmodium_vivax} P. Brasil et al, Unexpectedly long incubation period of Plasmodium vivax malaria, in the absence of chemoprophylaxis, in patients diagnosed outside the transmission area in Brazil, Malaria Journal, Vol. 10 (122) (2011), \href{https://link.springer.com/article/10.1186/1475-2875-10-122}{https://link.springer.com/article/10.1186/1475-2875-10-122}
 \\
-%34
+%32
 \bibitem{storn_price_1997} R. Storn, K. Price, Differential Evolution - A Simple and Efficient Heuristic for Global Optimization over Continuous Spaces, Journal of Global Optimization, Vol. 11 (1997), 341–359, \href{https://link.springer.com/article/10.1023/A:1008202821328}{https://link.springer.com/article/10.1023/A:1008202821328}
 \\
-%35
+%33
 \bibitem{nelder_mead_1965} J. A. Nelder, R. Mead, A Simplex Method for Function Minimization, The Computer Journal, Vol. 7 (4) (1965), 308–313, \href{https://academic.oup.com/comjnl/article-abstract/7/4/308/354237}{https://academic.oup.com/comjnl/article-abstract/7/4/308/354237}
 \\
-%36
+%34
+\bibitem{human_to_mosquito_transmission_efficiency} T.  S. Churcher, J. F. Trape, A. Cohuet, Human-to-mosquito transmission efficiency increases as malaria is controlled, Nat Commun 6, 6054 (2015), \href{https://doi.org/10.1038/ncomms7054}{https://doi.org/10.1038/ncomms7054}
+\\
+%35
 \bibitem{McCord2016} G. C. McCord, Malaria ecology and climate change, The European Physical Journal Special Topics, Vol. 225 (3) (2016), 459-470, \href{https://doi.org/10.1140/epjst/e2015-50097-1}{https://doi.org/10.1140/epjst/e2015-50097-1}.
 \\
-%37
+%36
 \bibitem{climate_based_distribution_sub_sahara} M. H. Craig, R. W. Snow, D. le Sueur, A Climate-based Distribution Model of Malaria Transmission in Sub-Saharan Africa, Parasitology Today, Vol. 15 (3), 105-111 (1999), \href{https://pubmed.ncbi.nlm.nih.gov/10322323/}{https://pubmed.ncbi.nlm.nih.gov/10322323/}.
 \\
-%38
+%37
 \bibitem{minmax_temp_anoph} T. P. Agyekum et al, A Systematic Review of the Effects of Temperature on Anopheles Mosquito Development and Survival: Implications for Malaria Control in a Future Warmer Climate, International Journal of Environmental Research and Public Health, Vol. 18 (14),  (2021), \href{https://pmc.ncbi.nlm.nih.gov/articles/PMC8306597/}{https://pmc.ncbi.nlm.nih.gov/articles/PMC8306597/}.
 \\
-%39
+%38
 \bibitem{Lindsay_Birley_1996} S. W. Lindsay, M. H. Birley, Climate change and malaria transmission, Annals of Tropical Medicine \& Parasitology,Vol. 90 (1996), 573-588, \href{https://doi.org/10.1080/00034983.1996.11813087}{https://doi.org/10.1080/00034983.1996.11813087}.
 \\
-%40
+%39
 \bibitem{Ecological_Change_Malaria_Risk} N. J. Arisco, C. Peterka, C. Diniz, B. H. Singer, M. C. Castro, Ecological change increases malaria risk in the Brazilian Amazon, Proc. Natl. Acad. Sci., Vol. 121 (44) (2024), \href{https://doi.org/10.1073/pnas.2409583121}{https://doi.org/10.1073/pnas.2409583121}.
-\\
-%41
-\bibitem{human_to_mosquito_transmission_efficiency} T.  S. Churcher, J. F. Trape, A. Cohuet, Human-to-mosquito transmission efficiency increases as malaria is controlled, Nat Commun 6, 6054 (2015), \href{https://doi.org/10.1038/ncomms7054}{https://doi.org/10.1038/ncomms7054}
 \\
 %------------------------------FIX
 %\bibitem{Datasus2006} Tabnet, Ministério da Saúde, accessed on 12 August 2024, \href{http://tabnet.datasus.gov.br/cgi/tabcgi.exe?ibge/cnv/popam.def}{http://tabnet.datasus.gov.br/cgi/tabcgi.exe?ibge/cnv/popam.def}.
@@ -1500,9 +1504,9 @@ lowest-transmission months.
 Parameter & Definition & Formulation\\
 \midrule
 $p(T)$  & Daily mosquito survival rate dependent on temperature  & $e^{(-1 / (AT^2 + BT + C))}$ \\  
-$p(H)$  & Daily mosquito survival rate dependent on humidity \tnote{2} & $\frac{\varphi e^{-k(H-H_0)}+1}{e^{-k(H-H_0)}+1}$ \\  
+$p(H)$  & Daily mosquito survival rate dependent on humidity \tnote{1} & $\frac{\varphi e^{-k(H-H_0)}+1}{e^{-k(H-H_0)}+1}$ \\  
 $p(T, H)$   & Daily mosquito survival rate   & $p(T)p(H)$ \\  
-$p_L(R)$   & Probability of larval survival dependent on rainfall \tnote{3} & $({4p_{ML}}/{R_L^2})R(R_L - R)$  \\  
+$p_L(R)$   & Probability of larval survival dependent on rainfall \tnote{2} & $({4p_{ML}}/{R_L^2})R(R_L - R)$  \\  
 $p_L(T)$   & Probability of larval survival dependent on temperature   & $e^{-(c_1T + c_2)}$  \\ 
 $p_L(R, T)$   & Probability of larval survival   & $p_L(R)p_L(T)$   \\
 $\mu(T, H)$   & Mosquito mortality rate per capita (days$^{-1}$)   & $-\log(p(T, H))$  \\ 
@@ -1516,8 +1520,8 @@ $N(t)$   & Total population of humans   & $S_H(t) +E_H(t) + I_H(t) + R_H(t)$   \
 \bottomrule
 \end{tabular*}
 \begin{tablenotes}
-\item[2] $p(H)$ was added in order to take into consideration the deleterious effects of humidity. Unlike for $T$ and $R$, which use the daily average value of temperature and precipitation, respectively, $H$ uses the daily minimal value of humidity.
-\item[3] $p_E(R)$ and $p_P(R)$ have an analogous expression to $p_L(R)$, substituting $p_{ML}$ for $p_{ME}$ and $p_{MP}$ respectively.
+\item[1] $p(H)$ was added in order to take into consideration the deleterious effects of humidity. Unlike for $T$ and $R$, which use the daily average value of temperature and precipitation, respectively, $H$ uses the daily minimal value of humidity.
+\item[2] $p_E(R)$ and $p_P(R)$ have an analogous expression to $p_L(R)$, substituting $p_{ML}$ for $p_{ME}$ and $p_{MP}$ respectively.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
@@ -1542,11 +1546,11 @@ $p_{MP}$  & Maximum probability of pupal survival: 0.75 & Dimensionless \\
 $\tau_E$  & Duration of the egg development phase: 1 & days \\ 
 $\tau_P$  & Duration of the pupal development phase: 1 & days \\ 
 $\tau_H$  & Latent period of infection within humans: 10 & days \\ 
-$R_L$  & Rainfall threshold until breeding sites are eliminated, removing immature individuals: 32.26 \tnote{4}  & mm \\ 
+$R_L$  & Rainfall threshold until breeding sites are eliminated, removing immature individuals: 32.26 \tnote{3}  & mm \\ 
 $T_{\min}$  & Minimum temperature, below which there is no development of the parasite: 14.5 & $^\circ C$ \\ 
 $T_{\max}$  & Maximum temperature, above which there is no development of the parasite: 29.8 \cite{McCord2016} &  $^\circ C$ \\
 $T_{\mathrm{opt}}$ & Optimal temperature for development of the parasite: 23.5 \cite{McCord2016} &  $^\circ C$ \\
-$T_{\min\text{A.}}/T'$ & Minimum temperature, below which there is no development of the vector: 16 \tnote{5}  \cite{brierre_function_development_rate, climate_based_distribution_sub_sahara} & $^\circ C$ \\
+$T_{\min\text{A.}}/T'$ & Minimum temperature, below which there is no development of the vector: 16 \tnote{4}  \cite{brierre_function_development_rate, climate_based_distribution_sub_sahara} & $^\circ C$ \\
 $T_{\max\text{A.}}$ & Maximum temperature, above which there is no development of the vector: 34  \cite{brierre_function_development_rate, climate_based_distribution_sub_sahara, minmax_temp_anoph} & $^\circ C$ \\
 $T_{\mathrm{op}\text{ A.}}$ & Optimal temperature for transmission: 34  \cite{brierre_function_development_rate} & $^\circ C$ \\
 $DD$  & Degree-days for parasite development.
@@ -1567,8 +1571,8 @@ $k$  & Steepness of the humidity-survival sigmoid response: 0.25 & $\%^{-1}$ \\
 \bottomrule
 \end{tabular*}
 \begin{tablenotes}
-\item[4] The reference rainfall level $R_L$ for the Amazon was approximated based on reported associations between monthly precipitation and malaria incidence \cite{Ecological_Change_Malaria_Risk}. In particular, precipitation levels in the range of 917 to 1019 mm/month were associated with a decrease in malaria cases. The midpoint of this interval (968 mm/month) was used as a representative value and converted to a daily rate by dividing by 30 days, yielding $R_L \approx 32.3$ mm/day. This value is therefore interpreted as the threshold scale for high rainfall conditions in the model.
-\item[5] In Parham and Michael \cite{Parham2010}, this parameter is denoted by \(T_1\). Here, we adopt a different notation to avoid confusion with the mean temperature in the absence of seasonality, also denoted by \(T_1\) in the original paper. Additionally, instead of defining an independent lower thermal threshold for the biting rate, we assume that biting activity becomes negligible below the minimum temperature required for vector development.
+\item[3] The reference rainfall level $R_L$ for the Amazon was approximated based on reported associations between monthly precipitation and malaria incidence \cite{Ecological_Change_Malaria_Risk}. In particular, precipitation levels in the range of 917 to 1019 mm/month were associated with a decrease in malaria cases. The midpoint of this interval (968 mm/month) was used as a representative value and converted to a daily rate by dividing by 30 days, yielding $R_L \approx 32.3$ mm/day. This value is therefore interpreted as the threshold scale for high rainfall conditions in the model.
+\item[4] In Parham and Michael \cite{Parham2010}, this parameter is denoted by \(T_1\). Here, we adopt a different notation to avoid confusion with the mean temperature in the absence of seasonality, also denoted by \(T_1\) in the original paper. Additionally, instead of defining an independent lower thermal threshold for the biting rate, we assume that biting activity becomes negligible below the minimum temperature required for vector development.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
