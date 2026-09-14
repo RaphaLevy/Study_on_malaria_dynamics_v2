@@ -240,10 +240,63 @@ conditions to the weekly transmission probabilities $b_1$ and $b_2$.
 \section{Methodology}
 \label{sec:methodology}
 
+\subsection{Epidemiological Data}
+\label{sec:epidemiological_data}
+
+This study focuses on malaria cases caused by \textit{Plasmodium vivax}, which accounts for the majority 
+of malaria infections in Brazil and is the predominant species in the Amazon 
+region \cite{OliveiraFerreira2010, 10.3389/fpubh.2021.647754, Vector_Incrimination}. 
+Epidemiological data were obtained from the SIVEP-Malaria system \cite{SIVEP_Malaria}, 
+which provides daily records of notified malaria cases for all Brazilian municipalities from 
+2003 to 2023. The analysis was restricted to the period 2017-2023, for which complete epidemiological and environmental data were available.
+
+\subsection{Population Estimates}
+\label{sec:population_estimates}
+
+As was said before, the municipality of Manaus was selected due to its high incidence of \textit{P. vivax} malaria, 
+particularly in rural areas. However, detailed yearly estimates of rural population were not directly available 
+from census data. To address this limitation, population estimates were derived using data from the 
+Trajetorias Project \cite{Rorato2023}, which provides incidence values aggregated over five-year periods.
+\\\\
+The incidence is defined as
+\begin{align}
+\text{Inc}(d,m,z,t_1,t_2)
+=
+\frac{\text{Cases}(d,m,z,t_1,t_2)}
+{\text{Pop}(m,z,(t_1+t_2)/2)\cdot (t_2-t_1)}
+\times 10^5,
+\end{align}
+where $\text{Cases}(d,m,z,t_1,t_2)$ denotes the number of reported cases for 
+disease $d$ in municipality $m$ and zone $z$ over the interval $[t_1,t_2]$, 
+and $\text{Pop}(m,z,\cdot)$ represents the population at the midpoint of the interval.
+\\\\
+This relationship was inverted to estimate rural population values from reported incidence and case counts. 
+Using this approach, the rural population of Manaus was estimated to represent less than $1\%$ of the total population, ranging between $0.3\%$ and $0.6\%$ 
+of the total municipal population, while accounting for a disproportionately large share of malaria cases (approximately $30\%$ to $40\%$ over the study periods).
+\\\\
+Yearly total population values for Manaus were obtained via interpolation based on official census data from 
+the Brazilian Institute of Geography and Statistics (IBGE) for the years 2000, 2010, and 
+2022 \cite{Census2000, Census2010, Census2022}. Intermediate yearly values were constructed using 
+linear interpolation, while values beyond 2022 were extrapolated based on observed trends.
+
+\subsection{Data Consistency Adjustments}
+\label{sec:data_consistency_adjustments}
+
+During preprocessing, inconsistencies were identified in the Trajetorias dataset. In particular, 
+incidence rates for the period 2015-2019 had been calculated using population estimates corresponding 
+to 2004-2008, resulting in a temporal mismatch. These values were recalculated using population 
+estimates consistent with the appropriate time interval.
+\\\\
+Additionally, rural and urban population estimates for intermediate years had been derived using fixed 
+proportions based on 2010 data. To better account for demographic changes, particularly urbanization, 
+these estimates were revised. The rural population for 2006 was approximated as the mean between the 
+reported values for 2000 and 2010, while the 2017 value was obtained through extrapolation based on the 
+observed growth trend. These adjustments ensured temporal consistency in the population data used throughout the study. 
+
 \subsection{Baseline Delayed SIR-SEI Model}
 \label{sec:baseline_delayed_sir_sei}
 
-We begin with the classical host-vector framework for malaria transmission, based on the model introduced by Parham and Michael (2010) \cite{Parham2010}, 
+We begin the construction of the model with the classical host-vector framework for malaria transmission, based on the model introduced by Parham and Michael (2010) \cite{Parham2010}, 
 which incorporates temperature- and rainfall-dependent mosquito dynamics. The human population is divided into susceptible, infected, 
 and recovered compartments, denoted by $S_H$, $I_H$, and $R_H$, respectively. The mosquito population is structured into susceptible, 
 exposed, and infectious compartments, denoted by $S_M$, $E_M$, and $I_M$.
@@ -435,63 +488,6 @@ ensuring that the carrying capacity remains bounded by the baseline population s
 \\\\
 Unlike the classical logistic formulation, where population growth is directly proportional to the current mosquito abundance, the present representation assumes that recruitment is primarily determined by environmental suitability and breeding-site availability. The factor
 $\left(1-\frac{M(t)}{K(t)}\right)$ therefore imposes density-dependent regulation by reducing recruitment as the mosquito population approaches the carrying capacity, providing a biologically realistic upper bound on mosquito abundance. The mathematical implications of this formulation are analyzed in Section~\ref{sec:mosquito_pop_dynamics}.
-
-\section{Data Description and Processing}
-\label{sec:data_description_processing}
-
-\subsection{Epidemiological Data}
-\label{sec:epidemiological_data}
-
-This study focuses on malaria cases caused by \textit{Plasmodium vivax}, which accounts for the majority 
-of malaria infections in Brazil and is the predominant species in the Amazon 
-region \cite{OliveiraFerreira2010, 10.3389/fpubh.2021.647754, Vector_Incrimination}. 
-\\\\
-Epidemiological data were obtained from the SIVEP-Malaria system \cite{SIVEP_Malaria}, 
-which provides daily records of notified malaria cases for all Brazilian municipalities from 
-2003 to 2023. The analysis was restricted to the period 2017–2023, for which complete epidemiological and environmental data were available.
-
-\subsection{Population Estimates}
-\label{sec:population_estimates}
-
-The municipality of Manaus was selected due to its high incidence of \textit{P. vivax} malaria, 
-particularly in rural areas. However, detailed yearly estimates of rural population were not directly available 
-from census data. To address this limitation, population estimates were derived using data from the 
-Trajetorias Project \cite{Rorato2023}, which provides incidence values aggregated over five-year periods.
-\\\\
-Incidence is defined as
-\begin{align}
-\text{Inc}(d,m,z,t_1,t_2)
-=
-\frac{\text{Cases}(d,m,z,t_1,t_2)}
-{\text{Pop}(m,z,(t_1+t_2)/2)\cdot (t_2-t_1)}
-\times 10^5,
-\end{align}
-where $\text{Cases}(d,m,z,t_1,t_2)$ denotes the number of reported cases for 
-disease $d$ in municipality $m$ and zone $z$ over the interval $[t_1,t_2]$, 
-and $\text{Pop}(m,z,\cdot)$ represents the population at the midpoint of the interval.
-\\\\
-This relationship was inverted to estimate rural population values from reported incidence and case counts. 
-Using this approach, the rural population of Manaus was estimated to represent less than $1\%$ of the total population, ranging between $0.3\%$ and $0.6\%$ 
-of the total municipal population, while accounting for a disproportionately large share of malaria cases (approximately $30\%$ to $40\%$ over the study periods).
-\\\\
-Yearly total population values for Manaus were obtained via interpolation based on official census data from 
-the Brazilian Institute of Geography and Statistics (IBGE) for the years 2000, 2010, and 
-2022 \cite{Census2000, Census2010, Census2022}. Intermediate yearly values were constructed using 
-linear interpolation, while values beyond 2022 were extrapolated based on observed trends.
-
-\subsection{Data Consistency Adjustments}
-\label{sec:data_consistency_adjustments}
-
-During preprocessing, inconsistencies were identified in the Trajetorias dataset. In particular, 
-incidence rates for the period 2015–2019 had been calculated using population estimates corresponding 
-to 2004–2008, resulting in a temporal mismatch. These values were recalculated using population 
-estimates consistent with the appropriate time interval.
-\\\\
-Additionally, rural and urban population estimates for intermediate years had been derived using fixed 
-proportions based on 2010 data. To better account for demographic changes, particularly urbanization, 
-these estimates were revised. The rural population for 2006 was approximated as the mean between the 
-reported values for 2000 and 2010, while the 2017 value was obtained through extrapolation based on the 
-observed growth trend. These adjustments ensured temporal consistency in the population data used throughout the study. 
 
 \section{Mathematical Analysis of the Model}
 \label{sec:mathematical_analysis_of_model}
@@ -1365,40 +1361,40 @@ lowest-transmission months.
 \bibitem{MosqlimateAPI} Mosqlimate Data API / Datastore / climate, accessed on 12 August 2024, \href{https://api.mosqlimate.org/datastore/}{https://api.mosqlimate.org/datastore/}.
 \\
 %17
-\bibitem{brierre_function_development_rate} E. A. Mordecai et al, Optimal temperature for malaria transmission is dramatically lower than previously predicted, Ecology Letters, Vol. 16 (1), 22-30 (2013), \href{https://pubmed.ncbi.nlm.nih.gov/23050931/}{https://pubmed.ncbi.nlm.nih.gov/23050931/}.
-\\
-%18
-\bibitem{ab_gumel_malaria_review} S.E. Einkenberry, A. B. Gumel, Mathematical modeling of climate change and malaria transmission dynamics: a historical review, Journal of Mathematical Biology, Vol. 77 (4), 857-933 (2018), \href{https://pubmed.ncbi.nlm.nih.gov/29691632/}{https://pubmed.ncbi.nlm.nih.gov/29691632/}.
-\\
-%19
-\bibitem{debarros2011}  F. S. M.de Barros, N. A. Honório, M. E. Arruda, Survivorship of Anopheles darlingi (Diptera: Culicidae) in Relation with Malaria Incidence in the Brazilian Amazon, PLoS ONE, Vol. 6 (8), e22388 (2011), \href{https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0022388}{https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0022388}.
-\\
-%20
-\bibitem{duration_of_gonotrophic_cycle} F. J. Lardeaux et al, A physiological time analysis of the duration of the gonotrophic cycle of Anopheles pseudopunctipennis and its implications for malaria transmission in Bolivia, Malaria Journal, Vol. 7, 141 (2008), \href{https://link.springer.com/article/10.1186/1475-2875-7-141}{https://link.springer.com/article/10.1186/1475-2875-7-141}.
-\\
-%21
-\bibitem{math_assessment_of_the_role_of_temp_and_rainfall} A. Abdelrazec, A. B. Gumel, Mathematical assessment of the role of temperature and rainfall on mosquito population dynamics, Journal of Mathematical Biology, Vol. 74 (6), 1351-1395 (2017), \href{https://link.springer.com/article/10.1007/s00285-016-1054-9}{https://link.springer.com/article/10.1007/s00285-016-1054-9}.
-\\
-%22
 \bibitem{OliveiraFerreira2010} J. Oliveira-Ferreira, M. V. Lacerda, P. Brasil et al., Malaria in Brazil: an overview., Malaria Journal, Vol. 9 (1) (2010), \href{https://doi.org/10.1186/1475-2875-9-115}{https://doi.org/10.1186/1475-2875-9-115}.
 \\
-%23
+%18
 \bibitem{10.3389/fpubh.2021.647754} C. T. Codeço, A. P. Dal'Asta, A. C. Rorato, R. M. Lana, T. C. Neves, C. S. Andreazzi, M. Barbosa, M. I. S. Escada, D. A. Fernandes, D. L. Rodrigues, I. C. Reis, M. da Silva-Nunes, A. B. Gontijo, F. C. Coelho, A. M. V. Monteiro, Epidemiology, Biodiversity, and Technological Trajectories in the Brazilian Amazon: From Malaria to COVID-19, Frontiers in Public Health, Vol. 9 (2021), \href{https://doi.org/10.3389/fpubh.2021.647754}{https://doi.org/10.3389/fpubh.2021.647754}.
 \\
-%24
+%19
 \bibitem{Vector_Incrimination} A. K. R. Galardo, M. Arruda, et al., Malaria vector incrimination in three rural riverine villages in the Brazilian Amazon, The American Journal of Tropical Medicine and Hygiene, Vol. 76 (3) (2007), 461-469, \href{https://www.ajtmh.org/view/journals/tpmd/76/3/article-p461.xml}{https://www.ajtmh.org/view/journals/tpmd/76/3/article-p461.xml}.
 \\
-%25
+%20
 \bibitem{SIVEP_Malaria} SIVEP Malaria, accessed on 10 October 2024, \href{https://files.deeplearn.ltd/a/hnjvpj}{https://files.deeplearn.ltd/a/hnjvpj}.
 \\
-%26
+%21
 \bibitem{Census2000} Biblioteca IBGE, 2000, accessed on 11 November 2024, \href{https://biblioteca.ibge.gov.br/index.php/biblioteca-catalogo?view=detalhes\&id=7308}{https://biblioteca.ibge.gov.br/index.php/biblioteca-catalogo?view=detalhes\&id=7308}.
 \\
-%27
+%22
 \bibitem{Census2010} IBGE, Censo Demográfico, 2010, accessed on 11 November 2024, \href{https://www.ibge.gov.br/estatisticas/sociais/populacao/9662-censo-demografico-2010.html?=\&t=resultados}{https://www.ibge.gov.br/estatisticas/sociais/populacao/9662-censo-demografico-2010.html?=\&t=resultados}.
 \\
-%28
+%23
 \bibitem{Census2022} IBGE, Brasil / Amazonas / Manaus, 2022, accessed on 11 November 2024, \href{https://cidades.ibge.gov.br/brasil/am/manaus/panorama}{https://cidades.ibge.gov.br/brasil/am/manaus/panorama}.
+\\
+%24
+\bibitem{brierre_function_development_rate} E. A. Mordecai et al, Optimal temperature for malaria transmission is dramatically lower than previously predicted, Ecology Letters, Vol. 16 (1), 22-30 (2013), \href{https://pubmed.ncbi.nlm.nih.gov/23050931/}{https://pubmed.ncbi.nlm.nih.gov/23050931/}.
+\\
+%25
+\bibitem{ab_gumel_malaria_review} S.E. Einkenberry, A. B. Gumel, Mathematical modeling of climate change and malaria transmission dynamics: a historical review, Journal of Mathematical Biology, Vol. 77 (4), 857-933 (2018), \href{https://pubmed.ncbi.nlm.nih.gov/29691632/}{https://pubmed.ncbi.nlm.nih.gov/29691632/}.
+\\
+%26
+\bibitem{debarros2011}  F. S. M.de Barros, N. A. Honório, M. E. Arruda, Survivorship of Anopheles darlingi (Diptera: Culicidae) in Relation with Malaria Incidence in the Brazilian Amazon, PLoS ONE, Vol. 6 (8), e22388 (2011), \href{https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0022388}{https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0022388}.
+\\
+%27
+\bibitem{duration_of_gonotrophic_cycle} F. J. Lardeaux et al, A physiological time analysis of the duration of the gonotrophic cycle of Anopheles pseudopunctipennis and its implications for malaria transmission in Bolivia, Malaria Journal, Vol. 7, 141 (2008), \href{https://link.springer.com/article/10.1186/1475-2875-7-141}{https://link.springer.com/article/10.1186/1475-2875-7-141}.
+\\
+%28
+\bibitem{math_assessment_of_the_role_of_temp_and_rainfall} A. Abdelrazec, A. B. Gumel, Mathematical assessment of the role of temperature and rainfall on mosquito population dynamics, Journal of Mathematical Biology, Vol. 74 (6), 1351-1395 (2017), \href{https://link.springer.com/article/10.1007/s00285-016-1054-9}{https://link.springer.com/article/10.1007/s00285-016-1054-9}.
 \\
 %29
 \bibitem{Rep_Number_Comp_Model} P. van den Driessche, J. Watmough, Reproduction numbers and sub-threshold endemic equilibria for compartmental models of disease transmission, Mathematical Biosciences, Vol. 180 (2002), 29-48, \href{https://doi.org/10.1016/S0025-5564(02)00108-6}{https://doi.org/10.1016/S0025-5564(02)00108-6}.
