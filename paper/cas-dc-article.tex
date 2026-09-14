@@ -211,8 +211,14 @@ transmission remains challenging. In particular, distinguishing between their ef
 impact on human-vector interaction is essential for developing models that are both biologically consistent and
 identifiable from available data.
 \\\\
-In this work, we develop and analyze a modified SIR–SEI model for malaria transmission in the Amazon, incorporating
-environmental variables such as temperature, rainfall, deforestation, and fire activity. Climatic factors, including
+In this work, we analyze and develop modifications to a SIR-SEI model for malaria transmission in the Amazon, inspired by the
+host-vector framework of Parham and Michael (2010) \cite{Parham2010} and the Trajetorias Project \cite{Rorato2023}, which is
+a dataset of environmental epidemiological and epidemiological indicators, among others, for all municipalities of the Brazilian Legal Amazon.
+Our analysis was based on Manaus, which is the main urban center of the region, accumulating the highest number of cases and incidence in the period of study.
+The original model formulation as proposed by Parham and Michael was not capable 
+of explaining the transmission dynamics we observed in
+Manaus, and with the modifications described below, our model sets out to do so. The model incorporates environmental
+variables such as temperature, rainfall, humidity, deforestation, and fire activity. Climatic factors, including
 temperature $T$, precipitation $R$, and humidity $H$, are modeled as drivers of mosquito life-history parameters,
 while land-use variables are introduced as modifiers of transmission intensity. Deforestation and fire activity are
 not embedded as mechanistic drivers within the epidemiological model; instead, they are treated as environmental
@@ -229,10 +235,7 @@ detected by INPE, used as the covariate $F_c$ \cite{INPE_Forest_Fires}, and annu
 MapBiomas project, assigned as a monthly covariate $F_t$ \cite{Mapbiomas}. Daily temperature, precipitation, and
 humidity were obtained from the Mosqlimate API \cite{MosqlimateAPI} and included as the covariates $T$, $R$, and $H$.
 Together, the variables $T, R, H, D_f, F_c, F_t$ form the environmental predictor set relating observed environmental
-conditions to the weekly transmission probabilities $b_1$ and $b_2$. Using epidemiological and environmental data
-from the Trajetorias Project \cite{Rorato2023}, we investigate how these factors influence disease dynamics and
-assess their relative contributions through analytical and numerical methods.
-
+conditions to the weekly transmission probabilities $b_1$ and $b_2$.
 
 \section{Methodology}
 \label{sec:methodology}
@@ -1344,22 +1347,22 @@ lowest-transmission months.
 \bibitem{DASILVANUNES2012281} M. da Silva-Nunes et al.,  Amazonian malaria: Asymptomatic human reservoirs, diagnostic challenges, environmentally driven changes in mosquito vector populations, and the mandate for sustainable control strategies, Acta Tropica, Vol. 121 (3) (2012), 281-291, \href{https://doi.org/10.1016/j.actatropica.2011.10.001}{https://doi.org/10.1016/j.actatropica.2011.10.001}.
 \\
 %11
-\bibitem{Daily_DETER} TerraBrasilis, DETER (Notices), Analyses - Amazônia Biome, Daily notices of DETER project area, accessed on 17 March 2026, \href{https://terrabrasilis.dpi.inpe.br/app/dashboard/alerts/biomes/amazonia-nb/daily/}{https://terrabrasilis.dpi.inpe.br/app/dashboard/alerts/biomes/amazonia-nb/daily/}.
+\bibitem{Parham2010} P. E. Parham, E. Michael, Modelling Climate Change and Malaria Transmission, Modelling Parasite Transmission and Control, Advances in Experimental Medicine and Biology, Vol. 673 (2010), 184-199, \href{https://doi.org/10.1007/978-1-4419-6064-1_13}{https://doi.org/10.1007/978-1-4419-6064-1\_13}.
 \\
 %12
-\bibitem{INPE_Forest_Fires} Data$\_$Basis.org, Fire Database, National Institute for Space Research (INPE), acessed on 17 March 2026, \href{https://data-basis.org/dataset/f06f3cdc-b539-409b-b311-1ff8878fb8d9?table=a3696dc2-4dd1-4f7e-9769-6aa16a1556b8}{https://data-basis.org/dataset/f06f3cdc-b539-409b-b311-1ff8878fb8d9?table=a3696dc2-4dd1-4f7e-9769-6aa16a1556b8}.
-\\
-%13
-\bibitem{Mapbiomas} MapBiomas Brasil, Home/Iniciativas e Produtos/Fogo/Mapeamento anual/Mensal, acessed on 30 August 2026, \href{https://plataforma.brasil.mapbiomas.org/}{https://plataforma.brasil.mapbiomas.org/}.
-\\
-%14
-\bibitem{MosqlimateAPI} Mosqlimate Data API / Datastore / climate, accessed on 12 August 2024, \href{https://api.mosqlimate.org/datastore/}{https://api.mosqlimate.org/datastore/}.
-\\
-%15
 \bibitem{Rorato2023} A. C. Rorato, A. P. Dal’Asta, R. M. Lana et al., Trajetorias: a dataset of environmental, epidemiological, and economic indicators for the Brazilian Amazon, Scientific Data, Vol. 10 (1) (2023), 65, \href{https://doi.org/10.1038/s41597-023-01962-1}{https://doi.org/10.1038/s41597-023-01962-1}.
 \\
+%13
+\bibitem{Daily_DETER} TerraBrasilis, DETER (Notices), Analyses - Amazônia Biome, Daily notices of DETER project area, accessed on 17 March 2026, \href{https://terrabrasilis.dpi.inpe.br/app/dashboard/alerts/biomes/amazonia-nb/daily/}{https://terrabrasilis.dpi.inpe.br/app/dashboard/alerts/biomes/amazonia-nb/daily/}.
+\\
+%14
+\bibitem{INPE_Forest_Fires} Data$\_$Basis.org, Fire Database, National Institute for Space Research (INPE), acessed on 17 March 2026, \href{https://data-basis.org/dataset/f06f3cdc-b539-409b-b311-1ff8878fb8d9?table=a3696dc2-4dd1-4f7e-9769-6aa16a1556b8}{https://data-basis.org/dataset/f06f3cdc-b539-409b-b311-1ff8878fb8d9?table=a3696dc2-4dd1-4f7e-9769-6aa16a1556b8}.
+\\
+%15
+\bibitem{Mapbiomas} MapBiomas Brasil, Home/Iniciativas e Produtos/Fogo/Mapeamento anual/Mensal, acessed on 30 August 2026, \href{https://plataforma.brasil.mapbiomas.org/}{https://plataforma.brasil.mapbiomas.org/}.
+\\
 %16
-\bibitem{Parham2010} P. E. Parham, E. Michael, Modelling Climate Change and Malaria Transmission, Modelling Parasite Transmission and Control, Advances in Experimental Medicine and Biology, Vol. 673 (2010), 184-199, \href{https://doi.org/10.1007/978-1-4419-6064-1_13}{https://doi.org/10.1007/978-1-4419-6064-1\_13}.
+\bibitem{MosqlimateAPI} Mosqlimate Data API / Datastore / climate, accessed on 12 August 2024, \href{https://api.mosqlimate.org/datastore/}{https://api.mosqlimate.org/datastore/}.
 \\
 %17
 \bibitem{brierre_function_development_rate} E. A. Mordecai et al, Optimal temperature for malaria transmission is dramatically lower than previously predicted, Ecology Letters, Vol. 16 (1), 22-30 (2013), \href{https://pubmed.ncbi.nlm.nih.gov/23050931/}{https://pubmed.ncbi.nlm.nih.gov/23050931/}.
