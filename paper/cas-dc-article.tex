@@ -217,7 +217,9 @@ a dataset of environmental epidemiological and epidemiological indicators, among
 Our analysis was based on Manaus, which is the main urban center of the region, accumulating the highest number of cases and incidence in the period of study.
 The original model formulation as proposed by Parham and Michael was not capable 
 of explaining the transmission dynamics we observed in
-Manaus, and with the modifications described below, our model sets out to do so. The model incorporates environmental
+Manaus, and with the modifications described below, our model sets out to do so. The observed series of active infectious cases in Manaus over the 2017-2023 period (Fig.~\ref{FIG:manaus_active_cases}) 
+displays pronounced inter- and intra-annual variability, with recurrent seasonal waves whose timing and amplitude change from year to year, which motivates the 
+representation of all of the variability of the environmental drivers and, ultimately, the modifications to the baseline model described below. The model incorporates environmental
 variables such as temperature, rainfall, humidity, deforestation, and fire activity. Climatic factors, including
 temperature $T$, precipitation $R$, and humidity $H$, are modeled as drivers of mosquito life-history parameters,
 while land-use variables are introduced as modifiers of transmission intensity. Deforestation and fire activity are
@@ -228,6 +230,15 @@ Section~\ref{sec:weekly_beta_diagnostic}). Land-use and fire activity thereby mo
 indirectly, through the empirical relation between environmental conditions and the effective transmission
 coefficients, rather than by directly altering the mechanistic mosquito rates.
 \\\\
+\renewcommand{\thefigure}{1}
+\begin{figure*}[H]
+\centering
+\includegraphics[width=\textwidth]{figs/total_active_infectious_cases_manaus_2017_2023.png}
+\caption{Total number of active infectious cases of malaria (\textit{P.~vivax}, SIVEP-Malaria) in rural Manaus, 2017-2023. The strong inter- and 
+intra-annual variability of the disease burden is the central modelling challenge addressed in this work, and motivates the representation of all 
+of the variability of the environmental drivers as well as the modifications to the baseline model.}
+\label{FIG:manaus_active_cases}
+\end{figure*}
 Deforestation was obtained from the DETER system, whose daily alerts were aggregated at weekly resolution, with the
 4-week total degraded area (clear cut, forest degradation, and burn scar combined) used as the covariate $D_f$
 \cite{Daily_DETER}. Fire activity was represented by two complementary sources: the weekly number of fire hotspots
@@ -507,7 +518,7 @@ w_i = w_0 \, \exp\!\left(-\lambda \, d_i\right),
 \end{align}
 where $d_i$ is the number of days from the start of the year for observation $i$, $w_0 = 5.0$ is the initial weight, and $\lambda = 0.0015$ \textrm{day}$^{-1}$ is the decay rate. This weighting scheme reflects the greater sensitivity of the early-season trajectory to initial conditions and parameter values, guiding the optimizer toward solutions that correctly capture the onset of the rainy-season transmission peak.
 \\\\
-To prevent the optimizer from collapsing the infected-mosquito population to near-zero levels---which would sever the force-of-infection coupling and render the human transmission parameters structurally unidentifiable---an extinction penalty was added to the objective:
+An extinction penalty was added to the objective to prevent the optimizer from collapsing the infected-mosquito population to near-zero levels, which would sever the force-of-infection coupling and render the human transmission parameters structurally unidentifiable:
 \begin{align}
 J(\theta) = \text{wMSE}(\theta) + \mathcal{P}\!\left(I_M^{\min}(\theta)\right),
 \label{eq:combined}
@@ -888,12 +899,12 @@ As a diagnostic for the methodological choices adopted below, the original SIR-S
 \label{sec:results_biting_rate}
 The temperature-dependent biting rate was recalibrated using field estimates of \textit{Anopheles darlingi} feeding behavior, as described in Section~\ref{sec:recalibration_temp_dependent_biting_rate}. The recalibrated function has a minimum biting temperature threshold of $T' = 16\,^{\circ}\mathrm{C}$ and a thermal scaling factor $D_1 = 24.8\,^{\circ}\mathrm{C}\,\mathrm{days}$. Compared with the original Parham \& Michael parameterization, the recalibrated function better reflects the temperature range observed in the Amazon and produces higher biting rates during the transmission season in Manaus (Fig.~\ref{FIG:biting_rate}). This recalibrated biting rate is used in all subsequent simulations and in the weekly transmission regressions presented in Section~\ref{sec:results_regression}.
 
-\renewcommand{\thefigure}{1}
+\renewcommand{\thefigure}{2}
 \vspace{0.6cm}
 
 \noindent
 \includegraphics[width=\columnwidth]{figs/biting_rate_comparison.png}
-\captionof{figure}{Comparison between the recalibrated temperature-dependent biting rate $a(T)$ used in this work ($T'=16\,^{\circ}\mathrm{C}$, $D_1 = 24.8\,^{\circ}\mathrm{C}\,\mathrm{days}$) and the original Parham \& Michael (2010) parameterization \cite{Parham2010} ($T'=19.9\,^{\circ}\mathrm{C}$, $D_1 = 36.5\,^{\circ}\mathrm{C}\,\mathrm{days}$). The shaded band indicates the range of daily mean temperatures observed in Manaus between 2017 and 2023 (5th--95th percentiles), and the dashed vertical line marks the recalibrated biting threshold $T'=16\,^{\circ}\mathrm{C}$.}
+\captionof{figure}{Comparison between the recalibrated temperature-dependent biting rate $a(T)$ used in this work ($T'=16\,^{\circ}\mathrm{C}$, $D_1 = 24.8\,^{\circ}\mathrm{C}\,\mathrm{days}$) and the original Parham \& Michael (2010) parameterization \cite{Parham2010} ($T'=19.9\,^{\circ}\mathrm{C}$, $D_1 = 36.5\,^{\circ}\mathrm{C}\,\mathrm{days}$). The shaded band indicates the range of daily mean temperatures observed in Manaus between 2017 and 2023 (5th-95th percentiles), and the dashed vertical line marks the recalibrated biting threshold $T'=16\,^{\circ}\mathrm{C}$.}
 \label{FIG:biting_rate}
 
 \subsection{Model calibration reproduces the observed transmission dynamics}
@@ -905,7 +916,7 @@ The SEIRS-SEI model was calibrated year by year over 2017-2023 following the seq
 %\caption{Comparison between the observed active cases and the model estimation of the infectious human compartment $I_H$ for 2017.}
 %\label{FIG:model_vs_data}
 %\end{figure}
-\renewcommand{\thefigure}{2}
+\renewcommand{\thefigure}{3}
 \vspace{0.6cm}
 
 \noindent
@@ -915,7 +926,7 @@ The SEIRS-SEI model was calibrated year by year over 2017-2023 following the seq
 
 \begin{table*}[H]
 \centering
-\caption{Year-by-year calibrated parameters and weighted mean squared error (wMSE) of the SEIRS-SEI model, 2017--2023.}
+\caption{Year-by-year calibrated parameters and weighted mean squared error (wMSE) of the SEIRS-SEI model, 2017-2023.}
 \label{tbl:calibration}
 \begin{tabular}{lcccccccccc}
 \toprule
@@ -933,7 +944,7 @@ Year & $H_0$ & $k$ & $\varphi$ & $\tau_H$ & $\gamma$ & $\omega$ & $b_1$ & $b_2$ 
 \end{table*}
 
 
-\renewcommand{\thefigure}{3}
+\renewcommand{\thefigure}{4}
 
 \noindent
 \includegraphics[width=\columnwidth]{figs/R0_variation_in_2017_with_months.png}
@@ -965,7 +976,7 @@ year-by-year calibration reached the boundary of the sampled range
 ($b_1$, $\phi$ and $\tau_H$ at the upper bound; $b_2$, $\gamma$, $M'$
 and $H_0$ at the lower bound; Table~\ref{tbl:calibration}).
 
-\renewcommand{\thefigure}{4}
+\renewcommand{\thefigure}{5}
 
 \noindent
 \includegraphics[width=\columnwidth]{figs/prcc_plot.png}
@@ -990,7 +1001,7 @@ The biological survival rates $A$ and $B$ (which carry the
 temperature dependence of the vector) dominate $\mathcal{R}_0$,
 followed by the biting rate $a$ and the mosquito mortality $\mu$.
 These are precisely the vector vital rates coupled to the
-environmental drivers, confirming that the climate--habitat state
+environmental drivers, confirming that the climate-habitat state
 modulates the invasion threshold as established in
 Section~\ref{sec:basic_reproduction_number}. The transmission probabilities $b_1$ and $b_2$
 and the recruitment-related terms $\Lambda$, $M'$ and $H_0$ display
@@ -1049,7 +1060,7 @@ Within each year the model explains a a large part of the variance of both trans
 %\captionof{figure}{Best within-year random-forest fit of the freed weekly per-bite transmission from infected humans to susceptible mosquitos ($b_1$).}
 \label{FIG:imp_b1}
 
-\renewcommand{\thefigure}{5}
+\renewcommand{\thefigure}{6}
 %\vspace{0.6cm}
 
 \noindent
@@ -1067,7 +1078,7 @@ A leave-one-year-out cross-validation of the same forests qualifies this result.
 \\\\
 The shape of these responses is illustrated in Figs.~\ref{FIG:response_b1} and \ref{FIG:response_b2}, which shows the partial dependence of $b_1$ and $b_2$ on each predictor for the best fitted year for each transmission probability.
 
-\renewcommand{\thefigure}{6A}
+\renewcommand{\thefigure}{7A}
 \vspace{0.6cm}
 
 \noindent
@@ -1075,7 +1086,7 @@ The shape of these responses is illustrated in Figs.~\ref{FIG:response_b1} and \
 %\captionof{figure}{Partial dependence of the weekly per-bite transmission probability $b_1$ on each environmental predictor.}
 \label{FIG:response_b1_A}
 
-\renewcommand{\thefigure}{6B}
+\renewcommand{\thefigure}{7B}
 %\vspace{0.6cm}
 
 \noindent
@@ -1083,7 +1094,7 @@ The shape of these responses is illustrated in Figs.~\ref{FIG:response_b1} and \
 %\captionof{figure}{Partial dependence of the weekly per-bite transmission probability $b_1$ on each environmental predictor.}
 \label{FIG:response_b1_B}
 
-\renewcommand{\thefigure}{6}
+\renewcommand{\thefigure}{7}
 %\vspace{0.6cm}
 
 \noindent
@@ -1091,7 +1102,7 @@ The shape of these responses is illustrated in Figs.~\ref{FIG:response_b1} and \
 \captionof{figure}{Partial dependence of the weekly per-bite transmission probability $b_1$ on each environmental predictor in 2022.}
 \label{FIG:response_b1}
 
-%\renewcommand{\thefigure}{5}
+%\renewcommand{\thefigure}{6}
 %\vspace{0.6cm}
 
 %\noindent
@@ -1100,7 +1111,7 @@ The shape of these responses is illustrated in Figs.~\ref{FIG:response_b1} and \
 %\label{FIG:response_b2}
 %\vspace{0.6cm}
 
-\renewcommand{\thefigure}{7A}
+\renewcommand{\thefigure}{8A}
 \vspace{0.6cm}
 
 \noindent
@@ -1108,7 +1119,7 @@ The shape of these responses is illustrated in Figs.~\ref{FIG:response_b1} and \
 %\captionof{figure}{Partial dependence of the weekly per-bite transmission probability $b_1$ on each environmental predictor.}
 \label{FIG:response_b2_A}
 
-\renewcommand{\thefigure}{7B}
+\renewcommand{\thefigure}{8B}
 %\vspace{0.6cm}
 
 \noindent
@@ -1116,7 +1127,7 @@ The shape of these responses is illustrated in Figs.~\ref{FIG:response_b1} and \
 %\captionof{figure}{Partial dependence of the weekly per-bite transmission probability $b_1$ on each environmental predictor.}
 \label{FIG:response_b2_B}
 
-\renewcommand{\thefigure}{7}
+\renewcommand{\thefigure}{8}
 %\vspace{0.6cm}
 
 \noindent
