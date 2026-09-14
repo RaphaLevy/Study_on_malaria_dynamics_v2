@@ -179,87 +179,63 @@ Malaria transmission \sep Plasmodium vivax \sep Anopheles darlingi \sep SEIRS-SE
 \section{Introduction}
 \label{sec:intro}
 
-Malaria remains one of the most significant vector-borne diseases worldwide, caused by 
-protozoa of the genus \textit{Plasmodium} and transmitted by female mosquitoes of the 
-genus \textit{Anopheles}. Although present in multiple regions, the burden of malaria in the Americas is 
-highly concentrated in the Amazon basin, which spans nine countries and accounts for a substantial proportion of reported 
-cases \cite{pimenta_orfano_bahia_duarte_rios-velasquez_melo_pessoa_oliveira_campos_villegas_etal_2015}. 
-The persistence of malaria in this region is closely linked to ecological, climatic, and socioeconomic factors 
+Malaria remains one of the most significant vector-borne diseases worldwide, caused by
+protozoa of the genus \textit{Plasmodium} and transmitted by female mosquitoes of the
+genus \textit{Anopheles}. Although present in multiple regions, the burden of malaria in the Americas is
+highly concentrated in the Amazon basin, which spans nine countries and accounts for a substantial proportion of reported
+cases \cite{pimenta_orfano_bahia_duarte_rios-velasquez_melo_pessoa_oliveira_campos_villegas_etal_2015}.
+The persistence of malaria in this region is closely linked to ecological, climatic, and socioeconomic factors
 that influence both vector dynamics and human exposure.
 \\\\
-Environmental changes play a central role in shaping malaria transmission. In the Amazon, 
-processes such as deforestation, agricultural expansion, and infrastructure development alter 
-local ecosystems, affecting vector habitats and increasing human-vector contact. These changes often 
-promote the proliferation of mosquito breeding sites and concentrate human populations in high-risk areas, 
-particularly among non-immune migrants \cite{silva-nunes_malaria_amazon_2008, DASILVANUNES2012281}. 
-In addition to land-use change, climatic variables such as temperature and rainfall, as well as disturbances such 
-as forest fires and mining activities, further influence vector abundance, pathogen development, and transmission intensity.
+Environmental changes, particularly deforestation and forest fires, have been widely associated with the
+resurgence and spatial redistribution of malaria in the Amazon \cite{Norris2004}. The removal of forest canopy
+alters local microclimates, increasing sunlight exposure and ambient temperature, which favor the development of
+mosquito larvae and pupae. The primary Amazonian vector, \textit{Anopheles darlingi}, thrives in partially
+deforested environments, where sunlit water bodies promote larval growth and the availability of food sources
+such as algae \cite{infoAnopheles, article_alteracoesambientais}. Forest fragmentation accelerates mosquito
+development cycles and increases vectorial capacity and survivorship through higher temperature and light
+availability \cite{article_alteracoesambientais, Anthropogenic_Landscape}, while forest fires, often used for
+land clearing, modify habitat structure and may promote subsequent fires through understory drying and fuel
+accumulation, contributing to long-term ecological changes that influence mosquito populations and disease
+transmission dynamics \cite{Future_of_Deforestation, Relationship_between_fires_and_defor, Conservation_Policy}.
 \\\\
-Despite the recognized importance of environmental drivers, integrating these factors into mathematical models of 
-malaria transmission remains challenging. In particular, distinguishing between their effects on mosquito biology and 
-their impact on human-vector interaction is essential for developing models that are both biologically consistent and 
+These processes also shape human exposure to malaria. Activities such as logging, agriculture, and infrastructure
+development concentrate human populations in recently altered environments, often in close proximity to mosquito
+breeding sites, raising human-vector contact rates and facilitating transmission, particularly among non-immune
+migrants \cite{silva-nunes_malaria_amazon_2008, DASILVANUNES2012281}. Additionally, land-use changes such as
+agriculture may contribute to river sedimentation and the formation of artificial breeding sites, further enhancing
+mosquito proliferation. Climatic variables such as temperature and rainfall, together with human disturbances such
+as mining, further influence vector abundance, pathogen development, and transmission intensity. Despite the
+recognized importance of these environmental drivers, integrating them into mathematical models of malaria
+transmission remains challenging. In particular, distinguishing between their effects on mosquito biology and their
+impact on human-vector interaction is essential for developing models that are both biologically consistent and
 identifiable from available data.
 \\\\
-In this work, we develop and analyze a modified SIR–SEI model for malaria transmission in the Amazon, incorporating 
-environmental variables such as temperature, rainfall, deforestation, and fire activity. Climatic factors are modeled as 
-drivers of mosquito life-history parameters, while land-use variables are introduced as modifiers of transmission intensity. 
-Using epidemiological and environmental data from the Trajetorias Project \cite{Rorato2023}, we investigate how these 
-factors influence disease dynamics and assess their relative contributions through analytical and numerical methods.
+In this work, we develop and analyze a modified SIR–SEI model for malaria transmission in the Amazon, incorporating
+environmental variables such as temperature, rainfall, deforestation, and fire activity. Climatic factors, including
+temperature $T$, precipitation $R$, and humidity $H$, are modeled as drivers of mosquito life-history parameters,
+while land-use variables are introduced as modifiers of transmission intensity. Deforestation and fire activity are
+not embedded as mechanistic drivers within the epidemiological model; instead, they are treated as environmental
+variables that describe the context in which transmission occurs and are used, together with $T$, $R$, and $H$, as
+predictors in the regression of the weekly per-bite transmission probabilities $b_1$ and $b_2$ (see
+Section~\ref{sec:freeing_transmission_coefficients}). Land-use and fire activity thereby modulate transmission
+indirectly, through the empirical relation between environmental conditions and the effective transmission
+coefficients, rather than by directly altering the mechanistic mosquito rates.
+\\\\
+Deforestation was obtained from the DETER system, whose daily alerts were aggregated at weekly resolution, with the
+4-week total degraded area (clear cut, forest degradation, and burn scar combined) used as the covariate $D_f$
+\cite{Daily_DETER}. Fire activity was represented by two complementary sources: the weekly number of fire hotspots
+detected by INPE, used as the covariate $F_c$ \cite{INPE_Forest_Fires}, and annual burned-area trends from the
+MapBiomas project, assigned as a monthly covariate $F_t$ \cite{Mapbiomas}. Daily temperature, precipitation, and
+humidity were obtained from the Mosqlimate API \cite{MosqlimateAPI} and included as the covariates $T$, $R$, and $H$.
+Together, the variables $T, R, H, D_f, F_c, F_t$ form the environmental predictor set relating observed environmental
+conditions to the weekly transmission probabilities $b_1$ and $b_2$. Using epidemiological and environmental data
+from the Trajetorias Project \cite{Rorato2023}, we investigate how these factors influence disease dynamics and
+assess their relative contributions through analytical and numerical methods.
 
-\section{Environmental Drivers of Malaria Transmission in the Amazon}
-\label{sec:environmental_drivers}
 
-Environmental changes, particularly deforestation and forest fires, have been widely associated with the 
-resurgence and spatial redistribution of malaria transmission in the Amazon region \cite{Norris2004}. 
-The removal of forest canopy alters local microclimatic conditions, increasing sunlight exposure and ambient temperature, 
-which in turn favor the development of mosquito larvae and pupae. In particular, the primary malaria vector in the Amazon, 
-\textit{Anopheles darlingi}, is known to thrive in partially deforested environments, where sunlit 
-water bodies promote larval growth and increase the availability of food sources such as algae \cite{infoAnopheles, article_alteracoesambientais}.
-\\\\
-Beyond ecological effects, deforestation also influences human exposure to malaria. Activities such as logging, 
-agriculture, and infrastructure development lead to increased human presence in recently altered environments, 
-often in close proximity to mosquito breeding sites. This results in higher human–vector contact rates and facilitates 
-transmission, especially in areas where both vector density and environmental suitability are elevated. Additionally, 
-land-use changes such as agriculture may contribute to river sedimentation and the formation of artificial breeding sites, 
-further enhancing mosquito proliferation.
-\\\\
-Forest fragmentation has been shown to accelerate mosquito development cycles by increasing temperature 
-and light availability, reducing the time from larval to adult stages and increasing vectorial capacity and 
-survivorship \cite{article_alteracoesambientais, Anthropogenic_Landscape}. Similarly, forest fires, often used as a 
-land-clearing mechanism, remove vegetation and modify habitat structure, contributing to long-term ecological 
-changes that can influence mosquito populations and disease transmission dynamics \cite{Future_of_Deforestation, Relationship_between_fires_and_defor}. 
-These processes may also increase the likelihood of subsequent fires by promoting understory drying and fuel accumulation \cite{Conservation_Policy}.
-\\\\
-In this work, deforestation and fire activity are not embedded as mechanistic drivers within the 
-epidemiological model itself. Instead, they are treated as environmental variables that describe the 
-context in which malaria transmission occurs, and are used together with temperature, precipitation and 
-humidity as predictors in the regression of the weekly transmission probabilities $b_1$ and $b_2$ (see 
-Section~\ref{sec:freeing_transmission_coefficients}). In that methodological framework, the freed 
-per-bite transmission probabilities $b_{1,w}$ and $b_{2,w}$, recovered from the observed case dynamics, 
-are regressed against a set of environmental covariates that includes the land-cover and fire variables 
-described below. This enables deforestation and fire activity to modulate transmission indirectly 
-through the empirical relation between environmental conditions and the effective transmission 
-coefficients, rather than by directly altering the mechanistic mosquito demographic or physiological 
-rates.
-\\\\
-Deforestation was obtained from the DETER system, which provides daily records of deforestation alerts by degradation type, 
-reported in km$^2$ \cite{Daily_DETER}. The daily alerts were aggregated and summarized at weekly resolution, 
-with the 4-week total degraded area used as the deforestation covariate $D_f$ in the regression. Three degradation 
-types were distinguished by DETER, namely clear cut, forest degradation and burn scar, and combined into a total 
-deforestation term. Forest fire activity was obtained from two complementary sources. First, the Brazilian National 
-Institute for Space Research (INPE) provides daily records of detected fire hotspots \cite{INPE_Forest_Fires}; because 
-area-based measurements are not available at this temporal resolution, the weekly number of detected hotspots was 
-used as a fire activity covariate $F_c$. Second, annual land-surface fire extent estimates from the MapBiomas 
-project provide fire trends in hectares \cite{Mapbiomas}, assigned as a monthly covariate $F_t$ accounting for the burned area 
-associated with fire activity.
-\\\\
-Daily climatic data, including temperature, precipitation and humidity, were obtained from the Mosqlimate API \cite{MosqlimateAPI} 
-and included as the $T$, $R$ and $H$ covariates. Together, the variables $T, R, H, D_f, F_c, F_t$ form the 
-environmental predictor set used to relate the observed environmental conditions to the weekly transmission 
-probabilities $b_1$ and $b_2$.
-
-\section{Model Formulation}
-\label{sec:model}
+\section{Methodology}
+\label{sec:methodology}
 
 \subsection{Baseline Delayed SIR-SEI Model}
 \label{sec:baseline_delayed_sir_sei}
@@ -1341,46 +1317,46 @@ lowest-transmission months.
 %\bibitem{WHO2022} World Health Organization / World Malaria Report 2022, Global Malaria Programme, accessed on 29 August 2024, \href{https://www.who.int/publications/i/item/9789240064898}{https://www.who.int/publications/i/item/9789240064898}.
 %\\
 %2
-\bibitem{silva-nunes_malaria_amazon_2008} M. da Silva-Nunes et al., Malaria on the Amazonian frontier: transmission dynamics, risk factors, spatial distribution, and prospects for control, American Journal of Tropical Medicine and Hygiene, Vol. 79 (4) (2008), 624-635, \href{https://doi.org/10.4269/ajtmh.2008.79.624}{https://doi.org/10.4269/ajtmh.2008.79.624}. 
-\\
-%3
-\bibitem{DASILVANUNES2012281} M. da Silva-Nunes et al.,  Amazonian malaria: Asymptomatic human reservoirs, diagnostic challenges, environmentally driven changes in mosquito vector populations, and the mandate for sustainable control strategies, Acta Tropica, Vol. 121 (3) (2012), 281-291, \href{https://doi.org/10.1016/j.actatropica.2011.10.001}{https://doi.org/10.1016/j.actatropica.2011.10.001}.
-\\
-%4
-\bibitem{Rorato2023} A. C. Rorato, A. P. Dal’Asta, R. M. Lana et al., Trajetorias: a dataset of environmental, epidemiological, and economic indicators for the Brazilian Amazon, Scientific Data, Vol. 10 (1) (2023), 65, \href{https://doi.org/10.1038/s41597-023-01962-1}{https://doi.org/10.1038/s41597-023-01962-1}.
-\\
-%5
 \bibitem{Norris2004} D. E. Norris, Mosquito-borne Diseases as a Consequence of Land Use Change, EcoHealth, Vol. 1 (1) (2004), 19-24, \href{https://doi.org/10.1007/s10393-004-0008-7}{https://doi.org/10.1007/s10393-004-0008-7}.
 \\
-%6
+%3
 \bibitem{infoAnopheles} Anopheles, Fiocruz Rondônia, accessed on 15 August 2024, \href{https://www.rondonia.fiocruz.br/pivem/anopheline/}{https://www.rondonia.fiocruz.br/pivem/anopheline/}.
 \\
-%7
+%4
 \bibitem{article_alteracoesambientais} M. da Silva-Nunes, Environmental changes impact in malaria transmition and prospects for the disease control in brazilian amazon rural settlements, Oecologia Australis, Vol. 14 (3) (2010), 603-622, \href{https://revistas.ufrj.br/index.php/oa/article/view/7101}{https://revistas.ufrj.br/index.php/oa/article/view/7101}.
 \\
-%8
+%5
 \bibitem{Anthropogenic_Landscape} L. S. M. Chaves, E. S. Bergo, J. E. Conn, G. Z. Laporta, P. R. Prist, M. A. M. Sallum, Anthropogenic landscape decreases mosquito biodiversity and drives malaria vector proliferation in the Amazon rainforest, PLOS ONE, Vol. 16 (1) (2021), \href{https://doi.org/10.1371/journal.pone.0245087}{https://doi.org/10.1371/journal.pone.0245087}.
 \\
-%9
+%6
 \bibitem{Future_of_Deforestation} K. R. Kirby, W. F. Laurance, A. K. L. M.  Albernaz, G. Schroth, P. M. Fearnside, S. Bergen, E. M. Venticinque, C. Da Costa, The future of deforestation in the Brazilian Amazon, Futures, Vol. 38 (4) (2006), 432–453, \href{https://doi.org/10.1016/j.futures.2005.07.011}{https://doi.org/10.1016/j.futures.2005.07.011}.
 \\
-%10
+%7
 \bibitem{Relationship_between_fires_and_defor} C. F. Lima, F. T. P. Torres, L. J. Minette, F. A. Lima, R. C. A. Lima et al, Is there a relationship between forest fires and deforestation in the Brazilian Amazon?, PLOS ONE, Vol. 19 (6) (2024), \href{https://doi.org/10.1371/journal.pone.0306238}{https://doi.org/10.1371/journal.pone.0306238}.
 \\
-%11
+%8
 \bibitem{Conservation_Policy} P. M. Fearnside, Conservation Policy in Brazilian Amazonia: Understanding the Dilemmas, World Development, Vol. 31 (5) (2003), 757-779, \href{https://doi.org/10.1016/S0305-750X(03)00011-1}{https://doi.org/10.1016/S0305-750X(03)00011-1}.
 \\
-%12
+%9
+\bibitem{silva-nunes_malaria_amazon_2008} M. da Silva-Nunes et al., Malaria on the Amazonian frontier: transmission dynamics, risk factors, spatial distribution, and prospects for control, American Journal of Tropical Medicine and Hygiene, Vol. 79 (4) (2008), 624-635, \href{https://doi.org/10.4269/ajtmh.2008.79.624}{https://doi.org/10.4269/ajtmh.2008.79.624}. 
+\\
+%10
+\bibitem{DASILVANUNES2012281} M. da Silva-Nunes et al.,  Amazonian malaria: Asymptomatic human reservoirs, diagnostic challenges, environmentally driven changes in mosquito vector populations, and the mandate for sustainable control strategies, Acta Tropica, Vol. 121 (3) (2012), 281-291, \href{https://doi.org/10.1016/j.actatropica.2011.10.001}{https://doi.org/10.1016/j.actatropica.2011.10.001}.
+\\
+%11
 \bibitem{Daily_DETER} TerraBrasilis, DETER (Notices), Analyses - Amazônia Biome, Daily notices of DETER project area, accessed on 17 March 2026, \href{https://terrabrasilis.dpi.inpe.br/app/dashboard/alerts/biomes/amazonia-nb/daily/}{https://terrabrasilis.dpi.inpe.br/app/dashboard/alerts/biomes/amazonia-nb/daily/}.
 \\
-%13
+%12
 \bibitem{INPE_Forest_Fires} Data$\_$Basis.org, Fire Database, National Institute for Space Research (INPE), acessed on 17 March 2026, \href{https://data-basis.org/dataset/f06f3cdc-b539-409b-b311-1ff8878fb8d9?table=a3696dc2-4dd1-4f7e-9769-6aa16a1556b8}{https://data-basis.org/dataset/f06f3cdc-b539-409b-b311-1ff8878fb8d9?table=a3696dc2-4dd1-4f7e-9769-6aa16a1556b8}.
 \\
-%14
+%13
 \bibitem{Mapbiomas} MapBiomas Brasil, Home/Iniciativas e Produtos/Fogo/Mapeamento anual/Mensal, acessed on 30 August 2026, \href{https://plataforma.brasil.mapbiomas.org/}{https://plataforma.brasil.mapbiomas.org/}.
 \\
-%15
+%14
 \bibitem{MosqlimateAPI} Mosqlimate Data API / Datastore / climate, accessed on 12 August 2024, \href{https://api.mosqlimate.org/datastore/}{https://api.mosqlimate.org/datastore/}.
+\\
+%15
+\bibitem{Rorato2023} A. C. Rorato, A. P. Dal’Asta, R. M. Lana et al., Trajetorias: a dataset of environmental, epidemiological, and economic indicators for the Brazilian Amazon, Scientific Data, Vol. 10 (1) (2023), 65, \href{https://doi.org/10.1038/s41597-023-01962-1}{https://doi.org/10.1038/s41597-023-01962-1}.
 \\
 %16
 \bibitem{Parham2010} P. E. Parham, E. Michael, Modelling Climate Change and Malaria Transmission, Modelling Parasite Transmission and Control, Advances in Experimental Medicine and Biology, Vol. 673 (2010), 184-199, \href{https://doi.org/10.1007/978-1-4419-6064-1_13}{https://doi.org/10.1007/978-1-4419-6064-1\_13}.
