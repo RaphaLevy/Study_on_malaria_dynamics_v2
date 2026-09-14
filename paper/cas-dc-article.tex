@@ -224,7 +224,7 @@ while land-use variables are introduced as modifiers of transmission intensity. 
 not embedded as mechanistic drivers within the epidemiological model; instead, they are treated as environmental
 variables that describe the context in which transmission occurs and are used, together with $T$, $R$, and $H$, as
 predictors in the regression of the weekly per-bite transmission probabilities $b_1$ and $b_2$ (see
-Section~\ref{sec:freeing_transmission_coefficients}). Land-use and fire activity thereby modulate transmission
+Section~\ref{sec:weekly_beta_diagnostic}). Land-use and fire activity thereby modulate transmission
 indirectly, through the empirical relation between environmental conditions and the effective transmission
 coefficients, rather than by directly altering the mechanistic mosquito rates.
 \\\\
@@ -489,6 +489,173 @@ ensuring that the carrying capacity remains bounded by the baseline population s
 Unlike the classical logistic formulation, where population growth is directly proportional to the current mosquito abundance, the present representation assumes that recruitment is primarily determined by environmental suitability and breeding-site availability. The factor
 $\left(1-\frac{M(t)}{K(t)}\right)$ therefore imposes density-dependent regulation by reducing recruitment as the mosquito population approaches the carrying capacity, providing a biologically realistic upper bound on mosquito abundance. The mathematical implications of this formulation are analyzed in Section~\ref{sec:mosquito_pop_dynamics}.
 
+\subsection{Objective function and parameter bounds}
+\label{sec:objective_function}
+
+With the model structure, data, and environmental predictors defined, we describe the computational procedures used to calibrate the model to the observed case data, including the objective function, the calibration strategy, and the numerical implementation.
+Model parameters were estimated by minimizing the discrepancy between the simulated infected-human trajectory $I_H(t)$ and the observed active-case counts reported through SIVEP-Malaria, restricted to rural Manaus (scaled by the rural share of reported cases, 41.54$\%$). The objective function is a weighted mean squared error (wMSE):
+\begin{align}
+\text{wMSE}(\theta) = \frac{\sum_{i=1}^{n} w_i \left( I_H(t_i;\theta) - y_i \right)^2}{\sum_{i=1}^{n} w_i},
+\label{eq:wmse}
+\end{align}
+where $y_i$ denotes the observed active-case count at date $t_i$, $I_H(t_i;\theta)$ is the model prediction obtained by linear interpolation of the simulated trajectory onto the observation dates, and $\theta$ is the vector of calibrated parameters.
+\\\\
+The weights $w_i$ follow an exponential decay that prioritizes early-time dynamics within each year:
+\begin{align}
+w_i = w_0 \, \exp\!\left(-\lambda \, d_i\right),
+\label{eq:weight}
+\end{align}
+where $d_i$ is the number of days from the start of the year for observation $i$, $w_0 = 5.0$ is the initial weight, and $\lambda = 0.0015$ \textrm{day}$^{-1}$ is the decay rate. This weighting scheme reflects the greater sensitivity of the early-season trajectory to initial conditions and parameter values, guiding the optimizer toward solutions that correctly capture the onset of the rainy-season transmission peak.
+\\\\
+To prevent the optimizer from collapsing the infected-mosquito population to near-zero levels---which would sever the force-of-infection coupling and render the human transmission parameters structurally unidentifiable---an extinction penalty was added to the objective:
+\begin{align}
+J(\theta) = \text{wMSE}(\theta) + \mathcal{P}\!\left(I_M^{\min}(\theta)\right),
+\label{eq:combined}
+\end{align}
+where $I_M^{\min}(\theta) = \min_{t} I_M(t;\theta)$ is the annual minimum of the infected-mosquito compartment, and
+\begin{align}
+\mathcal{P}\!\left(I_M^{\min}\right) = \begin{cases}
+0 & \text{if } I_M^{\min} \geq I_M^*, \\[4pt]
+\mathcal{B} \left(1 + \dfrac{I_M^* - I_M^{\min}}{I_M^*}\right) & \text{if } I_M^{\min} < I_M^*,
+\end{cases}
+\label{eq:penalty}
+\end{align}
+with $I_M^* = 10$ (viability threshold) and $\mathcal{B} = 10^8$ (penalty base scale). The penalty scales linearly with the depth of extinction, ensuring that partially-extinct trajectories are ranked proportionally rather than receiving a uniform penalty that would flatten the objective landscape.
+
+The nine calibrated parameters were grouped into four biological ``topics'' for sequential fitting:
+
+\begin{enumerate}
+\item \textbf{Humidity response} $(H_0,\, k,\, \varphi)$: the half-saturation threshold, sigmoid steepness, and baseline survival floor of the humidity-dependent survival function $p(H)$;
+\item \textbf{Human transmission} $(\tau_H,\, \gamma,\, \omega)$: the intrinsic incubation period, recovery rate, and immunity waning rate;
+\item \textbf{Force of infection} $(b_1,\, b_2)$: the human-to-mosquito and mosquito-to-human transmission probabilities;
+\item \textbf{Carrying capacity} $(M')$: the baseline mosquito population scale that determines the environmental carrying capacity $K(t)$.
+\end{enumerate}
+
+The parameter bounds are given in Table~\ref{tbl:bounds}. The lower bound on $H_0 = 20\%$ prevents the humidity response from collapsing (which would drive $\mu \to \infty$ and extinguish the vector population). The bound on $b_2 \geq 0.01$ ensures a minimum level of mosquito-to-human transmission, while $\tau_H \in [10, 20]$ days constrains the human incubation period to the biologically plausible range for \textit{P. vivax} \cite{brasil_et_al_2011_unexpectedly_long_incubation_period_of_plasmodium_vivax}.
+\newpage
+\begin{table}[h]
+\begin{threeparttable}
+\caption{Parameter bounds for sequential topic calibration.}\label{tbl:bounds}
+\begin{tabular*}{\tblwidth}{@{} LLL@{} }
+\toprule
+Parameter & Lower bound & Upper bound \\
+\midrule
+$H_0$ (\%) & 20 & 75 \\
+$k$ (\%$^{-1}$) & 0.01 & 1.0 \\
+$\varphi$ & 0.01 & 0.5 \\
+$\tau_H$ (days) & 10 & 20 \\
+$\gamma$ (days$^{-1}$) & $1/150$ & 1.0 \\
+$\omega$ (days$^{-1}$) & $1/300$ & 0.1 \\
+$b_1$ & 0.001 & 0.5 \\
+$b_2$ & 0.01 & 0.5 \\
+$M'$ & 50{,}000 & $500 \times N_y$ \tnote{1}  \\
+\bottomrule
+\end{tabular*}
+\begin{tablenotes}
+\item[1] $N_y$ denotes the estimated rural population of Manaus for year $y$.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\subsection{Year-by-year sequential calibration}
+\label{sec:year_by_year_calibration}
+
+Parameters were calibrated sequentially for each year from 2017 to 2023 using the \texttt{lmfit} implementation of differential evolution (DE) \cite{storn_price_1997}. The DE settings were: population multiplier $\texttt{popsize} = 6$, maximum function evaluations $\texttt{max\_nfev} = 800$, convergence tolerance $\texttt{tol} = 0.01$, and random seed fixed at 42 for reproducibility.
+\\\\
+Within each year, the four topics were fitted in the fixed order:
+\begin{align}
+\underbrace{(H_0,\, k,\, \varphi)}_{\text{humidity}} \;\to\; \underbrace{(\tau_H,\, \gamma,\, \omega)}_{\text{human}} \;\to\; \underbrace{(b_1,\, b_2)}_{\text{FoI}} \;\to\; \underbrace{M'}_{\text{capacity}}
+\label{eq:topic_order}
+\end{align}
+At each step, only the current topic's parameters were free; all previously fitted parameters were held fixed at their most recent estimates. This sequential strategy reduces the dimensionality of each optimization sub-problem while respecting the biological ordering: the humidity response determines mosquito mortality, which constrains the infection cycle, which in turn determines the force of infection and carrying capacity.
+\\\\
+After the sequential pass, a joint refinement was performed using the Nelder-Mead simplex method \cite{nelder_mead_1965}, with all nine parameters free simultaneously, seeded from the sequential solution. A seed-evaluation guard was applied: after each DE run and after each refinement stage, the starting point was explicitly evaluated, and the optimizer's output was accepted only if it improved upon the seed. This prevents the stochastic DE from returning a solution worse than its initialization.
+
+The model was calibrated sequentially across years, with the end-state vector of each year serving as the initial state for the next:
+\begin{align}
+\mathbf{z}_0^{(y+1)} = \mathbf{z}_{\mathrm{end}}^{(y)},
+\label{eq:chain}
+\end{align}
+where $\mathbf{z} = (S_H,\, E_H,\, I_H,\, R_H,\, S_M,\, E_M,\, I_M)$ is the full state vector. The human infected compartment was always reset to the first observed active-case count for the new year:
+\begin{align}
+{I_H}^{(y+1)}_0 = \mathrm{round}\!\left(y^{\mathrm{obs}}_{\text{first}}\right),
+\label{eq:ih_reset}
+\end{align}
+while all other compartments were carried forward without modification. Negative end-state values were clamped to zero before carrying.
+\\\\
+For the first year (2017), initial-condition fractions were explicitly fitted using Nelder-Mead with 300 function evaluations:
+\begin{align}
+S_{H,0} = \alpha_S \cdot N, \quad E_{H,0} = \alpha_E \cdot N, \quad I_{M,0} = \alpha_I \cdot M_0,
+\label{eq:ic_fitted}
+\end{align}
+where $\alpha_S \in [0.3,\, 0.9]$, $\alpha_E \in [0.001,\, 0.30]$, and $\alpha_I \in [0.0005,\, 0.15]$, with the remaining compartments determined by conservation: $R_{H,0} = N - S_{H,0} - E_{H,0} - I_{H,0}$, $M_0 = 10N$, and $S_{M,0} = M_0 - E_{M,0} - I_{M,0}$.
+
+\subsection{Weekly beta diagnostic}
+\label{sec:weekly_beta_diagnostic}
+
+To evaluate where the climate-driven formulation deviates from what the data demands, a diagnostic calibration was performed in which the effective transmission coefficients were freed as per-week parameters instead of being derived from the biting rate and fixed $b_1$, $b_2$:
+\begin{align}
+\lambda_H(t) = \beta_{h,w} \, \frac{I_M(t)}{N}, \qquad \lambda_M(t) = \beta_{m,w} \, \frac{I_H(t)}{N},
+\label{eq:weekly_beta}
+\end{align}
+where $w = \lfloor d / 7 \rfloor$ is the week index and $d$ is the day number within the year. This yields $2 \times n_{\text{weeks}}$ free parameters per year (typically 106 for a 365-day year), with bounds $\beta_{h,w},\, \beta_{m,w} \in [10^{-9},\, 3.0]$.
+\\\\
+All other model parameters were fixed at the values obtained from the yearly topic calibration. The initial state was reconstructed from the previous year's end-state, with $I_H$ reset to observed data. The optimizer used was \texttt{lmfit.minimize} with the trust-region reflective method (\texttt{least\_squares}), with $\texttt{max\_nfev} = 1200$ and $\texttt{ftol} = 10^{-8}$.
+\\\\
+The residual vector for the trust-region solver was constructed as:
+\begin{align}
+r_i = \sqrt{w_i}\left(I_H(t_i) - y_i\right) + \sqrt{\mathcal{P}\!\left(I_M^{\min}\right)},
+\label{eq:weekly_residual}
+\end{align}
+where $\sqrt{\mathcal{P}}$ is injected as a constant offset to preserve the residual vector length while providing a gradient that pushes $I_M$ upward when the mosquito population approaches the viability threshold.
+\\\\
+The weekly beta fit serves as a diagnostic baseline: it reveals the best achievable fit when the transmission coefficients are unconstrained by the climate formulation. Persistent deviations between the weekly-optimal $\beta_{h,w}$ and the climate-driven $a(T) \cdot b_2$ indicate periods where the environmental model fails to capture the true transmission dynamics.
+\\\\
+There are three main observations that allow us to use the effective transmission coefficients $\beta_{h,w}$ and $\beta_{m,w}$ as per-week free parameters:
+\\\\
+\textbf{(i) The transmission coefficients are intrinsically time-varying:} In the mechanistic formulation, the forces of infection are given by $\lambda_H = a(T)\,b_2\, I_M/N$ and $\lambda_M = a(T)\,b_1\, I_H/N$, where the biting rate $a(T)$ is the only environmental factor and the per-bite probabilities $b_1$ and $b_2$ are assumed to be constants. This assumption is biologically restrictive because these coefficients summarize several processes that may vary over the transmission season, including parasite development within the vector, vector susceptibility to infection, vector to host contact, and host infectiousness. These processes can be affected by temperature, rainfall, humidity, and changes in vector and host demography \cite{brierre_function_development_rate, human_to_mosquito_transmission_efficiency}. We therefore relax the assumption that $b_1$ and $b_2$ remain constant throughout the study period and allow the data to determine how transmission changes over time.
+\\\\
+\textbf{(ii) The weekly fit provides a nonparametric estimate of the latent transmission process:} We represent the effective transmission coefficients as latent time-varying functions, $\beta_h(t)$ and $\beta_m(t)$. These functions are approximated as piecewise constant over weekly intervals: $$\beta_h(t)=\beta_{h,w},\ \beta_m(t)=\beta_{m,w},\ t\in[7w,7(w+1))$$
+This provides a flexible finite-dimensional representation of possible transmission profiles. The weekly coefficients are estimated by minimizing the weighted residual between the model predictions and the observed malaria cases. Thus, rather than imposing a specific relationship between transmission and environmental covariates, the weekly model provides a flexible, data-driven estimate of the temporal variation in transmission.
+\\\\
+The resulting $2\times n_{\mathrm{weeks}}$ coefficients don't represent independent biological parameters to be estimated, but rather provide a flexible empirical representation of the transmission process. The additional degrees of freedom allow the model to capture temporal changes in transmission that a more constrained model may miss, providing a reference for evaluating the proposed mechanistic model.
+\\\\
+\textbf{(iii) The climate-driven model is nested within the weekly model:} The climate-driven model is obtained by imposing the restriction
+\begin{align}
+\beta_{h,w} = a(T_w) b_2, \qquad \beta_{m,w} = a(T_w)\, b_1,
+\label{eq:nested_beta}
+\end{align}
+where $b_1$ and $b_2$ are constant over the entire study period. Consequently, the climate-driven formulation is a restricted case of the more flexible weekly model. Because all other model parameters and initial conditions are held fixed, the difference in fit between the two formulations directly measures the extent to which the constant-coefficient assumption limits the model's ability to reproduce the observed cases.
+\\\\
+Releasing the coefficients reduces the wMSE by one to two orders of magnitude relative to the climate-driven model. This substantial improvement indicates that the data contain temporal variation in transmission that cannot be adequately represented by constant 
+$b_1$ and $b_2$.
+\\\\
+The weekly estimates are therefore used as a diagnostic benchmark rather than as the final parameterization of the model. They identify the temporal transmission pattern that a parsimonious mechanistic formulation should seek to explain. This approach preserves the distinction between estimating a flexible empirical transmission process and identifying the underlying biological parameters, as the weekly coefficients characterize the observed transmission signal, while the subsequent structural model determines how that signal can be explained by environmental drivers.
+\\\\
+Finally, the weekly estimates provide the link between the empirical transmission signal and the environmental model. Since the biting rate $a(T_w)$ is explicitly modeled as a function of temperature, the corresponding weekly per-bite transmission probabilities can be recovered as
+\begin{align}
+b_{1,w}=\frac{\beta_{m,w}}{a(T_w)},
+\qquad
+b_{2,w}=\frac{\beta_{h,w}}{a(T_w)}.
+\label{eq}
+\end{align}
+These time-varying estimates represent the per-bite transmission probabilities implied by the observed case dynamics after accounting for the temperature-dependent biting rate. They are subsequently used as empirical targets for regression models relating $b_1$ and $b_2$ to environmental drivers. In this way, the weekly fit serves as an intermediate step in the modeling chain 
+$$ \text{environment} \longrightarrow (b_1,b_2) \longrightarrow \text{transmission} \longrightarrow \text{cases}, $$
+allowing a flexible, data-driven estimate of transmission to be translated into a simplified and mechanistically interpretable environmental model.
+
+
+\subsection{Numerical solver and implementation}
+\label{sec:numerical_solver_implementation}
+
+All ODE simulations were performed using Python version 3.12.7 (conda-forge distribution), using the LSODA solver as implemented in \texttt{scipy.integrate.solve\_ivp} (SciPy version 1.17.1), with automatic stiffness detection and order switching. The integration was evaluated on a fine grid of 10 points per day ($\Delta t = 0.1$ day), with the solution interpolated back to daily resolution via linear interpolation. End-state vectors were clamped to zero to prevent negative compartment values from propagating through the year chain.
+\\\\
+Climate inputs (temperature, precipitation, minimum humidity) were smoothed using a 14-day rolling mean for mosquito demographic rates (mortality $\mu$, sporogonic development $b_{3M}$, birth rate $\Lambda$), while the biting rate $a(T)$ used raw daily temperature to preserve high-frequency transmission variability.
+\\\\
+Data manipulation and analysis were performed using Pandas version 3.0.2,  while numerical computations and array operations were carried out with  NumPy version 2.4.2.
+\\\\
+All computations were performed on a laptop running Windows 11 (64-bit) equipped with a 12th Gen Intel Core i5-1235U processor (10 cores, 12 threads) and 16\,GB RAM. %The source code and calibration results are available at \url{https://github.com/RaphaLevy/Study_on_malaria_dynamics_v2}.
+
+
 \section{Mathematical Analysis of the Model}
 \label{sec:mathematical_analysis_of_model}
 
@@ -696,8 +863,9 @@ $n = 10{,}000$ sampled combinations we evaluate three output
 quantities: the reproduction number from
 Eq.~(\ref{eq:R0_factors}), the seasonal peak of the human infectious
 compartment, and the cumulative number of human cases, the latter two
-obtained by numerical integration of the model
-(Section~\ref{sec:computational_implementation}). PRCC measures the
+obtained by numerical integration of the model.
+%(Section~\ref{sec:computational_implementation}). 
+PRCC measures the
 monotonic association between each input and each output after removing
 the effect of the remaining parameters, yielding a robust ranking of
 influential parameters that is insensitive to the nonlinear couplings
@@ -707,176 +875,6 @@ structure: parameters that cancel in the closed form should return a
 PRCC indistinguishable from zero. The results are reported in
 Section~\ref{sec:results_sensitivity}.
 
-\section{Computational Implementation}
-\label{sec:computational_implementation}
-
-\subsection{Objective function and parameter bounds}
-\label{sec:objective_function}
-
-Model parameters were estimated by minimizing the discrepancy between the simulated infected-human trajectory $I_H(t)$ and the observed active-case counts reported through SIVEP-Malaria, restricted to rural Manaus (scaled by the rural share of reported cases, 41.54$\%$). The objective function is a weighted mean squared error (wMSE):
-\begin{align}
-\text{wMSE}(\theta) = \frac{\sum_{i=1}^{n} w_i \left( I_H(t_i;\theta) - y_i \right)^2}{\sum_{i=1}^{n} w_i},
-\label{eq:wmse}
-\end{align}
-where $y_i$ denotes the observed active-case count at date $t_i$, $I_H(t_i;\theta)$ is the model prediction obtained by linear interpolation of the simulated trajectory onto the observation dates, and $\theta$ is the vector of calibrated parameters.
-\\\\
-The weights $w_i$ follow an exponential decay that prioritizes early-time dynamics within each year:
-\begin{align}
-w_i = w_0 \, \exp\!\left(-\lambda \, d_i\right),
-\label{eq:weight}
-\end{align}
-where $d_i$ is the number of days from the start of the year for observation $i$, $w_0 = 5.0$ is the initial weight, and $\lambda = 0.0015$ \textrm{day}$^{-1}$ is the decay rate. This weighting scheme reflects the greater sensitivity of the early-season trajectory to initial conditions and parameter values, guiding the optimizer toward solutions that correctly capture the onset of the rainy-season transmission peak.
-\\\\
-To prevent the optimizer from collapsing the infected-mosquito population to near-zero levels---which would sever the force-of-infection coupling and render the human transmission parameters structurally unidentifiable---an extinction penalty was added to the objective:
-\begin{align}
-J(\theta) = \text{wMSE}(\theta) + \mathcal{P}\!\left(I_M^{\min}(\theta)\right),
-\label{eq:combined}
-\end{align}
-where $I_M^{\min}(\theta) = \min_{t} I_M(t;\theta)$ is the annual minimum of the infected-mosquito compartment, and
-\begin{align}
-\mathcal{P}\!\left(I_M^{\min}\right) = \begin{cases}
-0 & \text{if } I_M^{\min} \geq I_M^*, \\[4pt]
-\mathcal{B} \left(1 + \dfrac{I_M^* - I_M^{\min}}{I_M^*}\right) & \text{if } I_M^{\min} < I_M^*,
-\end{cases}
-\label{eq:penalty}
-\end{align}
-with $I_M^* = 10$ (viability threshold) and $\mathcal{B} = 10^8$ (penalty base scale). The penalty scales linearly with the depth of extinction, ensuring that partially-extinct trajectories are ranked proportionally rather than receiving a uniform penalty that would flatten the objective landscape.
-
-The nine calibrated parameters were grouped into four biological ``topics'' for sequential fitting:
-
-\begin{enumerate}
-\item \textbf{Humidity response} $(H_0,\, k,\, \varphi)$: the half-saturation threshold, sigmoid steepness, and baseline survival floor of the humidity-dependent survival function $p(H)$;
-\item \textbf{Human transmission} $(\tau_H,\, \gamma,\, \omega)$: the intrinsic incubation period, recovery rate, and immunity waning rate;
-\item \textbf{Force of infection} $(b_1,\, b_2)$: the human-to-mosquito and mosquito-to-human transmission probabilities;
-\item \textbf{Carrying capacity} $(M')$: the baseline mosquito population scale that determines the environmental carrying capacity $K(t)$.
-\end{enumerate}
-
-The parameter bounds are given in Table~\ref{tbl:bounds}. The lower bound on $H_0 = 20\%$ prevents the humidity response from collapsing (which would drive $\mu \to \infty$ and extinguish the vector population). The bound on $b_2 \geq 0.01$ ensures a minimum level of mosquito-to-human transmission, while $\tau_H \in [10, 20]$ days constrains the human incubation period to the biologically plausible range for \textit{P. vivax} \cite{brasil_et_al_2011_unexpectedly_long_incubation_period_of_plasmodium_vivax}.
-\newpage
-\begin{table}[h]
-\begin{threeparttable}
-\caption{Parameter bounds for sequential topic calibration.}\label{tbl:bounds}
-\begin{tabular*}{\tblwidth}{@{} LLL@{} }
-\toprule
-Parameter & Lower bound & Upper bound \\
-\midrule
-$H_0$ (\%) & 20 & 75 \\
-$k$ (\%$^{-1}$) & 0.01 & 1.0 \\
-$\varphi$ & 0.01 & 0.5 \\
-$\tau_H$ (days) & 10 & 20 \\
-$\gamma$ (days$^{-1}$) & $1/150$ & 1.0 \\
-$\omega$ (days$^{-1}$) & $1/300$ & 0.1 \\
-$b_1$ & 0.001 & 0.5 \\
-$b_2$ & 0.01 & 0.5 \\
-$M'$ & 50{,}000 & $500 \times N_y$ \tnote{1}  \\
-\bottomrule
-\end{tabular*}
-\begin{tablenotes}
-\item[1] $N_y$ denotes the estimated rural population of Manaus for year $y$.
-\end{tablenotes}
-\end{threeparttable}
-\end{table}
-
-\subsection{Year-by-year sequential calibration}
-\label{sec:year_by_year_calibration}
-
-Parameters were calibrated sequentially for each year from 2017 to 2023 using the \texttt{lmfit} implementation of differential evolution (DE) \cite{storn_price_1997}. The DE settings were: population multiplier $\texttt{popsize} = 6$, maximum function evaluations $\texttt{max\_nfev} = 800$, convergence tolerance $\texttt{tol} = 0.01$, and random seed fixed at 42 for reproducibility.
-\\\\
-Within each year, the four topics were fitted in the fixed order:
-\begin{align}
-\underbrace{(H_0,\, k,\, \varphi)}_{\text{humidity}} \;\to\; \underbrace{(\tau_H,\, \gamma,\, \omega)}_{\text{human}} \;\to\; \underbrace{(b_1,\, b_2)}_{\text{FoI}} \;\to\; \underbrace{M'}_{\text{capacity}}
-\label{eq:topic_order}
-\end{align}
-At each step, only the current topic's parameters were free; all previously fitted parameters were held fixed at their most recent estimates. This sequential strategy reduces the dimensionality of each optimization sub-problem while respecting the biological ordering: the humidity response determines mosquito mortality, which constrains the infection cycle, which in turn determines the force of infection and carrying capacity.
-\\\\
-After the sequential pass, a joint refinement was performed using the Nelder-Mead simplex method \cite{nelder_mead_1965}, with all nine parameters free simultaneously, seeded from the sequential solution. A seed-evaluation guard was applied: after each DE run and after each refinement stage, the starting point was explicitly evaluated, and the optimizer's output was accepted only if it improved upon the seed. This prevents the stochastic DE from returning a solution worse than its initialization.
-
-The model was calibrated sequentially across years, with the end-state vector of each year serving as the initial state for the next:
-\begin{align}
-\mathbf{z}_0^{(y+1)} = \mathbf{z}_{\mathrm{end}}^{(y)},
-\label{eq:chain}
-\end{align}
-where $\mathbf{z} = (S_H,\, E_H,\, I_H,\, R_H,\, S_M,\, E_M,\, I_M)$ is the full state vector. The human infected compartment was always reset to the first observed active-case count for the new year:
-\begin{align}
-{I_H}^{(y+1)}_0 = \mathrm{round}\!\left(y^{\mathrm{obs}}_{\text{first}}\right),
-\label{eq:ih_reset}
-\end{align}
-while all other compartments were carried forward without modification. Negative end-state values were clamped to zero before carrying.
-\\\\
-For the first year (2017), initial-condition fractions were explicitly fitted using Nelder-Mead with 300 function evaluations:
-\begin{align}
-S_{H,0} = \alpha_S \cdot N, \quad E_{H,0} = \alpha_E \cdot N, \quad I_{M,0} = \alpha_I \cdot M_0,
-\label{eq:ic_fitted}
-\end{align}
-where $\alpha_S \in [0.3,\, 0.9]$, $\alpha_E \in [0.001,\, 0.30]$, and $\alpha_I \in [0.0005,\, 0.15]$, with the remaining compartments determined by conservation: $R_{H,0} = N - S_{H,0} - E_{H,0} - I_{H,0}$, $M_0 = 10N$, and $S_{M,0} = M_0 - E_{M,0} - I_{M,0}$.
-
-\subsection{Weekly beta diagnostic}
-\label{sec:weekly_beta_diagnostic}
-
-To evaluate where the climate-driven formulation deviates from what the data demands, a diagnostic calibration was performed in which the effective transmission coefficients were freed as per-week parameters instead of being derived from the biting rate and fixed $b_1$, $b_2$:
-\begin{align}
-\lambda_H(t) = \beta_{h,w} \, \frac{I_M(t)}{N}, \qquad \lambda_M(t) = \beta_{m,w} \, \frac{I_H(t)}{N},
-\label{eq:weekly_beta}
-\end{align}
-where $w = \lfloor d / 7 \rfloor$ is the week index and $d$ is the day number within the year. This yields $2 \times n_{\text{weeks}}$ free parameters per year (typically 106 for a 365-day year), with bounds $\beta_{h,w},\, \beta_{m,w} \in [10^{-9},\, 3.0]$.
-\\\\
-All other model parameters were fixed at the values obtained from the yearly topic calibration. The initial state was reconstructed from the previous year's end-state, with $I_H$ reset to observed data. The optimizer used was \texttt{lmfit.minimize} with the trust-region reflective method (\texttt{least\_squares}), with $\texttt{max\_nfev} = 1200$ and $\texttt{ftol} = 10^{-8}$.
-\\\\
-The residual vector for the trust-region solver was constructed as:
-\begin{align}
-r_i = \sqrt{w_i}\left(I_H(t_i) - y_i\right) + \sqrt{\mathcal{P}\!\left(I_M^{\min}\right)},
-\label{eq:weekly_residual}
-\end{align}
-where $\sqrt{\mathcal{P}}$ is injected as a constant offset to preserve the residual vector length while providing a gradient that pushes $I_M$ upward when the mosquito population approaches the viability threshold.
-\\\\
-The weekly beta fit serves as a diagnostic baseline: it reveals the best achievable fit when the transmission coefficients are unconstrained by the climate formulation. Persistent deviations between the weekly-optimal $\beta_{h,w}$ and the climate-driven $a(T) \cdot b_2$ indicate periods where the environmental model fails to capture the true transmission dynamics.
-
-\subsection{Freeing the transmission coefficients}
-\label{sec:freeing_transmission_coefficients}
-
-There are three main observations that allow us to use the effective transmission coefficients $\beta_{h,w}$ and $\beta_{m,w}$ as per-week free parameters:
-\\\\
-\textbf{(i) The transmission coefficients are intrinsically time-varying:} In the mechanistic formulation, the forces of infection are given by $\lambda_H = a(T)\,b_2\, I_M/N$ and $\lambda_M = a(T)\,b_1\, I_H/N$, where the biting rate $a(T)$ is the only environmental factor and the per-bite probabilities $b_1$ and $b_2$ are assumed to be constants. This assumption is biologically restrictive because these coefficients summarize several processes that may vary over the transmission season, including parasite development within the vector, vector susceptibility to infection, vector to host contact, and host infectiousness. These processes can be affected by temperature, rainfall, humidity, and changes in vector and host demography \cite{brierre_function_development_rate, human_to_mosquito_transmission_efficiency}. We therefore relax the assumption that $b_1$ and $b_2$ remain constant throughout the study period and allow the data to determine how transmission changes over time.
-\\\\
-\textbf{(ii) The weekly fit provides a nonparametric estimate of the latent transmission process:} We represent the effective transmission coefficients as latent time-varying functions, $\beta_h(t)$ and $\beta_m(t)$. These functions are approximated as piecewise constant over weekly intervals: $$\beta_h(t)=\beta_{h,w},\ \beta_m(t)=\beta_{m,w},\ t\in[7w,7(w+1))$$
-This provides a flexible finite-dimensional representation of possible transmission profiles. The weekly coefficients are estimated by minimizing the weighted residual between the model predictions and the observed malaria cases. Thus, rather than imposing a specific relationship between transmission and environmental covariates, the weekly model provides a flexible, data-driven estimate of the temporal variation in transmission.
-\\\\
-The resulting $2\times n_{\mathrm{weeks}}$ coefficients don't represent independent biological parameters to be estimated, but rather provide a flexible empirical representation of the transmission process. The additional degrees of freedom allow the model to capture temporal changes in transmission that a more constrained model may miss, providing a reference for evaluating the proposed mechanistic model.
-\\\\
-\textbf{(iii) The climate-driven model is nested within the weekly model:} The climate-driven model is obtained by imposing the restriction
-\begin{align}
-\beta_{h,w} = a(T_w) b_2, \qquad \beta_{m,w} = a(T_w)\, b_1,
-\label{eq:nested_beta}
-\end{align}
-where $b_1$ and $b_2$ are constant over the entire study period. Consequently, the climate-driven formulation is a restricted case of the more flexible weekly model. Because all other model parameters and initial conditions are held fixed, the difference in fit between the two formulations directly measures the extent to which the constant-coefficient assumption limits the model's ability to reproduce the observed cases.
-\\\\
-Releasing the coefficients reduces the wMSE by one to two orders of magnitude relative to the climate-driven model. This substantial improvement indicates that the data contain temporal variation in transmission that cannot be adequately represented by constant 
-$b_1$ and $b_2$.
-\\\\
-The weekly estimates are therefore used as a diagnostic benchmark rather than as the final parameterization of the model. They identify the temporal transmission pattern that a parsimonious mechanistic formulation should seek to explain. This approach preserves the distinction between estimating a flexible empirical transmission process and identifying the underlying biological parameters, as the weekly coefficients characterize the observed transmission signal, while the subsequent structural model determines how that signal can be explained by environmental drivers.
-\\\\
-Finally, the weekly estimates provide the link between the empirical transmission signal and the environmental model. Since the biting rate $a(T_w)$ is explicitly modeled as a function of temperature, the corresponding weekly per-bite transmission probabilities can be recovered as
-\begin{align}
-b_{1,w}=\frac{\beta_{m,w}}{a(T_w)},
-\qquad
-b_{2,w}=\frac{\beta_{h,w}}{a(T_w)}.
-\label{eq}
-\end{align}
-These time-varying estimates represent the per-bite transmission probabilities implied by the observed case dynamics after accounting for the temperature-dependent biting rate. They are subsequently used as empirical targets for regression models relating $b_1$ and $b_2$ to environmental drivers. In this way, the weekly fit serves as an intermediate step in the modeling chain 
-$$ \text{environment} \longrightarrow (b_1,b_2) \longrightarrow \text{transmission} \longrightarrow \text{cases}, $$
-allowing a flexible, data-driven estimate of transmission to be translated into a simplified and mechanistically interpretable environmental model.
-
-
-\subsection{Numerical solver and implementation}
-\label{sec:numerical_solver_implementation}
-
-All ODE simulations were performed using Python version 3.12.7 (conda-forge distribution), using the LSODA solver as implemented in \texttt{scipy.integrate.solve\_ivp} (SciPy version 1.17.1), with automatic stiffness detection and order switching. The integration was evaluated on a fine grid of 10 points per day ($\Delta t = 0.1$ day), with the solution interpolated back to daily resolution via linear interpolation. End-state vectors were clamped to zero to prevent negative compartment values from propagating through the year chain.
-\\\\
-Climate inputs (temperature, precipitation, minimum humidity) were smoothed using a 14-day rolling mean for mosquito demographic rates (mortality $\mu$, sporogonic development $b_{3M}$, birth rate $\Lambda$), while the biting rate $a(T)$ used raw daily temperature to preserve high-frequency transmission variability.
-\\\\
-Data manipulation and analysis were performed using Pandas version 3.0.2,  while numerical computations and array operations were carried out with  NumPy version 2.4.2.
-\\\\
-All computations were performed on a laptop running Windows 11 (64-bit) equipped with a 12th Gen Intel Core i5-1235U processor (10 cores, 12 threads) and 16\,GB RAM. %The source code and calibration results are available at \url{https://github.com/RaphaLevy/Study_on_malaria_dynamics_v2}.
 
 %\newpage
 \section{Results}
@@ -1011,9 +1009,9 @@ Section~\ref{sec:basic_reproduction_number}.
 
 \subsection{The constant-coefficient climate model underfits the observed dynamics}
 \label{sec:results_weekly_beta}
-To assess how much of the seasonal variation in transmission is captured by the mechanistic, climate-driven formulation, we freed the effective transmission coefficients, allowing them to vary on a weekly basis (Section~\ref{sec:freeing_transmission_coefficients}), and compared the resulting weekly model with the constant-coefficient climate-driven model. Releasing the coefficients reduced the weighted mean squared error in every year (Table~\ref{tbl:weekly_beta}), most notably in 2017, where the wMSE fell from  $8.5\times10^4$ to $6.2\times10^2$ (a $\sim$137-fold reduction).
+To assess how much of the seasonal variation in transmission is captured by the mechanistic, climate-driven formulation, we freed the effective transmission coefficients, allowing them to vary on a weekly basis (Section~\ref{sec:weekly_beta_diagnostic}), and compared the resulting weekly model with the constant-coefficient climate-driven model. Releasing the coefficients reduced the weighted mean squared error in every year (Table~\ref{tbl:weekly_beta}), most notably in 2017, where the wMSE fell from  $8.5\times10^4$ to $6.2\times10^2$ (a $\sim$137-fold reduction).
 \\\\
-The residual between the free weekly $\beta_{h,w},\beta_{m,w}$ and the climate-driven $a(T)b_1,\,a(T)b_2$ indicates periods in which the temperature-driven formulation fails to capture the observed transmission structure. This motivates extending the per-bite transmission probabilities to the wider set of environmental drivers introduced in Section~\ref{sec:environmental_drivers}.
+The residual between the free weekly $\beta_{h,w},\beta_{m,w}$ and the climate-driven $a(T)b_1,\,a(T)b_2$ indicates periods in which the temperature-driven formulation fails to capture the observed transmission structure. This motivates extending the per-bite transmission probabilities to the wider set of environmental drivers introduced in Section~\ref{sec:intro}.
 %\\\\
 \begin{table}[H]
 \centering
@@ -1036,7 +1034,7 @@ Year & Climate-driven & Weekly free & Reduction factor \\
 
 \subsection{Environmental regression of the transmission probabilities $b_1$ and $b_2$}
 \label{sec:results_regression}
-Following the framework described in Section~\ref{sec:environmental_drivers}, the freed weekly per-bite transmission probabilities were regressed against the environmental predictors $T,\,R,\,H,\,D_f,\,F_c,\,F_t$, representing temperature, precipitation, humidity, deforestation, fire counts and fire trends. A separate random forest model was fitted for each year.
+Following the framework described in Section~\ref{sec:intro}, the freed weekly per-bite transmission probabilities were regressed against the environmental predictors $T,\,R,\,H,\,D_f,\,F_c,\,F_t$, representing temperature, precipitation, humidity, deforestation, fire counts and fire trends. A separate random forest model was fitted for each year.
 \\\\
 Within each year the model explains a a large part of the variance of both transmission probabilities, with mean $R^2 = 0.685 \pm 0.082$ for $b_1$ and mean $R^2 = 0.784 \pm 0.130$ for $b_2$. Prediction bias was close to zero in all years (|bias| $\lesssim$ 0.003 in every year; Table~\ref{tbl:regression}, Fig.~\ref{FIG:imp_b2}).
 %\\\\
@@ -1060,7 +1058,7 @@ Within each year the model explains a a large part of the variance of both trans
 \label{FIG:imp_b2}
 \vspace{0.6cm}
 
-The red-dotted line denotes the weekly coefficients recovered from the observed case dynamics (Section~\ref{sec:freeing_transmission_coefficients}); while the blue-dashed line is the mean random-forest prediction. The model reproduces the seasonal envelope while retaining the week-to-week structure in the data.
+The red-dotted line denotes the weekly coefficients recovered from the observed case dynamics (Section~\ref{sec:weekly_beta_diagnostic}); while the blue-dashed line is the mean random-forest prediction. The model reproduces the seasonal envelope while retaining the week-to-week structure in the data.
 \\\\
 The importance of the predictors, however, differs between the two probabilities. For $b_1$ the contribution is distributed fairly evenly among precipitation (0.203), temperature (0.201), humidity (0.194), fire trends (0.179) and fire counts (0.149); while for $b_2$ 
 the leading contributors are fire counts (0.213), humidity (0.171), temperature (0.169), fire trends (0.166) and precipitation (0.163). Deforestation $D_f$ is consistently the weakest predictor for both $b_1$ (0.074) and $b_2$ (0.119), indicating that its effect is not captured at the intra-annual timescale resolved here.
@@ -1397,22 +1395,22 @@ lowest-transmission months.
 \bibitem{math_assessment_of_the_role_of_temp_and_rainfall} A. Abdelrazec, A. B. Gumel, Mathematical assessment of the role of temperature and rainfall on mosquito population dynamics, Journal of Mathematical Biology, Vol. 74 (6), 1351-1395 (2017), \href{https://link.springer.com/article/10.1007/s00285-016-1054-9}{https://link.springer.com/article/10.1007/s00285-016-1054-9}.
 \\
 %29
-\bibitem{Rep_Number_Comp_Model} P. van den Driessche, J. Watmough, Reproduction numbers and sub-threshold endemic equilibria for compartmental models of disease transmission, Mathematical Biosciences, Vol. 180 (2002), 29-48, \href{https://doi.org/10.1016/S0025-5564(02)00108-6}{https://doi.org/10.1016/S0025-5564(02)00108-6}.
-\\
-%30
-\bibitem{marino2008} S. Marino, I. B. Hogue, C. J. Ray, D. E. Kirschner, A methodology for performing global uncertainty and sensitivity analysis in systems biology, Journal of Theoretical Biology, Vol. 254 (1) (2008), 178-196, \href{https://pubmed.ncbi.nlm.nih.gov/18572196/}{https://pubmed.ncbi.nlm.nih.gov/18572196/}
-\\
-%31
 \bibitem{brasil_et_al_2011_unexpectedly_long_incubation_period_of_plasmodium_vivax} P. Brasil et al, Unexpectedly long incubation period of Plasmodium vivax malaria, in the absence of chemoprophylaxis, in patients diagnosed outside the transmission area in Brazil, Malaria Journal, Vol. 10 (122) (2011), \href{https://link.springer.com/article/10.1186/1475-2875-10-122}{https://link.springer.com/article/10.1186/1475-2875-10-122}
 \\
-%32
+%30
 \bibitem{storn_price_1997} R. Storn, K. Price, Differential Evolution - A Simple and Efficient Heuristic for Global Optimization over Continuous Spaces, Journal of Global Optimization, Vol. 11 (1997), 341–359, \href{https://link.springer.com/article/10.1023/A:1008202821328}{https://link.springer.com/article/10.1023/A:1008202821328}
 \\
-%33
+%31
 \bibitem{nelder_mead_1965} J. A. Nelder, R. Mead, A Simplex Method for Function Minimization, The Computer Journal, Vol. 7 (4) (1965), 308–313, \href{https://academic.oup.com/comjnl/article-abstract/7/4/308/354237}{https://academic.oup.com/comjnl/article-abstract/7/4/308/354237}
 \\
-%34
+%32
 \bibitem{human_to_mosquito_transmission_efficiency} T.  S. Churcher, J. F. Trape, A. Cohuet, Human-to-mosquito transmission efficiency increases as malaria is controlled, Nat Commun 6, 6054 (2015), \href{https://doi.org/10.1038/ncomms7054}{https://doi.org/10.1038/ncomms7054}
+\\
+%33
+\bibitem{Rep_Number_Comp_Model} P. van den Driessche, J. Watmough, Reproduction numbers and sub-threshold endemic equilibria for compartmental models of disease transmission, Mathematical Biosciences, Vol. 180 (2002), 29-48, \href{https://doi.org/10.1016/S0025-5564(02)00108-6}{https://doi.org/10.1016/S0025-5564(02)00108-6}.
+\\
+%34
+\bibitem{marino2008} S. Marino, I. B. Hogue, C. J. Ray, D. E. Kirschner, A methodology for performing global uncertainty and sensitivity analysis in systems biology, Journal of Theoretical Biology, Vol. 254 (1) (2008), 178-196, \href{https://pubmed.ncbi.nlm.nih.gov/18572196/}{https://pubmed.ncbi.nlm.nih.gov/18572196/}
 \\
 %35
 \bibitem{McCord2016} G. C. McCord, Malaria ecology and climate change, The European Physical Journal Special Topics, Vol. 225 (3) (2016), 459-470, \href{https://doi.org/10.1140/epjst/e2015-50097-1}{https://doi.org/10.1140/epjst/e2015-50097-1}.
