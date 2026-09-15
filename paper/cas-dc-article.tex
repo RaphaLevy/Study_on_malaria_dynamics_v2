@@ -217,7 +217,7 @@ a dataset of environmental epidemiological and epidemiological indicators, among
 Our analysis was based on Manaus, which is the main urban center of the region, accumulating the highest number of cases and incidence in the period of study.
 The original model formulation as proposed by Parham and Michael was not capable 
 of explaining the transmission dynamics we observed in
-Manaus, and with the modifications described below, our model sets out to do so. The observed series of active infectious cases in Manaus over the 2017-2023 period (Fig.~\ref{FIG:manaus_active_cases}) 
+Manaus, and with the modifications described below, our model sets out to do so. The observed series of active infectious cases in Manaus over the 2017-2023 period 
 displays pronounced inter- and intra-annual variability, with recurrent seasonal waves whose timing and amplitude change from year to year, which motivates the 
 representation of all of the variability of the environmental drivers and, ultimately, the modifications to the baseline model described below. The model incorporates environmental
 variables such as temperature, rainfall, humidity, deforestation, and fire activity. Climatic factors, including
@@ -230,15 +230,6 @@ Section~\ref{sec:weekly_beta_diagnostic}). Land-use and fire activity thereby mo
 indirectly, through the empirical relation between environmental conditions and the effective transmission
 coefficients, rather than by directly altering the mechanistic mosquito rates.
 \\\\
-\renewcommand{\thefigure}{1}
-\begin{figure*}[H]
-\centering
-\includegraphics[width=\textwidth]{figs/total_active_infectious_cases_manaus_2017_2023.png}
-\caption{Total number of active infectious cases of malaria (\textit{P.~vivax}, SIVEP-Malaria) in rural Manaus, 2017-2023. The strong inter- and 
-intra-annual variability of the disease burden is the central modelling challenge addressed in this work, and motivates the representation of all 
-of the variability of the environmental drivers as well as the modifications to the baseline model.}
-\label{FIG:manaus_active_cases}
-\end{figure*}
 Deforestation was obtained from the DETER system, whose daily alerts were aggregated at weekly resolution, with the
 4-week total degraded area (clear cut, forest degradation, and burn scar combined) used as the covariate $D_f$
 \cite{Daily_DETER}. Fire activity was represented by two complementary sources: the weekly number of fire hotspots
@@ -251,6 +242,16 @@ conditions to the weekly transmission probabilities $b_1$ and $b_2$.
 \section{Methodology}
 \label{sec:methodology}
 
+\renewcommand{\thefigure}{1}
+\begin{figure*}[H]
+\centering
+\includegraphics[width=\textwidth]{figs/total_active_infectious_cases_manaus_2017_2023.png}
+\caption{Total number of active infectious cases of malaria (\textit{P.~vivax}, SIVEP-Malaria) in rural Manaus, 2017-2023. The strong inter- and 
+intra-annual variability of the disease burden is the central modelling challenge addressed in this work, and motivates the representation of all 
+of the variability of the environmental drivers as well as the modifications to the baseline model.}
+\label{FIG:manaus_active_cases}
+\end{figure*}
+
 \subsection{Epidemiological Data}
 \label{sec:epidemiological_data}
 
@@ -260,6 +261,9 @@ region \cite{OliveiraFerreira2010, 10.3389/fpubh.2021.647754, Vector_Incriminati
 Epidemiological data were obtained from the SIVEP-Malaria system \cite{SIVEP_Malaria}, 
 which provides daily records of notified malaria cases for all Brazilian municipalities from 
 2003 to 2023. The analysis was restricted to the period 2017-2023, for which complete epidemiological and environmental data were available.
+Figure~\ref{FIG:manaus_active_cases} presents the total number of active infectious cases observed in rural Manaus over this period. This zone of the municipality was chosen over the urban or total population 
+due to it's higher incidence of cases during the periods studied by the Trajetorias Project \cite{Rorato2023}.
+The pronounced inter- and intra-annual variability of this series constitutes the central modelling challenge addressed in this work and motivates the modifications to the baseline model described below.
 
 \subsection{Population Estimates}
 \label{sec:population_estimates}
@@ -811,15 +815,15 @@ where we used $S_H^* = N$ and $S_M^* = M^*$ at the DFE. The spectral radius of $
 which can be written in the classical two-factor host-vector form
 \begin{equation}
 \begin{aligned}
-\mathcal{R}_0^H &= \frac{ab_2}{\mu}; \ \ \mathcal{R}_0^M = \frac{ab_1\Lambda^*}{N\mu\gamma}\cdot\frac{b_{3M}\ell}{b_{3M}\ell+\mu} \\
+\mathcal{R}_0^H &= \frac{ab_2}{\gamma}; \ \ \mathcal{R}_0^M = \frac{ab_1\Lambda^*}{N\mu^2}\cdot\frac{b_{3M}\ell}{b_{3M}\ell+\mu} \\
 \Longrightarrow \mathcal{R}_0 &= \sqrt{\mathcal{R}_0^H \cdot \mathcal{R}_0^M},
 \end{aligned}
 \label{eq:R0_factors}
 \end{equation}
 where $\mathcal{R}_0^H$ is the expected number of humans infected by a single
-infectious mosquito (mosquito infectious lifetime $1/\mu$), and $\mathcal{R}_0^M$ is
+infectious mosquito, and $\mathcal{R}_0^M$ is
 the expected number of mosquitoes that survive the latent period and become
-infectious, generated by a single infectious human (human infectious period $1/\gamma$).
+infectious, generated by a single infectious human.
 The geometric mean arises from the two-generation host-vector transmission cycle:
 the infection must complete a full human$\rightarrow$mosquito$\rightarrow$human loop,
 and the block structure of the next-generation matrix decouples into these two factors (see Appendix~\ref{app:ngm_verify} for the explicit
