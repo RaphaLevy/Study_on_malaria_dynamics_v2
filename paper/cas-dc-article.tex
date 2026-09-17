@@ -964,26 +964,19 @@ threshold on the climate-habitat state highlighted in
 Section~\ref{sec:basic_reproduction_number}, and motivates the week-specific regression of the
 transmission probabilities pursued in Section~\ref{sec:results_regression}.
 
-\subsection{Sensitivity of $\mathcal{R}_0$ to the model parameters}
-\label{sec:results_sensitivity}
+%\subsection{Sensitivity of $\mathcal{R}_0$ to the model parameters}
+%\label{sec:results_sensitivity}
 
-Figure~\ref{FIG:prcc} 
-reports the partial rank correlation
-coefficients of the calibrated parameters with respect to the three
-output quantities, obtained as described in
-Section~\ref{sec:sensitivity}. Diamonds mark the parameters whose
-year-by-year calibration reached the boundary of the sampled range
-($b_1$, $\phi$ and $\tau_H$ at the upper bound; $b_2$, $\gamma$, $M'$
-and $H_0$ at the lower bound; Table~\ref{tbl:calibration}).
+%Figure~\ref{FIG:prcc} reports the partial rank correlation coefficients of the calibrated parameters with respect to the three output quantities, obtained as described in Section~\ref{sec:sensitivity}. Diamonds mark the parameters whose
+%year-by-year calibration reached the boundary of the sampled range ($b_1$, $\phi$ and $\tau_H$ at the upper bound; $b_2$, $\gamma$, $M'$ and $H_0$ at the lower bound; Table~\ref{tbl:calibration}).
 
-\renewcommand{\thefigure}{5}
+%\renewcommand{\thefigure}{5}
 
-\noindent
-\includegraphics[width=\columnwidth]{figs/prcc_plot.png}
-%\captionof{figure}{Partial rank correlation coefficients of the calibrated parameters with respect to $\mathcal{R}_0$ (blue), the seasonal peak of human infectious cases (orange), and the cumulative number of human cases (green). Diamonds mark the parameters whose year-by-year calibration reached the boundary of the sampled range (Table~\ref{tbl:calibration}).}
-\captionof{figure}{Partial rank correlation coefficients of the calibrated parameters with respect to $\mathcal{R}_0$, the seasonal peak of human infectious cases and the cumulative number of human cases. Diamonds mark the parameters whose year-by-year calibration reached the boundary of the sampled range (Table~\ref{tbl:calibration}).}
-\label{FIG:prcc}
-\vspace{0.6cm}
+%\noindent
+%\includegraphics[width=\columnwidth]{figs/prcc_plot.png}
+%\captionof{figure}{Partial rank correlation coefficients of the calibrated parameters with respect to $\mathcal{R}_0$, the seasonal peak of human infectious cases and the cumulative number of human cases. Diamonds mark the parameters whose year-by-year calibration reached the boundary of the sampled range (Table~\ref{tbl:calibration}).}
+%\label{FIG:prcc}
+%\vspace{0.6cm}
 
 %\begin{figure}[htbp]
 %\centering
@@ -1049,8 +1042,36 @@ Following the framework described in Section~\ref{sec:intro}, the freed weekly p
 \\\\
 Within each year the model explains a a large part of the variance of both transmission probabilities, with mean $R^2 = 0.685 \pm 0.082$ for $b_1$ and mean $R^2 = 0.784 \pm 0.130$ for $b_2$. Prediction bias was close to zero in all years (|bias| $\lesssim$ 0.003 in every year; Table~\ref{tbl:regression}, Fig.~\ref{FIG:scatter_b2}).
 %\\\\
-
-
+\begin{table}[H]
+\centering
+\caption{Year-by-year within-year random forest performance for $b_1$ and $b_2$.}
+\label{tbl:regression}
+\begin{tabular}{lllccc}
+\toprule
+& Year & $R^2$ & MAE & Bias & Top Driver\\
+\midrule
+\multirow{7}{*}{$b_1$}
+ & 2017 & 0.563 & 0.0594 & +0.0021 & $T$\\
+ & 2018 & 0.580 & 0.0651 & $-$0.0005  & $T$\\
+ & 2019 & 0.739 & 0.0475 & +0.0011 & $F_c$\\
+ & 2020 & 0.671 & 0.0626 & +0.0021 & $R$\\
+ & 2021 & 0.705 & 0.0603 & $-$0.0009 & $F_t$\\
+ & 2022 & 0.810 & 0.0503 & +0.0010 & $T$\\
+ & 2023 & 0.724 & 0.0107 & +0.0006& $F_t$\\
+\midrule
+\multirow{7}{*}{$b_2$}
+ & 2017 & 0.531 & 0.0182 & +0.0011 & $R$\\
+ & 2018 & 0.825 & 0.0103 & +0.0005 & $T$\\
+ & 2019 & 0.712 & 0.0120 & $-$0.0002 & $H$\\
+ & 2020 & 0.915 & 0.0105 & $-$0.0006 & $F_t$\\
+ & 2021 & 0.712 & 0.0122 & +0.0001 & $R$\\
+ & 2022 & 0.905 & 0.0103 & $-$0.0002 & $F_t$\\
+ & 2023 & 0.889 & 0.0021 & +0.0001 & $F_c$\\
+\bottomrule
+\end{tabular}
+\end{table}
+\vspace{0.6cm}
+%\clearpage
 \renewcommand{\thefigure}{b1_regression}
 \vspace{0.6cm}
 
@@ -1059,7 +1080,7 @@ Within each year the model explains a a large part of the variance of both trans
 %\captionof{figure}{Best within-year random-forest fit of the freed weekly per-bite transmission from infected humans to susceptible mosquitos ($b_1$).}
 \label{FIG:scatter_b1}
 
-\renewcommand{\thefigure}{6}
+\renewcommand{\thefigure}{5}
 %\vspace{0.6cm}
 
 \noindent
@@ -1075,7 +1096,7 @@ A leave-one-year-out cross-validation of the same forests qualifies this result.
 \\\\
 The shape of these responses is illustrated in Figs.~\ref{FIG:response_b1} and \ref{FIG:response_b2}, which shows the partial dependence of $b_1$ and $b_2$ on each predictor for the best fitted year for each transmission probability.
 
-\renewcommand{\thefigure}{7A}
+\renewcommand{\thefigure}{6A}
 \vspace{0.6cm}
 
 \noindent
@@ -1083,7 +1104,7 @@ The shape of these responses is illustrated in Figs.~\ref{FIG:response_b1} and \
 %\captionof{figure}{Partial dependence of the weekly per-bite transmission probability $b_1$ on each environmental predictor.}
 \label{FIG:response_b1_A}
 
-\renewcommand{\thefigure}{7B}
+\renewcommand{\thefigure}{6B}
 %\vspace{0.6cm}
 
 \noindent
@@ -1091,7 +1112,7 @@ The shape of these responses is illustrated in Figs.~\ref{FIG:response_b1} and \
 %\captionof{figure}{Partial dependence of the weekly per-bite transmission probability $b_1$ on each environmental predictor.}
 \label{FIG:response_b1_B}
 
-\renewcommand{\thefigure}{7}
+\renewcommand{\thefigure}{6}
 %\vspace{0.6cm}
 
 \noindent
@@ -1108,7 +1129,7 @@ The shape of these responses is illustrated in Figs.~\ref{FIG:response_b1} and \
 %\label{FIG:response_b2}
 %\vspace{0.6cm}
 
-\renewcommand{\thefigure}{8A}
+\renewcommand{\thefigure}{7A}
 \vspace{0.6cm}
 
 \noindent
@@ -1116,7 +1137,7 @@ The shape of these responses is illustrated in Figs.~\ref{FIG:response_b1} and \
 %\captionof{figure}{Partial dependence of the weekly per-bite transmission probability $b_1$ on each environmental predictor.}
 \label{FIG:response_b2_A}
 
-\renewcommand{\thefigure}{8B}
+\renewcommand{\thefigure}{7B}
 %\vspace{0.6cm}
 
 \noindent
@@ -1124,7 +1145,7 @@ The shape of these responses is illustrated in Figs.~\ref{FIG:response_b1} and \
 %\captionof{figure}{Partial dependence of the weekly per-bite transmission probability $b_1$ on each environmental predictor.}
 \label{FIG:response_b2_B}
 
-\renewcommand{\thefigure}{8}
+\renewcommand{\thefigure}{7}
 %\vspace{0.6cm}
 
 \noindent
@@ -1133,35 +1154,6 @@ The shape of these responses is illustrated in Figs.~\ref{FIG:response_b1} and \
 \label{FIG:response_b2}
 \vspace{0.6cm}
 Columns correspond to temperature $T$, precipitation $R$, humidity $H$, deforestation $D_f$, fire counts $F_c$ and fire trends $F_t$. Curves give the mean predicted probability as each predictor is varied over its observed range while the remaining variables are held at their marginal mean.
-\newpage
-\begin{table}[H]
-\centering
-\caption{Year-by-year within-year random forest performance for $b_1$ and $b_2$.}
-\label{tbl:regression}
-\begin{tabular}{lllcc}
-\toprule
-& Year & $R^2$ & MAE & Bias\\
-\midrule
-\multirow{7}{*}{$b_1$}
- & 2017 & 0.563 & 0.0594 & +0.0021\\
- & 2018 & 0.580 & 0.0651 & $-$0.0005\\
- & 2019 & 0.739 & 0.0475 & +0.0011\\
- & 2020 & 0.671 & 0.0626 & +0.0021\\
- & 2021 & 0.705 & 0.0603 & $-$0.0009\\
- & 2022 & 0.810 & 0.0503 & +0.0010\\
- & 2023 & 0.724 & 0.0107 & +0.0006\\
-\midrule
-\multirow{7}{*}{$b_2$}
- & 2017 & 0.531 & 0.0182 & +0.0011\\
- & 2018 & 0.825 & 0.0103 & +0.0005\\
- & 2019 & 0.712 & 0.0120 & $-$0.0002\\
- & 2020 & 0.915 & 0.0105 & $-$0.0006\\
- & 2021 & 0.712 & 0.0122 & +0.0001\\
- & 2022 & 0.905 & 0.0103 & $-$0.0002\\
- & 2023 & 0.889 & 0.0021 & +0.0001\\
-\bottomrule
-\end{tabular}
-\end{table}
 
 %\subsection{Base SEIRS-SEI simulation without calibration}
 %\label{sec:base_seirs_sei_no_calibration}
