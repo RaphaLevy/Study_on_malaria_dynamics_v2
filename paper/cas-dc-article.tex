@@ -867,28 +867,13 @@ environmental drivers. Because these quantities enter nonlinearly and
 are mutually coupled, the relative contribution of each to the
 invasion threshold is not apparent from the analytical expression
 alone, and must be quantified numerically.
-\\\\
-To this end, we adopt a global sensitivity analysis based on Latin
-hypercube sampling (LHS) combined with partial rank correlation
-coefficients (PRCC)~\cite{marino2008}, the standard framework for
-uncertainty and sensitivity analysis in compartmental models of
-vector-borne disease. Each parameter is drawn independently from a
-uniform distribution over its range in Table~\ref{tbl:bounds}. For
-$n = 10{,}000$ sampled combinations we evaluate three output
-quantities: the reproduction number from
-Eq.~(\ref{eq:R0_factors}), the seasonal peak of the human infectious
-compartment, and the cumulative number of human cases, the latter two
-obtained by numerical integration of the model.
+%To this end, we adopt a global sensitivity analysis based on Latin hypercube sampling (LHS) combined with partial rank correlation coefficients (PRCC)~\cite{marino2008}, the standard framework for uncertainty and sensitivity analysis in compartmental models of
+%vector-borne disease. Each parameter is drawn independently from a uniform distribution over its range in Table~\ref{tbl:bounds}. For $n = 10{,}000$ sampled combinations we evaluate three output quantities: the reproduction number from
+%Eq.~(\ref{eq:R0_factors}), the seasonal peak of the human infectious compartment, and the cumulative number of human cases, the latter two obtained by numerical integration of the model.
 %(Section~\ref{sec:computational_implementation}). 
-PRCC measures the
-monotonic association between each input and each output after removing
-the effect of the remaining parameters, yielding a robust ranking of
-influential parameters that is insensitive to the nonlinear couplings
-of the system. Because $\mathcal{R}_0$ factorises (Eq.~\ref{eq:R0_factors}),
-the analysis also provides a numerical check of the analytical
-structure: parameters that cancel in the closed form should return a
-PRCC indistinguishable from zero. The results are reported in
-Section~\ref{sec:results_sensitivity}.
+%PRCC measures the monotonic association between each input and each output after removing the effect of the remaining parameters, yielding a robust ranking of influential parameters that is insensitive to the nonlinear couplings
+%of the system. Because $\mathcal{R}_0$ factorises (Eq.~\ref{eq:R0_factors}), the analysis also provides a numerical check of the analytical structure: parameters that cancel in the closed form should return a
+%PRCC indistinguishable from zero. The results are reported in Section~\ref{sec:results_sensitivity}.
 
 
 %\newpage
@@ -1040,7 +1025,7 @@ Year & Climate-driven & Weekly free & Reduction factor \\
 \label{sec:results_regression}
 Following the framework described in Section~\ref{sec:intro}, the freed weekly per-bite transmission probabilities were regressed against the environmental predictors $T,\,R,\,H,\,D_f,\,F_c,\,F_t$, representing temperature, precipitation, humidity, deforestation, fire counts and fire trends. A separate random forest model was fitted for each year.
 \\\\
-Within each year the model explains a a large part of the variance of both transmission probabilities, with mean $R^2 = 0.685 \pm 0.082$ for $b_1$ and mean $R^2 = 0.784 \pm 0.130$ for $b_2$. Prediction bias was close to zero in all years (|bias| $\lesssim$ 0.003 in every year; Table~\ref{tbl:regression}, Fig.~\ref{FIG:scatter_b2}).
+Within each year the model explains a a large part of the variance of both transmission probabilities, with prediction bias was close to zero in all years (|bias| $\lesssim$ 0.003 in every year; Table~\ref{tbl:regression}).
 %\\\\
 \begin{table}[H]
 \centering
@@ -1088,7 +1073,7 @@ Within each year the model explains a a large part of the variance of both trans
 \captionof{figure}{Scatter plot of the estimated vs predicted weekly-free proportion bites from infected humans to susceptible mosquitos ($b_1$) and from infected mosquitos to susceptible humans ($b_2$)  that result in infection.}
 \label{FIG:scatter_b2}
 \vspace{0.6cm}
-\newpage
+
 The importance of the predictors, however, differs between the two probabilities, as can be seen in Table~\ref{tbl:predictors_importance}.
 \begin{table}[H]
 \centering
@@ -1107,7 +1092,7 @@ Fire Trends $(F_t)$ & 0.179 & 0.166\\
 \bottomrule
 \end{tabular}
 \end{table}
-Based on this, it can be seen that deforestation is consistently the weakest predictor for both $b_1$ and $b_2$, indicating that its effect is not captured at the intra-annual timescale resolved here.
+Based on this, it can be seen that deforestation is consistently the weakest predictor for both $b_1$ and $b_2$, indicating that its effect is not captured at the intra-annual timescale resolved here. More strikingly, precipitation and fire counts occupy opposite ends of the two rankings: precipitation is the leading predictor of $b_1$ but only second-lowest for $b_2$, whereas fire counts lead for $b_2$ but rank second-lowest for $b_1$. Temperature and humidity, by contrast, consistently hold the second and third positions for both targets, merely exchanging order: temperature then humidity for $b_1$, humidity then temperature for $b_2$.
 \\\\
 A leave-one-year-out cross-validation of the same forests qualifies this result. Out-of-sample performance is markedly lower, with overall $R^2 \approx 0.17$ for $b_1$ and $\approx 0.19$ for $b_2$, in contrast to the strong within-year fits. This contrast confirms that the environmental drivers are strongly year-specific: the within-year seasonal trajectory of $T,R,H,D_f,F_c,F_t$ shapes each year's transmission signal, whereas a fixed, year-independent link between the environment and $b_1,b_2$ is not supported by the data.
 \\\\
