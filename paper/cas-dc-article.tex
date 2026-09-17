@@ -1046,7 +1046,7 @@ Within each year the model explains a a large part of the variance of both trans
 \centering
 \caption{Year-by-year within-year random forest performance for $b_1$ and $b_2$.}
 \label{tbl:regression}
-\begin{tabular}{lllccc}
+\begin{tabular}{cccccc}
 \toprule
 & Year & $R^2$ & MAE & Bias & Top Driver\\
 \midrule
@@ -1088,9 +1088,26 @@ Within each year the model explains a a large part of the variance of both trans
 \captionof{figure}{Scatter plot of the estimated vs predicted weekly-free proportion bites from infected humans to susceptible mosquitos ($b_1$) and from infected mosquitos to susceptible humans ($b_2$)  that result in infection.}
 \label{FIG:scatter_b2}
 \vspace{0.6cm}
-
-The importance of the predictors, however, differs between the two probabilities. For $b_1$ the contribution is distributed fairly evenly among precipitation (0.203), temperature (0.201), humidity (0.194), fire trends (0.179) and fire counts (0.149); while for $b_2$ 
-the leading contributors are fire counts (0.213), humidity (0.171), temperature (0.169), fire trends (0.166) and precipitation (0.163). Deforestation $D_f$ is consistently the weakest predictor for both $b_1$ (0.074) and $b_2$ (0.119), indicating that its effect is not captured at the intra-annual timescale resolved here.
+\newpage
+The importance of the predictors, however, differs between the two probabilities, as can be seen in Table~\ref{tbl:predictors_importance}.
+\begin{table}[H]
+\centering
+\caption{Relative importance of environmental predictors for $b_1$ and $b_2$.}
+\label{tbl:predictors_importance}
+\begin{tabular}{lcc}
+\toprule
+& $b_1$ & $b_2$\\
+\midrule
+Temperature $(T)$ & 0.201 & 0.169\\
+Precipitation $(R)$ & 0.203 & 0.163\\
+Humidity $(H)$ & 0.194 & 0.171\\
+Deforestation $(D_f)$ & 0.074 & 0.119\\
+Fire Counts $(F_c)$ & 0.149 & 0.213\\
+Fire Trends $(F_t)$ & 0.179 & 0.166\\
+\bottomrule
+\end{tabular}
+\end{table}
+Based on this, it can be seen that deforestation is consistently the weakest predictor for both $b_1$ and $b_2$, indicating that its effect is not captured at the intra-annual timescale resolved here.
 \\\\
 A leave-one-year-out cross-validation of the same forests qualifies this result. Out-of-sample performance is markedly lower, with overall $R^2 \approx 0.17$ for $b_1$ and $\approx 0.19$ for $b_2$, in contrast to the strong within-year fits. This contrast confirms that the environmental drivers are strongly year-specific: the within-year seasonal trajectory of $T,R,H,D_f,F_c,F_t$ shapes each year's transmission signal, whereas a fixed, year-independent link between the environment and $b_1,b_2$ is not supported by the data.
 \\\\
