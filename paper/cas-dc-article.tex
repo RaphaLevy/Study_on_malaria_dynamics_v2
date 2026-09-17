@@ -1051,26 +1051,25 @@ Year & Climate-driven & Weekly free & Reduction factor \\
 \label{sec:results_regression}
 Following the framework described in Section~\ref{sec:intro}, the freed weekly per-bite transmission probabilities were regressed against the environmental predictors $T,\,R,\,H,\,D_f,\,F_c,\,F_t$, representing temperature, precipitation, humidity, deforestation, fire counts and fire trends. A separate random forest model was fitted for each year.
 \\\\
-Within each year the model explains a a large part of the variance of both transmission probabilities, with mean $R^2 = 0.685 \pm 0.082$ for $b_1$ and mean $R^2 = 0.784 \pm 0.130$ for $b_2$. Prediction bias was close to zero in all years (|bias| $\lesssim$ 0.003 in every year; Table~\ref{tbl:regression}, Fig.~\ref{FIG:imp_b2}).
+Within each year the model explains a a large part of the variance of both transmission probabilities, with mean $R^2 = 0.685 \pm 0.082$ for $b_1$ and mean $R^2 = 0.784 \pm 0.130$ for $b_2$. Prediction bias was close to zero in all years (|bias| $\lesssim$ 0.003 in every year; Table~\ref{tbl:regression}, Fig.~\ref{FIG:scatter_b2}).
 %\\\\
-%Figure~\ref{FIG:imp_b1} shows the best-fitting year for $b_1$, that being 2022, while Figure~\ref{FIG:imp_b2} shows the best-fitting year for $b_2$, 2020.
 
 
 \renewcommand{\thefigure}{b1_regression}
 \vspace{0.6cm}
 
 \noindent
-\includegraphics[width=\columnwidth]{figs/b1_2022_regression.png}
+\includegraphics[width=\columnwidth]{figs/b1_eff_obs_vs_pred_all_years.png}
 %\captionof{figure}{Best within-year random-forest fit of the freed weekly per-bite transmission from infected humans to susceptible mosquitos ($b_1$).}
-\label{FIG:imp_b1}
+\label{FIG:scatter_b1}
 
 \renewcommand{\thefigure}{6}
 %\vspace{0.6cm}
 
 \noindent
-\includegraphics[width=\columnwidth]{figs/b2_2020_regression.png}
-\captionof{figure}{Best within-year random-forest fit of the freed weekly per-bite transmission: 2022 for $b_1$ ($R^2= 0.81$) and 2020 for $b_2$ ($R^2=0.915$).}
-\label{FIG:imp_b2}
+\includegraphics[width=\columnwidth]{figs/b2_eff_obs_vs_pred_all_years.png}
+\captionof{figure}{Scatter plot of the estimated vs predicted weekly-free proportion bites from infected humans to susceptible mosquitos ($b_1$) and from infected mosquitos to susceptible humans ($b_2$)  that result in infection.}
+\label{FIG:scatter_b2}
 \vspace{0.6cm}
 
 The red-dotted line denotes the weekly coefficients recovered from the observed case dynamics (Section~\ref{sec:weekly_beta_diagnostic}); while the blue-dashed line is the mean random-forest prediction. The model reproduces the seasonal envelope while retaining the week-to-week structure in the data.
