@@ -895,10 +895,6 @@ Section~\ref{sec:results_sensitivity}.
 \section{Results}
 \label{sec:results}
 
-\subsection{Reproduction of the original Parham \& Michael model as a negative baseline}
-\label{sec:results_parham_michael}
-As a diagnostic for the methodological choices adopted below, the original SIR-SEI formulation of Parham and Michael (2010) \cite{Parham2010} was implemented with all parameter values reported in the original study, while population sizes and initial epidemiological conditions were estimated from the available rural Manaus data (Appendix Fig.~\ref{FIG:1A}). Under this parameterization the infected human population declines monotonically and the mosquito population rapidly collapses to extinction, indicating that mosquito recruitment is insufficient to replace mortality. Because transmission depends on the persistence of infectious vectors, the collapse of the vector population eliminates infection in both host and vector populations. Although the delay formulation preserved positivity, it fails to reproduce the endemic behavior expected for malaria in the Amazon, confirming the need to recalibrate the environmental and transmission parameters as described in Section~\ref{sec:recalibration_temp_dependent_biting_rate} and Section~\ref{sec:year_by_year_calibration}.
-
 \subsection{Recalibration of the temperature-dependent biting rate}
 \label{sec:results_biting_rate}
 The temperature-dependent biting rate was recalibrated using field estimates of \textit{Anopheles darlingi} feeding behavior, as described in Section~\ref{sec:recalibration_temp_dependent_biting_rate}. The recalibrated function has a minimum biting temperature threshold of $T' = 16\,^{\circ}\mathrm{C}$ and a thermal scaling factor $D_1 = 24.8\,^{\circ}\mathrm{C}\,\mathrm{days}$. Compared with the original Parham \& Michael parameterization, the recalibrated function better reflects the temperature range observed in the Amazon and produces higher biting rates during the transmission season in Manaus (Fig.~\ref{FIG:biting_rate}). This recalibrated biting rate is used in all subsequent simulations and in the weekly transmission regressions presented in Section~\ref{sec:results_regression}.
@@ -1072,8 +1068,6 @@ Within each year the model explains a a large part of the variance of both trans
 \label{FIG:scatter_b2}
 \vspace{0.6cm}
 
-The red-dotted line denotes the weekly coefficients recovered from the observed case dynamics (Section~\ref{sec:weekly_beta_diagnostic}); while the blue-dashed line is the mean random-forest prediction. The model reproduces the seasonal envelope while retaining the week-to-week structure in the data.
-\\\\
 The importance of the predictors, however, differs between the two probabilities. For $b_1$ the contribution is distributed fairly evenly among precipitation (0.203), temperature (0.201), humidity (0.194), fire trends (0.179) and fire counts (0.149); while for $b_2$ 
 the leading contributors are fire counts (0.213), humidity (0.171), temperature (0.169), fire trends (0.166) and precipitation (0.163). Deforestation $D_f$ is consistently the weakest predictor for both $b_1$ (0.074) and $b_2$ (0.119), indicating that its effect is not captured at the intra-annual timescale resolved here.
 \\\\
@@ -1194,6 +1188,11 @@ All files of data collection and treatment, as well as resulting plots created d
 %These refinements improve the consistency between demographic inputs and epidemiological 
 %dynamics in the model, reducing potential biases in the estimation of transmission intensity 
 %and enhancing the reliability of the results.
+
+\subsection{Reproduction of the original Parham \& Michael model as a negative baseline}
+\label{sec:results_parham_michael}
+As a diagnostic for the methodological choices adopted below, the original SIR-SEI formulation of Parham and Michael (2010) \cite{Parham2010} was implemented with all parameter values reported in the original study, while population sizes and initial epidemiological conditions were estimated from the available rural Manaus data (Appendix Fig.~\ref{FIG:1A}). Under this parameterization the infected human population declines monotonically and the mosquito population rapidly collapses to extinction, indicating that mosquito recruitment is insufficient to replace mortality. Because transmission depends on the persistence of infectious vectors, the collapse of the vector population eliminates infection in both host and vector populations. Although the delay formulation preserved positivity, it fails to reproduce the endemic behavior expected for malaria in the Amazon, confirming the need to recalibrate the environmental and transmission parameters as described in Section~\ref{sec:recalibration_temp_dependent_biting_rate} and Section~\ref{sec:year_by_year_calibration}.
+
 
 \subsection{The model sustains endemic transmission where the baseline does not}
 \label{sec:baseline_doesnt_sustain_transmission}
