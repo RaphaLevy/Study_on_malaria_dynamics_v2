@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.3.13)  17 SEP 2026 13:37
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.3.13)  17 SEP 2026 13:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1488,19 +1488,21 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 924.
 See the caption package documentation for explanation.
 
-<figs/R0_variation_in_2017_with_months.png, id=255, 823.27576pt x 310.15875pt>
-File: figs/R0_variation_in_2017_with_months.png Graphic file (type png)
-<use figs/R0_variation_in_2017_with_months.png>
-Package pdftex.def Info: figs/R0_variation_in_2017_with_months.png  used on inp
-ut line 950.
-(pdftex.def)             Requested size: 238.25444pt x 89.75916pt.
+<figs/coupled_and_human_Rt_variation_in_2017_with_months.png, id=255, 822.6735p
+t x 278.2395pt>
+File: figs/coupled_and_human_Rt_variation_in_2017_with_months.png Graphic file 
+(type png)
+<use figs/coupled_and_human_Rt_variation_in_2017_with_months.png>
+Package pdftex.def Info: figs/coupled_and_human_Rt_variation_in_2017_with_month
+s.png  used on input line 950.
+(pdftex.def)             Requested size: 238.25444pt x 80.58124pt.
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 952.
 See the caption package documentation for explanation.
 
 [10 <./figs/biting_rate_comparison.png> <./figs/weekly_beta_calibration_2017.pn
-g> <./figs/R0_variation_in_2017_with_months.png>]
+g> <./figs/coupled_and_human_Rt_variation_in_2017_with_months.png>]
 <figs/prcc_plot.png, id=281, 491.436pt x 758.835pt>
 File: figs/prcc_plot.png Graphic file (type png)
 <use figs/prcc_plot.png>
@@ -1571,13 +1573,13 @@ Underfull \hbox (badness 1038) in paragraph at lines 1048--1052
 \T1/stix/m/n/10 Within each year the model ex-plains a a large part of
  []
 
-<figs/b1_eff_obs_vs_pred_all_years.png, id=301, 426.393pt x 452.04884pt>
+<figs/b1_eff_obs_vs_pred_all_years.png, id=300, 426.393pt x 452.04884pt>
 File: figs/b1_eff_obs_vs_pred_all_years.png Graphic file (type png)
 <use figs/b1_eff_obs_vs_pred_all_years.png>
 Package pdftex.def Info: figs/b1_eff_obs_vs_pred_all_years.png  used on input l
 ine 1058.
 (pdftex.def)             Requested size: 238.25444pt x 252.58691pt.
-<figs/b2_eff_obs_vs_pred_all_years.png, id=302, 432.8973pt x 452.04884pt>
+<figs/b2_eff_obs_vs_pred_all_years.png, id=301, 432.8973pt x 452.04884pt>
 File: figs/b2_eff_obs_vs_pred_all_years.png Graphic file (type png)
 <use figs/b2_eff_obs_vs_pred_all_years.png>
 Package pdftex.def Info: figs/b2_eff_obs_vs_pred_all_years.png  used on input l
@@ -1615,7 +1617,7 @@ Underfull \hbox (badness 2005) in paragraph at lines 1071--1077
 []
  []
 
-<figs/b1_2022_environmental_response_A.png, id=305, 663.6795pt x 286.06876pt>
+<figs/b1_2022_environmental_response_A.png, id=304, 663.6795pt x 286.06876pt>
 File: figs/b1_2022_environmental_response_A.png Graphic file (type png)
 <use figs/b1_2022_environmental_response_A.png>
 Package pdftex.def Info: figs/b1_2022_environmental_response_A.png  used on inp
@@ -1623,13 +1625,13 @@ ut line 1082.
 (pdftex.def)             Requested size: 238.25444pt x 102.69658pt.
 [12 <./figs/b1_eff_obs_vs_pred_all_years.png> <./figs/b2_eff_obs_vs_pred_all_ye
 ars.png>]
-<figs/b1_2022_environmental_response_B.png, id=316, 678.1335pt x 295.1025pt>
+<figs/b1_2022_environmental_response_B.png, id=315, 678.1335pt x 295.1025pt>
 File: figs/b1_2022_environmental_response_B.png Graphic file (type png)
 <use figs/b1_2022_environmental_response_B.png>
 Package pdftex.def Info: figs/b1_2022_environmental_response_B.png  used on inp
 ut line 1090.
 (pdftex.def)             Requested size: 238.25444pt x 103.67917pt.
-<figs/b1_2022_environmental_response_C.png, id=317, 720.291pt x 314.3745pt>
+<figs/b1_2022_environmental_response_C.png, id=316, 720.291pt x 314.3745pt>
 File: figs/b1_2022_environmental_response_C.png Graphic file (type png)
 <use figs/b1_2022_environmental_response_C.png>
 Package pdftex.def Info: figs/b1_2022_environmental_response_C.png  used on inp
@@ -1641,19 +1643,19 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 1099.
 See the caption package documentation for explanation.
 
-<figs/b2_2020_environmental_response_A.png, id=318, 714.87074pt x 305.34074pt>
+<figs/b2_2020_environmental_response_A.png, id=317, 714.87074pt x 305.34074pt>
 File: figs/b2_2020_environmental_response_A.png Graphic file (type png)
 <use figs/b2_2020_environmental_response_A.png>
 Package pdftex.def Info: figs/b2_2020_environmental_response_A.png  used on inp
 ut line 1115.
 (pdftex.def)             Requested size: 238.25444pt x 101.76447pt.
-<figs/b2_2020_environmental_response_B.png, id=319, 726.91576pt x 308.352pt>
+<figs/b2_2020_environmental_response_B.png, id=318, 726.91576pt x 308.352pt>
 File: figs/b2_2020_environmental_response_B.png Graphic file (type png)
 <use figs/b2_2020_environmental_response_B.png>
 Package pdftex.def Info: figs/b2_2020_environmental_response_B.png  used on inp
 ut line 1123.
 (pdftex.def)             Requested size: 238.25444pt x 101.06482pt.
-<figs/b2_2020_environmental_response_C.png, id=320, 783.52725pt x 337.26pt>
+<figs/b2_2020_environmental_response_C.png, id=319, 783.52725pt x 337.26pt>
 File: figs/b2_2020_environmental_response_C.png Graphic file (type png)
 <use figs/b2_2020_environmental_response_C.png>
 Package pdftex.def Info: figs/b2_2020_environmental_response_C.png  used on inp
@@ -2290,7 +2292,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1638--1640
 ] [21
 
 ]
-<figs/SIR_Model_Parham_and_Michael_DDE_Solution.png, id=472, 413.74574pt x 253.
+<figs/SIR_Model_Parham_and_Michael_DDE_Solution.png, id=471, 413.74574pt x 253.
 54726pt>
 File: figs/SIR_Model_Parham_and_Michael_DDE_Solution.png Graphic file (type png
 )
@@ -2298,7 +2300,7 @@ File: figs/SIR_Model_Parham_and_Michael_DDE_Solution.png Graphic file (type png
 Package pdftex.def Info: figs/SIR_Model_Parham_and_Michael_DDE_Solution.png  us
 ed on input line 1752.
 (pdftex.def)             Requested size: 238.25444pt x 146.00517pt.
-<figs/SEI_Model_Parham_and_Michael_DDE_Solution.png, id=473, 419.166pt x 250.53
+<figs/SEI_Model_Parham_and_Michael_DDE_Solution.png, id=472, 419.166pt x 250.53
 6pt>
 File: figs/SEI_Model_Parham_and_Michael_DDE_Solution.png Graphic file (type png
 )
@@ -2312,7 +2314,7 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 1761.
 See the caption package documentation for explanation.
 
-<figs/SIR_Model_Parham_and_Michael_ODE_Solution.png, id=476, 645.00975pt x 405.
+<figs/SIR_Model_Parham_and_Michael_ODE_Solution.png, id=475, 645.00975pt x 405.
 31425pt>
 File: figs/SIR_Model_Parham_and_Michael_ODE_Solution.png Graphic file (type png
 )
@@ -2325,7 +2327,7 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 1769.
 See the caption package documentation for explanation.
 
-<figs/SEI_Model_Parham_and_Michael_ODE_Solution.png, id=481, 654.64575pt x 401.
+<figs/SEI_Model_Parham_and_Michael_ODE_Solution.png, id=480, 654.64575pt x 401.
 70074pt>
 File: figs/SEI_Model_Parham_and_Michael_ODE_Solution.png Graphic file (type png
 )
@@ -2357,38 +2359,34 @@ Package rerunfilecheck Info: File `cas-dc-article.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 18819 strings out of 467871
- 297752 string characters out of 5418376
- 722564 words of memory out of 5000000
+ 18818 strings out of 467871
+ 297864 string characters out of 5418376
+ 722581 words of memory out of 5000000
  47206 multiletter control sequences out of 15000+600000
  754492 words of font info for 210 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  90i,19n,117p,1149b,683s stack positions out of 10000i,1000n,20000p,200000b,200000s
-
-pdfTeX warning (dest): name{subsection.4.6} has been referenced but does not ex
-ist, replaced by a fixed one
-
- <C:\Users\rapha\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi450\ecss08
-00.pk> <C:\Users\rapha\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\
-ecsi0900.pk> <C:\Users\rapha\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/d
-pi600\ecsx0900.pk> <C:\Users\rapha\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappe
-n/ec/dpi600\ecss0900.pk><C:/Users/rapha/AppData/Local/Programs/MiKTeX/fonts/typ
-e1/public/inconsolata/Inconsolata-zi4r.pfb><C:/Users/rapha/AppData/Local/Progra
-ms/MiKTeX/fonts/type1/public/stix/STIXGeneral-Bold.pfb><C:/Users/rapha/AppData/
-Local/Programs/MiKTeX/fonts/type1/public/stix/STIXGeneral-Italic.pfb><C:/Users/
-rapha/AppData/Local/Programs/MiKTeX/fonts/type1/public/stix/STIXGeneral-Regular
-.pfb><C:/Users/rapha/AppData/Local/Programs/MiKTeX/fonts/type1/public/stix/stix
--mathcal.pfb><C:/Users/rapha/AppData/Local/Programs/MiKTeX/fonts/type1/public/s
-tix/stix-mathex.pfb><C:/Users/rapha/AppData/Local/Programs/MiKTeX/fonts/type1/p
-ublic/stix/stix-mathit.pfb><C:/Users/rapha/AppData/Local/Programs/MiKTeX/fonts/
-type1/public/stix/stix-mathrm-bold.pfb><C:/Users/rapha/AppData/Local/Programs/M
-iKTeX/fonts/type1/public/stix/stix-mathrm.pfb><C:/Users/rapha/AppData/Local/Pro
-grams/MiKTeX/fonts/type1/public/stix/stix-mathscr.pfb><C:/Users/rapha/AppData/L
-ocal/Programs/MiKTeX/fonts/type1/public/stix/stix-mathsf.pfb><C:/Users/rapha/Ap
-pData/Local/Programs/MiKTeX/fonts/type1/public/stix/stix-mathtt.pfb>
-Output written on cas-dc-article.pdf (22 pages, 2233388 bytes).
+ <C:\Users\rapha\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi450\ecss
+0800.pk> <C:\Users\rapha\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi60
+0\ecsi0900.pk> <C:\Users\rapha\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec
+/dpi600\ecsx0900.pk> <C:\Users\rapha\AppData\Local\MiKTeX\fonts/pk/ljfour/jknap
+pen/ec/dpi600\ecss0900.pk><C:/Users/rapha/AppData/Local/Programs/MiKTeX/fonts/t
+ype1/public/inconsolata/Inconsolata-zi4r.pfb><C:/Users/rapha/AppData/Local/Prog
+rams/MiKTeX/fonts/type1/public/stix/STIXGeneral-Bold.pfb><C:/Users/rapha/AppDat
+a/Local/Programs/MiKTeX/fonts/type1/public/stix/STIXGeneral-Italic.pfb><C:/User
+s/rapha/AppData/Local/Programs/MiKTeX/fonts/type1/public/stix/STIXGeneral-Regul
+ar.pfb><C:/Users/rapha/AppData/Local/Programs/MiKTeX/fonts/type1/public/stix/st
+ix-mathcal.pfb><C:/Users/rapha/AppData/Local/Programs/MiKTeX/fonts/type1/public
+/stix/stix-mathex.pfb><C:/Users/rapha/AppData/Local/Programs/MiKTeX/fonts/type1
+/public/stix/stix-mathit.pfb><C:/Users/rapha/AppData/Local/Programs/MiKTeX/font
+s/type1/public/stix/stix-mathrm-bold.pfb><C:/Users/rapha/AppData/Local/Programs
+/MiKTeX/fonts/type1/public/stix/stix-mathrm.pfb><C:/Users/rapha/AppData/Local/P
+rograms/MiKTeX/fonts/type1/public/stix/stix-mathscr.pfb><C:/Users/rapha/AppData
+/Local/Programs/MiKTeX/fonts/type1/public/stix/stix-mathsf.pfb><C:/Users/rapha/
+AppData/Local/Programs/MiKTeX/fonts/type1/public/stix/stix-mathtt.pfb>
+Output written on cas-dc-article.pdf (22 pages, 2157185 bytes).
 PDF statistics:
- 702 PDF objects out of 1000 (max. 8388607)
- 198 named destinations out of 1000 (max. 500000)
+ 701 PDF objects out of 1000 (max. 8388607)
+ 197 named destinations out of 1000 (max. 500000)
  91 words of extra memory for PDF output out of 10000 (max. 10000000)
 
