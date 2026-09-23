@@ -238,7 +238,10 @@ MapBiomas project, assigned as a monthly covariate $F_t$ \cite{Mapbiomas}. Daily
 humidity were obtained from the Mosqlimate API \cite{MosqlimateAPI} and included as the covariates $T$, $R$, and $H$.
 Together, the variables $T, R, H, D_f, F_c, F_t$ form the environmental predictor set relating observed environmental
 conditions to the weekly transmission probabilities $b_1$ and $b_2$.
-
+\\\\
+This paper is organized as follows: in Section 2 we present the data and the evolution of the SEIRS-SEI model, starting from the baseline delayed SIR-SEI model all the way to the proposed SEIRS-SEI construction; in Section 3 we present the mathematical analysis of the model, 
+regarding the mosquito population dynamics, the basic reproduction number and the sensitivity analysis; in Section 4 we present the found results; which are discussed in Section 5, and we conclude in Section 6.
+ 
 \section{Methodology}
 \label{sec:methodology}
 
@@ -312,7 +315,7 @@ observed growth trend. These adjustments ensured temporal consistency in the pop
 \label{sec:baseline_delayed_sir_sei}
 
 We begin the construction of the model with the classical host-vector framework for malaria transmission, based on the model introduced by Parham and Michael (2010) \cite{Parham2010}, 
-which incorporates temperature- and rainfall-dependent mosquito dynamics. The human population is divided into susceptible, infected, 
+which incorporates temperature- and rainfall-dependent mos-quito dynamics. The human population is divided into susceptible, infected, 
 and recovered compartments, denoted by $S_H$, $I_H$, and $R_H$, respectively. The mosquito population is structured into susceptible, 
 exposed, and infectious compartments, denoted by $S_M$, $E_M$, and $I_M$.
 \\\\
@@ -378,13 +381,13 @@ For humans, the intrinsic incubation process was modeled through
 $b_{3H} = \frac{1}{\tau_H}$,
 where $\tau_H$ denotes the intrinsic incubation period.
 \\\\
-For mosquitoes, the constant transition parameter $b_3 = 1/\tau_M$ from the original formulation was replaced by a Brière-type function,
+For mosquitoes, the constant transition parameter \\$b_3 = 1/\tau_M$ from the original formulation was replaced by a Brière-type function,
 \begin{align}
 b_{3M}(T)=\eta T(T-T_{\min})(T_{\max}-T)^{1/2},
 \end{align}
 which incorporates minimum and maximum thermal thresholds for sporogonic development \cite{brierre_function_development_rate, ab_gumel_malaria_review}. 
 \\\\
-The scaling coefficient $\eta$ was estimated by imposing $b_{3M}(T_{\mathrm{opt}})=\frac{1}{\tau_M(T_{\mathrm{opt}})}$,
+The scaling coefficient $\eta$ was estimated by imposing \\$b_{3M}(T_{\mathrm{opt}})=\frac{1}{\tau_M(T_{\mathrm{opt}})}$,
 yielding
 \begin{align}
 \eta=
@@ -394,7 +397,7 @@ T_{\mathrm{opt}}
 (T_{\max}-T_{\mathrm{opt}})^{1/2}
 }
 \end{align}
-Another addition was the inclusion of a humidity-dependent survival component $p(H)$ on to the daily survival rate of the adult mosquitoes, which is modeled as a sigmoid function of the daily minimum relative humidity U. The parameter $H_0$ (in $\%$) represents the humidity threshold at which the mosquito experiences a 50$\%$ reduction in survival relative to its maximum, and $k$ (in $\%^{-1}$) controls the steepness of the transition. The parameter $\varphi$ (dimensionless) establishes a baseline survival floor, accounting for the persistence of individuals in favorable micro-habitats even under extreme desiccation conditions.
+Another addition was the inclusion of a humidity-dependent survival component $p(H)$ on to the daily survival rate of the adult mosquitoes, which is modeled as a sigmoid function of the daily minimum relative humidity $H$. The parameter $H_0$ (in $\%$) represents the humidity threshold at which the mosquito experiences a 50$\%$ reduction in survival relative to its maximum, and $k$ (in $\%^{-1}$) controls the steepness of the transition. The parameter $\varphi$ (dimensionless) establishes a baseline survival floor, accounting for the persistence of individuals in favorable micro-habitats even under extreme desiccation conditions.
 %\\\\
 %Now, in order to properly estimate the parameters $T'$ and $D_1$ for the biting rate in regard to data from the Amazon
 \\\\
@@ -435,11 +438,14 @@ Having monthly values of $D_1$, we took their average in order to estimate the b
 \begin{align}  
 m = \frac{HBR}{a(T)},
 \end{align}
-where $HBR$ is the mean biting density of \textit{An. darlingi}, given in bites/person/night, while $a(T)$ is the biting rate, given in bites/mosquito/night. Based on the data, $M_0$, the initial population of mosquitos used in the analysis, was estimated to be
+where $HBR$ is the mean biting density of \textit{An. darlingi}, given in bites/person/night, while $a(T)$ is the biting rate, given in bites/mosquito/night. Based on the data, $M_0$, the initial population of mosquitoes used in the analysis, was estimated to be
 approximately $10 N_0$, based on the found value of $m$ for the month of January. 
 \\\\
-At this point, we also approximated the ratio of initially exposed to infectious mosquitoes to be their values at the steady state: $$\frac{dI_M}{dt}=b_{3M}\ell E_M - \mu I_M=0\Longrightarrow \frac{E(0)}{I(0)}=\frac{\mu(0,0)}{b_{3M}(0)\ell(0,0)}\approx3$$
-\\\\
+At this point, we also approximated the ratio of initially exposed to infectious mosquitoes to be their values at the steady state: 
+\begin{align*}
+\frac{dI_M}{dt}&=b_{3M}\ell E_M - \mu I_M=0 \\ \Longrightarrow \frac{E(0)}{I(0)}&=\frac{\mu(0,0)}{b_{3M}(0)\ell(0,0)}\approx3
+\end{align*}
+
 This adjustment preserves the functional structure proposed by Parham and Michael while adapting the parameter values to better reflect the feeding behavior of the primary malaria vector in the Amazon region.
 
 \subsection{Density-dependent mosquito recruitment and carrying capacity}
@@ -1062,7 +1068,7 @@ Within each year the model explains a a large part of the variance of both trans
 
 \noindent
 \includegraphics[width=\columnwidth]{figs/b1_eff_obs_vs_pred_all_years.png}
-%\captionof{figure}{Best within-year random-forest fit of the freed weekly per-bite transmission from infected humans to susceptible mosquitos ($b_1$).}
+%\captionof{figure}{Best within-year random-forest fit of the freed weekly per-bite transmission from infected humans to susceptible mosquitoes ($b_1$).}
 \label{FIG:scatter_b1}
 
 \renewcommand{\thefigure}{5}
@@ -1070,7 +1076,7 @@ Within each year the model explains a a large part of the variance of both trans
 
 \noindent
 \includegraphics[width=\columnwidth]{figs/b2_eff_obs_vs_pred_all_years.png}
-\captionof{figure}{Scatter plot of the estimated vs predicted weekly-free proportion bites from infected humans to susceptible mosquitos ($b_1$) and from infected mosquitos to susceptible humans ($b_2$)  that result in infection.}
+\captionof{figure}{Scatter plot of the estimated vs predicted weekly-free proportion bites from infected humans to susceptible mosquitoes ($b_1$) and from infected mosquitoes to susceptible humans ($b_2$)  that result in infection.}
 \label{FIG:scatter_b2}
 \vspace{0.6cm}
 
@@ -1303,7 +1309,10 @@ contribute to the between-season degradation of the random forest.
 Third, the model is fitted to reported case counts, which may be
 subject to reporting bias and under-reporting, particularly in the
 lowest-transmission months. 
-%Fourth, the sensitivity analysis uses uniform priors over the parameter ranges and does not account for correlations among the calibrated parameters. --- NEEDS TO BE REVIEWED
+
+\section{Conclusion}
+\label{sec:conclusion}
+
 \newpage
 \begin{thebibliography}{00}
 
@@ -1495,7 +1504,7 @@ $\tau_M(T)$   & Duration of sporozoite cycle (days)   & ${DD}/{(T - T_{\min})}$ 
 $\tau_L(T)$   & Duration of larval development phase (days)   & ${1}/{(c_1T + c_2)}$  \\   
 $\ell({\tau_M})(T,H)$   &  Probability of mosquito survival during sporozoite cycle (days$^{-1}$)  & $p(T,H)^{\tau_M(T)}$  \\ 
 $b(R, T)$   & Mosquito birth rate (days$^{-1}$)   & ${B_E  p_E(R)  p_L(R,T)  p_P(R)}/{(\tau_E + \tau_L(T) + \tau_P)}$   \\ 
-$M(t)$   &  Total population of mosquitos  & $S_M(t) + E_M(t) + I_M(t)$   \\ 
+$M(t)$   &  Total population of mosquitoes  & $S_M(t) + E_M(t) + I_M(t)$   \\ 
 $N(t)$   & Total population of humans   & $S_H(t) +E_H(t) + I_H(t) + R_H(t)$   \\ 
 \bottomrule
 \end{tabular*}
