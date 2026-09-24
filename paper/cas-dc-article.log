@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.3.13)  23 SEP 2026 14:54
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.3.13)  24 SEP 2026 16:40
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1032,7 +1032,7 @@ pha/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/stix/stix-t1.enc}
 
 {C:/Users/rapha/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/inconsolata/i4-t1
 -0.enc} <./thumbnails/cas-email.jpeg>]
-<figs/total_active_infectious_cases_manaus_2017_2023.png, id=45, 829.29825pt x 
+<figs/total_active_infectious_cases_manaus_2017_2023.png, id=46, 829.29825pt x 
 196.93575pt>
 File: figs/total_active_infectious_cases_manaus_2017_2023.png Graphic file (typ
 e png)
@@ -1060,7 +1060,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 286--299
 
  []
 
-[2 <./figs/total_active_infectious_cases_manaus_2017_2023.png>]
+
 Underfull \hbox (badness 10000) in paragraph at lines 303--313
 
  []
@@ -1071,7 +1071,7 @@ Underfull \hbox (badness 1616) in paragraph at lines 303--313
 e
  []
 
-
+[2]
 Overfull \hbox (2.52553pt too wide) in paragraph at lines 317--324
 \T1/stix/m/n/10 which in-cor-po-rates temperature- and rainfall-dependent mos-
  []
@@ -1121,7 +1121,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 374--385
 
  []
 
-[3]
+[3 <./figs/total_active_infectious_cases_manaus_2017_2023.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 387--392
 
  []
@@ -1421,7 +1421,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 828--859
 
  []
 
-<figs/biting_rate_comparison.png, id=234, 494.5677pt x 322.0833pt>
+<figs/biting_rate_comparison.png, id=235, 494.5677pt x 322.0833pt>
 File: figs/biting_rate_comparison.png Graphic file (type png)
 <use figs/biting_rate_comparison.png>
 Package pdftex.def Info: figs/biting_rate_comparison.png  used on input line 89
@@ -1444,7 +1444,7 @@ Underfull \hbox (badness 2173) in paragraph at lines 898--898
 LS1/stix/m/it/10 D[] \LS1/stix/m/n/10 =
  []
 
-<figs/weekly_beta_calibration_2017.png, id=243, 820.2645pt x 298.11375pt>
+<figs/weekly_beta_calibration_2017.png, id=244, 820.2645pt x 298.11375pt>
 File: figs/weekly_beta_calibration_2017.png Graphic file (type png)
 <use figs/weekly_beta_calibration_2017.png>
 Package pdftex.def Info: figs/weekly_beta_calibration_2017.png  used on input l
@@ -1456,7 +1456,7 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 See the caption package documentation for explanation.
 
 [10 <./figs/biting_rate_comparison.png>]
-<figs/coupled_and_human_Rt_variation_in_2017_with_months.png, id=263, 822.6735p
+<figs/coupled_and_human_Rt_variation_in_2017_with_months.png, id=264, 822.6735p
 t x 278.2395pt>
 File: figs/coupled_and_human_Rt_variation_in_2017_with_months.png Graphic file 
 (type png)
@@ -1536,13 +1536,13 @@ Underfull \hbox (badness 6477) in paragraph at lines 1032--1068
 
 [11 <./figs/weekly_beta_calibration_2017.png> <./figs/coupled_and_human_Rt_vari
 ation_in_2017_with_months.png>]
-<figs/b1_eff_obs_vs_pred_all_years.png, id=284, 426.393pt x 452.04884pt>
+<figs/b1_eff_obs_vs_pred_all_years.png, id=285, 426.393pt x 452.04884pt>
 File: figs/b1_eff_obs_vs_pred_all_years.png Graphic file (type png)
 <use figs/b1_eff_obs_vs_pred_all_years.png>
 Package pdftex.def Info: figs/b1_eff_obs_vs_pred_all_years.png  used on input l
 ine 1070.
 (pdftex.def)             Requested size: 238.25444pt x 252.58691pt.
-<figs/b2_eff_obs_vs_pred_all_years.png, id=285, 432.8973pt x 452.04884pt>
+<figs/b2_eff_obs_vs_pred_all_years.png, id=286, 432.8973pt x 452.04884pt>
 File: figs/b2_eff_obs_vs_pred_all_years.png Graphic file (type png)
 <use figs/b2_eff_obs_vs_pred_all_years.png>
 Package pdftex.def Info: figs/b2_eff_obs_vs_pred_all_years.png  used on input l
@@ -1595,19 +1595,19 @@ Underfull \hbox (badness 2005) in paragraph at lines 1083--1106
 
 [12 <./figs/b1_eff_obs_vs_pred_all_years.png> <./figs/b2_eff_obs_vs_pred_all_ye
 ars.png>]
-<figs/b1_2022_environmental_response_A.png, id=298, 663.6795pt x 286.06876pt>
+<figs/b1_2022_environmental_response_A.png, id=299, 663.6795pt x 286.06876pt>
 File: figs/b1_2022_environmental_response_A.png Graphic file (type png)
 <use figs/b1_2022_environmental_response_A.png>
 Package pdftex.def Info: figs/b1_2022_environmental_response_A.png  used on inp
 ut line 1111.
 (pdftex.def)             Requested size: 238.25444pt x 102.69658pt.
-<figs/b1_2022_environmental_response_B.png, id=299, 678.1335pt x 295.1025pt>
+<figs/b1_2022_environmental_response_B.png, id=300, 678.1335pt x 295.1025pt>
 File: figs/b1_2022_environmental_response_B.png Graphic file (type png)
 <use figs/b1_2022_environmental_response_B.png>
 Package pdftex.def Info: figs/b1_2022_environmental_response_B.png  used on inp
 ut line 1119.
 (pdftex.def)             Requested size: 238.25444pt x 103.67917pt.
-<figs/b1_2022_environmental_response_C.png, id=300, 720.291pt x 314.3745pt>
+<figs/b1_2022_environmental_response_C.png, id=301, 720.291pt x 314.3745pt>
 File: figs/b1_2022_environmental_response_C.png Graphic file (type png)
 <use figs/b1_2022_environmental_response_C.png>
 Package pdftex.def Info: figs/b1_2022_environmental_response_C.png  used on inp
@@ -1619,19 +1619,19 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 1128.
 See the caption package documentation for explanation.
 
-<figs/b2_2020_environmental_response_A.png, id=301, 714.87074pt x 305.34074pt>
+<figs/b2_2020_environmental_response_A.png, id=302, 714.87074pt x 305.34074pt>
 File: figs/b2_2020_environmental_response_A.png Graphic file (type png)
 <use figs/b2_2020_environmental_response_A.png>
 Package pdftex.def Info: figs/b2_2020_environmental_response_A.png  used on inp
 ut line 1144.
 (pdftex.def)             Requested size: 238.25444pt x 101.76447pt.
-<figs/b2_2020_environmental_response_B.png, id=302, 726.91576pt x 308.352pt>
+<figs/b2_2020_environmental_response_B.png, id=303, 726.91576pt x 308.352pt>
 File: figs/b2_2020_environmental_response_B.png Graphic file (type png)
 <use figs/b2_2020_environmental_response_B.png>
 Package pdftex.def Info: figs/b2_2020_environmental_response_B.png  used on inp
 ut line 1152.
 (pdftex.def)             Requested size: 238.25444pt x 101.06482pt.
-<figs/b2_2020_environmental_response_C.png, id=303, 783.52725pt x 337.26pt>
+<figs/b2_2020_environmental_response_C.png, id=304, 783.52725pt x 337.26pt>
 File: figs/b2_2020_environmental_response_C.png Graphic file (type png)
 <use figs/b2_2020_environmental_response_C.png>
 Package pdftex.def Info: figs/b2_2020_environmental_response_C.png  used on inp
@@ -2322,7 +2322,7 @@ Package rerunfilecheck Info: File `cas-dc-article.out' has not changed.
 Here is how much of TeX's memory you used:
  18776 strings out of 467871
  296083 string characters out of 5418376
- 721211 words of memory out of 5000000
+ 721215 words of memory out of 5000000
  47170 multiletter control sequences out of 15000+600000
  754492 words of font info for 210 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -2345,9 +2345,9 @@ s/type1/public/stix/stix-mathrm-bold.pfb><C:/Users/rapha/AppData/Local/Programs
 rograms/MiKTeX/fonts/type1/public/stix/stix-mathscr.pfb><C:/Users/rapha/AppData
 /Local/Programs/MiKTeX/fonts/type1/public/stix/stix-mathsf.pfb><C:/Users/rapha/
 AppData/Local/Programs/MiKTeX/fonts/type1/public/stix/stix-mathtt.pfb>
-Output written on cas-dc-article.pdf (20 pages, 1773306 bytes).
+Output written on cas-dc-article.pdf (20 pages, 1773686 bytes).
 PDF statistics:
- 659 PDF objects out of 1000 (max. 8388607)
+ 660 PDF objects out of 1000 (max. 8388607)
  191 named destinations out of 1000 (max. 500000)
  66 words of extra memory for PDF output out of 10000 (max. 10000000)
 
