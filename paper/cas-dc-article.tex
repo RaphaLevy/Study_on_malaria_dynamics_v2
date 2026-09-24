@@ -288,14 +288,30 @@ where $\text{Cases}(d,m,z,t_1,t_2)$ denotes the number of reported cases for
 disease $d$ in municipality $m$ and zone $z$ over the interval $[t_1,t_2]$, 
 and $\text{Pop}(m,z,\cdot)$ represents the population at the midpoint of the interval.
 \\\\
-This relationship was inverted to estimate rural population values from reported incidence and case counts. 
+This relationship was inverted in order to estimate a ratio of rural to total population from reported incidence and case counts in both zones. 
 Using this approach, the rural population of Manaus was estimated to represent less than $1\%$ of the total population, ranging between $0.3\%$ and $0.6\%$ 
-of the total municipal population, while accounting for a disproportionately large share of malaria cases (approximately $30\%$ to $40\%$ over the study periods).
+of the total population of the municipality, while accounting for a disproportionately large share of malaria cases (approximately $30\%$ to $40\%$ over the study periods).
 \\\\
 Yearly total population values for Manaus were obtained via interpolation based on official census data from 
 the Brazilian Institute of Geography and Statistics (IBGE) for the years 2000, 2010, and 
 2022 \cite{Census2000, Census2010, Census2022}. Intermediate yearly values were constructed using 
 linear interpolation, while values beyond 2022 were extrapolated based on observed trends.
+\\\\
+It must be noted that the inter-census estimates of the rural population were derived from fixed
+rural-urban proportions based on the 2010 census. \cite{Rorato2023}. While this approach
+ensures internal consistency, it does not account for the marked
+demographic changes in Manaus over time, particularly the rapid
+urbanization observed in the region. To mitigate this limitation, the
+rural proportions used in this study were recalculated by interpolating and
+extrapolating the available census data, giving an approximate decrease of $2.38\%$ of the rural population per year, 
+providing a more realistic
+representation of the temporal evolution of the population. This
+adjustment is relevant because rural areas contribute
+disproportionately to malaria incidence. Nevertheless, the resulting
+decrease in $N_y$ during 2017-2023 reflects a demographic trend that
+may still not correspond to the actual exposure of the human population
+to mosquitoes. 
+
 
 \subsection{Data Consistency Adjustments}
 \label{sec:data_consistency_adjustments}
@@ -304,12 +320,12 @@ During preprocessing, inconsistencies were identified in the Trajetorias dataset
 incidence rates for the period 2015-2019 had been calculated using population estimates corresponding 
 to 2004-2008, resulting in a temporal mismatch. These values were recalculated using population 
 estimates consistent with the appropriate time interval.
-\\\\
-Additionally, rural and urban population estimates for intermediate years had been derived using fixed 
-proportions based on 2010 data. To better account for demographic changes, particularly urbanization, 
-these estimates were revised. The rural population for 2006 was approximated as the mean between the 
-reported values for 2000 and 2010, while the 2017 value was obtained through extrapolation based on the 
-observed growth trend. These adjustments ensured temporal consistency in the population data used throughout the study. 
+%\\\\
+%Additionally, rural and urban population estimates for intermediate years had been derived using fixed 
+%proportions based on 2010 data. To better account for demographic changes, particularly urbanization, 
+%these estimates were revised. The rural population for 2006 was approximated as the mean between the 
+%reported values for 2000 and 2010, while the 2017 value was obtained through extrapolation based on the 
+%observed growth trend. These adjustments ensured temporal consistency in the population data used throughout the study. 
 
 \subsection{Baseline Delayed SIR-SEI Model}
 \label{sec:baseline_delayed_sir_sei}
@@ -1285,23 +1301,11 @@ functional form may be needed to better capture the environmental effects on tra
 
 \subsection{Limitations}
 \label{sec:limitations}
-Several limitations should be acknowledged. First, the population at
-risk $N_y$ was taken as the rural population of Manaus. The
-inter-census estimates for this quantity were provided by the
-Trajetórias Project \cite{Rorato2023}, which derives them from fixed
-rural-urban proportions based on the 2010 census. While this approach
-ensures internal consistency, it does not account for the marked
-demographic changes in Manaus over time, particularly the rapid
-urbanization observed in the region. To mitigate this limitation, the
-rural proportions used in this study were recalculated (see
-Section~\ref{sec:data_consistency_adjustments}) by interpolating and
-extrapolating the available census data, providing a more realistic
-representation of the temporal evolution of the rural population. This
-adjustment is relevant because rural areas contribute
-disproportionately to malaria incidence. Nevertheless, the resulting
-decrease in $N_y$ during 2017-2023 reflects a demographic trend that
-may still not correspond to the actual exposure of the human population
-to mosquitoes. Second, the environmental drivers are treated as
+Several limitations should be acknowledged. First, as mentioned in
+Section~\ref{sec:population_estimates}, the ratio of rural to total population had to be recalculated,
+given that the ratios from the Trajetorias Project \cite{Rorato2023} for the years of 2006 and 2017 both used 
+the estimated rural and urban populations from the 2010 census, which conceal the decline of the rural population from 2000 to 2010. 
+Second, the environmental drivers are treated as
 deterministic and observed; unobserved covariates, such as vector
 control interventions or local mobility, are not represented and may
 contribute to the between-season degradation of the random forest.
