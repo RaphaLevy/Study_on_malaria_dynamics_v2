@@ -313,13 +313,13 @@ may still not correspond to the actual exposure of the human population
 to mosquitoes. 
 
 
-\subsection{Data Consistency Adjustments}
-\label{sec:data_consistency_adjustments}
+%\subsection{Data Consistency Adjustments}
+%\label{sec:data_consistency_adjustments}
 
-During preprocessing, inconsistencies were identified in the Trajetorias dataset. In particular, 
-incidence rates for the period 2015-2019 had been calculated using population estimates corresponding 
-to 2004-2008, resulting in a temporal mismatch. These values were recalculated using population 
-estimates consistent with the appropriate time interval.
+%During preprocessing, inconsistencies were identified in the Trajetorias dataset. In particular, 
+%incidence rates for the period 2015-2019 had been calculated using population estimates corresponding 
+%to 2004-2008, resulting in a temporal mismatch. These values were recalculated using population 
+%estimates consistent with the appropriate time interval.
 %\\\\
 %Additionally, rural and urban population estimates for intermediate years had been derived using fixed 
 %proportions based on 2010 data. To better account for demographic changes, particularly urbanization, 
@@ -1305,6 +1305,10 @@ Several limitations should be acknowledged. First, as mentioned in
 Section~\ref{sec:population_estimates}, the ratio of rural to total population had to be recalculated,
 given that the ratios from the Trajetorias Project \cite{Rorato2023} for the years of 2006 and 2017 both used 
 the estimated rural and urban populations from the 2010 census, which conceal the decline of the rural population from 2000 to 2010. 
+In addition to that, other inconsistencies were identified in the dataset: in particular, 
+incidence rates for the period 2015-2019 had been calculated using population estimates corresponding 
+to 2004-2008, resulting in a temporal mismatch. These values were recalculated using population 
+estimates consistent with the appropriate time interval.
 Second, the environmental drivers are treated as
 deterministic and observed; unobserved covariates, such as vector
 control interventions or local mobility, are not represented and may
