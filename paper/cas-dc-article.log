@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.3.13)  24 SEP 2026 18:45
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.3.13)  28 SEP 2026 11:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1673,10 +1673,6 @@ Underfull \hbox (badness 5217) in paragraph at lines 1180--1188
 _response_B.png> <./figs/b1_2022_environmental_response_C.png> <./figs/b2_2020_
 environmental_response_A.png> <./figs/b2_2020_environmental_response_B.png> <./
 figs/b2_2020_environmental_response_C.png>]
-
-LaTeX Warning: Reference `FIG:1A' on page 14 undefined on input line 1209.
-
-
 Underfull \hbox (badness 4899) in paragraph at lines 1222--1234
 \T1/stix/m/n/10 and that the in-trin-sic in-cu-ba-tion pe-riod $\LS1/stix/m/it/
 10 ^^\[]$ \T1/stix/m/n/10 and the
@@ -2305,22 +2301,19 @@ L3 programming layer <2025-12-24>
  ***********
 
 
-LaTeX Warning: There were undefined references.
-
-
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `cas-dc-article.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 18775 strings out of 467871
- 296068 string characters out of 5418376
- 721215 words of memory out of 5000000
- 47170 multiletter control sequences out of 15000+600000
+ 18773 strings out of 467871
+ 296026 string characters out of 5418376
+ 721119 words of memory out of 5000000
+ 47168 multiletter control sequences out of 15000+600000
  754492 words of font info for 210 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 90i,19n,117p,1149b,625s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 90i,19n,117p,1168b,625s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\rapha\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi450\ecss
 0800.pk> <C:\Users\rapha\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi60
 0\ecsi0900.pk> <C:\Users\rapha\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec
@@ -2339,7 +2332,7 @@ s/type1/public/stix/stix-mathrm-bold.pfb><C:/Users/rapha/AppData/Local/Programs
 rograms/MiKTeX/fonts/type1/public/stix/stix-mathscr.pfb><C:/Users/rapha/AppData
 /Local/Programs/MiKTeX/fonts/type1/public/stix/stix-mathsf.pfb><C:/Users/rapha/
 AppData/Local/Programs/MiKTeX/fonts/type1/public/stix/stix-mathtt.pfb>
-Output written on cas-dc-article.pdf (20 pages, 1773464 bytes).
+Output written on cas-dc-article.pdf (20 pages, 1773289 bytes).
 PDF statistics:
  660 PDF objects out of 1000 (max. 8388607)
  190 named destinations out of 1000 (max. 500000)
