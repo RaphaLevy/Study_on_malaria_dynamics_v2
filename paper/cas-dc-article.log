@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.3.13)  28 SEP 2026 11:24
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.3.13)  28 SEP 2026 11:28
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -876,14 +876,6 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: float package is loaded.
 Package caption Info: threeparttable package is loaded.
 Package caption Info: End \AtBeginDocument code.
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 60.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 60.
-
 \verbatim@out=\write4
 \openout4 = `cas-dc-article.abs'.
 
@@ -1040,7 +1032,7 @@ pha/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/stix/stix-t1.enc}
 
 {C:/Users/rapha/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/inconsolata/i4-t1
 -0.enc} <./thumbnails/cas-email.jpeg>]
-<figs/total_active_infectious_cases_manaus_2017_2023.png, id=47, 829.29825pt x 
+<figs/total_active_infectious_cases_manaus_2017_2023.png, id=46, 829.29825pt x 
 196.93575pt>
 File: figs/total_active_infectious_cases_manaus_2017_2023.png Graphic file (typ
 e png)
@@ -2315,17 +2307,17 @@ Package rerunfilecheck Info: File `cas-dc-article.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 18787 strings out of 467871
- 296297 string characters out of 5418376
- 722143 words of memory out of 5000000
- 47182 multiletter control sequences out of 15000+600000
- 761332 words of font info for 224 fonts, out of 8000000 for 9000
+ 18774 strings out of 467871
+ 296044 string characters out of 5418376
+ 722146 words of memory out of 5000000
+ 47169 multiletter control sequences out of 15000+600000
+ 757257 words of font info for 211 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  90i,19n,117p,1168b,625s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\rapha\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi450\ecss
 0800.pk> <C:\Users\rapha\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi60
-0\ecsi0900.pk> <C:\Users\rapha\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec
-/dpi600\ecsx0900.pk> <C:\Users\rapha\AppData\Local\MiKTeX\fonts/pk/ljfour/jknap
+0\ecsx0900.pk> <C:\Users\rapha\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec
+/dpi600\ecsi0900.pk> <C:\Users\rapha\AppData\Local\MiKTeX\fonts/pk/ljfour/jknap
 pen/ec/dpi600\ecss0900.pk><C:/Users/rapha/AppData/Local/Programs/MiKTeX/fonts/t
 ype1/public/inconsolata/Inconsolata-zi4r.pfb><C:/Users/rapha/AppData/Local/Prog
 rams/MiKTeX/fonts/type1/public/stix/STIXGeneral-Bold.pfb><C:/Users/rapha/AppDat
@@ -2340,9 +2332,9 @@ s/type1/public/stix/stix-mathrm-bold.pfb><C:/Users/rapha/AppData/Local/Programs
 rograms/MiKTeX/fonts/type1/public/stix/stix-mathscr.pfb><C:/Users/rapha/AppData
 /Local/Programs/MiKTeX/fonts/type1/public/stix/stix-mathsf.pfb><C:/Users/rapha/
 AppData/Local/Programs/MiKTeX/fonts/type1/public/stix/stix-mathtt.pfb>
-Output written on cas-dc-article.pdf (20 pages, 1774340 bytes).
+Output written on cas-dc-article.pdf (20 pages, 1775848 bytes).
 PDF statistics:
- 660 PDF objects out of 1000 (max. 8388607)
+ 666 PDF objects out of 1000 (max. 8388607)
  190 named destinations out of 1000 (max. 500000)
  66 words of extra memory for PDF output out of 10000 (max. 10000000)
 
