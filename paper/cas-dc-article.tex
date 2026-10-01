@@ -569,9 +569,9 @@ The nine calibrated parameters were grouped into four biological ``topics'' for 
 \item \textbf{Force of infection} $(b_1,\, b_2)$: the human-to-mosquito and mosquito-to-human transmission probabilities;
 \item \textbf{Carrying capacity} $(M')$: the baseline mosquito population scale that determines the environmental carrying capacity $K(t)$.
 \end{enumerate}
-
+\vspace{0.6cm}
 The parameter bounds are given in Table~\ref{tbl:bounds}. The lower bound on $H_0 = 20\%$ prevents the humidity response from collapsing (which would drive $\mu \to \infty$ and extinguish the vector population). The bound on $b_2 \geq 0.01$ ensures a minimum level of mosquito-to-human transmission, while $\tau_H \in [10, 20]$ days constrains the human incubation period to the biologically plausible range for \textit{P. vivax} \cite{brasil_et_al_2011_unexpectedly_long_incubation_period_of_plasmodium_vivax}.
-\newpage
+%\newpage
 \begin{table}[h]
 \begin{threeparttable}
 \caption{Parameter bounds for sequential topic calibration.}\label{tbl:bounds}
@@ -792,7 +792,7 @@ The disease-free equilibrium (DFE) is
 \begin{equation}\label{eq:dfe}
 \begin{aligned}
 x_0 &= (S_H^*, E_H^*, I_H^*, R_H^*, S_M^*, E_M^*, I_M^*)^\top \\
-    &= (N, 0, 0, 0, M^*, 0, 0)^\top .
+    &= (N, 0, 0, 0, M^*, 0, 0)^\top 
 \end{aligned}
 \end{equation}
 The equilibrium mosquito abundance $M^*$ is obtained from the mosquito subsystem
@@ -883,22 +883,102 @@ dynamics.
 
 The reproduction number in Eq.~(\ref{eq:R0_factors}) depends on the
 reference habitat state through the mosquito recruitment
-$\Lambda^* = \mu M^*$, which inherits the environmental dependence of
-the recruitment function $b(\bar{R},\bar{T})$ and of the carrying
-capacity $\bar{K}$ (Eq.~\ref{eq:lambda_star}). Consequently,
-$\mathcal{R}_0$ is a function of the calibrated parameters and of the
-environmental drivers. Because these quantities enter nonlinearly and
-are mutually coupled, the relative contribution of each to the
-invasion threshold is not apparent from the analytical expression
-alone, and must be quantified numerically.
-%To this end, we adopt a global sensitivity analysis based on Latin hypercube sampling (LHS) combined with partial rank correlation coefficients (PRCC)~\cite{marino2008}, the standard framework for uncertainty and sensitivity analysis in compartmental models of
-%vector-borne disease. Each parameter is drawn independently from a uniform distribution over its range in Table~\ref{tbl:bounds}. For $n = 10{,}000$ sampled combinations we evaluate three output quantities: the reproduction number from
-%Eq.~(\ref{eq:R0_factors}), the seasonal peak of the human infectious compartment, and the cumulative number of human cases, the latter two obtained by numerical integration of the model.
-%(Section~\ref{sec:computational_implementation}). 
-%PRCC measures the monotonic association between each input and each output after removing the effect of the remaining parameters, yielding a robust ranking of influential parameters that is insensitive to the nonlinear couplings
-%of the system. Because $\mathcal{R}_0$ factorises (Eq.~\ref{eq:R0_factors}), the analysis also provides a numerical check of the analytical structure: parameters that cancel in the closed form should return a
-%PRCC indistinguishable from zero. The results are reported in Section~\ref{sec:results_sensitivity}.
-
+$\Lambda^* = \mu M^*$, which inherits the environmental dependence of the
+recruitment function $b(\bar{R},\bar{T})$ and of the carrying capacity
+$\bar{K}$ (Eq.~\ref{eq:lambda_star}). The calibrated parameters and the
+environmental drivers therefore enter $\mathcal{R}_0$ nonlinearly and in a
+mutually coupled way. To quantify how accurately each of them must be
+estimated we report the normalized sensitivity index of Abdelrazec and
+Gumel~\cite{math_assessment_of_the_role_of_temp_and_rainfall},
+\begin{equation}
+S_x = \frac{x}{Y}\,\frac{\partial Y}{\partial x}= \frac{\partial \log Y}{\partial \log x},
+\label{eq:normalized_sensitivity}
+\end{equation}
+where $Y$ is an output of the model and $x$ one of its inputs. $S_x$ is the
+relative change of $Y$ produced by a $1\%$ relative change of $x$: a large
+$|S_x|$ means that a small relative error on $x$ is amplified into a large
+relative error on $Y$, so that parameter deserves a careful estimate, whereas
+$S_x = 0$ means that the output is locally insensitive to $x$. The index is
+dimensionless, and being a logarithmic derivative it is directly comparable
+across parameters with different units. Because each output is decomposed
+about a single physically meaningful operating point rather than over a
+sampled hypercube, no probability law is assumed on the inputs, which are
+admissible biological intervals; the price is that interactions between
+parameters are then resolved only through the curvature of the response
+away from that point, the usual trade-off between local and global
+sensitivity methods~\cite{cariboni2007}.
+\\\\
+%\paragraph{Reference points and outputs:}
+Two outputs are decomposed, each about its own reference point. The first is
+the closed-form reproduction number of Eq.~(\ref{eq:R0_factors}), evaluated
+at a single reference environmental state: the mean climate of the
+transmission season, that is, of the days of 2017-2023 on which the model
+sustains $\mathcal{R}_0 > 1$ (39.8\% of the study-period days, with
+$\bar{T} = 25.57\,^{\circ}\mathrm{C}$, $\bar{R} = 7.19\,\mathrm{mm}$ and
+$\bar{H} = 78.34\%$). Averaging over the transmission season rather than over
+all days avoids evaluating the bell-shaped rainfall-recruitment response at
+an arithmetic-mean rainfall dominated by dry days, which would force
+$\mathcal{R}_0$ below the threshold; at this reference the pre-calibration
+parameter values of Table~\ref{tbl1} give $\mathcal{R}_0 = 2.20$, with
+$\mathcal{R}_0^H = 4.17$ and $\mathcal{R}_0^M = 1.16$, the
+carrying-capacity scale being $M' = 468{,}580$.
+\\\\
+Because $\mathcal{R}_0$ is available in closed form, its index is obtained
+analytically. The elementary response functions of
+Table~\ref{tbl1} are assembled symbolically into $\mathcal{R}_0$ and
+Eq.~(\ref{eq:normalized_sensitivity}) is differentiated by the chain rule
+over the composite rates of the model (the biting rate $a$, the mortality
+$\mu$, the sporogonic development rate $b_{3M}$, the sporozoite survival
+$\ell$, the development times $\tau_M$ and $\tau_L$, the recruitment rate
+$\bar{b}$ and the recruitment $\Lambda^*$) which are themselves functions
+of the primary parameters. As an independent check the same index is also
+evaluated numerically, by central differences of the implemented closed form,
+$S_x \approx [Y(x(1+h)) - Y(x(1-h))]/[2hY]$ with $h = 0.05$. The two agree to
+$2.6\times 10^{-3}$ over the parameters for which the index is a smooth
+function of its input, the residual being the $O(h^2)$ truncation error of
+the difference quotient (verified to decrease quadratically as $h$ is
+reduced from $0.05$ to $0.005$).
+\\\\
+The second output is read from the numerical solution of
+Section~\ref{sec:numerical_solver_implementation} and therefore retains the
+environmental forcing and the nonlinear couplings that the closed form
+suppresses: the seasonal maximum of the infectious-human compartment,
+\begin{equation}
+Q_{\mathrm{peak}}(\theta)=\max_{t} I_H(t;\theta),
+\label{eq:qpeak}
+\end{equation}
+averaged over the calibrated years 2017-2023, which amounts to
+$Q_{\mathrm{peak}} = 1{,}033$ infectious individuals. No closed form exists
+for this output, so its index is \emph{estimated} with the same central
+difference ($h = 0.05$), each perturbation re-integrating all seven years;
+the nine calibrated parameters are perturbed about their per-year calibrated
+value and the sixteen climate-response constants about the baseline values
+of Table~\ref{tbl:bounds}.
+\\\\
+All 25 model parameters are decomposed and are reported in five groups: the
+calibrated epidemiological parameters $(H_0, k, \varphi, \gamma, b_1, b_2,
+M')$, the human immune parameters \\$(\tau_H, \omega)$, the temperature and
+rainfall rates $(T', D_1, R_L, DD, \\T_{\min}, T_{\max}^{\mathrm{p}},
+T_{\mathrm{opt}}^{\mathrm{p}})$, the mosquito mortality and larval
+parameters $(A, B, C, B_E, c_1, c_2)$ and the \textit{Anopheles} thermal
+suitability parameters $(T_{\min}^{\mathrm{a}}, T_{\mathrm{opt}}^{\mathrm{a}},
+T_{\max}^{\mathrm{a}})$. Three cases require care. The two parameters that
+cancel from the closed form of Section~\ref{sec:basic_reproduction_number},
+$\tau_H$ and $\omega$, have analytic index exactly zero, a property of the
+next-generation matrix and not an empirical finding, whereas in the
+integrated dynamics they are estimated like any other parameter, so that the
+analytical and the numerical statements can be compared. The three
+\textit{Anopheles} suitability temperatures act on $\mathcal{R}_0$ only
+through the thermal suitability factor $f_T$, which is saturated
+($f_T = 1$) at the reference climate; their analytic index is therefore zero
+there, and a finite-difference estimate that crosses the clamp is not
+meaningful, so they are excluded from the analytic-versus-numeric
+comparison. Finally, the population size $N$ is not a free parameter of the
+calibration but carries a constant index $-1/2$, and is tabulated for
+completeness. Every index of Table~\ref{tbl:index} is produced by a single
+script from a fixed reference point, with no sampling, so that the table and
+Fig.~\ref{FIG:local_sensitivity} are exactly reproducible; the global
+analysis of Section~\ref{sec:results_sobol} samples the same box instead.
 
 %\newpage
 \section{Results}
@@ -906,15 +986,16 @@ alone, and must be quantified numerically.
 
 \subsection{Recalibration of the temperature-dependent biting rate}
 \label{sec:results_biting_rate}
-The temperature-dependent biting rate was recalibrated using field estimates of \textit{Anopheles darlingi} feeding behavior, as described in Section~\ref{sec:recalibration_temp_dependent_biting_rate}. The recalibrated function has a minimum biting temperature threshold of $T' = 16\,^{\circ}\mathrm{C}$ and a thermal scaling factor $D_1 = 24.8\,^{\circ}\mathrm{C}\,\mathrm{days}$. Compared with the original Parham \& Michael parameterization, the recalibrated function better reflects the temperature range observed in the Amazon and produces higher biting rates during the transmission season in Manaus (Fig.~\ref{FIG:biting_rate}). This recalibrated biting rate is used in all subsequent simulations and in the weekly transmission regressions presented in Section~\ref{sec:results_regression}.
+The temperature-dependent biting rate was recalibrated using field estimates of \textit{Anopheles darlingi} feeding behavior, as described in Section~\ref{sec:recalibration_temp_dependent_biting_rate}. The recalibrated function has a minimum biting temperature threshold of $T' = 16^{\circ}\mathrm{C}$ and a thermal scaling factor $D_1 = 24.8^{\circ}\mathrm{C}\mathrm{days}$. Compared with the original Parham \& Michael parameterization, the recalibrated function better reflects the temperature range observed in the Amazon and produces higher biting rates during the transmission season in Manaus (Fig.~\ref{FIG:biting_rate}). This recalibrated biting rate is used in all subsequent simulations and in the weekly transmission regressions presented in Section~\ref{sec:results_regression}.
 
 \renewcommand{\thefigure}{2}
-\vspace{0.6cm}
+\begin{figure}[pos=h]
 
 \noindent
 \includegraphics[width=\columnwidth]{figs/biting_rate_comparison.png}
 \captionof{figure}{Comparison between the recalibrated temperature-dependent biting rate $a(T)$ used in this work ($T'=16\,^{\circ}\mathrm{C}$, $D_1 = 24.8\,^{\circ}\mathrm{C}\,\mathrm{days}$) and the original Parham \& Michael (2010) parameterization \cite{Parham2010} ($T'=19.9\,^{\circ}\mathrm{C}$, $D_1 = 36.5\,^{\circ}\mathrm{C}\,\mathrm{days}$). The shaded band indicates the range of daily mean temperatures observed in Manaus between 2017 and 2023 (5th-95th percentiles), and the dashed vertical line marks the recalibrated biting threshold $T'=16\,^{\circ}\mathrm{C}$.}
 \label{FIG:biting_rate}
+\end{figure}
 
 \subsection{Model calibration reproduces the observed transmission dynamics}
 \label{sec:results_calibration}
@@ -926,14 +1007,15 @@ The SEIRS-SEI model was calibrated year by year over 2017-2023 following the seq
 %\label{FIG:model_vs_data}
 %\end{figure}
 \renewcommand{\thefigure}{3}
-\vspace{0.6cm}
+\begin{figure}[pos=h]
 
 \noindent
 \includegraphics[width=\columnwidth]{figs/weekly_beta_calibration_2017.png}
 \captionof{figure}{Comparison between the observed active cases and the model estimation of the infectious human compartment $I_H$ for 2017.}
 \label{FIG:model_vs_data}
+\end{figure}
 
-\begin{table*}[H]
+\begin{table*}[pos=h]
 \centering
 \caption{Year-by-year calibrated parameters and weighted mean squared error (wMSE) of the SEIRS-SEI model, 2017-2023.}
 \label{tbl:calibration}
@@ -951,15 +1033,6 @@ Year & $H_0$ & $k$ & $\varphi$ & $\tau_H$ & $\gamma$ & $\omega$ & $b_1$ & $b_2$ 
 \bottomrule
 \end{tabular}
 \end{table*}
-
-
-\renewcommand{\thefigure}{4}
-
-\noindent
-\includegraphics[width=\columnwidth]{figs/coupled_and_human_Rt_variation_in_2017_with_months.png}
-\captionof{figure}{Seasonal variation of the coupled and human basic reproduction number
-$\mathcal{R}(t)$ for the calibrated model in 2017.}
-\label{FIG:R0_seasonal}
 \vspace{0.6cm}
 Figure~\ref{FIG:R0_seasonal} shows the seasonal variation of both human and coupled
 $\mathcal{R}(t)$ during 2017, obtained by substituting the calibrated parameters and
@@ -972,53 +1045,188 @@ drivers, this curve makes explicit the dependence of the invasion
 threshold on the climate-habitat state highlighted in
 Section~\ref{sec:basic_reproduction_number}, and motivates the week-specific regression of the
 transmission probabilities pursued in Section~\ref{sec:results_regression}.
+\renewcommand{\thefigure}{4}
+\begin{figure}[pos=h]
+\noindent
+\includegraphics[width=\columnwidth]{figs/coupled_and_human_Rt_variation_in_2017_with_months.png}
+\captionof{figure}{Seasonal variation of the coupled and human basic reproduction number
+$\mathcal{R}(t)$ for the calibrated model in 2017.}
+\label{FIG:R0_seasonal}
+\end{figure}
 
-%\subsection{Sensitivity of $\mathcal{R}_0$ to the model parameters}
-%\label{sec:results_sensitivity}
 
-%Figure~\ref{FIG:prcc} reports the partial rank correlation coefficients of the calibrated parameters with respect to the three output quantities, obtained as described in Section~\ref{sec:sensitivity}. Diamonds mark the parameters whose
-%year-by-year calibration reached the boundary of the sampled range ($b_1$, $\phi$ and $\tau_H$ at the upper bound; $b_2$, $\gamma$, $M'$ and $H_0$ at the lower bound; Table~\ref{tbl:calibration}).
+\subsection{Local sensitivity of the invasion threshold and of the seasonal peak}
+\label{sec:results_sensitivity}
 
-%\renewcommand{\thefigure}{5}
+For the closed-form reproduction number the normalized index of
+Eq.~(\ref{eq:normalized_sensitivity}) is available analytically, and the
+chain rule over the composite rates of Eq.~\ref{eq:lambda_star} resolves it
+exactly. Writing $\mu$ for the mortality rate, $a$ for the biting rate,
+$b_{3M}$ for the sporogonic development rate, $\ell$ for the sporozoite
+survival probability, $\tau_M$ for the extrinsic incubation period,
+$\bar{b}$ for the recruitment rate and $\Lambda^*$ for the equilibrium
+recruitment, the indices that do not depend on the values of the
+intermediate rates are
 
-%\noindent
-%\includegraphics[width=\columnwidth]{figs/prcc_plot.png}
-%\captionof{figure}{Partial rank correlation coefficients of the calibrated parameters with respect to $\mathcal{R}_0$, the seasonal peak of human infectious cases and the cumulative number of human cases. Diamonds mark the parameters whose year-by-year calibration reached the boundary of the sampled range (Table~\ref{tbl:calibration}).}
-%\label{FIG:prcc}
-%\vspace{0.6cm}
-
-%\begin{figure}[htbp]
-%\centering
-%\includegraphics[width=0.75\textwidth]{figs/prcc_plot.png}
-%\caption{Partial rank correlation coefficients of the calibrated
-%parameters with respect to $\mathcal{R}_0$ (black), the seasonal peak
-%of human infectious cases (grey), and the cumulative number of human
-%cases (light grey). Diamonds mark the parameters whose year-by-year
-%calibration reached the boundary of the sampled range
-%(Table~\ref{tbl:calibration}).}
-%\label{fig:prcc}
-%\end{figure}
-
-The biological survival rates $A$ and $B$ (which carry the
-temperature dependence of the vector) dominate $\mathcal{R}_0$,
-followed by the biting rate $a$ and the mosquito mortality $\mu$.
-These are precisely the vector vital rates coupled to the
-environmental drivers, confirming that the climate-habitat state
-modulates the invasion threshold as established in
-Section~\ref{sec:basic_reproduction_number}. The transmission probabilities $b_1$ and $b_2$
-and the recruitment-related terms $\Lambda$, $M'$ and $H_0$ display
-intermediate sensitivity, while the vector competence $\ell$ contributes
-weakly.
+\begin{equation}
+S_a = 1, \ 
+S_{b_1} = S_{b_2} = S_{\Lambda^*} = \frac{1}{2}, \ 
+S_{\gamma} = S_{N} = -\frac{1}{2}, \ 
+S_{D_1} = -1,
+\label{eq:index_identities}
+\end{equation}
+together with
+\begin{equation}\label{eq:index_identities}
+\begin{aligned}
+&S_{T'} = -\frac{T'}{\bar{T} - T'} = -1.67,\\
+&S_{b_{3M}} = S_{\ell} = \frac{\mu}{2(b_{3M}\ell + \mu)} = +0.39,
+\end{aligned}
+\end{equation}
+and, for the mortality rate that couples every other channel,
+\begin{equation}
+S_{\mu} = \frac{1}{2}\left[
+\frac{\bar{b}}{\bar{b} + \mu} - 2
+- \frac{b_{3M}\ell\,(\mu\tau_M + 1)}{b_{3M}\ell + \mu}\right] = -1.39.
+\label{eq:index_mu}
+\end{equation}
+The remaining indices are the values of Table~\ref{tbl:index}, obtained by
+the same symbolic differentiation of the assembled closed form. Two
+structural readings follow. First, the two transmission probabilities and
+the recruitment $\Lambda^*$ enter $\mathcal{R}_0$ only through the square
+root of Eq.~\ref{eq:R0_factors}, hence the universal index $1/2$: a
+$10\%$ error on either probability shifts the invasion threshold by only
+$5\%$. Second, the thermal-suitability factor $f_T$ is saturated at the
+reference climate, so the three \textit{Anopheles} suitability
+temperatures have index exactly zero there, as they matter only for
+carrying capacity away from the reference state.
 \\\\
-Critically, the PRCCs for the average duration of immunity $\omega$ and the latent period of infection
- $\tau_H$ are indistinguishable from zero.
-This is the numerical counterpart of the analytical factorisation in
-Eq.~(\ref{eq:R0_factors}), in which these two terms cancel exactly and
-therefore do not enter $\mathcal{R}_0$. The agreement between the
-algebraic structure and the empirical sensitivity provides independent
-support for the two-factor formulation derived in
-Section~\ref{sec:basic_reproduction_number}.
+With the exception of $H_0$, every index of Table~\ref{tbl:index} is
+dominated by the mosquito vital rates. The linear coefficient $B$ of the
+adult survival curve is the single most influential quantity
+($S_B = +4.58$), followed by its quadratic coefficient $A$ ($-2.68$),
+the biting-rate threshold $T'$ ($-1.67$), and $D_1$ and $T_{\min}$
+(each $\approx -1.04$). The opposite signs of $A$ and $B$ are not a
+contradiction: what enters the threshold is the local slope of
+$p(T)$ at $\bar{T}$, which is positive there, so the invasion
+condition is governed by the balance of a steeply rising biting rate
+against a steeply falling vector survival.
+\\\\
+The seasonal peak of the calibrated model tells a different story. It is
+carried by the same two coefficients $B$ ($+3.77$) and $A$ ($-2.51$),
+but the maximum temperature of \textit{Plasmodium} development
+$T_{\max}^{\mathrm{p}}$ now ranks third ($+1.68$) and the biting-rate
+threshold $T'$ fourth ($-1.32$). The transmission probabilities $b_2$
+and $b_1$ fall back to $+0.43$ and $+0.36$, and the recovery rate
+$\gamma$ to $-0.40$. Most strikingly, the humidity response is
+essentially irrelevant to the height of the wave ($S_{H_0} = -0.004$)
+although it is one of the leading terms of the invasion threshold
+($S_{H_0} = -1.04$): near-saturation of $p_H$ at the reference
+humidity leaves the peak insensitive to $H_0$ while $\mu$, and hence
+$\mathcal{R}_0$, still responds to it.
+\\\\
+Figure~\ref{FIG:local_sensitivity} displays the two decompositions side by
+side, and Table~\ref{tbl:index} lists them with the exact analytic values of
+the reproduction number. The left panel is the finite-difference estimate
+of the same index; its largest deviation from the analytic value is
+$0.06$ (for $H_0$) and is purely the $O(h^2)$ truncation error of the
+difference quotient, so the two representations of $S_x$ agree.
+\begin{table}[H]
+\centering
+\caption{Normalized sensitivity index $S_x = \partial\log Y/\partial\log x$ of each model parameter, evaluated at the reference state of Section~\ref{sec:sensitivity}. The $\mathcal{R}_0$ column is the exact analytic index; the $Q_{\mathrm{peak}}$ column is the central-difference estimate ($h = 0.05$) of the calibrated model averaged over 2017-2023 ($Q_{\mathrm{peak}} = 1{,}033$). Parameters are grouped as in Table~\ref{tbl:bounds}. A dash denotes a parameter that is structurally absent from the closed form.}
+\label{tbl:index}
+\begin{tabular}{lrrr}
+\toprule
+ & & $S_x$ & $S_x$\\
+Parameter & & $\mathcal{R}_0$ & $Q_{\mathrm{peak}}$\\
+\midrule
+\multicolumn{4}{l}{\itshape Calibrated epidemiological parameters}\\
+$H_0$ & & $-1.040$ & $-0.004$\\
+$k$ & & $+0.365$ & $+0.052$\\
+$\varphi$ & & $+0.004$ & $+0.002$\\
+$\gamma$ & & $-0.500$ & $-0.402$\\
+$b_1$ & & $+0.500$ & $+0.358$\\
+$b_2$ & & $+0.500$ & $+0.430$\\
+$M'$ & & $+0.500$ & $+0.007$\\
+\midrule
+\multicolumn{4}{l}{\itshape Human immune parameters}\\
+$\tau_H$ & & $0$ & $-0.043$\\
+$\omega$ & & $0$ & $+0.014$\\
+\midrule
+\multicolumn{4}{l}{\itshape Temperature and rainfall rates}\\
+$T'$ & & $-1.672$ & $-1.318$\\
+$D_1$ & & $-1.000$ & $-0.848$\\
+$R_L$ & & $-0.436$ & $-0.129$\\
+$DD$ & & $-0.795$ & $-0.318$\\
+$T_{\min}$ & & $-1.041$ & $-0.846$\\
+$T_{\max}^{\mathrm{p}}$ & & $+0.447$ & $+1.680$\\
+$T_{\mathrm{opt}}^{\mathrm{p}}$ & & $+0.334$ & $0.000$\\
+\midrule
+\multicolumn{4}{l}{\itshape Mosquito mortality and larval parameters}\\
+$A$ & & $-2.679$ & $-2.514$\\
+$B$ & & $+4.575$ & $+3.775$\\
+$C$ & & $-0.601$ & $-0.498$\\
+$B_E$ & & $+0.073$ & $+0.056$\\
+$c_1$ & & $+0.110$ & $+0.074$\\
+$c_2$ & & $-0.052$ & $-0.046$\\
+\midrule
+\multicolumn{4}{l}{\itshape \textit{Anopheles} thermal suitability parameters}\\
+$T_{\min}^{\mathrm{a}}$ & & $0$ & $-0.002$\\
+$T_{\mathrm{opt}}^{\mathrm{a}}$ & & $0$ & $+0.004$\\
+$T_{\max}^{\mathrm{a}}$ & & $0$ & $+0.002$\\
+\midrule
+$N$ & & $-0.500$ & $-$\\
+\bottomrule
+\end{tabular}
+\end{table}
 
+
+\renewcommand{\thefigure}{5}
+\begin{figure}[pos=h]
+
+\noindent
+\includegraphics[width=\columnwidth]{figs/local_sensitivity_R0_IH.png}
+\captionof{figure}{Normalized sensitivity index $S_x = \partial\log Y/\partial\log x$ of the 25 model parameters (bars coloured by parameter group). Left: closed-form reproduction number at the reference environmental state, by central differences with $h = 0.05$; the exact analytic values of Table~\ref{tbl:index} differ from these by at most $0.06$, the truncation error of the difference quotient. Right: seasonal maximum of the infectious-human compartment of the calibrated model, averaged over 2017-2023, same scheme. A positive index means the output increases with the parameter. The three \textit{Anopheles} suitability temperatures are exactly zero on the left because the thermal-suitability factor $f_T$ is saturated at the reference climate.}
+\label{FIG:local_sensitivity}
+\end{figure}
+
+\subsection{Global sensitivity of the seasonal peak}
+\label{sec:results_sobol}
+
+The index of Eq.~\eqref{eq:normalized_sensitivity} is a local quantity, and
+its global counterpart is the variance-based Sobol' decomposition of the same
+output $Q_{\mathrm{peak}}$ of Eq.~\eqref{eq:qpeak}, which apportions the
+variance of $Q_{\mathrm{peak}}$ over the whole admissible box of the 25
+parameters of Table~\ref{tbl:bounds} among the individual parameters and
+among their interactions~\cite{saltelli2010}. The box is sampled with a
+Saltelli design of $N = 512$ base points, that is $512 \times 27 =
+13{,}824$ integrations of the calibrated model, each returning the mean
+seasonal peak of 2017-2023, and we retain the first-order and total-order
+indices $S_1$ and $S_T$ only (Fig.~\ref{FIG:sobol_ih}).
+\\\\
+Because $Q_{\mathrm{peak}}$ is a maximum, a parameter set whose transmission
+is locally subcritical leaves $I_H$ pinned at its initial value, and
+$74.4\%$ of the draws of the admissible box are of that kind; the
+decomposition of Fig.~\ref{FIG:sobol_ih} is therefore dominated by whether
+the epidemic takes off at all rather than by the height of an established
+wave, and its indices describe the box rather than the endemic peak, which is
+the caveat under which they must be read. Subject to it, the ranking differs
+sharply from the local one: the recovery rate $\gamma$ absorbs most of the
+variance ($S_T = 0.80$), followed by the curvature $A$ of the adult survival
+curve ($0.25$), whereas the linear coefficient $B$, which dominates
+Table~\ref{tbl:index}, falls to $0.03$, and the three \textit{Anopheles}
+suitability temperatures stay at the $10^{-5}$ level because the thermal
+suitability factor remains saturated over the entire climate range of the
+study.
+
+
+\renewcommand{\thefigure}{6}
+\begin{figure}[pos=h]
+
+\noindent
+\includegraphics[width=\columnwidth]{figs/sobol_ih_qpeak.png}
+\captionof{figure}{First-order ($S_1$, dark bars) and total-order ($S_T$, pale bars) Sobol' indices of the 25 model parameters with respect to the seasonal peak $Q_{\mathrm{peak}}$ of the infectious-human compartment, over the whole admissible parameter box of Table~\ref{tbl:bounds} (Saltelli design, $N = 512$; bars coloured by parameter group). The total-order index also collects the variance that a parameter carries through its interactions with the remaining ones, hence $S_T \geq S_1$. Since $Q_{\mathrm{peak}}$ is a maximum, the $74.4\%$ of the sampled parameter sets that are locally subcritical leave it at the initial value $I_H(0)$; the indices therefore characterize the sampled box and not the height of an established endemic wave.}
+\label{FIG:sobol_ih}
+\end{figure}
 
 \subsection{The constant-coefficient climate model underfits the observed dynamics}
 \label{sec:results_weekly_beta}
@@ -1044,10 +1252,10 @@ Year & Climate-driven & Weekly free & Reduction factor \\
 \bottomrule
 \end{tabular}
 \end{table}
-
+\newpage
 \subsection{Environmental regression of the transmission probabilities $b_1$ and $b_2$}
 \label{sec:results_regression}
-Following the framework described in Section~\ref{sec:intro}, the freed weekly per-bite transmission probabilities were regressed against the environmental predictors $T,\,R,\,H,\,D_f,\,F_c,\,F_t$, representing temperature, precipitation, humidity, deforestation, fire counts and fire trends. A separate random forest model was fitted for each year.
+Following the framework described in Section~\ref{sec:intro}, the freed weekly per-bite transmission probabilities were regressed against the environmental predictors $T,\,R,\,H,\,D_f,\\\,F_c,\,F_t$, representing temperature, precipitation, humidity, deforestation, fire counts and fire trends. A separate random forest model was fitted for each year.
 \\\\
 Within each year the model explains a a large part of the variance of both transmission probabilities, with prediction bias was close to zero in all years (|bias| $\lesssim$ 0.003 in every year; Table~\ref{tbl:regression}).
 %\\\\
@@ -1089,14 +1297,14 @@ Within each year the model explains a a large part of the variance of both trans
 %\captionof{figure}{Best within-year random-forest fit of the freed weekly per-bite transmission from infected humans to susceptible mosquitoes ($b_1$).}
 \label{FIG:scatter_b1}
 
-\renewcommand{\thefigure}{5}
-%\vspace{0.6cm}
+\renewcommand{\thefigure}{7}
+\begin{figure}[pos=h]
 
 \noindent
 \includegraphics[width=\columnwidth]{figs/b2_eff_obs_vs_pred_all_years.png}
 \captionof{figure}{Scatter plot of the estimated vs predicted weekly-free proportion bites from infected humans to susceptible mosquitoes ($b_1$) and from infected mosquitoes to susceptible humans ($b_2$)  that result in infection.}
 \label{FIG:scatter_b2}
-\vspace{0.6cm}
+\end{figure}
 
 The importance of the predictors, however, differs between the two probabilities, as can be seen in Table~\ref{tbl:predictors_importance}.
 \begin{table}[H]
@@ -1122,7 +1330,7 @@ A leave-one-year-out cross-validation of the same forests qualifies this result.
 \\\\
 The shape of these responses is illustrated in Figs.~\ref{FIG:response_b1} and \ref{FIG:response_b2}, which shows the partial dependence of $b_1$ and $b_2$ on each predictor for the best fitted year for each transmission probability.
 
-\renewcommand{\thefigure}{6A}
+\renewcommand{\thefigure}{8A}
 \vspace{0.6cm}
 
 \noindent
@@ -1130,7 +1338,7 @@ The shape of these responses is illustrated in Figs.~\ref{FIG:response_b1} and \
 %\captionof{figure}{Partial dependence of the weekly per-bite transmission probability $b_1$ on each environmental predictor.}
 \label{FIG:response_b1_A}
 
-\renewcommand{\thefigure}{6B}
+\renewcommand{\thefigure}{8B}
 %\vspace{0.6cm}
 
 \noindent
@@ -1138,15 +1346,16 @@ The shape of these responses is illustrated in Figs.~\ref{FIG:response_b1} and \
 %\captionof{figure}{Partial dependence of the weekly per-bite transmission probability $b_1$ on each environmental predictor.}
 \label{FIG:response_b1_B}
 
-\renewcommand{\thefigure}{6}
-%\vspace{0.6cm}
+\renewcommand{\thefigure}{8}
+\begin{figure}[pos=h]
 
 \noindent
 \includegraphics[width=\columnwidth]{figs/b1_2022_environmental_response_C.png}
 \captionof{figure}{Partial dependence of the weekly per-bite transmission probability $b_1$ on each environmental predictor in 2022.}
 \label{FIG:response_b1}
+\end{figure}
 
-%\renewcommand{\thefigure}{6}
+%\renewcommand{\thefigure}{8}
 %\vspace{0.6cm}
 
 %\noindent
@@ -1155,7 +1364,7 @@ The shape of these responses is illustrated in Figs.~\ref{FIG:response_b1} and \
 %\label{FIG:response_b2}
 %\vspace{0.6cm}
 
-\renewcommand{\thefigure}{7A}
+\renewcommand{\thefigure}{9A}
 \vspace{0.6cm}
 
 \noindent
@@ -1163,7 +1372,7 @@ The shape of these responses is illustrated in Figs.~\ref{FIG:response_b1} and \
 %\captionof{figure}{Partial dependence of the weekly per-bite transmission probability $b_1$ on each environmental predictor.}
 \label{FIG:response_b2_A}
 
-\renewcommand{\thefigure}{7B}
+\renewcommand{\thefigure}{9B}
 %\vspace{0.6cm}
 
 \noindent
@@ -1171,13 +1380,14 @@ The shape of these responses is illustrated in Figs.~\ref{FIG:response_b1} and \
 %\captionof{figure}{Partial dependence of the weekly per-bite transmission probability $b_1$ on each environmental predictor.}
 \label{FIG:response_b2_B}
 
-\renewcommand{\thefigure}{7}
-%\vspace{0.6cm}
+\renewcommand{\thefigure}{9}
+\begin{figure}[pos=h]
 
 \noindent
 \includegraphics[width=\columnwidth]{figs/b2_2020_environmental_response_C.png}
 \captionof{figure}{Partial dependence of the weekly per-bite transmission probability $b_2$ on each environmental predictor in 2020.}
 \label{FIG:response_b2}
+\end{figure}
 \vspace{0.6cm}
 Columns correspond to temperature $T$, precipitation $R$, humidity $H$, deforestation $D_f$, fire counts $F_c$ and fire trends $F_t$. Curves give the mean predicted probability as each predictor is varied over its observed range while the remaining variables are held at their marginal mean.
 %\subsection{Base SEIRS-SEI simulation without calibration}
@@ -1221,10 +1431,12 @@ The next-generation analysis (Section~\ref{sec:basic_reproduction_number}) yield
 reproduction number that factorises into a human-to-mosquito and a
 mosquito-to-human component,
 $$\mathcal{R}_0 = \sqrt{\mathcal{R}_0^H\,\mathcal{R}_0^M},$$
-a form that makes the two-step transmission cycle explicit and facilitates interpretation. The global sensitivity analysis
-(Section~\ref{sec:sensitivity}) confirms that the transmission probabilities $b_1$ and $b_2$ dominate the variation of the invasion
-threshold, and that the intrinsic incubation period $\tau_H$ and the immunity waning rate $\omega$ are effectively irrelevant to it. This
-corroborates the analytical result: in the absence of disease-induced mortality, every exposed individual eventually becomes infectious, so
+a form that makes the two-step transmission cycle explicit and facilitates interpretation. The local sensitivity analysis
+(Section~\ref{sec:sensitivity}) qualifies the analytical result in an informative way: the invasion threshold is
+controlled by the temperature coefficients of adult mosquito survival and by the biting rate, the two transmission
+probabilities enter only through the square root and therefore with a universal index of $1/2$, and the intrinsic
+incubation period $\tau_H$ and the immunity waning rate $\omega$ are identically irrelevant to it, exactly as the
+factorisation predicts. In the absence of disease-induced mortality, every exposed individual eventually becomes infectious, so
 the latent period only shifts the timing of secondary infections, while no individual is immune at the disease-free equilibrium, so
 waning does not enter the linearised invasion dynamics.
 \\\\
@@ -1232,6 +1444,79 @@ Because $\Lambda^*$ and $M^*$ inherit the biting rate and carrying capacity as f
 reproduction number is itself a function of the environmental state. The seasonal $\mathcal{R}_0$ curve of
 Figure~\ref{FIG:R0_seasonal} makes this dependence explicit for 2017: it exceeds unity during the wet season and falls below the epidemic
 threshold in the driest months, confirming that the invasion risk is not constant throughout the year.
+
+\subsection{Limitations of the local sensitivity analysis}
+\label{sec:sensitivity_discussion}
+
+The normalized index of Eq.~\eqref{eq:normalized_sensitivity} is a local
+quantity: it reports the response of the output at a single reference
+state and says nothing about the behaviour of the model elsewhere. Four
+consequences bound the conclusions of
+Section~\ref{sec:results_sensitivity}.
+\\\\
+First, the index of a parameter combines two independent things, its
+elasticity in the output and the accuracy with which it is known. A
+large index attached to a well-determined parameter is reassuring; a
+large index attached to a weakly determined one is a warning. The
+decomposition therefore sharpens the identifiability problem of
+Section~\ref{sec:calibration_reaches_bounds} rather than resolving it:
+the two most influential quantities for the seasonal peak, the
+coefficients $A$ and $B$ of the adult survival curve, are never fitted
+and are held at their literature values, whereas $b_1$ reaches its upper
+bound in 2020-2022 while $b_2$ declines monotonically to its lower bound
+in 2023, the two trading off against each other across years (Pearson
+$r = -0.83$, $p = 0.02$) as the optimizer absorbs what it cannot explain.
+Propagating that year-to-year spread into the closed form places
+$\mathcal{R}_0$ at $0.96 \pm 0.19$, marginally below the threshold,
+against $2.20$ for the pre-calibration values. It is thus the fitted
+transmission probabilities, and not the vector vital rates, that hold the
+calibrated model near the edge of endemicity, and the same quantities are
+those that the weekly free-$\beta$ diagnostic of
+Section~\ref{sec:results_weekly_beta} cannot reproduce from climate alone,
+with residual reductions of two orders of magnitude. The remaining
+seasonal structure of transmission is concentrated exactly where the data
+are least able to constrain the parameters, which is the strongest
+argument we can make, within this model, for treating $b_1$ and $b_2$ as
+time-varying quantities, as done in
+Section~\ref{sec:results_regression}.
+\\\\
+Second, the reference state matters. The indices are evaluated at the
+mean climate of the transmission season, where $p_H$ is close to
+saturation and the thermal-suitability factor $f_T$ is clamped to unity.
+Away from that operating point the indices of $H_0$, $k$ and of the three
+\textit{Anopheles} suitability temperatures change substantially, so the
+ranking of Table~\ref{tbl:index} describes the operating point of the
+calibrated model and not the whole admissible climate range; the global
+decomposition of Section~\ref{sec:results_sobol}, which spans that whole
+range, does reorder the parameters. The same
+holds for the signs: being logarithmic derivatives of a nonlinear
+response, the indices are informative about direction only at the point
+where they are evaluated.
+\\\\
+Third, the absolute value of $\mathcal{R}_0$ quoted in
+Section~\ref{sec:basic_reproduction_number} uses the pre-calibration
+carrying-capacity scale $M' = 55.99\,N = 468{,}580$, roughly nine times
+the value the calibration returns ($M' \approx 50{,}000$). Since $M'$
+enters the closed form only linearly, through $K$, its index is $1/2$ at
+any level and the ranking is unaffected; the discrepancy nonetheless
+means that the reference value of $\mathcal{R}_0$ should be read as the
+pre-calibration operating point and not as the calibrated one.
+\\\\
+Finally, the two outputs answer different questions and must not be
+conflated. $\mathcal{R}_0$ is a disease-free quantity evaluated at a
+single climate-habitat state, so it measures the conditions of
+\emph{invasion}, whereas the seasonal maximum measures how much malaria
+is actually transmitted. Within the calibrated model the parameters that
+decide whether $\mathcal{R}_0 > 1$ are not those that decide the height
+of the wave, and ranking interventions from $\mathcal{R}_0$ alone would
+mislead. The two immune parameters are the one case where the algebraic
+and the numerical statements agree in both outputs: they are absent from
+Eq.~(\ref{eq:R0_factors}) by construction, and their estimated
+contribution to the seasonal peak is below $0.05$, acting on the timing
+of the wave rather than on its height. Within this model, refining the
+incubation period or the waning rate of \textit{P. vivax} immunity
+would therefore not improve transmission forecasts, whereas refining the
+two transmission probabilities and the vector survival schedule would.
 
 \subsection{Constant coefficients underfit: the transmission
 probabilities are seasonally heterogeneous}
@@ -1458,6 +1743,11 @@ All files of data collection and treatment, as well as results obtained througho
 \\
 %39
 \bibitem{Ecological_Change_Malaria_Risk} N. J. Arisco, C. Peterka, C. Diniz, B. H. Singer, M. C. Castro, Ecological change increases malaria risk in the Brazilian Amazon, Proc. Natl. Acad. Sci., Vol. 121 (44) (2024), \href{https://doi.org/10.1073/pnas.2409583121}{https://doi.org/10.1073/pnas.2409583121}.
+\\\
+%40
+\bibitem{cariboni2007} F. Cariboni, A. Saltelli, S. Tarantola, A review of the recent advances in sensitivity analysis methods, Environmental Modelling \& Software, Vol. 22 (9) (2007), 1505-1517.
+\\
+\bibitem{saltelli2010} A. Saltelli, P. Annoni, I. Azzini, F. Campolongo, M. Ratto, S. Tarantola, Variance based sensitivity analysis of model output: Design and algorithms for the computation of first and total Sobol' indices, Computer Physics Communications, Vol. 181 (2) (2010), 259-270, \href{https://doi.org/10.1016/j.cpc.2009.09.031}{https://doi.org/10.1016/j.cpc.2009.09.031}.
 \\
 %------------------------------FIX
 %\bibitem{Datasus2006} Tabnet, Ministério da Saúde, accessed on 12 August 2024, \href{http://tabnet.datasus.gov.br/cgi/tabcgi.exe?ibge/cnv/popam.def}{http://tabnet.datasus.gov.br/cgi/tabcgi.exe?ibge/cnv/popam.def}.
@@ -1487,7 +1777,7 @@ All files of data collection and treatment, as well as results obtained througho
 %\\
 %38
 %\bibitem{openlearncreate} OpenLearnCreate. Courses/Collections/Health Education and Training (HEAT)/Communicable Diseases/Contents/Communicable Diseases Module: 6. Factors that Affect Malaria Transmission, accessed on 02 May 2026, \href{https://www.open.edu/openlearncreate/mod/oucontent/view.php?id=89\&printable=1}{https://www.open.edu/openlearncreate/mod/oucontent/view.php?id=89\&printable=1}.
-%\\
+
 \end{thebibliography}
 
 \clearpage
