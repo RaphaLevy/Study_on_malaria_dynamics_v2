@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.3.13)  2 OCT 2026 12:15
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.3.13)  2 OCT 2026 12:31
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1998,12 +1998,6 @@ Underfull \hbox (badness 1102) in paragraph at lines 1678--1681
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 1678--1681
-\T1/stix/m/n/8 461-469, [][]https://www.ajtmh.org/view/journals/tpmd/76/3/artic
-le-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1678--1681
 
  []
 
@@ -2071,12 +2065,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 1696--1699
  []
 
 
-Overfull \hbox (21.49754pt too wide) in paragraph at lines 1699--1702
-[][]\T1/stix/m/n/8 https://journals.plos.org/plosone/article?id=10.1371/journal
-.pone.0022388[][]. 
- []
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 1699--1702
 
  []
@@ -2108,7 +2096,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1708--1711
 
  []
 
-[19]
+
 Underfull \hbox (badness 7522) in paragraph at lines 1711--1714
 []\T1/stix/m/n/8 R. Storn, K. Price, Dif-fer-en-tial Evo-lu-tion - A Sim-ple an
 d
@@ -2125,7 +2113,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1711--1714
 
  []
 
-
+[19]
 Underfull \hbox (badness 10000) in paragraph at lines 1714--1717
 []\T1/stix/m/n/8 J. A. Nelder, R. Mead, A Sim-plex Method for Func-tion
  []
@@ -2179,48 +2167,20 @@ Underfull \hbox (badness 10000) in paragraph at lines 1726--1729
  []
 
 
-Underfull \hbox (badness 7116) in paragraph at lines 1729--1732
-[]\T1/stix/m/n/8 M. H. Craig, R. W. Snow, D. le Sueur, A Climate-based
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1729--1732
-\T1/stix/m/n/8 Dis-tri-bu-tion Model of Malaria Trans-mis-sion in Sub-Saharan
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1729--1732
-\T1/stix/m/n/8 Africa, Par-a-sitol-ogy To-day, Vol. 15 (3), 105-111 (1999),
- []
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 1729--1732
 
  []
 
 
-Underfull \hbox (badness 6094) in paragraph at lines 1732--1735
-[]\T1/stix/m/n/8 T. P. Agyekum et al, A Sys-tem-atic Re-view of the Ef-fects
+Underfull \hbox (badness 2173) in paragraph at lines 1732--1735
+[]\T1/stix/m/n/8 T. P. Agyekum et al, A Sys-tem-atic Re-view of the Ef-fects of
+
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1732--1735
-\T1/stix/m/n/8 of Tem-per-a-ture on Anophe-les Mosquito De-vel-op-ment and
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1732--1735
-\T1/stix/m/n/8 Sur-vival: Im-pli-ca-tions for Malaria Con-trol in a Fu-ture
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1732--1735
-\T1/stix/m/n/8 Warmer Cli-mate, In-ter-na-tional Jour-nal of En-vi-ron-men-tal
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1732--1735
-\T1/stix/m/n/8 Re-search and Pub-lic Health, Vol. 18 (14), (2021),
+Underfull \hbox (badness 1960) in paragraph at lines 1732--1735
+\T1/stix/m/n/8 Im-pli-ca-tions for Malaria Con-trol in a Fu-ture Warmer Cli-mat
+e,
  []
 
 
@@ -2352,11 +2312,11 @@ Package rerunfilecheck Info: File `cas-dc-article.out' has not changed.
 Here is how much of TeX's memory you used:
  18828 strings out of 467871
  297231 string characters out of 5418376
- 735198 words of memory out of 5000000
+ 735004 words of memory out of 5000000
  47205 multiletter control sequences out of 15000+600000
  757257 words of font info for 211 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 90i,19n,117p,1182b,693s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 90i,19n,117p,1182b,697s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\rapha\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi450\ecss
 0800.pk> <C:\Users\rapha\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi60
 0\ecsx0900.pk> <C:\Users\rapha\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec
@@ -2375,9 +2335,9 @@ s/type1/public/stix/stix-mathrm-bold.pfb><C:/Users/rapha/AppData/Local/Programs
 rograms/MiKTeX/fonts/type1/public/stix/stix-mathscr.pfb><C:/Users/rapha/AppData
 /Local/Programs/MiKTeX/fonts/type1/public/stix/stix-mathsf.pfb><C:/Users/rapha/
 AppData/Local/Programs/MiKTeX/fonts/type1/public/stix/stix-mathtt.pfb>
-Output written on cas-dc-article.pdf (25 pages, 2238507 bytes).
+Output written on cas-dc-article.pdf (25 pages, 2237634 bytes).
 PDF statistics:
- 805 PDF objects out of 1000 (max. 8388607)
+ 803 PDF objects out of 1000 (max. 8388607)
  208 named destinations out of 1000 (max. 500000)
  76 words of extra memory for PDF output out of 10000 (max. 10000000)
 
