@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.3.13)  2 OCT 2026 12:04
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.3.13)  2 OCT 2026 12:15
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2284,12 +2284,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 1743--1773
 [20
 
 ]
-Overfull \hbox (17.65689pt too wide) in alignment at lines 1790--1809
+Overfull \hbox (17.65689pt too wide) in alignment at lines 1792--1811
 [] [] [] 
  []
 
 
-Overfull \hbox (238.25444pt too wide) in paragraph at lines 1788--1815
+Overfull \hbox (238.25444pt too wide) in paragraph at lines 1790--1817
  [] 
  []
 
@@ -2297,7 +2297,7 @@ Overfull \hbox (238.25444pt too wide) in paragraph at lines 1788--1815
 
 
 ]
-Overfull \hbox (238.25444pt too wide) in paragraph at lines 1820--1869
+Overfull \hbox (238.25444pt too wide) in paragraph at lines 1822--1871
  [] 
  []
 
@@ -2308,21 +2308,21 @@ Overfull \hbox (238.25444pt too wide) in paragraph at lines 1820--1869
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 1942--1953
+Underfull \hbox (badness 10000) in paragraph at lines 1944--1955
 
  []
 
 
-LaTeX Warning: Reference `eq:ngm' on page 24 undefined on input line 2000.
+LaTeX Warning: Reference `eq:ngm' on page 24 undefined on input line 2002.
 
 
-Underfull \hbox (badness 1052) in paragraph at lines 2000--2002
+Underfull \hbox (badness 1052) in paragraph at lines 2002--2004
  []\T1/stix/m/it/11 Verification of $\LS2/stixcal/m/n/11 R[]$ \T1/stix/m/it/11 
 by ex-plicit mul-ti-pli-ca-tion:[] \T1/stix/m/n/10 From
  []
 
 
-Overfull \hbox (7.04416pt too wide) in paragraph at lines 2000--2002
+Overfull \hbox (7.04416pt too wide) in paragraph at lines 2002--2004
 []\T1/stix/m/n/10 , the trans-fer ma-trix is block-diagonal, $\LS1/stix/m/it/10
  V \LS1/stix/m/n/10 = [].\LS1/stix/m/it/10 V[]; V[]\LS1/stix/m/n/10 /$\T1/stix/
 m/n/10 ,
@@ -2351,8 +2351,8 @@ Package rerunfilecheck Info: File `cas-dc-article.out' has not changed.
  ) 
 Here is how much of TeX's memory you used:
  18828 strings out of 467871
- 297238 string characters out of 5418376
- 735250 words of memory out of 5000000
+ 297231 string characters out of 5418376
+ 735198 words of memory out of 5000000
  47205 multiletter control sequences out of 15000+600000
  757257 words of font info for 211 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -2375,7 +2375,7 @@ s/type1/public/stix/stix-mathrm-bold.pfb><C:/Users/rapha/AppData/Local/Programs
 rograms/MiKTeX/fonts/type1/public/stix/stix-mathscr.pfb><C:/Users/rapha/AppData
 /Local/Programs/MiKTeX/fonts/type1/public/stix/stix-mathsf.pfb><C:/Users/rapha/
 AppData/Local/Programs/MiKTeX/fonts/type1/public/stix/stix-mathtt.pfb>
-Output written on cas-dc-article.pdf (25 pages, 2238575 bytes).
+Output written on cas-dc-article.pdf (25 pages, 2238507 bytes).
 PDF statistics:
  805 PDF objects out of 1000 (max. 8388607)
  208 named destinations out of 1000 (max. 500000)
