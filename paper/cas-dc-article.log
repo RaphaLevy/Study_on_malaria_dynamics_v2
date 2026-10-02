@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.3.13)  2 OCT 2026 11:58
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.3.13)  2 OCT 2026 12:04
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1023,7 +1023,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 184--246
 
 
 Underfull \hbox (badness 1132) in paragraph at lines 184--246
-\T1/stix/m/n/10 the pro-posed SEIRS-SEI con-struc-tion; in Sec-tion 3 we
+\T1/stix/m/n/10 the pro-posed SEIRS-SEI con-struc-tion; in Sec-tion [][]3[][] w
+e
  []
 
 [1{C:/Users/rapha/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/ra
@@ -1032,7 +1033,7 @@ pha/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/stix/stix-t1.enc}
 
 {C:/Users/rapha/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/inconsolata/i4-t1
 -0.enc} <./thumbnails/cas-email.jpeg>]
-<figs/total_active_infectious_cases_manaus_2017_2023.png, id=46, 829.29825pt x 
+<figs/total_active_infectious_cases_manaus_2017_2023.png, id=51, 829.29825pt x 
 196.93575pt>
 File: figs/total_active_infectious_cases_manaus_2017_2023.png Graphic file (typ
 e png)
@@ -1499,13 +1500,13 @@ Underfull \hbox (badness 1242) in paragraph at lines 900--969
  []
 
 [10]
-<figs/biting_rate_comparison.png, id=271, 494.5677pt x 322.0833pt>
+<figs/biting_rate_comparison.png, id=279, 494.5677pt x 322.0833pt>
 File: figs/biting_rate_comparison.png Graphic file (type png)
 <use figs/biting_rate_comparison.png>
 Package pdftex.def Info: figs/biting_rate_comparison.png  used on input line 98
 2.
 (pdftex.def)             Requested size: 238.25444pt x 155.15848pt.
-<figs/weekly_beta_calibration_2017.png, id=280, 820.2645pt x 298.11375pt>
+<figs/weekly_beta_calibration_2017.png, id=288, 820.2645pt x 298.11375pt>
 File: figs/weekly_beta_calibration_2017.png Graphic file (type png)
 <use figs/weekly_beta_calibration_2017.png>
 Package pdftex.def Info: figs/weekly_beta_calibration_2017.png  used on input l
@@ -1515,7 +1516,7 @@ ine 1000.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<figs/coupled_and_human_Rt_variation_in_2017_with_months.png, id=285, 822.6735p
+<figs/coupled_and_human_Rt_variation_in_2017_with_months.png, id=293, 822.6735p
 t x 278.2395pt>
 File: figs/coupled_and_human_Rt_variation_in_2017_with_months.png Graphic file 
 (type png)
@@ -1553,7 +1554,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1077--1174
 
  []
 
-<figs/local_sensitivity_R0_IH.png, id=314, 820.9872pt x 513.117pt>
+<figs/local_sensitivity_R0_IH.png, id=321, 820.9872pt x 513.117pt>
 File: figs/local_sensitivity_R0_IH.png Graphic file (type png)
 <use figs/local_sensitivity_R0_IH.png>
 Package pdftex.def Info: figs/local_sensitivity_R0_IH.png  used on input line 1
@@ -1565,7 +1566,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1188--1213
  []
 
 [12 <./figs/local_sensitivity_R0_IH.png>]
-<figs/sobol_ih_qpeak.png, id=333, 499.1448pt x 666.5703pt>
+<figs/sobol_ih_qpeak.png, id=340, 499.1448pt x 666.5703pt>
 File: figs/sobol_ih_qpeak.png Graphic file (type png)
 <use figs/sobol_ih_qpeak.png>
 Package pdftex.def Info: figs/sobol_ih_qpeak.png  used on input line 1219.
@@ -1585,13 +1586,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 1251--1287
 
  []
 
-<figs/b1_eff_obs_vs_pred_all_years.png, id=348, 426.393pt x 452.04884pt>
+<figs/b1_eff_obs_vs_pred_all_years.png, id=355, 426.393pt x 452.04884pt>
 File: figs/b1_eff_obs_vs_pred_all_years.png Graphic file (type png)
 <use figs/b1_eff_obs_vs_pred_all_years.png>
 Package pdftex.def Info: figs/b1_eff_obs_vs_pred_all_years.png  used on input l
 ine 1289.
 (pdftex.def)             Requested size: 238.25444pt x 252.58691pt.
-<figs/b2_eff_obs_vs_pred_all_years.png, id=349, 432.8973pt x 452.04884pt>
+<figs/b2_eff_obs_vs_pred_all_years.png, id=356, 432.8973pt x 452.04884pt>
 File: figs/b2_eff_obs_vs_pred_all_years.png Graphic file (type png)
 <use figs/b2_eff_obs_vs_pred_all_years.png>
 Package pdftex.def Info: figs/b2_eff_obs_vs_pred_all_years.png  used on input l
@@ -1607,19 +1608,19 @@ Underfull \hbox (badness 10000) in paragraph at lines 1302--1325
 
  []
 
-<figs/b1_2022_environmental_response_A.png, id=358, 663.6795pt x 286.06876pt>
+<figs/b1_2022_environmental_response_A.png, id=365, 663.6795pt x 286.06876pt>
 File: figs/b1_2022_environmental_response_A.png Graphic file (type png)
 <use figs/b1_2022_environmental_response_A.png>
 Package pdftex.def Info: figs/b1_2022_environmental_response_A.png  used on inp
 ut line 1330.
 (pdftex.def)             Requested size: 238.25444pt x 102.69658pt.
-<figs/b1_2022_environmental_response_B.png, id=359, 678.1335pt x 295.1025pt>
+<figs/b1_2022_environmental_response_B.png, id=366, 678.1335pt x 295.1025pt>
 File: figs/b1_2022_environmental_response_B.png Graphic file (type png)
 <use figs/b1_2022_environmental_response_B.png>
 Package pdftex.def Info: figs/b1_2022_environmental_response_B.png  used on inp
 ut line 1338.
 (pdftex.def)             Requested size: 238.25444pt x 103.67917pt.
-<figs/b1_2022_environmental_response_C.png, id=360, 720.291pt x 314.3745pt>
+<figs/b1_2022_environmental_response_C.png, id=367, 720.291pt x 314.3745pt>
 File: figs/b1_2022_environmental_response_C.png Graphic file (type png)
 <use figs/b1_2022_environmental_response_C.png>
 Package pdftex.def Info: figs/b1_2022_environmental_response_C.png  used on inp
@@ -1628,7 +1629,7 @@ ut line 1346.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<figs/b2_2020_environmental_response_A.png, id=361, 714.87074pt x 305.34074pt>
+<figs/b2_2020_environmental_response_A.png, id=368, 714.87074pt x 305.34074pt>
 File: figs/b2_2020_environmental_response_A.png Graphic file (type png)
 <use figs/b2_2020_environmental_response_A.png>
 Package pdftex.def Info: figs/b2_2020_environmental_response_A.png  used on inp
@@ -1637,13 +1638,13 @@ ut line 1364.
 [15 <./figs/b1_eff_obs_vs_pred_all_years.png> <./figs/b2_eff_obs_vs_pred_all_ye
 ars.png> <./figs/b1_2022_environmental_response_A.png> <./figs/b1_2022_environm
 ental_response_B.png>]
-<figs/b2_2020_environmental_response_B.png, id=374, 726.91576pt x 308.352pt>
+<figs/b2_2020_environmental_response_B.png, id=381, 726.91576pt x 308.352pt>
 File: figs/b2_2020_environmental_response_B.png Graphic file (type png)
 <use figs/b2_2020_environmental_response_B.png>
 Package pdftex.def Info: figs/b2_2020_environmental_response_B.png  used on inp
 ut line 1372.
 (pdftex.def)             Requested size: 238.25444pt x 101.06482pt.
-<figs/b2_2020_environmental_response_C.png, id=375, 783.52725pt x 337.26pt>
+<figs/b2_2020_environmental_response_C.png, id=382, 783.52725pt x 337.26pt>
 File: figs/b2_2020_environmental_response_C.png Graphic file (type png)
 <use figs/b2_2020_environmental_response_C.png>
 Package pdftex.def Info: figs/b2_2020_environmental_response_C.png  used on inp
@@ -2374,9 +2375,9 @@ s/type1/public/stix/stix-mathrm-bold.pfb><C:/Users/rapha/AppData/Local/Programs
 rograms/MiKTeX/fonts/type1/public/stix/stix-mathscr.pfb><C:/Users/rapha/AppData
 /Local/Programs/MiKTeX/fonts/type1/public/stix/stix-mathsf.pfb><C:/Users/rapha/
 AppData/Local/Programs/MiKTeX/fonts/type1/public/stix/stix-mathtt.pfb>
-Output written on cas-dc-article.pdf (25 pages, 2237636 bytes).
+Output written on cas-dc-article.pdf (25 pages, 2238575 bytes).
 PDF statistics:
- 800 PDF objects out of 1000 (max. 8388607)
+ 805 PDF objects out of 1000 (max. 8388607)
  208 named destinations out of 1000 (max. 500000)
  76 words of extra memory for PDF output out of 10000 (max. 10000000)
 
