@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.3.13)  2 OCT 2026 12:31
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.3.13)  2 OCT 2026 18:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2209,47 +2209,41 @@ Underfull \hbox (badness 10000) in paragraph at lines 1738--1741
  []
 
 
-Underfull \hbox (badness 2503) in paragraph at lines 1741--1743
-[]\T1/stix/m/n/8 F. Cari-boni, A. Saltelli, S. Taran-tola, A re-view of the re-
-cent
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1741--1743
+Underfull \hbox (badness 10000) in paragraph at lines 1741--1744
 
  []
 
 
-Underfull \hbox (badness 1297) in paragraph at lines 1743--1773
-[]\T1/stix/m/n/8 A. Saltelli, P. An-noni, I. Azz-ini, F. Cam-po-longo, M. Ratto
-, S.
+Underfull \hbox (badness 2512) in paragraph at lines 1744--1774
+[]\T1/stix/m/n/8 A. Saltelli et al, Vari-ance based sen-si-tiv-ity anal-y-sis o
+f model
  []
 
 
-Underfull \hbox (badness 2073) in paragraph at lines 1743--1773
-\T1/stix/m/n/8 Taran-tola, Vari-ance based sen-si-tiv-ity anal-y-sis of model o
-ut-put:
+Underfull \hbox (badness 6348) in paragraph at lines 1744--1774
+\T1/stix/m/n/8 out-put. De-sign and es-ti-ma-tor for the to-tal sen-si-tiv-ity 
+in-dex,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1743--1773
+Underfull \hbox (badness 10000) in paragraph at lines 1744--1774
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1743--1773
+Underfull \hbox (badness 10000) in paragraph at lines 1744--1774
 
  []
 
 [20
 
 ]
-Overfull \hbox (17.65689pt too wide) in alignment at lines 1792--1811
+Overfull \hbox (17.65689pt too wide) in alignment at lines 1793--1812
 [] [] [] 
  []
 
 
-Overfull \hbox (238.25444pt too wide) in paragraph at lines 1790--1817
+Overfull \hbox (238.25444pt too wide) in paragraph at lines 1791--1818
  [] 
  []
 
@@ -2257,7 +2251,7 @@ Overfull \hbox (238.25444pt too wide) in paragraph at lines 1790--1817
 
 
 ]
-Overfull \hbox (238.25444pt too wide) in paragraph at lines 1822--1871
+Overfull \hbox (238.25444pt too wide) in paragraph at lines 1823--1872
  [] 
  []
 
@@ -2268,21 +2262,21 @@ Overfull \hbox (238.25444pt too wide) in paragraph at lines 1822--1871
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 1944--1955
+Underfull \hbox (badness 10000) in paragraph at lines 1945--1956
 
  []
 
 
-LaTeX Warning: Reference `eq:ngm' on page 24 undefined on input line 2002.
+LaTeX Warning: Reference `eq:ngm' on page 24 undefined on input line 2003.
 
 
-Underfull \hbox (badness 1052) in paragraph at lines 2002--2004
+Underfull \hbox (badness 1052) in paragraph at lines 2003--2005
  []\T1/stix/m/it/11 Verification of $\LS2/stixcal/m/n/11 R[]$ \T1/stix/m/it/11 
 by ex-plicit mul-ti-pli-ca-tion:[] \T1/stix/m/n/10 From
  []
 
 
-Overfull \hbox (7.04416pt too wide) in paragraph at lines 2002--2004
+Overfull \hbox (7.04416pt too wide) in paragraph at lines 2003--2005
 []\T1/stix/m/n/10 , the trans-fer ma-trix is block-diagonal, $\LS1/stix/m/it/10
  V \LS1/stix/m/n/10 = [].\LS1/stix/m/it/10 V[]; V[]\LS1/stix/m/n/10 /$\T1/stix/
 m/n/10 ,
@@ -2335,9 +2329,9 @@ s/type1/public/stix/stix-mathrm-bold.pfb><C:/Users/rapha/AppData/Local/Programs
 rograms/MiKTeX/fonts/type1/public/stix/stix-mathscr.pfb><C:/Users/rapha/AppData
 /Local/Programs/MiKTeX/fonts/type1/public/stix/stix-mathsf.pfb><C:/Users/rapha/
 AppData/Local/Programs/MiKTeX/fonts/type1/public/stix/stix-mathtt.pfb>
-Output written on cas-dc-article.pdf (25 pages, 2237634 bytes).
+Output written on cas-dc-article.pdf (25 pages, 2237779 bytes).
 PDF statistics:
- 803 PDF objects out of 1000 (max. 8388607)
+ 804 PDF objects out of 1000 (max. 8388607)
  208 named destinations out of 1000 (max. 500000)
  76 words of extra memory for PDF output out of 10000 (max. 10000000)
 
