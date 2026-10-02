@@ -402,6 +402,7 @@ where $\tau_H$ denotes the intrinsic incubation period.
 For mosquitoes, the constant transition parameter \\$b_3 = 1/\tau_M$ from the original formulation was replaced by a Brière-type function,
 \begin{align}
 b_{3M}(T)=\eta T(T-T_{\min})(T_{\max}-T)^{1/2},
+\label{eq:b3m}
 \end{align}
 which incorporates minimum and maximum thermal thresholds for sporogonic development \cite{brierre_function_development_rate, ab_gumel_malaria_review}. 
 \\\\
@@ -903,16 +904,51 @@ for this output, so its index is \emph{estimated} with the same central
 difference ($h = 0.05$), each perturbation re-integrating all seven years;
 the nine calibrated parameters are perturbed about their per-year calibrated
 value and the sixteen climate-response constants about the baseline values
-of Table~\ref{tbl:bounds}.
+of Tables~\ref{tbl1} and~\ref{tbl2}.
 \\\\
-All 25 model parameters are decomposed and are reported in five groups: the
-calibrated epidemiological parameters $(H_0, k, \varphi, \gamma, b_1, b_2,
-M')$, the human immune parameters \\$(\tau_H, \omega)$, the temperature and
-rainfall rates $(T', D_1, R_L, DD, \\T_{\min}, T_{\max}^{\mathrm{p}},
-T_{\mathrm{opt}}^{\mathrm{p}})$, the mosquito mortality and larval
-parameters $(A, B, C, B_E, c_1, c_2)$ and the \textit{Anopheles} thermal
-suitability parameters $(T_{\min}^{\mathrm{a}}, T_{\mathrm{opt}}^{\mathrm{a}},
-T_{\max}^{\mathrm{a}})$. Three cases require care. The two parameters that
+The model carries more parameters than the 25 decomposed here. Two entries of
+Table~\ref{tbl2} are not free parameters at all: $b_{3H}=1/\tau_H$ and
+$b_{3M}(T)=\eta\,T(T-T_{\min})(T_{\max}-T)^{1/2}$, the latter a function of
+the sporogonic constants already in the list, its scaling coefficient $\eta$
+being fixed by the constraint
+$b_{3M}(T_{\mathrm{opt}})=1/\tau_M(T_{\mathrm{opt}})$; perturbing
+$(DD, T_{\min}^{\mathrm{p}}, T_{\max}^{\mathrm{p}}, T_{\mathrm{opt}}^{\mathrm{p}})$
+therefore already propagates to $b_{3M}$. Of the 30 primary parameters of
+Table~\ref{tbl2}, five, which are the three maximum survival probabilities
+$(p_{ML}, p_{MP}, p_{ME})$ and the two stage durations $(\tau_E, \tau_P)$, are
+held at their literature values in every simulation and calibration and are
+not perturbed. The remaining 25 are the ones decomposed below, and the
+admissible range of each, that is, the box sampled by the global analysis of
+Section~\ref{sec:results_sobol}, is given in Table~\ref{tbl:box}.
+\\\\
+Those 25 are reported in eight groups defined by the mechanism each parameter
+acts through, which is the taxonomy used in Table~\ref{tbl:index} and in the bar
+colours of Figs.~\ref{FIG:local_sensitivity} and~\ref{FIG:sobol_ih}: the
+per-bite transmission probabilities together with the capacity scale
+$(b_1, b_2, M')$; the human immunity and turnover rates
+$(\tau_H, \gamma, \omega)$; the humidity-dependent daily adult survival
+$(H_0, k, \varphi)$; the biting rate $(T', D_1)$; the sporogonic development
+$(DD, T_{\min}^{\mathrm{p}}, T_{\max}^{\mathrm{p}}, T_{\mathrm{opt}}^{\mathrm{p}})$;
+the immature-stage survival and rainfall response, which together set the
+recruitment rate $(R_L, B_E, c_1, c_2)$; the adult survival curve, and hence the
+mortality $(A, B, C)$; and the \textit{Anopheles} thermal suitability of the
+carrying capacity
+$(T_{\min}^{\mathrm{a}}, T_{\mathrm{opt}}^{\mathrm{a}}, T_{\max}^{\mathrm{a}})$.
+Grouping by mechanism rather than by calibration status is what keeps the
+groups interpretable: $H_0, k, \varphi$ belong together although they are
+calibrated, $\tau_H, \gamma, \omega$ belong together although only $\gamma$
+enters $\mathcal{R}_0$, and no group mixes a biting-rate threshold with a
+parasite development optimum.
+\\\\
+The superscripts $\mathrm{p}$ and $\mathrm{a}$
+distinguish the \textit{Plasmodium} thresholds $T_{\min}$, $T_{\max}$,
+$T_{\mathrm{opt}}$ from the \textit{Anopheles} ones of Table~\ref{tbl2}; note
+that the biting-rate threshold $T'$ and the vector development threshold
+$T_{\min}^{\mathrm{a}}$ share the baseline value $16\,^{\circ}\mathrm{C}$ but are
+distinct parameters of distinct response functions, and are perturbed
+independently.
+\\\\
+Three further cases require care. The two parameters that
 cancel from the closed form of Section~\ref{sec:basic_reproduction_number},
 $\tau_H$ and $\omega$, have analytic index exactly zero, a property of the
 next-generation matrix and not an empirical finding, whereas in the
@@ -928,7 +964,8 @@ calibration but carries a constant index $-1/2$, and is tabulated for
 completeness. Every index of Table~\ref{tbl:index} is produced by a single
 script from a fixed reference point, with no sampling, so that the table and
 Fig.~\ref{FIG:local_sensitivity} are exactly reproducible; the global
-analysis of Section~\ref{sec:results_sobol} samples the same box instead.
+analysis of Section~\ref{sec:results_sobol} samples the box of
+Table~\ref{tbl:box} instead.
 
 %\newpage
 \section{Results}
@@ -1023,7 +1060,6 @@ S_a = 1, \
 S_{b_1} = S_{b_2} = S_{\Lambda^*} = \frac{1}{2}, \ 
 S_{\gamma} = S_{N} = -\frac{1}{2}, \ 
 S_{D_1} = -1,
-\label{eq:index_identities}
 \end{equation}
 together with
 \begin{equation}\label{eq:index_identities}
@@ -1082,48 +1118,55 @@ $0.06$ (for $H_0$) and is purely the $O(h^2)$ truncation error of the
 difference quotient, so the two representations of $S_x$ agree.
 \begin{table}[H]
 \centering
-\caption{Normalized sensitivity index $S_x = \partial\log Y/\partial\log x$ of each model parameter, evaluated at the reference state of Section~\ref{sec:sensitivity}. The $\mathcal{R}_0$ column is the exact analytic index; the $Q_{\mathrm{peak}}$ column is the central-difference estimate ($h = 0.05$) of the calibrated model averaged over 2017-2023 ($Q_{\mathrm{peak}} = 1{,}033$). Parameters are grouped as in Table~\ref{tbl:bounds}. A dash denotes a parameter that is structurally absent from the closed form.}
+\caption{Normalized sensitivity index $S_x = \partial\log Y/\partial\log x$ of each decomposed parameter, evaluated at the reference state of Section~\ref{sec:sensitivity}. The $\mathcal{R}_0$ column is the exact analytic index; the $Q_{\mathrm{peak}}$ column is the central-difference estimate ($h = 0.05$) of the calibrated model averaged over 2017-2023 ($Q_{\mathrm{peak}} = 1{,}033$). Parameters are grouped by mechanism as in Section~\ref{sec:sensitivity}. A dash denotes a parameter that is structurally absent from the closed form. The population size $N$ is listed apart from the groups because it is not a free parameter of the calibration.}
 \label{tbl:index}
 \begin{tabular}{lrrr}
 \toprule
  & & $S_x$ & $S_x$\\
 Parameter & & $\mathcal{R}_0$ & $Q_{\mathrm{peak}}$\\
 \midrule
-\multicolumn{4}{l}{\itshape Calibrated epidemiological parameters}\\
-$H_0$ & & $-1.040$ & $-0.004$\\
-$k$ & & $+0.365$ & $+0.052$\\
-$\varphi$ & & $+0.004$ & $+0.002$\\
-$\gamma$ & & $-0.500$ & $-0.402$\\
+\multicolumn{4}{l}{\itshape Transmission probabilities and capacity scale}\\
 $b_1$ & & $+0.500$ & $+0.358$\\
 $b_2$ & & $+0.500$ & $+0.430$\\
 $M'$ & & $+0.500$ & $+0.007$\\
 \midrule
-\multicolumn{4}{l}{\itshape Human immune parameters}\\
+\multicolumn{4}{l}{\itshape Human immunity and turnover}\\
 $\tau_H$ & & $0$ & $-0.043$\\
+$\gamma$ & & $-0.500$ & $-0.402$\\
 $\omega$ & & $0$ & $+0.014$\\
 \midrule
-\multicolumn{4}{l}{\itshape Temperature and rainfall rates}\\
+\multicolumn{4}{l}{\itshape Humidity-dependent adult survival}\\
+$H_0$ & & $-1.040$ & $-0.004$\\
+$k$ & & $+0.365$ & $+0.052$\\
+$\varphi$ & & $+0.004$ & $+0.002$\\
+\midrule
+\multicolumn{4}{l}{\itshape Biting rate}\\
 $T'$ & & $-1.672$ & $-1.318$\\
 $D_1$ & & $-1.000$ & $-0.848$\\
-$R_L$ & & $-0.436$ & $-0.129$\\
+\midrule
+\multicolumn{4}{l}{\itshape Sporogonic development (\textit{Plasmodium})}\\
 $DD$ & & $-0.795$ & $-0.318$\\
-$T_{\min}$ & & $-1.041$ & $-0.846$\\
+$T_{\min}^{\mathrm{p}}$ & & $-1.041$ & $-0.846$\\
 $T_{\max}^{\mathrm{p}}$ & & $+0.447$ & $+1.680$\\
 $T_{\mathrm{opt}}^{\mathrm{p}}$ & & $+0.334$ & $0.000$\\
 \midrule
-\multicolumn{4}{l}{\itshape Mosquito mortality and larval parameters}\\
-$A$ & & $-2.679$ & $-2.514$\\
-$B$ & & $+4.575$ & $+3.775$\\
-$C$ & & $-0.601$ & $-0.498$\\
+\multicolumn{4}{l}{\itshape Immature-stage survival and recruitment}\\
+$R_L$ & & $-0.436$ & $-0.129$\\
 $B_E$ & & $+0.073$ & $+0.056$\\
 $c_1$ & & $+0.110$ & $+0.074$\\
 $c_2$ & & $-0.052$ & $-0.046$\\
 \midrule
-\multicolumn{4}{l}{\itshape \textit{Anopheles} thermal suitability parameters}\\
+\multicolumn{4}{l}{\itshape Adult survival curve and mortality}\\
+$A$ & & $-2.679$ & $-2.514$\\
+$B$ & & $+4.575$ & $+3.775$\\
+$C$ & & $-0.601$ & $-0.498$\\
+\midrule
+\multicolumn{4}{l}{\itshape \textit{Anopheles} thermal suitability}\\
 $T_{\min}^{\mathrm{a}}$ & & $0$ & $-0.002$\\
 $T_{\mathrm{opt}}^{\mathrm{a}}$ & & $0$ & $+0.004$\\
 $T_{\max}^{\mathrm{a}}$ & & $0$ & $+0.002$\\
 \midrule
+\multicolumn{4}{l}{\itshape Population size (not a free parameter)}\\
 $N$ & & $-0.500$ & $-$\\
 \bottomrule
 \end{tabular}
@@ -1135,7 +1178,7 @@ $N$ & & $-0.500$ & $-$\\
 
 \noindent
 \includegraphics[width=\columnwidth]{figs/local_sensitivity_R0_IH.png}
-\captionof{figure}{Normalized sensitivity index $S_x = \partial\log Y/\partial\log x$ of the 25 model parameters (bars coloured by parameter group). Left: closed-form reproduction number at the reference environmental state, by central differences with $h = 0.05$; the exact analytic values of Table~\ref{tbl:index} differ from these by at most $0.06$, the truncation error of the difference quotient. Right: seasonal maximum of the infectious-human compartment of the calibrated model, averaged over 2017-2023, same scheme. A positive index means the output increases with the parameter. The three \textit{Anopheles} suitability temperatures are exactly zero on the left because the thermal-suitability factor $f_T$ is saturated at the reference climate.}
+\captionof{figure}{Normalized sensitivity index $S_x = \partial\log Y/\partial\log x$ of the 25 decomposed parameters (bars coloured by parameter group, as in Table~\ref{tbl:index}). Left: closed-form reproduction number at the reference environmental state, by central differences with $h = 0.05$; the exact analytic values of Table~\ref{tbl:index} differ from these by at most $0.06$, the truncation error of the difference quotient. Right: seasonal maximum of the infectious-human compartment of the calibrated model, averaged over 2017-2023, same scheme. A positive index means the output increases with the parameter. The three \textit{Anopheles} suitability temperatures are exactly zero on the left because the thermal-suitability factor $f_T$ is saturated at the reference climate.}
 \label{FIG:local_sensitivity}
 \end{figure}
 
@@ -1146,7 +1189,7 @@ The index of Eq.~\eqref{eq:normalized_sensitivity} is a local quantity, and
 its global counterpart is the variance-based Sobol' decomposition of the same
 output $Q_{\mathrm{peak}}$ of Eq.~\eqref{eq:qpeak}, which apportions the
 variance of $Q_{\mathrm{peak}}$ over the whole admissible box of the 25
-parameters of Table~\ref{tbl:bounds} among the individual parameters and
+parameters of Table~\ref{tbl:box} among the individual parameters and
 among their interactions~\cite{saltelli2010}. The box is sampled with a
 Saltelli design of $N = 512$ base points, that is $512 \times 27 =
 13{,}824$ integrations of the calibrated model, each returning the mean
@@ -1174,7 +1217,7 @@ study.
 
 \noindent
 \includegraphics[width=\columnwidth]{figs/sobol_ih_qpeak.png}
-\captionof{figure}{First-order ($S_1$, dark bars) and total-order ($S_T$, pale bars) Sobol' indices of the 25 model parameters with respect to the seasonal peak $Q_{\mathrm{peak}}$ of the infectious-human compartment, over the whole admissible parameter box of Table~\ref{tbl:bounds} (Saltelli design, $N = 512$; bars coloured by parameter group). The total-order index also collects the variance that a parameter carries through its interactions with the remaining ones, hence $S_T \geq S_1$. Since $Q_{\mathrm{peak}}$ is a maximum, the $74.4\%$ of the sampled parameter sets that are locally subcritical leave it at the initial value $I_H(0)$; the indices therefore characterize the sampled box and not the height of an established endemic wave.}
+\captionof{figure}{First-order ($S_1$, dark bars) and total-order ($S_T$, pale bars) Sobol' indices of the 25 decomposed parameters with respect to the seasonal peak $Q_{\mathrm{peak}}$ of the infectious-human compartment, over the whole admissible parameter box of Table~\ref{tbl:box} (Saltelli design, $N = 512$; bars coloured by parameter group). The total-order index also collects the variance that a parameter carries through its interactions with the remaining ones, hence $S_T \geq S_1$. Since $Q_{\mathrm{peak}}$ is a maximum, the $74.4\%$ of the sampled parameter sets that are locally subcritical leave it at the initial value $I_H(0)$; the indices therefore characterize the sampled box and not the height of an established endemic wave.}
 \label{FIG:sobol_ih}
 \end{figure}
 
@@ -1319,7 +1362,7 @@ The shape of these responses is illustrated in Figs.~\ref{FIG:response_b1} and \
 
 \noindent
 \includegraphics[width=\columnwidth]{figs/b2_2020_environmental_response_A.png}
-%\captionof{figure}{Partial dependence of the weekly per-bite transmission probability $b_1$ on each environmental predictor.}
+%\captionof{figure}{Partial dependence of the weekly per-bite transmission probability $b_2$ on each environmental predictor.}
 \label{FIG:response_b2_A}
 
 \renewcommand{\thefigure}{9B}
@@ -1327,7 +1370,7 @@ The shape of these responses is illustrated in Figs.~\ref{FIG:response_b1} and \
 
 \noindent
 \includegraphics[width=\columnwidth]{figs/b2_2020_environmental_response_B.png}
-%\captionof{figure}{Partial dependence of the weekly per-bite transmission probability $b_1$ on each environmental predictor.}
+%\captionof{figure}{Partial dependence of the weekly per-bite transmission probability $b_2$ on each environmental predictor.}
 \label{FIG:response_b2_B}
 
 \renewcommand{\thefigure}{9}
@@ -1742,17 +1785,17 @@ All files of data collection and treatment, as well as results obtained througho
 
 \begin{table}[width=2.0\linewidth,cols=3,pos=h]
 \begin{threeparttable}
-\caption{List of model parameters.}\label{tbl1}
+\caption{Response functions and derived quantities of the model.}\label{tbl1}
 \renewcommand{\thetable}{A.1}  % Custom table name
 \begin{tabular*}{\tblwidth}{@{} LLL@{} }
 \toprule
 Parameter & Definition & Formulation\\
 \midrule
-$p(T)$  & Daily mosquito survival rate dependent on temperature  & $e^{(-1 / (AT^2 + BT + C))}$ \\  
-$p(H)$  & Daily mosquito survival rate dependent on humidity \tnote{1} & $\frac{\varphi e^{-k(H-H_0)}+1}{e^{-k(H-H_0)}+1}$ \\  
+$p(T)$  & Daily mosquito survival rate dependent on temperature  & $\exp\left[-1 / (AT^2 + BT + C)\right]$ \\  
+$p(H)$  & Daily mosquito survival rate dependent on humidity \tnote{1} & $\left(\varphi\exp\left[-k(H-H_0)\right]+1\right)/\left(\exp\left[-k(H-H_0)\right]+1\right)$\\%$\frac{\varphi e^{-k(H-H_0)}+1}{e^{-k(H-H_0)}+1}$ \\  
 $p(T, H)$   & Daily mosquito survival rate   & $p(T)p(H)$ \\  
 $p_L(R)$   & Probability of larval survival dependent on rainfall \tnote{2} & $({4p_{ML}}/{R_L^2})R(R_L - R)$  \\  
-$p_L(T)$   & Probability of larval survival dependent on temperature   & $e^{-(c_1T + c_2)}$  \\ 
+$p_L(T)$   & Probability of larval survival dependent on temperature   & $\exp\left[-(c_1T + c_2)\right]$  \\ 
 $p_L(R, T)$   & Probability of larval survival   & $p_L(R)p_L(T)$   \\
 $\mu(T, H)$   & Mosquito mortality rate per capita (days$^{-1}$)   & $-\log(p(T, H))$  \\ 
 $a(T)$   & Biting rate (days$^{-1}$)  & ${(T - T')}/{D_1}$   \\ 
@@ -1807,17 +1850,77 @@ $D_1$  & Temperature scaling factor of the biting rate: 24.8 & $^\circ C \ \text
 $c_1$  & Empirical sensitivity parameter: 0.00554 & $(^\circ C \ \text{days})^{-1}$ \\ 
 $c_2$  & Empirical sensitivity parameter: -0.06737 & days$^{-1}$ \\ 
 %$T'$  & Biting rate temperature threshold \tnote{4}  & $^\circ C$ \\ 
-$b_{3M}$  & Infection rate in exposed mosquitoes ($1/\tau_M(T)$) &  days$^{-1}$ \\
+$b_{3M}$  & Sporogonic development rate in exposed mosquitoes (Eq.~\ref{eq:b3m}), normalized by $b_{3M}(T_{\mathrm{opt}})=1/\tau_M(T_{\mathrm{opt}})$ \tnote{5} &  days$^{-1}$ \\
 $b_{3H}$  & Infection rate in exposed humans ($1/\tau_H$): 1/10 &  days$^{-1}$ \\  
 $H_0$ & Critical humidity threshold for 50$\%$ survival transition: 58 & $\%$ \\
 $\varphi$ &  Baseline survival probability at extreme low humidity: 0.05 & Dimensionless \\
 $k$  & Steepness of the humidity-survival sigmoid response: 0.25 & $\%^{-1}$ \\
+$M'$ & Baseline mosquito population scale of the carrying capacity $K(t) = M' f_T(T) f_R(R)$: 468{,}580 \tnote{6} & Individuals \\
 
 \bottomrule
 \end{tabular*}
 \begin{tablenotes}
 \item[3] The reference rainfall level $R_L$ for the Amazon was approximated based on reported associations between monthly precipitation and malaria incidence \cite{Ecological_Change_Malaria_Risk}. In particular, precipitation levels in the range of 917 to 1019 mm/month were associated with a decrease in malaria cases. The midpoint of this interval (968 mm/month) was used as a representative value and converted to a daily rate by dividing by 30 days, yielding $R_L \approx 32.3$ mm/day. This value is therefore interpreted as the threshold scale for high rainfall conditions in the model.
-\item[4] In Parham and Michael \cite{Parham2010}, this parameter is denoted by \(T_1\). Here, we adopt a different notation to avoid confusion with the mean temperature in the absence of seasonality, also denoted by \(T_1\) in the original paper. Additionally, instead of defining an independent lower thermal threshold for the biting rate, we assume that biting activity becomes negligible below the minimum temperature required for vector development.
+\item[4] In Parham and Michael \cite{Parham2010}, this parameter is denoted by \(T_1\). Here, we adopt a different notation to avoid confusion with the mean temperature in the absence of seasonality, also denoted by \(T_1\) in the original paper. The biting-rate threshold $T'$ was set equal to the minimum temperature required for vector development rather than fitted independently, so that $T'=T_{\min\text{A.}}=16\,^{\circ}C$ in the baseline parameterization. The two remain distinct parameters of distinct response functions, $a(T)$ and $f_T(T)$, and are perturbed independently in Section~\ref{sec:sensitivity}.
+\item[5] $b_{3M}$ and $b_{3H}$ are not free parameters: they are the development rates $b_{3H}=1/\tau_H$ and $b_{3M}$ of Eq.~\ref{eq:b3m}, the latter being a function of $DD$, $T_{\min}$ and $T_{\max}$ once $\eta$ is fixed by the normalization above.
+\item[6] $M'$ is one of the nine parameters calibrated year by year (Section~\ref{sec:year_by_year_calibration}). The value shown is the reference value used for the analytic decomposition of $\mathcal{R}_0$ (Section~\ref{sec:sensitivity}); its admissible range is that of Table~\ref{tbl:box}.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\clearpage
+\begin{table}[h]
+\begin{threeparttable}
+\caption{Admissible parameter box of the sensitivity analyses. The 25 decomposed parameters, grouped by mechanism as in Section~\ref{sec:sensitivity}, with the baseline value of Table~\ref{tbl2} and the range over which the global decomposition of Section~\ref{sec:results_sobol} samples them. Every range brackets the baseline value. The nine parameters calibrated year by year (Table~\ref{tbl:bounds}) are sampled over the bounds used in the calibration.}\label{tbl:box}
+\renewcommand{\thetable}{A.3}  % Custom table name
+\begin{tabular*}{\tblwidth}{@{} LLL@{}}
+\toprule
+Parameter & Baseline & Sampled range\\
+\midrule
+\multicolumn{3}{l}{\itshape Transmission probabilities and capacity scale}\\
+$b_1$ & 0.04 & $[0.001,\ 0.5]$\\
+$b_2$ & 0.09 & $[0.01,\ 0.5]$\\
+$M'$ & 468{,}580 & $[50{,}000,\ 500\,N_y]$\\
+\midrule
+\multicolumn{3}{l}{\itshape Human immunity and turnover}\\
+$\tau_H$ (days) & 10 & $[10,\ 20]$\\
+$\gamma$ (days$^{-1}$) & $1/120$ & $[1/150,\ 1.0]$\\
+$\omega$ (days$^{-1}$) & $1/270$ & $[1/300,\ 0.1]$\\
+\midrule
+\multicolumn{3}{l}{\itshape Humidity-dependent adult survival}\\
+$H_0$ (\%) & 58 & $[20,\ 75]$\\
+$k$ (\%$^{-1}$) & 0.25 & $[0.01,\ 1.0]$\\
+$\varphi$ & 0.05 & $[0.01,\ 0.5]$\\
+\midrule
+\multicolumn{3}{l}{\itshape Biting rate}\\
+$T'$ ($^\circ C$) & 16 & $[14,\ 20]$\\
+$D_1$ ($^\circ C\ \text{days}$) & 24.8 & $[18,\ 32]$\\
+\midrule
+\multicolumn{3}{l}{\itshape Sporogonic development (\textit{Plasmodium})}\\
+$DD$ ($^\circ C\ \text{days}$) & 105 & $[80,\ 140]$\\
+$T_{\min}^{\mathrm{p}}$ ($^\circ C$) & 14.5 & $[12,\ 17]$\\
+$T_{\max}^{\mathrm{p}}$ ($^\circ C$) & 29.8 & $[27,\ 32]$\\
+$T_{\mathrm{opt}}^{\mathrm{p}}$ ($^\circ C$) & 23.5 & $[21,\ 26]$\\
+\midrule
+\multicolumn{3}{l}{\itshape Immature-stage survival and recruitment}\\
+$R_L$ (mm) & 32.3 \tnote{7} & $[20,\ 50]$\\
+$B_E$ & 200 & $[100,\ 300]$\\
+$c_1$ ($^\circ C^{-1}\ \text{days}^{-1}$) & 0.00554 & $[0.003,\ 0.008]$\\
+$c_2$ (days$^{-1}$) & $-0.06737$ & $[-0.09,\ -0.04]$\\
+\midrule
+\multicolumn{3}{l}{\itshape Adult survival curve and mortality}\\
+$A$ ($^\circ C^{2}\ \text{days}^{-1}$) & $-0.03$ & $[-0.05,\ -0.01]$\\
+$B$ ($^\circ C^{-1}\ \text{days}^{-1}$) & 1.31 & $[1.0,\ 1.6]$\\
+$C$ (days$^{-1}$) & $-4.4$ & $[-5.5,\ -3.5]$\\
+\midrule
+\multicolumn{3}{l}{\itshape \textit{Anopheles} thermal suitability}\\
+$T_{\min}^{\mathrm{a}}$ ($^\circ C$) & 16 & $[13,\ 19]$\\
+$T_{\mathrm{opt}}^{\mathrm{a}}$ ($^\circ C$) & 25 & $[22,\ 28]$\\
+$T_{\max}^{\mathrm{a}}$ ($^\circ C$) & 34 & $[30,\ 38]$\\
+\bottomrule
+\end{tabular*}
+\begin{tablenotes}
+\item[7] $N_y$ denotes the estimated rural population of Manaus for year $y$. $T'$ and $T_{\min}^{\mathrm{a}}$ share the baseline value $16\,^{\circ}C$ (note~4 of Table~\ref{tbl2}) but are distinct parameters and are sampled from distinct ranges, so that the two response functions they enter keep an independent degree of freedom.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
