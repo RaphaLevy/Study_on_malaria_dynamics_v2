@@ -1599,6 +1599,74 @@ lowest-transmission months.
 \section{Conclusion}
 \label{sec:conclusion}
 
+This work set out to determine whether the malaria transmission dynamics observed in
+rural Manaus over 2017-2023 can be explained by a climate- and environment-driven
+host-vector model. Starting from the delayed SIR-SEI formulation of Parham and Michael
+(2010), we first showed that the original parameterization cannot reproduce the observed
+persistence of transmission: with the reported values, mosquito recruitment is insufficient
+to offset mortality, the vector population collapses, and infection is extinguished in both
+populations (Section~\ref{sec:results_parham_michael}). The reformulation as an ODE-based
+SEIRS-SEI model, in which the extrinsic incubation delay is replaced by the sporogonic
+survival term $b_{3M}\ell$ and recruitment is made density-dependent, is therefore not a
+numerical convenience but a qualitative change: it restores vector persistence and allows
+the system to sustain the endemic transmission observed for \textit{Plasmodium vivax} and
+\textit{Anopheles darlingi} (Proposition~\ref{prop:persistence}). Fitted sequentially year
+by year, the resulting model reproduces the active-case series and its pronounced inter-
+and intra-annual variability (Section~\ref{sec:results_calibration}).
+\\\\
+The mathematical analysis clarifies how transmission is controlled. The reproduction
+number factorises into a human and a vector component, $\mathcal{R}_0=\sqrt{\mathcal{R}_0^H
+\mathcal{R}_0^M}$ (Eq.~\eqref{eq:R0_factors}), and depends explicitly on the environmental
+state through the biting rate and the carrying capacity, so that the invasion risk is not
+constant through the year: the seasonal curve exceeds unity during the wet season and falls
+below the epidemic threshold in the driest months (Figure~\ref{FIG:R0_seasonal}). The
+sensitivity analyses show that this threshold is governed by the temperature coefficients
+of adult mosquito survival and by the biting rate, that the two transmission probabilities
+enter only through the square root with a universal index of $1/2$, and that the human
+incubation period $\tau_H$ and the immunity-waning rate $\omega$ are irrelevant to it
+(Section~\ref{sec:results_sensitivity}). The global decomposition of the seasonal peak
+reorders the parameters, as the recovery and adult-survival curvature dominate and, because most
+of the sampled box is locally subcritical, it should be read as a description of the
+parameter space rather than of an established wave (Section~\ref{sec:results_sobol}).
+\\\\
+Two complementary results argue that the transmission probabilities, and not the mechanistic
+climate responses, are the limiting ingredient of the model. Releasing $b_1$ and $b_2$ on a
+weekly basis reduces the weighted mean squared error in every year, by up to two orders of
+magnitude, indicating that a temperature-driven constant-coefficient formulation cannot
+reproduce the observed seasonal structure (Section~\ref{sec:results_weekly_beta}). The
+subsequent environmental regression then recovers much of that structure \emph{within} each
+year ($R^2$ up to $0.81$ for $b_1$ and $0.92$ for $b_2$, with negligible bias), with fire
+activity contributing meaningfully to $b_2$ while deforestation remains a weak
+within-season predictor (Section~\ref{sec:results_regression}). At the same time, the
+year-by-year fit drives $b_1$ and $b_2$ to their prescribed bounds and the transmission
+probabilities trade off against each other across years, placing the calibrated
+$\mathcal{R}_0$ at $0.96\pm0.19$, marginally below the threshold, against $2.20$ for the
+pre-calibration values (Section~\ref{sec:calibration_reaches_bounds}). It is thus the fitted
+transmission probabilities, rather than the vector vital rates, that hold the calibrated
+model near the edge of endemicity.
+\\\\
+Taken together, these findings indicate that environmental drivers act on the Amazonian
+transmission cycle mainly by modulating the effective per-bite transmission probabilities,
+and that a faithful description of the seasonal dynamics requires these coefficients to be
+treated as time-varying rather than constant. This has two practical implications. First,
+because the parameters that decide whether $\mathcal{R}_0>1$ are not the same as those that
+decide the height of the seasonal wave, intervention strategies ranked from $\mathcal{R}_0$
+alone may be misleading, so refining the vector survival schedule and the transmission
+probabilities would improve forecasts more than refining the immune parameters. Second, the
+systematic drift of the fitted transmission probabilities towards their bounds underlines the
+need for wider, data-informed parameter ranges or alternative functional forms.
+\\\\
+Several limitations remain. The environmental drivers are treated as deterministic and
+observed, so unmodelled factors such as vector-control interventions and local mobility are
+absorbed by the fitted parameters; the model is fitted to reported case counts, which are
+subject to reporting bias and under-reporting, particularly in the lowest-transmission
+months; and the demographic corrections described in Section~\ref{sec:population_estimates}
+reflect data inconsistencies that propagate into the estimates of transmission intensity
+(Section~\ref{sec:limitations}). Future work should therefore incorporate these unobserved
+covariates, couple the empirical regression of $b_1$ and $b_2$ back into the mechanistic
+model, and assess the transferability of the calibrated coefficients to other municipalities
+and years of the Brazilian Amazon.
+
 \section*{Aknowledgements}
 \label{sec:aknowledgements}
 This study was financed in part by the Coordenação de Aperfeiçoamento de Pessoal de Nível Superior - Brasil (CAPES) - Finance Code 001.
