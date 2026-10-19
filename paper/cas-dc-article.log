@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.3.13)  19 OCT 2026 09:18
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.3.13)  19 OCT 2026 10:58
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1554,12 +1554,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 1077--1174
 
  []
 
-<figs/local_sensitivity_R0_IH.png, id=321, 820.9872pt x 513.117pt>
+<figs/local_sensitivity_R0_IH.png, id=321, 821.2281pt x 513.117pt>
 File: figs/local_sensitivity_R0_IH.png Graphic file (type png)
 <use figs/local_sensitivity_R0_IH.png>
 Package pdftex.def Info: figs/local_sensitivity_R0_IH.png  used on input line 1
 180.
-(pdftex.def)             Requested size: 238.25444pt x 148.9019pt.
+(pdftex.def)             Requested size: 238.25444pt x 148.86275pt.
 
 Underfull \hbox (badness 10000) in paragraph at lines 1188--1213
 
@@ -2329,7 +2329,7 @@ s/type1/public/stix/stix-mathrm-bold.pfb><C:/Users/rapha/AppData/Local/Programs
 rograms/MiKTeX/fonts/type1/public/stix/stix-mathscr.pfb><C:/Users/rapha/AppData
 /Local/Programs/MiKTeX/fonts/type1/public/stix/stix-mathsf.pfb><C:/Users/rapha/
 AppData/Local/Programs/MiKTeX/fonts/type1/public/stix/stix-mathtt.pfb>
-Output written on cas-dc-article.pdf (25 pages, 2234571 bytes).
+Output written on cas-dc-article.pdf (25 pages, 2269099 bytes).
 PDF statistics:
  804 PDF objects out of 1000 (max. 8388607)
  208 named destinations out of 1000 (max. 500000)
