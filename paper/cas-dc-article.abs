@@ -1,5 +1,19 @@
-This paper aims to analyze the behavior of malaria transmission in the Amazon region based on climatic and environmental changes, such as temperature, precipitation, humidity, deforestation and forest fires, through proposed modifications to the SIR and SEI models, in order to contribute to the study of applications of external effects on the evolution of the disease.
-The Trajetórias Project, developed by the Synthesis Center
-on Biodiversity and Ecosystem Services (SinBiose/CNPq) was used as an initial reference for the study.
-\\\\
-This work employs a modified SEIRS/SEI methodology, based on the SIR/SEI model developed by Parham and Michael (2010) which takes into account rainfall and temperature, with further modifications. %Primary results show that the model is too sensible on some parameters, and using values indicated by other papers did not give the same results, opening up future work to compare the modified model equations with the originals. With the obtained results, it was possible to verify a strong effect caused by increased contact of host and vectors on the transmission of the disease.
+Malaria persists in the Brazilian Amazon despite decades of control, and how climate and
+land use act on it remains hard to separate from the vector and human dynamics they
+mediate. We analyse \textit{Plasmodium vivax} transmission in rural Manaus (2017-2023) and
+show that the delayed SIR-SEI model of Parham and Michael (2010) cannot reproduce the
+observed persistence, since recruitment cannot offset mosquito mortality. We reformulate it
+as a climate-driven SEIRS-SEI model with density-dependent recruitment, humidity-dependent
+adult survival and Bri\`ere-type sporogonic development, calibrated year by year, which
+reproduces the observed inter- and intra-annual variability. The reproduction number
+inherits the environmental state ($\mathcal{R}_0 = 2.20$, above unity on $39.8\%$ of
+study-period days), so invasion risk varies within the year; local sensitivity attributes
+it to mosquito survival and the biting rate, not to the human incubation period or immunity
+waning. Releasing the per-bite probabilities weekly reduces the error in every year, so
+constant coefficients cannot reproduce the seasonal structure; a random forest on
+temperature, rainfall, humidity, deforestation and fire recovers it within years
+($R^2 \approx 0.81-0.92$) but not between them ($R^2 \approx 0.17-0.19$).
+Environmental drivers therefore act mainly by modulating time-varying per-bite transmission
+probabilities, and because the parameters that decide threshold crossing differ from those
+that set the wave height, interventions ranked from the reproduction number alone may be
+misleading.

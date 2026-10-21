@@ -141,11 +141,25 @@
 
 \begin{abstract}
 %This template helps you to create a properly formatted \LaTeX\ manuscript.
-This paper aims to analyze the behavior of malaria transmission in the Amazon region based on climatic and environmental changes, such as temperature, precipitation, humidity, deforestation and forest fires, through proposed modifications to the SIR and SEI models, in order to contribute to the study of applications of external effects on the evolution of the disease. 
-The Trajetórias Project, developed by the Synthesis Center 
-on Biodiversity and Ecosystem Services (SinBiose/CNPq) was used as an initial reference for the study. 
-\\\\
-This work employs a modified SEIRS/SEI methodology, based on the SIR/SEI model developed by Parham and Michael (2010) which takes into account rainfall and temperature, with further modifications. %Primary results show that the model is too sensible on some parameters, and using values indicated by other papers did not give the same results, opening up future work to compare the modified model equations with the originals. With the obtained results, it was possible to verify a strong effect caused by increased contact of host and vectors on the transmission of the disease. 
+Malaria persists in the Brazilian Amazon despite decades of control, and how climate and
+land use act on it remains hard to separate from the vector and human dynamics they
+mediate. We analyse \textit{Plasmodium vivax} transmission in rural Manaus (2017-2023) and
+show that the delayed SIR-SEI model of Parham and Michael (2010) cannot reproduce the
+observed persistence, since recruitment cannot offset mosquito mortality. We reformulate it
+as a climate-driven SEIRS-SEI model with density-dependent recruitment, humidity-dependent
+adult survival and Bri\`ere-type sporogonic development, calibrated year by year, which
+reproduces the observed inter- and intra-annual variability. The reproduction number
+inherits the environmental state ($\mathcal{R}_0 = 2.20$, above unity on $39.8\%$ of
+study-period days), so invasion risk varies within the year; local sensitivity attributes
+it to mosquito survival and the biting rate, not to the human incubation period or immunity
+waning. Releasing the per-bite probabilities weekly reduces the error in every year, so
+constant coefficients cannot reproduce the seasonal structure; a random forest on
+temperature, rainfall, humidity, deforestation and fire recovers it within years
+($R^2 \approx 0.81-0.92$) but not between them ($R^2 \approx 0.17-0.19$).
+Environmental drivers therefore act mainly by modulating time-varying per-bite transmission
+probabilities, and because the parameters that decide threshold crossing differ from those
+that set the wave height, interventions ranked from the reproduction number alone may be
+misleading.
 \end{abstract}
 
 
@@ -292,7 +306,7 @@ and $\text{Pop}(m,z,\cdot)$ represents the population at the midpoint of the int
 \\\\
 This relationship was inverted in order to estimate a ratio of rural to total population from reported incidence and case counts in both zones. 
 Using this approach, the rural population of Manaus was estimated to represent less than $1\%$ of the total population, ranging between $0.3\%$ and $0.6\%$ 
-of the total population of the municipality, while accounting for a disproportionately large share of malaria cases (approximately $30\%$ to $40\%$ over the study periods).
+of the total population of the municipality, while accounting for a disproportionately large share of malaria cases (approximately $30\%$ to $42\%$ over the study periods).
 \\\\
 Yearly total population values for Manaus were obtained via interpolation based on official census data from 
 the Brazilian Institute of Geography and Statistics (IBGE) for the years 2000, 2010, and 
@@ -533,7 +547,7 @@ $\left(1-\frac{M(t)}{K(t)}\right)$ therefore imposes density-dependent regulatio
 \label{sec:objective_function}
 
 With the model structure, data, and environmental predictors defined, we describe the computational procedures used to calibrate the model to the observed case data, including the objective function, the calibration strategy, and the numerical implementation.
-Model parameters were estimated by minimizing the discrepancy between the simulated infected-human trajectory $I_H(t)$ and the observed active-case counts reported through SIVEP-Malaria, restricted to rural Manaus (scaled by the rural share of reported cases, 41.54$\%$). The objective function is a weighted mean squared error (wMSE):
+Model parameters were estimated by minimizing the discrepancy between the simulated infected-human trajectory $I_H(t)$ and the observed active-case counts reported through SIVEP-Malaria, restricted to rural Manaus (scaled by the rural share of reported cases between 2015 and 2019, which was found to be 41.54$\%$). The objective function is a weighted mean squared error (wMSE):
 \begin{align}
 \text{wMSE}(\theta) = \frac{\sum_{i=1}^{n} w_i \left( I_H(t_i;\theta) - y_i \right)^2}{\sum_{i=1}^{n} w_i},
 \label{eq:wmse}
