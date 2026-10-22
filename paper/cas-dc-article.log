@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.3.13)  21 OCT 2026 16:55
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.3.13)  22 OCT 2026 16:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1568,12 +1568,12 @@ File: figs/sobol_ih_qpeak.png Graphic file (type png)
 Package pdftex.def Info: figs/sobol_ih_qpeak.png  used on input line 1234.
 (pdftex.def)             Requested size: 238.25444pt x 318.17017pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1241--1263
+Underfull \hbox (badness 10000) in paragraph at lines 1241--1264
 
  []
 
 
-Underfull \hbox (badness 1635) in paragraph at lines 1241--1263
+Underfull \hbox (badness 1635) in paragraph at lines 1241--1264
 \T1/stix/m/n/10 served trans-mis-sion struc-ture. This mo-ti-vates ex-tend-ing
  []
 
@@ -1594,17 +1594,19 @@ File: figs/b2_eff_obs_vs_pred_all_years.png Graphic file (type png)
 Package pdftex.def Info: figs/b2_eff_obs_vs_pred_all_years.png  used on input l
 ine 1312.
 (pdftex.def)             Requested size: 238.25444pt x 248.79318pt.
-[14]
-Underfull \hbox (badness 10000) in paragraph at lines 1317--1340
-
- []
-
 
 Underfull \hbox (badness 10000) in paragraph at lines 1317--1340
 
  []
 
-<figs/env_response_b1_b2_combined.png, id=364, 494.3268pt x 426.6339pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 1317--1340
+
+ []
+
+[14 <./figs/b1_eff_obs_vs_pred_all_years.png> <./figs/b2_eff_obs_vs_pred_all_ye
+ars.png>]
+<figs/env_response_b1_b2_combined.png, id=368, 494.3268pt x 426.6339pt>
 File: figs/env_response_b1_b2_combined.png Graphic file (type png)
 <use figs/env_response_b1_b2_combined.png>
 Package pdftex.def Info: figs/env_response_b1_b2_combined.png  used on input li
@@ -1615,8 +1617,7 @@ Overfull \hbox (2.9147pt too wide) in paragraph at lines 1444--1445
 []\T1/stix/m/n/10 The tran-si-tion from the de-layed SIR-SEI model of Parham
  []
 
-[15 <./figs/b1_eff_obs_vs_pred_all_years.png> <./figs/b2_eff_obs_vs_pred_all_ye
-ars.png>]
+
 Underfull \hbox (badness 1571) in paragraph at lines 1452--1466
 \T1/stix/m/n/10 mor-tal-ity, ev-ery ex-posed in-di-vid-ual even-tu-ally be-come
 s
@@ -1632,7 +1633,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1452--1466
 
  []
 
-[16 <./figs/env_response_b1_b2_combined.png>]
+
 Underfull \hbox (badness 10000) in paragraph at lines 1470--1539
 
  []
@@ -1663,7 +1664,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1470--1539
 
  []
 
-
+[15] [16 <./figs/env_response_b1_b2_combined.png>]
 Underfull \hbox (badness 1552) in paragraph at lines 1544--1556
 []\T1/stix/m/n/10 The constant-coefficient model con-sis-tently un-der-es-
  []
@@ -1679,12 +1680,12 @@ Underfull \hbox (badness 1424) in paragraph at lines 1544--1556
  re-duc-tion in 2017 to a
  []
 
-[17]
+
 Underfull \hbox (badness 10000) in paragraph at lines 1577--1594
 
  []
 
-
+[17]
 Underfull \hbox (badness 10000) in paragraph at lines 1628--1695
 
  []
@@ -1715,7 +1716,7 @@ Underfull \hbox (badness 2922) in paragraph at lines 1702--1703
 phaLevy / Environmental _
  []
 
-[19]
+
 Underfull \hbox (badness 2735) in paragraph at lines 1717--1726
 []\T1/stix/m/n/8 P. F. P. Pi-menta et al., An overview of malaria trans-mis-sio
 n
@@ -1926,7 +1927,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1762--1765
 
  []
 
-
+[19]
 Underfull \hbox (badness 10000) in paragraph at lines 1765--1768
 []\T1/stix/m/n/8 MapBiomas Brasil, Home/Iniciativas e Pro-du-
  []
@@ -2102,7 +2103,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1810--1813
 
  []
 
-[20]
+
 Underfull \hbox (badness 10000) in paragraph at lines 1813--1816
 []\T1/stix/m/n/8 J. A. Nelder, R. Mead, A Sim-plex Method for Func-tion
  []
@@ -2229,9 +2230,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1846--1875
 
  []
 
-[21
-
-]
+[20]
 Overfull \hbox (17.65689pt too wide) in alignment at lines 1894--1913
 [] [] [] 
  []
@@ -2241,7 +2240,7 @@ Overfull \hbox (238.25444pt too wide) in paragraph at lines 1892--1919
  [] 
  []
 
-[22
+[21
 
 
 ]
@@ -2249,10 +2248,10 @@ Overfull \hbox (238.25444pt too wide) in paragraph at lines 1924--1974
  [] 
  []
 
-[23
+[22
 
 
-] [24
+] [23
 
 
 ]
@@ -2271,11 +2270,11 @@ Underfull \hbox (badness 1033) in paragraph at lines 2122--2127
 it/10 V \LS1/stix/m/n/10 =
  []
 
-[25
+[24
 
 ]
 No file cas-dc-article.bbl.
-[26
+[25
 
 ] (cas-dc-article.aux)
  ***********
@@ -2290,13 +2289,13 @@ Package rerunfilecheck Info: File `cas-dc-article.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 18796 strings out of 467871
- 295551 string characters out of 5418376
+ 18795 strings out of 467871
+ 295544 string characters out of 5418376
  736306 words of memory out of 5000000
  47170 multiletter control sequences out of 15000+600000
  757257 words of font info for 211 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 90i,19n,117p,1182b,697s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 90i,19n,117p,1182b,642s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\rapha\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi450\ecss
 0800.pk> <C:\Users\rapha\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi60
 0\ecsx0900.pk> <C:\Users\rapha\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec
@@ -2315,9 +2314,9 @@ s/type1/public/stix/stix-mathrm-bold.pfb><C:/Users/rapha/AppData/Local/Programs
 rograms/MiKTeX/fonts/type1/public/stix/stix-mathscr.pfb><C:/Users/rapha/AppData
 /Local/Programs/MiKTeX/fonts/type1/public/stix/stix-mathsf.pfb><C:/Users/rapha/
 AppData/Local/Programs/MiKTeX/fonts/type1/public/stix/stix-mathtt.pfb>
-Output written on cas-dc-article.pdf (26 pages, 1875249 bytes).
+Output written on cas-dc-article.pdf (25 pages, 1873971 bytes).
 PDF statistics:
- 815 PDF objects out of 1000 (max. 8388607)
- 211 named destinations out of 1000 (max. 500000)
+ 810 PDF objects out of 1000 (max. 8388607)
+ 210 named destinations out of 1000 (max. 500000)
  51 words of extra memory for PDF output out of 10000 (max. 10000000)
 
