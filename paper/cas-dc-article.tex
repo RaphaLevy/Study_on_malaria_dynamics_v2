@@ -1179,6 +1179,19 @@ V_{ij} &= \operatorname{Var}_{X_i,X_j}\left(\mathbb{E}_{\mathbf{X}_{\sim ij}}
 \end{aligned}
 \end{equation}
 where $\mathbf{X}_{\sim i}$ denotes all inputs except $X_i$. 
+\\\\
+The first-order and total-order Sobol' indices are then
+\begin{equation}
+\label{eq:sobol_indices}
+\begin{aligned}
+S_i &= \frac{V_i}{\operatorname{Var}(Y)},
+\\
+S_{T_i} &= 1 - \frac{\operatorname{Var}_{\mathbf{X}_{\sim i}}\left(
+\mathbb{E}_{X_i}[Y | \mathbf{X}_{\sim i}]\right)}{\operatorname{Var}(Y)}\\
+&= \frac{\mathbb{E}_{\mathbf{X}_{\sim i}}\left[
+\operatorname{Var}_{X_i}(Y | \mathbf{X}_{\sim i})\right]}{\operatorname{Var}(Y)}
+\end{aligned}
+\end{equation}
 
 \begin{figure}[pos=h]
 
