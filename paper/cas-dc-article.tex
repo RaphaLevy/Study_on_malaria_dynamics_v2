@@ -1080,7 +1080,12 @@ $\mathcal{R}_0$, still responds to it.
 \\\\
 Figure~\ref{FIG:local_sensitivity} displays the two decompositions side by
 side, and Table~\ref{tbl:index} lists them with the exact analytic values of
-the reproduction number. The left panel is the finite-difference estimate
+the reproduction number. In the table, $Y$ is the output being
+differentiated: the closed-form reproduction number, $Y = \mathcal{R}_0$,
+in the first column, and the seasonal maximum of the
+infectious-human compartment, $Y = Q_{\mathrm{peak}}$ of
+Eq.~\eqref{eq:qpeak}, in the second column. The same $S_x$ therefore denotes two distinct indices, one for each output. The
+left panel is the finite-difference estimate
 of the same index; its largest deviation from the analytic value is
 $0.06$ (for $H_0$) and is purely the $O(h^2)$ truncation error of the
 difference quotient, so the two representations of $S_x$ agree.
@@ -1146,18 +1151,19 @@ $N$ & & $-0.500$ & $-$\\
 
 \noindent
 \includegraphics[width=\columnwidth]{figs/local_sensitivity_R0_IH.png}
-\captionof{figure}{Normalized sensitivity index $S_x = \partial\log Y/\partial\log x$ of the 25 decomposed parameters (bars coloured by parameter group, as in Table~\ref{tbl:index}). Left: closed-form reproduction number at the reference environmental state, by central differences with $h = 0.05$; the exact analytic values of Table~\ref{tbl:index} differ from these by at most $0.06$, the truncation error of the difference quotient. Right: seasonal maximum of the infectious-human compartment of the calibrated model, averaged over 2017-2023, same scheme. A positive index means the output increases with the parameter. The three \textit{Anopheles} suitability temperatures are exactly zero on the left because the thermal-suitability factor $f_T$ is saturated at the reference climate.}
+\captionof{figure}{Normalized sensitivity index $S_x = \partial\log Y/\partial\log x$ of the 25 decomposed parameters (bars coloured by parameter group, as in Table~\ref{tbl:index}), where $Y$ is the output being differentiated: $Y = \mathcal{R}_0$ for the closed-form reproduction number in the left panel and $Y = Q_{\mathrm{peak}}$ for the seasonal maximum of the infectious-human compartment of the calibrated model in the right panel. Left: closed-form reproduction number at the reference environmental state, by central differences with $h = 0.05$; the exact analytic values of Table~\ref{tbl:index} differ from these by at most $0.06$, the truncation error of the difference quotient. Right: seasonal maximum of the infectious-human compartment of the calibrated model, averaged over 2017-2023, same scheme. A positive index means the output increases with the parameter. The three \textit{Anopheles} suitability temperatures are exactly zero on the left because the thermal-suitability factor $f_T$ is saturated at the reference climate.}
 \label{FIG:local_sensitivity}
 \end{figure}
 
 \subsection{Global sensitivity of the seasonal peak}
 \label{sec:results_sobol}
 
-The index of Eq.~\eqref{eq:normalized_sensitivity} is a local quantity, and
-its global counterpart is the variance-based Sobol' decomposition of the same
-output $Q_{\mathrm{peak}}$ of Eq.~\eqref{eq:qpeak}, which apportions the
-variance of $Q_{\mathrm{peak}}$ over the whole admissible box of the 25
-parameters of Table~\ref{tbl:box} among the individual parameters and
+The index of Eq.~\eqref{eq:normalized_sensitivity} is a local quantity,
+evaluated at a single reference state. The global sensitivity of the seasonal
+peak is instead quantified by the variance-based Sobol' decomposition of
+$Q_{\mathrm{peak}}$ of Eq.~\eqref{eq:qpeak}, which apportions the variance of
+this output over the whole admissible box of the 25 parameters of
+Table~\ref{tbl:box} among the individual parameters and
 among their interactions~\cite{saltelli2010}. Writing $Y =
 Q_{\mathrm{peak}}(\mathbf{X})$ for the output as a function of the 25
 independent inputs $\mathbf{X} = (X_1,\dots,X_{25})$ over the box, its
@@ -1221,7 +1227,7 @@ study.
 
 \noindent
 \includegraphics[width=\columnwidth]{figs/sobol_ih_qpeak.png}
-\captionof{figure}{First-order ($S_1$, dark bars) and total-order ($S_T$, pale bars) Sobol' indices of the 25 decomposed parameters with respect to the seasonal peak $Q_{\mathrm{peak}}$ of the infectious-human compartment, over the whole admissible parameter box of Table~\ref{tbl:box} (Saltelli design, $N = 512$; bars coloured by parameter group). The total-order index also collects the variance that a parameter carries through its interactions with the remaining ones, hence $S_T \geq S_1$. Since $Q_{\mathrm{peak}}$ is a maximum, the $74.4\%$ of the sampled parameter sets that are locally subcritical leave it at the initial value $I_H(0)$; the indices therefore characterize the sampled box and not the height of an established endemic wave.}
+\captionof{figure}{First-order ($S_i$) and total-order ($S_{T_i}$) Sobol' indices of the 25 decomposed parameters for the output $Y = Q_{\mathrm{peak}}$, the seasonal peak of the infectious-human compartment defined in Eq.~\eqref{eq:qpeak}, over the whole admissible parameter box of Table~\ref{tbl:box} (Saltelli design, $N = 512$; bars coloured by parameter group). Each parameter has two overlaid bars: the darker inner bar is the first-order index $S_i$ and the lighter outer bar is the total-order index $S_{T_i}$. The total-order index also collects the variance that a parameter carries through its interactions with the remaining ones, hence $S_{T_i} \geq S_i$. Since $Q_{\mathrm{peak}}$ is a maximum, the $74.4\%$ of the sampled parameter sets that are locally subcritical leave it at the initial value $I_H(0)$; the indices therefore characterize the sampled box and not the height of an established endemic wave.}
 \label{FIG:sobol_ih}
 \end{figure}
 
@@ -1302,7 +1308,7 @@ Within each year the model explains a large part of the variance of both transmi
 \captionof{figure}{Scatter plot of the estimated vs predicted weekly-free proportion bites from infected humans to susceptible mosquitoes ($b_1$) and from infected mosquitoes to susceptible humans ($b_2$)  that result in infection.}
 \label{FIG:scatter_b2}
 \end{figure}
-
+\newpage
 The importance of the predictors, however, differs between the two probabilities, as can be seen in Table~\ref{tbl:predictors_importance}.
 \begin{table}[H]
 \centering
@@ -1604,7 +1610,7 @@ and years of the Brazilian Amazon.
 
 \section*{Acknowledgements}
 \label{sec:acknowledgements}
-This study was financed in part by the Coordenação de Aperfeiçoamento de Pessoal de Nível Superior - Brasil (CAPES) - Finance Code 001.
+This study was financed in part by the Coordenação de Aperfeiçoamento de Pessoal de Nível Superior - Brasil (CAPES) - Finance Code 001. FCC acknowledges financial support from CNPq, FAPERJ and the Wellcome Trust (226088/Z/22/Z).
 
 \section*{Supplementary Material}
 \label{sec:supplementary_material}
