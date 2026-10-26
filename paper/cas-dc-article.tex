@@ -1425,8 +1425,10 @@ Section~\ref{sec:results_regression}.
 \subsection{Random forest: strong within years, weak in-between}
 
 The random forest regression achieves a good within-season fit
-($R^2 \approx 0.6$-$0.9$) but a markedly poorer between-season fit
-($R^2 \approx 0.17$-$0.19$). This asymmetry is informative rather
+(per-year $R^2$ ranging from $0.56$ to $0.81$ for $b_1$ and from $0.53$ to
+$0.92$ for $b_2$, with across-year means of $0.69$ and $0.78$,
+respectively) but a markedly poorer between-season fit (leave-one-year-out
+aggregate $R^2 = 0.17$ for $b_1$ and $0.19$ for $b_2$). This asymmetry is informative rather
 than a failure of the model. Within a single year, the
 drivers that vary on the weekly scale (precipitation, temperature,
 humidity, and fire) largely determine the week-to-week fluctuations of
