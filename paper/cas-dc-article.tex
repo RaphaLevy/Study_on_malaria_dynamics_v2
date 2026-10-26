@@ -943,7 +943,7 @@ comparison. Finally, the population size $N$ is not a free parameter of the
 calibration but carries a constant index $-1/2$, and is tabulated for
 completeness. Every index of Table~\ref{tbl:index} is produced by a single
 script from a fixed reference point, with no sampling, so that the table and
-Fig.~\ref{FIG:local_sensitivity} are exactly reproducible; the global
+Figure~\ref{FIG:local_sensitivity} are exactly reproducible; the global
 analysis of Section~\ref{sec:results_sobol} samples the box of
 Table~\ref{tbl:box} instead.
 
@@ -1206,12 +1206,12 @@ interactions. The box is sampled with a
 Saltelli design of $N = 512$ base points, that is $512 \times 27 =
 13{,}824$ integrations of the calibrated model, each returning the mean
 seasonal peak of 2017-2023, and we retain the first-order and total-order
-indices $S_i$ and $S_{T_i}$ only (Fig.~\ref{FIG:sobol_ih}).
+indices $S_i$ and $S_{T_i}$ only (Figure~\ref{FIG:sobol_ih}).
 \\\\
 Because $Q_{\mathrm{peak}}$ is a maximum, a parameter set whose transmission
 is locally subcritical leaves $I_H$ pinned at its initial value, and
 $74.4\%$ of the draws of the admissible box are of that kind; the
-decomposition of Fig.~\ref{FIG:sobol_ih} is therefore dominated by whether
+decomposition of Figure~\ref{FIG:sobol_ih} is therefore dominated by whether
 the epidemic takes off at all rather than by the height of an established
 wave, and its indices describe the box rather than the endemic peak, which is
 the caveat under which they must be read. Subject to it, the ranking differs
@@ -1260,7 +1260,7 @@ Year & Climate-driven & Weekly free & Reduction factor \\
 \label{sec:results_regression}
 Following the framework described in Section~\ref{sec:intro}, the freed weekly per-bite transmission probabilities were regressed against the environmental predictors $T,\,R,\,H,\,D_f,\\\,F_c,\,F_t$, representing temperature, precipitation, humidity, deforestation, fire counts and fire trends. A separate random forest model was fitted for each year.
 \\\\
-Within each year the model explains a large part of the variance of both transmission probabilities, with prediction bias close to zero in all years (|bias| $\lesssim$ 0.003 in every year; Table~\ref{tbl:regression}).
+Within each year the model explains a large part of the variance of both transmission probabilities, with prediction bias close to zero in all years (|bias| $\lesssim$ 0.003 in every year; Table~\ref{tbl:regression}, Figure~\ref{FIG:scatter_b2}).
 %\\\\
 \begin{table}[H]
 \centering
@@ -1295,15 +1295,15 @@ Within each year the model explains a large part of the variance of both transmi
 
 \vspace{0.6cm}
 
-\noindent
+\begin{figure}%[pos=h]
+\centering
 \includegraphics[width=\columnwidth]{figs/b1_eff_obs_vs_pred_all_years.png}
 %\captionof{figure}{Best within-year random-forest fit of the freed weekly per-bite transmission from infected humans to susceptible mosquitoes ($b_1$).}
 \label{FIG:scatter_b1}
+%\end{figure}
 
+%\begin{figure}[pos=h]
 
-\begin{figure}[pos=h]
-
-\noindent
 \includegraphics[width=\columnwidth]{figs/b2_eff_obs_vs_pred_all_years.png}
 \captionof{figure}{Scatter plot of the estimated vs predicted weekly-free proportion bites from infected humans to susceptible mosquitoes ($b_1$) and from infected mosquitoes to susceptible humans ($b_2$)  that result in infection.}
 \label{FIG:scatter_b2}
@@ -1331,7 +1331,7 @@ Based on this, it can be seen that deforestation is consistently the weakest pre
 \\\\
 A leave-one-year-out cross-validation of the same forests qualifies this result. Out-of-sample performance is markedly lower, with overall $R^2 \approx 0.17$ for $b_1$ and $\approx 0.19$ for $b_2$, in contrast to the strong within-year fits. This contrast confirms that the environmental drivers are strongly year-specific: the within-year seasonal trajectory of $T,R,H,D_f,F_c,F_t$ shapes each year's transmission signal, whereas a fixed, year-independent link between the environment and $b_1,b_2$ is not supported by the data.
 \\\\
-The shape of these responses is illustrated in Fig.~\ref{FIG:response_combined}, which shows the partial dependence of $b_1$ and $b_2$ on each predictor. 
+The shape of these responses is illustrated in Figure~\ref{FIG:response_combined}, which shows the partial dependence of $b_1$ and $b_2$ on each predictor. 
 
 
 \begin{figure*}[H]
