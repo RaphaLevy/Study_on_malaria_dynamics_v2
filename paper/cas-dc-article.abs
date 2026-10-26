@@ -1,18 +1,16 @@
 Malaria persists in the Brazilian Amazon despite decades of control, and how climate and
 land use act on it remains hard to separate from the vector and human dynamics they
-mediate. We analyse \textit{Plasmodium vivax} transmission in rural Manaus (2017-2023) and
+mediate. We analyze \textit{Plasmodium vivax} transmission in rural Manaus (2017-2023) and
 show that the delayed SIR-SEI model of Parham and Michael (2010) cannot reproduce the
 observed persistence, since recruitment cannot offset mosquito mortality. We reformulate it
 as a climate-driven SEIRS-SEI model with density-dependent recruitment, humidity-dependent
-adult survival and Bri\`ere-type sporogonic development, calibrated year by year, which
+adult survival and Brière-type sporogonic development, calibrated year by year, which
 reproduces the observed inter- and intra-annual variability. The reproduction number
-inherits the environmental state ($\mathcal{R}_0 = 2.20$, above unity on $39.8\%$ of
-study-period days), so invasion risk varies within the year; local sensitivity attributes
+inherits the environmental state, so invasion risk varies within the year, and the local sensitivity attributes
 it to mosquito survival and the biting rate, not to the human incubation period or immunity
-waning. Releasing the per-bite probabilities weekly reduces the error in every year, so
-constant coefficients cannot reproduce the seasonal structure; a random forest on
-temperature, rainfall, humidity, deforestation and fire recovers it within years
-($R^2 \approx 0.81-0.92$) but not between them ($R^2 \approx 0.17-0.19$).
+waning. Releasing the constant per-bite probabilities to have weekly values reduced the error in every year, indicating that
+constant coefficients cannot reproduce the seasonal structure. A random forest on
+temperature, rainfall, humidity, deforestation and fire recovers it within years, but not between them.
 Environmental drivers therefore act mainly by modulating time-varying per-bite transmission
 probabilities, and because the parameters that decide threshold crossing differ from those
 that set the wave height, interventions ranked from the reproduction number alone may be
