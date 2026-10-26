@@ -1531,7 +1531,9 @@ weekly basis reduces the weighted mean squared error in every year, by up to two
 magnitude, indicating that a temperature-driven constant-coefficient formulation cannot
 reproduce the observed seasonal structure (Section~\ref{sec:results_weekly_beta}). The
 subsequent environmental regression then recovers much of that structure \emph{within} each
-year ($R^2$ up to $0.81$ for $b_1$ and $0.92$ for $b_2$, with negligible bias), with fire
+year ($R^2$ from $0.56$ to $0.81$ for $b_1$ and from $0.53$ to $0.92$ for $b_2$, with
+negligible bias) but only a small part of it \emph{between} years (leave-one-year-out aggregate
+$R^2 = 0.17$ for $b_1$ and $0.19$ for $b_2$), with fire
 activity contributing meaningfully to $b_2$ while deforestation remains a weak
 within-season predictor (Section~\ref{sec:results_regression}). At the same time, the
 year-by-year fit drives $b_1$ and $b_2$ to their prescribed bounds and the transmission
@@ -1562,6 +1564,7 @@ reflect data inconsistencies that propagate into the estimates of transmission i
 covariates, couple the empirical regression of $b_1$ and $b_2$ back into the mechanistic
 model, and assess the transferability of the calibrated coefficients to other municipalities
 and years of the Brazilian Amazon.
+
 
 \section*{Acknowledgements}
 \label{sec:acknowledgements}
