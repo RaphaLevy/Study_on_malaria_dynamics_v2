@@ -261,7 +261,7 @@ regarding the mosquito population dynamics, the basic reproduction number and th
 \section{Methodology}
 \label{sec:methodology}
 
-\renewcommand{\thefigure}{1}
+%\renewcommand{\thefigure}{1}
 \begin{figure*}[H]
 \centering
 \includegraphics[width=\textwidth]{figs/total_active_infectious_cases_manaus_2017_2023.png}
@@ -988,16 +988,17 @@ Table~\ref{tbl:box} instead.
 
 \subsection{Recalibration of the temperature-dependent biting rate}
 \label{sec:results_biting_rate}
-The temperature-dependent biting rate was recalibrated using field estimates of \textit{Anopheles darlingi} feeding behavior, as described in Section~\ref{sec:recalibration_temp_dependent_biting_rate}. The recalibrated function has a minimum biting temperature threshold of $T' = 16^{\circ}\mathrm{C}$ and a thermal scaling factor $D_1 = 24.8^{\circ}\mathrm{C}\mathrm{days}$. Compared with the original Parham \& Michael parameterization, the recalibrated function better reflects the temperature range observed in the Amazon and produces higher biting rates during the transmission season in Manaus (Fig.~\ref{FIG:biting_rate}). This recalibrated biting rate is used in all subsequent simulations and in the weekly transmission regressions presented in Section~\ref{sec:results_regression}.
+The temperature-dependent biting rate was recalibrated using field estimates of \textit{Anopheles darlingi} feeding behavior, as described in Section~\ref{sec:recalibration_temp_dependent_biting_rate}. The recalibrated function has a minimum biting temperature threshold of $T' = 16^{\circ}\mathrm{C}$ and a thermal scaling factor $D_1 = 24.8^{\circ}\mathrm{C}\ \mathrm{days}$. Compared with the original Parham \& Michael parameterization, the recalibrated function better reflects the temperature range observed in the Amazon and produces higher biting rates during the transmission season in Manaus. % (Fig.~\ref{FIG:biting_rate}). 
+This recalibrated biting rate is used in all subsequent simulations and in the weekly transmission regressions presented in Section~\ref{sec:results_regression}.
 
-\renewcommand{\thefigure}{2}
-\begin{figure}[pos=h]
+%\renewcommand{\thefigure}{2}
+%\begin{figure}[pos=h]
 
-\noindent
-\includegraphics[width=\columnwidth]{figs/biting_rate_comparison.png}
-\captionof{figure}{Comparison between the recalibrated temperature-dependent biting rate $a(T)$ used in this work ($T'=16\,^{\circ}\mathrm{C}$, $D_1 = 24.8\,^{\circ}\mathrm{C}\,\mathrm{days}$) and the original Parham \& Michael (2010) parameterization \cite{Parham2010} ($T'=19.9\,^{\circ}\mathrm{C}$, $D_1 = 36.5\,^{\circ}\mathrm{C}\,\mathrm{days}$). The shaded band indicates the range of daily mean temperatures observed in Manaus between 2017 and 2023 (5th-95th percentiles), and the dashed vertical line marks the recalibrated biting threshold $T'=16\,^{\circ}\mathrm{C}$.}
-\label{FIG:biting_rate}
-\end{figure}
+%\noindent
+%\includegraphics[width=\columnwidth]{figs/biting_rate_comparison.png}
+%\captionof{figure}{Comparison between the recalibrated temperature-dependent biting rate $a(T)$ used in this work ($T'=16\,^{\circ}\mathrm{C}$, $D_1 = 24.8\,^{\circ}\mathrm{C}\,\mathrm{days}$) and the original Parham \& Michael (2010) parameterization \cite{Parham2010} ($T'=19.9\,^{\circ}\mathrm{C}$, $D_1 = 36.5\,^{\circ}\mathrm{C}\,\mathrm{days}$). The shaded band indicates the range of daily mean temperatures observed in Manaus between 2017 and 2023 (5th-95th percentiles), and the dashed vertical line marks the recalibrated biting threshold $T'=16\,^{\circ}\mathrm{C}$.}
+%\label{FIG:biting_rate}
+%\end{figure}
 
 \subsection{Model calibration reproduces the observed transmission dynamics}
 \label{sec:results_calibration}
@@ -1008,7 +1009,7 @@ The SEIRS-SEI model was calibrated year by year over 2017-2023 following the seq
 %\caption{Comparison between the observed active cases and the model estimation of the infectious human compartment $I_H$ for 2017.}
 %\label{FIG:model_vs_data}
 %\end{figure}
-\renewcommand{\thefigure}{3}
+
 \begin{figure}[pos=h]
 
 \noindent
@@ -1047,7 +1048,7 @@ drivers, this curve makes explicit the dependence of the invasion
 threshold on the climate-habitat state highlighted in
 Section~\ref{sec:basic_reproduction_number}, and motivates the week-specific regression of the
 transmission probabilities pursued in Section~\ref{sec:results_regression}.
-\renewcommand{\thefigure}{4}
+
 \begin{figure}[pos=h]
 \noindent
 \includegraphics[width=\columnwidth]{figs/coupled_and_human_Rt_variation_in_2017_with_months.png}
@@ -1188,7 +1189,7 @@ $N$ & & $-0.500$ & $-$\\
 \end{table}
 
 
-\renewcommand{\thefigure}{5}
+
 \begin{figure}[pos=h]
 
 \noindent
@@ -1227,7 +1228,7 @@ suitability factor remains saturated over the entire climate range of the
 study.
 
 
-\renewcommand{\thefigure}{6}
+
 \begin{figure}[pos=h]
 
 \noindent
@@ -1297,7 +1298,7 @@ Within each year the model explains a large part of the variance of both transmi
 \end{table}
 \vspace{0.6cm}
 %\clearpage
-\renewcommand{\thefigure}{b1_regression}
+
 \vspace{0.6cm}
 
 \noindent
@@ -1305,7 +1306,7 @@ Within each year the model explains a large part of the variance of both transmi
 %\captionof{figure}{Best within-year random-forest fit of the freed weekly per-bite transmission from infected humans to susceptible mosquitoes ($b_1$).}
 \label{FIG:scatter_b1}
 
-\renewcommand{\thefigure}{7}
+
 \begin{figure}[pos=h]
 
 \noindent
@@ -1338,7 +1339,7 @@ A leave-one-year-out cross-validation of the same forests qualifies this result.
 \\\\
 The shape of these responses is illustrated in Fig.~\ref{FIG:response_combined}, which shows the partial dependence of $b_1$ and $b_2$ on each predictor. %Each thin curve is one of the seven separately fitted per-year models (2017-2023), while the thick curve is the across-year median and the shaded band spans the minimum-to-maximum range across the seven years.
 
-\renewcommand{\thefigure}{8}
+
 \begin{figure*}[H]
 \centering
 \includegraphics[width=\textwidth]{figs/env_response_b1_b2_combined.png}
