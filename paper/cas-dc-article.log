@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.3.13)  26 OCT 2026 15:20
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.3.13)  26 OCT 2026 15:59
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1564,14 +1564,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 1200--1225
 
  []
 
-<figs/sobol_ih_qpeak.png, id=334, 499.1448pt x 666.5703pt>
-File: figs/sobol_ih_qpeak.png Graphic file (type png)
-<use figs/sobol_ih_qpeak.png>
-Package pdftex.def Info: figs/sobol_ih_qpeak.png  used on input line 1229.
-(pdftex.def)             Requested size: 238.25444pt x 318.17017pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
+<figs/sobol_ih_qpeak_trimmed.png, id=334, 509.5035pt x 363.0363pt>
+File: figs/sobol_ih_qpeak_trimmed.png Graphic file (type png)
+<use figs/sobol_ih_qpeak_trimmed.png>
+Package pdftex.def Info: figs/sobol_ih_qpeak_trimmed.png  used on input line 12
+29.
+(pdftex.def)             Requested size: 238.25444pt x 169.76292pt.
 
 Underfull \hbox (badness 10000) in paragraph at lines 1236--1259
 
@@ -1582,12 +1580,11 @@ Underfull \hbox (badness 1635) in paragraph at lines 1236--1259
 \T1/stix/m/n/10 served trans-mis-sion struc-ture. This mo-ti-vates ex-tend-ing
  []
 
-
+[13 <./figs/local_sensitivity_R0_IH.png> <./figs/sobol_ih_qpeak_trimmed.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 1261--1295
 
  []
 
-[13 <./figs/local_sensitivity_R0_IH.png>]
 <figs/b1_eff_obs_vs_pred_all_years.png, id=355, 426.393pt x 452.04884pt>
 File: figs/b1_eff_obs_vs_pred_all_years.png Graphic file (type png)
 <use figs/b1_eff_obs_vs_pred_all_years.png>
@@ -1601,10 +1598,9 @@ Package pdftex.def Info: figs/b2_eff_obs_vs_pred_all_years.png  used on input l
 ine 1307.
 (pdftex.def)             Requested size: 238.25444pt x 248.79318pt.
 
-
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[14 <./figs/sobol_ih_qpeak.png> <./figs/b1_eff_obs_vs_pred_all_years.png>]
+[14 <./figs/b1_eff_obs_vs_pred_all_years.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 1312--1335
 
  []
@@ -2300,12 +2296,12 @@ Package rerunfilecheck Info: File `cas-dc-article.out' has not changed.
  ) 
 Here is how much of TeX's memory you used:
  18793 strings out of 467871
- 295345 string characters out of 5418376
- 735965 words of memory out of 5000000
+ 295401 string characters out of 5418376
+ 736378 words of memory out of 5000000
  47165 multiletter control sequences out of 15000+600000
  757257 words of font info for 211 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 90i,19n,117p,1201b,697s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 90i,19n,117p,1305b,697s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\rapha\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi450\ecss
 0800.pk> <C:\Users\rapha\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi60
 0\ecsx0900.pk> <C:\Users\rapha\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec
@@ -2325,7 +2321,7 @@ rograms/MiKTeX/fonts/type1/public/stix/stix-mathrm.pfb><C:/Users/rapha/AppData/
 Local/Programs/MiKTeX/fonts/type1/public/stix/stix-mathscr.pfb><C:/Users/rapha/
 AppData/Local/Programs/MiKTeX/fonts/type1/public/stix/stix-mathsf.pfb><C:/Users
 /rapha/AppData/Local/Programs/MiKTeX/fonts/type1/public/stix/stix-mathtt.pfb>
-Output written on cas-dc-article.pdf (26 pages, 1749962 bytes).
+Output written on cas-dc-article.pdf (26 pages, 1680573 bytes).
 PDF statistics:
  818 PDF objects out of 1000 (max. 8388607)
  213 named destinations out of 1000 (max. 500000)
