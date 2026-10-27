@@ -1,39 +1,30 @@
-# Sensitivity Analysis of the SEIRS-SEI Malaria Model — R0
+# Sensitivity Analysis of the SEIRS-SEI Malaria Model R0
 
 This folder contains a **global (variance-based / Sobol) sensitivity analysis** of the
 basic reproduction number $\mathcal{R}_0$ of the SEIRS-SEI malaria model developed for
 the paper, together with all generated figures and tables.
 
-## What is analysed
+## What is analyzed
 
 The reproduction number $\mathcal{R}_0$ is the single most important summary of
 transmission risk. It has a closed form (derived via the Next Generation Matrix method
 in `models/seirs_sei/R0_Calculation.ipynb` and Section 5.2 of the paper):
 
-$$
-\mathcal{R}_0 =
-\sqrt{
-\frac{a^2\, b_1\, b_2\, \Lambda^{*}\, b_{3M}\,\ell}
-{N\,\gamma\,(b_{3M}\,\ell+\mu)\,\mu^{2}}
-},
-\qquad
-\Lambda^{*} = \mu\, M^{*} = \mu\, \frac{\bar{b}\,\bar{K}}{\bar{b}+\mu},
-\qquad
-\bar{K} = M'\, f_T(T)\, f_R(R),
-$$
+$$\mathcal{R}_0 =\sqrt{\frac{a^2 \ b_1 \ b_2\ \Lambda^{\star}\ b_{3M}\ \ell}{N\ \gamma\ (b_{3M}\ \ell+\mu)\ \mu^{2}}}$$
+$$\Lambda^{\star} = \mu \ M^{\star}= \mu\ \frac{\overline{b}\ \overline{K}}{\overline{b}+\mu},\ \overline{K} = M'\ f_T(T)\ f_R(R),$$
 
 where each quantity encodes an environmental response:
 
-- $a(T)$ — temperature-dependent biting rate  $a=\max(0,(T-T')/D_1)$;
-- $\mu(T,H)$ — mosquito mortality  $\mu=-\ln\big(p_T(T)\,p_H(H)\big)$, with the humidity
-  sigmoid  $p_H(H;\;H_0,k,\varphi)$;
-- $b_{3M}(T)$ — Brière sporogonic development rate;
-- $\ell=e^{-\mu\,\tau_M(T)}$ — probability of surviving the extrinsic incubation period;
-- $\bar{b}(R,T)$ — temperature/rainfall-dependent per-capita recruitment;
-- $f_T(T),\,f_R(R)$ — temperature and rainfall habitat suitability driving the carrying
+- $a(T)$: temperature-dependent biting rate  $a=\max(0,(T-T')/D_1)$;
+- $\mu(T,H)$: mosquito mortality  $\mu=-\ln\big(p_T(T)\,p_H(H)\big)$;
+- $b_{3M}(T)$: Brière sporogonic development rate;
+- $\ell=e^{-\mu\,\tau_M(T)}$: probability of surviving the extrinsic incubation period;
+- $\overline{b}(R,T)$: temperature/rainfall-dependent per-capita recruitment;
+- $f_T(T),\ f_R(R)$: temperature and rainfall habitat suitability driving the carrying
   capacity $K$;
-- $b_1,\,b_2$ — per-bite transmission probabilities; $\gamma$ — human recovery;
-  $N$ — human population.
+- $b_1,\ b_2$: per-bite transmission probabilities;
+- $\gamma$: human recovery;
+- $N$: human population.
 
 Because $\mathcal{R}_0$ is evaluated at the **disease-free equilibrium**, it is
 independent of the human intrinsic incubation period $\tau_H$ and of the immunity-waning
