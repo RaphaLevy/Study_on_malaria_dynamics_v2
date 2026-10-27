@@ -27,17 +27,50 @@ from seirs_sei_r0 import (
 )
 
 # Logical groupings of the parameters used for reporting / colouring.
+#
+# One group == one mechanism of the model, i.e. one of the elementary response
+# functions or composite rates of Section "Mosquito population dynamics" and of
+# the closed form of R0. Grouping by mechanism (rather than by "what kind of
+# quantity it is") is what makes a group interpretable: no group mixes, say, a
+# biting-rate threshold with a parasite development optimum.
 GROUPS = {
-    "calibrated_epi": ["H0", "k", "phi", "gamma", "b1", "b2", "M_prime"],
-    "human_immune": ["tau_H", "omega"],   # do NOT enter R0 (fixed zero sensitivity)
-    "climate_rate": [
-        "T_prime", "D1", "R_L", "DD", "Tmin",
-        "Tmax_plasm", "Topt_plasm",
-    ],
-    "climate_mortality": ["A", "B", "C", "B_E", "c1", "c2"],
-    "anop_suitability": [
-        "Tmin_anop", "Topt_anop", "Tmax_anop",
-    ],
+    # Per-bite transmission probabilities (the force of infection coefficients)
+    # and the carrying-capacity scale M' of K(t).
+    "transmission": ["b1", "b2", "M_prime"],
+    # Human latent period tau_H, recovery/immunity-acquisition rate gamma and
+    # immunity waning omega. Only tau_H and omega are absent from R0: gamma
+    # DOES enter the closed form, in the denominator of R0^H = a b2 / gamma.
+    "human_immune": ["tau_H", "gamma", "omega"],
+    # Humidity-dependent daily survival p(H) = (phi e^{-k(H-H0)} + 1) /
+    # (e^{-k(H-H0)} + 1), which multiplies p(T) inside mu(T, H) = -log p(T, H)
+    "humidity_survival": ["H0", "k", "phi"],
+    # biting rate a(T) = max(0, (T - T') / D1)
+    "biting_rate": ["T_prime", "D1"],
+    # extrinsic incubation period tau_M(T) = DD / (T - Tmin) and the Briere
+    # development rate b3M(T) (Tmax_plasm, Topt_plasm)
+    "parasite_development": ["DD", "Tmin", "Tmax_plasm", "Topt_plasm"],
+    # recruitment rate b_bar(T, R) and the rainfall response f_R(R): R_L sets
+    # the rainfall optimum of the immature-stage survival factors, B_E is the
+    # fecundity prefactor, and c1/c2 give the larval development time tau_L(T)
+    # and the larval temperature-dependent survival p_LT(T)
+    "vector_recruitment": ["R_L", "B_E", "c1", "c2"],
+    # adult survival curve p_T(T) = exp(-1 / (A T^2 + B T + C)) and hence mu(T, H)
+    "vector_survival": ["A", "B", "C"],
+    # thermal suitability f_T(T) entering the carrying capacity K
+    "anop_suitability": ["Tmin_anop", "Topt_anop", "Tmax_anop"],
+}
+
+# Short legend text for each group. The colours are per-module (each figure set
+# keeps its own palette) but the taxonomy and the wording live here only.
+GROUP_LABELS = {
+    "transmission": "Transmission / capacity",
+    "human_immune": "Human immunity",
+    "humidity_survival": "Humidity-dependent survival",
+    "biting_rate": "Biting rate",
+    "parasite_development": "Parasite development",
+    "vector_recruitment": "Vector recruitment",
+    "vector_survival": "Adult vector survival",
+    "anop_suitability": "Anopheles thermal suitability",
 }
 
 # Parameter -> (lower bound, upper bound). Bounds are biologically/physically
@@ -53,18 +86,25 @@ BOUNDS = {
     "b1":        (0.001, 0.5),      # human -> mosquito transmission prob.
     "b2":        (0.01, 0.5),       # mosquito -> human transmission prob.
     "M_prime":   (50000.0, 500.0 * N_POP),  # carrying-capacity scale
-    # --- temperature / rainfall dependent rates ---
+    # --- biting rate ---
+    # NOTE: T' and Tmin_anop both equal 16 degC in the baseline, but they are
+    # distinct parameters of distinct functions (a(T) vs f_T(T)) and are sampled
+    # independently here. Merging them into one range would remove a real degree
+    # of freedom from the box.
     "T_prime":   (14.0, 20.0),      # biting-rate threshold T' (deg C)
     "D1":        (18.0, 32.0),      # biting-rate thermal scale (deg C day)
+    # --- recruitment / rainfall ---
     "R_L":       (20.0, 50.0),      # rainfall optimum for habitat (mm)
+    # --- Plasmodium development (extrinsic incubation period) ---
     "DD":        (80.0, 140.0),     # sporogonic degree-days (deg C day)
     "Tmin":      (12.0, 17.0),      # Plasmodium min development temp (deg C)
     "Tmax_plasm": (27.0, 32.0),     # Plasmodium max development temp (deg C)
     "Topt_plasm": (21.0, 26.0),     # Plasmodium optimal dev temp (deg C)
-    # --- adult mosquito mortality / larval development ---
+    # --- adult vector survival (mortality) ---
     "A":         (-0.05, -0.01),    # mortality quadratic coeff.
     "B":         (1.0, 1.6),        # mortality linear coeff.
     "C":         (-5.5, -3.5),      # mortality intercept
+    # --- larval development and fecundity (recruitment) ---
     "B_E":       (100.0, 300.0),    # eggs per batch
     "c1":        (0.003, 0.008),    # larval development slope
     "c2":        (-0.09, -0.04),    # larval development intercept
@@ -85,14 +125,21 @@ def build_problem(include_zero_params=True):
     if include_zero_params:
         names = list(BOUNDS.keys())
     else:
-        names = [n for n in BOUNDS if n not in ("tau_H", "omega")]
+        names = [n for n in BOUNDS if n not in _ZERO]
     bounds = [BOUNDS[n] for n in names]
     return {"num_vars": len(names), "names": names, "bounds": bounds}
 
 
-_ACTIVE = set(GROUPS["calibrated_epi"]) | set(GROUPS["climate_rate"]) | \
-          set(GROUPS["climate_mortality"]) | set(GROUPS["anop_suitability"])
-_ZERO = set(GROUPS["human_immune"])
+# tau_H and omega do not enter the closed form of R0, so they carry a fixed zero
+# sensitivity there. They are still sampled by the ODE analyses (where they do
+# have an effect), so this split is about the R0 problem only.
+#
+# NOTE: this is spelled out explicitly and NOT derived from GROUPS. gamma also
+# lives in GROUPS["human_immune"] (it is the immunity-acquisition rate) but it
+# DOES enter R0, through the denominator gamma of R0^H = a b2 / gamma, so tying
+# this set to the group would wrongly zero out gamma.
+_ZERO = {"tau_H", "omega"}
+_ACTIVE = {n for members in GROUPS.values() for n in members} - _ZERO
 
 # Map our internal parameter names -> the keyword names accepted by r0_components.
 _NAME_TO_KW = {

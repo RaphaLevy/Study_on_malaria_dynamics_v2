@@ -516,6 +516,10 @@ def simulate_year(year, state0, p, beta_h_weekly=None, beta_m_weekly=None,
             # I_M on the same daily grid as IH_interp, for reporting/inspection
             # without re-integrating.
             "im_series": np.interp(t_interp, sol.t, sol.y[6]),
+            # E_H on the same daily grid as IH_interp, so cumulative human
+            # incidence (the integral of b3_h * E_H) can be computed without
+            # re-integrating.
+            "eh_series": np.interp(t_interp, sol.t, sol.y[1]),
         }
         return clim["date"].values, IH_interp, end_state, diagnostics
     return clim["date"].values, IH_interp, end_state

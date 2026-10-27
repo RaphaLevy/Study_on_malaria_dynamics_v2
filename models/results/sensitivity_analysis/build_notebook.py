@@ -43,6 +43,7 @@ from seirs_sei_r0 import (
 from sobol_analysis import (
     build_problem, evaluate_R0, indices_dataframe, BOUNDS, GROUPS, _ZERO,
 )
+from sobol_analysis import GROUP_LABELS as GROUP_LABELS_CANON
 
 plt.rcParams.update({"figure.dpi": 120, "font.size": 11})
 print("Setup complete.")""")
@@ -129,17 +130,13 @@ md(r"""### Total-order sensitivity $S_T$ (horizontal bar chart)""")
 
 
 code(r"""GROUP_COLORS = {
-    "calibrated_epi": "#1f77b4", "climate_rate": "#ff7f0e",
-    "climate_mortality": "#2ca02c", "anop_suitability": "#9467bd",
-    "human_immune": "#7f7f7f",
+    "transmission": "#0072B2", "human_immune": "#999999",
+    "humidity_survival": "#F0E442",
+    "biting_rate": "#E69F00", "parasite_development": "#56B4E9",
+    "vector_recruitment": "#009E73", "vector_survival": "#D55E00",
+    "anop_suitability": "#CC79A7",
 }
-GROUP_LABELS = {
-    "calibrated_epi": "Calibrated epidemiological",
-    "climate_rate": "Temperature / rainfall rates",
-    "climate_mortality": "Mosquito mortality / larval",
-    "anop_suitability": "Anopheles thermal suitability",
-    "human_immune": "Human immunity (not in R0)",
-}
+GROUP_LABELS = dict(GROUP_LABELS_CANON)
 active = df[df["enters_R0"]]
 
 fig, ax = plt.subplots(figsize=(8, 8))
@@ -178,7 +175,7 @@ their influence on $\mathcal{R}_0$ is amplified (or damped) by other parameters.
 
 code(r"""fig, ax = plt.subplots(figsize=(7, 7))
 lim = max(active["ST"].max(), active["S1"].max()) * 1.05
-for g in ["calibrated_epi", "climate_rate", "climate_mortality", "anop_suitability"]:
+for g in [k for k in GROUPS if not set(GROUPS[k]) <= _ZERO]:
     sub = active[active["group"] == g]
     ax.scatter(np.maximum(sub["S1"], 0), sub["ST"], s=80, color=GROUP_COLORS[g],
                label=GROUP_LABELS[g], edgecolor="black", linewidth=0.4, zorder=3)
