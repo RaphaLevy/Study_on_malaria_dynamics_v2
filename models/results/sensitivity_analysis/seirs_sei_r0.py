@@ -64,8 +64,8 @@ BASELINE = dict(
 )
 
 # Baseline carrying-capacity scale and population (rural Manaus, 2017)
-M_PRIME = 55.99 * 8369.0
 N_POP = 8369.0
+M_PRIME = 55.99 * N_POP  # 468580.3
 
 # Reference environmental state used to evaluate R0 for the sensitivity analysis.
 #

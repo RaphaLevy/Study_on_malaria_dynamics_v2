@@ -232,23 +232,54 @@ ax.set_title("Joint (b1, b2) -> R0 contour with per-year calibrations")
 cb = fig.colorbar(cf, ax=ax); cb.set_label("$R_0$")
 plt.tight_layout(); show_and_save(fig, "b1b2_r0_contour.png")""")
 
-md(r"""## E. Yearly $\mathcal{R}_0$, 2017–2023: crossing the $\mathcal{R}_0 = 1$ threshold
+md(r"""## E. Yearly $R(t)$, 2017–2023: crossing the $R(t) = 1$ threshold
 
-The closed-form $\mathcal{R}_0$ (`seirs_sei_r0.r0_components`) evaluated **day-by-day**
+The closed-form $R(t)$ (`seirs_sei_r0.r0_components`) evaluated **day-by-day**
 on the Manaus climate record with each year's *calibrated* transmission parameters
 $(b_1, b_2, \gamma, M', H_0, k, \phi)$, using the same environmental response functions
 as `../../seirs_sei/R0_Calculation.ipynb`. As in the calibrated ODE
 (`SMOOTH_WINDOW = 14`), the series is evaluated on the 14-day trailing mean of daily
 temperature / rainfall / humidity, so the marked crossings identify the
-transmission-season **onset** (up) and **offset** (down) around the $\mathcal{R}_0 = 1$
+transmission-season **onset** (up) and **offset** (down) around the $R(t) = 1$
 epidemic threshold rather than day-to-day rainfall noise. The raw daily series is
 shown faintly behind the smoothed curve, and the per-year season statistics (days with
-$\mathcal{R}_0 > 1$, crossing dates) are printed below.""")  # noqa: E501
+$R(t) > 1$, crossing dates) are printed below.""")  # noqa: E501
 
 code(r"""import r0_yearly
 r0_yearly.run()
 from IPython.display import Image, display
 display(Image(filename=os.path.join(r0_yearly.FIG_DIR, "r0_yearly.png")))""")
+
+md(r"""### 2017 detail: $R(t)$ with month labels
+
+The same curve restricted to 2017, drawn as a single panel so the month labels
+appear directly below the axis (as used in the main-text figure for the
+transmission season).""")
+
+code(r"""import r0_yearly
+r0_yearly.run_single_year(2017)
+from IPython.display import Image, display
+display(Image(filename=os.path.join(r0_yearly.FIG_DIR, "r0_yearly_2017.png")))""")
+
+md(r"""### Human $R_H(t)$ alone and in comparison with the coupled $R(t)$
+
+The coupled curve $\mathcal{R}(t)=\sqrt{R_H(t)\,R_M(t)}$ feeds the mosquito
+population back in. Its **human component** $R_H(t)=a(T)\,b_2/\gamma$ isolates the
+mosquito → human leg: it is driven by temperature alone (through the biting rate
+$a$) plus the calibrated $b_2,\gamma$, with no dependence on rainfall, humidity or
+the vector abundance — so it is the natural companion to the calibrated $I_H(t)$
+trajectory. Shown below are (i) $R_H(t)$ on its own and (ii) both curves overlaid
+for each year, plus (iii) the compact 2017 panel used to read the human drive
+against the simulated $I_H$.""")
+
+code(r"""import r0_yearly
+r0_yearly.run_h()
+r0_yearly.run_h_coupled()
+r0_yearly.run_h_coupled_single_year(2017)
+from IPython.display import Image, display
+display(Image(filename=os.path.join(r0_yearly.FIG_DIR, "rH_yearly.png")))
+display(Image(filename=os.path.join(r0_yearly.FIG_DIR, "rH_coupled_yearly.png")))
+display(Image(filename=os.path.join(r0_yearly.FIG_DIR, "rH_coupled_2017.png")))""")
 
 md(r"""## D. Cross-validation robustness: role of the year-to-year level
 
@@ -282,6 +313,62 @@ ax.bar(pos + 1.5*w, loyo_std, w, label="LOYO (std)", color="#E69F00")
 ax.set_xticks(pos, labels); ax.axhline(0, color="black", linewidth=0.8)
 ax.set_ylabel("$R^2$"); ax.set_title("Within-year vs LOYO CV $R^2$ — effect of removing the year level")
 ax.legend(fontsize=9, frameon=False, ncol=2); plt.tight_layout(); show_and_save(fig, "cv_robustness.png")""")
+
+md(r"""## F. Standalone global sensitivity analysis (Marino et al. 2008)
+
+Self-contained reproduction of the Marino et al. (2008) methodology: LHS sampling over
+the full 25-parameter hypercube, PRCC with p-values, one-at-a-time tornado diagram, and
+(optionally) Sobol' indices — all in a single script (`sensitivity_global_r0.py`).
+This section calls the same functions used by the standalone script and reproduces its
+figures interactively.""")
+
+code(r"""import sensitivity_global_r0 as sa
+
+# --- LHS ---
+N_SA = 1000
+df_sa = sa.sample_lhs(N_SA)
+R0_vals = np.array([sa.R0_model(row) for row in df_sa.to_dict("records")])
+df_sa["R0"] = R0_vals
+finite = np.isfinite(R0_vals)
+print(f"LHS n={N_SA}, 25 parameters")
+print(f"R0: min={np.nanmin(R0_vals):.3f}, median={np.nanmedian(R0_vals):.3f}, "
+      f"max={np.nanmax(R0_vals):.3f}")
+print(f"Fraction R0 > 1: {(R0_vals[finite] > 1).mean():.1%}")""")
+
+code(r"""# --- PRCC ---
+prcc_df = sa.prcc(df_sa.drop(columns=["R0"]), df_sa["R0"].values)
+print("PRCC (sorted by |PRCC|):")
+prcc_df[["parameter", "group", "PRCC", "p_value"]].round(4)""")
+
+code(r"""fig, _ = sa.fig_prcc_bars(
+    prcc_df, "PRCC",
+    r"Global sensitivity of $\mathcal{R}_0$ (LHS $n=%d$, Marino et al. 2008)" % N_SA,
+    os.path.join(FIG, "prcc_R0_standalone.png"),
+)
+display(Image(filename=os.path.join(FIG, "prcc_R0_standalone.png")))""")
+
+code(r"""# --- Tornado ---
+torn_df, base_out = sa.tornado(df_sa)
+print(f"R0 at median baseline: {base_out:.4f}")
+torn_df[["group", "low", "high", "swing"]].round(4)""")
+
+code(r"""fig, _ = sa.fig_tornado(torn_df, base_out,
+                          os.path.join(FIG, "tornado_R0_standalone.png"))
+display(Image(filename=os.path.join(FIG, "tornado_R0_standalone.png")))""")
+
+code(r"""fig, _ = sa.fig_combined(prcc_df, torn_df, base_out,
+                           os.path.join(FIG, "sensitivity_combined_standalone.png"))
+display(Image(filename=os.path.join(FIG, "sensitivity_combined_standalone.png")))""")
+
+md(r"""### Sobol' indices (optional, requires SALib)
+
+Variance-based decomposition: first-order ($S_1$) and total-order ($S_T$) indices.
+Large $S_T - S_1$ gaps indicate strong interaction effects.""")
+
+code(r"""sobol_df = sa.run_sobol(N_base=1024)
+if sobol_df is not None:
+    print("Sobol' indices (sorted by ST):")
+    sobol_df[["parameter", "group", "S1", "ST"]].round(4)""")
 
 md(r"""## Discussion for the paper
 

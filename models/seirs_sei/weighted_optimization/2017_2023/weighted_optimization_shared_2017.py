@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 from scipy.integrate import solve_ivp
 from scipy.interpolate import interp1d
 import os
+import json
 import warnings
 
 warnings.filterwarnings("ignore")
@@ -207,6 +208,40 @@ print(
 )
 
 
+# Load fitted humidity parameters from the 2017 humidity calibration results
+# if available (exponential used as the best weighted fit); falls back to
+# defaults (H0=58, k=0.25, phi=0.05) if not found.
+_humidity_results_file = os.path.join(
+    os.path.dirname(os.path.abspath(__file__)), "calibration_results_humidity.json"
+)
+_fitted_H0 = 58.0
+_fitted_k = 0.25
+_fitted_phi = 0.05
+if os.path.exists(_humidity_results_file):
+    with open(_humidity_results_file, "r") as _f:
+        _humidity_saved = json.load(_f)
+    _best_method = (
+        "exponential"
+        if "exponential" in _humidity_saved
+        else next(iter(_humidity_saved), None)
+    )
+    if _best_method:
+        _fitted_H0 = _humidity_saved[_best_method]["H0"]
+        _fitted_k = _humidity_saved[_best_method]["k"]
+        _fitted_phi = _humidity_saved[_best_method]["phi"]
+        print(
+            f"Loaded fitted humidity params from {_best_method}: H0={_fitted_H0:.4f}, k={_fitted_k:.6f}, phi={_fitted_phi:.6f}"
+        )
+    else:
+        print(
+            "Warning: calibration_results_humidity.json exists but is empty. Using default humidity params."
+        )
+else:
+    print(
+        "Warning: calibration_results_humidity.json not found. Using default humidity params (H0=58, k=0.25, phi=0.05)."
+    )
+
+
 # ---------------------------------------------------------------------------
 # Simulation
 # ---------------------------------------------------------------------------
@@ -253,6 +288,120 @@ def run_with_humidity_2017(H0_val, k_val, phi_val, M_prime_val=M_PRIME_FIXED):
             dEhdt = foi_h * S_H - b3_h_curr * E_H
             dIhdt = b3_h_curr * E_H - gamma * I_H
             dRhdt = gamma * I_H - omega * R_H
+
+            temp_factor = temp_factor_briere_normalized_anop(T_curr)
+            habitat_creating_factor = 2 * R_curr / R_L
+            habitat_flushing_factor = np.exp(1 - (2 * R_curr / R_L))
+            rain_factor = habitat_creating_factor * habitat_flushing_factor
+
+            K = max(M_prime_val * temp_factor * rain_factor, M_min)
+            total_mosq = S_M + E_M + I_M
+            density_factor = max(0, 1 - total_mosq / K) if K > 0 else 0.0
+            mosquito_birth = b_curr * density_factor * K
+            residual_birth_rate = mu_curr * M_min
+            residual_recruitment = residual_birth_rate * max(0, 1 - total_mosq / M_min)
+            mosquito_birth = mosquito_birth + residual_recruitment
+
+            dSmdt = mosquito_birth - foi_m * S_M - mu_curr * S_M
+            dEmdt = foi_m * S_M - (mu_curr + b3_briere_curr * l_curr) * E_M
+            dImdt = b3_briere_curr * l_curr * E_M - mu_curr * I_M
+
+            return [dShdt, dEhdt, dIhdt, dRhdt, dSmdt, dEmdt, dImdt]
+
+        return ode_func
+
+    years = list(range(2017, 2024))
+
+    all_IH = []
+    all_dates = []
+    current_state = initial_state_2017
+    for year in years:
+        N = round(pop_by_year[year])
+        start = f"{year}-01-01"
+        end = f"{year}-12-31"
+        year_climate = climate_data[
+            (climate_data["date"] >= start) & (climate_data["date"] <= end)
+        ].reset_index(drop=True)
+        year_climate["temp_med_smooth"] = (
+            year_climate["temp_med"]
+            .rolling(SMOOTH_WINDOW, min_periods=1, center=False)
+            .mean()
+        )
+        year_climate["precip_med_smooth"] = (
+            year_climate["precip_med"]
+            .rolling(SMOOTH_WINDOW, min_periods=1, center=False)
+            .mean()
+        )
+        year_climate["umid_min_smooth"] = (
+            year_climate["umid_min"]
+            .rolling(SMOOTH_WINDOW, min_periods=1, center=False)
+            .mean()
+        )
+        num_days = len(year_climate)
+        sol = solve_ivp(
+            make_ode_func(N, year_climate),
+            [0, num_days],
+            current_state,
+            t_eval=np.linspace(0, num_days, num_days * 10),
+            method="LSODA",
+        )
+        if not sol.success:
+            return np.array([]), np.array([])
+        current_state = np.maximum(sol.y[:, -1].copy(), 0)
+        t_interp = np.linspace(0, sol.t[-1], len(year_climate))
+        IH_interp = interp1d(sol.t, sol.y[2])(t_interp)
+        all_IH.extend(IH_interp)
+        all_dates.extend(year_climate["date"].values)
+    return np.array(all_dates), np.array(all_IH)
+
+
+def run_with_human_params_2017(
+    tau_H_val, gamma_val, omega_val, M_prime_val=M_PRIME_FIXED
+):
+    """Run the simulation starting directly in 2017 (no warm-up) with custom
+    tau_H, gamma, omega. Uses the fixed 2017 initial conditions and M' = 40 x
+    N_2017. Humidity (H0, k, phi) uses the fitted values from the 2017 humidity
+    calibration (or defaults), and FoI (b1, b2) are kept at the default values."""
+
+    def custom_p_T(Temp, Humid):
+        denominator = A * Temp**2 + B * Temp + C
+        p_T_temp = np.where(denominator <= 0, 0.0, np.exp(-1 / denominator))
+        p_H = _fitted_phi + (1.0 - _fitted_phi) / (
+            1.0 + np.exp(-_fitted_k * (Humid - _fitted_H0))
+        )
+        return p_T_temp * p_H
+
+    def custom_mu(Temp, Humid):
+        p_val = custom_p_T(Temp, Humid)
+        return -np.log(p_val) if p_val > 0 else 1.0
+
+    def make_ode_func(N, clim):
+        def ode_func(t, z):
+            day_idx = int(t)
+            day_idx = np.clip(day_idx, 0, len(clim) - 1)
+            T_curr = clim.iloc[day_idx]["temp_med"]
+            R_curr = clim.iloc[day_idx]["precip_med"]
+            T_value = clim.iloc[day_idx]["temp_med_smooth"]
+            R_value = clim.iloc[day_idx]["precip_med_smooth"]
+            H_value = clim.iloc[day_idx]["umid_min_smooth"]
+
+            mu_curr = custom_mu(T_value, H_value)
+            a_curr = a(T_curr)
+            tau_M_curr = tau_M(T_value)
+            b3_m_curr = 1.0 / tau_M_curr if tau_M_curr > 0 else 0.0
+            b3_h_curr = 1.0 / tau_H_val if tau_H_val > 0 else 0.0
+            l_curr = np.exp(-mu_curr * tau_M_curr)
+            b_curr = b_rate(R_value, T_value)
+            b3_briere_curr = b3_briere_scaled_plasm(T_curr)
+
+            S_H, E_H, I_H, R_H, S_M, E_M, I_M = z
+            foi_h = a_curr * b2 * (I_M / N)
+            foi_m = a_curr * b1 * (I_H / N)
+
+            dShdt = -foi_h * S_H + omega_val * R_H
+            dEhdt = foi_h * S_H - b3_h_curr * E_H
+            dIhdt = b3_h_curr * E_H - gamma_val * I_H
+            dRhdt = gamma_val * I_H - omega_val * R_H
 
             temp_factor = temp_factor_briere_normalized_anop(T_curr)
             habitat_creating_factor = 2 * R_curr / R_L
@@ -451,6 +600,80 @@ def objective_function_unweighted_2017(params):
         return 1e15
 
     dates, IH = run_with_humidity_2017(H0_val, k_val, phi_val)
+    if len(dates) == 0:
+        return 1e15
+
+    model_interp = interp1d(
+        pd.to_datetime(dates).astype(np.int64),
+        IH,
+        kind="linear",
+        fill_value="extrapolate",
+    )
+    obs_dates_int = rural_cases_df["date"].astype(np.int64).values
+    model_at_obs = model_interp(obs_dates_int)
+    observed = rural_cases_df["active_total"].values
+    mse = np.mean((model_at_obs - observed) ** 2)
+    return mse
+
+
+def objective_function_weighted_2017_human(
+    params,
+    weight_decay="exponential",
+    decay_rate=0.005,
+    initial_weight=5.0,
+    step_threshold=365,
+    step_later_weight=1.0,
+    inverse_scale=365,
+):
+    """
+    Weighted objective function for the 2017 direct-start human transmission
+    calibration.
+
+    Parameters:
+    -----------
+    params : list
+        [tau_H, gamma, omega] parameters
+    """
+    tau_H_val, gamma_val, omega_val = params
+    if tau_H_val < 1 or tau_H_val > 60:
+        return 1e15
+    if gamma_val < 1e-4 or gamma_val > 1.0:
+        return 1e15
+    if omega_val < 1e-5 or omega_val > 0.1:
+        return 1e15
+
+    dates, IH = run_with_human_params_2017(tau_H_val, gamma_val, omega_val)
+    if len(dates) == 0:
+        return 1e15
+
+    weighted_mse = compute_weighted_mse(
+        dates,
+        IH,
+        rural_cases_df,
+        weight_decay=weight_decay,
+        decay_rate=decay_rate,
+        initial_weight=initial_weight,
+        step_threshold=step_threshold,
+        step_later_weight=step_later_weight,
+        inverse_scale=inverse_scale,
+    )
+    return weighted_mse
+
+
+def objective_function_unweighted_2017_human(params):
+    """
+    Standard (unweighted) objective function for the 2017 direct-start human
+    transmission calibration.
+    """
+    tau_H_val, gamma_val, omega_val = params
+    if tau_H_val < 1 or tau_H_val > 60:
+        return 1e15
+    if gamma_val < 1e-4 or gamma_val > 1.0:
+        return 1e15
+    if omega_val < 1e-5 or omega_val > 0.1:
+        return 1e15
+
+    dates, IH = run_with_human_params_2017(tau_H_val, gamma_val, omega_val)
     if len(dates) == 0:
         return 1e15
 

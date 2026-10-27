@@ -24,6 +24,7 @@ import matplotlib.pyplot as plt
 from SALib.sample import latin as latin_sampler
 
 from sobol_analysis import BOUNDS, GROUPS
+from sobol_analysis import GROUP_LABELS as GROUP_LABELS_CANONICAL
 
 
 # --------------------------------------------------------------------------- #
@@ -200,22 +201,20 @@ def tornado_values(eval_fn, names, baseline=None, n_points=100, seed=42):
 # --------------------------------------------------------------------------- #
 # Colouring / labels shared by figure code
 # --------------------------------------------------------------------------- #
-# Okabe-Ito (colourblind-safe) palette.
+# Okabe-Ito (colourblind-safe) palette. The taxonomy and the wording come from
+# sobol_analysis, which is the single source of truth for both.
 GROUP_COLORS = {
-    "calibrated_epi": "#0072B2",
-    "climate_rate": "#E69F00",
-    "climate_mortality": "#009E73",
-    "anop_suitability": "#CC79A7",
+    "transmission": "#0072B2",
     "human_immune": "#999999",
+    "humidity_survival": "#F0E442",
+    "biting_rate": "#E69F00",
+    "parasite_development": "#56B4E9",
+    "vector_recruitment": "#009E73",
+    "vector_survival": "#D55E00",
+    "anop_suitability": "#CC79A7",
 }
-GROUP_LABELS = {
-    "calibrated_epi": "Calibrated epidemiological",
-    "climate_rate": "Temperature / rainfall rates",
-    "climate_mortality": "Mosquito mortality / larval",
-    "anop_suitability": "Anopheles thermal suitability",
-    "human_immune": "Human immunity",
-}
-_GROUP_ORDER = list(GROUP_COLORS.keys())
+GROUP_LABELS = dict(GROUP_LABELS_CANONICAL)
+_GROUP_ORDER = list(GROUPS)
 
 
 def _group_of(name):

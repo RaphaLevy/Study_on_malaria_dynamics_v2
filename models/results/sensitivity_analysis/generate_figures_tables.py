@@ -20,7 +20,10 @@ from sobol_analysis import (
     run_sobol,
     indices_dataframe,
     build_problem,
+    GROUPS,
+    _ZERO,
 )
+from sobol_analysis import GROUP_LABELS as _CANON_GROUP_LABELS
 from seirs_sei_r0 import (
     r0_components,
     BASELINE,
@@ -42,19 +45,16 @@ plt.rcParams.update({
 })
 
 GROUP_COLORS = {
-    "calibrated_epi": "#1f77b4",
-    "climate_rate": "#ff7f0e",
-    "climate_mortality": "#2ca02c",
-    "anop_suitability": "#9467bd",
-    "human_immune": "#7f7f7f",
+    "transmission": "#0072B2",
+    "human_immune": "#999999",
+    "humidity_survival": "#F0E442",
+    "biting_rate": "#E69F00",
+    "parasite_development": "#56B4E9",
+    "vector_recruitment": "#009E73",
+    "vector_survival": "#D55E00",
+    "anop_suitability": "#CC79A7",
 }
-GROUP_LABELS = {
-    "calibrated_epi": "Calibrated epidemiological",
-    "climate_rate": "Temperature / rainfall rates",
-    "climate_mortality": "Mosquito mortality / larval",
-    "anop_suitability": "Anopheles thermal suitability",
-    "human_immune": "Human immunity (not in R0)",
-}
+GROUP_LABELS = dict(_CANON_GROUP_LABELS)
 
 
 def baseline_components():
@@ -146,7 +146,7 @@ def main():
     # ---- Figure 3: S1 vs ST scatter ----
     fig, ax = plt.subplots(figsize=(7, 7))
     active = df[df["enters_R0"]]
-    for g in ["calibrated_epi", "climate_rate", "climate_mortality", "anop_suitability"]:
+    for g in [k for k in GROUPS if not set(GROUPS[k]) <= _ZERO]:
         sub = active[active["group"] == g]
         ax.scatter(np.maximum(sub["S1"], 0), sub["ST"], s=80,
                    color=GROUP_COLORS[g], label=GROUP_LABELS[g],

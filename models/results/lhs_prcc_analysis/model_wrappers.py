@@ -167,6 +167,49 @@ def reference_params(names, years=None):
 
 
 # --------------------------------------------------------------------------- #
+# Full daily I_H series and mean seasonal trajectory
+# --------------------------------------------------------------------------- #
+def ih_series_for_year(year, p, global_overrides=None, **sim_kw):
+    """Return the daily I_H series over one ODE year; None if integration fails.
+
+    The series length equals the number of calendar days in ``year`` (365 or
+    366), so cross-year trajectories must be aligned on the first ``n_days``
+    days (see :func:`mean_ih_series`).
+    """
+    if global_overrides:
+        with override_ode_globals(global_overrides):
+            return _ih_series_for_year_impl(year, p, **sim_kw)
+    return _ih_series_for_year_impl(year, p, **sim_kw)
+
+
+def _ih_series_for_year_impl(year, p, **sim_kw):
+    res = _sim_for_year(year, p, **sim_kw)
+    if res is None:
+        return None
+    IH = res[1]
+    if not np.all(np.isfinite(IH)):
+        return None
+    return np.asarray(IH, dtype=float)
+
+
+def mean_ih_series(years, p, global_overrides=None, n_days=365):
+    """Mean across years of each year's daily I_H trajectory (aligned to Jan 1).
+
+    Each year's series is truncated to the first ``n_days`` days so leap years
+    (2020) align with the other years. Returns None if no usable year exists.
+    """
+    aligned = []
+    for y in years:
+        s = ih_series_for_year(y, p, global_overrides)
+        if s is None or len(s) < n_days:
+            continue
+        aligned.append(s[:n_days])
+    if len(aligned) == 0:
+        return None
+    return np.vstack(aligned).mean(axis=0)
+
+
+# --------------------------------------------------------------------------- #
 # Seasonal peak of I_H
 # --------------------------------------------------------------------------- #
 def ih_peak_for_year(year, p, global_overrides=None, **sim_kw):
@@ -195,10 +238,14 @@ def ih_peak_for_year(year, p, global_overrides=None, **sim_kw):
     return _ih_peak_for_year_impl(year, p, **sim_kw)
 
 
-def _ih_peak_for_year_impl(year, p, return_diagnostics=False, **sim_kw):
+def _sim_for_year(year, p, **sim_kw):
     state0 = ode_initial_state(year)
-    res = _ode.simulate_year(year, state0, p,
-                             return_diagnostics=return_diagnostics, **sim_kw)
+    return _ode.simulate_year(year, state0, p,
+                              return_diagnostics=True, **sim_kw)
+
+
+def _ih_peak_for_year_impl(year, p, return_diagnostics=False, **sim_kw):
+    res = _sim_for_year(year, p, **sim_kw)
     if res is None:
         return np.nan
     IH = res[1]
@@ -206,6 +253,26 @@ def _ih_peak_for_year_impl(year, p, return_diagnostics=False, **sim_kw):
         return np.nan
     peak = float(np.max(IH))
     return peak
+
+
+def _cum_cases_for_year_impl(year, p, **sim_kw):
+    """Cumulative *new* human infections over the year (integral of b3_h * E_H).
+
+    Returns np.nan if the integration fails or the E_H series is not finite.
+    """
+    res = _sim_for_year(year, p, **sim_kw)
+    if res is None:
+        return np.nan
+    diag = res[3]
+    eh = diag.get("eh_series")
+    tau_H_v = p["tau_H"]
+    if eh is None or not np.all(np.isfinite(eh)):
+        return np.nan
+    # b3_h = 1 / tau_H; new infections per day = b3_h * E_H. Trapz over the
+    # unit-spaced daily grid gives the integral over the year.
+    b3_h = 1.0 / tau_H_v if tau_H_v > 0 else 0.0
+    daily = b3_h * eh
+    return float(np.trapezoid(daily, x=np.arange(len(daily))))
 
 
 def seasonal_ih_peak(years, p, global_overrides=None):
@@ -221,6 +288,72 @@ def seasonal_ih_peak(years, p, global_overrides=None):
     if len(peaks) == 0:
         return np.nan
     return float(peaks.mean())
+
+
+# --------------------------------------------------------------------------- #
+# Cumulative human cases (integral of new infections over the year)
+# --------------------------------------------------------------------------- #
+def cumulative_cases_for_year(year, p, global_overrides=None, **sim_kw):
+    """Cumulative new human infections (b3_h * E_H) over one ODE year."""
+    if global_overrides:
+        with override_ode_globals(global_overrides):
+            return _cum_cases_for_year_impl(year, p, **sim_kw)
+    return _cum_cases_for_year_impl(year, p, **sim_kw)
+
+
+def mean_cumulative_cases(years, p, global_overrides=None):
+    """Mean across years of each year's cumulative new human infections."""
+    vals = [
+        cumulative_cases_for_year(y, p, global_overrides) for y in years
+    ]
+    vals = np.array([x for x in vals if np.isfinite(x)])
+    if len(vals) == 0:
+        return np.nan
+    return float(vals.mean())
+
+
+def peak_and_cases_for_year(year, p, global_overrides=None, **sim_kw):
+    """Peak I_H and cumulative new human infections for one ODE year.
+
+    One integration drives both outputs. Returns (np.nan, np.nan) on failure.
+    """
+    if global_overrides:
+        with override_ode_globals(global_overrides):
+            return _peak_and_cases_for_year_impl(year, p, **sim_kw)
+    return _peak_and_cases_for_year_impl(year, p, **sim_kw)
+
+
+def _peak_and_cases_for_year_impl(year, p, **sim_kw):
+    res = _sim_for_year(year, p, **sim_kw)
+    if res is None:
+        return np.nan, np.nan
+    IH = res[1]
+    if not np.all(np.isfinite(IH)):
+        return np.nan, np.nan
+    peak = float(np.max(IH))
+    eh = res[3].get("eh_series")
+    if eh is None or not np.all(np.isfinite(eh)):
+        return np.nan, np.nan
+    b3h = 1.0 / p["tau_H"] if p["tau_H"] > 0 else 0.0
+    cases = float(np.trapezoid(b3h * eh, x=np.arange(len(eh))))
+    return peak, cases
+
+
+def mean_peak_and_cases(years, p, global_overrides=None):
+    """Mean across years of peak I_H and of cumulative human cases.
+
+    Rows where either metric is non-finite are dropped in pairs, so the two
+    outputs are averaged over the same set of usable years.
+    """
+    peaks, cases = [], []
+    for y in years:
+        pk, cum = peak_and_cases_for_year(y, p, global_overrides)
+        if np.isfinite(pk) and np.isfinite(cum):
+            peaks.append(pk)
+            cases.append(cum)
+    if len(peaks) == 0:
+        return np.nan, np.nan
+    return float(np.mean(peaks)), float(np.mean(cases))
 
 
 # --------------------------------------------------------------------------- #

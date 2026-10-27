@@ -32,7 +32,7 @@ TARGETS = [
     ("rf_regression.py",            "2_rf_regression.ipynb"),
     ("gam_regression.py",           "3_gam_regression.ipynb"),
     ("regression_ode_variant.py",   "4_regression_ode_variant.ipynb"),
-    ("weekly_env_regression.py",    "2b_weekly_env_regression.ipynb"),
+    ("weekly_env_regression.py",    "2_weekly_env_regression.ipynb"),
 ]
 
 _SIDECAR = os.path.join(_SCRIPT_DIR, "notebook_sources.json")
@@ -210,9 +210,17 @@ def py_to_notebook(py_path, out_name=None):
         return
 
     # Safety: back up the current notebook before replacing it.
+    prev_nb_meta = {}
     if os.path.exists(out_path):
         backup = _backup_notebook(out_path)
         print(f"  backup: {os.path.basename(backup)}")
+        # Keep the user's kernel selection (e.g. a local conda env) instead of
+        # silently resetting it to the generic "python3" spec below.
+        try:
+            with open(out_path) as fh:
+                prev_nb_meta = (json.load(fh).get("metadata") or {})
+        except (OSError, ValueError):
+            prev_nb_meta = {}
 
     raw_cells = smart_split(py_path)
 
@@ -228,6 +236,9 @@ def py_to_notebook(py_path, out_name=None):
             "version": "3.12.0",
         },
     })
+    for key in ("kernelspec", "language_info"):
+        if prev_nb_meta.get(key):
+            nb.metadata[key] = prev_nb_meta[key]
 
     for cell_type, source in raw_cells:
         if cell_type == "markdown":

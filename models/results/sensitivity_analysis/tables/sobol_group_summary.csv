@@ -1,5 +1,9 @@
 group,sum_ST,mean_S1,n_params
-calibrated_epi,0.9419,0.0394,7.0
-climate_rate,0.1031,0.0038,7.0
-climate_mortality,0.5854,0.0364,6.0
-anop_suitability,0.001,0.0001,3.0
+transmission,0.3593,0.0357,3
+human_immune,0.4399,0.1494,1
+humidity_survival,0.1427,0.0064,3
+biting_rate,0.0774,0.0079,2
+parasite_development,0.0132,0.0013,4
+vector_recruitment,0.0258,0.0018,4
+vector_survival,0.5722,0.0725,3
+anop_suitability,0.001,0.0001,3

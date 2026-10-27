@@ -16,7 +16,9 @@ import os
 _SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.join(_SCRIPT_DIR, "../../../data_files/data")
 
-warmup_climate_data = pd.read_csv(os.path.join(DATA_DIR, "climate_api_data_2012_2015.csv"))
+warmup_climate_data = pd.read_csv(
+    os.path.join(DATA_DIR, "climate_api_data_2012_2015.csv")
+)
 warmup_cases_data = pd.read_csv(
     os.path.join(
         DATA_DIR,
@@ -56,21 +58,27 @@ fires_data["date"] = pd.to_datetime(fires_data["date"])
 warmup_start_date = pd.to_datetime("2012-01-01")
 warmup_end_date = pd.to_datetime("2015-12-31")
 warmup_climate_data = warmup_climate_data[
-    (warmup_climate_data["date"] >= warmup_start_date) & (warmup_climate_data["date"] <= warmup_end_date)
+    (warmup_climate_data["date"] >= warmup_start_date)
+    & (warmup_climate_data["date"] <= warmup_end_date)
 ].reset_index(drop=True)
 warmup_cases_data = warmup_cases_data[
-    (warmup_cases_data["date"] >= warmup_start_date) & (warmup_cases_data["date"] <= warmup_end_date)
+    (warmup_cases_data["date"] >= warmup_start_date)
+    & (warmup_cases_data["date"] <= warmup_end_date)
 ].reset_index(drop=True)
 
 pre_analysis_start = pd.to_datetime("2012-01-01")
 pre_analysis_end = pd.to_datetime("2016-12-31")
-pre_analysis_climate_data = pd.concat([warmup_climate_data, climate_data], ignore_index=True)
+pre_analysis_climate_data = pd.concat(
+    [warmup_climate_data, climate_data], ignore_index=True
+)
 pre_analysis_cases_data = pd.concat([warmup_cases_data, cases_data], ignore_index=True)
 pre_analysis_climate_data = pre_analysis_climate_data[
-    (pre_analysis_climate_data["date"] >= pre_analysis_start) & (pre_analysis_climate_data["date"] <= pre_analysis_end)
+    (pre_analysis_climate_data["date"] >= pre_analysis_start)
+    & (pre_analysis_climate_data["date"] <= pre_analysis_end)
 ].reset_index(drop=True)
 pre_analysis_cases_data = pre_analysis_cases_data[
-    (pre_analysis_cases_data["date"] >= pre_analysis_start) & (pre_analysis_cases_data["date"] <= pre_analysis_end)
+    (pre_analysis_cases_data["date"] >= pre_analysis_start)
+    & (pre_analysis_cases_data["date"] <= pre_analysis_end)
 ].reset_index(drop=True)
 
 start_date = pd.to_datetime("2017-01-01")
@@ -210,7 +218,9 @@ def exposed_to_infected_ratio(Temp, Humid, H0=58.0, k=0.25, phi=0.05):
 warmup_temp_med_0 = warmup_climate_data["temp_med"][0]
 warmup_umid_min_0 = warmup_climate_data["umid_min"][0]
 # umid_min_0 = climate_data["umid_min"][0]
-warmup_initial_exposed_to_infected_ratio = exposed_to_infected_ratio(warmup_temp_med_0, warmup_umid_min_0)
+warmup_initial_exposed_to_infected_ratio = exposed_to_infected_ratio(
+    warmup_temp_med_0, warmup_umid_min_0
+)
 print(
     f"The initial ratio of exposed to infected mosquitos in 2012 was estimated to be ~{round(warmup_initial_exposed_to_infected_ratio)}"
 )
@@ -245,7 +255,17 @@ warmup_M_0 = 10 * N_2012
 warmup_I_M0 = round(warmup_M_0 * 0.01)
 warmup_E_M0 = round(warmup_I_M0 * 3)
 warmup_S_M0 = warmup_M_0 - warmup_E_M0 - warmup_I_M0
-initial_state_2012 = np.array([warmup_S_H0, warmup_E_H0, warmup_I_H0, warmup_R_H0, warmup_S_M0, warmup_E_M0, warmup_I_M0])
+initial_state_2012 = np.array(
+    [
+        warmup_S_H0,
+        warmup_E_H0,
+        warmup_I_H0,
+        warmup_R_H0,
+        warmup_S_M0,
+        warmup_E_M0,
+        warmup_I_M0,
+    ]
+)
 
 pre_analysis_rural_cases_df = pre_analysis_cases_data.copy()
 cols = [
@@ -352,6 +372,9 @@ def seirs_sei_ode(
     use_smooth_climate=USE_SMOOTH_CLIMATE,
     b3_h=None,
     b3_m=None,
+    H0=58.0,
+    k=0.25,
+    phi=0.05,
 ):
 
     day_idx = int(t)
@@ -372,7 +395,7 @@ def seirs_sei_ode(
         R_value = R_curr
         H_value = H_curr
 
-    mu_curr = mu(T_value, H_value)
+    mu_curr = mu(T_value, H_value, H0=H0, k=k, phi=phi)
     a_curr = a(T_curr)
     tau_M_curr = tau_M(T_value)
 
