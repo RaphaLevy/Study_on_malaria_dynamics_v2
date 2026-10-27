@@ -56,10 +56,10 @@
 \let\WriteBookmarks\relax
 \def\floatpagepagefraction{1}
 \def\textpagefraction{.001}
-\shorttitle{Environmental drivers of \textit{Plasmodium  vivax} malaria in Manaus: Modeling the impact of climate and forest loss}
+\shorttitle{Environmental drivers of \textit{Plasmodium vivax} malaria in Manaus: Modeling the impact of climate and forest loss}
 \shortauthors{R. F. Levy, F. C. Coelho}
 
-\title [mode = title]{Environmental drivers of \textit{Plasmodium  vivax} malaria in Manaus: Modeling the impact of climate and forest loss}                      
+\title [mode = title]{Environmental drivers of \textit{Plasmodium vivax} malaria in Manaus: Modeling the impact of climate and forest loss}                      
 
 %%%%% FOOTNOTES %%%%%
 %\tnotemark[1,2]
@@ -181,7 +181,7 @@ misleading.
 %\end{highlights}
 
 \begin{keywords}
-Malaria transmission \sep \textit{Plasmodium vivax} \sep \textit{Anopheles darlingi} \sep SEIRS-SEI model \sep Mathematical epidemiology \sep Brazilian Amazon \sep Environmental drivers \sep Climate-dependent transmission \sep Model calibration  %\sep Deforestation \sep Forest fires   %\sep Density-dependent recruitment  
+Malaria transmission \sep \textit{Plasmodium vivax} \sep \textit{Anopheles darlingi} \sep SEIRS-SEI model \sep Mathematical epidemiology \sep Brazilian Amazon \sep Environmental drivers \sep Climate-dependent transmission \sep Model calibration %\sep Deforestation \sep Forest fires   %\sep Density-dependent recruitment  
 %\sep Sensitivity analysis \sep SIR–SEI model
 
 %Biological modelling \sep Malaria transmission \sep Climate change \sep Amazon \sep SIR \sep SEI \sep SEIRS
@@ -350,7 +350,7 @@ The transmission dynamics are governed by the system of delay differential equat
 \end{subequations}
 \\
 All parameters are defined in
-Table~\ref{tbl1}, which gives their functional forms and definitions, while state variables are defined  in
+Table~\ref{tbl1}, which gives their functional forms and definitions, while state variables are defined in
 Table~\ref{tbl2}, which gives their definitions, units and sources.
 \\\\
 Although this formulation incorporates biologically relevant delays, numerical simulations revealed that, under 
@@ -371,7 +371,7 @@ The resulting system is given by:
 \frac{dI_H}{dt} &= a b_2 \frac{I_M}{N} S_H - \gamma I_H \label{eq:systemb} \\
 \frac{dR_H}{dt} &= \gamma I_H \label{eq:systemc} \\
 \frac{dS_M}{dt} &= b(R,T) - \left(a b_1 \frac{I_H}{N} + \mu\right) S_M \label{eq:systemd} \\
-\frac{dE_M}{dt} &= a b_1 \frac{I_H}{N} S_M - (\mu + b_3  \ell) E_M \label{eq:systeme} \\
+\frac{dE_M}{dt} &= a b_1 \frac{I_H}{N} S_M - (\mu + b_3 \ell) E_M \label{eq:systeme} \\
 \frac{dI_M}{dt} &= b_3 \ell E_M - \mu I_M \label{eq:systemf}
 \end{align}
 \end{subequations}
@@ -420,18 +420,18 @@ The SEIRS-SEI complete model is then given by:
 \begin{align}
 \frac{dS_H}{dt} &= - \lambda_H(t) S_H + \omega R_H \label{eq:systema} \\
 \frac{dE_H}{dt} &= \lambda_H(t) S_H - b_{3H} E_H \label{eq:systemb} \\
-\frac{dI_H}{dt} &= b_{3H} E_H - \gamma I_H  \label{eq:systemc} \\
-\frac{dR_H}{dt} &= \gamma I_H - \omega R_H  \label{eq:systemd} \\
-\frac{dS_M}{dt} &= \Lambda(t)- \lambda_M(t) S_M - \mu S_M  \label{eq:systeme} \\
-\frac{dE_M}{dt} &= \lambda_M(t) S_M - (\mu  + b_{3M}\ell) E_M \label{eq:systemf} \\
-\frac{dI_M}{dt} &= b_{3M}\ell E_M - \mu I_M  \label{eq:systemg}
+\frac{dI_H}{dt} &= b_{3H} E_H - \gamma I_H \label{eq:systemc} \\
+\frac{dR_H}{dt} &= \gamma I_H - \omega R_H \label{eq:systemd} \\
+\frac{dS_M}{dt} &= \Lambda(t)- \lambda_M(t) S_M - \mu S_M \label{eq:systeme} \\
+\frac{dE_M}{dt} &= \lambda_M(t) S_M - (\mu + b_{3M}\ell) E_M \label{eq:systemf} \\
+\frac{dI_M}{dt} &= b_{3M}\ell E_M - \mu I_M \label{eq:systemg}
 \end{align}
 \end{subequations}
 \\
 The forces of infection are defined as:
 \begin{subequations}\label{eq:system}
 \begin{align}
-\lambda_H(t) &= a\, b_2 \frac{I_M(t)}{N(t)}  \label{eq:systema} \\
+\lambda_H(t) &= a\, b_2 \frac{I_M(t)}{N(t)} \label{eq:systema} \\
 \lambda_M(t) &= a\, b_1 \frac{I_H(t)}{N(t)} \label{eq:systemb}
 \end{align}
 \end{subequations}
@@ -444,12 +444,12 @@ Their results allowed for estimation of the duration of the gonotrophic cycle th
 \begin{align}
 P=Q^{1/g} \Longrightarrow g = \frac{\ln(Q)}{\ln(P)},
 \end{align}
-where $P$ is the daily survival rate of mosquitoes, $Q$ is the proportion of parous mosquitoes females in the population and $g$ is the duration of the gonotrophic cycle, given in days  \cite{duration_of_gonotrophic_cycle}.
+where $P$ is the daily survival rate of mosquitoes, $Q$ is the proportion of parous mosquitoes females in the population and $g$ is the duration of the gonotrophic cycle, given in days \cite{duration_of_gonotrophic_cycle}.
 \\\\
 Given the lack of more recent data, it was decided to use the obtained estimates of the time period specified above with average temperatures from the period of analysis between 2017 and 2023, given that the biting rate is given as a function of temperature. It was decided to consider $T'=16^\circ C$, given that below this temperature there is no development of the vector, as the threshold temperature for the biting rate, and we estimated values of $g$ for the missing months of the analysis via interpolation. With this, given the closed formula for the biting rate, and knowing that it is the inverse of the gonotrophic cycle, we calculated $D_1= g(T-T')$ for each of the months with available data. %\footnote{$a(T)$ is defined in Table~\ref{tbl1}}.
 \\\\
 Having monthly values of $D_1$, we took their average in order to estimate the biting rate and the proportion of female mosquitoes to humans, which is given by
-\begin{align}  
+\begin{align} 
 m = \frac{HBR}{a(T)},
 \end{align}
 where $HBR$ is the mean biting density of \textit{An. darlingi}, given in bites/person/night, while $a(T)$ is the biting rate, given in bites/mosquito/night. Based on the data, $M_0$, the initial population of mosquitoes used in the analysis, was estimated to be
@@ -584,7 +584,7 @@ $\gamma$ (days$^{-1}$) & $1/150$ & 1.0 \\
 $\omega$ (days$^{-1}$) & $1/300$ & 0.1 \\
 $b_1$ & 0.001 & 0.5 \\
 $b_2$ & 0.01 & 0.5 \\
-$M'$ & 50{,}000 & $500 \times N_y$ \tnote{1}  \\
+$M'$ & 50{,}000 & $500 \times N_y$ \tnote{1} \\
 \bottomrule
 \end{tabular*}
 \begin{tablenotes}
@@ -687,7 +687,7 @@ All ODE simulations were performed using Python version 3.12.7 (conda-forge dist
 \\\\
 Climate inputs (temperature, precipitation, minimum humidity) were smoothed using a 14-day rolling mean for mosquito demographic rates (mortality $\mu$, sporogonic development $b_{3M}$, birth rate $\Lambda$), while the biting rate $a(T)$ used raw daily temperature to preserve high-frequency transmission variability.
 \\\\
-Data manipulation and analysis were performed using Pandas version 3.0.2,  while numerical computations and array operations were carried out with  NumPy version 2.4.2.
+Data manipulation and analysis were performed using Pandas version 3.0.2, while numerical computations and array operations were carried out with NumPy version 2.4.2.
 \\\\
 All computations were performed on a laptop running Windows 11 (64-bit) equipped with a 12th Gen Intel Core i5-1235U processor (10 cores, 12 threads) and 16\,GB RAM. %The source code and calibration results are available at \url{https://github.com/RaphaLevy/Study_on_malaria_dynamics_v2}.
 
@@ -1233,7 +1233,7 @@ study.
 
 \subsection{The constant-coefficient climate model underfits the observed dynamics}
 \label{sec:results_weekly_beta}
-To assess how much of the seasonal variation in transmission is captured by the mechanistic, climate-driven formulation, we freed the effective transmission coefficients, allowing them to vary on a weekly basis (Section~\ref{sec:weekly_beta_diagnostic}), and compared the resulting weekly model with the constant-coefficient climate-driven model. Releasing the coefficients reduced the weighted mean squared error in every year (Table~\ref{tbl:weekly_beta}), most notably in 2017, where the wMSE fell from  $8.5\times10^4$ to $6.2\times10^2$ (a $\sim$137-fold reduction).
+To assess how much of the seasonal variation in transmission is captured by the mechanistic, climate-driven formulation, we freed the effective transmission coefficients, allowing them to vary on a weekly basis (Section~\ref{sec:weekly_beta_diagnostic}), and compared the resulting weekly model with the constant-coefficient climate-driven model. Releasing the coefficients reduced the weighted mean squared error in every year (Table~\ref{tbl:weekly_beta}), most notably in 2017, where the wMSE fell from $8.5\times10^4$ to $6.2\times10^2$ (a $\sim$137-fold reduction).
 \\\\
 The residual between the free weekly $\beta_{h,w},\beta_{m,w}$ and the climate-driven $a(T)b_1,\,a(T)b_2$ indicates periods in which the temperature-driven formulation fails to capture the observed transmission structure. This motivates extending the per-bite transmission probabilities to the wider set of environmental drivers introduced in Section~\ref{sec:intro}.
 %\\\\
@@ -1272,7 +1272,7 @@ Within each year the model explains a large part of the variance of both transmi
 \midrule
 \multirow{7}{*}{$b_1$}
  & 2017 & 0.563 & 0.0594 & +0.0021 & $T$\\
- & 2018 & 0.580 & 0.0651 & $-$0.0005  & $T$\\
+ & 2018 & 0.580 & 0.0651 & $-$0.0005 & $T$\\
  & 2019 & 0.739 & 0.0475 & +0.0011 & $F_c$\\
  & 2020 & 0.671 & 0.0626 & +0.0021 & $R$\\
  & 2021 & 0.705 & 0.0603 & $-$0.0009 & $F_t$\\
@@ -1305,7 +1305,7 @@ Within each year the model explains a large part of the variance of both transmi
 %\begin{figure}[pos=h]
 
 \includegraphics[width=\columnwidth]{figs/b2_eff_obs_vs_pred_all_years.png}
-\captionof{figure}{Scatter plot of the estimated vs predicted weekly-free proportion of bites by  susceptible mosquitoes on infected humans ($b_1$) and by infected mosquitoes on susceptible humans ($b_2$)  that result in infection.}
+\captionof{figure}{Scatter plot of the estimated vs predicted weekly-free proportion of bites by susceptible mosquitoes on infected humans ($b_1$) and by infected mosquitoes on susceptible humans ($b_2$) that result in infection.}
 \label{FIG:scatter_b2}
 \end{figure}
 \newpage
@@ -1650,7 +1650,7 @@ specifications for the sensitivity-analysis code, and to review the manuscript f
 \bibitem{Anthropogenic_Landscape} L. S. M. Chaves, E. S. Bergo, J. E. Conn, G. Z. Laporta, P. R. Prist, M. A. M. Sallum, Anthropogenic landscape decreases mosquito biodiversity and drives malaria vector proliferation in the Amazon rainforest, PLOS ONE, Vol. 16 (1) (2021), \href{https://doi.org/10.1371/journal.pone.0245087}{https://doi.org/10.1371/journal.pone.0245087}.
 \\
 %6
-\bibitem{Future_of_Deforestation} K. R. Kirby, W. F. Laurance, A. K. L. M.  Albernaz, G. Schroth, P. M. Fearnside, S. Bergen, E. M. Venticinque, C. Da Costa, The future of deforestation in the Brazilian Amazon, Futures, Vol. 38 (4) (2006), 432–453, \href{https://doi.org/10.1016/j.futures.2005.07.011}{https://doi.org/10.1016/j.futures.2005.07.011}.
+\bibitem{Future_of_Deforestation} K. R. Kirby, W. F. Laurance, A. K. L. M. Albernaz, G. Schroth, P. M. Fearnside, S. Bergen, E. M. Venticinque, C. Da Costa, The future of deforestation in the Brazilian Amazon, Futures, Vol. 38 (4) (2006), 432–453, \href{https://doi.org/10.1016/j.futures.2005.07.011}{https://doi.org/10.1016/j.futures.2005.07.011}.
 \\
 %7
 \bibitem{Relationship_between_fires_and_defor} C. F. Lima, F. T. P. Torres, L. J. Minette, F. A. Lima, R. C. A. Lima et al, Is there a relationship between forest fires and deforestation in the Brazilian Amazon?, PLOS ONE, Vol. 19 (6) (2024), \href{https://doi.org/10.1371/journal.pone.0306238}{https://doi.org/10.1371/journal.pone.0306238}.
@@ -1662,7 +1662,7 @@ specifications for the sensitivity-analysis code, and to review the manuscript f
 \bibitem{silva-nunes_malaria_amazon_2008} M. da Silva-Nunes et al., Malaria on the Amazonian frontier: transmission dynamics, risk factors, spatial distribution, and prospects for control, American Journal of Tropical Medicine and Hygiene, Vol. 79 (4) (2008), 624-635, \href{https://doi.org/10.4269/ajtmh.2008.79.624}{https://doi.org/10.4269/ajtmh.2008.79.624}. 
 \\
 %10
-\bibitem{DASILVANUNES2012281} M. da Silva-Nunes et al.,  Amazonian malaria: Asymptomatic human reservoirs, diagnostic challenges, environmentally driven changes in mosquito vector populations, and the mandate for sustainable control strategies, Acta Tropica, Vol. 121 (3) (2012), 281-291, \href{https://doi.org/10.1016/j.actatropica.2011.10.001}{https://doi.org/10.1016/j.actatropica.2011.10.001}.
+\bibitem{DASILVANUNES2012281} M. da Silva-Nunes et al., Amazonian malaria: Asymptomatic human reservoirs, diagnostic challenges, environmentally driven changes in mosquito vector populations, and the mandate for sustainable control strategies, Acta Tropica, Vol. 121 (3) (2012), 281-291, \href{https://doi.org/10.1016/j.actatropica.2011.10.001}{https://doi.org/10.1016/j.actatropica.2011.10.001}.
 \\
 %11
 \bibitem{Parham2010} P. E. Parham, E. Michael, Modelling Climate Change and Malaria Transmission, Modelling Parasite Transmission and Control, Advances in Experimental Medicine and Biology, Vol. 673 (2010), 184-199, \href{https://doi.org/10.1007/978-1-4419-6064-1_13}{https://doi.org/10.1007/978-1-4419-6064-1\_13}.
@@ -1710,7 +1710,7 @@ specifications for the sensitivity-analysis code, and to review the manuscript f
 \bibitem{ab_gumel_malaria_review} S.E. Einkenberry, A. B. Gumel, Mathematical modeling of climate change and malaria transmission dynamics: a historical review, Journal of Mathematical Biology, Vol. 77 (4), 857-933 (2018), \href{https://doi.org/10.1007/s00285-018-1229-7}{https://doi.org/10.1007/s00285-018-1229-7}.
 \\
 %26
-\bibitem{debarros2011}  F. S. M. de Barros, N. A. Honório, M. E. Arruda, Survivorship of Anopheles darlingi (Diptera: Culicidae) in Relation with Malaria Incidence in the Brazilian Amazon, PLoS ONE, Vol. 6 (8), e22388 (2011), \href{https://doi.org/10.1371/journal.pone.0022388}{https://doi.org/10.1371/journal.pone.0022388}.
+\bibitem{debarros2011} F. S. M. de Barros, N. A. Honório, M. E. Arruda, Survivorship of Anopheles darlingi (Diptera: Culicidae) in Relation with Malaria Incidence in the Brazilian Amazon, PLoS ONE, Vol. 6 (8), e22388 (2011), \href{https://doi.org/10.1371/journal.pone.0022388}{https://doi.org/10.1371/journal.pone.0022388}.
 \\
 %27
 \bibitem{duration_of_gonotrophic_cycle} F. J. Lardeaux et al, A physiological time analysis of the duration of the gonotrophic cycle of Anopheles pseudopunctipennis and its implications for malaria transmission in Bolivia, Malaria Journal, Vol. 7, 141 (2008), \href{https://doi.org/10.1186/1475-2875-7-141}{https://doi.org/10.1186/1475-2875-7-141}.
@@ -1728,7 +1728,7 @@ specifications for the sensitivity-analysis code, and to review the manuscript f
 \bibitem{nelder_mead_1965} J. A. Nelder, R. Mead, A Simplex Method for Function Minimization, The Computer Journal, Vol. 7 (4) (1965), 308–313, \href{https://doi.org/10.1093/comjnl/7.4.308}{https://doi.org/10.1093/comjnl/7.4.308}
 \\
 %32
-\bibitem{human_to_mosquito_transmission_efficiency} T.  S. Churcher, J. F. Trape, A. Cohuet, Human-to-mosquito transmission efficiency increases as malaria is controlled, Nat Commun 6, 6054 (2015), \href{https://doi.org/10.1038/ncomms7054}{https://doi.org/10.1038/ncomms7054}
+\bibitem{human_to_mosquito_transmission_efficiency} T. S. Churcher, J. F. Trape, A. Cohuet, Human-to-mosquito transmission efficiency increases as malaria is controlled, Nat Commun 6, 6054 (2015), \href{https://doi.org/10.1038/ncomms7054}{https://doi.org/10.1038/ncomms7054}
 \\
 %33
 \bibitem{Rep_Number_Comp_Model} P. van den Driessche, J. Watmough, Reproduction numbers and sub-threshold endemic equilibria for compartmental models of disease transmission, Mathematical Biosciences, Vol. 180 (2002), 29-48, \href{https://doi.org/10.1016/S0025-5564(02)00108-6}{https://doi.org/10.1016/S0025-5564(02)00108-6}.
@@ -1743,7 +1743,7 @@ specifications for the sensitivity-analysis code, and to review the manuscript f
 \bibitem{climate_based_distribution_sub_sahara} M. H. Craig, R. W. Snow, D. le Sueur, A Climate-based Distribution Model of Malaria Transmission in Sub-Saharan Africa, Parasitology Today, Vol. 15 (3), 105-111 (1999), \href{https://doi.org/10.1016/s0169-4758(99)01396-4}{https://doi.org/10.1016/s0169-4758(99)01396-4}.
 \\
 %37
-\bibitem{minmax_temp_anoph} T. P. Agyekum et al, A Systematic Review of the Effects of Temperature on Anopheles Mosquito Development and Survival: Implications for Malaria Control in a Future Warmer Climate, International Journal of Environmental Research and Public Health, Vol. 18 (14),  (2021), \href{https://doi.org/10.3390/ijerph18147255}{https://doi.org/10.3390/ijerph18147255}.
+\bibitem{minmax_temp_anoph} T. P. Agyekum et al, A Systematic Review of the Effects of Temperature on Anopheles Mosquito Development and Survival: Implications for Malaria Control in a Future Warmer Climate, International Journal of Environmental Research and Public Health, Vol. 18 (14), (2021), \href{https://doi.org/10.3390/ijerph18147255}{https://doi.org/10.3390/ijerph18147255}.
 \\
 %38
 \bibitem{Lindsay_Birley_1996} S. W. Lindsay, M. H. Birley, Climate change and malaria transmission, Annals of Tropical Medicine \& Parasitology,Vol. 90 (1996), 573-588, \href{https://doi.org/10.1080/00034983.1996.11813087}{https://doi.org/10.1080/00034983.1996.11813087}.
